@@ -15,7 +15,7 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 O Brasil possui múltiplas iniciativas de qualidade mundial para sistematizar conhecimento tradicional associado à biodiversidade, porém operam de forma isolada sem arquitetura comum que permita integração e sinergia:
 
 #### 1. Projeto GEF "Entre-Ciências" (2025-2029)
-Projeto de grande porte (US$ 80 milhões) coordenado pelo MCTI para fortalecer capacidade de Povos Indígenas e Comunidades Locais (PIPCTAFs) gerenciarem dados sobre sociobiodiversidade em Amazônia e Cerrado, usando padrões DarwinCore/PlinianCore via SiBBr.
+Projeto de grande porte (US$ 7 milhões) coordenado pelo MCTI para fortalecer capacidade de Povos Indígenas e Comunidades Locais (PIPCTAFs) gerenciarem dados sobre sociobiodiversidade em Amazônia e Cerrado, usando padrões DarwinCore/PlinianCore via SiBBr.
 
 #### 2. Rede de Conhecimentos sobre Sociobiodiversidade (RCS)
 Iniciativa do ICMBio (CNPT) em parceria com UFSC que busca integrar bases de dados dispersas em plataforma única, com ênfase em protocolos comunitários e Consentimento Livre, Prévio e Informado (CLPI).
