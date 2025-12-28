@@ -24,7 +24,7 @@ Iniciativa do ICMBio (CNPT) em parceria com UFSC que busca integrar bases de dad
 #### 3. Modernização do SISGEN (RNP-MMA-BID)
 Projeto de 13 meses para modernizar o Sistema Nacional de Gestão do Patrimônio Genético e CTA, implementando interoperabilidade via IPT (Integrated Publishing Toolkit) com padrões FAIR e CARE.
 
-#### 4. Useflora: Banco de Dados Etnobotânicos (UFSC)
+#### 4. [Useflora: Pesquisa colaborativa para salvaguarda da sociobiodiversidade brasileira](https://useflora.ufsc.br/) (UFSC)
 Sistema com registros etnobotânicos validados, implementando inovador "Registro Comunitário" onde comunidades definem níveis de acesso a seus conhecimentos.
 
 ### O Problema da Fragmentação
