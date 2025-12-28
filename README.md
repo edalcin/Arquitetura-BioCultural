@@ -15,7 +15,7 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 
 O Brasil possui múltiplas iniciativas de qualidade mundial para sistematizar conhecimento tradicional associado à biodiversidade, porém operam de forma isolada sem arquitetura comum que permita integração e sinergia. Por exemplo, algumas das iniciativas em 2025:
 
-#### 1. Projeto GEF "Entre-Ciências" (2025-2029)
+#### 1. [Projeto GEF "Entre-Ciências"](https://www.thegef.org/projects-operations/projects/11269) (2025-2029)
 Projeto de grande porte (US$ 7 milhões) coordenado pelo MCTI para fortalecer capacidade de Povos Indígenas e Comunidades Locais (PIPCTAFs) gerenciarem dados sobre sociobiodiversidade em Amazônia e Cerrado, usando padrões DarwinCore/PlinianCore via SiBBr.
 
 #### 2. Rede de Conhecimentos sobre Sociobiodiversidade (RCS)
@@ -24,7 +24,7 @@ Iniciativa do ICMBio (CNPT) em parceria com UFSC que busca integrar bases de dad
 #### 3. Modernização do SISGEN (RNP-MMA-BID)
 Projeto de 13 meses para modernizar o Sistema Nacional de Gestão do Patrimônio Genético e CTA, implementando interoperabilidade via IPT (Integrated Publishing Toolkit) com padrões FAIR e CARE.
 
-#### 4. Useflora: Banco de Dados Etnobotânicos (UFSC)
+#### 4. [Useflora: Pesquisa colaborativa para salvaguarda da sociobiodiversidade brasileira](https://useflora.ufsc.br/) (UFSC)
 Sistema com registros etnobotânicos validados, implementando inovador "Registro Comunitário" onde comunidades definem níveis de acesso a seus conhecimentos.
 
 ### O Problema da Fragmentação
