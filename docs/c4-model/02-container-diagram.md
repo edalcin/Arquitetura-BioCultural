@@ -4,6 +4,8 @@
 
 O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema de Conhecimento Tradicional. Cada container representa uma aplicação ou serviço que executa de forma independente.
 
+**Versão 1.2** - Atualizado com containers implementados: etnoDB e etnopapers
+
 ## Diagrama de Arquitetura
 
 ```mermaid
@@ -21,6 +23,13 @@ graph TB
 
     subgraph "API Gateway Layer"
         GATEWAY[API Gateway<br/>Kong/AWS API Gateway<br/>Auth, Rate Limit, Routing]
+    end
+
+    subgraph "Containers Implementados"
+        ETNODB_ACQ[etnoDB - Aquisição<br/>Node.js/Express/HTMX<br/>Porta 3001<br/>✓ IMPLEMENTADO]
+        ETNODB_CUR[etnoDB - Curadoria<br/>Node.js/Express/HTMX<br/>Porta 3002<br/>✓ IMPLEMENTADO]
+        ETNODB_PUB[etnoDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
+        ETNOPAPERS[etnopapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
     end
 
     subgraph "Contexto: Aquisição"
@@ -59,8 +68,12 @@ graph TB
     end
 
     U1 --> WEB
+    U1 --> ETNOPAPERS
+    U1 --> ETNODB_ACQ
     U2 --> WEB
+    U2 --> ETNODB_CUR
     U3 --> PORTAL
+    U3 --> ETNODB_PUB
 
     WEB --> GATEWAY
     PORTAL --> GATEWAY
@@ -68,6 +81,11 @@ graph TB
     GATEWAY --> ACQ_API
     GATEWAY --> CUR_API
     GATEWAY --> PUB_API
+
+    ETNOPAPERS --> DB
+    ETNODB_ACQ --> DB
+    ETNODB_CUR --> DB
+    ETNODB_PUB --> DB
 
     ACQ_API --> QUEUE
     ACQ_API --> DB
@@ -115,9 +133,216 @@ graph TB
     style DB fill:#2ecc71,stroke:#27ae60,color:#ffffff
     style CACHE fill:#2ecc71,stroke:#27ae60,color:#ffffff
     style STORAGE fill:#2ecc71,stroke:#27ae60,color:#ffffff
+    style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 ## Containers Detalhados
+
+### Containers Implementados (Versão 1.2)
+
+Esta seção documenta os containers que já foram implementados e estão em produção/desenvolvimento ativo.
+
+#### etnoDB - Sistema de Conhecimento Tradicional Secundário
+**GitHub:** [https://github.com/edalcin/etnoDB](https://github.com/edalcin/etnoDB)
+
+Interface web completa para gerenciamento de conhecimento tradicional extraído de artigos científicos, implementando os três contextos arquiteturais de forma integrada.
+
+##### etnoDB - Aquisição (Porta 3001)
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+
+**Responsabilidades:**
+- Entrada manual de dados secundários por pesquisadores
+- Formulários hierárquicos (Referência → Comunidade → Planta → Uso)
+- Validação estrutural de dados
+- Armazenamento com status "pendente" para curadoria
+
+**Características Técnicas:**
+- Interface responsiva mobile-first (320px a 1920px+)
+- Server-side rendering com EJS
+- Interatividade com HTMX e Alpine.js
+- Validação de entrada contra injeção NoSQL e XSS
+- 29 classificações de comunidades tradicionais (Decreto nº 11.481/2023)
+
+**Endpoints Principais:**
+```
+GET    /                     - Formulário de entrada
+POST   /submit               - Criar novo registro
+GET    /references           - Listar referências
+```
+
+##### etnoDB - Curadoria (Porta 3002)
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+
+**Responsabilidades:**
+- Interface editorial para revisão de registros
+- Workflow de aprovação/rejeição (princípios C.A.R.E.)
+- Validação por representantes de comunidades
+- Controle de qualidade dos dados
+
+**Características Técnicas:**
+- Acesso restrito (futuro: autenticação JWT)
+- Dashboard de registros pendentes
+- Edição colaborativa de registros
+- Rastreamento de mudanças de status
+
+**Estados de Workflow:**
+- `pending` - Aguardando revisão
+- `approved` - Aprovado para publicação
+- `rejected` - Rejeitado (dados insuficientes)
+
+**Endpoints Principais:**
+```
+GET    /                     - Dashboard de curadoria
+GET    /pending              - Listar registros pendentes
+POST   /approve/:id          - Aprovar registro
+POST   /reject/:id           - Rejeitar registro
+PUT    /edit/:id             - Editar registro
+```
+
+##### etnoDB - Apresentação (Porta 3003)
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+
+**Responsabilidades:**
+- Consulta pública de dados aprovados
+- Busca full-text em todos os campos
+- Filtros avançados (comunidade, localização, espécie)
+- Apresentação responsiva dos resultados
+
+**Características Técnicas:**
+- Interface Google-like de busca
+- Busca em texto completo (título, abstract, nomes científicos, vernaculares)
+- Filtros por tipo de comunidade, estado, município
+- SEO otimizado para indexação
+- Sem necessidade de autenticação
+
+**Endpoints Principais:**
+```
+GET    /                     - Interface de busca
+GET    /search?q={query}     - Executar busca
+GET    /reference/:id        - Detalhes de referência
+```
+
+**Estrutura de Dados Hierárquica:**
+```json
+{
+  "reference": {
+    "title": "...",
+    "authors": "...",
+    "year": 2025,
+    "doi": "...",
+    "abstract": "...",
+    "status": "approved",
+    "communities": [
+      {
+        "name": "Comunidade Quilombola X",
+        "type": "quilombola",
+        "country": "Brasil",
+        "state": "BA",
+        "municipality": "Salvador",
+        "plants": [
+          {
+            "scientific_name": "Manihot esculenta",
+            "vernacular_names": ["mandioca", "aipim"],
+            "uses": [
+              {
+                "type": "Alimentação",
+                "description": "Raíz utilizada para fazer farinha"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### etnopapers - Extração Automatizada com IA
+**GitHub:** [https://github.com/edalcin/etnopapers](https://github.com/edalcin/etnopapers)
+
+Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
+
+**Tecnologia:** .NET 8, WPF, MVVM, C#
+
+**Responsabilidades:**
+- Processamento de PDFs de artigos científicos
+- Extração de metadados via IA (Google Gemini, OpenAI GPT-4o-mini, Anthropic Claude 3.5 Haiku)
+- Inserção direta no MongoDB
+- Interface desktop para pesquisadores
+
+**Características Técnicas:**
+- Arquitetura MVVM para separação de concerns
+- Integração com múltiplos provedores de IA:
+  - Google Gemini (gratuito, 15 req/min)
+  - OpenAI GPT-4o-mini
+  - Anthropic Claude 3.5 Haiku
+- Armazenamento local em JSON (backup)
+- Sincronização direta com MongoDB (Atlas ou local)
+- Performance: 50% mais rápido que soluções locais (OLLAMA)
+- PDFs descartados pós-processamento (privacidade)
+
+**Dados Extraídos:**
+
+*Obrigatórios:*
+- Título normalizado
+- Autores (formato APA)
+- Ano de publicação
+- Abstract (traduzido para português brasileiro)
+
+*Opcionais:*
+- Espécies (nomes vernaculares e científicos)
+- Tipos de uso
+- Informações de comunidades
+- Dados geográficos (país, estado, município)
+- Metodologia
+
+**Workflow de Integração:**
+```
+1. Pesquisador seleciona PDF no etnopapers
+2. IA extrai metadados estruturados
+3. Dados salvos em MongoDB com status "pending"
+4. Pesquisador revisa no etnoDB-Aquisição (porta 3001)
+5. Curador valida no etnoDB-Curadoria (porta 3002)
+6. Dados aprovados aparecem no etnoDB-Apresentação (porta 3003)
+```
+
+**Requisitos:**
+- Windows 10 ou superior
+- Conexão com internet (APIs de IA)
+- Chave de API de provedor (Gemini/OpenAI/Anthropic)
+- Acesso a MongoDB (Atlas ou local)
+
+**Formato de Saída (MongoDB):**
+```json
+{
+  "title": "Ethnobotanical study of...",
+  "authors": "Silva, J.; Santos, M.",
+  "year": 2025,
+  "abstract_pt": "Estudo etnobotânico sobre...",
+  "species": [
+    {
+      "scientific_name": "Manihot esculenta",
+      "vernacular_names": ["mandioca"],
+      "uses": ["alimentação"]
+    }
+  ],
+  "communities": [...],
+  "location": {
+    "country": "Brasil",
+    "state": "AM",
+    "municipality": "Manaus"
+  },
+  "status": "pending",
+  "source": "etnodb - gemini",
+  "createdAt": "2025-12-28T10:30:00Z",
+  "updatedAt": "2025-12-28T10:30:00Z"
+}
+```
+
+---
 
 ### Frontend Layer
 

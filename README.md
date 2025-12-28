@@ -1,10 +1,70 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.1
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.2
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17714765-blue)](https://doi.org/10.5281/zenodo.17714765)
+[![Versão](https://img.shields.io/badge/Versão-1.2.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
 Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade. O sistema foi projetado com respeito aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) e em conformidade com a legislação pertinente.
+
+---
+
+## Projetos Implementados
+
+Esta arquitetura possui implementações concretas que materializam os conceitos propostos:
+
+### etnoDB - Banco de Dados de Conhecimento Tradicional
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnoDB-181717?logo=github)](https://github.com/edalcin/etnoDB)
+
+Interface web para gerenciamento de conhecimento tradicional secundário extraído de artigos científicos. Implementa os três contextos arquiteturais principais:
+
+**Características:**
+- **Três Interfaces Especializadas:**
+  - **Aquisição** (porta 3001): Entrada de dados por pesquisadores
+  - **Curadoria** (porta 3002): Validação e aprovação de registros
+  - **Apresentação** (porta 3003): Consulta pública com busca avançada
+- **Stack Tecnológico:** Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
+- **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
+- **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
+- **29 Classificações de Comunidades:** Conforme Decreto nº 11.481/2023
+
+### etnopapers - Extração Automatizada com IA
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnopapers-181717?logo=github)](https://github.com/edalcin/etnopapers)
+
+Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
+
+**Características:**
+- **Plataforma:** Windows (.NET 8, WPF, MVVM)
+- **Extração com IA:**
+  - Google Gemini (15 req/min, gratuito)
+  - OpenAI GPT-4o-mini
+  - Anthropic Claude 3.5 Haiku
+- **Integração Nativa:** MongoDB (Atlas ou local)
+- **Dados Extraídos:**
+  - Obrigatórios: Título, autores, ano, abstract
+  - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
+- **Performance:** Melhoria de 50% em relação a soluções locais
+
+### Integração entre Projetos
+
+```mermaid
+graph LR
+    PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
+    EP --> MONGO[(MongoDB)]
+    MONGO --> ED_ACQ[etnoDB<br/>Aquisição]
+    ED_ACQ --> ED_CUR[etnoDB<br/>Curadoria]
+    ED_CUR --> ED_PUB[etnoDB<br/>Apresentação]
+    ED_PUB --> PUB[Público]
+```
+
+O fluxo integrado permite que:
+1. **etnopapers** processa PDFs e extrai metadados usando IA
+2. Dados são salvos diretamente no **MongoDB**
+3. **etnoDB (Aquisição)** permite revisão e entrada manual complementar
+4. **etnoDB (Curadoria)** valida e aprova os registros
+5. **etnoDB (Apresentação)** disponibiliza dados validados publicamente
 
 ---
 
@@ -81,48 +141,64 @@ O sistema é organizado em **três contextos principais** que trabalham de forma
 
 ```mermaid
 graph TB
-    subgraph Aquisição
+    subgraph "Aquisição"
         A1[Dados Secundários<br/>Artigos e Livros]
         A2[Dados Primários<br/>Registro Direto]
         A3[Robôs de Coleta<br/>Automática]
         A4[APIs Externas]
+        ETNOPAPERS["✓ etnopapers<br/>Extração IA de PDFs<br/>.NET 8/WPF"]
+        ETNODB_ACQ["✓ etnoDB - Aquisição<br/>Porta 3001<br/>Node.js/HTMX"]
     end
 
-    subgraph Curadoria
+    subgraph "Curadoria"
         C1[Interface de<br/>Curadoria]
         C2[Validação<br/>Taxonômica]
         C3[Controle de<br/>Qualidade]
+        ETNODB_CUR["✓ etnoDB - Curadoria<br/>Porta 3002<br/>Node.js/HTMX"]
     end
 
-    subgraph Apresentação
+    subgraph "Apresentação"
         P1[Portal Público]
         P2[APIs de Consulta]
         P3[Visualizações]
+        ETNODB_PUB["✓ etnoDB - Apresentação<br/>Porta 3003<br/>Node.js/HTMX"]
     end
 
-    DB[(Base de Dados<br/>Conhecimento Tradicional)]
+    DB[("Base de Dados<br/>MongoDB<br/>Conhecimento Tradicional")]
 
     A1 --> DB
     A2 --> DB
     A3 --> DB
     A4 --> DB
+    ETNOPAPERS --> DB
+    ETNODB_ACQ --> DB
 
     C1 --> DB
     C2 --> DB
     C3 --> DB
-
+    ETNODB_CUR --> DB
 
     DB --> P1
     DB --> P2
     DB --> P3
+    DB --> ETNODB_PUB
 
     EXT1[Flora e Funga do Brasil API] --> C2
     EXT2[Fauna do Brasil API] --> C2
     EXT3[GBIF API] --> C2
     EXT4[Plataforma de<br>Territórios Tradicionais] --> C3
     EXT5[Outras Fontes<br>Autoritativas] --> C3
-    
+
+    style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+
 ```
+
+**Legenda:**
+- Elementos marcados com ✓ (verde) são **containers implementados** e disponíveis nos repositórios GitHub
+- Elementos em cinza são componentes conceituais da arquitetura planejada
 
 ### Metodologia: C4 Model
 
@@ -373,9 +449,13 @@ Integração planejada com principais sistemas brasileiros:
 
 ---
 
-## Iniciativas Relacionadas em Andamento (GitHub)
+## Iniciativas Relacionadas e Complementares
 
-Esta proposta de arquitetura dialoga e se complementa com os seguintes projetos em desenvolvimento e disponíveis no GitHub:
+Esta arquitetura integra projetos implementados e dialoga com iniciativas em desenvolvimento:
+
+### Projetos da Arquitetura (Implementados)
+- **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional secundário
+- **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude)
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -391,9 +471,9 @@ Esta proposta de arquitetura dialoga e se complementa com os seguintes projetos 
 
 ### Estruturas de Dados e Documentação
 - **[Estrutura de Dados Etnobotânicos](https://github.com/edalcin/Estrutura-de-Dados-Etnobotanicos)** - Modelos e esquemas para armazenamento de informações etnobotânicas
-- **[EtnoPapers](https://github.com/edalcin/etnopapers)** - Coleção de trabalhos e publicações sobre etnobiologia e conhecimento tradicional
 
 Estes projetos complementares fornecem:
+- Implementações concretas da arquitetura (etnoDB e etnopapers)
 - Padrões de dados interoperáveis
 - Vocabulários controlados para melhorar a qualidade dos dados
 - Exemplos práticos de implementação
@@ -414,6 +494,12 @@ Essa documentação incorpora referências a:
 - Etnobiologia e conhecimento tradicional
 - Iniciativas brasileiras práticas (GEF Entre-Ciências, SISGEN, Useflor@, RCS)
 - Data sovereignty e consentimento livre, prévio e informado (CLPI)
+
+---
+
+## Histórico de Versões
+
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a atual versão 1.2.0.
 
 ---
 

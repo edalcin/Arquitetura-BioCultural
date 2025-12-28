@@ -4,6 +4,8 @@
 
 O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Informações sobre Conhecimento Tradicional, mostrando como ele se relaciona com os usuários e sistemas externos.
 
+**Versão 1.2** - Atualizado para refletir containers implementados (etnoDB e etnopapers)
+
 ## Diagrama
 
 ```mermaid
