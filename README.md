@@ -9,73 +9,11 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 
 ---
 
-## Projetos Implementados
-
-Esta arquitetura possui implementações concretas que materializam os conceitos propostos:
-
-### etnoDB - Banco de Dados de Conhecimento Tradicional
-
-[![GitHub](https://img.shields.io/badge/GitHub-etnoDB-181717?logo=github)](https://github.com/edalcin/etnoDB)
-
-Interface web para gerenciamento de conhecimento tradicional secundário extraído de artigos científicos. Implementa os três contextos arquiteturais principais:
-
-**Características:**
-- **Três Interfaces Especializadas:**
-  - **Aquisição** (porta 3001): Entrada de dados por pesquisadores
-  - **Curadoria** (porta 3002): Validação e aprovação de registros
-  - **Apresentação** (porta 3003): Consulta pública com busca avançada
-- **Stack Tecnológico:** Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
-- **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
-- **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
-- **29 Classificações de Comunidades:** Conforme Decreto nº 11.481/2023
-
-### etnopapers - Extração Automatizada com IA
-
-[![GitHub](https://img.shields.io/badge/GitHub-etnopapers-181717?logo=github)](https://github.com/edalcin/etnopapers)
-
-Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
-
-**Características:**
-- **Plataforma:** Windows (.NET 8, WPF, MVVM)
-- **Extração com IA:**
-  - Google Gemini (15 req/min, gratuito)
-  - OpenAI GPT-4o-mini
-  - Anthropic Claude 3.5 Haiku
-- **Integração Nativa:** MongoDB (Atlas ou local)
-- **Dados Extraídos:**
-  - Obrigatórios: Título, autores, ano, abstract
-  - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
-- **Performance:** Melhoria de 50% em relação a soluções locais
-
-### Integração entre Projetos
-
-```mermaid
-graph TB
-    PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
-    PDF --> ED_ACQ[etnoDB<br/>Aquisição<br/> Entrada Manual]
-
-    EP --> MONGO[(MongoDB)]
-    ED_ACQ --> MONGO
-
-    MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
-    MONGO --> ED_PUB[etnoDB<br/>Apresentação]
-    ED_PUB --> PUB[Público]
-```
-
-O fluxo integrado permite que:
-1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
-2. **etnoDB (Aquisição)** permite entrada manual de dados por pesquisadores, também salvando no MongoDB
-3. Ambas as fontes alimentam a mesma base de dados de forma paralela
-4. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes)
-5. **etnoDB (Apresentação)** disponibiliza dados validados publicamente
-
----
-
 ## Motivação e Justificativa
 
 ### O Cenário Atual: Fragmentação de Iniciativas
 
-O Brasil possui múltiplas iniciativas de qualidade mundial para sistematizar conhecimento tradicional associado à biodiversidade, porém operam de forma isolada sem arquitetura comum que permita integração e sinergia:
+O Brasil possui múltiplas iniciativas de qualidade mundial para sistematizar conhecimento tradicional associado à biodiversidade, porém operam de forma isolada sem arquitetura comum que permita integração e sinergia. Por exemplo, algumas das iniciativas em 2025:
 
 #### 1. Projeto GEF "Entre-Ciências" (2025-2029)
 Projeto de grande porte (US$ 7 milhões) coordenado pelo MCTI para fortalecer capacidade de Povos Indígenas e Comunidades Locais (PIPCTAFs) gerenciarem dados sobre sociobiodiversidade em Amazônia e Cerrado, usando padrões DarwinCore/PlinianCore via SiBBr.
@@ -137,6 +75,8 @@ Todas compartilham:
 - **Compartilhar** informações de forma ética e responsável com pesquisadores e público geral
 - **Integrar** múltiplas fontes de dados, desde artigos científicos até registros primários
 - **Automatizar** a captura de informações relevantes de fontes confiáveis
+
+---
 
 ## Arquitetura do Sistema
 
@@ -203,7 +143,72 @@ graph TB
 - Elementos marcados com ✓ (verde) são **containers implementados** e disponíveis nos repositórios GitHub
 - Elementos em cinza são componentes conceituais da arquitetura planejada
 
-### Metodologia: C4 Model
+## Projetos Implementados
+
+Esta arquitetura possui implementações concretas que materializam os conceitos propostos:
+
+### etnoDB - Banco de Dados de Conhecimento Tradicional
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnoDB-181717?logo=github)](https://github.com/edalcin/etnoDB)
+
+Interface web para gerenciamento de conhecimento tradicional secundário extraído de artigos científicos. Implementa os três contextos arquiteturais principais:
+
+**Características:**
+
+- **Três Interfaces Especializadas:**
+  - **Aquisição** (porta 3001): Entrada de dados por pesquisadores
+  - **Curadoria** (porta 3002): Validação e aprovação de registros
+  - **Apresentação** (porta 3003): Consulta pública com busca avançada
+- **Stack Tecnológico:** Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
+- **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
+- **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
+- **29 Classificações de Comunidades:** Conforme Decreto nº 11.481/2023
+
+### etnopapers - Extração Automatizada com IA
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnopapers-181717?logo=github)](https://github.com/edalcin/etnopapers)
+
+Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
+
+**Características:**
+
+- **Plataforma:** Windows (.NET 8, WPF, MVVM)
+- **Extração com IA:**
+  - Google Gemini (15 req/min, gratuito)
+  - OpenAI GPT-4o-mini
+  - Anthropic Claude 3.5 Haiku
+- **Integração Nativa:** MongoDB (Atlas ou local)
+- **Dados Extraídos:**
+  - Obrigatórios: Título, autores, ano, abstract
+  - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
+- **Performance:** Melhoria de 50% em relação a soluções locais
+
+### Integração entre Projetos
+
+```mermaid
+graph TB
+    PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
+    PDF --> ED_ACQ[etnoDB<br/>Aquisição<br/> Entrada Manual]
+
+    EP --> MONGO[(MongoDB)]
+    ED_ACQ --> MONGO
+
+    MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
+    MONGO --> ED_PUB[etnoDB<br/>Apresentação]
+    ED_PUB --> PUB[Público]
+```
+
+O fluxo integrado permite que:
+
+1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
+2. **etnoDB (Aquisição)** permite entrada manual de dados por pesquisadores, também salvando no MongoDB
+3. Ambas as fontes alimentam a mesma base de dados de forma paralela
+4. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes)
+5. **etnoDB (Apresentação)** disponibiliza dados validados publicamente
+
+---
+
+## Metodologia: C4 Model
 
 A arquitetura deste sistema é documentada utilizando o **[C4 Model](https://c4model.com/)**, um framework de visualização que descreve arquiteturas de software através de 4 níveis de diagrama progressivamente mais detalhados (criado por Simon Brown):
 
@@ -317,7 +322,7 @@ Devido à **complexidade e flexibilidade** necessárias para armazenar conhecime
 
 #### Coleta Automática
 
-- Periódicos científicos via APIs ou scraping ético
+- Periódicos científicos via APIs ou scraping ético, com extração de dados com auxílio de IA
 
 ## Princípios Orientadores
 
@@ -366,6 +371,7 @@ etnoArquitetura/
 ## Próximos Passos
 
 1. Definição detalhada do modelo de dados
+	* Considerando a diferença entre dados primários e secundários
 2. Prototipação das APIs de ingestão
 3. Desenvolvimento do sistema de autenticação e autorização
 4. Implementação do workflow de curadoria
@@ -400,11 +406,12 @@ Esta abordagem segue exemplos bem-sucedidos como **CyberTracker** e **MAPEO**, q
 
 O sistema implementa um **workflow robusto de validação** em múltiplas etapas:
 
-1. **Validação Estrutural**: Verificação automática de conformidade com padrões de dados (Darwin Core, Plinian Core)
+1. **Validação Estrutural**: Verificação automática de conformidade com padrões de dados 
 2. **Validação Taxonômica**: Integração com bases brasileiras (Flora e Funga para flora/fungos, Fauna para fauna) com fallback para GBIF API quando não encontrado nas bases brasileiras
-3. **Curadoria Especializada**: Revisão por especialistas de domínio (botânicos, etnobólogos, farmacêuticos tradicionais)
-4. **Validação Comunitária**: Participação de detentores de conhecimento na certificação de dados antes de publicação
-5. **Rastreabilidade Completa**: Logs de auditoria de todas as mudanças e validações
+3. **Validação Semântica**: Integração com vocabulários existentes
+4. **Curadoria Especializada**: Revisão por especialistas de domínio (botânicos, etnobólogos, farmacêuticos tradicionais)
+5. **Validação Comunitária**: Participação de detentores de conhecimento na certificação de dados antes de publicação
+6. **Rastreabilidade Completa**: Logs de auditoria de todas as mudanças e validações
 
 ### Aquisição de Dados Primários
 
