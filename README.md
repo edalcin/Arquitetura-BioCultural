@@ -50,20 +50,23 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 ### Integração entre Projetos
 
 ```mermaid
-graph LR
+graph TB
     PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
+    MANUAL[Entrada Manual<br/>Pesquisadores] --> ED_ACQ[etnoDB<br/>Aquisição]
+
     EP --> MONGO[(MongoDB)]
-    MONGO --> ED_ACQ[etnoDB<br/>Aquisição]
-    ED_ACQ --> ED_CUR[etnoDB<br/>Curadoria]
+    ED_ACQ --> MONGO
+
+    MONGO --> ED_CUR[etnoDB<br/>Curadoria]
     ED_CUR --> ED_PUB[etnoDB<br/>Apresentação]
     ED_PUB --> PUB[Público]
 ```
 
 O fluxo integrado permite que:
-1. **etnopapers** processa PDFs e extrai metadados usando IA
-2. Dados são salvos diretamente no **MongoDB**
-3. **etnoDB (Aquisição)** permite revisão e entrada manual complementar
-4. **etnoDB (Curadoria)** valida e aprova os registros
+1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
+2. **etnoDB (Aquisição)** permite entrada manual de dados por pesquisadores, também salvando no MongoDB
+3. Ambas as fontes alimentam a mesma base de dados de forma paralela
+4. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes)
 5. **etnoDB (Apresentação)** disponibiliza dados validados publicamente
 
 ---
