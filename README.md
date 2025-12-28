@@ -162,7 +162,7 @@ Interface web para gerenciamento de conhecimento tradicional secundário extraí
 - **Stack Tecnológico:** Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
 - **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
 - **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
-- **29 Classificações de Comunidades:** Conforme Decreto nº 11.481/2023
+- **29 Classificações de Comunidades:** Conforme [Decreto nº 8.750, de 9 de maio 2016](https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8750.htm)
 
 ### etnopapers - Extração Automatizada com IA
 

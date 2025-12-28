@@ -164,7 +164,7 @@ Interface web completa para gerenciamento de conhecimento tradicional extraído 
 - Server-side rendering com EJS
 - Interatividade com HTMX e Alpine.js
 - Validação de entrada contra injeção NoSQL e XSS
-- 29 classificações de comunidades tradicionais (Decreto nº 11.481/2023)
+- 29 classificações de comunidades tradicionais ([Decreto nº 8.750, de 9 de maio 2016](https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8750.htm))
 
 **Endpoints Principais:**
 ```
