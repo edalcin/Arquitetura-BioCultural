@@ -52,13 +52,13 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 ```mermaid
 graph TB
     PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
-    MANUAL[Entrada Manual<br/>Pesquisadores] --> ED_ACQ[etnoDB<br/>Aquisição]
+    PDF --> ED_ACQ[etnoDB<br/>Aquisição<br/> Entrada Manual]
 
     EP --> MONGO[(MongoDB)]
     ED_ACQ --> MONGO
 
-    MONGO --> ED_CUR[etnoDB<br/>Curadoria]
-    ED_CUR --> ED_PUB[etnoDB<br/>Apresentação]
+    MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
+    MONGO --> ED_PUB[etnoDB<br/>Apresentação]
     ED_PUB --> PUB[Público]
 ```
 
