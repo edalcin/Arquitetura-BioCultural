@@ -85,12 +85,13 @@ O sistema é organizado em **três contextos principais** que trabalham de forma
 ```mermaid
 graph TB
     subgraph "Aquisição"
-        A1[Dados Secundários<br/>Artigos e Livros]
+        subgraph A1["Dados Secundários<br/>Artigos e Livros"]
+            ETNOPAPERS["✓ etnopapers<br/>Extração IA de PDFs<br/>.NET 8/WPF"]
+            ETNODB_ACQ["✓ etnoDB - Aquisição<br/>Porta 3001<br/>Node.js/HTMX"]
+        end
         A2[Dados Primários<br/>Registro Direto]
         A3[Robôs de Coleta<br/>Automática]
         A4[APIs Externas]
-        ETNOPAPERS["✓ etnopapers<br/>Extração IA de PDFs<br/>.NET 8/WPF"]
-        ETNODB_ACQ["✓ etnoDB - Aquisição<br/>Porta 3001<br/>Node.js/HTMX"]
     end
 
     subgraph "Curadoria"
@@ -109,7 +110,6 @@ graph TB
 
     DB[("Base de Dados<br/>MongoDB<br/>Conhecimento Tradicional")]
 
-    A1 --> DB
     A2 --> DB
     A3 --> DB
     A4 --> DB
