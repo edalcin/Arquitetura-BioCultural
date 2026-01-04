@@ -6,6 +6,55 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [1.4.0] - 2026-01-04
+
+### Adicionado
+
+- **etnoChat** como componente da camada de Apresentação do etnoDB
+  - Interface conversacional para interação em linguagem natural
+  - Integração com Model Context Protocol (MCP) para comunicação com IA
+  - Processamento de perguntas sobre comunidades, plantas e usos tradicionais
+  - Sugestões automáticas de buscas relacionadas
+  - Explicações contextualizadas com citação de fontes
+  - Acessível via rota `/etnochat` na porta 3003
+
+- **Painel Analítico** como componente da camada de Apresentação do etnoDB
+  - Dashboard interativo para exploração e análise visual dos dados
+  - Cartões resumidos: comunidades, referências, plantas, autores
+  - Visualizações geográficas: mapas de calor por estado
+  - Gráficos interativos: evolução temporal, top 10 plantas
+  - Tabelas analíticas: autores produtivos, diversidade botânica
+  - Filtros avançados: estado, tipo de comunidade, período
+  - Stack: Google Charts, HTMX, Alpine.js, Tailwind CSS
+  - Acessível via rota `/painel` na porta 3003
+
+- **Novos diagramas de componentes** para etnoChat e Painel Analítico
+  - NLP Service para processamento de linguagem natural
+  - MCP Client Service para comunicação com modelos de IA
+  - Query Generator para conversão de intenções em queries MongoDB
+  - Aggregation Service para pipelines de análise
+  - Cache Service para otimização de performance
+
+### Modificado
+
+- **Diagrama de Contexto** atualizado com novos componentes na Apresentação
+- **Diagrama de Containers** atualizado com etnoChat e Painel Analítico
+- **Diagrama de Componentes** expandido com detalhamento técnico dos novos serviços
+- **README.md** atualizado para versão 1.4 com documentação das novas funcionalidades
+- Diagrama de integração entre projetos atualizado para mostrar fluxos do etnoChat e Painel
+
+### Contexto da Versão
+
+Esta versão expande significativamente a camada de Apresentação do sistema com duas novas interfaces de acesso aos dados:
+
+1. **etnoChat** democratiza o acesso ao conhecimento etnobotânico permitindo que usuários façam perguntas em linguagem natural, sem necessidade de conhecer sintaxes de busca ou estrutura do banco de dados. A integração com MCP permite respostas contextualizadas e inteligentes.
+
+2. **Painel Analítico** oferece uma visão macro dos dados através de visualizações interativas, permitindo identificar padrões geográficos, temporais e de frequência que seriam difíceis de perceber através de buscas individuais.
+
+Ambos os componentes utilizam a mesma base de dados MongoDB e respeitam o workflow de curadoria, exibindo apenas dados aprovados ao público.
+
+---
+
 ## [1.3.0] - 2026-01-04
 
 ### Adicionado
@@ -213,7 +262,8 @@ Primeira versão completa da proposta de arquitetura para Sistema de Informaçõ
 
 ## Links de Versões
 
-- [1.3.0] - 2026-01-04 (versão atual - integração etnoTermos)
+- [1.4.0] - 2026-01-04 (versão atual - etnoChat e Painel Analítico)
+- [1.3.0] - 2026-01-04 (integração etnoTermos)
 - [1.2.0] - 2025-12-28
 - [1.1.0] - 2025-01-06
 - [1.0.0] - 2025-01-05 (versão inicial publicada no Zenodo: https://doi.org/10.5281/zenodo.17714765)

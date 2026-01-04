@@ -4,7 +4,7 @@
 
 O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Informações sobre Conhecimento Tradicional, mostrando como ele se relaciona com os usuários e sistemas externos.
 
-**Versão 1.3** - Atualizado com etnoTermos como infraestrutura terminológica transversal (glossários, vocabulários e tesauros)
+**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
 
 ## Diagrama
 
@@ -21,6 +21,8 @@ graph TB
     subgraph "Sistema de Conhecimento Tradicional"
         SYS[Sistema de Informações<br/>sobre Conhecimento<br/>Tradicional]
         ETNOTERMOS[etnoTermos<br/>Infraestrutura Terminológica<br/>✓ IMPLEMENTADO]
+        ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>✓ IMPLEMENTADO]
+        PAINEL[Painel Analítico<br/>Dashboard Interativo<br/>✓ IMPLEMENTADO]
     end
 
     subgraph "Usuários Externos"
@@ -46,6 +48,8 @@ graph TB
 
     PUB -->|Consulta informações públicas| SYS
     PUB -->|Navega por tesauros| ETNOTERMOS
+    PUB -->|Faz perguntas em linguagem natural| ETNOCHAT
+    PUB -->|Explora visualizações analíticas| PAINEL
     DEV -->|Consome APIs públicas| SYS
     DEV -->|Consome API de termos| ETNOTERMOS
 
@@ -57,6 +61,8 @@ graph TB
     SYS -->|Consulta territórios e proveniência| TERR
     SYS -->|Valida contra fontes autoritativas| AUTH
     SYS <-->|Valida e padroniza termos| ETNOTERMOS
+    SYS -->|Fornece dados para chat| ETNOCHAT
+    SYS -->|Fornece dados para análise| PAINEL
 
     FLORA -->|Retorna verificação| SYS
     FAUNA -->|Retorna verificação| SYS
@@ -68,6 +74,8 @@ graph TB
 
     style SYS fill:#1168bd,stroke:#0b4884,color:#ffffff
     style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PQ fill:#08427b,stroke:#052e56,color:#ffffff
     style RC fill:#08427b,stroke:#052e56,color:#ffffff
     style ADM fill:#08427b,stroke:#052e56,color:#ffffff

@@ -4,7 +4,7 @@
 
 O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema de Conhecimento Tradicional. Cada container representa uma aplicação ou serviço que executa de forma independente.
 
-**Versão 1.3** - Atualizado com etnoTermos como infraestrutura terminológica (glossários, vocabulários e tesauros)
+**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
 
 ## Diagrama de Arquitetura
 
@@ -30,6 +30,8 @@ graph TB
         ETNODB_ACQ[etnoDB - Aquisição<br/>Node.js/Express/HTMX<br/>Porta 3001<br/>✓ IMPLEMENTADO]
         ETNODB_CUR[etnoDB - Curadoria<br/>Node.js/Express/HTMX<br/>Porta 3002<br/>✓ IMPLEMENTADO]
         ETNODB_PUB[etnoDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
+        ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>MCP/IA<br/>✓ IMPLEMENTADO]
+        PAINEL[Painel Analítico<br/>Google Charts/HTMX<br/>Dashboard<br/>✓ IMPLEMENTADO]
         ETNOPAPERS[etnopapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
         ETNOTERMOS[etnoTermos<br/>Gestão Terminológica<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
     end
@@ -77,6 +79,8 @@ graph TB
     U2 --> ETNODB_CUR
     U3 --> PORTAL
     U3 --> ETNODB_PUB
+    U3 --> ETNOCHAT
+    U3 --> PAINEL
     U4 --> ETNOTERMOS
 
     WEB --> GATEWAY
@@ -92,6 +96,8 @@ graph TB
     ETNODB_CUR --> DB
     ETNODB_PUB --> DB
     ETNODB_PUB --> ETNOTERMOS
+    ETNOCHAT --> DB
+    PAINEL --> DB
 
     ACQ_API --> QUEUE
     ACQ_API --> DB
@@ -147,13 +153,15 @@ graph TB
     style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 ## Containers Detalhados
 
-### Containers Implementados (Versão 1.3)
+### Containers Implementados (Versão 1.4)
 
 Esta seção documenta os containers que já foram implementados e estão em produção/desenvolvimento ativo.
 
@@ -443,6 +451,110 @@ O etnoTermos funciona como **infraestrutura terminológica transversal**:
   "created_at": "2025-01-04T10:00:00Z",
   "updated_at": "2025-01-04T10:00:00Z"
 }
+```
+
+#### etnoChat - Interface Conversacional com IA
+**GitHub:** Componente integrado ao [etnoDB](https://github.com/edalcin/etnoDB)
+
+Interface conversacional que permite interação com o banco de dados através de linguagem natural, facilitando a exploração de conhecimentos etnobotânicos sem necessidade de sintaxes complexas de busca.
+
+**Tecnologia:** Node.js, HTMX, MCP (Model Context Protocol)
+
+**Responsabilidades:**
+- Processar perguntas em linguagem natural sobre comunidades e plantas
+- Gerar sugestões automáticas de buscas relacionadas
+- Fornecer explicações contextualizadas sobre registros
+- Integrar com modelos de IA via MCP
+
+**Características Técnicas:**
+- Integração com Model Context Protocol (MCP) para comunicação com IA
+- Processamento de linguagem natural para queries
+- Contexto conversacional mantido durante a sessão
+- Sugestões inteligentes baseadas no histórico
+
+**Acesso:** Rota `/etnochat` na porta 3003
+
+**Endpoints:**
+```
+POST   /etnochat/query         - Enviar pergunta em linguagem natural
+GET    /etnochat/suggestions   - Obter sugestões de perguntas
+GET    /etnochat/history       - Histórico da conversa atual
+```
+
+**Exemplo de Interação:**
+```json
+{
+  "query": "Quais plantas são usadas para dor de cabeça pelas comunidades quilombolas?",
+  "response": {
+    "answer": "Nas comunidades quilombolas registradas, encontramos 15 espécies...",
+    "sources": [
+      {"reference_id": "REF001", "title": "Etnobotânica em Comunidades Quilombolas..."}
+    ],
+    "related_queries": [
+      "Plantas medicinais em comunidades quilombolas",
+      "Usos tradicionais para dores"
+    ]
+  }
+}
+```
+
+#### Painel Analítico - Dashboard Interativo
+**GitHub:** Componente integrado ao [etnoDB](https://github.com/edalcin/etnoDB)
+
+Dashboard interativo para exploração e análise visual dos dados etnobotânicos, permitindo identificar padrões e distribuições nos dados.
+
+**Tecnologia:** Google Charts, HTMX, Alpine.js, Tailwind CSS
+
+**Responsabilidades:**
+- Exibir estatísticas resumidas do banco de dados
+- Renderizar visualizações geográficas e temporais
+- Fornecer tabelas analíticas interativas
+- Permitir filtragem dinâmica dos dados
+
+**Características Técnicas:**
+- Renderização de gráficos com Google Charts
+- Requisições assíncronas via HTMX
+- Interatividade client-side com Alpine.js
+- Layout responsivo com Tailwind CSS
+- Cache de agregações para performance
+
+**Acesso:** Rota `/painel` na porta 3003
+
+**Componentes do Dashboard:**
+
+1. **Cartões Resumidos:**
+   - Total de comunidades registradas
+   - Referências aprovadas
+   - Plantas únicas identificadas
+   - Autores cadastrados
+
+2. **Visualizações Geográficas:**
+   - Mapa de calor: distribuição de referências por estado
+   - Mapa de calor: distribuição de comunidades por estado
+
+3. **Gráficos Interativos:**
+   - Evolução temporal de publicações (área)
+   - Top 10 plantas mais citadas (barras)
+
+4. **Tabelas Analíticas:**
+   - Autores mais produtivos
+   - Comunidades com maior diversidade botânica
+   - Referências mais abrangentes
+
+5. **Filtros Avançados:**
+   - Por estado
+   - Por tipo de comunidade
+   - Por período de publicação
+
+**Endpoints de Dados:**
+```
+GET    /painel/stats            - Estatísticas gerais
+GET    /painel/geo/references   - Distribuição geográfica de referências
+GET    /painel/geo/communities  - Distribuição geográfica de comunidades
+GET    /painel/timeline         - Evolução temporal
+GET    /painel/top-plants       - Plantas mais citadas
+GET    /painel/authors          - Ranking de autores
+GET    /painel/communities      - Análise de comunidades
 ```
 
 ---

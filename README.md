@@ -1,7 +1,7 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.3
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18074804-blue)](https://doi.org/10.5281/zenodo.18074804)
-[![Versão](https://img.shields.io/badge/Versão-1.3.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-1.4.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
@@ -112,6 +112,8 @@ graph TB
         P3[Visualizações]
         P4[Navegação por<br/>Tesauros]
         ETNODB_PUB["✓ etnoDB - Apresentação<br/>Porta 3003<br/>Node.js/HTMX"]
+        ETNOCHAT["✓ etnoChat<br/>Interface Conversacional<br/>MCP/IA"]
+        PAINEL["✓ Painel Analítico<br/>Dashboard Interativo<br/>Google Charts"]
     end
 
     DB[("Base de Dados<br/>MongoDB<br/>Conhecimento Tradicional")]
@@ -131,6 +133,8 @@ graph TB
     DB --> P2
     DB --> P3
     DB --> ETNODB_PUB
+    DB --> ETNOCHAT
+    DB --> PAINEL
 
     ETNOTERMOS --> ETNODB_ACQ
     ETNOTERMOS --> C4
@@ -148,6 +152,8 @@ graph TB
     style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
 
 ```
 
@@ -175,6 +181,38 @@ Interface web para gerenciamento de conhecimento tradicional secundário extraí
 - **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
 - **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
 - **29 Classificações de Comunidades:** Conforme [Decreto nº 8.750, de 9 de maio 2016](https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8750.htm)
+
+#### etnoChat - Interface Conversacional com IA
+
+Componente da camada de Apresentação que permite interação com o banco de dados através de linguagem natural.
+
+**Funcionalidades:**
+- Formulação de perguntas em linguagem natural sobre comunidades e plantas
+- Sugestões automáticas de buscas e relacionamentos entre dados
+- Explicações contextualizadas sobre registros etnobotânicos
+- Integração com MCP (Model Context Protocol) para comunicação com modelos de IA
+
+**Acesso:** Rota `/etnochat` na porta 3003
+
+#### Painel Analítico - Dashboard Interativo
+
+Componente da camada de Apresentação para exploração e análise visual dos dados etnobotânicos.
+
+**Funcionalidades:**
+- **Cartões Resumidos:** Total de comunidades, referências aprovadas, plantas únicas e autores
+- **Visualizações Geográficas:** Mapas de calor com distribuição por estado
+- **Gráficos Interativos:**
+  - Evolução temporal de publicações (gráfico de área)
+  - Top 10 plantas mais citadas (gráfico de barras)
+- **Tabelas Analíticas:**
+  - Autores mais produtivos
+  - Comunidades com maior diversidade botânica
+  - Referências mais abrangentes
+- **Filtros Avançados:** Estado, tipo de comunidade e período de publicação
+
+**Stack:** Google Charts, HTMX, Alpine.js, Tailwind CSS
+
+**Acesso:** Rota `/painel` na porta 3003
 
 ### etnopapers - Extração Automatizada com IA
 
@@ -255,9 +293,16 @@ graph TB
 
     MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
     MONGO --> ED_PUB[etnoDB<br/>Apresentação]
+    MONGO --> CHAT[etnoChat<br/>Interface Conversacional]
+    MONGO --> DASH[Painel Analítico<br/>Dashboard]
+
     ED_PUB --> PUB[Público]
+    CHAT --> PUB
+    DASH --> PUB
 
     style ET fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style CHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style DASH fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 O fluxo integrado permite que:
@@ -268,6 +313,8 @@ O fluxo integrado permite que:
 4. Ambas as fontes alimentam a mesma base de dados de forma paralela
 5. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes), com suporte de validação semântica do etnoTermos
 6. **etnoDB (Apresentação)** disponibiliza dados validados publicamente, com navegação por tesauros do etnoTermos
+7. **etnoChat** permite consultas em linguagem natural via integração com IA (MCP)
+8. **Painel Analítico** oferece visualizações interativas e análises estatísticas dos dados
 
 ---
 

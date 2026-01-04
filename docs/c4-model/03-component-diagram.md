@@ -4,7 +4,7 @@
 
 Este documento detalha os componentes internos de cada container do sistema, organizados pelos três contextos principais: Aquisição, Curadoria e Apresentação.
 
-**Versão 1.3** - Atualizado com Semantic Validation Service para integração com etnoTermos (validação semântica de termos)
+**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
 
 ---
 
@@ -1563,6 +1563,430 @@ changeStream.on('change', async (change) => {
       break;
   }
 });
+```
+
+---
+
+### etnoChat - Componentes Internos
+
+```mermaid
+graph TB
+    subgraph "etnoChat Service"
+        ROUTER_CHAT[Router<br/>Express Router]
+
+        subgraph "Controllers"
+            QC[Query Controller<br/>Process Questions]
+            SC[Suggestion Controller<br/>Generate Suggestions]
+            HC[History Controller<br/>Manage Context]
+        end
+
+        subgraph "Services"
+            NLP[NLP Service<br/>Text Processing]
+            MCP_SVC[MCP Client<br/>AI Communication]
+            CTX[Context Service<br/>Session Management]
+            QG[Query Generator<br/>DB Query Builder]
+        end
+
+        subgraph "Providers"
+            AI[AI Provider<br/>Model Integration]
+            DB_PROV[Database Provider<br/>Data Access]
+        end
+    end
+
+    USER[User Question] --> ROUTER_CHAT
+    ROUTER_CHAT --> QC
+    ROUTER_CHAT --> SC
+    ROUTER_CHAT --> HC
+
+    QC --> NLP
+    QC --> MCP_SVC
+    QC --> QG
+    SC --> CTX
+    HC --> CTX
+
+    NLP --> MCP_SVC
+    MCP_SVC --> AI
+    QG --> DB_PROV
+
+    AI --> LLM[LLM Model<br/>via MCP]
+    DB_PROV --> DB_CHAT[(MongoDB)]
+
+    style ROUTER_CHAT fill:#85bbf0
+    style NLP fill:#28a745
+    style MCP_SVC fill:#28a745
+    style AI fill:#28a745
+```
+
+#### Componentes Detalhados
+
+##### 1. NLP Service
+**Responsabilidade:** Processar e normalizar texto de entrada
+
+```javascript
+class NLPService {
+  async processQuery(text) {
+    return {
+      normalized: this.normalize(text),
+      entities: this.extractEntities(text),
+      intent: this.classifyIntent(text),
+      language: this.detectLanguage(text)
+    };
+  }
+
+  extractEntities(text) {
+    // Extrair menções a plantas, comunidades, usos
+    const patterns = {
+      plants: /(?:planta|espécie|erva|árvore)\s+(\w+)/gi,
+      communities: /(?:comunidade|povo|grupo)\s+(\w+)/gi,
+      uses: /(?:uso|utilização|para)\s+(\w+)/gi
+    };
+
+    return {
+      plants: [...text.matchAll(patterns.plants)].map(m => m[1]),
+      communities: [...text.matchAll(patterns.communities)].map(m => m[1]),
+      uses: [...text.matchAll(patterns.uses)].map(m => m[1])
+    };
+  }
+
+  classifyIntent(text) {
+    const intents = {
+      search: ['quais', 'liste', 'encontre', 'busque'],
+      count: ['quantas', 'quantos', 'total', 'número'],
+      compare: ['compare', 'diferença', 'entre'],
+      explain: ['explique', 'o que é', 'como']
+    };
+
+    for (const [intent, keywords] of Object.entries(intents)) {
+      if (keywords.some(k => text.toLowerCase().includes(k))) {
+        return intent;
+      }
+    }
+    return 'general';
+  }
+}
+```
+
+##### 2. MCP Client Service
+**Responsabilidade:** Comunicação com modelos de IA via MCP
+
+```javascript
+class MCPClientService {
+  constructor() {
+    this.mcpEndpoint = process.env.MCP_ENDPOINT;
+  }
+
+  async sendToModel(processedQuery, context) {
+    const prompt = this.buildPrompt(processedQuery, context);
+
+    const response = await fetch(this.mcpEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [
+          { role: 'system', content: this.getSystemPrompt() },
+          { role: 'user', content: prompt }
+        ],
+        context: context.history
+      })
+    });
+
+    return response.json();
+  }
+
+  getSystemPrompt() {
+    return `Você é um assistente especializado em etnobotânica brasileira.
+    Responda perguntas sobre plantas, comunidades tradicionais e usos medicinais
+    baseando-se apenas nos dados do banco de dados fornecido.
+    Sempre cite as fontes (referências) quando disponíveis.`;
+  }
+
+  buildPrompt(query, context) {
+    return `
+      Pergunta do usuário: ${query.normalized}
+      Entidades detectadas: ${JSON.stringify(query.entities)}
+      Dados relevantes do banco: ${JSON.stringify(context.relevantData)}
+    `;
+  }
+}
+```
+
+##### 3. Query Generator
+**Responsabilidade:** Converter intenções em queries MongoDB
+
+```javascript
+class QueryGenerator {
+  generateQuery(processedQuery) {
+    const { intent, entities } = processedQuery;
+
+    switch (intent) {
+      case 'search':
+        return this.buildSearchQuery(entities);
+      case 'count':
+        return this.buildAggregation(entities);
+      case 'compare':
+        return this.buildComparisonQuery(entities);
+      default:
+        return this.buildGeneralQuery(entities);
+    }
+  }
+
+  buildSearchQuery(entities) {
+    const query = {};
+
+    if (entities.plants.length > 0) {
+      query['plantas.nome_cientifico'] = {
+        $regex: entities.plants.join('|'),
+        $options: 'i'
+      };
+    }
+
+    if (entities.communities.length > 0) {
+      query['comunidades.nome'] = {
+        $regex: entities.communities.join('|'),
+        $options: 'i'
+      };
+    }
+
+    if (entities.uses.length > 0) {
+      query['plantas.usos.descricao'] = {
+        $regex: entities.uses.join('|'),
+        $options: 'i'
+      };
+    }
+
+    return query;
+  }
+}
+```
+
+---
+
+### Painel Analítico - Componentes Internos
+
+```mermaid
+graph TB
+    subgraph "Painel Analítico Service"
+        ROUTER_DASH[Router<br/>Express Router]
+
+        subgraph "Controllers"
+            STATS[Stats Controller<br/>Summary Cards]
+            GEO[Geo Controller<br/>Geographic Data]
+            TIME[Timeline Controller<br/>Temporal Analysis]
+            RANK[Ranking Controller<br/>Top Lists]
+        end
+
+        subgraph "Services"
+            AGG[Aggregation Service<br/>MongoDB Pipelines]
+            CACHE_SVC[Cache Service<br/>Redis]
+            FILTER[Filter Service<br/>Query Building]
+        end
+
+        subgraph "Data Layer"
+            REPO[Analytics Repository<br/>Data Access]
+        end
+    end
+
+    CLIENT_DASH[Dashboard Request] --> ROUTER_DASH
+    ROUTER_DASH --> STATS
+    ROUTER_DASH --> GEO
+    ROUTER_DASH --> TIME
+    ROUTER_DASH --> RANK
+
+    STATS --> AGG
+    GEO --> AGG
+    TIME --> AGG
+    RANK --> AGG
+
+    AGG --> CACHE_SVC
+    AGG --> FILTER
+    FILTER --> REPO
+
+    CACHE_SVC --> REDIS[(Redis Cache)]
+    REPO --> DB_DASH[(MongoDB)]
+
+    style ROUTER_DASH fill:#85bbf0
+    style AGG fill:#28a745
+    style CACHE_SVC fill:#f4a261
+```
+
+#### Componentes Detalhados
+
+##### 1. Aggregation Service
+**Responsabilidade:** Executar pipelines de agregação MongoDB
+
+```javascript
+class AggregationService {
+  constructor(cacheService, repository) {
+    this.cache = cacheService;
+    this.repo = repository;
+  }
+
+  async getStats(filters = {}) {
+    const cacheKey = `stats:${JSON.stringify(filters)}`;
+    const cached = await this.cache.get(cacheKey);
+    if (cached) return JSON.parse(cached);
+
+    const stats = await this.repo.aggregate([
+      { $match: this.buildMatch(filters) },
+      {
+        $facet: {
+          communities: [
+            { $unwind: '$comunidades' },
+            { $group: { _id: null, count: { $addToSet: '$comunidades.nome' } } },
+            { $project: { total: { $size: '$count' } } }
+          ],
+          references: [
+            { $match: { status: 'approved' } },
+            { $count: 'total' }
+          ],
+          plants: [
+            { $unwind: '$comunidades' },
+            { $unwind: '$comunidades.plantas' },
+            { $group: { _id: null, count: { $addToSet: '$comunidades.plantas.nome_cientifico' } } },
+            { $project: { total: { $size: '$count' } } }
+          ],
+          authors: [
+            { $project: { authors: { $split: ['$autores', ';'] } } },
+            { $unwind: '$authors' },
+            { $group: { _id: null, count: { $addToSet: '$authors' } } },
+            { $project: { total: { $size: '$count' } } }
+          ]
+        }
+      }
+    ]);
+
+    await this.cache.set(cacheKey, JSON.stringify(stats), 'EX', 3600);
+    return stats;
+  }
+
+  async getGeoDistribution(type, filters = {}) {
+    const cacheKey = `geo:${type}:${JSON.stringify(filters)}`;
+    const cached = await this.cache.get(cacheKey);
+    if (cached) return JSON.parse(cached);
+
+    const pipeline = type === 'references'
+      ? this.buildReferenceGeoPipeline(filters)
+      : this.buildCommunityGeoPipeline(filters);
+
+    const result = await this.repo.aggregate(pipeline);
+    await this.cache.set(cacheKey, JSON.stringify(result), 'EX', 3600);
+    return result;
+  }
+
+  buildReferenceGeoPipeline(filters) {
+    return [
+      { $match: { ...this.buildMatch(filters), status: 'approved' } },
+      { $unwind: '$comunidades' },
+      {
+        $group: {
+          _id: '$comunidades.localizacao.uf',
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { count: -1 } }
+    ];
+  }
+
+  async getTimeline(filters = {}) {
+    return this.repo.aggregate([
+      { $match: { ...this.buildMatch(filters), status: 'approved' } },
+      {
+        $group: {
+          _id: '$ano',
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+  }
+
+  async getTopPlants(limit = 10, filters = {}) {
+    return this.repo.aggregate([
+      { $match: { ...this.buildMatch(filters), status: 'approved' } },
+      { $unwind: '$comunidades' },
+      { $unwind: '$comunidades.plantas' },
+      {
+        $group: {
+          _id: '$comunidades.plantas.nome_cientifico',
+          count: { $sum: 1 },
+          vernacular: { $first: '$comunidades.plantas.nomes_vernaculares' }
+        }
+      },
+      { $sort: { count: -1 } },
+      { $limit: limit }
+    ]);
+  }
+}
+```
+
+##### 2. Filter Service
+**Responsabilidade:** Construir queries de filtro dinâmicas
+
+```javascript
+class FilterService {
+  buildFilters(params) {
+    const filters = {};
+
+    if (params.state) {
+      filters['comunidades.localizacao.uf'] = params.state;
+    }
+
+    if (params.communityType) {
+      filters['comunidades.tipo'] = params.communityType;
+    }
+
+    if (params.startYear || params.endYear) {
+      filters.ano = {};
+      if (params.startYear) filters.ano.$gte = parseInt(params.startYear);
+      if (params.endYear) filters.ano.$lte = parseInt(params.endYear);
+    }
+
+    return filters;
+  }
+
+  getAvailableFilters() {
+    return {
+      states: this.getDistinctStates(),
+      communityTypes: this.getDistinctCommunityTypes(),
+      yearRange: this.getYearRange()
+    };
+  }
+}
+```
+
+##### 3. Cache Service
+**Responsabilidade:** Gerenciar cache de agregações
+
+```javascript
+class DashboardCacheService {
+  constructor(redis) {
+    this.redis = redis;
+    this.defaultTTL = 3600; // 1 hora
+  }
+
+  async get(key) {
+    return this.redis.get(`dashboard:${key}`);
+  }
+
+  async set(key, value, ttl = this.defaultTTL) {
+    return this.redis.set(`dashboard:${key}`, value, 'EX', ttl);
+  }
+
+  async invalidatePattern(pattern) {
+    const keys = await this.redis.keys(`dashboard:${pattern}`);
+    if (keys.length > 0) {
+      await this.redis.del(...keys);
+    }
+  }
+
+  // Invalidar cache quando novos dados são aprovados
+  async onDataApproved() {
+    await this.invalidatePattern('stats:*');
+    await this.invalidatePattern('geo:*');
+    await this.invalidatePattern('timeline:*');
+    await this.invalidatePattern('ranking:*');
+  }
+}
 ```
 
 ---
