@@ -4,7 +4,7 @@
 
 O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Informações sobre Conhecimento Tradicional, mostrando como ele se relaciona com os usuários e sistemas externos.
 
-**Versão 1.2** - Atualizado para refletir containers implementados (etnoDB e etnopapers)
+**Versão 1.3** - Atualizado com etnoTermos como infraestrutura terminológica transversal (glossários, vocabulários e tesauros)
 
 ## Diagrama
 
@@ -15,10 +15,12 @@ graph TB
         RC[Representante de<br/>Comunidade Tradicional]
         ADM[Administrador]
         CUR[Curador]
+        TERM[Terminólogo]
     end
 
     subgraph "Sistema de Conhecimento Tradicional"
         SYS[Sistema de Informações<br/>sobre Conhecimento<br/>Tradicional]
+        ETNOTERMOS[etnoTermos<br/>Infraestrutura Terminológica<br/>✓ IMPLEMENTADO]
     end
 
     subgraph "Usuários Externos"
@@ -40,9 +42,12 @@ graph TB
     RC -->|Valida conhecimento e controla| SYS
     ADM -->|Gerencia sistema e aprova| SYS
     CUR -->|Valida e enriquece dados| SYS
+    TERM -->|Gerencia vocabulários e tesauros| ETNOTERMOS
 
     PUB -->|Consulta informações públicas| SYS
+    PUB -->|Navega por tesauros| ETNOTERMOS
     DEV -->|Consome APIs públicas| SYS
+    DEV -->|Consome API de termos| ETNOTERMOS
 
     SYS -->|Verifica Flora/Fungos primária| FLORA
     SYS -->|Verifica Fauna primária| FAUNA
@@ -51,6 +56,7 @@ graph TB
     SYS -->|Integra dados| EXT
     SYS -->|Consulta territórios e proveniência| TERR
     SYS -->|Valida contra fontes autoritativas| AUTH
+    SYS <-->|Valida e padroniza termos| ETNOTERMOS
 
     FLORA -->|Retorna verificação| SYS
     FAUNA -->|Retorna verificação| SYS
@@ -61,10 +67,12 @@ graph TB
     AUTH -->|Fornece validações| SYS
 
     style SYS fill:#1168bd,stroke:#0b4884,color:#ffffff
+    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PQ fill:#08427b,stroke:#052e56,color:#ffffff
     style RC fill:#08427b,stroke:#052e56,color:#ffffff
     style ADM fill:#08427b,stroke:#052e56,color:#ffffff
     style CUR fill:#08427b,stroke:#052e56,color:#ffffff
+    style TERM fill:#08427b,stroke:#052e56,color:#ffffff
     style PUB fill:#08427b,stroke:#052e56,color:#ffffff
     style DEV fill:#08427b,stroke:#052e56,color:#ffffff
     style FLORA fill:#999999,stroke:#6b6b6b,color:#ffffff
@@ -132,9 +140,24 @@ graph TB
 - Ferramentas de monitoramento
 - Controle de configurações
 
+#### 5. Terminólogo
+**Responsabilidades:**
+- Gerenciar glossários, vocabulários e tesauros no etnoTermos
+- Criar e manter relações hierárquicas (BT/NT), de equivalência (USE/UF) e associativas (RT)
+- Documentar termos com notas de escopo, definições e exemplos
+- Garantir conformidade com padrão ANSI/NISO Z39.19
+- Rastrear fontes de termos (bibliográficas, conhecimento tradicional)
+
+**Necessidades:**
+- Interface especializada para gestão de tesauros
+- Ferramentas de importação/exportação (SKOS, RDF, Dublin Core, CSV)
+- Busca inteligente com Meilisearch
+- Suporte multilíngue
+- Dashboard de administração terminológica
+
 ### Usuários Externos (Públicos)
 
-#### 5. Público Geral
+#### 6. Público Geral
 **Responsabilidades:**
 - Consultar conhecimento tradicional publicado
 - Navegar e explorar dados
@@ -146,7 +169,7 @@ graph TB
 - Acesso sem necessidade de cadastro
 - Documentação clara sobre uso ético
 
-#### 6. Desenvolvedor Terceiro
+#### 7. Desenvolvedor Terceiro
 **Responsabilidades:**
 - Integrar dados em aplicações externas
 - Construir ferramentas complementares
@@ -288,6 +311,52 @@ graph TB
 - Permitem extensibilidade do sistema
 - Suportam casos de uso específicos por região/comunidade
 - Mantêm flexibilidade arquitetural
+
+## Sistemas Internos Implementados
+
+### etnoTermos - Infraestrutura Terminológica
+**GitHub:** [https://github.com/edalcin/etnotermos](https://github.com/edalcin/etnotermos)
+
+**Propósito:** Preservação e organização do conhecimento etnobotânico através de glossários, vocabulários controlados e tesauros estruturados
+
+**Padrão:** ANSI/NISO Z39.19-2005 (Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies)
+
+**Integração Transversal:**
+O etnoTermos funciona como infraestrutura terminológica que conecta os três contextos principais:
+
+1. **Aquisição:**
+   - Fornece vocabulários controlados para padronização na entrada de dados
+   - Autocomplete de termos validados durante o registro
+   - Sugestão de termos relacionados e sinônimos
+
+2. **Curadoria:**
+   - Base para validação semântica de termos vernaculares
+   - Normalização de nomenclatura popular
+   - Desambiguação de termos homônimos
+   - Enriquecimento com relações hierárquicas e associativas
+
+3. **Apresentação:**
+   - Navegação por tesauros estruturados
+   - Busca expandida por sinônimos e termos relacionados
+   - Exportação em formatos padrão (SKOS, RDF, Dublin Core)
+
+**Funcionalidades Principais:**
+- Gestão de termos com identificadores únicos e suporte multilíngue
+- Relações hierárquicas (BT - Broader Term / NT - Narrower Term)
+- Relações de equivalência (USE / UF - Used For)
+- Relações associativas (RT - Related Term)
+- Sistema de notas Z39.19 (escopo, catalogador, histórica, bibliográfica, privada, definição, exemplos)
+- Gestão de fontes com rastreabilidade (conformidade CARE)
+- Busca inteligente com Meilisearch
+- APIs REST para integração
+- Exportação em SKOS, RDF, Dublin Core, CSV
+
+**Dados Fornecidos:**
+- Termos autorizados e não-autorizados
+- Definições e notas de escopo
+- Relações semânticas entre termos
+- Fontes e proveniência dos termos
+- Estrutura hierárquica de vocabulários
 
 ## Fluxos Principais
 

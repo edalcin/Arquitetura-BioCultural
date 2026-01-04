@@ -4,6 +4,8 @@
 
 Este documento detalha os componentes internos de cada container do sistema, organizados pelos três contextos principais: Aquisição, Curadoria e Apresentação.
 
+**Versão 1.3** - Atualizado com Semantic Validation Service para integração com etnoTermos (validação semântica de termos)
+
 ---
 
 ## Contexto 1: Aquisição
@@ -399,6 +401,20 @@ graph TB
     VS2 --> FAUNA[Fauna do Brasil API]
     VS2 --> GBIF[GBIF API]
 
+    subgraph "Semantic Validation"
+        SVS[Semantic Validation Service<br/>Term Validation]
+        TP2[Term Provider<br/>Term Query]
+        NP[Normalization Provider<br/>Term Normalization]
+    end
+
+    SVS --> TP2
+    SVS --> NP
+    TP2 --> ETNOTERMOS[etnoTermos API<br/>✓ IMPLEMENTADO]
+    NP --> ETNOTERMOS
+
+    REC --> SVS
+    SVS --> RR2
+
     subgraph "Territory & Authority"
         TAS[Territory & Authority Service<br/>Geospatial Validation]
         TP[Territory Provider<br/>Territory Query]
@@ -422,6 +438,10 @@ graph TB
     style TAS fill:#aa8844
     style TP fill:#aa8844
     style AP fill:#aa8844
+    style SVS fill:#28a745
+    style TP2 fill:#28a745
+    style NP fill:#28a745
+    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 #### Componentes Detalhados
@@ -862,6 +882,244 @@ class AuthorityProvider {
 
     return response.data;
   }
+}
+```
+
+##### 6. Semantic Validation Service
+**Responsabilidade:** Validar e normalizar termos vernaculares usando o etnoTermos
+
+```javascript
+class SemanticValidationService {
+  constructor() {
+    this.termProvider = new TermProvider();
+    this.normalizationProvider = new NormalizationProvider();
+  }
+
+  async validateTerms(record) {
+    const results = {
+      vernacularNames: [],
+      uses: [],
+      normalized: false
+    };
+
+    // 1. Validar nomes vernaculares
+    for (const name of record.vernacularNames || []) {
+      const termValidation = await this.termProvider.validateTerm(name);
+      results.vernacularNames.push({
+        original: name,
+        ...termValidation
+      });
+    }
+
+    // 2. Validar tipos de uso
+    for (const use of record.uses || []) {
+      const useValidation = await this.termProvider.validateTerm(use.category);
+      results.uses.push({
+        original: use.category,
+        ...useValidation
+      });
+    }
+
+    // 3. Tentar normalização automática
+    if (results.vernacularNames.some(v => !v.found)) {
+      const normalizations = await this.normalizationProvider.suggestNormalizations(
+        results.vernacularNames.filter(v => !v.found).map(v => v.original)
+      );
+      results.suggestions = normalizations;
+    }
+
+    results.normalized = results.vernacularNames.every(v => v.found);
+    return results;
+  }
+
+  async enrichWithRelations(record) {
+    const enrichments = {
+      broader_terms: [],
+      narrower_terms: [],
+      related_terms: [],
+      synonyms: []
+    };
+
+    for (const name of record.vernacularNames || []) {
+      const relations = await this.termProvider.getTermRelations(name);
+      if (relations) {
+        enrichments.broader_terms.push(...(relations.broader || []));
+        enrichments.narrower_terms.push(...(relations.narrower || []));
+        enrichments.related_terms.push(...(relations.related || []));
+        enrichments.synonyms.push(...(relations.equivalents || []));
+      }
+    }
+
+    // Remove duplicatas
+    Object.keys(enrichments).forEach(key => {
+      enrichments[key] = [...new Set(enrichments[key])];
+    });
+
+    return enrichments;
+  }
+}
+
+class TermProvider {
+  constructor() {
+    this.etnoTermosBaseURL = process.env.ETNOTERMOS_API_URL || 'http://localhost:8080/api';
+    this.cache = new Map(); // Redis em produção
+  }
+
+  async validateTerm(term) {
+    const cacheKey = `term:${term.toLowerCase()}`;
+
+    // Verificar cache
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
+    }
+
+    try {
+      const response = await axios.get(
+        `${this.etnoTermosBaseURL}/terms/search`,
+        { params: { q: term, exact: true } }
+      );
+
+      const result = response.data.results.length > 0 ? {
+        found: true,
+        termId: response.data.results[0].id,
+        preferredTerm: response.data.results[0].term,
+        definition: response.data.results[0].definition,
+        source: 'etnoTermos'
+      } : {
+        found: false,
+        message: 'Termo não encontrado no vocabulário controlado'
+      };
+
+      // Cache por 24 horas
+      this.cache.set(cacheKey, result);
+      return result;
+    } catch (error) {
+      console.error('Term validation error:', error);
+      return { found: false, error: error.message };
+    }
+  }
+
+  async getTermRelations(term) {
+    try {
+      // Primeiro, buscar o termo
+      const searchResponse = await axios.get(
+        `${this.etnoTermosBaseURL}/terms/search`,
+        { params: { q: term } }
+      );
+
+      if (searchResponse.data.results.length === 0) {
+        return null;
+      }
+
+      const termId = searchResponse.data.results[0].id;
+
+      // Buscar relações em paralelo
+      const [broader, narrower, related, equivalents] = await Promise.all([
+        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/broader`),
+        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/narrower`),
+        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/related`),
+        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/equivalents`)
+      ]);
+
+      return {
+        broader: broader.data.terms?.map(t => t.term) || [],
+        narrower: narrower.data.terms?.map(t => t.term) || [],
+        related: related.data.terms?.map(t => t.term) || [],
+        equivalents: equivalents.data.terms?.map(t => t.term) || []
+      };
+    } catch (error) {
+      console.error('Get term relations error:', error);
+      return null;
+    }
+  }
+}
+
+class NormalizationProvider {
+  constructor() {
+    this.etnoTermosBaseURL = process.env.ETNOTERMOS_API_URL || 'http://localhost:8080/api';
+  }
+
+  async suggestNormalizations(terms) {
+    const suggestions = [];
+
+    for (const term of terms) {
+      try {
+        // Busca fuzzy no etnoTermos
+        const response = await axios.get(
+          `${this.etnoTermosBaseURL}/terms/search`,
+          { params: { q: term, fuzzy: true, limit: 5 } }
+        );
+
+        if (response.data.results.length > 0) {
+          suggestions.push({
+            original: term,
+            suggestions: response.data.results.map(r => ({
+              term: r.term,
+              definition: r.definition,
+              score: r.score
+            }))
+          });
+        }
+      } catch (error) {
+        console.error('Normalization suggestion error:', error);
+      }
+    }
+
+    return suggestions;
+  }
+}
+```
+
+**Response de Validação Semântica:**
+```json
+{
+  "vernacularNames": [
+    {
+      "original": "mandioca",
+      "found": true,
+      "termId": "ET001",
+      "preferredTerm": "mandioca",
+      "definition": "Raiz tuberosa da planta Manihot esculenta",
+      "source": "etnoTermos"
+    },
+    {
+      "original": "macaxera",
+      "found": false,
+      "message": "Termo não encontrado no vocabulário controlado"
+    }
+  ],
+  "uses": [
+    {
+      "original": "alimentação",
+      "found": true,
+      "termId": "USE001",
+      "preferredTerm": "alimentação",
+      "source": "etnoTermos"
+    }
+  ],
+  "suggestions": [
+    {
+      "original": "macaxera",
+      "suggestions": [
+        {
+          "term": "macaxeira",
+          "definition": "Variedade de mandioca de baixo teor de ácido cianídrico",
+          "score": 0.95
+        }
+      ]
+    }
+  ],
+  "normalized": false
+}
+```
+
+**Response de Enriquecimento com Relações:**
+```json
+{
+  "broader_terms": ["tubérculos", "alimentos tradicionais"],
+  "narrower_terms": ["aipim", "macaxeira", "mandioca-brava"],
+  "related_terms": ["farinha de mandioca", "tapioca", "beiju"],
+  "synonyms": ["cassava", "yuca", "aipim"]
 }
 ```
 

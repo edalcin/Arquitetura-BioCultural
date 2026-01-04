@@ -6,6 +6,55 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [1.3.0] - 2026-01-04
+
+### Adicionado
+
+- **etnoTermos** como container implementado na arquitetura
+  - Plataforma de gestão terminológica com glossários, vocabulários controlados e tesauros
+  - Conformidade com padrão internacional ANSI/NISO Z39.19-2005
+  - Relações hierárquicas (BT/NT), equivalência (USE/UF) e associativas (RT)
+  - Sistema de notas Z39.19 (escopo, catalogador, histórica, bibliográfica, privada, definição, exemplos)
+  - Busca inteligente com Meilisearch
+  - Exportação em formatos padrão (SKOS, RDF, Dublin Core, CSV)
+  - APIs REST para integração com outros sistemas
+  - Autenticação OAuth Google
+  - Containerização com Docker e GitHub Actions
+
+- **Semantic Validation Service** no contexto de Curadoria
+  - Validação semântica de termos vernaculares via etnoTermos
+  - Normalização automática de nomenclatura popular
+  - Desambiguação de termos homônimos
+  - Sugestão de correções para termos não encontrados
+  - Enriquecimento com relações hierárquicas e associativas
+
+- **Novo ator: Terminólogo**
+  - Responsável por gerenciar glossários, vocabulários e tesauros
+  - Garante conformidade com padrão ANSI/NISO Z39.19
+  - Documenta termos com notas de escopo, definições e exemplos
+
+### Modificado
+
+- **Diagrama de Contexto** atualizado para incluir etnoTermos como sistema interno implementado
+- **Diagrama de Containers** atualizado com etnoTermos e Semantic Validation Service
+- **Diagrama de Componentes** atualizado com detalhamento do Semantic Validation Service
+- **README.md** atualizado para versão 1.3 com documentação completa do etnoTermos
+- Diagrama de integração entre projetos atualizado para mostrar fluxos com etnoTermos
+- Tabela de decisões de tecnologia atualizada com etnoTermos e Semantic Validation Service
+
+### Contexto da Versão
+
+Esta versão introduz o etnoTermos como **infraestrutura terminológica transversal** que conecta os três contextos arquiteturais. O etnoTermos resolve o desafio de padronização terminológica no domínio etnobotânico, onde múltiplos nomes vernaculares podem referir-se à mesma espécie ou uso.
+
+A integração permite:
+- **Aquisição**: Autocomplete de termos validados e sugestão de sinônimos durante entrada de dados
+- **Curadoria**: Validação semântica automática, normalização de termos e desambiguação
+- **Apresentação**: Navegação por tesauros estruturados e busca expandida por sinônimos
+
+O etnoTermos segue os **princípios CARE** para governança de dados indígenas, garantindo rastreabilidade das fontes de termos (bibliográficas ou conhecimento tradicional) e respeito à autoridade das comunidades sobre sua terminologia.
+
+---
+
 ## [1.2.0] - 2025-12-28
 
 ### Adicionado
@@ -164,6 +213,7 @@ Primeira versão completa da proposta de arquitetura para Sistema de Informaçõ
 
 ## Links de Versões
 
-- [1.2.0] - 2025-12-28 (versão atual)
+- [1.3.0] - 2026-01-04 (versão atual - integração etnoTermos)
+- [1.2.0] - 2025-12-28
 - [1.1.0] - 2025-01-06
 - [1.0.0] - 2025-01-05 (versão inicial publicada no Zenodo: https://doi.org/10.5281/zenodo.17714765)

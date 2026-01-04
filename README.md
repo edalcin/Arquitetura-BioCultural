@@ -1,7 +1,7 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.2
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.3
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18074804-blue)](https://doi.org/10.5281/zenodo.18074804)
-[![Versão](https://img.shields.io/badge/Versão-1.2.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-1.3.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
@@ -94,10 +94,15 @@ graph TB
         A4[APIs Externas]
     end
 
+    subgraph "Infraestrutura Terminológica"
+        ETNOTERMOS["✓ etnoTermos<br/>Glossários, Vocabulários e Tesauros<br/>ANSI/NISO Z39.19<br/>Meilisearch/REST API"]
+    end
+
     subgraph "Curadoria"
         C1[Interface de<br/>Curadoria]
         C2[Validação<br/>Taxonômica]
         C3[Controle de<br/>Qualidade]
+        C4[Validação<br/>Semântica]
         ETNODB_CUR["✓ etnoDB - Curadoria<br/>Porta 3002<br/>Node.js/HTMX"]
     end
 
@@ -105,6 +110,7 @@ graph TB
         P1[Portal Público]
         P2[APIs de Consulta]
         P3[Visualizações]
+        P4[Navegação por<br/>Tesauros]
         ETNODB_PUB["✓ etnoDB - Apresentação<br/>Porta 3003<br/>Node.js/HTMX"]
     end
 
@@ -126,6 +132,11 @@ graph TB
     DB --> P3
     DB --> ETNODB_PUB
 
+    ETNOTERMOS --> ETNODB_ACQ
+    ETNOTERMOS --> C4
+    C4 --> DB
+    ETNOTERMOS --> P4
+
     EXT1[Flora e Funga do Brasil API] --> C2
     EXT2[Fauna do Brasil API] --> C2
     EXT3[GBIF API] --> C2
@@ -136,6 +147,7 @@ graph TB
     style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
 
 ```
 
@@ -183,6 +195,50 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
   - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
 - **Performance:** Melhoria de 50% em relação a soluções locais
 
+### etnoTermos - Plataforma de Gestão Terminológica
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnoTermos-181717?logo=github)](https://github.com/edalcin/etnotermos)
+
+Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão internacional **ANSI/NISO Z39.19-2005**.
+
+**Propósito:**
+
+Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre plantas e animais, garantindo reconhecimento cultural, padronização terminológica e justiça na distribuição de benefícios.
+
+**Características:**
+
+- **Gestão de Termos:**
+  - Criação com identificadores únicos e suporte multilíngue
+  - Relações hierárquicas (BT - Broader Term / NT - Narrower Term)
+  - Relações de equivalência (USE / UF - Used For)
+  - Relações associativas (RT - Related Term)
+  - Desambiguação de termos idênticos
+  - Polihierarquia (múltiplos termos amplos)
+
+- **Sistema de Notas (Z39.19):**
+  - Notas de escopo, catalogador, histórica
+  - Notas bibliográficas, privadas
+  - Definições e exemplos
+
+- **Gestão de Fontes:**
+  - Rastreabilidade de origens (bibliográficas, conhecimento tradicional)
+  - Conformidade com princípios CARE para governança de dados indígenas
+
+- **Recursos Técnicos:**
+  - **Busca:** Meilisearch para busca inteligente
+  - **Autenticação:** OAuth Google
+  - **Exportação:** SKOS, RDF, Dublin Core, CSV
+  - **APIs:** REST para integração
+  - **Containerização:** Docker com GitHub Actions
+
+**Integração na Arquitetura:**
+
+O etnoTermos funciona como **infraestrutura terminológica transversal** que conecta os três contextos:
+
+1. **Aquisição:** Fornece vocabulários controlados para padronização na entrada de dados, autocomplete de termos validados
+2. **Curadoria:** Oferece base para validação semântica, normalização de nomenclatura vernacular e desambiguação de termos
+3. **Apresentação:** Permite navegação por tesauros estruturados e busca expandida por sinônimos e termos relacionados
+
 ### Integração entre Projetos
 
 ```mermaid
@@ -193,18 +249,25 @@ graph TB
     EP --> MONGO[(MongoDB)]
     ED_ACQ --> MONGO
 
+    ET[etnoTermos<br/>Tesauros e Vocabulários] --> ED_ACQ
+    ET --> ED_CUR
+    ET --> ED_PUB
+
     MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
     MONGO --> ED_PUB[etnoDB<br/>Apresentação]
     ED_PUB --> PUB[Público]
+
+    style ET fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 O fluxo integrado permite que:
 
 1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
 2. **etnoDB (Aquisição)** permite entrada manual de dados por pesquisadores, também salvando no MongoDB
-3. Ambas as fontes alimentam a mesma base de dados de forma paralela
-4. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes)
-5. **etnoDB (Apresentação)** disponibiliza dados validados publicamente
+3. **etnoTermos** fornece vocabulários controlados para padronização terminológica em todos os contextos
+4. Ambas as fontes alimentam a mesma base de dados de forma paralela
+5. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes), com suporte de validação semântica do etnoTermos
+6. **etnoDB (Apresentação)** disponibiliza dados validados publicamente, com navegação por tesauros do etnoTermos
 
 ---
 
@@ -466,6 +529,7 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 ### Projetos da Arquitetura (Implementados)
 - **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional secundário
 - **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude)
+- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Plataforma de gestão terminológica com glossários, vocabulários e tesauros (ANSI/NISO Z39.19)
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -476,8 +540,9 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 
 ### Vocabulários e Terminologia
 - **[EtnoVocab](https://github.com/edalcin/etnovocab)** - Vocabulário controlado para termos etnobotânicos e etnobiológicos
-- **[EtnoTermos](https://github.com/edalcin/etnotermos)** - Terminologia e glossário especializado para conhecimento tradicional
 - **[EtnoVector](https://github.com/edalcin/etnovector)** - Vetorização e representação semântica de conceitos etnobotânicos
+
+> **Nota:** O **etnoTermos** foi promovido a **container implementado** na versão 1.3 e está listado na seção "Projetos da Arquitetura (Implementados)".
 
 ### Estruturas de Dados e Documentação
 - **[Estrutura de Dados Etnobotânicos](https://github.com/edalcin/Estrutura-de-Dados-Etnobotanicos)** - Modelos e esquemas para armazenamento de informações etnobotânicas

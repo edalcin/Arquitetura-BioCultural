@@ -4,7 +4,7 @@
 
 O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema de Conhecimento Tradicional. Cada container representa uma aplicação ou serviço que executa de forma independente.
 
-**Versão 1.2** - Atualizado com containers implementados: etnoDB e etnopapers
+**Versão 1.3** - Atualizado com etnoTermos como infraestrutura terminológica (glossários, vocabulários e tesauros)
 
 ## Diagrama de Arquitetura
 
@@ -14,6 +14,7 @@ graph TB
         U1[Pesquisadores/<br/>Curadores]
         U2[Comunidades]
         U3[Público/<br/>Desenvolvedores]
+        U4[Terminólogos]
     end
 
     subgraph "Frontend Layer"
@@ -30,6 +31,7 @@ graph TB
         ETNODB_CUR[etnoDB - Curadoria<br/>Node.js/Express/HTMX<br/>Porta 3002<br/>✓ IMPLEMENTADO]
         ETNODB_PUB[etnoDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
         ETNOPAPERS[etnopapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
+        ETNOTERMOS[etnoTermos<br/>Gestão Terminológica<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
     end
 
     subgraph "Contexto: Aquisição"
@@ -42,6 +44,7 @@ graph TB
     subgraph "Contexto: Curadoria"
         CUR_API[Curation API<br/>Node.js/Express<br/>Workflow de Validação]
         VAL[Validation Service<br/>Python<br/>Validação Taxonômica]
+        SEM_VAL[Semantic Validation Service<br/>Python<br/>Validação Semântica]
         TERR_VAL[Territory & Authority Service<br/>Python<br/>Validação Territorial e de Proveniência]
         NOTIF[Notification Service<br/>Node.js<br/>Email/Push]
     end
@@ -74,6 +77,7 @@ graph TB
     U2 --> ETNODB_CUR
     U3 --> PORTAL
     U3 --> ETNODB_PUB
+    U4 --> ETNOTERMOS
 
     WEB --> GATEWAY
     PORTAL --> GATEWAY
@@ -84,28 +88,34 @@ graph TB
 
     ETNOPAPERS --> DB
     ETNODB_ACQ --> DB
+    ETNODB_ACQ --> ETNOTERMOS
     ETNODB_CUR --> DB
     ETNODB_PUB --> DB
+    ETNODB_PUB --> ETNOTERMOS
 
     ACQ_API --> QUEUE
     ACQ_API --> DB
+    ACQ_API --> ETNOTERMOS
     CRAWLER --> QUEUE
     ETL --> QUEUE
     QUEUE --> DB
 
     CUR_API --> DB
     CUR_API --> VAL
+    CUR_API --> SEM_VAL
     CUR_API --> TERR_VAL
     CUR_API --> NOTIF
     VAL --> FLORA
     VAL --> FAUNA
     VAL --> GBIF
+    SEM_VAL --> ETNOTERMOS
     TERR_VAL --> TERR
     TERR_VAL --> AUTH
 
     PUB_API --> DB
     PUB_API --> SEARCH
     PUB_API --> CACHE
+    PUB_API --> ETNOTERMOS
     EXPORT --> DB
 
     DB --> SEARCH
@@ -125,6 +135,7 @@ graph TB
     style CRAWLER fill:#85bbf0,stroke:#5d9dd1,color:#000000
     style ETL fill:#85bbf0,stroke:#5d9dd1,color:#000000
     style VAL fill:#85bbf0,stroke:#5d9dd1,color:#000000
+    style SEM_VAL fill:#85bbf0,stroke:#5d9dd1,color:#000000
     style TERR_VAL fill:#85bbf0,stroke:#5d9dd1,color:#000000
     style NOTIF fill:#85bbf0,stroke:#5d9dd1,color:#000000
     style SEARCH fill:#85bbf0,stroke:#5d9dd1,color:#000000
@@ -137,11 +148,12 @@ graph TB
     style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 ## Containers Detalhados
 
-### Containers Implementados (Versão 1.2)
+### Containers Implementados (Versão 1.3)
 
 Esta seção documenta os containers que já foram implementados e estão em produção/desenvolvimento ativo.
 
@@ -339,6 +351,97 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
   "source": "etnodb - gemini",
   "createdAt": "2025-12-28T10:30:00Z",
   "updatedAt": "2025-12-28T10:30:00Z"
+}
+```
+
+#### etnoTermos - Plataforma de Gestão Terminológica
+**GitHub:** [https://github.com/edalcin/etnotermos](https://github.com/edalcin/etnotermos)
+
+Plataforma digital para preservação e organização do conhecimento etnobotânico através de glossários, vocabulários controlados e tesauros, seguindo o padrão internacional **ANSI/NISO Z39.19-2005**.
+
+**Tecnologia:** Docker, Meilisearch, REST API, OAuth Google
+
+**Responsabilidades:**
+- Gerenciar glossários, vocabulários controlados e tesauros
+- Fornecer vocabulários padronizados para outros sistemas
+- Validar termos vernaculares durante entrada de dados
+- Expandir buscas com sinônimos e termos relacionados
+- Exportar em formatos padrão (SKOS, RDF, Dublin Core, CSV)
+
+**Características Técnicas:**
+- **Padrão:** ANSI/NISO Z39.19-2005 para vocabulários controlados
+- **Relações:** Hierárquicas (BT/NT), Equivalência (USE/UF), Associativas (RT)
+- **Notas Z39.19:** Escopo, catalogador, histórica, bibliográfica, privada, definição, exemplos
+- **Busca:** Meilisearch para busca inteligente e autocomplete
+- **Autenticação:** OAuth Google
+- **Containerização:** Docker com GitHub Actions
+
+**Endpoints Principais (REST API):**
+```
+GET    /api/terms                    - Listar termos
+GET    /api/terms/:id                - Detalhes do termo
+GET    /api/terms/search?q={query}   - Buscar termos
+GET    /api/terms/:id/broader        - Termos mais amplos (BT)
+GET    /api/terms/:id/narrower       - Termos mais específicos (NT)
+GET    /api/terms/:id/related        - Termos relacionados (RT)
+GET    /api/terms/:id/equivalents    - Termos equivalentes (USE/UF)
+POST   /api/terms                    - Criar termo
+PUT    /api/terms/:id                - Atualizar termo
+DELETE /api/terms/:id                - Excluir termo
+GET    /api/vocabularies             - Listar vocabulários
+GET    /api/export/skos              - Exportar em SKOS
+GET    /api/export/rdf               - Exportar em RDF
+GET    /api/export/csv               - Exportar em CSV
+```
+
+**Integração na Arquitetura:**
+
+O etnoTermos funciona como **infraestrutura terminológica transversal**:
+
+1. **Com etnoDB - Aquisição:**
+   - Autocomplete de termos validados durante entrada de dados
+   - Sugestão de sinônimos e termos relacionados
+   - Padronização de nomenclatura vernacular
+
+2. **Com Curadoria (Semantic Validation Service):**
+   - Validação semântica de termos vernaculares
+   - Normalização de nomenclatura popular
+   - Desambiguação de termos homônimos
+   - Enriquecimento com relações hierárquicas
+
+3. **Com etnoDB - Apresentação e Public API:**
+   - Navegação por tesauros estruturados
+   - Busca expandida por sinônimos
+   - Exportação em SKOS/RDF para interoperabilidade
+
+**Estrutura de Dados (Termo):**
+```json
+{
+  "id": "ET001",
+  "term": "mandioca",
+  "language": "pt-BR",
+  "definition": "Raiz tuberosa da planta Manihot esculenta",
+  "scope_note": "Uso comum em comunidades tradicionais brasileiras",
+  "broader_terms": ["tubérculos", "alimentos tradicionais"],
+  "narrower_terms": ["aipim", "macaxeira"],
+  "related_terms": ["farinha de mandioca", "tapioca"],
+  "equivalent_terms": {
+    "use_for": ["cassava", "yuca"],
+    "use": null
+  },
+  "sources": [
+    {
+      "type": "traditional_knowledge",
+      "community": "Quilombola",
+      "reference": "Registro oral, 2024"
+    }
+  ],
+  "notes": {
+    "cataloger": "Criado por EDC em 2025-01-04",
+    "historical": "Termo documentado desde período colonial"
+  },
+  "created_at": "2025-01-04T10:00:00Z",
+  "updated_at": "2025-01-04T10:00:00Z"
 }
 ```
 
@@ -939,7 +1042,9 @@ GET    /api/export/download/:id             - Download do arquivo
 | APIs | Node.js/Express | Python/FastAPI, Go | Ecossistema JS unificado |
 | Crawler | Python/Scrapy | Node.js/Puppeteer | Maturidade para scraping |
 | Validation Service | Python/FastAPI | Node.js, Go | Especializado em ML/validação |
+| Semantic Validation Service | Python/FastAPI | Node.js, Go | Integração com etnoTermos para validação semântica |
 | Territory & Authority Service | Python/FastAPI | Node.js, Go | Processamento geoespacial, APIs |
+| etnoTermos | Docker/Meilisearch | Elasticsearch, Typesense | Conformidade ANSI/NISO Z39.19, busca inteligente |
 | Database | Orientado a Documentos | SQL, Multi-Modal | Flexibilidade de schema |
 | Search | Motor de Busca | Múltiplas opções | Poder de indexação e consultas |
 | Queue | RabbitMQ | Kafka, Redis Streams | Simplicidade, confiabilidade |
