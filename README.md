@@ -1,6 +1,6 @@
 # Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18074804-blue)](https://doi.org/10.5281/zenodo.18074804)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18075074-blue)](https://doi.org/10.5281/zenodo.18075074)
 [![Versão](https://img.shields.io/badge/Versão-1.4.0-green)](CHANGELOG.md)
 
 ## Visão Geral
@@ -576,7 +576,9 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 ### Projetos da Arquitetura (Implementados)
 - **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional secundário
 - **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude)
-- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Plataforma de gestão terminológica com glossários, vocabulários e tesauros (ANSI/NISO Z39.19)
+
+### Projetos em Implementação
+- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Plataforma de gestão terminológica com glossários, vocabulários e tesauros (ANSI/NISO Z39.19) — em fase de desenvolvimento
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -588,8 +590,6 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 ### Vocabulários e Terminologia
 - **[EtnoVocab](https://github.com/edalcin/etnovocab)** - Vocabulário controlado para termos etnobotânicos e etnobiológicos
 - **[EtnoVector](https://github.com/edalcin/etnovector)** - Vetorização e representação semântica de conceitos etnobotânicos
-
-> **Nota:** O **etnoTermos** foi promovido a **container implementado** na versão 1.3 e está listado na seção "Projetos da Arquitetura (Implementados)".
 
 ### Estruturas de Dados e Documentação
 - **[Estrutura de Dados Etnobotânicos](https://github.com/edalcin/Estrutura-de-Dados-Etnobotanicos)** - Modelos e esquemas para armazenamento de informações etnobotânicas
@@ -631,23 +631,23 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2025). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.0 (Version v1.0) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.17714765
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4 (Version v1.4) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
 ```
 
 **BibTeX:**
 ```bibtex
-@software{dalcin2025,
+@software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.0},
-  version = {v1.0},
-  year = {2025},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4},
+  version = {v1.4},
+  year = {2026},
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.17714765},
-  url = {https://doi.org/10.5281/zenodo.17714765}
+  doi = {10.5281/zenodo.18075074},
+  url = {https://doi.org/10.5281/zenodo.18075074}
 }
 ```
 
-**DOI:** [10.5281/zenodo.17714765](https://doi.org/10.5281/zenodo.17714765)
+**DOI:** [10.5281/zenodo.18075074](https://doi.org/10.5281/zenodo.18075074)
 
 ---
 
