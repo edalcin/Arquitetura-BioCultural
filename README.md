@@ -85,9 +85,9 @@ O sistema é organizado em **três contextos principais** que trabalham de forma
 ```mermaid
 graph TB
     subgraph "Aquisição"
-        subgraph A1["Dados Secundários<br/>Artigos e Livros"]
-            ETNOPAPERS["✓ etnopapers<br/>Extração IA de PDFs<br/>.NET 8/WPF"]
-            ETNODB_ACQ["✓ etnoDB - Aquisição<br/>Porta 3001<br/>Node.js/HTMX"]
+        subgraph A1["Dados Secundários de Artigos e Livros"]
+            ETNOPAPERS["✓ etnopapers<br/>Extração por IA de PDFs"]
+            ETNODB_ACQ["✓ etnoDB<br/>Entrada de Dados Secundários"]
         end
         A2[Dados Primários<br/>Registro Direto]
         A3[Robôs de Coleta<br/>Automática]
@@ -95,7 +95,7 @@ graph TB
     end
 
     subgraph "Infraestrutura Terminológica"
-        ETNOTERMOS["✓ etnoTermos<br/>Glossários, Vocabulários e Tesauros<br/>ANSI/NISO Z39.19<br/>Meilisearch/REST API"]
+        ETNOTERMOS["✓ etnoTermos<br/>Glossários, Vocabulários e Tesauros"]
     end
 
     subgraph "Curadoria"
@@ -103,7 +103,7 @@ graph TB
         C2[Validação<br/>Taxonômica]
         C3[Controle de<br/>Qualidade]
         C4[Validação<br/>Semântica]
-        ETNODB_CUR["✓ etnoDB - Curadoria<br/>Porta 3002<br/>Node.js/HTMX"]
+        ETNODB_CUR["✓ etnoDB<br/>Curadoria de Dados Secundários"]
     end
 
     subgraph "Apresentação"
@@ -111,12 +111,12 @@ graph TB
         P2[APIs de Consulta]
         P3[Visualizações]
         P4[Navegação por<br/>Tesauros]
-        ETNODB_PUB["✓ etnoDB - Apresentação<br/>Porta 3003<br/>Node.js/HTMX"]
-        ETNOCHAT["✓ etnoChat<br/>Interface Conversacional<br/>MCP/IA"]
-        PAINEL["✓ Painel Analítico<br/>Dashboard Interativo<br/>Google Charts"]
+        ETNODB_PUB["✓ etnoDB<br/>Busca e Filtros"]
+        ETNOCHAT["✓ etnoChat<br/>Interface Conversacional<br/>por Inteligência Artificial"]
+        PAINEL["✓ Painel Analítico<br/>Dashboard Interativo"]
     end
 
-    DB[("Base de Dados<br/>MongoDB<br/>Conhecimento Tradicional")]
+    DB[("Base de Dados<br/>MongoDB")]
 
     A2 --> DB
     A3 --> DB
