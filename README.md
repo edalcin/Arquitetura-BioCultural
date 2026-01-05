@@ -300,7 +300,11 @@ graph TB
     CHAT --> PUB
     DASH --> PUB
 
+	style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+	style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+	style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ET fill:#28a745,stroke:#1e7e34,color:#ffffff
+	style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
     style CHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style DASH fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
