@@ -84,37 +84,63 @@ O sistema é organizado em **quatro contextos principais** que trabalham de form
 
 ```mermaid
 graph TB
-    FS["Fontes Secundárias<br/>(Artigos Científicos, Livros, PDFs)"]
+    FS["Fontes Secundárias<br/>(Artigos, PDFs, Livros)"]
     FP["Fontes Primárias<br/>(Comunidades Tradicionais)"]
 
-    subgraph "Contextos da EtnoArquitetura"
-        ACQ["Aquisição<br/>✓ etnopapers · etnoDB · etnoRelatos"]
-        TERM["Infraestrutura Terminológica<br/>✓ etnoTermos · SKOS-XL"]
-        CUR["Curadoria<br/>✓ etnoDB"]
-        APR["Apresentação<br/>✓ etnoDB · etnoChat · Painel Analítico"]
+    EP["✓ etnopapers<br/>Extração com IA<br/>(entrada opcional)"]
+
+    MONGO[("MongoDB<br/>coleções: etnoDB · etnoTermos · etnoRelatos")]
+    TERM["✓ etnoTermos<br/>SKOS-XL"]
+
+    subgraph "✓ etnoDB — Fontes Secundárias"
+        ED_ACQ["Aquisição"]
+        ED_CUR["Curadoria"]
+        ED_PUB["Apresentação<br/>etnoChat · Painel Analítico"]
     end
 
-    PUB["Pesquisadores · Público · Desenvolvedores"]
+    subgraph "etnoRelatos — Fontes Primárias"
+        ER_ACQ["Aquisição + CLPI"]
+        ER_CUR["Curadoria Comunitária"]
+        ER_PUB["Apresentação"]
+    end
 
-    FS --> ACQ
-    FP --> ACQ
-    ACQ --> CUR
-    TERM -.-> ACQ
-    TERM -.-> CUR
-    TERM -.-> APR
-    CUR --> APR
-    APR --> PUB
+    PUB["Público · Pesquisadores · Desenvolvedores"]
 
-    style ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    FS -.->|via IA, opcional| EP
+    EP --> ED_ACQ
+    FS --> ED_ACQ
+
+    FP --> ER_ACQ
+
+    ED_ACQ --> MONGO
+    MONGO <--> ED_CUR
+    MONGO --> ED_PUB
+
+    ER_ACQ --> MONGO
+    MONGO <--> ER_CUR
+    MONGO --> ER_PUB
+
+    TERM <-->|direto| MONGO
+
+    ED_PUB --> PUB
+    ER_PUB --> PUB
+
+    style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
     style TERM fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style APR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ER_ACQ fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style ER_CUR fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style ER_PUB fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style MONGO fill:#1168bd,stroke:#0b4884,color:#ffffff
 ```
 
 **Legenda:**
-- Elementos em verde são **containers implementados** e disponíveis nos repositórios GitHub
-- Os contextos de Aquisição e Curadoria distinguem fontes **secundárias** (literatura científica, via etnoDB e etnopapers) de fontes **primárias** (comunidades tradicionais, via etnoRelatos)
-- Linhas pontilhadas representam suporte terminológico transversal do etnoTermos
+- Verde: containers **implementados** e disponíveis nos repositórios GitHub
+- Laranja: **etnoRelatos** — em desenvolvimento
+- Azul: **MongoDB compartilhado** com coleções separadas por projeto
+- Linha pontilhada: entrada opcional (fontes secundárias podem ir direto ao etnoDB sem passar pelo etnopapers)
 
 ## Projetos Implementados
 
