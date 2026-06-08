@@ -4,7 +4,7 @@
 
 O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema de Conhecimento Tradicional. Cada container representa uma aplicação ou serviço que executa de forma independente.
 
-**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
+**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
 
 ## Diagrama de Arquitetura
 
@@ -33,7 +33,8 @@ graph TB
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>MCP/IA<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Google Charts/HTMX<br/>Dashboard<br/>✓ IMPLEMENTADO]
         ETNOPAPERS[etnopapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
-        ETNOTERMOS[etnoTermos<br/>Gestão Terminológica<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
+        ETNOTERMOS[etnoTermos<br/>Gestão Terminológica SKOS-XL<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
+        ETNORELATOS[etnoRelatos<br/>Aquisição Primária<br/>Fontes Primárias/CLPI<br/>EM DESENVOLVIMENTO]
     end
 
     subgraph "Contexto: Aquisição"
@@ -75,8 +76,10 @@ graph TB
     U1 --> WEB
     U1 --> ETNOPAPERS
     U1 --> ETNODB_ACQ
+    U1 --> ETNORELATOS
     U2 --> WEB
     U2 --> ETNODB_CUR
+    U2 --> ETNORELATOS
     U3 --> PORTAL
     U3 --> ETNODB_PUB
     U3 --> ETNOCHAT
@@ -94,8 +97,11 @@ graph TB
     ETNODB_ACQ --> DB
     ETNODB_ACQ --> ETNOTERMOS
     ETNODB_CUR --> DB
+    ETNODB_CUR --> ETNOTERMOS
     ETNODB_PUB --> DB
     ETNODB_PUB --> ETNOTERMOS
+    ETNORELATOS --> DB
+    ETNORELATOS --> ETNOTERMOS
     ETNOCHAT --> DB
     PAINEL --> DB
 
@@ -157,11 +163,12 @@ graph TB
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNORELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
 ```
 
 ## Containers Detalhados
 
-### Containers Implementados (Versão 1.4)
+### Containers Implementados e Em Desenvolvimento (Versão 2.0)
 
 Esta seção documenta os containers que já foram implementados e estão em produção/desenvolvimento ativo.
 

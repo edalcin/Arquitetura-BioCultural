@@ -4,7 +4,7 @@
 
 Este documento detalha os componentes internos de cada container do sistema, organizados pelos três contextos principais: Aquisição, Curadoria e Apresentação.
 
-**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
+**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
 
 ---
 

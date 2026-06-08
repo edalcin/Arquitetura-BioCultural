@@ -4,7 +4,7 @@
 
 O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Informações sobre Conhecimento Tradicional, mostrando como ele se relaciona com os usuários e sistemas externos.
 
-**Versão 1.4** - Atualizado com etnoChat (interface conversacional) e Painel Analítico (dashboard interativo)
+**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
 
 ## Diagrama
 
@@ -16,11 +16,13 @@ graph TB
         ADM[Administrador]
         CUR[Curador]
         TERM[Terminólogo]
+        COL[Coletor de Campo<br/>Porta-Voz Comunitário]
     end
 
     subgraph "Sistema de Conhecimento Tradicional"
         SYS[Sistema de Informações<br/>sobre Conhecimento<br/>Tradicional]
-        ETNOTERMOS[etnoTermos<br/>Infraestrutura Terminológica<br/>✓ IMPLEMENTADO]
+        ETNOTERMOS[etnoTermos<br/>Infraestrutura Terminológica<br/>SKOS-XL · ✓ IMPLEMENTADO]
+        ETNORELATOS[etnoRelatos<br/>Aquisição Primária<br/>Em Desenvolvimento]
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Dashboard Interativo<br/>✓ IMPLEMENTADO]
     end
@@ -40,11 +42,12 @@ graph TB
         AUTH[Outras Fontes<br/>Autoritativas]
     end
 
-    PQ -->|Registra dados e faz curadoria| SYS
-    RC -->|Valida conhecimento e controla| SYS
+    PQ -->|Registra dados secundários e faz curadoria| SYS
+    RC -->|Valida conhecimento e controla acesso| SYS
     ADM -->|Gerencia sistema e aprova| SYS
     CUR -->|Valida e enriquece dados| SYS
-    TERM -->|Gerencia vocabulários e tesauros| ETNOTERMOS
+    TERM -->|Gerencia vocabulários e tesauros SKOS-XL| ETNOTERMOS
+    COL -->|Registra conhecimento primário com CLPI| ETNORELATOS
 
     PUB -->|Consulta informações públicas| SYS
     PUB -->|Navega por tesauros| ETNOTERMOS
@@ -60,9 +63,10 @@ graph TB
     SYS -->|Integra dados| EXT
     SYS -->|Consulta territórios e proveniência| TERR
     SYS -->|Valida contra fontes autoritativas| AUTH
-    SYS <-->|Valida e padroniza termos| ETNOTERMOS
+    SYS <-->|Valida e padroniza termos SKOS-XL| ETNOTERMOS
     SYS -->|Fornece dados para chat| ETNOCHAT
     SYS -->|Fornece dados para análise| PAINEL
+    ETNORELATOS -->|Dados primários curados| SYS
 
     FLORA -->|Retorna verificação| SYS
     FAUNA -->|Retorna verificação| SYS
@@ -74,6 +78,7 @@ graph TB
 
     style SYS fill:#1168bd,stroke:#0b4884,color:#ffffff
     style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ETNORELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
     style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PQ fill:#08427b,stroke:#052e56,color:#ffffff
@@ -81,6 +86,7 @@ graph TB
     style ADM fill:#08427b,stroke:#052e56,color:#ffffff
     style CUR fill:#08427b,stroke:#052e56,color:#ffffff
     style TERM fill:#08427b,stroke:#052e56,color:#ffffff
+    style COL fill:#08427b,stroke:#052e56,color:#ffffff
     style PUB fill:#08427b,stroke:#052e56,color:#ffffff
     style DEV fill:#08427b,stroke:#052e56,color:#ffffff
     style FLORA fill:#999999,stroke:#6b6b6b,color:#ffffff
@@ -150,18 +156,28 @@ graph TB
 
 #### 5. Terminólogo
 **Responsabilidades:**
-- Gerenciar glossários, vocabulários e tesauros no etnoTermos
-- Criar e manter relações hierárquicas (BT/NT), de equivalência (USE/UF) e associativas (RT)
-- Documentar termos com notas de escopo, definições e exemplos
-- Garantir conformidade com padrão ANSI/NISO Z39.19
+- Gerenciar glossários, vocabulários e tesauros no etnoTermos (padrão SKOS-XL)
+- Criar e manter relações hierárquicas (`skos:broader`/`skos:narrower`), rótulos (`skosxl:prefLabel`/`skosxl:altLabel`) e associativas (`skos:related`)
+- Documentar conceitos com notas de escopo, definições e exemplos (SKOS)
 - Rastrear fontes de termos (bibliográficas, conhecimento tradicional)
 
 **Necessidades:**
-- Interface especializada para gestão de tesauros
-- Ferramentas de importação/exportação (SKOS, RDF, Dublin Core, CSV)
+- Interface especializada para gestão de esquemas de conceitos SKOS-XL
+- Ferramentas de importação/exportação (SKOS-XL/RDF, JSON-LD, Dublin Core, CSV)
 - Busca inteligente com Meilisearch
 - Suporte multilíngue
 - Dashboard de administração terminológica
+
+#### 6. Coletor de Campo / Porta-Voz Comunitário
+**Responsabilidades:**
+- Registrar conhecimento tradicional diretamente com comunidades tradicionais
+- Conduzir protocolo CLPI (Consentimento Livre, Prévio e Informado)
+- Inserir dados primários no etnoRelatos
+
+**Necessidades:**
+- Interface para coleta de dados primários com suporte offline
+- Fluxo de consentimento integrado (CLPI)
+- Suporte multilíngue (português, idiomas indígenas)
 
 ### Usuários Externos (Públicos)
 
@@ -327,44 +343,59 @@ graph TB
 
 **Propósito:** Preservação e organização do conhecimento etnobotânico através de glossários, vocabulários controlados e tesauros estruturados
 
-**Padrão:** ANSI/NISO Z39.19-2005 (Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies)
+**Padrão:** [SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html) (W3C Simple Knowledge Organization System eXtension for Labels) — substituiu o padrão ANSI/NISO Z39.19-2005 a partir da v2.0
 
-**Integração Transversal:**
-O etnoTermos funciona como infraestrutura terminológica que conecta os três contextos principais:
+**Integração Transversal (Total com etnoDB):**
+O etnoTermos funciona como infraestrutura terminológica totalmente integrada ao etnoDB, conectando todos os contextos principais e também o etnoRelatos:
 
 1. **Aquisição:**
-   - Fornece vocabulários controlados para padronização na entrada de dados
-   - Autocomplete de termos validados durante o registro
-   - Sugestão de termos relacionados e sinônimos
+   - Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados
+   - Autocomplete de termos validados durante o registro no etnoDB e etnoRelatos
+   - Sugestão de termos relacionados via `skos:related`
 
 2. **Curadoria:**
    - Base para validação semântica de termos vernaculares
-   - Normalização de nomenclatura popular
+   - Normalização de nomenclatura popular via `skosxl:prefLabel` / `skosxl:altLabel`
    - Desambiguação de termos homônimos
-   - Enriquecimento com relações hierárquicas e associativas
 
 3. **Apresentação:**
-   - Navegação por tesauros estruturados
-   - Busca expandida por sinônimos e termos relacionados
-   - Exportação em formatos padrão (SKOS, RDF, Dublin Core)
+   - Navegação por tesauros estruturados via `skos:broader` / `skos:narrower`
+   - Busca expandida por rótulos alternativos
+   - Exportação em formatos padrão (SKOS-XL/RDF, JSON-LD, Dublin Core)
 
 **Funcionalidades Principais:**
-- Gestão de termos com identificadores únicos e suporte multilíngue
-- Relações hierárquicas (BT - Broader Term / NT - Narrower Term)
-- Relações de equivalência (USE / UF - Used For)
-- Relações associativas (RT - Related Term)
-- Sistema de notas Z39.19 (escopo, catalogador, histórica, bibliográfica, privada, definição, exemplos)
+- Gestão de conceitos com URIs únicos e suporte multilíngue
+- Rótulos preferenciais e alternativos (`skosxl:prefLabel` / `skosxl:altLabel`)
+- Relações hierárquicas (`skos:broader` / `skos:narrower`)
+- Relações associativas (`skos:related`)
+- Sistema de notas SKOS (scopeNote, definition, historyNote, editorialNote, example)
 - Gestão de fontes com rastreabilidade (conformidade CARE)
 - Busca inteligente com Meilisearch
-- APIs REST para integração
-- Exportação em SKOS, RDF, Dublin Core, CSV
+- APIs REST para integração com etnoDB e sistemas externos
+- Exportação em SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
 
 **Dados Fornecidos:**
-- Termos autorizados e não-autorizados
+- Conceitos com URIs e rótulos reificados (SKOS-XL)
 - Definições e notas de escopo
-- Relações semânticas entre termos
+- Relações semânticas entre conceitos
 - Fontes e proveniência dos termos
-- Estrutura hierárquica de vocabulários
+- Estrutura hierárquica de esquemas de conceitos
+
+### etnoRelatos - Aquisição Primária
+**GitHub:** [https://github.com/edalcin/etnoRelatos](https://github.com/edalcin/etnoRelatos)
+
+**Propósito:** Aquisição, registro e gestão de conhecimento tradicional associado à biodiversidade proveniente de **fontes primárias** — registrado diretamente junto às comunidades tradicionais
+
+**Status:** Em desenvolvimento (v2.0)
+
+**Diferença em relação ao etnoDB:**
+- **etnoDB**: fontes secundárias (artigos científicos, livros) — sem necessidade de CLPI
+- **etnoRelatos**: fontes primárias (comunidades, campo) — CLPI obrigatório, validação comunitária
+
+**Integração na Arquitetura:**
+- Atua no Contexto de Aquisição, alimentando o mesmo MongoDB do etnoDB
+- Suporte terminológico do etnoTermos (SKOS-XL)
+- Os dados registrados seguem o mesmo workflow de curadoria do etnoDB, com validação comunitária adicional
 
 ## Fluxos Principais
 

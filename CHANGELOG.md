@@ -6,6 +6,46 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [2.0.0] - 2026-06-08
+
+### Adicionado
+
+- **etnoRelatos** como novo componente da EtnoArquitetura
+  - Plataforma para aquisição de dados primários sobre conhecimento tradicional associado à biodiversidade
+  - Dados provenientes diretamente de comunidades tradicionais (fontes primárias), com protocolo CLPI
+  - Contrasta explicitamente com etnoDB, que lida com fontes secundárias (artigos científicos)
+  - Atua no Contexto de Aquisição, alimentando o mesmo MongoDB compartilhado com etnoDB e etnopapers
+  - Suporte terminológico do etnoTermos (SKOS-XL)
+  - Projeto em fase inicial de desenvolvimento
+
+### Modificado
+
+- **etnoTermos** refatorado com integração total ao etnoDB
+  - Migração do padrão ANSI/NISO Z39.19-2005 para **SKOS-XL** (W3C Simple Knowledge Organization System eXtension for Labels)
+  - Integração nativa com etnoDB em todos os contextos (Aquisição, Curadoria, Apresentação)
+  - Vocabulários controlados e tesauros agora representados como Linked Data com URIs
+  - Labels reificados via `skosxl:prefLabel` / `skosxl:altLabel` — mais expressivos que USE/UF do Z39.19
+  - Exportação atualizada: SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
+  - Interoperabilidade ampliada com GBIF, SiBBr, Wikidata e iniciativas internacionais
+
+- **Diagrama de contexto no README** simplificado para nível de abstração mais alto
+  - Substituído por diagrama didático mostrando os 4 contextos principais sem detalhes de implementação
+  - Mais acessível para novos leitores; diagramas C4 detalhados mantidos em `docs/c4-model/`
+
+- **Documentação técnica** (C4 Model) atualizada para incluir etnoRelatos e refletir mudanças no etnoTermos
+  - Diagramas de Contexto (Level 1), Containers (Level 2) e Componentes (Level 3) atualizados
+
+### Contexto da Versão
+
+Esta versão marca a expansão da EtnoArquitetura para lidar com **ambas as categorias de fontes** de conhecimento tradicional sobre biodiversidade:
+
+1. **Fontes Secundárias** (etnoDB + etnopapers): conhecimento extraído de artigos científicos, livros e publicações
+2. **Fontes Primárias** (etnoRelatos): conhecimento registrado diretamente com comunidades tradicionais, com todos os protocolos éticos e legais (CLPI, Lei 13.123/2015)
+
+A migração do etnoTermos para SKOS-XL fortalece a interoperabilidade com padrões da web semântica (Linked Data), facilitando integração com sistemas externos como GBIF, SiBBr e iniciativas internacionais de biodiversidade.
+
+---
+
 ## [1.4.0] - 2026-01-04
 
 ### Adicionado

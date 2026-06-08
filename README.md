@@ -1,7 +1,7 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18075074-blue)](https://doi.org/10.5281/zenodo.18075074)
-[![Versão](https://img.shields.io/badge/Versão-1.4.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-2.0.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
@@ -80,86 +80,41 @@ Todas compartilham:
 
 ## Arquitetura do Sistema
 
-O sistema é organizado em **três contextos principais** que trabalham de forma integrada:
+O sistema é organizado em **quatro contextos principais** que trabalham de forma integrada. O diagrama abaixo apresenta a visão de mais alto nível da arquitetura; diagramas C4 detalhados estão disponíveis na [documentação técnica](docs/c4-model/).
 
 ```mermaid
 graph TB
-    subgraph "Aquisição"
-        subgraph A1["Dados Secundários de Artigos e Livros"]
-            ETNOPAPERS["✓ etnopapers<br/>Extração por IA de PDFs"]
-            ETNODB_ACQ["✓ etnoDB<br/>Entrada de Dados Secundários"]
-        end
-        A2[Dados Primários<br/>Registro Direto]
-        A3[Robôs de Coleta<br/>Automática]
-        A4[APIs Externas]
+    FS["Fontes Secundárias<br/>(Artigos Científicos, Livros, PDFs)"]
+    FP["Fontes Primárias<br/>(Comunidades Tradicionais)"]
+
+    subgraph "Contextos da EtnoArquitetura"
+        ACQ["Aquisição<br/>✓ etnopapers · etnoDB · etnoRelatos"]
+        TERM["Infraestrutura Terminológica<br/>✓ etnoTermos · SKOS-XL"]
+        CUR["Curadoria<br/>✓ etnoDB"]
+        APR["Apresentação<br/>✓ etnoDB · etnoChat · Painel Analítico"]
     end
 
-    subgraph "Infraestrutura Terminológica"
-        ETNOTERMOS["✓ etnoTermos<br/>Glossários, Vocabulários e Tesauros"]
-    end
+    PUB["Pesquisadores · Público · Desenvolvedores"]
 
-    subgraph "Curadoria"
-        C1[Interface de<br/>Curadoria]
-        C2[Validação<br/>Taxonômica]
-        C3[Controle de<br/>Qualidade]
-        C4[Validação<br/>Semântica]
-        ETNODB_CUR["✓ etnoDB<br/>Curadoria de Dados Secundários"]
-    end
+    FS --> ACQ
+    FP --> ACQ
+    ACQ --> CUR
+    TERM -.-> ACQ
+    TERM -.-> CUR
+    TERM -.-> APR
+    CUR --> APR
+    APR --> PUB
 
-    subgraph "Apresentação"
-        P1[Portal Público]
-        P2[APIs de Consulta]
-        P3[Visualizações]
-        P4[Navegação por<br/>Tesauros]
-        ETNODB_PUB["✓ etnoDB<br/>Busca e Filtros"]
-        ETNOCHAT["✓ etnoChat<br/>Interface Conversacional<br/>por Inteligência Artificial"]
-        PAINEL["✓ Painel Analítico<br/>Dashboard Interativo"]
-    end
-
-    DB[("Base de Dados<br/>MongoDB")]
-
-    A2 --> DB
-    A3 --> DB
-    A4 --> DB
-    ETNOPAPERS --> DB
-    ETNODB_ACQ --> DB
-
-    C1 --> DB
-    C2 --> DB
-    C3 --> DB
-    ETNODB_CUR --> DB
-
-    DB --> P1
-    DB --> P2
-    DB --> P3
-    DB --> ETNODB_PUB
-    DB --> ETNOCHAT
-    DB --> PAINEL
-
-    ETNOTERMOS --> ETNODB_ACQ
-    ETNOTERMOS --> C4
-    C4 --> DB
-    ETNOTERMOS --> P4
-
-    EXT1[Flora e Funga do Brasil API] --> C2
-    EXT2[Fauna do Brasil API] --> C2
-    EXT3[GBIF API] --> C2
-    EXT4[Plataforma de<br>Territórios Tradicionais] --> C3
-    EXT5[Outras Fontes<br>Autoritativas] --> C3
-
-    style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
-
+    style ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style TERM fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style APR fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 **Legenda:**
-- Elementos marcados com ✓ (verde) são **containers implementados** e disponíveis nos repositórios GitHub
-- Elementos em cinza são componentes conceituais da arquitetura planejada
+- Elementos em verde são **containers implementados** e disponíveis nos repositórios GitHub
+- Os contextos de Aquisição e Curadoria distinguem fontes **secundárias** (literatura científica, via etnoDB e etnopapers) de fontes **primárias** (comunidades tradicionais, via etnoRelatos)
+- Linhas pontilhadas representam suporte terminológico transversal do etnoTermos
 
 ## Projetos Implementados
 
@@ -237,26 +192,26 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 
 [![GitHub](https://img.shields.io/badge/GitHub-etnoTermos-181717?logo=github)](https://github.com/edalcin/etnotermos)
 
-Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão internacional **ANSI/NISO Z39.19-2005**.
+Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão **[SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html)** (W3C Simple Knowledge Organization System eXtension for Labels). Totalmente integrado ao **etnoDB**, atuando como infraestrutura terminológica transversal em todos os seus contextos (Aquisição, Curadoria e Apresentação).
 
 **Propósito:**
 
-Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre plantas e animais, garantindo reconhecimento cultural, padronização terminológica e justiça na distribuição de benefícios.
+Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre plantas e animais, garantindo reconhecimento cultural, padronização terminológica e justiça na distribuição de benefícios. O padrão SKOS-XL viabiliza interoperabilidade com padrões de dados abertos (Linked Data, RDF) e integração com iniciativas como GBIF, SiBBr e Wikidata.
 
 **Características:**
 
-- **Gestão de Termos:**
-  - Criação com identificadores únicos e suporte multilíngue
-  - Relações hierárquicas (BT - Broader Term / NT - Narrower Term)
-  - Relações de equivalência (USE / UF - Used For)
-  - Relações associativas (RT - Related Term)
+- **Gestão de Conceitos (SKOS-XL):**
+  - Criação com identificadores únicos (URIs) e suporte multilíngue
+  - Rótulos preferenciais e alternativos (`skosxl:prefLabel` / `skosxl:altLabel`)
+  - Relações hierárquicas (`skos:broader` / `skos:narrower`)
+  - Relações associativas (`skos:related`)
   - Desambiguação de termos idênticos
-  - Polihierarquia (múltiplos termos amplos)
+  - Polihierarquia (múltiplos conceitos mais amplos)
 
-- **Sistema de Notas (Z39.19):**
-  - Notas de escopo, catalogador, histórica
-  - Notas bibliográficas, privadas
-  - Definições e exemplos
+- **Sistema de Notas (SKOS):**
+  - Notas de escopo (`skos:scopeNote`) e definições (`skos:definition`)
+  - Notas históricas (`skos:historyNote`) e editoriais (`skos:editorialNote`)
+  - Exemplos de uso (`skos:example`)
 
 - **Gestão de Fontes:**
   - Rastreabilidade de origens (bibliográficas, conhecimento tradicional)
@@ -265,60 +220,88 @@ Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre 
 - **Recursos Técnicos:**
   - **Busca:** Meilisearch para busca inteligente
   - **Autenticação:** OAuth Google
-  - **Exportação:** SKOS, RDF, Dublin Core, CSV
-  - **APIs:** REST para integração
+  - **Exportação:** SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
+  - **APIs:** REST para integração com etnoDB e sistemas externos
   - **Containerização:** Docker com GitHub Actions
 
 **Integração na Arquitetura:**
 
-O etnoTermos funciona como **infraestrutura terminológica transversal** que conecta os três contextos:
+O etnoTermos funciona como **infraestrutura terminológica transversal** totalmente integrada ao etnoDB, conectando os três contextos:
 
-1. **Aquisição:** Fornece vocabulários controlados para padronização na entrada de dados, autocomplete de termos validados
+1. **Aquisição:** Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados, autocomplete de termos validados para etnoDB e etnoRelatos
 2. **Curadoria:** Oferece base para validação semântica, normalização de nomenclatura vernacular e desambiguação de termos
 3. **Apresentação:** Permite navegação por tesauros estruturados e busca expandida por sinônimos e termos relacionados
+
+### etnoRelatos - Plataforma de Registros de Conhecimento Tradicional Primário
+
+[![GitHub](https://img.shields.io/badge/GitHub-etnoRelatos-181717?logo=github)](https://github.com/edalcin/etnoRelatos)
+
+Plataforma para aquisição, registro e gestão de dados de conhecimento tradicional associado à biodiversidade provenientes de **fontes primárias** — registrado diretamente junto às comunidades tradicionais. Complementa o **etnoDB**, que é dedicado a fontes secundárias (artigos científicos, livros).
+
+**Diferença fundamental em relação ao etnoDB:**
+
+| | etnoDB | etnoRelatos |
+|---|---|---|
+| **Fonte** | Secundária (artigos, livros) | Primária (comunidades, campo) |
+| **Origem dos dados** | Literatura científica | Registro direto com detentores |
+| **Consentimento** | Não aplicável | CLPI obrigatório |
+| **Curadoria** | Validação bibliográfica | Validação comunitária |
+
+**Propósito:**
+
+Registrar diretamente o conhecimento tradicional sobre biodiversidade das comunidades tradicionais brasileiras, com todos os protocolos éticos e legais requeridos (Consentimento Livre, Prévio e Informado — CLPI, conforme Lei 13.123/2015). Este projeto está em fase inicial de desenvolvimento.
+
+**Integração na Arquitetura:**
+
+O etnoRelatos atua no **Contexto de Aquisição** da EtnoArquitetura como canal para dados primários, alimentando o mesmo MongoDB compartilhado com o etnoDB. Os dados registrados seguem o mesmo workflow de curadoria, mas com validação comunitária adicional. O etnoTermos fornece suporte terminológico também para o etnoRelatos.
 
 ### Integração entre Projetos
 
 ```mermaid
 graph TB
-    PDF[PDFs de Artigos] --> EP[etnopapers<br/>Extração com IA]
-    PDF --> ED_ACQ[etnoDB<br/>Aquisição<br/> Entrada Manual]
+    PDF["PDFs de Artigos"] --> EP["etnopapers<br/>Extração com IA"]
+    PDF --> ED_ACQ["etnoDB<br/>Aquisição<br/>Entrada Manual"]
+    CAMPO["Registros de Campo<br/>Comunidades Tradicionais"] --> ERELA["etnoRelatos<br/>Aquisição Primária"]
 
-    EP --> MONGO[(MongoDB)]
+    EP --> MONGO[("MongoDB")]
     ED_ACQ --> MONGO
+    ERELA --> MONGO
 
-    ET[etnoTermos<br/>Tesauros e Vocabulários] --> ED_ACQ
+    ET["etnoTermos<br/>Vocabulários · SKOS-XL"] --> ED_ACQ
     ET --> ED_CUR
     ET --> ED_PUB
+    ET --> ERELA
 
-    MONGO <--> ED_CUR[etnoDB<br/>Curadoria]
-    MONGO --> ED_PUB[etnoDB<br/>Apresentação]
-    MONGO --> CHAT[etnoChat<br/>Interface Conversacional]
-    MONGO --> DASH[Painel Analítico<br/>Dashboard]
+    MONGO <--> ED_CUR["etnoDB<br/>Curadoria"]
+    MONGO --> ED_PUB["etnoDB<br/>Apresentação"]
+    MONGO --> CHAT["etnoChat<br/>Interface Conversacional"]
+    MONGO --> DASH["Painel Analítico<br/>Dashboard"]
 
-    ED_PUB --> PUB[Público]
+    ED_PUB --> PUB["Público"]
     CHAT --> PUB
     DASH --> PUB
 
-	style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-	style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-	style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ET fill:#28a745,stroke:#1e7e34,color:#ffffff
-	style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
     style CHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style DASH fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ERELA fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 O fluxo integrado permite que:
 
 1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
-2. **etnoDB (Aquisição)** permite entrada manual de dados por pesquisadores, também salvando no MongoDB
-3. **etnoTermos** fornece vocabulários controlados para padronização terminológica em todos os contextos
-4. Ambas as fontes alimentam a mesma base de dados de forma paralela
-5. **etnoDB (Curadoria)** valida e aprova os registros (de ambas as fontes), com suporte de validação semântica do etnoTermos
-6. **etnoDB (Apresentação)** disponibiliza dados validados publicamente, com navegação por tesauros do etnoTermos
-7. **etnoChat** permite consultas em linguagem natural via integração com IA (MCP)
-8. **Painel Analítico** oferece visualizações interativas e análises estatísticas dos dados
+2. **etnoDB (Aquisição)** permite entrada manual de dados secundários por pesquisadores, também salvando no MongoDB
+3. **etnoRelatos** registra conhecimento tradicional diretamente de comunidades tradicionais (fontes primárias), com protocolo CLPI, salvando no mesmo MongoDB
+4. **etnoTermos** fornece vocabulários controlados (SKOS-XL) para padronização terminológica em todos os contextos, com integração total ao etnoDB e suporte ao etnoRelatos
+5. As três fontes alimentam a mesma base de dados de forma paralela
+6. **etnoDB (Curadoria)** valida e aprova os registros (de todas as fontes), com suporte de validação semântica do etnoTermos
+7. **etnoDB (Apresentação)** disponibiliza dados validados publicamente, com navegação por tesauros do etnoTermos
+8. **etnoChat** permite consultas em linguagem natural via integração com IA (MCP)
+9. **Painel Analítico** oferece visualizações interativas e análises estatísticas dos dados
 
 ---
 
@@ -580,9 +563,10 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 ### Projetos da Arquitetura (Implementados)
 - **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional secundário
 - **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude)
+- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Infraestrutura terminológica com glossários, vocabulários e tesauros no padrão SKOS-XL, com integração total ao etnoDB
 
-### Projetos em Implementação
-- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Plataforma de gestão terminológica com glossários, vocabulários e tesauros (ANSI/NISO Z39.19) — em fase de desenvolvimento
+### Projetos em Desenvolvimento
+- **[etnoRelatos](https://github.com/edalcin/etnoRelatos)** - Plataforma para aquisição de dados primários de conhecimento tradicional diretamente de comunidades tradicionais
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -625,7 +609,7 @@ Essa documentação incorpora referências a:
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a atual versão 1.2.0.
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a atual versão 2.0.0.
 
 ---
 
@@ -635,15 +619,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4 (Version v1.4) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0 (Version v2.0) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 1.4},
-  version = {v1.4},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0},
+  version = {v2.0},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18075074},
