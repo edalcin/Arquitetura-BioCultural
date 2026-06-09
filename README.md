@@ -90,7 +90,7 @@ graph TB
     EP["✓ etnopapers<br/>Extração com IA<br/>(entrada opcional)"]
 
     MONGO[("MongoDB<br/>coleções: etnoDB · etnoTermos · etnoRelatos")]
-    TERM["✓ etnoTermos<br/>SKOS-XL"]
+
 
     subgraph "✓ etnoDB — Fontes Secundárias"
         ED_ACQ["Aquisição"]
@@ -104,7 +104,13 @@ graph TB
         ER_PUB["Apresentação"]
     end
 
-    PUB["Público · Pesquisadores · Desenvolvedores"]
+    subgraph "✓ etnoTermos — Vocabulários SKOS-XL"
+	    TERM_CUR["✓ Curadoria"]
+	    TERM_ACQ["✓ Aquisição"]
+		TERM_PUB["✓ Apresentação"]
+    end
+
+    PUB["Público · Pesquisadores · Comunidades Tradicionais"]
 
     FS -.->|via IA, opcional| EP
     EP --> ED_ACQ
@@ -120,19 +126,21 @@ graph TB
     MONGO <--> ER_CUR
     MONGO --> ER_PUB
 
-    TERM <-->|direto| MONGO
-
+	MONGO --Aquisição Direta--> TERM_ACQ
+	TERM_PUB --> PUB
     ED_PUB --> PUB
     ER_PUB --> PUB
 
     style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style TERM fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style TERM_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+	style TERM_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+	style TERM_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ER_ACQ fill:#fd7e14,stroke:#dc6502,color:#ffffff
-    style ER_CUR fill:#fd7e14,stroke:#dc6502,color:#ffffff
-    style ER_PUB fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style ER_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ER_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style ER_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style MONGO fill:#1168bd,stroke:#0b4884,color:#ffffff
 ```
 
