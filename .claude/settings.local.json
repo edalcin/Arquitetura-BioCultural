@@ -12,7 +12,8 @@
       "Bash(git pull:*)",
       "WebFetch(domain:github.com)",
       "Bash(git stash:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Skill(commit-commands:commit-push-pr)"
     ],
     "deny": [],
     "ask": []
