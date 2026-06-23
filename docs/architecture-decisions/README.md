@@ -53,9 +53,18 @@ Especifica a estrutura de dados para armazenar conhecimento tradicional associad
 
 **Decisão:** Modelo híbrido com estrutura core padronizada e extensões flexíveis.
 
-**[Leia o documento completo →](ADR-003-data-model.md)**
+### ADR-004: Arquitetura Federada v3.0
+**Status:** Aceito
+**Data:** Junho 2026
+
+Redefine a arquitetura como explicitamente federada. Cada entidade (iniciativa de fontes secundárias ou comunidade tradicional) é soberana na gestão de seus próprios dados. Documenta 7 decisões: modelo de acesso por harvest REST, etnoTermos por membro com mapeamento SKOS no Pluriverso, governança por comitê federado, remoção imediata ao sair, MongoDB pertence à Iniciativa #1, protocolo de publicação REST paginado, etnopapers exclusivo de fontes secundárias.
+
+**Decisão:** Arquitetura federada com Pluriverso como middleware de federação.
+
+**[Leia o documento completo →](ADR-004-federated-architecture.md)**
 
 ---
+
 
 ## Template para Novos ADRs
 
@@ -132,7 +141,8 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2025-01-24 | ADR-001 | Criação inicial |
 | 2025-01-24 | ADR-002 | Criação inicial |
 | 2025-01-24 | ADR-003 | Criação inicial |
+| 2026-06-23 | ADR-004 | Arquitetura federada v3.0 |
 
 ---
 
-**Última atualização:** Janeiro 2025
+**Última atualização:** Junho 2026

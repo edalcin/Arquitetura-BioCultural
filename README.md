@@ -1,11 +1,11 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18075074-blue)](https://doi.org/10.5281/zenodo.18075074)
-[![Versão](https://img.shields.io/badge/Versão-2.0.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.0.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
-Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade. O sistema foi projetado com respeito aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) e em conformidade com a legislação pertinente.
+Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade (CTA). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados, garantindo os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) em sua essência. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas.
 
 ---
 
@@ -78,77 +78,56 @@ Todas compartilham:
 
 ---
 
-## Arquitetura do Sistema
+## Arquitetura do Sistema — Versão 3.0 (Federada)
 
-O sistema é organizado em **quatro contextos principais** que trabalham de forma integrada. O diagrama abaixo apresenta a visão de mais alto nível da arquitetura; diagramas C4 detalhados estão disponíveis na [documentação técnica](docs/c4-model/).
+A versão 3.0 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**. Cada membro da federação (iniciativa de fontes secundárias ou comunidade tradicional) mantém sua própria infraestrutura de dados e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
 
 ```mermaid
-graph TB
-    FS["Fontes Secundárias<br/>(Artigos, PDFs, Livros)"]
-    FP["Fontes Primárias<br/>(Comunidades Tradicionais)"]
-
-    EP["✓ etnopapers<br/>Extração com IA<br/>(entrada opcional)"]
-
-    MONGO[("MongoDB<br/>coleções: etnoDB · etnoTermos · etnoRelatos")]
-
-
-    subgraph "✓ etnoDB — Fontes Secundárias"
-        ED_ACQ["Aquisição"]
-        ED_CUR["Curadoria"]
-        ED_PUB["Apresentação<br/>etnoChat · Painel Analítico"]
+graph TD
+    subgraph I1["Iniciativa de Fontes Secundárias"]
+        I1A(etnoDB) --> I1M[(MongoDB)]
+        I1B(etnopapers) --> I1A
+        I1C(etnoTermos) <--> I1M
     end
 
-    subgraph "etnoRelatos — Fontes Primárias"
-        ER_ACQ["Aquisição + CLPI"]
-        ER_CUR["Curadoria Comunitária"]
-        ER_PUB["Apresentação"]
+    subgraph C2["Comunidade Tradicional #2"]
+        C2A(etnoRelatos) --> C2M[(MongoDB)]
+        C2B(etnoTermos) <--> C2M
     end
 
-    subgraph "✓ etnoTermos — Vocabulários SKOS-XL"
-	    TERM_CUR["✓ Curadoria"]
-	    TERM_ACQ["✓ Aquisição"]
-		TERM_PUB["✓ Apresentação"]
+    subgraph C3["Comunidade Tradicional #N"]
+        C3A(etnoRelatos) --> C3M[(MongoDB)]
+        C3B(etnoTermos) <--> C3M
     end
 
-    PUB["Público · Pesquisadores · Comunidades Tradicionais"]
+    PL{{"Pluriverso\nMiddleware de Federação"}}
+    U((Usuário /\nAplicação))
 
-    FS -.->|via IA, opcional| EP
-    EP --> ED_ACQ
-    FS --> ED_ACQ
-
-    FP --> ER_ACQ
-
-    ED_ACQ --> MONGO
-    MONGO <--> ED_CUR
-    MONGO --> ED_PUB
-
-    ER_ACQ --> MONGO
-    MONGO <--> ER_CUR
-    MONGO --> ER_PUB
-
-	MONGO --Aquisição Direta--> TERM_ACQ
-	TERM_PUB --> PUB
-    ED_PUB --> PUB
-    ER_PUB --> PUB
-
-    style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style TERM_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-	style TERM_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-	style TERM_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ER_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ER_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ER_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style MONGO fill:#1168bd,stroke:#0b4884,color:#ffffff
+    I1 -->|harvest REST| PL
+    C2 -->|harvest REST| PL
+    C3 -->|harvest REST| PL
+    U <-->|API| PL
 ```
 
+### Princípios da Federação
+
+- **Soberania total**: cada membro controla seu próprio MongoDB, seu etnoTermos e define o que é público
+- **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
+- **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
+- **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
+- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos
+
+### Tipos de Membros da Federação
+
+| Tipo | Componentes | Fonte de Dados |
+|------|-------------|----------------|
+| Iniciativa de Fontes Secundárias | etnoDB + etnopapers + etnoTermos + MongoDB | Literatura científica (artigos, PDFs) |
+| Comunidade Tradicional | etnoRelatos + etnoTermos + MongoDB | Registro primário direto (CLPI obrigatório) |
+
 **Legenda:**
-- Verde: containers **implementados** e disponíveis nos repositórios GitHub
-- Laranja: **etnoRelatos** — em desenvolvimento
-- Azul: **MongoDB compartilhado** com coleções separadas por projeto
-- Linha pontilhada: entrada opcional (fontes secundárias podem ir direto ao etnoDB sem passar pelo etnopapers)
+- Cada membro opera de forma completamente independente
+- Membro expõe endpoint REST paginado para harvest pelo Pluriverso
+- Linha `harvest REST` representa coleta periódica (não tempo real)
 
 ## Projetos Implementados
 
@@ -287,55 +266,39 @@ Registrar diretamente o conhecimento tradicional sobre biodiversidade das comuni
 
 **Integração na Arquitetura:**
 
-O etnoRelatos atua no **Contexto de Aquisição** da EtnoArquitetura como canal para dados primários, alimentando o mesmo MongoDB compartilhado com o etnoDB. Os dados registrados seguem o mesmo workflow de curadoria, mas com validação comunitária adicional. O etnoTermos fornece suporte terminológico também para o etnoRelatos.
+Na arquitetura federada v3.0, o etnoRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do etnoRelatos com seu próprio MongoDB soberano. O etnoTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
 
-### Integração entre Projetos
+### Integração Federada entre Projetos
 
 ```mermaid
-graph TB
-    PDF["PDFs de Artigos"] --> EP["etnopapers<br/>Extração com IA"]
-    PDF --> ED_ACQ["etnoDB<br/>Aquisição<br/>Entrada Manual"]
-    CAMPO["Registros de Campo<br/>Comunidades Tradicionais"] --> ERELA["etnoRelatos<br/>Aquisição Primária"]
+graph TD
+    subgraph I1["Iniciativa de Fontes Secundárias"]
+        EP["etnopapers\nExtração com IA"] --> EDB["etnoDB\nAquisição · Curadoria · Apresentação"]
+        ET1["etnoTermos\nSKOS-XL"] <--> MDB1[("MongoDB")]
+        EDB <--> MDB1
+    end
 
-    EP --> MONGO[("MongoDB")]
-    ED_ACQ --> MONGO
-    ERELA --> MONGO
+    subgraph C2["Comunidade Tradicional"]
+        ER["etnoRelatos\nAquisição Primária · CLPI"] <--> MDB2[("MongoDB")]
+        ET2["etnoTermos\nSKOS-XL"] <--> MDB2
+    end
 
-    ET["etnoTermos<br/>Vocabulários · SKOS-XL"] --> ED_ACQ
-    ET --> ED_CUR
-    ET --> ED_PUB
-    ET --> ERELA
+    PL{{"Pluriverso\nMiddleware de Federação\n(índice + mapeamentos SKOS)"}}
+    U((Usuário /\nAplicação))
 
-    MONGO <--> ED_CUR["etnoDB<br/>Curadoria"]
-    MONGO --> ED_PUB["etnoDB<br/>Apresentação"]
-    MONGO --> CHAT["etnoChat<br/>Interface Conversacional"]
-    MONGO --> DASH["Painel Analítico<br/>Dashboard"]
-
-    ED_PUB --> PUB["Público"]
-    CHAT --> PUB
-    DASH --> PUB
-
-    style ED_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ED_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ED_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ET fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style EP fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style CHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style DASH fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ERELA fill:#28a745,stroke:#1e7e34,color:#ffffff
+    I1 -->|"harvest REST\n(registros públicos)"| PL
+    C2 -->|"harvest REST\n(registros públicos + CLPI)"| PL
+    U <-->|API| PL
 ```
 
-O fluxo integrado permite que:
+O fluxo federado funciona assim:
 
-1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando diretamente no MongoDB
-2. **etnoDB (Aquisição)** permite entrada manual de dados secundários por pesquisadores, também salvando no MongoDB
-3. **etnoRelatos** registra conhecimento tradicional diretamente de comunidades tradicionais (fontes primárias), com protocolo CLPI, salvando no mesmo MongoDB
-4. **etnoTermos** fornece vocabulários controlados (SKOS-XL) para padronização terminológica em todos os contextos, com integração total ao etnoDB e suporte ao etnoRelatos
-5. As três fontes alimentam a mesma base de dados de forma paralela
-6. **etnoDB (Curadoria)** valida e aprova os registros (de todas as fontes), com suporte de validação semântica do etnoTermos
-7. **etnoDB (Apresentação)** disponibiliza dados validados publicamente, com navegação por tesauros do etnoTermos
-8. **etnoChat** permite consultas em linguagem natural via integração com IA (MCP)
-9. **Painel Analítico** oferece visualizações interativas e análises estatísticas dos dados
+1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando no MongoDB da Iniciativa #1
+2. **etnoDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários; publica registros aprovados no endpoint de harvest
+3. **etnoRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
+4. **etnoTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
+5. **Pluriverso** coleta periodicamente via REST, indexa registros públicos e disponibiliza via API unificada
+6. Usuário acessa o conjunto federado de CTAs pelo Pluriverso sem interagir diretamente com cada membro
 
 ---
 
@@ -595,12 +558,13 @@ Integração planejada com principais sistemas brasileiros:
 Esta arquitetura integra projetos implementados e dialoga com iniciativas em desenvolvimento:
 
 ### Projetos da Arquitetura (Implementados)
-- **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional secundário
-- **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude)
-- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Infraestrutura terminológica com glossários, vocabulários e tesauros no padrão SKOS-XL, com integração total ao etnoDB
+- **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional de fontes secundárias; membro de referência da federação
+- **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude); componente exclusivo de iniciativas de fontes secundárias
+- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Infraestrutura terminológica SKOS-XL; cada membro da federação opera sua própria instância soberana
 
 ### Projetos em Desenvolvimento
-- **[etnoRelatos](https://github.com/edalcin/etnoRelatos)** - Plataforma para aquisição de dados primários de conhecimento tradicional diretamente de comunidades tradicionais
+- **[etnoRelatos](https://github.com/edalcin/etnoRelatos)** - Plataforma para aquisição de dados primários (CLPI) diretamente de comunidades tradicionais; componente central de cada comunidade membro
+- **[Pluriverso](https://github.com/edalcin/pluriverso)** - Middleware de federação; harvest periódico, índice central, mapeamentos semânticos SKOS e API pública unificada
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -643,7 +607,7 @@ Essa documentação incorpora referências a:
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a atual versão 2.0.0.
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.0.0 (arquitetura federada com Pluriverso).
 
 ---
 
@@ -653,15 +617,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0 (Version v2.0) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0 (Version v3.0) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 2.0},
-  version = {v2.0},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0},
+  version = {v3.0},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18075074},
