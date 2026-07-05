@@ -7,6 +7,10 @@
 
 Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade (CTA). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados, garantindo os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) em sua essência. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas.
 
+> "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
+>
+> — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente esta proposta de arquitetura federada.
+
 ---
 
 ## Motivação e Justificativa
