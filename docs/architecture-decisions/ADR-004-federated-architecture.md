@@ -6,7 +6,7 @@
 
 ## Contexto
 
-A versão 2.0 da EtnoArquitetura operava com um MongoDB compartilhado entre todos os componentes (etnoDB, etnoTermos, etnoRelatos). Embora funcional, esse modelo centralizado cria uma contradição estrutural com os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics):
+A versão 2.0 da Arquitetura BioCultural operava com um MongoDB compartilhado entre todos os componentes (BioCultDB, BioCultTermos, BioCultRelatos). Embora funcional, esse modelo centralizado cria uma contradição estrutural com os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics):
 
 - Uma iniciativa de sistematização de fontes secundárias (ex: USEFLORA) e uma comunidade tradicional que registra seu próprio conhecimento primário **não deveriam compartilhar infraestrutura de dados**. A comunidade não tem controle real sobre seus dados se eles residem em um banco gerido por uma terceira instituição.
 - A escalabilidade para múltiplas comunidades independentes exige que cada uma seja **soberana na gestão de seus próprios dados**.
@@ -26,12 +26,12 @@ Cada membro da federação expõe um **endpoint REST paginado** com seus registr
 
 **Consequência:** Delay de até N horas (configurável) entre publicação no membro e visibilidade no índice do Pluriverso. Aceitável dado que os dados são de natureza científica e cultural, não transacional.
 
-### D2 — Gestão Terminológica: etnoTermos por Membro + Mapeamento Federado
+### D2 — Gestão Terminológica: BioCultTermos por Membro + Mapeamento Federado
 
-Cada membro opera sua **própria instância do etnoTermos** com seu `skos:ConceptScheme` soberano. O Pluriverso mantém uma **camada de mapeamento semântico** com `skos:exactMatch`, `skos:closeMatch` e `skos:broadMatch` entre conceitos de membros diferentes.
+Cada membro opera sua **própria instância do BioCultTermos** com seu `skos:ConceptScheme` soberano. O Pluriverso mantém uma **camada de mapeamento semântico** com `skos:exactMatch`, `skos:closeMatch` e `skos:broadMatch` entre conceitos de membros diferentes.
 
 **Alternativas descartadas:**
-- *etnoTermos compartilhado central*: viola CARE — quem administra o etnoTermos central controla os vocabulários de todos os membros.
+- *BioCultTermos compartilhado central*: viola CARE — quem administra o BioCultTermos central controla os vocabulários de todos os membros.
 - *Sem mapeamento central*: usuário recebe termos sem harmonização, impossibilitando buscas semânticas federadas.
 
 **Consequência:** O Pluriverso assume responsabilidade pela curadoria dos mapeamentos semânticos entre membros. Esse é um esforço contínuo que requer um curador da federação com conhecimento de SKOS-XL.
@@ -58,9 +58,9 @@ Quando um membro decide sair da federação, **todos os seus dados são removido
 
 ### D5 — Posição do MongoDB: Pertence à Iniciativa #1
 
-O MongoDB atualmente em uso pelo etnoDB e etnoTermos deixa de ser "recurso compartilhado da arquitetura" e passa a ser **recurso de infraestrutura pertencente à iniciativa de fontes secundárias** (Iniciativa #1). A mudança é conceitual e de documentação — não há movimentação de dados.
+O MongoDB atualmente em uso pelo BioCultDB e BioCultTermos deixa de ser "recurso compartilhado da arquitetura" e passa a ser **recurso de infraestrutura pertencente à iniciativa de fontes secundárias** (Iniciativa #1). A mudança é conceitual e de documentação — não há movimentação de dados.
 
-**Consequência:** Cada novo membro que entrar na federação (comunidade ou nova iniciativa) opera seu próprio MongoDB. A Iniciativa #1 (etnoDB + etnoTermos + etnopapers) continua usando seu MongoDB existente.
+**Consequência:** Cada novo membro que entrar na federação (comunidade ou nova iniciativa) opera seu próprio MongoDB. A Iniciativa #1 (BioCultDB + BioCultTermos + BioCultPapers) continua usando seu MongoDB existente.
 
 ### D6 — Protocolo de Publicação: Harvest REST Paginado
 
@@ -72,15 +72,15 @@ O contrato mínimo do endpoint:
 - Suporte a filtro por `updated_since` para coletas incrementais
 - Identificador único de registro estável (`member_id` + `record_id`)
 
-**Consequência:** Cada membro (etnoDB, etnoRelatos, futuras implementações) precisa implementar esse endpoint. É a única dependência técnica que membros têm em relação à federação.
+**Consequência:** Cada membro (BioCultDB, BioCultRelatos, futuras implementações) precisa implementar esse endpoint. É a única dependência técnica que membros têm em relação à federação.
 
-### D7 — Posição do etnopapers: Exclusivo de Iniciativas de Fontes Secundárias
+### D7 — Posição do BioCultPapers: Exclusivo de Iniciativas de Fontes Secundárias
 
-O etnopapers é ferramenta especializada em extração de CTA de literatura científica (PDFs). Permanece como componente exclusivo de **iniciativas de fontes secundárias**. Comunidades tradicionais que registram conhecimento primário usam etnoRelatos.
+O BioCultPapers é ferramenta especializada em extração de CTA de literatura científica (PDFs). Permanece como componente exclusivo de **iniciativas de fontes secundárias**. Comunidades tradicionais que registram conhecimento primário usam BioCultRelatos.
 
 **Alternativas descartadas:**
-- *etnopapers como ferramenta genérica*: torna o diagrama ambíguo e dilui a distinção conceitual primário/secundário.
-- *etnopapers como serviço da federação*: cria dependência central desnecessária.
+- *BioCultPapers como ferramenta genérica*: torna o diagrama ambíguo e dilui a distinção conceitual primário/secundário.
+- *BioCultPapers como serviço da federação*: cria dependência central desnecessária.
 
 **Consequência:** A linha conceitual primário/secundário permanece clara na arquitetura. Uma comunidade que quiser sistematizar literatura científica sobre si mesma cria uma instância de iniciativa de fontes secundárias separada.
 
@@ -89,21 +89,21 @@ O etnopapers é ferramenta especializada em extração de CTA de literatura cien
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias (ex: USEFLORA)"]
-        I1A(etnoDB) --> I1M[(MongoDB)]
-        I1B(etnopapers) --> I1A
-        I1C(etnoTermos) <--> I1M
+        I1A(BioCultDB) --> I1M[(MongoDB)]
+        I1B(BioCultPapers) --> I1A
+        I1C(BioCultTermos) <--> I1M
         I1A -->|endpoint REST público| PL
     end
 
     subgraph C2["Comunidade Tradicional #2"]
-        C2A(etnoRelatos) --> C2M[(MongoDB)]
-        C2B(etnoTermos) <--> C2M
+        C2A(BioCultRelatos) --> C2M[(MongoDB)]
+        C2B(BioCultTermos) <--> C2M
         C2A -->|endpoint REST público| PL
     end
 
     subgraph C3["Comunidade Tradicional #3"]
-        C3A(etnoRelatos) --> C3M[(MongoDB)]
-        C3B(etnoTermos) <--> C3M
+        C3A(BioCultRelatos) --> C3M[(MongoDB)]
+        C3B(BioCultTermos) <--> C3M
         C3A -->|endpoint REST público| PL
     end
 
@@ -149,10 +149,10 @@ Resposta:
 
 | Componente | Mudanças necessárias para v3.0 |
 |---|---|
-| **etnoDB** | Implementar endpoint `/api/federation/records`; remover pressuposto de MongoDB compartilhado |
-| **etnopapers** | Nenhuma — alimenta o MongoDB da Iniciativa #1 como hoje |
-| **etnoTermos** | Cada instância torna-se soberana; publicar `ConceptScheme` via endpoint para harvest pelo Pluriverso |
-| **etnoRelatos** | Implementar endpoint `/api/federation/records`; implementar CLPI antes de `visibility: public` |
+| **BioCultDB** | Implementar endpoint `/api/federation/records`; remover pressuposto de MongoDB compartilhado |
+| **BioCultPapers** | Nenhuma — alimenta o MongoDB da Iniciativa #1 como hoje |
+| **BioCultTermos** | Cada instância torna-se soberana; publicar `ConceptScheme` via endpoint para harvest pelo Pluriverso |
+| **BioCultRelatos** | Implementar endpoint `/api/federation/records`; implementar CLPI antes de `visibility: public` |
 | **Pluriverso** | Novo componente: harvest scheduler, índice central, mapeamento SKOS, API pública, interface de governança |
 
 ## Consequências
@@ -185,4 +185,4 @@ Resposta:
 
 ## Data de Revisão
 
-Revisar após implementação do endpoint de harvest no etnoDB e primeira coleta pelo Pluriverso (estimado: final de 2026).
+Revisar após implementação do endpoint de harvest no BioCultDB e primeira coleta pelo Pluriverso (estimado: final de 2026).

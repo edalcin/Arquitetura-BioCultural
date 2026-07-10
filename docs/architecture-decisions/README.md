@@ -57,7 +57,7 @@ Especifica a estrutura de dados para armazenar conhecimento tradicional associad
 **Status:** Aceito
 **Data:** Junho 2026
 
-Redefine a arquitetura como explicitamente federada. Cada entidade (iniciativa de fontes secundárias ou comunidade tradicional) é soberana na gestão de seus próprios dados. Documenta 7 decisões: modelo de acesso por harvest REST, etnoTermos por membro com mapeamento SKOS no Pluriverso, governança por comitê federado, remoção imediata ao sair, MongoDB pertence à Iniciativa #1, protocolo de publicação REST paginado, etnopapers exclusivo de fontes secundárias.
+Redefine a arquitetura como explicitamente federada. Cada entidade (iniciativa de fontes secundárias ou comunidade tradicional) é soberana na gestão de seus próprios dados. Documenta 7 decisões: modelo de acesso por harvest REST, BioCultTermos por membro com mapeamento SKOS no Pluriverso, governança por comitê federado, remoção imediata ao sair, MongoDB pertence à Iniciativa #1, protocolo de publicação REST paginado, BioCultPapers exclusivo de fontes secundárias.
 
 **Decisão:** Arquitetura federada com Pluriverso como middleware de federação.
 

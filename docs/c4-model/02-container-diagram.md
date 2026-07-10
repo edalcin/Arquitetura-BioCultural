@@ -4,7 +4,7 @@
 
 O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema de Conhecimento Tradicional. Cada container representa uma aplicação ou serviço que executa de forma independente.
 
-**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
+**Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
 ## Diagrama de Arquitetura
 
@@ -27,14 +27,14 @@ graph TB
     end
 
     subgraph "Containers Implementados"
-        ETNODB_ACQ[etnoDB - Aquisição<br/>Node.js/Express/HTMX<br/>Porta 3001<br/>✓ IMPLEMENTADO]
-        ETNODB_CUR[etnoDB - Curadoria<br/>Node.js/Express/HTMX<br/>Porta 3002<br/>✓ IMPLEMENTADO]
-        ETNODB_PUB[etnoDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
+        BIOCULTDB_ACQ[BioCultDB - Aquisição<br/>Node.js/Express/HTMX<br/>Porta 3001<br/>✓ IMPLEMENTADO]
+        BIOCULTDB_CUR[BioCultDB - Curadoria<br/>Node.js/Express/HTMX<br/>Porta 3002<br/>✓ IMPLEMENTADO]
+        BIOCULTDB_PUB[BioCultDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>MCP/IA<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Google Charts/HTMX<br/>Dashboard<br/>✓ IMPLEMENTADO]
-        ETNOPAPERS[etnopapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
-        ETNOTERMOS[etnoTermos<br/>Gestão Terminológica SKOS-XL<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
-        ETNORELATOS[etnoRelatos<br/>Aquisição Primária<br/>Fontes Primárias/CLPI<br/>EM DESENVOLVIMENTO]
+        BIOCULTPAPERS[BioCultPapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
+        BIOCULTTERMOS[BioCultTermos<br/>Gestão Terminológica SKOS-XL<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
+        BIOCULTRELATOS[BioCultRelatos<br/>Aquisição Primária<br/>Fontes Primárias/CLPI<br/>EM DESENVOLVIMENTO]
     end
 
     subgraph "Contexto: Aquisição"
@@ -74,17 +74,17 @@ graph TB
     end
 
     U1 --> WEB
-    U1 --> ETNOPAPERS
-    U1 --> ETNODB_ACQ
-    U1 --> ETNORELATOS
+    U1 --> BIOCULTPAPERS
+    U1 --> BIOCULTDB_ACQ
+    U1 --> BIOCULTRELATOS
     U2 --> WEB
-    U2 --> ETNODB_CUR
-    U2 --> ETNORELATOS
+    U2 --> BIOCULTDB_CUR
+    U2 --> BIOCULTRELATOS
     U3 --> PORTAL
-    U3 --> ETNODB_PUB
+    U3 --> BIOCULTDB_PUB
     U3 --> ETNOCHAT
     U3 --> PAINEL
-    U4 --> ETNOTERMOS
+    U4 --> BIOCULTTERMOS
 
     WEB --> GATEWAY
     PORTAL --> GATEWAY
@@ -93,21 +93,21 @@ graph TB
     GATEWAY --> CUR_API
     GATEWAY --> PUB_API
 
-    ETNOPAPERS --> DB
-    ETNODB_ACQ --> DB
-    ETNODB_ACQ --> ETNOTERMOS
-    ETNODB_CUR --> DB
-    ETNODB_CUR --> ETNOTERMOS
-    ETNODB_PUB --> DB
-    ETNODB_PUB --> ETNOTERMOS
-    ETNORELATOS --> DB
-    ETNORELATOS --> ETNOTERMOS
+    BIOCULTPAPERS --> DB
+    BIOCULTDB_ACQ --> DB
+    BIOCULTDB_ACQ --> BIOCULTTERMOS
+    BIOCULTDB_CUR --> DB
+    BIOCULTDB_CUR --> BIOCULTTERMOS
+    BIOCULTDB_PUB --> DB
+    BIOCULTDB_PUB --> BIOCULTTERMOS
+    BIOCULTRELATOS --> DB
+    BIOCULTRELATOS --> BIOCULTTERMOS
     ETNOCHAT --> DB
     PAINEL --> DB
 
     ACQ_API --> QUEUE
     ACQ_API --> DB
-    ACQ_API --> ETNOTERMOS
+    ACQ_API --> BIOCULTTERMOS
     CRAWLER --> QUEUE
     ETL --> QUEUE
     QUEUE --> DB
@@ -120,14 +120,14 @@ graph TB
     VAL --> FLORA
     VAL --> FAUNA
     VAL --> GBIF
-    SEM_VAL --> ETNOTERMOS
+    SEM_VAL --> BIOCULTTERMOS
     TERR_VAL --> TERR
     TERR_VAL --> AUTH
 
     PUB_API --> DB
     PUB_API --> SEARCH
     PUB_API --> CACHE
-    PUB_API --> ETNOTERMOS
+    PUB_API --> BIOCULTTERMOS
     EXPORT --> DB
 
     DB --> SEARCH
@@ -156,14 +156,14 @@ graph TB
     style DB fill:#2ecc71,stroke:#27ae60,color:#ffffff
     style CACHE fill:#2ecc71,stroke:#27ae60,color:#ffffff
     style STORAGE fill:#2ecc71,stroke:#27ae60,color:#ffffff
-    style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNORELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style BIOCULTPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTRELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
 ```
 
 ## Containers Detalhados
@@ -172,12 +172,12 @@ graph TB
 
 Esta seção documenta os containers que já foram implementados e estão em produção/desenvolvimento ativo.
 
-#### etnoDB - Sistema de Conhecimento Tradicional Secundário
-**GitHub:** [https://github.com/edalcin/etnoDB](https://github.com/edalcin/etnoDB)
+#### BioCultDB - Sistema de Conhecimento Tradicional Secundário
+**GitHub:** [https://github.com/edalcin/BioCultDB](https://github.com/edalcin/BioCultDB)
 
 Interface web completa para gerenciamento de conhecimento tradicional extraído de artigos científicos, implementando os três contextos arquiteturais de forma integrada.
 
-##### etnoDB - Aquisição (Porta 3001)
+##### BioCultDB - Aquisição (Porta 3001)
 **Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
 
 **Responsabilidades:**
@@ -200,7 +200,7 @@ POST   /submit               - Criar novo registro
 GET    /references           - Listar referências
 ```
 
-##### etnoDB - Curadoria (Porta 3002)
+##### BioCultDB - Curadoria (Porta 3002)
 **Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
 
 **Responsabilidades:**
@@ -229,7 +229,7 @@ POST   /reject/:id           - Rejeitar registro
 PUT    /edit/:id             - Editar registro
 ```
 
-##### etnoDB - Apresentação (Porta 3003)
+##### BioCultDB - Apresentação (Porta 3003)
 **Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
 
 **Responsabilidades:**
@@ -287,8 +287,8 @@ GET    /reference/:id        - Detalhes de referência
 }
 ```
 
-#### etnopapers - Extração Automatizada com IA
-**GitHub:** [https://github.com/edalcin/etnopapers](https://github.com/edalcin/etnopapers)
+#### BioCultPapers - Extração Automatizada com IA
+**GitHub:** [https://github.com/edalcin/BioCultPapers](https://github.com/edalcin/BioCultPapers)
 
 Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
 
@@ -328,12 +328,12 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 
 **Workflow de Integração:**
 ```
-1. Pesquisador seleciona PDF no etnopapers
+1. Pesquisador seleciona PDF no BioCultPapers
 2. IA extrai metadados estruturados
 3. Dados salvos em MongoDB com status "pending"
-4. Pesquisador revisa no etnoDB-Aquisição (porta 3001)
-5. Curador valida no etnoDB-Curadoria (porta 3002)
-6. Dados aprovados aparecem no etnoDB-Apresentação (porta 3003)
+4. Pesquisador revisa no BioCultDB-Aquisição (porta 3001)
+5. Curador valida no BioCultDB-Curadoria (porta 3002)
+6. Dados aprovados aparecem no BioCultDB-Apresentação (porta 3003)
 ```
 
 **Requisitos:**
@@ -363,14 +363,14 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
     "municipality": "Manaus"
   },
   "status": "pending",
-  "source": "etnodb - gemini",
+  "source": "BioCultDB - gemini",
   "createdAt": "2025-12-28T10:30:00Z",
   "updatedAt": "2025-12-28T10:30:00Z"
 }
 ```
 
-#### etnoTermos - Plataforma de Gestão Terminológica
-**GitHub:** [https://github.com/edalcin/etnotermos](https://github.com/edalcin/etnotermos)
+#### BioCultTermos - Plataforma de Gestão Terminológica
+**GitHub:** [https://github.com/edalcin/BioCultTermos](https://github.com/edalcin/BioCultTermos)
 
 Plataforma digital para preservação e organização do conhecimento etnobotânico através de glossários, vocabulários controlados e tesauros, seguindo o padrão internacional **ANSI/NISO Z39.19-2005**.
 
@@ -411,9 +411,9 @@ GET    /api/export/csv               - Exportar em CSV
 
 **Integração na Arquitetura:**
 
-O etnoTermos funciona como **infraestrutura terminológica transversal**:
+O BioCultTermos funciona como **infraestrutura terminológica transversal**:
 
-1. **Com etnoDB - Aquisição:**
+1. **Com BioCultDB - Aquisição:**
    - Autocomplete de termos validados durante entrada de dados
    - Sugestão de sinônimos e termos relacionados
    - Padronização de nomenclatura vernacular
@@ -424,7 +424,7 @@ O etnoTermos funciona como **infraestrutura terminológica transversal**:
    - Desambiguação de termos homônimos
    - Enriquecimento com relações hierárquicas
 
-3. **Com etnoDB - Apresentação e Public API:**
+3. **Com BioCultDB - Apresentação e Public API:**
    - Navegação por tesauros estruturados
    - Busca expandida por sinônimos
    - Exportação em SKOS/RDF para interoperabilidade
@@ -461,7 +461,7 @@ O etnoTermos funciona como **infraestrutura terminológica transversal**:
 ```
 
 #### etnoChat - Interface Conversacional com IA
-**GitHub:** Componente integrado ao [etnoDB](https://github.com/edalcin/etnoDB)
+**GitHub:** Componente integrado ao [BioCultDB](https://github.com/edalcin/BioCultDB)
 
 Interface conversacional que permite interação com o banco de dados através de linguagem natural, facilitando a exploração de conhecimentos etnobotânicos sem necessidade de sintaxes complexas de busca.
 
@@ -506,7 +506,7 @@ GET    /etnochat/history       - Histórico da conversa atual
 ```
 
 #### Painel Analítico - Dashboard Interativo
-**GitHub:** Componente integrado ao [etnoDB](https://github.com/edalcin/etnoDB)
+**GitHub:** Componente integrado ao [BioCultDB](https://github.com/edalcin/BioCultDB)
 
 Dashboard interativo para exploração e análise visual dos dados etnobotânicos, permitindo identificar padrões e distribuições nos dados.
 
@@ -1161,9 +1161,9 @@ GET    /api/export/download/:id             - Download do arquivo
 | APIs | Node.js/Express | Python/FastAPI, Go | Ecossistema JS unificado |
 | Crawler | Python/Scrapy | Node.js/Puppeteer | Maturidade para scraping |
 | Validation Service | Python/FastAPI | Node.js, Go | Especializado em ML/validação |
-| Semantic Validation Service | Python/FastAPI | Node.js, Go | Integração com etnoTermos para validação semântica |
+| Semantic Validation Service | Python/FastAPI | Node.js, Go | Integração com BioCultTermos para validação semântica |
 | Territory & Authority Service | Python/FastAPI | Node.js, Go | Processamento geoespacial, APIs |
-| etnoTermos | Docker/Meilisearch | Elasticsearch, Typesense | Conformidade ANSI/NISO Z39.19, busca inteligente |
+| BioCultTermos | Docker/Meilisearch | Elasticsearch, Typesense | Conformidade ANSI/NISO Z39.19, busca inteligente |
 | Database | Orientado a Documentos | SQL, Multi-Modal | Flexibilidade de schema |
 | Search | Motor de Busca | Múltiplas opções | Poder de indexação e consultas |
 | Queue | RabbitMQ | Kafka, Redis Streams | Simplicidade, confiabilidade |

@@ -1,6 +1,6 @@
 # Iniciativas Relacionadas ao Conhecimento Tradicional e Sociobiodiversidade
 
-Este diretório contém resumos de iniciativas brasileiras relacionadas à gestão de conhecimento tradicional, sociobiodiversidade e patrimônio genético. Estas iniciativas servem como fontes de dados, informações e referências arquiteturais para o projeto etnoArquitetura.
+Este diretório contém resumos de iniciativas brasileiras relacionadas à gestão de conhecimento tradicional, sociobiodiversidade e patrimônio genético. Estas iniciativas servem como fontes de dados, informações e referências arquiteturais para o projeto Arquitetura BioCultural.
 
 ## Visão Geral
 
@@ -254,7 +254,7 @@ As iniciativas documentadas compartilham objetivos comuns:
 
 ## Próximos Passos Sugeridos
 
-Para o projeto etnoArquitetura, as iniciativas documentadas sugerem:
+Para o projeto Arquitetura BioCultural, as iniciativas documentadas sugerem:
 
 1. **Análise Comparativa**: Mapear semelhanças e diferenças entre as abordagens
 2. **Arquitetura de Referência**: Criar modelo baseado nas melhores práticas identificadas
@@ -288,4 +288,4 @@ Para o projeto etnoArquitetura, as iniciativas documentadas sugerem:
 ---
 
 **Última Atualização**: Janeiro 2025
-**Projeto**: etnoArquitetura - Sistema de Informação de Conhecimento Tradicional
+**Projeto**: Arquitetura BioCultural - Sistema de Informação de Conhecimento Tradicional

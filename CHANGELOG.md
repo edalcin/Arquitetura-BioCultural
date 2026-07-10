@@ -10,19 +10,19 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Adicionado
 
-- **etnoRelatos** como novo componente da EtnoArquitetura
+- **BioCultRelatos** como novo componente da Arquitetura BioCultural
   - Plataforma para aquisição de dados primários sobre conhecimento tradicional associado à biodiversidade
   - Dados provenientes diretamente de comunidades tradicionais (fontes primárias), com protocolo CLPI
-  - Contrasta explicitamente com etnoDB, que lida com fontes secundárias (artigos científicos)
-  - Atua no Contexto de Aquisição, alimentando o mesmo MongoDB compartilhado com etnoDB e etnopapers
-  - Suporte terminológico do etnoTermos (SKOS-XL)
+  - Contrasta explicitamente com BioCultDB, que lida com fontes secundárias (artigos científicos)
+  - Atua no Contexto de Aquisição, alimentando o mesmo MongoDB compartilhado com BioCultDB e BioCultPapers
+  - Suporte terminológico do BioCultTermos (SKOS-XL)
   - Projeto em fase inicial de desenvolvimento
 
 ### Modificado
 
-- **etnoTermos** refatorado com integração total ao etnoDB
+- **BioCultTermos** refatorado com integração total ao BioCultDB
   - Migração do padrão ANSI/NISO Z39.19-2005 para **SKOS-XL** (W3C Simple Knowledge Organization System eXtension for Labels)
-  - Integração nativa com etnoDB em todos os contextos (Aquisição, Curadoria, Apresentação)
+  - Integração nativa com BioCultDB em todos os contextos (Aquisição, Curadoria, Apresentação)
   - Vocabulários controlados e tesauros agora representados como Linked Data com URIs
   - Labels reificados via `skosxl:prefLabel` / `skosxl:altLabel` — mais expressivos que USE/UF do Z39.19
   - Exportação atualizada: SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
@@ -32,17 +32,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
   - Substituído por diagrama didático mostrando os 4 contextos principais sem detalhes de implementação
   - Mais acessível para novos leitores; diagramas C4 detalhados mantidos em `docs/c4-model/`
 
-- **Documentação técnica** (C4 Model) atualizada para incluir etnoRelatos e refletir mudanças no etnoTermos
+- **Documentação técnica** (C4 Model) atualizada para incluir BioCultRelatos e refletir mudanças no BioCultTermos
   - Diagramas de Contexto (Level 1), Containers (Level 2) e Componentes (Level 3) atualizados
 
 ### Contexto da Versão
 
-Esta versão marca a expansão da EtnoArquitetura para lidar com **ambas as categorias de fontes** de conhecimento tradicional sobre biodiversidade:
+Esta versão marca a expansão da Arquitetura BioCultural para lidar com **ambas as categorias de fontes** de conhecimento tradicional sobre biodiversidade:
 
-1. **Fontes Secundárias** (etnoDB + etnopapers): conhecimento extraído de artigos científicos, livros e publicações
-2. **Fontes Primárias** (etnoRelatos): conhecimento registrado diretamente com comunidades tradicionais, com todos os protocolos éticos e legais (CLPI, Lei 13.123/2015)
+1. **Fontes Secundárias** (BioCultDB + BioCultPapers): conhecimento extraído de artigos científicos, livros e publicações
+2. **Fontes Primárias** (BioCultRelatos): conhecimento registrado diretamente com comunidades tradicionais, com todos os protocolos éticos e legais (CLPI, Lei 13.123/2015)
 
-A migração do etnoTermos para SKOS-XL fortalece a interoperabilidade com padrões da web semântica (Linked Data), facilitando integração com sistemas externos como GBIF, SiBBr e iniciativas internacionais de biodiversidade.
+A migração do BioCultTermos para SKOS-XL fortalece a interoperabilidade com padrões da web semântica (Linked Data), facilitando integração com sistemas externos como GBIF, SiBBr e iniciativas internacionais de biodiversidade.
 
 ---
 
@@ -50,7 +50,7 @@ A migração do etnoTermos para SKOS-XL fortalece a interoperabilidade com padr�
 
 ### Adicionado
 
-- **etnoChat** como componente da camada de Apresentação do etnoDB
+- **etnoChat** como componente da camada de Apresentação do BioCultDB
   - Interface conversacional para interação em linguagem natural
   - Integração com Model Context Protocol (MCP) para comunicação com IA
   - Processamento de perguntas sobre comunidades, plantas e usos tradicionais
@@ -58,7 +58,7 @@ A migração do etnoTermos para SKOS-XL fortalece a interoperabilidade com padr�
   - Explicações contextualizadas com citação de fontes
   - Acessível via rota `/etnochat` na porta 3003
 
-- **Painel Analítico** como componente da camada de Apresentação do etnoDB
+- **Painel Analítico** como componente da camada de Apresentação do BioCultDB
   - Dashboard interativo para exploração e análise visual dos dados
   - Cartões resumidos: comunidades, referências, plantas, autores
   - Visualizações geográficas: mapas de calor por estado
@@ -99,7 +99,7 @@ Ambos os componentes utilizam a mesma base de dados MongoDB e respeitam o workfl
 
 ### Adicionado
 
-- **etnoTermos** como container implementado na arquitetura
+- **BioCultTermos** como container implementado na arquitetura
   - Plataforma de gestão terminológica com glossários, vocabulários controlados e tesauros
   - Conformidade com padrão internacional ANSI/NISO Z39.19-2005
   - Relações hierárquicas (BT/NT), equivalência (USE/UF) e associativas (RT)
@@ -111,7 +111,7 @@ Ambos os componentes utilizam a mesma base de dados MongoDB e respeitam o workfl
   - Containerização com Docker e GitHub Actions
 
 - **Semantic Validation Service** no contexto de Curadoria
-  - Validação semântica de termos vernaculares via etnoTermos
+  - Validação semântica de termos vernaculares via BioCultTermos
   - Normalização automática de nomenclatura popular
   - Desambiguação de termos homônimos
   - Sugestão de correções para termos não encontrados
@@ -124,23 +124,23 @@ Ambos os componentes utilizam a mesma base de dados MongoDB e respeitam o workfl
 
 ### Modificado
 
-- **Diagrama de Contexto** atualizado para incluir etnoTermos como sistema interno implementado
-- **Diagrama de Containers** atualizado com etnoTermos e Semantic Validation Service
+- **Diagrama de Contexto** atualizado para incluir BioCultTermos como sistema interno implementado
+- **Diagrama de Containers** atualizado com BioCultTermos e Semantic Validation Service
 - **Diagrama de Componentes** atualizado com detalhamento do Semantic Validation Service
-- **README.md** atualizado para versão 1.3 com documentação completa do etnoTermos
-- Diagrama de integração entre projetos atualizado para mostrar fluxos com etnoTermos
-- Tabela de decisões de tecnologia atualizada com etnoTermos e Semantic Validation Service
+- **README.md** atualizado para versão 1.3 com documentação completa do BioCultTermos
+- Diagrama de integração entre projetos atualizado para mostrar fluxos com BioCultTermos
+- Tabela de decisões de tecnologia atualizada com BioCultTermos e Semantic Validation Service
 
 ### Contexto da Versão
 
-Esta versão introduz o etnoTermos como **infraestrutura terminológica transversal** que conecta os três contextos arquiteturais. O etnoTermos resolve o desafio de padronização terminológica no domínio etnobotânico, onde múltiplos nomes vernaculares podem referir-se à mesma espécie ou uso.
+Esta versão introduz o BioCultTermos como **infraestrutura terminológica transversal** que conecta os três contextos arquiteturais. O BioCultTermos resolve o desafio de padronização terminológica no domínio etnobotânico, onde múltiplos nomes vernaculares podem referir-se à mesma espécie ou uso.
 
 A integração permite:
 - **Aquisição**: Autocomplete de termos validados e sugestão de sinônimos durante entrada de dados
 - **Curadoria**: Validação semântica automática, normalização de termos e desambiguação
 - **Apresentação**: Navegação por tesauros estruturados e busca expandida por sinônimos
 
-O etnoTermos segue os **princípios CARE** para governança de dados indígenas, garantindo rastreabilidade das fontes de termos (bibliográficas ou conhecimento tradicional) e respeito à autoridade das comunidades sobre sua terminologia.
+O BioCultTermos segue os **princípios CARE** para governança de dados indígenas, garantindo rastreabilidade das fontes de termos (bibliográficas ou conhecimento tradicional) e respeito à autoridade das comunidades sobre sua terminologia.
 
 ---
 
@@ -148,14 +148,14 @@ O etnoTermos segue os **princípios CARE** para governança de dados indígenas,
 
 ### Adicionado
 
-- **etnoDB** como container implementado na arquitetura
+- **BioCultDB** como container implementado na arquitetura
   - Interface web com três contextos distintos (Aquisição, Curadoria, Apresentação)
   - Tecnologias: Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
   - Banco de dados para conhecimento tradicional secundário (artigos científicos)
   - Implementação concreta dos princípios C.A.R.E.
   - Portas: 3001 (Aquisição), 3002 (Curadoria), 3003 (Apresentação)
 
-- **etnopapers** como container implementado na arquitetura
+- **BioCultPapers** como container implementado na arquitetura
   - Aplicativo desktop Windows (.NET 8, WPF, MVVM)
   - Extração automatizada de metadados de PDFs usando IA
   - Integração com múltiplos provedores de IA (Google Gemini, OpenAI GPT-4o-mini, Anthropic Claude 3.5 Haiku)
@@ -166,14 +166,14 @@ O etnoTermos segue os **princípios CARE** para governança de dados indígenas,
 
 ### Modificado
 
-- **Diagrama de Containers** atualizado para incluir etnoDB e etnopapers como elementos concretos
+- **Diagrama de Containers** atualizado para incluir BioCultDB e BioCultPapers como elementos concretos
 - **Diagrama de Contexto** refinado para refletir a integração dos novos containers
 - **README.md** atualizado para versão 1.2 com referências aos projetos implementados
 - Documentação de integração entre containers no contexto de Aquisição
 
 ### Contexto da Versão
 
-Esta versão marca a transição de uma arquitetura puramente conceitual para uma arquitetura com implementações concretas. Os projetos etnoDB e etnopapers representam a materialização dos conceitos de aquisição e curadoria de dados etnobotânicos, validando as decisões arquiteturais anteriores e fornecendo casos de uso reais.
+Esta versão marca a transição de uma arquitetura puramente conceitual para uma arquitetura com implementações concretas. Os projetos BioCultDB e BioCultPapers representam a materialização dos conceitos de aquisição e curadoria de dados etnobotânicos, validando as decisões arquiteturais anteriores e fornecendo casos de uso reais.
 
 ---
 
@@ -303,7 +303,7 @@ Primeira versão completa da proposta de arquitetura para Sistema de Informaçõ
 ## Links de Versões
 
 - [1.4.0] - 2026-01-04 (versão atual - etnoChat e Painel Analítico)
-- [1.3.0] - 2026-01-04 (integração etnoTermos)
+- [1.3.0] - 2026-01-04 (integração BioCultTermos)
 - [1.2.0] - 2025-12-28
 - [1.1.0] - 2025-01-06
 - [1.0.0] - 2025-01-05 (versão inicial publicada no Zenodo: https://doi.org/10.5281/zenodo.17714765)

@@ -4,7 +4,7 @@
 
 O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Informações sobre Conhecimento Tradicional, mostrando como ele se relaciona com os usuários e sistemas externos.
 
-**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
+**Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
 ## Diagrama
 
@@ -21,8 +21,8 @@ graph TB
 
     subgraph "Sistema de Conhecimento Tradicional"
         SYS[Sistema de Informações<br/>sobre Conhecimento<br/>Tradicional]
-        ETNOTERMOS[etnoTermos<br/>Infraestrutura Terminológica<br/>SKOS-XL · ✓ IMPLEMENTADO]
-        ETNORELATOS[etnoRelatos<br/>Aquisição Primária<br/>Em Desenvolvimento]
+        BIOCULTTERMOS[BioCultTermos<br/>Infraestrutura Terminológica<br/>SKOS-XL · ✓ IMPLEMENTADO]
+        BIOCULTRELATOS[BioCultRelatos<br/>Aquisição Primária<br/>Em Desenvolvimento]
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Dashboard Interativo<br/>✓ IMPLEMENTADO]
     end
@@ -46,15 +46,15 @@ graph TB
     RC -->|Valida conhecimento e controla acesso| SYS
     ADM -->|Gerencia sistema e aprova| SYS
     CUR -->|Valida e enriquece dados| SYS
-    TERM -->|Gerencia vocabulários e tesauros SKOS-XL| ETNOTERMOS
-    COL -->|Registra conhecimento primário com CLPI| ETNORELATOS
+    TERM -->|Gerencia vocabulários e tesauros SKOS-XL| BIOCULTTERMOS
+    COL -->|Registra conhecimento primário com CLPI| BIOCULTRELATOS
 
     PUB -->|Consulta informações públicas| SYS
-    PUB -->|Navega por tesauros| ETNOTERMOS
+    PUB -->|Navega por tesauros| BIOCULTTERMOS
     PUB -->|Faz perguntas em linguagem natural| ETNOCHAT
     PUB -->|Explora visualizações analíticas| PAINEL
     DEV -->|Consome APIs públicas| SYS
-    DEV -->|Consome API de termos| ETNOTERMOS
+    DEV -->|Consome API de termos| BIOCULTTERMOS
 
     SYS -->|Verifica Flora/Fungos primária| FLORA
     SYS -->|Verifica Fauna primária| FAUNA
@@ -63,10 +63,10 @@ graph TB
     SYS -->|Integra dados| EXT
     SYS -->|Consulta territórios e proveniência| TERR
     SYS -->|Valida contra fontes autoritativas| AUTH
-    SYS <-->|Valida e padroniza termos SKOS-XL| ETNOTERMOS
+    SYS <-->|Valida e padroniza termos SKOS-XL| BIOCULTTERMOS
     SYS -->|Fornece dados para chat| ETNOCHAT
     SYS -->|Fornece dados para análise| PAINEL
-    ETNORELATOS -->|Dados primários curados| SYS
+    BIOCULTRELATOS -->|Dados primários curados| SYS
 
     FLORA -->|Retorna verificação| SYS
     FAUNA -->|Retorna verificação| SYS
@@ -77,8 +77,8 @@ graph TB
     AUTH -->|Fornece validações| SYS
 
     style SYS fill:#1168bd,stroke:#0b4884,color:#ffffff
-    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNORELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
+    style BIOCULTTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTRELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
     style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PQ fill:#08427b,stroke:#052e56,color:#ffffff
@@ -156,7 +156,7 @@ graph TB
 
 #### 5. Terminólogo
 **Responsabilidades:**
-- Gerenciar glossários, vocabulários e tesauros no etnoTermos (padrão SKOS-XL)
+- Gerenciar glossários, vocabulários e tesauros no BioCultTermos (padrão SKOS-XL)
 - Criar e manter relações hierárquicas (`skos:broader`/`skos:narrower`), rótulos (`skosxl:prefLabel`/`skosxl:altLabel`) e associativas (`skos:related`)
 - Documentar conceitos com notas de escopo, definições e exemplos (SKOS)
 - Rastrear fontes de termos (bibliográficas, conhecimento tradicional)
@@ -172,7 +172,7 @@ graph TB
 **Responsabilidades:**
 - Registrar conhecimento tradicional diretamente com comunidades tradicionais
 - Conduzir protocolo CLPI (Consentimento Livre, Prévio e Informado)
-- Inserir dados primários no etnoRelatos
+- Inserir dados primários no BioCultRelatos
 
 **Necessidades:**
 - Interface para coleta de dados primários com suporte offline
@@ -338,19 +338,19 @@ graph TB
 
 ## Sistemas Internos Implementados
 
-### etnoTermos - Infraestrutura Terminológica
-**GitHub:** [https://github.com/edalcin/etnotermos](https://github.com/edalcin/etnotermos)
+### BioCultTermos - Infraestrutura Terminológica
+**GitHub:** [https://github.com/edalcin/BioCultTermos](https://github.com/edalcin/BioCultTermos)
 
 **Propósito:** Preservação e organização do conhecimento etnobotânico através de glossários, vocabulários controlados e tesauros estruturados
 
 **Padrão:** [SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html) (W3C Simple Knowledge Organization System eXtension for Labels) — substituiu o padrão ANSI/NISO Z39.19-2005 a partir da v2.0
 
-**Integração Transversal (Total com etnoDB):**
-O etnoTermos funciona como infraestrutura terminológica totalmente integrada ao etnoDB, conectando todos os contextos principais e também o etnoRelatos:
+**Integração Transversal (Total com BioCultDB):**
+O BioCultTermos funciona como infraestrutura terminológica totalmente integrada ao BioCultDB, conectando todos os contextos principais e também o BioCultRelatos:
 
 1. **Aquisição:**
    - Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados
-   - Autocomplete de termos validados durante o registro no etnoDB e etnoRelatos
+   - Autocomplete de termos validados durante o registro no BioCultDB e BioCultRelatos
    - Sugestão de termos relacionados via `skos:related`
 
 2. **Curadoria:**
@@ -371,7 +371,7 @@ O etnoTermos funciona como infraestrutura terminológica totalmente integrada ao
 - Sistema de notas SKOS (scopeNote, definition, historyNote, editorialNote, example)
 - Gestão de fontes com rastreabilidade (conformidade CARE)
 - Busca inteligente com Meilisearch
-- APIs REST para integração com etnoDB e sistemas externos
+- APIs REST para integração com BioCultDB e sistemas externos
 - Exportação em SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
 
 **Dados Fornecidos:**
@@ -381,21 +381,21 @@ O etnoTermos funciona como infraestrutura terminológica totalmente integrada ao
 - Fontes e proveniência dos termos
 - Estrutura hierárquica de esquemas de conceitos
 
-### etnoRelatos - Aquisição Primária
-**GitHub:** [https://github.com/edalcin/etnoRelatos](https://github.com/edalcin/etnoRelatos)
+### BioCultRelatos - Aquisição Primária
+**GitHub:** [https://github.com/edalcin/BioCultRelatos](https://github.com/edalcin/BioCultRelatos)
 
 **Propósito:** Aquisição, registro e gestão de conhecimento tradicional associado à biodiversidade proveniente de **fontes primárias** — registrado diretamente junto às comunidades tradicionais
 
 **Status:** Em desenvolvimento (v2.0)
 
-**Diferença em relação ao etnoDB:**
-- **etnoDB**: fontes secundárias (artigos científicos, livros) — sem necessidade de CLPI
-- **etnoRelatos**: fontes primárias (comunidades, campo) — CLPI obrigatório, validação comunitária
+**Diferença em relação ao BioCultDB:**
+- **BioCultDB**: fontes secundárias (artigos científicos, livros) — sem necessidade de CLPI
+- **BioCultRelatos**: fontes primárias (comunidades, campo) — CLPI obrigatório, validação comunitária
 
 **Integração na Arquitetura:**
-- Atua no Contexto de Aquisição, alimentando o mesmo MongoDB do etnoDB
-- Suporte terminológico do etnoTermos (SKOS-XL)
-- Os dados registrados seguem o mesmo workflow de curadoria do etnoDB, com validação comunitária adicional
+- Atua no Contexto de Aquisição, alimentando o mesmo MongoDB do BioCultDB
+- Suporte terminológico do BioCultTermos (SKOS-XL)
+- Os dados registrados seguem o mesmo workflow de curadoria do BioCultDB, com validação comunitária adicional
 
 ## Fluxos Principais
 

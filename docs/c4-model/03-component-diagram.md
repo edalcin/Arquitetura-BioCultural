@@ -4,7 +4,7 @@
 
 Este documento detalha os componentes internos de cada container do sistema, organizados pelos três contextos principais: Aquisição, Curadoria e Apresentação.
 
-**Versão 2.0** - Adicionado etnoRelatos (aquisição primária) e etnoTermos migrado para SKOS-XL com integração total ao etnoDB
+**Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
 ---
 
@@ -409,8 +409,8 @@ graph TB
 
     SVS --> TP2
     SVS --> NP
-    TP2 --> ETNOTERMOS[etnoTermos API<br/>✓ IMPLEMENTADO]
-    NP --> ETNOTERMOS
+    TP2 --> BIOCULTTERMOS[BioCultTermos API<br/>✓ IMPLEMENTADO]
+    NP --> BIOCULTTERMOS
 
     REC --> SVS
     SVS --> RR2
@@ -441,7 +441,7 @@ graph TB
     style SVS fill:#28a745
     style TP2 fill:#28a745
     style NP fill:#28a745
-    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
 ```
 
 #### Componentes Detalhados
@@ -886,7 +886,7 @@ class AuthorityProvider {
 ```
 
 ##### 6. Semantic Validation Service
-**Responsabilidade:** Validar e normalizar termos vernaculares usando o etnoTermos
+**Responsabilidade:** Validar e normalizar termos vernaculares usando o BioCultTermos
 
 ```javascript
 class SemanticValidationService {
@@ -961,7 +961,7 @@ class SemanticValidationService {
 
 class TermProvider {
   constructor() {
-    this.etnoTermosBaseURL = process.env.ETNOTERMOS_API_URL || 'http://localhost:8080/api';
+    this.bioCultTermosBaseURL = process.env.BIOCULTTERMOS_API_URL || 'http://localhost:8080/api';
     this.cache = new Map(); // Redis em produção
   }
 
@@ -975,7 +975,7 @@ class TermProvider {
 
     try {
       const response = await axios.get(
-        `${this.etnoTermosBaseURL}/terms/search`,
+        `${this.bioCultTermosBaseURL}/terms/search`,
         { params: { q: term, exact: true } }
       );
 
@@ -984,7 +984,7 @@ class TermProvider {
         termId: response.data.results[0].id,
         preferredTerm: response.data.results[0].term,
         definition: response.data.results[0].definition,
-        source: 'etnoTermos'
+        source: 'BioCultTermos'
       } : {
         found: false,
         message: 'Termo não encontrado no vocabulário controlado'
@@ -1003,7 +1003,7 @@ class TermProvider {
     try {
       // Primeiro, buscar o termo
       const searchResponse = await axios.get(
-        `${this.etnoTermosBaseURL}/terms/search`,
+        `${this.bioCultTermosBaseURL}/terms/search`,
         { params: { q: term } }
       );
 
@@ -1015,10 +1015,10 @@ class TermProvider {
 
       // Buscar relações em paralelo
       const [broader, narrower, related, equivalents] = await Promise.all([
-        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/broader`),
-        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/narrower`),
-        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/related`),
-        axios.get(`${this.etnoTermosBaseURL}/terms/${termId}/equivalents`)
+        axios.get(`${this.bioCultTermosBaseURL}/terms/${termId}/broader`),
+        axios.get(`${this.bioCultTermosBaseURL}/terms/${termId}/narrower`),
+        axios.get(`${this.bioCultTermosBaseURL}/terms/${termId}/related`),
+        axios.get(`${this.bioCultTermosBaseURL}/terms/${termId}/equivalents`)
       ]);
 
       return {
@@ -1036,7 +1036,7 @@ class TermProvider {
 
 class NormalizationProvider {
   constructor() {
-    this.etnoTermosBaseURL = process.env.ETNOTERMOS_API_URL || 'http://localhost:8080/api';
+    this.bioCultTermosBaseURL = process.env.BIOCULTTERMOS_API_URL || 'http://localhost:8080/api';
   }
 
   async suggestNormalizations(terms) {
@@ -1044,9 +1044,9 @@ class NormalizationProvider {
 
     for (const term of terms) {
       try {
-        // Busca fuzzy no etnoTermos
+        // Busca fuzzy no BioCultTermos
         const response = await axios.get(
-          `${this.etnoTermosBaseURL}/terms/search`,
+          `${this.bioCultTermosBaseURL}/terms/search`,
           { params: { q: term, fuzzy: true, limit: 5 } }
         );
 
@@ -1080,7 +1080,7 @@ class NormalizationProvider {
       "termId": "ET001",
       "preferredTerm": "mandioca",
       "definition": "Raiz tuberosa da planta Manihot esculenta",
-      "source": "etnoTermos"
+      "source": "BioCultTermos"
     },
     {
       "original": "macaxera",
@@ -1094,7 +1094,7 @@ class NormalizationProvider {
       "found": true,
       "termId": "USE001",
       "preferredTerm": "alimentação",
-      "source": "etnoTermos"
+      "source": "BioCultTermos"
     }
   ],
   "suggestions": [

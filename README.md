@@ -89,19 +89,19 @@ A versão 3.0 organiza o sistema como uma **federação de entidades soberanas**
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias"]
-        I1A(etnoDB) --> I1M[(MongoDB)]
-        I1B(etnopapers) --> I1A
-        I1C(etnoTermos) <--> I1M
+        I1A(BioCultDB) --> I1M[(MongoDB)]
+        I1B(BioCultPapers) --> I1A
+        I1C(BioCultTermos) <--> I1M
     end
 
     subgraph C2["Comunidade Tradicional #2"]
-        C2A(etnoRelatos) --> C2M[(MongoDB)]
-        C2B(etnoTermos) <--> C2M
+        C2A(BioCultRelatos) --> C2M[(MongoDB)]
+        C2B(BioCultTermos) <--> C2M
     end
 
     subgraph C3["Comunidade Tradicional #N"]
-        C3A(etnoRelatos) --> C3M[(MongoDB)]
-        C3B(etnoTermos) <--> C3M
+        C3A(BioCultRelatos) --> C3M[(MongoDB)]
+        C3B(BioCultTermos) <--> C3M
     end
 
     PL{{"Pluriverso\nMiddleware de Federação"}}
@@ -115,7 +115,7 @@ graph TD
 
 ### Princípios da Federação
 
-- **Soberania total**: cada membro controla seu próprio MongoDB, seu etnoTermos e define o que é público
+- **Soberania total**: cada membro controla seu próprio MongoDB, seu BioCultTermos e define o que é público
 - **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
 - **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
 - **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
@@ -125,8 +125,8 @@ graph TD
 
 | Tipo | Componentes | Fonte de Dados |
 |------|-------------|----------------|
-| Iniciativa de Fontes Secundárias | etnoDB + etnopapers + etnoTermos + MongoDB | Literatura científica (artigos, PDFs) |
-| Comunidade Tradicional | etnoRelatos + etnoTermos + MongoDB | Registro primário direto (CLPI obrigatório) |
+| Iniciativa de Fontes Secundárias | BioCultDB + BioCultPapers + BioCultTermos + MongoDB | Literatura científica (artigos, PDFs) |
+| Comunidade Tradicional | BioCultRelatos + BioCultTermos + MongoDB | Registro primário direto (CLPI obrigatório) |
 
 **Legenda:**
 - Cada membro opera de forma completamente independente
@@ -137,9 +137,9 @@ graph TD
 
 Esta arquitetura possui implementações concretas que materializam os conceitos propostos:
 
-### etnoDB - Banco de Dados de Conhecimento Tradicional
+### BioCultDB - Banco de Dados de Conhecimento Tradicional
 
-[![GitHub](https://img.shields.io/badge/GitHub-etnoDB-181717?logo=github)](https://github.com/edalcin/etnoDB)
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultDB-181717?logo=github)](https://github.com/edalcin/BioCultDB)
 
 Interface web para gerenciamento de conhecimento tradicional secundário extraído de artigos científicos. Implementa os três contextos arquiteturais principais:
 
@@ -186,9 +186,9 @@ Componente da camada de Apresentação para exploração e análise visual dos d
 
 **Acesso:** Rota `/painel` na porta 3003
 
-### etnopapers - Extração Automatizada com IA
+### BioCultPapers - Extração Automatizada com IA
 
-[![GitHub](https://img.shields.io/badge/GitHub-etnopapers-181717?logo=github)](https://github.com/edalcin/etnopapers)
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultPapers-181717?logo=github)](https://github.com/edalcin/BioCultPapers)
 
 Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
 
@@ -205,11 +205,11 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
   - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
 - **Performance:** Melhoria de 50% em relação a soluções locais
 
-### etnoTermos - Plataforma de Gestão Terminológica
+### BioCultTermos - Plataforma de Gestão Terminológica
 
-[![GitHub](https://img.shields.io/badge/GitHub-etnoTermos-181717?logo=github)](https://github.com/edalcin/etnotermos)
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultTermos-181717?logo=github)](https://github.com/edalcin/BioCultTermos)
 
-Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão **[SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html)** (W3C Simple Knowledge Organization System eXtension for Labels). Totalmente integrado ao **etnoDB**, atuando como infraestrutura terminológica transversal em todos os seus contextos (Aquisição, Curadoria e Apresentação).
+Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão **[SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html)** (W3C Simple Knowledge Organization System eXtension for Labels). Totalmente integrado ao **BioCultDB**, atuando como infraestrutura terminológica transversal em todos os seus contextos (Aquisição, Curadoria e Apresentação).
 
 **Propósito:**
 
@@ -238,26 +238,26 @@ Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre 
   - **Busca:** Meilisearch para busca inteligente
   - **Autenticação:** OAuth Google
   - **Exportação:** SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
-  - **APIs:** REST para integração com etnoDB e sistemas externos
+  - **APIs:** REST para integração com BioCultDB e sistemas externos
   - **Containerização:** Docker com GitHub Actions
 
 **Integração na Arquitetura:**
 
-O etnoTermos funciona como **infraestrutura terminológica transversal** totalmente integrada ao etnoDB, conectando os três contextos:
+O BioCultTermos funciona como **infraestrutura terminológica transversal** totalmente integrada ao BioCultDB, conectando os três contextos:
 
-1. **Aquisição:** Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados, autocomplete de termos validados para etnoDB e etnoRelatos
+1. **Aquisição:** Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados, autocomplete de termos validados para BioCultDB e BioCultRelatos
 2. **Curadoria:** Oferece base para validação semântica, normalização de nomenclatura vernacular e desambiguação de termos
 3. **Apresentação:** Permite navegação por tesauros estruturados e busca expandida por sinônimos e termos relacionados
 
-### etnoRelatos - Plataforma de Registros de Conhecimento Tradicional Primário
+### BioCultRelatos - Plataforma de Registros de Conhecimento Tradicional Primário
 
-[![GitHub](https://img.shields.io/badge/GitHub-etnoRelatos-181717?logo=github)](https://github.com/edalcin/etnoRelatos)
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultRelatos-181717?logo=github)](https://github.com/edalcin/BioCultRelatos)
 
-Plataforma para aquisição, registro e gestão de dados de conhecimento tradicional associado à biodiversidade provenientes de **fontes primárias** — registrado diretamente junto às comunidades tradicionais. Complementa o **etnoDB**, que é dedicado a fontes secundárias (artigos científicos, livros).
+Plataforma para aquisição, registro e gestão de dados de conhecimento tradicional associado à biodiversidade provenientes de **fontes primárias** — registrado diretamente junto às comunidades tradicionais. Complementa o **BioCultDB**, que é dedicado a fontes secundárias (artigos científicos, livros).
 
-**Diferença fundamental em relação ao etnoDB:**
+**Diferença fundamental em relação ao BioCultDB:**
 
-| | etnoDB | etnoRelatos |
+| | BioCultDB | BioCultRelatos |
 |---|---|---|
 | **Fonte** | Secundária (artigos, livros) | Primária (comunidades, campo) |
 | **Origem dos dados** | Literatura científica | Registro direto com detentores |
@@ -270,21 +270,21 @@ Registrar diretamente o conhecimento tradicional sobre biodiversidade das comuni
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada v3.0, o etnoRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do etnoRelatos com seu próprio MongoDB soberano. O etnoTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
+Na arquitetura federada v3.0, o BioCultRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do BioCultRelatos com seu próprio MongoDB soberano. O BioCultTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
 
 ### Integração Federada entre Projetos
 
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias"]
-        EP["etnopapers\nExtração com IA"] --> EDB["etnoDB\nAquisição · Curadoria · Apresentação"]
-        ET1["etnoTermos\nSKOS-XL"] <--> MDB1[("MongoDB")]
+        EP["BioCultPapers\nExtração com IA"] --> EDB["BioCultDB\nAquisição · Curadoria · Apresentação"]
+        ET1["BioCultTermos\nSKOS-XL"] <--> MDB1[("MongoDB")]
         EDB <--> MDB1
     end
 
     subgraph C2["Comunidade Tradicional"]
-        ER["etnoRelatos\nAquisição Primária · CLPI"] <--> MDB2[("MongoDB")]
-        ET2["etnoTermos\nSKOS-XL"] <--> MDB2
+        ER["BioCultRelatos\nAquisição Primária · CLPI"] <--> MDB2[("MongoDB")]
+        ET2["BioCultTermos\nSKOS-XL"] <--> MDB2
     end
 
     PL{{"Pluriverso\nMiddleware de Federação\n(índice + mapeamentos SKOS)"}}
@@ -297,10 +297,10 @@ graph TD
 
 O fluxo federado funciona assim:
 
-1. **etnopapers** processa PDFs e extrai metadados usando IA, salvando no MongoDB da Iniciativa #1
-2. **etnoDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários; publica registros aprovados no endpoint de harvest
-3. **etnoRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
-4. **etnoTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
+1. **BioCultPapers** processa PDFs e extrai metadados usando IA, salvando no MongoDB da Iniciativa #1
+2. **BioCultDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários; publica registros aprovados no endpoint de harvest
+3. **BioCultRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
+4. **BioCultTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
 5. **Pluriverso** coleta periodicamente via REST, indexa registros públicos e disponibiliza via API unificada
 6. Usuário acessa o conjunto federado de CTAs pelo Pluriverso sem interagir diretamente com cada membro
 
@@ -443,7 +443,7 @@ O sistema respeita:
 Este repositório está organizado da seguinte forma:
 
 ```
-etnoArquitetura/
+Arquitetura-BioCultural/
 ├── README.md (este arquivo)
 ├── docs/
 │   ├── c4-model/
@@ -562,12 +562,12 @@ Integração planejada com principais sistemas brasileiros:
 Esta arquitetura integra projetos implementados e dialoga com iniciativas em desenvolvimento:
 
 ### Projetos da Arquitetura (Implementados)
-- **[etnoDB](https://github.com/edalcin/etnoDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional de fontes secundárias; membro de referência da federação
-- **[etnopapers](https://github.com/edalcin/etnopapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude); componente exclusivo de iniciativas de fontes secundárias
-- **[etnoTermos](https://github.com/edalcin/etnotermos)** - Infraestrutura terminológica SKOS-XL; cada membro da federação opera sua própria instância soberana
+- **[BioCultDB](https://github.com/edalcin/BioCultDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional de fontes secundárias; membro de referência da federação
+- **[BioCultPapers](https://github.com/edalcin/BioCultPapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude); componente exclusivo de iniciativas de fontes secundárias
+- **[BioCultTermos](https://github.com/edalcin/BioCultTermos)** - Infraestrutura terminológica SKOS-XL; cada membro da federação opera sua própria instância soberana
 
 ### Projetos em Desenvolvimento
-- **[etnoRelatos](https://github.com/edalcin/etnoRelatos)** - Plataforma para aquisição de dados primários (CLPI) diretamente de comunidades tradicionais; componente central de cada comunidade membro
+- **[BioCultRelatos](https://github.com/edalcin/BioCultRelatos)** - Plataforma para aquisição de dados primários (CLPI) diretamente de comunidades tradicionais; componente central de cada comunidade membro
 - **[Pluriverso](https://github.com/edalcin/pluriverso)** - Middleware de federação; harvest periódico, índice central, mapeamentos semânticos SKOS e API pública unificada
 
 ### Dados da Sociobiodiversidade
@@ -585,7 +585,7 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 - **[Estrutura de Dados Etnobotânicos](https://github.com/edalcin/Estrutura-de-Dados-Etnobotanicos)** - Modelos e esquemas para armazenamento de informações etnobotânicas
 
 Estes projetos complementares fornecem:
-- Implementações concretas da arquitetura (etnoDB e etnopapers)
+- Implementações concretas da arquitetura (BioCultDB e BioCultPapers)
 - Padrões de dados interoperáveis
 - Vocabulários controlados para melhorar a qualidade dos dados
 - Exemplos práticos de implementação

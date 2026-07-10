@@ -1,22 +1,22 @@
 graph TB
     subgraph "Aquisição"
         subgraph A1["Dados Secundários"]
-            ETNOPAPERS["✓ etnopapers<br/>Extração por IA de PDFs"]
-            ETNODB_ACQ["✓ etnoDB<br/>Entrada de Dados Secundários"]
+            BIOCULTPAPERS["✓ BioCultPapers<br/>Extração por IA de PDFs"]
+            BIOCULTDB_ACQ["✓ BioCultDB<br/>Entrada de Dados Secundários"]
         end
 
     end
 
     subgraph "Infraestrutura Terminológica"
-        ETNOTERMOS["✓ etnoTermos<br/>Glossários, Vocabulários e Tesauros"]
+        BIOCULTTERMOS["✓ BioCultTermos<br/>Glossários, Vocabulários e Tesauros"]
     end
 
     subgraph "Curadoria"
-        ETNODB_CUR["✓ etnoDB<br/>Curadoria de Dados Secundários"]
+        BIOCULTDB_CUR["✓ BioCultDB<br/>Curadoria de Dados Secundários"]
     end
 
     subgraph "Apresentação"
-        ETNODB_PUB["✓ etnoDB<br/>Busca e Filtros"]
+        BIOCULTDB_PUB["✓ BioCultDB<br/>Busca e Filtros"]
         ETNOCHAT["✓ etnoChat<br/>Interface Conversacional<br/>por Inteligência Artificial"]
         PAINEL["✓ Painel Analítico<br/>Dashboard Interativo"]
     end
@@ -24,23 +24,23 @@ graph TB
     DB[("Base de Dados<br/>MongoDB")]
 
 
-    ETNOPAPERS --> DB
-    ETNODB_ACQ --> DB
+    BIOCULTPAPERS --> DB
+    BIOCULTDB_ACQ --> DB
 
-    ETNODB_CUR --> DB
+    BIOCULTDB_CUR --> DB
 
-    DB --> ETNODB_PUB
+    DB --> BIOCULTDB_PUB
     DB --> ETNOCHAT
     DB --> PAINEL
 
-    ETNOTERMOS --validação semântica--> ETNODB_ACQ
-    ETNOTERMOS --validação semântica--> ETNODB_CUR
+    BIOCULTTERMOS --validação semântica--> BIOCULTDB_ACQ
+    BIOCULTTERMOS --validação semântica--> BIOCULTDB_CUR
 
 
-    style ETNOPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNODB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style ETNOTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_ACQ fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_CUR fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTDB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
+    style BIOCULTTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
