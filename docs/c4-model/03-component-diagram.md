@@ -1609,7 +1609,7 @@ graph TB
     QG --> DB_PROV
 
     AI --> LLM[LLM Model<br/>via MCP]
-    DB_PROV --> DB_CHAT[(MongoDB)]
+    DB_PROV --> DB_CHAT[(SQLite)]
 
     style ROUTER_CHAT fill:#85bbf0
     style NLP fill:#28a745
@@ -1711,7 +1711,7 @@ class MCPClientService {
 ```
 
 ##### 3. Query Generator
-**Responsabilidade:** Converter intenções em queries MongoDB
+**Responsabilidade:** Converter intenções em consultas SQL/JSON1
 
 ```javascript
 class QueryGenerator {
@@ -1776,7 +1776,7 @@ graph TB
         end
 
         subgraph "Services"
-            AGG[Aggregation Service<br/>MongoDB Pipelines]
+            AGG[Aggregation Service<br/>agregação SQL sobre JSON via json_each]
             CACHE_SVC[Cache Service<br/>Redis]
             FILTER[Filter Service<br/>Query Building]
         end
@@ -1802,7 +1802,7 @@ graph TB
     FILTER --> REPO
 
     CACHE_SVC --> REDIS[(Redis Cache)]
-    REPO --> DB_DASH[(MongoDB)]
+    REPO --> DB_DASH[(SQLite)]
 
     style ROUTER_DASH fill:#85bbf0
     style AGG fill:#28a745
@@ -1812,7 +1812,7 @@ graph TB
 #### Componentes Detalhados
 
 ##### 1. Aggregation Service
-**Responsabilidade:** Executar pipelines de agregação MongoDB
+**Responsabilidade:** Executar agregação SQL sobre JSON (`json_each`)
 
 ```javascript
 class AggregationService {

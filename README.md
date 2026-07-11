@@ -1,11 +1,11 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18075074-blue)](https://doi.org/10.5281/zenodo.18075074)
-[![Versão](https://img.shields.io/badge/Versão-3.0.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.1.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
-Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade (CTA). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados, garantindo os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) em sua essência. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas.
+Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade (CTA). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados, garantindo os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) em sua essência. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado.
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
@@ -82,26 +82,29 @@ Todas compartilham:
 
 ---
 
-## Arquitetura do Sistema — Versão 3.0 (Federada)
+## Arquitetura do Sistema — Versão 3.1 (Federada)
 
-A versão 3.0 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**. Cada membro da federação (iniciativa de fontes secundárias ou comunidade tradicional) mantém sua própria infraestrutura de dados e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
+A versão 3.1 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**. Cada membro da federação (iniciativa de fontes secundárias ou comunidade tradicional) mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
 
 ```mermaid
 graph TD
-    subgraph I1["Iniciativa de Fontes Secundárias"]
-        I1A(BioCultDB) --> I1M[(MongoDB)]
-        I1B(BioCultPapers) --> I1A
-        I1C(BioCultTermos) <--> I1M
+    I1P(["BioCultPapers\n(desktop, fora do container)"])
+
+    subgraph I1["Iniciativa de Fontes Secundárias — 1 container"]
+        I1A(BioCultDB) --> I1S[(SQLite+JSON)]
+        I1C(BioCultTermos) <--> I1S
     end
 
-    subgraph C2["Comunidade Tradicional #2"]
-        C2A(BioCultRelatos) --> C2M[(MongoDB)]
-        C2B(BioCultTermos) <--> C2M
+    I1P -.->|"exporta arquivo"| I1A
+
+    subgraph C2["Comunidade Tradicional #2 — 1 container"]
+        C2A(BioCultRelatos) --> C2S[(SQLite+JSON)]
+        C2B(BioCultTermos) <--> C2S
     end
 
-    subgraph C3["Comunidade Tradicional #N"]
-        C3A(BioCultRelatos) --> C3M[(MongoDB)]
-        C3B(BioCultTermos) <--> C3M
+    subgraph C3["Comunidade Tradicional #N — 1 container"]
+        C3A(BioCultRelatos) --> C3S[(SQLite+JSON)]
+        C3B(BioCultTermos) <--> C3S
     end
 
     PL{{"Pluriverso\nMiddleware de Federação"}}
@@ -115,7 +118,7 @@ graph TD
 
 ### Princípios da Federação
 
-- **Soberania total**: cada membro controla seu próprio MongoDB, seu BioCultTermos e define o que é público
+- **Soberania total**: cada unidade controla seu próprio SQLite (arquivo), compartilhado entre suas ferramentas, e define o que é público
 - **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
 - **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
 - **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
@@ -125,8 +128,8 @@ graph TD
 
 | Tipo | Componentes | Fonte de Dados |
 |------|-------------|----------------|
-| Iniciativa de Fontes Secundárias | BioCultDB + BioCultPapers + BioCultTermos + MongoDB | Literatura científica (artigos, PDFs) |
-| Comunidade Tradicional | BioCultRelatos + BioCultTermos + MongoDB | Registro primário direto (CLPI obrigatório) |
+| Iniciativa de Fontes Secundárias | BioCultDB + BioCultPapers + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Literatura científica (artigos, PDFs) |
+| Comunidade Tradicional | BioCultRelatos + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Registro primário direto (CLPI obrigatório) |
 
 **Legenda:**
 - Cada membro opera de forma completamente independente
@@ -149,7 +152,7 @@ Interface web para gerenciamento de conhecimento tradicional secundário extraí
   - **Aquisição** (porta 3001): Entrada de dados por pesquisadores
   - **Curadoria** (porta 3002): Validação e aprovação de registros
   - **Apresentação** (porta 3003): Consulta pública com busca avançada
-- **Stack Tecnológico:** Node.js, Express, MongoDB, HTMX, Alpine.js, Tailwind CSS
+- **Stack Tecnológico:** Node.js, Express, SQLite (JSON, better-sqlite3), HTMX, Alpine.js, Tailwind CSS
 - **Estrutura de Dados:** Hierárquica (Referência → Comunidade → Planta → Uso)
 - **Workflow C.A.R.E.:** Implementação de status (pendente/aprovado/rejeitado)
 - **29 Classificações de Comunidades:** Conforme [Decreto nº 8.750, de 9 de maio 2016](https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8750.htm)
@@ -199,7 +202,7 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
   - Google Gemini (15 req/min, gratuito)
   - OpenAI GPT-4o-mini
   - Anthropic Claude 3.5 Haiku
-- **Integração Nativa:** MongoDB (Atlas ou local)
+- **Integração Nativa:** Persistência local SQLite+JSON; entrega ao BioCultDB por exportação de arquivo
 - **Dados Extraídos:**
   - Obrigatórios: Título, autores, ano, abstract
   - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
@@ -270,21 +273,24 @@ Registrar diretamente o conhecimento tradicional sobre biodiversidade das comuni
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada v3.0, o BioCultRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do BioCultRelatos com seu próprio MongoDB soberano. O BioCultTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
+Na arquitetura federada v3.1, o BioCultRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do BioCultRelatos com seu próprio SQLite soberano (compartilhado com o BioCultTermos da comunidade). O BioCultTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
 
 ### Integração Federada entre Projetos
 
 ```mermaid
 graph TD
-    subgraph I1["Iniciativa de Fontes Secundárias"]
-        EP["BioCultPapers\nExtração com IA"] --> EDB["BioCultDB\nAquisição · Curadoria · Apresentação"]
-        ET1["BioCultTermos\nSKOS-XL"] <--> MDB1[("MongoDB")]
-        EDB <--> MDB1
+    EP["BioCultPapers\nExtração com IA\n(desktop, fora do container)"]
+
+    subgraph I1["Iniciativa de Fontes Secundárias — 1 container"]
+        EDB["BioCultDB\nAquisição · Curadoria · Apresentação"] <--> UDB1[("SQLite+JSON")]
+        ET1["BioCultTermos\nSKOS-XL"] <--> UDB1
     end
 
-    subgraph C2["Comunidade Tradicional"]
-        ER["BioCultRelatos\nAquisição Primária · CLPI"] <--> MDB2[("MongoDB")]
-        ET2["BioCultTermos\nSKOS-XL"] <--> MDB2
+    EP -.->|"exporta arquivo"| EDB
+
+    subgraph C2["Comunidade Tradicional — 1 container"]
+        ER["BioCultRelatos\nAquisição Primária · CLPI"] <--> UDB2[("SQLite+JSON")]
+        ET2["BioCultTermos\nSKOS-XL"] <--> UDB2
     end
 
     PL{{"Pluriverso\nMiddleware de Federação\n(índice + mapeamentos SKOS)"}}
@@ -297,7 +303,7 @@ graph TD
 
 O fluxo federado funciona assim:
 
-1. **BioCultPapers** processa PDFs e extrai metadados usando IA, salvando no MongoDB da Iniciativa #1
+1. **BioCultPapers** processa PDFs e extrai metadados usando IA, exportando arquivo importado pelo BioCultDB da Iniciativa #1
 2. **BioCultDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários; publica registros aprovados no endpoint de harvest
 3. **BioCultRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
 4. **BioCultTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
@@ -401,6 +407,8 @@ Devido à **complexidade e flexibilidade** necessárias para armazenar conhecime
    - Permitem modelar relações complexas entre entidades
    - Query language moderna e versátil
    - Flexibilidade arquitetural para evolução futura
+
+A **versão 3.1** adota concretamente a abordagem de **bancos orientados a documentos**: cada unidade federada persiste seus dados em um único arquivo **SQLite com suporte a JSON (JSON1)**, um banco por unidade, compartilhado entre as ferramentas dessa unidade — combinando a flexibilidade de esquema dos bancos de documentos com a simplicidade operacional e a portabilidade de um banco embutido sem servidor.
 
 ### Integrações Externas
 
@@ -611,7 +619,7 @@ Essa documentação incorpora referências a:
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.0.0 (arquitetura federada com Pluriverso).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.1.0 (federada com persistência SQLite+JSON por unidade).
 
 ---
 
@@ -621,15 +629,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0 (Version v3.0) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1 (Version v3.1) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.0},
-  version = {v3.0},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1},
+  version = {v3.1},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18075074},

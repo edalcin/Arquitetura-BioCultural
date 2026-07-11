@@ -178,7 +178,7 @@ Esta seção documenta os containers que já foram implementados e estão em pro
 Interface web completa para gerenciamento de conhecimento tradicional extraído de artigos científicos, implementando os três contextos arquiteturais de forma integrada.
 
 ##### BioCultDB - Aquisição (Porta 3001)
-**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, SQLite (better-sqlite3)
 
 **Responsabilidades:**
 - Entrada manual de dados secundários por pesquisadores
@@ -201,7 +201,7 @@ GET    /references           - Listar referências
 ```
 
 ##### BioCultDB - Curadoria (Porta 3002)
-**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, SQLite (better-sqlite3)
 
 **Responsabilidades:**
 - Interface editorial para revisão de registros
@@ -230,7 +230,7 @@ PUT    /edit/:id             - Editar registro
 ```
 
 ##### BioCultDB - Apresentação (Porta 3003)
-**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, MongoDB
+**Tecnologia:** Node.js, Express, HTMX, Alpine.js, Tailwind CSS, EJS, SQLite (better-sqlite3)
 
 **Responsabilidades:**
 - Consulta pública de dados aprovados
@@ -297,7 +297,7 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 **Responsabilidades:**
 - Processamento de PDFs de artigos científicos
 - Extração de metadados via IA (Google Gemini, OpenAI GPT-4o-mini, Anthropic Claude 3.5 Haiku)
-- Inserção direta no MongoDB
+- Persistência local em SQLite+JSON e exportação de arquivo para importação no BioCultDB
 - Interface desktop para pesquisadores
 
 **Características Técnicas:**
@@ -306,8 +306,8 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
   - Google Gemini (gratuito, 15 req/min)
   - OpenAI GPT-4o-mini
   - Anthropic Claude 3.5 Haiku
-- Armazenamento local em JSON (backup)
-- Sincronização direta com MongoDB (Atlas ou local)
+- Armazenamento local em SQLite+JSON (persistência primária, sem servidor de banco)
+- Exportação de arquivo JSON para importação no BioCultDB (sem sincronização direta)
 - Performance: 50% mais rápido que soluções locais (OLLAMA)
 - PDFs descartados pós-processamento (privacidade)
 
@@ -330,7 +330,7 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 ```
 1. Pesquisador seleciona PDF no BioCultPapers
 2. IA extrai metadados estruturados
-3. Dados salvos em MongoDB com status "pending"
+3. Dados armazenados localmente em SQLite+JSON e exportados como arquivo JSON, importado no BioCultDB com status "pending"
 4. Pesquisador revisa no BioCultDB-Aquisição (porta 3001)
 5. Curador valida no BioCultDB-Curadoria (porta 3002)
 6. Dados aprovados aparecem no BioCultDB-Apresentação (porta 3003)
@@ -340,9 +340,9 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 - Windows 10 ou superior
 - Conexão com internet (APIs de IA)
 - Chave de API de provedor (Gemini/OpenAI/Anthropic)
-- Acesso a MongoDB (Atlas ou local)
+- Local de destino para o arquivo de exportação (JSON)
 
-**Formato de Saída (MongoDB):**
+**Formato de Saída (Arquivo JSON de Exportação):**
 ```json
 {
   "title": "Ethnobotanical study of...",

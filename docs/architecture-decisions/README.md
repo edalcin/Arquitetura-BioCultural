@@ -22,7 +22,7 @@ Architecture Decision Records (ADRs) são documentos que capturam decisões arqu
 ## Lista de ADRs
 
 ### ADR-001: Abordagem de Armazenamento de Dados
-**Status:** Proposto
+**Status:** Depreciado — substituído por ADR-005
 **Data:** Janeiro 2025
 
 Decisão sobre qual abordagem de armazenamento utilizar para dados de conhecimento tradicional. Avalia bancos SQL, orientados a documentos (JSON) e multi-modais, considerando flexibilidade de schema, escalabilidade e complexidade dos dados.
@@ -62,6 +62,17 @@ Redefine a arquitetura como explicitamente federada. Cada entidade (iniciativa d
 **Decisão:** Arquitetura federada com Pluriverso como middleware de federação.
 
 **[Leia o documento completo →](ADR-004-federated-architecture.md)**
+
+
+### ADR-005: Persistência SQLite com JSON por Unidade Federada (v3.1)
+**Status:** Aceito
+**Data:** Julho 2026
+
+Substitui a persistência MongoDB por membro (ADR-001, D5 do ADR-004) por SQLite com JSON (JSON1) — um arquivo por unidade federada, compartilhado pelas ferramentas da unidade em tabelas distintas, um container por unidade, WAL, FTS5 para busca textual, BioCultPapers entregando por arquivo (export/import).
+
+**Decisão:** SQLite com JSON como persistência embutida de cada unidade federada, superando ADR-001 e a decisão D5 do ADR-004.
+
+**[Leia o documento completo →](ADR-005-sqlite-json-persistence.md)**
 
 ---
 
@@ -142,6 +153,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2025-01-24 | ADR-002 | Criação inicial |
 | 2025-01-24 | ADR-003 | Criação inicial |
 | 2026-06-23 | ADR-004 | Arquitetura federada v3.0 |
+| 2026-07-11 | ADR-005 | Persistência SQLite com JSON (v3.1) |
 
 ---
 

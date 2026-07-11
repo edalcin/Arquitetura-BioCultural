@@ -1,7 +1,9 @@
 # ADR-001: Abordagem de Armazenamento de Dados
 
 ## Status
-**Proposto** - Aguardando validação técnica
+**Depreciado — substituído por ADR-005**
+
+Ver ADR-005 para a decisão vigente: SQLite com JSON por unidade federada.
 
 ## Contexto
 

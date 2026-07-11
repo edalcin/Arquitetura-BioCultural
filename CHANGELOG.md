@@ -6,6 +6,55 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.1.0] - 2026-07-11
+
+### Modificado
+
+- **Persistência de cada unidade federada** migrada de MongoDB para **SQLite com JSON** (JSON1): um arquivo SQLite por unidade, compartilhado pelas ferramentas da unidade (tabelas distintas), em modo WAL, um único container por unidade
+- **ADR-001** (Seleção de Banco de Dados) marcado como **Depreciado**, substituído pelo ADR-005
+- **Decisão D5 do ADR-004** ("Posição do MongoDB: Pertence à Iniciativa #1") **superada** pelo ADR-005 — o MongoDB deixa de existir na arquitetura; cada unidade passa a operar seu próprio arquivo SQLite
+- **Harmonização em todas as ferramentas** da federação: BioCultDB, BioCultTermos, BioCultRelatos, BioCultPapers e pluriverso adotam o mesmo padrão de persistência SQLite+JSON
+- **BioCultPapers** deixa de sincronizar diretamente com MongoDB e passa a **entregar dados por arquivo** (exportação de JSON, importado pelo BioCultDB)
+- **Contrato de harvest REST** do Pluriverso (D6 do ADR-004) permanece inalterado — a mudança de persistência é transparente à federação
+
+### Adicionado
+
+- **ADR-005: Persistência SQLite com JSON** registrando a decisão de substituir o MongoDB por SQLite+JSON (JSON1) em cada unidade federada, com FTS5 para busca textual e empacotamento em container único por unidade
+
+### Contexto da Versão
+
+Esta versão reforça a soberania de dados introduzida pela federação (v3.0): cada unidade federada passa a operar um banco de dados **embutido, portável e sem servidor** (SQLite), eliminando a dependência de um serviço MongoDB e simplificando drasticamente o empacotamento Docker de cada unidade. O BioCultTermos passa a compartilhar o mesmo arquivo SQLite das demais ferramentas de sua unidade (BioCultDB ou BioCultRelatos), e o BioCultPapers — aplicativo desktop fora dos containers de unidade — passa a entregar seus dados por arquivo, importado explicitamente pelo BioCultDB.
+
+---
+
+## [3.0.0] - 2026-06-08
+
+### Adicionado
+
+- **Pluriverso** como novo componente de arquitetura: middleware de federação
+  - Harvest periódico via REST paginado dos endpoints públicos de cada membro (D1)
+  - Índice central dos dados públicos federados
+  - Camada de mapeamento semântico entre `ConceptScheme`s de membros diferentes (`skos:exactMatch`, `skos:closeMatch`, `skos:broadMatch`) (D2)
+  - Governança por comitê federado, com representantes de cada membro (D3)
+  - API pública de acesso ao conjunto federado de CTAs
+
+- **ADR-004: Arquitetura Federada v3.0** documentando as decisões estruturantes da federação (D1–D7)
+
+### Modificado
+
+- **Arquitetura redefinida como explicitamente federada**: cada entidade (iniciativa de fontes secundárias ou comunidade tradicional) passa a ser completamente independente e soberana
+- **BioCultDB** e **BioCultRelatos**: implementação obrigatória do endpoint `GET /api/federation/records` (paginado, com suporte a `updated_since`) para harvest pelo Pluriverso (D6)
+- **BioCultTermos**: cada instância torna-se soberana, com `skos:ConceptScheme` próprio publicado para mapeamento pelo Pluriverso (D2)
+- **Posição do MongoDB**: deixa de ser "recurso compartilhado da arquitetura" e passa a ser recurso de infraestrutura pertencente à Iniciativa #1 (BioCultDB + BioCultTermos + BioCultPapers); cada novo membro da federação opera seu próprio MongoDB (D5)
+- **Política de saída de membro**: remoção imediata e completa dos dados e mapeamentos do índice central do Pluriverso (D4)
+- **BioCultPapers**: permanece exclusivo de iniciativas de fontes secundárias; sem alterações funcionais nesta versão (D7)
+
+### Contexto da Versão
+
+Esta versão resolve uma contradição estrutural entre o modelo centralizado da v2.0 (MongoDB compartilhado entre todos os componentes) e os princípios **C.A.R.E.**: uma comunidade tradicional não tem controle real sobre seu conhecimento se ele reside em um banco gerido por terceiros. A federação torna cada membro soberano sobre sua própria infraestrutura de dados, com o Pluriverso atuando como middleware de coleta (harvest), indexação e mapeamento semântico — nunca como detentor direto dos dados dos membros.
+
+---
+
 ## [2.0.0] - 2026-06-08
 
 ### Adicionado
@@ -302,7 +351,10 @@ Primeira versão completa da proposta de arquitetura para Sistema de Informaçõ
 
 ## Links de Versões
 
-- [1.4.0] - 2026-01-04 (versão atual - etnoChat e Painel Analítico)
+- [3.1.0] - 2026-07-11 (versão atual - persistência SQLite com JSON por unidade federada)
+- [3.0.0] - 2026-06-08 (arquitetura federada com Pluriverso)
+- [2.0.0] - 2026-06-08 (BioCultRelatos e migração do BioCultTermos para SKOS-XL)
+- [1.4.0] - 2026-01-04 (etnoChat e Painel Analítico)
 - [1.3.0] - 2026-01-04 (integração BioCultTermos)
 - [1.2.0] - 2025-12-28
 - [1.1.0] - 2025-01-06

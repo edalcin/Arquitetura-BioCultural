@@ -21,7 +21,7 @@ graph TB
         PAINEL["✓ Painel Analítico<br/>Dashboard Interativo"]
     end
 
-    DB[("Base de Dados<br/>MongoDB")]
+    DB[("Base de Dados<br/>SQLite")]
 
 
     BIOCULTPAPERS --> DB

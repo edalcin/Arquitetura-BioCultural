@@ -393,7 +393,7 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 - **BioCultRelatos**: fontes primárias (comunidades, campo) — CLPI obrigatório, validação comunitária
 
 **Integração na Arquitetura:**
-- Atua no Contexto de Aquisição, alimentando o mesmo MongoDB do BioCultDB
+- Atua no Contexto de Aquisição, gravando no mesmo SQLite da unidade (tabela própria)
 - Suporte terminológico do BioCultTermos (SKOS-XL)
 - Os dados registrados seguem o mesmo workflow de curadoria do BioCultDB, com validação comunitária adicional
 

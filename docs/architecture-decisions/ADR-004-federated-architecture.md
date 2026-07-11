@@ -58,6 +58,9 @@ Quando um membro decide sair da federação, **todos os seus dados são removido
 
 ### D5 — Posição do MongoDB: Pertence à Iniciativa #1
 
+**Superado pelo ADR-005 (v3.1):** a persistência de cada unidade passa a ser SQLite com JSON, compartilhado
+pelas ferramentas da unidade; sem MongoDB.
+
 O MongoDB atualmente em uso pelo BioCultDB e BioCultTermos deixa de ser "recurso compartilhado da arquitetura" e passa a ser **recurso de infraestrutura pertencente à iniciativa de fontes secundárias** (Iniciativa #1). A mudança é conceitual e de documentação — não há movimentação de dados.
 
 **Consequência:** Cada novo membro que entrar na federação (comunidade ou nova iniciativa) opera seu próprio MongoDB. A Iniciativa #1 (BioCultDB + BioCultTermos + BioCultPapers) continua usando seu MongoDB existente.
@@ -89,20 +92,20 @@ O BioCultPapers é ferramenta especializada em extração de CTA de literatura c
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias (ex: USEFLORA)"]
-        I1A(BioCultDB) --> I1M[(MongoDB)]
+        I1A(BioCultDB) --> I1M[(SQLite)]
         I1B(BioCultPapers) --> I1A
         I1C(BioCultTermos) <--> I1M
         I1A -->|endpoint REST público| PL
     end
 
     subgraph C2["Comunidade Tradicional #2"]
-        C2A(BioCultRelatos) --> C2M[(MongoDB)]
+        C2A(BioCultRelatos) --> C2M[(SQLite)]
         C2B(BioCultTermos) <--> C2M
         C2A -->|endpoint REST público| PL
     end
 
     subgraph C3["Comunidade Tradicional #3"]
-        C3A(BioCultRelatos) --> C3M[(MongoDB)]
+        C3A(BioCultRelatos) --> C3M[(SQLite)]
         C3B(BioCultTermos) <--> C3M
         C3A -->|endpoint REST público| PL
     end
@@ -149,9 +152,9 @@ Resposta:
 
 | Componente | Mudanças necessárias para v3.0 |
 |---|---|
-| **BioCultDB** | Implementar endpoint `/api/federation/records`; remover pressuposto de MongoDB compartilhado |
-| **BioCultPapers** | Nenhuma — alimenta o MongoDB da Iniciativa #1 como hoje |
-| **BioCultTermos** | Cada instância torna-se soberana; publicar `ConceptScheme` via endpoint para harvest pelo Pluriverso |
+| **BioCultDB** | Implementar endpoint `/api/federation/records`; persistir em SQLite+JSON compartilhado da unidade (ADR-005) |
+| **BioCultPapers** | Entregar por arquivo (export/import), sem MongoDB (ADR-005) |
+| **BioCultTermos** | Cada instância torna-se soberana; persistir em SQLite+JSON compartilhado da unidade (ADR-005); publicar `ConceptScheme` via endpoint para harvest pelo Pluriverso |
 | **BioCultRelatos** | Implementar endpoint `/api/federation/records`; implementar CLPI antes de `visibility: public` |
 | **Pluriverso** | Novo componente: harvest scheduler, índice central, mapeamento SKOS, API pública, interface de governança |
 

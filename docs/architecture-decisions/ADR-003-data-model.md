@@ -106,7 +106,7 @@ Entidade central que representa um item de conhecimento tradicional.
 ```javascript
 {
   // ============ IDENTIFICAÇÃO ============
-  _id: ObjectId("507f1f77bcf86cd799439011"),
+  "id": "a1b2c3d4-e5f6-47a8-b9c0-d1e2f3a4b5c6",
   type: "traditional_knowledge", // Fixo por enquanto, extensível no futuro
 
   // ============ WORKFLOW ============
@@ -145,7 +145,7 @@ Entidade central que representa um item de conhecimento tradicional.
         matchType: "EXACT",
         confidence: 100,
         status: "ACCEPTED",
-        lastValidated: ISODate("2025-01-15T10:00:00Z")
+        lastValidated: "2025-01-15T10:00:00Z"
       },
       globalNames: {
         matchedName: "Manihot esculenta Crantz",
@@ -265,7 +265,7 @@ Entidade central que representa um item de conhecimento tradicional.
     // Consentimento documentado
     consent: {
       obtained: true,
-      date: ISODate("2024-12-01T00:00:00Z"),
+      date: "2024-12-01T00:00:00Z",
       type: "free_prior_informed", // FPIC - Free, Prior and Informed Consent
       document: "consent_form_001.pdf",
       authorizedBy: "Liderança Comunitária"
@@ -288,8 +288,8 @@ Entidade central que representa um item de conhecimento tradicional.
     // Para fontes primárias (coleta direta)
     primary: {
       collectionMethod: "entrevista", // entrevista | observação | workshop-participativo
-      collectedBy: ObjectId("user_id"), // Referência ao pesquisador
-      collectionDate: ISODate("2024-11-15T00:00:00Z"),
+      collectedBy: "user_id", // Referência ao pesquisador (id string)
+      collectionDate: "2024-11-15T00:00:00Z",
       informants: [
         {
           role: "Pajé da comunidade",
@@ -301,7 +301,7 @@ Entidade central que representa um item de conhecimento tradicional.
       ethicsApproval: {
         committee: "Comitê de Ética em Pesquisa - UFAM",
         protocol: "CAAE 12345678.9.0000.5020",
-        approvalDate: ISODate("2024-10-01T00:00:00Z")
+        approvalDate: "2024-10-01T00:00:00Z"
       }
     },
 
@@ -316,8 +316,8 @@ Entidade central que representa um item de conhecimento tradicional.
       publisher: "Editora Amazônia",
 
       // Extração de dados
-      extractedBy: ObjectId("user_id"),
-      extractionDate: ISODate("2025-01-10T00:00:00Z"),
+      extractedBy: "user_id",
+      extractionDate: "2025-01-10T00:00:00Z",
       extractionMethod: "manual" // manual | automated-ocr | automated-nlp
     }
   },
@@ -330,7 +330,7 @@ Entidade central que representa um item de conhecimento tradicional.
       credit: "Foto: Dr. João Silva",
       license: "CC BY-SA 4.0",
       url: "https://cdn.etnoknowledge.org/images/species/507f.../001.jpg",
-      uploadDate: ISODate("2025-01-15T00:00:00Z")
+      uploadDate: "2025-01-15T00:00:00Z"
     }
   ],
 
@@ -346,8 +346,8 @@ Entidade central que representa um item de conhecimento tradicional.
     restrictions: {
       reason: "Conhecimento sagrado da comunidade",
       allowedRoles: ["admin", "community_rep"],
-      allowedUsers: [ObjectId("user_1"), ObjectId("user_2")],
-      allowedCommunities: [ObjectId("community_1")]
+      allowedUsers: ["user_1", "user_2"],
+      allowedCommunities: ["community_1"]
     },
 
     // Campos que devem ser ocultados publicamente
@@ -360,12 +360,12 @@ Entidade central que representa um item de conhecimento tradicional.
 
   // ============ METADADOS DO SISTEMA ============
   metadata: {
-    createdAt: ISODate("2025-01-15T10:30:00Z"),
-    createdBy: ObjectId("user_researcher_123"),
-    lastModifiedAt: ISODate("2025-01-20T14:20:00Z"),
-    lastModifiedBy: ObjectId("user_curator_456"),
-    publishedAt: ISODate("2025-01-21T09:00:00Z"),
-    publishedBy: ObjectId("user_admin_789"),
+    createdAt: "2025-01-15T10:30:00Z",
+    createdBy: "user_researcher_123",
+    lastModifiedAt: "2025-01-20T14:20:00Z",
+    lastModifiedBy: "user_curator_456",
+    publishedAt: "2025-01-21T09:00:00Z",
+    publishedBy: "user_admin_789",
 
     // Idioma principal do registro
     language: "pt-BR",
@@ -407,7 +407,7 @@ Entidade central que representa um item de conhecimento tradicional.
 
 ```javascript
 {
-  _id: ObjectId("user_123"),
+  "id": "b2c3d4e5-f6a7-48b9-c0d1-e2f3a4b5c6d7",
   email: "researcher@example.com",
   name: "Dr. João Silva",
 
@@ -423,7 +423,7 @@ Entidade central que representa um item de conhecimento tradicional.
 
   // Para representantes de comunidade
   community: {
-    communityId: ObjectId("community_123"),
+    communityId: "community_123",
     role: "liderança", // liderança | pajé | artesão | etc
     authorized: true
   },
@@ -445,10 +445,10 @@ Entidade central que representa um item de conhecimento tradicional.
   stats: {
     recordsCreated: 45,
     recordsApproved: 120,
-    lastActive: ISODate("2025-01-20T10:00:00Z")
+    lastActive: "2025-01-20T10:00:00Z"
   },
 
-  createdAt: ISODate("2024-01-01T00:00:00Z"),
+  createdAt: "2024-01-01T00:00:00Z",
   active: true
 }
 ```
@@ -457,7 +457,7 @@ Entidade central que representa um item de conhecimento tradicional.
 
 ```javascript
 {
-  _id: ObjectId("community_123"),
+  "id": "c3d4e5f6-a7b8-49c0-d1e2-f3a4b5c6d7e8",
 
   // Informações básicas
   name: "Comunidade Baniwa do Rio Içana",
@@ -481,7 +481,7 @@ Entidade central que representa um item de conhecimento tradicional.
       name: "Nome do Representante",
       role: "liderança",
       email: "contato@example.com",
-      userId: ObjectId("user_456")
+      userId: "user_456"
     }
   ],
 
@@ -492,7 +492,7 @@ Entidade central que representa um item de conhecimento tradicional.
   },
 
   // Metadados
-  registeredAt: ISODate("2024-06-01T00:00:00Z"),
+  registeredAt: "2024-06-01T00:00:00Z",
   verified: true
 }
 ```
@@ -501,8 +501,8 @@ Entidade central que representa um item de conhecimento tradicional.
 
 ```javascript
 {
-  _id: ObjectId("log_123"),
-  recordId: ObjectId("record_123"),
+  "id": "d4e5f6a7-b8c9-40d1-e2f3-a4b5c6d7e8f9",
+  recordId: "record_123",
 
   // Versionamento
   versionNumber: 3,
@@ -511,12 +511,12 @@ Entidade central que representa um item de conhecimento tradicional.
   action: "update", // create | update | approve | reject | publish | delete
 
   // Quem fez
-  userId: ObjectId("user_456"),
+  userId: "user_456",
   userName: "Dr. João Silva",
   userRole: "curator",
 
   // Quando
-  timestamp: ISODate("2025-01-20T14:20:00Z"),
+  timestamp: "2025-01-20T14:20:00Z",
 
   // O que mudou
   changes: [
