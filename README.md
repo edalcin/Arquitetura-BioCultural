@@ -78,7 +78,6 @@ Todas compartilham:
 - **Validar** e qualificar dados através de processos curatoriais rigorosos
 - **Compartilhar** informações de forma ética e responsável com pesquisadores e público geral
 - **Integrar** múltiplas fontes de dados, desde artigos científicos até registros primários
-- **Automatizar** a captura de informações relevantes de fontes confiáveis
 
 ---
 
@@ -140,7 +139,7 @@ graph TD
 
 Esta arquitetura possui implementações concretas que materializam os conceitos propostos:
 
-### BioCultDB - Banco de Dados de Conhecimento Tradicional
+### BioCultDB - Banco de Dados de Conhecimento Tradicional de Fontes Secundárias
 
 [![GitHub](https://img.shields.io/badge/GitHub-BioCultDB-181717?logo=github)](https://github.com/edalcin/BioCultDB)
 
@@ -200,13 +199,12 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 - **Plataforma:** Windows (.NET 8, WPF, MVVM)
 - **Extração com IA:**
   - Google Gemini (15 req/min, gratuito)
-  - OpenAI GPT-4o-mini
-  - Anthropic Claude 3.5 Haiku
+  - OpenAI GPT
+  - Anthropic Claude
 - **Integração Nativa:** Persistência local SQLite+JSON; entrega ao BioCultDB por exportação de arquivo
 - **Dados Extraídos:**
   - Obrigatórios: Título, autores, ano, abstract
   - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
-- **Performance:** Melhoria de 50% em relação a soluções locais
 
 ### BioCultTermos - Plataforma de Gestão Terminológica
 
@@ -238,8 +236,6 @@ Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre 
   - Conformidade com princípios CARE para governança de dados indígenas
 
 - **Recursos Técnicos:**
-  - **Busca:** Meilisearch para busca inteligente
-  - **Autenticação:** OAuth Google
   - **Exportação:** SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
   - **APIs:** REST para integração com BioCultDB e sistemas externos
   - **Containerização:** Docker com GitHub Actions
@@ -312,123 +308,9 @@ O fluxo federado funciona assim:
 
 ---
 
-## Metodologia: C4 Model
+## Metodologia e Tecnologias
 
-A arquitetura deste sistema é documentada utilizando o **[C4 Model](https://c4model.com/)**, um framework de visualização que descreve arquiteturas de software através de 4 níveis de diagrama progressivamente mais detalhados (criado por Simon Brown):
-
-1. **Context (Contexto)**: Visão de alto nível mostrando o sistema como uma caixa preta e suas interações com usuários e sistemas externos
-2. **Container (Contêiner)**: Decomposição do sistema em contêineres tecnológicos (aplicações, bancos de dados, serviços) e como se comunicam
-3. **Component (Componente)**: Detalhamento interno de cada contêiner, mostrando os componentes principais e suas responsabilidades
-4. **Code (Código)**: Nível de detalhe de classes, interfaces e relações (opcional, utilizamos quando necessário)
-
-Essa abordagem oferece clareza progressiva: iniciantes entendem o contexto geral, arquitetos visualizam containers e decisões técnicas, e desenvolvedores acessam detalhes de componentes. Os diagramas neste repositório seguem este padrão, permitindo navegação intuitiva da visão geral até a implementação.
-
-### 1. Contexto de Aquisição
-
-Responsável pela **entrada de dados** no sistema de múltiplas fontes:
-
-- **Dados Secundários**: Extração de informações de artigos científicos, livros e publicações
-- **Dados Primários**: Registro direto com todos os cuidados éticos e legais necessários
-- **Coleta Automatizada**: Robôs que monitoram periódicos científicos (ex: etnobotânica)
-- **Integrações**: APIs para consumo de dados de sistemas externos
-
-```mermaid
-sequenceDiagram
-    participant Fonte as Fonte de Dados
-    participant API as API de Ingestão
-    participant Validador as Validador
-    participant DB as Base de Dados
-
-    Fonte->>API: Envia dados (padrão definido)
-    API->>Validador: Valida estrutura
-    Validador->>API: Confirma validação
-    API->>DB: Armazena com status "pendente"
-    DB-->>API: Confirmação
-```
-
-**Características principais:**
-- Padrão de dados unificado para todas as fontes
-- APIs RESTful para ingestão
-- Sistema de fila para processamento assíncrono
-- Validação automática de dados taxonômicos via GBIF e Global Names
-
-### 2. Contexto de Curadoria
-
-Interface dedicada para **qualificação e validação** dos dados:
-
-- Acesso restrito a pesquisadores e representantes de comunidades
-- Workflow de aprovação e enriquecimento de dados
-- Integração com APIs de validação taxonômica
-- Controle de versões e auditoria de alterações
-
-```mermaid
-stateDiagram-v2
-    [*] --> Pendente
-    Pendente --> EmRevisão: Curador inicia revisão
-    EmRevisão --> Rejeitado: Dados insuficientes
-    EmRevisão --> EmValidação: Revisão completa
-    EmValidação --> Aprovado: Validação taxonômica OK
-    EmValidação --> EmRevisão: Requer correção
-    Aprovado --> Publicado: Curador publica
-    Publicado --> [*]
-    Rejeitado --> [*]
-```
-
-### 3. Contexto de Apresentação
-
-Portal público para **acesso e consulta** das informações validadas:
-
-- Interface web responsiva
-- APIs públicas de consulta
-- Visualizações interativas
-- Sistema de busca avançada
-- Exportação de dados em formatos abertos
-
-## Tecnologias Consideradas
-
-### Banco de Dados
-
-Devido à **complexidade e flexibilidade** necessárias para armazenar conhecimento tradicional, três abordagens são consideradas:
-
-1. **Bancos de Dados SQL** - Modelo relacional
-   - Estrutura rigorosa com esquema bem definido
-   - Integridade referencial garantida
-   - Consultas poderosas em dados estruturados
-   - Ideal para relacionamentos complexos
-
-2. **Bancos Orientados a Documentos (JSON)**
-   - Flexibilidade no esquema
-   - Escalabilidade horizontal
-   - Consultas ricas em documentos estruturados como JSON
-   - Armazenamento natural de dados semi-estruturados
-
-3. **Bancos Multi-Modais**
-   - Suportam múltiplos modelos de dados (documentos, grafos, relações)
-   - Permitem modelar relações complexas entre entidades
-   - Query language moderna e versátil
-   - Flexibilidade arquitetural para evolução futura
-
-A **versão 3.1** adota concretamente a abordagem de **bancos orientados a documentos**: cada unidade federada persiste seus dados em um único arquivo **SQLite com suporte a JSON (JSON1)**, um banco por unidade, compartilhado entre as ferramentas dessa unidade — combinando a flexibilidade de esquema dos bancos de documentos com a simplicidade operacional e a portabilidade de um banco embutido sem servidor.
-
-### Integrações Externas
-
-#### Validação Taxonômica
-
-- **Flora e Funga do Brasil API** (https://floradobrasil.jbrj.gov.br/consulta/) - Verificação primária de nomenclatura científica e validação de dados taxonômicos para plantas, algas e fungos brasileiros
-- **Fauna do Brasil API** (https://fauna.jbrj.gov.br/) - Verificação primária de nomenclatura científica e validação de dados taxonômicos para fauna brasileira
-- **GBIF API** (https://www.gbif.org/) - Validação de dados taxonômicos como fallback quando não encontrado nas bases brasileiras
-
-#### Validação Territorial e de Proveniência
-
-- **Plataforma de Territórios Tradicionais (MPF)** (https://territoriostradicionais.mpf.mp.br/) - Sincronização de polígonos territoriais de povos indígenas e comunidades tradicionais, validação de proveniência geográfica e cruzamento espacial de registros com seus territórios de origem
-
-#### Fontes Autoritativas
-
-- **Outras Fontes Autoritativas** - Padrão extensível para integração com sistemas especializados (SISGEN, SiBBr, registros comunitários) que complementam validação e enriquecimento de dados
-
-#### Coleta Automática
-
-- Periódicos científicos via APIs ou scraping ético, com extração de dados com auxílio de IA
+A documentação arquitetural segue o **[C4 Model](https://c4model.com/)** (Context, Container, Component, Code), e a camada de persistência adota bancos orientados a documentos (SQLite+JSON). Detalhes completos — níveis do C4 Model, contextos de Aquisição/Curadoria/Apresentação, comparação de abordagens de banco de dados e integrações externas potenciais — estão em **[docs/metodologia-e-tecnologias.md](docs/metodologia-e-tecnologias.md)**.
 
 ## Princípios Orientadores
 
@@ -454,6 +336,7 @@ Este repositório está organizado da seguinte forma:
 Arquitetura-BioCultural/
 ├── README.md (este arquivo)
 ├── docs/
+│   ├── metodologia-e-tecnologias.md
 │   ├── c4-model/
 │   │   ├── 01-context-diagram.md
 │   │   ├── 02-container-diagram.md
@@ -473,15 +356,9 @@ Arquitetura-BioCultural/
 2. **[Diagrama de Containers](docs/c4-model/02-container-diagram.md)** - Componentes principais e suas tecnologias
 3. **[Diagrama de Componentes](docs/c4-model/03-component-diagram.md)** - Detalhamento interno de cada contexto
 4. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
+5. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
 
-## Próximos Passos
 
-1. Definição detalhada do modelo de dados
-	* Considerando a diferença entre dados primários e secundários
-2. Prototipação das APIs de ingestão
-3. Desenvolvimento do sistema de autenticação e autorização
-4. Implementação do workflow de curadoria
-5. Desenvolvimento da interface pública
 
 ---
 
@@ -526,7 +403,6 @@ Para coleta ética e consentida de dados diretamente das comunidades:
 - **Processo CLPI (Consentimento Livre, Prévio e Informado)**: Implementação de protocolo completo baseado em Lei 13.123/2015
 - **Registro Comunitário**: Interface para comunidades registrarem autonomamente seu próprio conhecimento
 - **Acordos Eletrônicos**: Armazenamento e rastreamento de acordos de compartilhamento de benefícios
-- **Infopreneurs Locais**: Capacitação de membros da comunidade como coletores de dados com oportunidades de geração de renda
 - **Documentação Audiovisual**: Suporte a preservação de conhecimento em múltiplas formas (áudio, vídeo, foto, texto)
 
 ### Integração com Plataforma de Territórios Tradicionais do MPF
@@ -550,7 +426,6 @@ Esta integração fortalece:
 A arquitetura adota e contribui para padrões de dados abertos reconhecidos:
 
 - **Darwin Core**: Para ocorrências de espécies e dados de biodiversidade
-- **Plinian Core**: Para descrições de espécies e informações sobre usos
 - **Dublin Core Estendido**: Para metadados ricos e flexíveis
 - **SocioBio Standard**: Padrão específico para dados de sociobiodiversidade brasileira (ver [projeto SocioBio no GitHub](https://github.com/sibbr/sociobio))
 
