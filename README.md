@@ -288,6 +288,24 @@ Extrair e sistematizar evidências de conhecimento tradicional associado à biod
 
 Na arquitetura federada, o BioCultNaturalistas é o componente central do tipo de membro **Obras de Naturalistas**, seguindo o mesmo padrão dos demais membros: container próprio, arquivo SQLite+JSON compartilhado com uma instância soberana do BioCultTermos, e endpoint de harvest REST para o Pluriverso. **Projeto em fase inicial (apenas repositório e documentação).**
 
+### Pluriverso - Middleware de Federação
+
+[![GitHub](https://img.shields.io/badge/GitHub-pluriverso-181717?logo=github)](https://github.com/edalcin/pluriverso)
+
+Middleware que conecta todos os membros da federação — sem gerenciar seus dados. Implementa o harvest periódico via REST, mantém o índice central dos registros públicos e a camada de mapeamento semântico SKOS-XL entre os vocabulários de diferentes membros, expondo uma API pública unificada para pesquisadores e aplicações.
+
+**Responsabilidades:**
+
+- **Harvest periódico**: coleta registros `visibility: public` de cada membro via endpoint REST paginado
+- **Índice central**: cópia derivada dos dados públicos (SQLite+JSON + FTS5), nunca a fonte de verdade
+- **Mapeamento semântico**: `skos:exactMatch`/`skos:closeMatch`/`skos:broadMatch` entre `ConceptScheme`s de membros diferentes
+- **API pública unificada**: busca textual e semântica, filtros por membro/fonte/comunidade/espécie/região, atribuição de origem (`member_id`)
+- **Governança**: suporta o Comitê Federado nas decisões sobre admissão, contrato de publicação e mapeamentos
+
+**Integração na Arquitetura:**
+
+Na arquitetura federada, o Pluriverso é o único componente com visão de todos os membros — mas nunca acessa dados além do que cada membro publica explicitamente. **Projeto em fase inicial (ainda sem implementação de código).**
+
 ### Integração Federada entre Projetos
 
 ```mermaid
