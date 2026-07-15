@@ -1,11 +1,11 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18075074-blue)](https://doi.org/10.5281/zenodo.18075074)
-[![Versão](https://img.shields.io/badge/Versão-3.1.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.2.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
-Este repositório contém a proposta de arquitetura para um sistema de informações dedicado à preservação, curadoria e compartilhamento de conhecimento tradicional associado à biodiversidade (CTA). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados, garantindo os princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) em sua essência. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado.
+Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX.
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
@@ -15,75 +15,50 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 
 ## Motivação e Justificativa
 
-### O Cenário Atual: Fragmentação de Iniciativas
+### O Problema: Evidências Dispersas e Não Registradas
 
-O Brasil possui múltiplas iniciativas de qualidade mundial para sistematizar conhecimento tradicional associado à biodiversidade, porém operam de forma isolada sem arquitetura comum que permita integração e sinergia. Por exemplo, algumas das iniciativas em 2025:
+A relação entre comunidades tradicionais brasileiras e a biodiversidade produziu, ao longo de séculos, um vasto conjunto de evidências: conhecimentos, práticas e usos documentados em artigos científicos, relatados diretamente por seus detentores em campo, preservados em acervos históricos e museológicos, e registrados nas obras de naturalistas que visitaram o Brasil entre os séculos XVII e XIX. Essas evidências existem — mas estão dispersas em bibliotecas, museus, bases de dados isoladas e na memória viva das comunidades, sem uma arquitetura comum que permita registrá-las, relacioná-las e compartilhá-las com o devido respeito à sua origem.
 
-#### 1. [Projeto GEF "Entre-Ciências"](https://www.thegef.org/projects-operations/projects/11269) (2025-2029)
-Projeto de grande porte (US$ 7 milhões) coordenado pelo MCTI para fortalecer capacidade de Povos Indígenas e Comunidades Locais (PIPCTAFs) gerenciarem dados sobre sociobiodiversidade em Amazônia e Cerrado, usando padrões DarwinCore/PlinianCore via SiBBr.
+### A Motivação: Registrar e Compartilhar Evidências com Respeito Pleno ao C.A.R.E.
 
-#### 2. Rede de Conhecimentos sobre Sociobiodiversidade (RCS)
-Iniciativa do ICMBio (CNPT) em parceria com UFSC que busca integrar bases de dados dispersas em plataforma única, com ênfase em protocolos comunitários e Consentimento Livre, Prévio e Informado (CLPI).
+A Arquitetura BioCultural nasce da necessidade de **registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade**, provenientes de diferentes fontes. O objetivo é ofertar uma arquitetura que permita registrar e compartilhar essas evidências com respeito **pleno e absoluto** aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) — independentemente de a fonte ser um artigo científico, um relato de campo, um item de acervo museológico ou a obra de um naturalista do século XVIII: se a evidência descreve o conhecimento ou a prática de uma comunidade tradicional, essa comunidade mantém autoridade sobre como ela é registrada, usada e compartilhada.
 
-#### 3. Modernização do SISGEN (RNP-MMA-BID)
-Projeto de 13 meses para modernizar o Sistema Nacional de Gestão do Patrimônio Genético e CTA, implementando interoperabilidade via IPT (Integrated Publishing Toolkit) com padrões FAIR e CARE.
+### Quatro Fontes de Evidência
 
-#### 4. [Useflora: Pesquisa colaborativa para salvaguarda da sociobiodiversidade brasileira](https://useflora.ufsc.br/) (UFSC)
-Sistema com registros etnobotânicos validados, implementando inovador "Registro Comunitário" onde comunidades definem níveis de acesso a seus conhecimentos.
+| Tipo de Fonte | Descrição | Ferramenta(s) |
+|---|---|---|
+| **Fontes secundárias** | Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) + [BioCultPapers](https://github.com/edalcin/BioCultPapers) |
+| **Fontes primárias** | Relatos registrados diretamente em campo, junto às comunidades (CLPI obrigatório) | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
+| **Acervos históricos e museológicos** | Coleções, registros e documentos preservados em museus e arquivos históricos | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
+| **Obras de naturalistas** | Relatos e obras de naturalistas em visita ao Brasil nos séculos XVII, XVIII e XIX | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
 
-### O Problema da Fragmentação
+Cada fonte exige um processo de aquisição e curadoria diferente — mas todas convergem para o mesmo objetivo: uma evidência registrada, rastreável até sua origem, e compartilhada sob os princípios C.A.R.E.
 
-Apesar de perseguirem objetivos convergentes, essas iniciativas geram:
+### Imperativo Legal e Ético
 
-- **Dispersão de dados**: mesmo conhecimento armazenado em múltiplos sistemas sem sincronização
-- **Padrões inconsistentes**: Useflora (41 campos relacional), GEF (DarwinCore), SISGEN (patrimônio genético), RCS (agregador flexível)
-- **Replicação de esforços**: múltiplos "registros comunitários" em desenvolvimento paralelo
-- **Soberania fragmentada**: comunidades interagem com sistemas desconectados
-- **Pesquisa limitada**: impossível fazer queries que atravessem iniciativas
-- **Sustentabilidade em risco**: cada um com seu ciclo de financiamento e dependências
+Registrar essas evidências com respeito ao C.A.R.E. não é apenas um princípio — é uma obrigação legal:
+- **Lei 13.123/2015** (Lei da Biodiversidade): exige consentimento e repartição de benefícios no acesso e uso de conhecimento tradicional associado
+- **Protocolo de Nagoya**: exige rastreabilidade de origem e consentimento no acesso a conhecimento tradicional
+- **CDB Art. 8(j)**: exige respeito, preservação e manutenção do conhecimento tradicional com aprovação e participação de seus detentores
 
-### Oportunidade de Integração
+### Iniciativas Complementares
 
-Uma arquitetura integrada possibilitaria:
-
-✅ **Interoperabilidade sem perda de autonomia**: camada comum permite compartilhamento mantendo independência</br>
-✅ **Registro comunitário unificado**: comunidade faz login uma única vez, direitos propagam para todas plataformas</br>
-✅ **Governança consistente**: FAIR + CARE implementados uniformemente</br>
-✅ **Busca e análise integrada**: pesquisadores com visão completa da biodiversidade</br>
-✅ **Repartição de benefícios rastreável**: Lei 13.123/2015 cumprida efetivamente
-
-### Imperativo Legal e Institucional
-
-A fragmentação coloca em risco o cumprimento de:
-- **Lei 13.123/2015**: comunidades precisam ser informadas sobre usos de conhecimento (impossível se disperso)
-- **Protocolo de Nagoya**: exige rastreabilidade internacional (integração técnica essencial)
-- **CDB Art. 8j**: participação ativa de detentores (integração facilitaria essa participação)
-
-### Convergência das Iniciativas
-
-Todas compartilham:
-- Objetivo de sistematizar CTA
-- Desafio de proteção do conhecimento tradicional
-- Mesma base legal (Lei 13.123/2015)
-- Compatibilidade técnica (SiBBr, infraestrutura de dados aberta, padrões interoperáveis)
-- Cobertura geográfica complementar (juntas cobrem praticamente toda biodiversidade brasileira)
-
-**Esta proposta de arquitetura não busca substituir as iniciativas existentes, mas criar camada de integração que possibilite interoperabilidade, estabeleça padrões mínimos sem sacrificar autonomia, e implemente governança compartilhada com protagonismo comunitário.**
+Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicional associado à biodiversidade no Brasil. Iniciativas como o Projeto GEF "Entre-Ciências", a Rede de Conhecimentos sobre Sociobiodiversidade (RCS) e a modernização do SISGEN perseguem objetivos convergentes — ver seção "Iniciativas Governamentais e Institucionais Brasileiras" mais abaixo, ou os resumos completos em [docs/iniciativas/](docs/iniciativas/README.md). A Arquitetura BioCultural não busca substituí-las, e sim oferecer um modelo de arquitetura federada, soberano por design, que qualquer iniciativa pode adotar para registrar e compartilhar suas evidências com respeito ao C.A.R.E.
 
 ---
 
 ## Objetivos
 
-- **Preservar** o conhecimento tradicional de comunidades sobre o uso de plantas e biodiversidade
-- **Validar** e qualificar dados através de processos curatoriais rigorosos
-- **Compartilhar** informações de forma ética e responsável com pesquisadores e público geral
-- **Integrar** múltiplas fontes de dados, desde artigos científicos até registros primários
+- **Registrar** evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de fontes secundárias, primárias, acervos históricos/museológicos e obras de naturalistas
+- **Documentar** a proveniência de cada evidência, com rastreabilidade completa até sua fonte original
+- **Compartilhar** essas evidências com pesquisadores, comunidades e público geral, com respeito pleno e absoluto aos princípios C.A.R.E.
+- **Federar** múltiplas ferramentas e fontes sob uma arquitetura comum, sem centralizar dados nem comprometer a soberania de nenhuma comunidade ou iniciativa
 
 ---
 
-## Arquitetura do Sistema — Versão 3.1 (Federada)
+## Arquitetura do Sistema — Versão 3.2 (Federada)
 
-A versão 3.1 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**. Cada membro da federação (iniciativa de fontes secundárias ou comunidade tradicional) mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
+A versão 3.2 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
 
 ```mermaid
 graph TD
@@ -95,6 +70,16 @@ graph TD
     end
 
     I1P -.->|"exporta arquivo"| I1A
+
+    subgraph AC["Acervos Históricos e Museológicos — 1 container"]
+        ACA(BioCultAcervos) --> ACS[(SQLite+JSON)]
+        ACB(BioCultTermos) <--> ACS
+    end
+
+    subgraph NA["Obras de Naturalistas séc. XVII-XIX — 1 container"]
+        NAA(BioCultNaturalistas) --> NAS[(SQLite+JSON)]
+        NAB(BioCultTermos) <--> NAS
+    end
 
     subgraph C2["Comunidade Tradicional #2 — 1 container"]
         C2A(BioCultRelatos) --> C2S[(SQLite+JSON)]
@@ -110,6 +95,8 @@ graph TD
     U((Usuário /\nAplicação))
 
     I1 -->|harvest REST| PL
+    AC -->|harvest REST| PL
+    NA -->|harvest REST| PL
     C2 -->|harvest REST| PL
     C3 -->|harvest REST| PL
     U <-->|API| PL
@@ -129,6 +116,8 @@ graph TD
 |------|-------------|----------------|
 | Iniciativa de Fontes Secundárias | BioCultDB + BioCultPapers + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Literatura científica (artigos, PDFs) |
 | Comunidade Tradicional | BioCultRelatos + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Registro primário direto (CLPI obrigatório) |
+| Acervos Históricos e Museológicos | BioCultAcervos + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Coleções, registros e documentos de acervos e museus |
+| Obras de Naturalistas (séc. XVII–XIX) | BioCultNaturalistas + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Relatos e obras de naturalistas em visita ao Brasil |
 
 **Legenda:**
 - Cada membro opera de forma completamente independente
@@ -269,7 +258,35 @@ Registrar diretamente o conhecimento tradicional sobre biodiversidade das comuni
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada v3.1, o BioCultRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do BioCultRelatos com seu próprio SQLite soberano (compartilhado com o BioCultTermos da comunidade). O BioCultTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
+Na arquitetura federada, o BioCultRelatos é o componente central de uma **Comunidade Tradicional** membro da federação. Cada comunidade opera sua própria instância do BioCultRelatos com seu próprio SQLite soberano (compartilhado com o BioCultTermos da comunidade). O BioCultTermos da comunidade fornece suporte terminológico local. Os dados marcados como `visibility: public` (após CLPI) são coletados periodicamente pelo Pluriverso via endpoint REST.
+
+### BioCultAcervos - Registro de Evidências em Acervos Históricos e Museológicos
+
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultAcervos-181717?logo=github)](https://github.com/edalcin/BioCultAcervos)
+
+Plataforma dedicada ao registro de evidências da relação entre comunidades tradicionais e a biodiversidade preservadas em **acervos históricos e museológicos** — coleções, registros e documentos que atestam essa relação ao longo do tempo, complementando as fontes secundárias (artigos) e primárias (campo).
+
+**Propósito:**
+
+Sistematizar e tornar rastreável o conhecimento tradicional associado à biodiversidade documentado em acervos de museus, arquivos e coleções históricas, com o mesmo rigor de proveniência e respeito aos princípios C.A.R.E. aplicado às demais fontes da arquitetura.
+
+**Integração na Arquitetura:**
+
+Na arquitetura federada, o BioCultAcervos é o componente central de um novo tipo de membro — **Acervos Históricos e Museológicos** — seguindo o mesmo padrão dos demais membros: container próprio, arquivo SQLite+JSON compartilhado com uma instância soberana do BioCultTermos, e endpoint de harvest REST para o Pluriverso. **Projeto em fase inicial (apenas repositório e documentação).**
+
+### BioCultNaturalistas - Registro de Evidências em Obras de Naturalistas (séc. XVII-XIX)
+
+[![GitHub](https://img.shields.io/badge/GitHub-BioCultNaturalistas-181717?logo=github)](https://github.com/edalcin/BioCultNaturalistas)
+
+Plataforma dedicada ao registro de evidências da relação entre comunidades tradicionais e a biodiversidade presentes em **obras e relatórios de naturalistas** que visitaram o Brasil nos séculos XVII, XVIII e XIX — uma fonte histórica rica e ainda pouco sistematizada sobre o conhecimento tradicional da época.
+
+**Propósito:**
+
+Extrair e sistematizar evidências de conhecimento tradicional associado à biodiversidade registradas em obras históricas de naturalistas, preservando a rastreabilidade até a obra original e respeitando os princípios C.A.R.E. na forma como esse conhecimento histórico é atribuído e compartilhado.
+
+**Integração na Arquitetura:**
+
+Na arquitetura federada, o BioCultNaturalistas é o componente central do tipo de membro **Obras de Naturalistas**, seguindo o mesmo padrão dos demais membros: container próprio, arquivo SQLite+JSON compartilhado com uma instância soberana do BioCultTermos, e endpoint de harvest REST para o Pluriverso. **Projeto em fase inicial (apenas repositório e documentação).**
 
 ### Integração Federada entre Projetos
 
@@ -305,6 +322,8 @@ O fluxo federado funciona assim:
 4. **BioCultTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
 5. **Pluriverso** coleta periodicamente via REST, indexa registros públicos e disponibiliza via API unificada
 6. Usuário acessa o conjunto federado de CTAs pelo Pluriverso sem interagir diretamente com cada membro
+
+> Acervos históricos/museológicos (BioCultAcervos) e obras de naturalistas (BioCultNaturalistas) seguirão o mesmo padrão de publicação e harvest, uma vez implementados — ver "Projetos Implementados" acima.
 
 ---
 
@@ -451,7 +470,18 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 
 ### Projetos em Desenvolvimento
 - **[BioCultRelatos](https://github.com/edalcin/BioCultRelatos)** - Plataforma para aquisição de dados primários (CLPI) diretamente de comunidades tradicionais; componente central de cada comunidade membro
+- **[BioCultAcervos](https://github.com/edalcin/BioCultAcervos)** - Registro de evidências de conhecimento tradicional preservadas em acervos históricos e museológicos; novo tipo de membro da federação
+- **[BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas)** - Registro de evidências de conhecimento tradicional em obras de naturalistas em visita ao Brasil (séc. XVII-XIX); novo tipo de membro da federação
 - **[Pluriverso](https://github.com/edalcin/pluriverso)** - Middleware de federação; harvest periódico, índice central, mapeamentos semânticos SKOS e API pública unificada
+
+### Iniciativas Governamentais e Institucionais Brasileiras (Complementares)
+
+O Brasil possui outras iniciativas de peso dedicadas à sistematização de conhecimento tradicional associado à biodiversidade — não concorrentes, e sim parte do mesmo esforço nacional:
+- **[Projeto GEF "Entre-Ciências"](https://www.thegef.org/projects-operations/projects/11269)** (2025-2029, MCTI) — fortalecimento de PIPCTAFs para gestão de dados de sociobiodiversidade via SiBBr
+- **Rede de Conhecimentos sobre Sociobiodiversidade (RCS)** (ICMBio/CNPT + UFSC) — integração de bases dispersas com protocolos comunitários e CLPI
+- **Modernização do SISGEN** (RNP-MMA-BID) — interoperabilidade do patrimônio genético e CTA via IPT, com padrões FAIR e CARE
+
+Resumos completos de cada iniciativa em [docs/iniciativas/](docs/iniciativas/README.md). A Arquitetura BioCultural não busca substituir essas iniciativas, e sim oferecer um modelo de arquitetura federada, soberano por design, que pode inspirar ou ser adotado por qualquer uma delas.
 
 ### Dados da Sociobiodiversidade
 - **[Useflora](https://github.com/nperoni/Useflora)** - Banco de dados etnobotânicos com registro comunitário onde comunidades definem níveis de acesso
@@ -494,7 +524,7 @@ Essa documentação incorpora referências a:
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.1.0 (federada com persistência SQLite+JSON por unidade).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.2.0 (quatro fontes de evidência, com persistência SQLite+JSON por unidade).
 
 ---
 
@@ -504,15 +534,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1 (Version v3.1) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2 (Version v3.2) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.18075074
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.1},
-  version = {v3.1},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2},
+  version = {v3.2},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18075074},

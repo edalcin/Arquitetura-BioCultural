@@ -6,6 +6,26 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.2.0] - 2026-07-15
+
+### Adicionado
+
+- **BioCultAcervos**: novo tipo de membro da federação — **Acervos Históricos e Museológicos** — para registrar evidências de conhecimento tradicional preservadas em museus e acervos históricos
+- **BioCultNaturalistas**: novo tipo de membro da federação — **Obras de Naturalistas (séc. XVII–XIX)** — para registrar evidências de conhecimento tradicional documentadas em obras de naturalistas em visita ao Brasil
+- Subseção **"Iniciativas Governamentais e Institucionais Brasileiras"**, recontextualizando GEF Entre-Ciências, RCS e SISGEN como iniciativas complementares (não como motivação da arquitetura)
+
+### Modificado
+
+- **Motivação e Justificativa** redefinida: a motivação central passa a ser registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios C.A.R.E. — substituindo a narrativa anterior centrada na "fragmentação de iniciativas"
+- **Objetivos** reescritos para refletir as quatro fontes de evidência (secundárias, primárias, acervos históricos/museológicos, obras de naturalistas)
+- **Diagrama de arquitetura federada e tabela "Tipos de Membros da Federação"** atualizados de 2 para 4 tipos de membro
+
+### Contexto da Versão
+
+Esta versão não altera a infraestrutura técnica (persistência, federação, harvest — inalteradas desde a v3.1), mas redefine o propósito central da arquitetura: de uma resposta à fragmentação de iniciativas institucionais para uma missão própria — registrar e compartilhar evidências da relação entre comunidades tradicionais e a biodiversidade, de qualquer fonte, com respeito pleno e absoluto aos princípios C.A.R.E. Essa redefinição amplia o escopo de fontes suportadas de duas (secundária/científica e primária/campo) para quatro, incorporando acervos históricos/museológicos (BioCultAcervos) e obras de naturalistas dos séculos XVII-XIX (BioCultNaturalistas).
+
+---
+
 ## [3.1.0] - 2026-07-11
 
 ### Modificado
