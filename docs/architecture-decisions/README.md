@@ -85,7 +85,18 @@ Complementa D3/D6 do ADR-004: define o protocolo self-service com fila de aprova
 **Decisão:** Inscrição self-service com fila de aprovação do Comitê Federado; nenhuma admissão automática.
 
 **[Leia o documento completo →](ADR-006-federation-membership-protocol.md)**
+
 ---
+
+### ADR-007: Distribuição do Módulo BioCultTermos via Git Submodule Compartilhado
+**Status:** Aceito
+**Data:** Julho 2026
+
+Formaliza, ao nível arquitetural, o padrão já implementado (BioCultDB) e planejado (BioCultRelatos) de distribuir o código do BioCultTermos como git submodule compartilhado pelas quatro unidades federadas — um único repositório, consumido independentemente por cada unidade, "congelado como produto" standalone. Esclarece que soberania (D2 do ADR-004) é sobre dados, nunca sobre código: o módulo é intencionalmente compartilhado, cada unidade mantém seu próprio arquivo SQLite/ConceptScheme.
+
+**Decisão:** Repositório único consumido via git submodule por todas as unidades; propagação de mudanças via bump do ponteiro do submodule, não automática nem hierárquica.
+
+**[Leia o documento completo →](ADR-007-shared-bioculttermos-module.md)**
 
 
 ## Template para Novos ADRs
@@ -161,6 +172,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-06-23 | ADR-004 | Arquitetura federada v3.0 |
 | 2026-07-11 | ADR-005 | Persistência SQLite com JSON (v3.1) |
 | 2026-07-19 | ADR-006 | Protocolo de inscrição na federação (v3.2) |
+| 2026-07-19 | ADR-007 | Distribuição do módulo BioCultTermos via submodule compartilhado |
 
 ---
 

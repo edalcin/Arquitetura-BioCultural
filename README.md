@@ -199,7 +199,7 @@ Aplicativo desktop Windows para extração automatizada de metadados de artigos 
 
 [![GitHub](https://img.shields.io/badge/GitHub-BioCultTermos-181717?logo=github)](https://github.com/edalcin/BioCultTermos)
 
-Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão **[SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html)** (W3C Simple Knowledge Organization System eXtension for Labels). Totalmente integrado ao **BioCultDB**, atuando como infraestrutura terminológica transversal em todos os seus contextos (Aquisição, Curadoria e Apresentação).
+Plataforma digital para preservação e organização do conhecimento etnobotânico através de um sistema estruturado de glossários, vocabulários controlados e tesauros, seguindo o padrão **[SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html)** (W3C Simple Knowledge Organization System eXtension for Labels). É o **módulo de vocabulário controlado da federação**, embutido via **git submodule** em cada unidade federada (BioCultDB, BioCultRelatos, BioCultAcervos, BioCultNaturalistas) — não é exclusivo de nenhuma delas. O repositório standalone está congelado como produto: toda evolução de código ocorre a partir das unidades hospedeiras (ver [ADR-007](docs/architecture-decisions/ADR-007-shared-bioculttermos-module.md)).
 
 **Propósito:**
 
@@ -226,16 +226,20 @@ Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre 
 
 - **Recursos Técnicos:**
   - **Exportação:** SKOS-XL/RDF, JSON-LD, Dublin Core, CSV
-  - **APIs:** REST para integração com BioCultDB e sistemas externos
+  - **APIs:** REST para integração com a ferramenta principal de cada unidade hospedeira e sistemas externos
   - **Containerização:** Docker com GitHub Actions
 
 **Integração na Arquitetura:**
 
-O BioCultTermos funciona como **infraestrutura terminológica transversal** totalmente integrada ao BioCultDB, conectando os três contextos:
+O BioCultTermos funciona como **infraestrutura terminológica** embutida via git submodule em cada uma das quatro unidades federadas — um único repositório de código, consumido de forma independente por cada unidade, que mantém soberania total sobre seus próprios dados (arquivo SQLite/`ConceptScheme` nunca compartilhado entre unidades). Detalhes do mecanismo de distribuição e propagação de código entre unidades em [ADR-007](docs/architecture-decisions/ADR-007-shared-bioculttermos-module.md).
 
-1. **Aquisição:** Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados, autocomplete de termos validados para BioCultDB e BioCultRelatos
+Nos três contextos de cada ferramenta principal:
+
+1. **Aquisição:** Fornece vocabulários controlados (SKOS-XL) para padronização na entrada de dados, autocomplete de termos validados
 2. **Curadoria:** Oferece base para validação semântica, normalização de nomenclatura vernacular e desambiguação de termos
 3. **Apresentação:** Permite navegação por tesauros estruturados e busca expandida por sinônimos e termos relacionados
+
+**Status por unidade hospedeira:** BioCultDB — implementado, em produção; BioCultRelatos, BioCultAcervos, BioCultNaturalistas — padrão definido e documentado (`docs/decisions/ADR-001-integracao-bioculttermos.md` + `integracao.md` de cada repositório), implementação pendente.
 
 ### BioCultRelatos - Plataforma de Registros de Conhecimento Tradicional Primário
 
