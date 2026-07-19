@@ -76,6 +76,17 @@ Substitui a persistência MongoDB por membro (ADR-001, D5 do ADR-004) por SQLite
 
 ---
 
+### ADR-006: Protocolo de Inscrição na Federação
+**Status:** Aceito
+**Data:** Julho 2026
+
+Complementa D3/D6 do ADR-004: define o protocolo self-service com fila de aprovação do Comitê Federado pelo qual uma instância nova (qualquer um dos quatro tipos de membro da v3.2) solicita entrada na federação — cadastro via URL-BASE, verificação técnica automática (anti-SSRF) como sinal não-bloqueante, e decisão humana obrigatória do Comitê.
+
+**Decisão:** Inscrição self-service com fila de aprovação do Comitê Federado; nenhuma admissão automática.
+
+**[Leia o documento completo →](ADR-006-federation-membership-protocol.md)**
+---
+
 
 ## Template para Novos ADRs
 
@@ -147,13 +158,9 @@ Ao criar um novo ADR, utilize o seguinte template:
 
 ## Histórico de Mudanças
 
-| Data | ADR | Mudança |
-|------|-----|---------|
-| 2025-01-24 | ADR-001 | Criação inicial |
-| 2025-01-24 | ADR-002 | Criação inicial |
-| 2025-01-24 | ADR-003 | Criação inicial |
 | 2026-06-23 | ADR-004 | Arquitetura federada v3.0 |
 | 2026-07-11 | ADR-005 | Persistência SQLite com JSON (v3.1) |
+| 2026-07-19 | ADR-006 | Protocolo de inscrição na federação (v3.2) |
 
 ---
 
