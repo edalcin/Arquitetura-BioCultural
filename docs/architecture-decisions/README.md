@@ -98,6 +98,36 @@ Formaliza, ao nível arquitetural, o padrão já implementado (BioCultDB) e plan
 
 **[Leia o documento completo →](ADR-007-shared-bioculttermos-module.md)**
 
+### ADR-008: Engine de Banco de Dados do Pluriverso
+**Status:** Aceito
+**Data:** Julho 2026
+
+Consolida e detalha a engine SQLite (JSON1 + FTS5, WAL, `better-sqlite3`) embutida no container do
+Pluriverso, com arquivo único externo via `SQLITE_DB_PATH`. Especializa o ADR-005 (DA7) com análise dedicada
+ao workload de agregador do Pluriverso e é pré-requisito de infraestrutura do ADR-009.
+
+**Decisão:** SQLite embutida (JSON1 + FTS5, WAL) via `better-sqlite3`, arquivo único portável em volume
+externo (`SQLITE_DB_PATH`).
+
+**[Leia o documento completo →](ADR-008-pluriverso-database-engine.md)**
+
+---
+
+### ADR-009: Topologia Multi-Instância do Pluriverso
+**Status:** Aceito
+**Data:** Julho 2026
+
+O Pluriverso passa a ser componente instanciável (múltiplas instâncias soberanas: global +
+privadas/escopadas), cada uma com seu próprio container + arquivo SQLite; membership e `member_id`
+escopados por instância; harvest público agora e `restricted` autenticado como extensão futura.
+
+**Decisão:** Pluriverso instanciável em múltiplos escopos, sem hierarquia entre instâncias; cada instância
+autocontida e soberana sobre sua própria federação.
+
+**[Leia o documento completo →](ADR-009-pluriverso-multi-instance-topology.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -173,7 +203,9 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-07-11 | ADR-005 | Persistência SQLite com JSON (v3.1) |
 | 2026-07-19 | ADR-006 | Protocolo de inscrição na federação (v3.2) |
 | 2026-07-19 | ADR-007 | Distribuição do módulo BioCultTermos via submodule compartilhado |
+| 2026-07-20 | ADR-008 | Engine de banco de dados do Pluriverso (SQLite embutida) |
+| 2026-07-20 | ADR-009 | Topologia multi-instância do Pluriverso |
 
 ---
 
-**Última atualização:** Junho 2026
+**Última atualização:** Julho 2026

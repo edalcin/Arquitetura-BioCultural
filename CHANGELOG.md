@@ -6,6 +6,27 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.3.0] - 2026-07-20
+
+### Adicionado
+
+- **ADR-008: Engine de Banco de Dados do Pluriverso** — fixa SQLite embutida (JSON1 + FTS5, WAL,
+  `better-sqlite3`) como engine do índice do Pluriverso, arquivo único externo via `SQLITE_DB_PATH`,
+  consolidando o DA7 do ADR-005 com análise dedicada ao workload de agregador
+- **ADR-009: Topologia Multi-Instância do Pluriverso** — o Pluriverso passa a ser componente instanciável
+  (múltiplas instâncias soberanas: global + privadas/escopadas por associação), cada uma com container e
+  arquivo SQLite próprios
+- Subseção **"Múltiplas Instâncias do Pluriverso"** no README
+
+### Contexto da Versão
+
+A v3.3 não altera o modelo de dados nem o contrato de harvest; apenas (1) fixa a engine de persistência do
+Pluriverso alinhada ao padrão SQLite da federação e (2) reconhece múltiplas instâncias do Pluriverso,
+estendendo a soberania à camada de federação — associações podem operar sua própria federação privada sobre
+seus `BioCultRelatos`.
+
+---
+
 ## [3.2.0] - 2026-07-15
 
 ### Adicionado

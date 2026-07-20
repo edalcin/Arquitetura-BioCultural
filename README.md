@@ -1,11 +1,11 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21396738-blue)](https://doi.org/10.5281/zenodo.21396738)
-[![Versão](https://img.shields.io/badge/Versão-3.2.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.3.0-green)](CHANGELOG.md)
 
 ## Visão Geral
 
-Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX.
+Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX. A versão 3.3 fixa a engine de persistência do Pluriverso (SQLite embutida, ADR-008) e reconhece o Pluriverso como componente **instanciável em múltiplos escopos** (ADR-009), permitindo, por exemplo, que uma associação de comunidades opere sua própria instância federando apenas os seus membros.
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
@@ -56,9 +56,9 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 ---
 
-## Arquitetura do Sistema — Versão 3.2 (Federada)
+## Arquitetura do Sistema — Versão 3.3 (Federada)
 
-A versão 3.2 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
+A versão 3.3 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
 
 ```mermaid
 graph TD
@@ -123,6 +123,40 @@ graph TD
 - Cada membro opera de forma completamente independente
 - Membro expõe endpoint REST paginado para harvest pelo Pluriverso
 - Linha `harvest REST` representa coleta periódica (não tempo real)
+
+### Múltiplas Instâncias do Pluriverso
+
+Uma **associação de comunidades tradicionais** que opera vários `BioCultRelatos` pode querer uma **instância
+própria do Pluriverso** para federar/acessar apenas os dados das suas comunidades, sem depender do
+Pluriverso público global. O ADR-009 generaliza o Pluriverso de singleton para **componente instanciável em
+múltiplos escopos**:
+
+- Cada instância = **1 container + 1 arquivo SQLite próprio** (ADR-008)
+- **Membership e `member_id` escopados por instância** — sem registro global de identidade entre instâncias
+- **Um mesmo membro pode ser coletado por várias instâncias** simultaneamente (harvest é só leitura pública)
+- **Sem hierarquia** entre instâncias — cada uma tem seu próprio Comitê Federado
+- **Harvest público agora**; harvest autenticado para registros `restricted` é extensão futura documentada,
+  não implementada
+
+```mermaid
+graph TD
+    subgraph ASSOC["Associação de Comunidades Tradicionais"]
+        CA1(BioCultRelatos\nComunidade A) --> CA1S[(SQLite)]
+        CA2(BioCultRelatos\nComunidade B) --> CA2S[(SQLite)]
+        PLp{{"Pluriverso PRIVADO da Associação\n(índice SQLite próprio)"}}
+        CA1 -->|harvest REST público| PLp
+        CA2 -->|harvest REST público| PLp
+    end
+    PLg{{"Pluriverso PÚBLICO / GLOBAL\n(índice SQLite próprio)"}}
+    CA1 -->|harvest REST público| PLg
+    CA2 -->|harvest REST público| PLg
+    OUT(BioCultDB e outros membros) -->|harvest REST público| PLg
+    UA((Pesquisador da Associação)) <-->|API| PLp
+    UG((Público geral)) <-->|API| PLg
+```
+
+Detalhes completos em [ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md);
+engine de persistência de cada instância em [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md).
 
 ## Projetos Implementados
 
@@ -308,7 +342,7 @@ Middleware que conecta todos os membros da federação — sem gerenciar seus da
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada, o Pluriverso é o único componente com visão de todos os membros — mas nunca acessa dados além do que cada membro publica explicitamente. **Projeto em fase inicial (ainda sem implementação de código).**
+Na arquitetura federada, o Pluriverso é o único componente com visão de todos os membros do seu próprio escopo — mas nunca acessa dados além do que cada membro publica explicitamente. A engine de persistência é SQLite embutida (índice SQLite+JSON+FTS5, arquivo único via `SQLITE_DB_PATH`, [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md)), e o Pluriverso pode ser instanciado em múltiplos escopos ([ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)). **Projeto em fase inicial (ainda sem implementação de código).**
 
 ### Integração Federada entre Projetos
 
@@ -546,7 +580,7 @@ Essa documentação incorpora referências a:
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.2.0 (quatro fontes de evidência, com persistência SQLite+JSON por unidade).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.3.0 (Pluriverso instanciável com engine SQLite embutida, persistência SQLite+JSON por unidade).
 
 ---
 
@@ -556,15 +590,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2 (Version v3.2) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21396738
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3 (Version v3.3) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21396738
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.2},
-  version = {v3.2},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3},
+  version = {v3.3},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.21396738},
