@@ -165,3 +165,11 @@ scripts/documentação que instruíam rodá-los standalone (`docker/create-admin
 `docs/deployment.md` e `docs/instalacao-unraid.md` marcados como histórico). O repositório não tem mais
 capacidade técnica de gerar uma imagem Docker própria — só é consumível via submodule por uma unidade
 hospedeira, que mantém seu próprio `Dockerfile.unidade`.
+
+## Atualização — 2026-07-22: ADR-010 estende F3/F6
+
+O [ADR-010](ADR-010-central-documentation-and-build-verification.md) fecha duas lacunas expostas na
+primeira operação real deste padrão em produção (BioCultDB): documentação central das mudanças do
+módulo compartilhado, e verificação obrigatória de que cada unidade hospedeira reflete no seu próprio
+build o que ela mesma acabou de commitar. **F3 não muda**: propagação para as demais unidades continua
+opcional e não-automática.

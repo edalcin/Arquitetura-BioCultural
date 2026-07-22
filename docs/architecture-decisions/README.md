@@ -128,6 +128,24 @@ autocontida e soberana sobre sua própria federação.
 
 ---
 
+### ADR-010: Documentação Central e Verificação de Build para Mudanças no BioCultTermos
+**Status:** Aceito
+**Data:** Julho 2026
+
+Fecha duas lacunas do ADR-007 expostas na primeira operação real em produção: (1) nenhum lugar central
+registrava mudanças de código do BioCultTermos por unidade de origem, (2) nada garantia que a própria
+unidade que originou uma mudança a refletisse no seu build (bug real: submodule desatualizado copiado
+silenciosamente para a imagem do BioCultDB, container em crash-loop mascarado por `restart:
+unless-stopped`). Não altera a propagação opcional/não-automática entre unidades do ADR-007 F3.
+
+**Decisão:** Push ao remoto + `BioCultTermos/CHANGELOG.md` obrigatórios; bump entre unidades continua
+opcional; cada unidade hospedeira valida o SHA do submodule e carimba `BUILD_INFO` antes de buildar
+(referência: `BioCultDB/docker/build-unidade.sh`); `CLAUDE.md` de cada unidade aponta para o fluxo.
+
+**[Leia o documento completo →](ADR-010-central-documentation-and-build-verification.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -205,6 +223,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-07-19 | ADR-007 | Distribuição do módulo BioCultTermos via submodule compartilhado |
 | 2026-07-20 | ADR-008 | Engine de banco de dados do Pluriverso (SQLite embutida) |
 | 2026-07-20 | ADR-009 | Topologia multi-instância do Pluriverso |
+| 2026-07-22 | ADR-010 | Documentação central e verificação de build para mudanças no BioCultTermos |
 
 ---
 
