@@ -153,3 +153,15 @@ Esta ADR-007 é a decisão arquitetural de origem que todos eles referenciam.
 
 Revisar quando (a) o `AcquisitionService` for generalizado no repositório BioCultTermos, e/ou (b) a
 primeira unidade além do BioCultDB entrar em produção com BioCultTermos integrado.
+
+## Atualização — 2026-07-22: F2 aplicado no repositório
+
+F2 ("repositório standalone congelado como produto") era, até esta data, só uma declaração de intenção:
+o repositório `BioCultTermos` ainda continha `docker/etnotermos.Dockerfile`, `docker/docker-compose.yml`
+e um workflow de CI (`docker-build.yml`) que publicava `ghcr.io/edalcin/bioculttermos:latest` a cada push
+em `main` — nada impedia, na prática, alguém subir esse `docker-compose.yml` isoladamente. Removidos
+nesta data (commit `3d7d878` em `BioCultTermos`): os dois arquivos Docker, o workflow de CI, e os
+scripts/documentação que instruíam rodá-los standalone (`docker/create-admin-user.js`,
+`docs/deployment.md` e `docs/instalacao-unraid.md` marcados como histórico). O repositório não tem mais
+capacidade técnica de gerar uma imagem Docker própria — só é consumível via submodule por uma unidade
+hospedeira, que mantém seu próprio `Dockerfile.unidade`.
