@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="1200" height="840" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8C8377"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E6B4F"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="840" fill="#FAF6EF"/>
+
+  <!-- Título -->
+  <text x="600" y="50" text-anchor="middle" font-size="31" font-weight="bold" fill="#37312A">Arquitetura BioCultural — versão 3.3</text>
+  <text x="600" y="82" text-anchor="middle" font-size="17" fill="#7A7065">Cada um no seu solo. Todos na mesma ponte.</text>
+
+  <!-- ================= CARD 1 ================= -->
+  <g>
+    <rect x="40" y="115" width="250" height="245" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M40 129 a14 14 0 0 1 14 -14 h222 a14 14 0 0 1 14 14 v22 h-250 z" fill="#2E6B4F"/>
+    <text x="165" y="145" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">FONTES SECUNDÁRIAS</text>
+    <text x="165" y="182" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#37312A">BioCultDB</text>
+    <text x="165" y="203" text-anchor="middle" font-size="11.5" fill="#7A7065">artigos, teses e livros</text>
+    <text x="165" y="221" text-anchor="middle" font-size="11.5" fill="#7A7065">+ BioCultPapers (extração por IA)</text>
+    <rect x="72" y="235" width="186" height="26" rx="13" fill="#E4EFE7"/>
+    <text x="165" y="252" text-anchor="middle" font-size="11.5" fill="#2E6B4F">BioCultTermos · SKOS-XL</text>
+    <!-- banco -->
+    <g>
+      <path d="M110 292 v34 a55 12 0 0 0 110 0 v-34 z" fill="#F3EDE2" stroke="#C9B79C" stroke-width="1.4"/>
+      <ellipse cx="165" cy="292" rx="55" ry="12" fill="#FFFFFF" stroke="#C9B79C" stroke-width="1.4"/>
+      <text x="165" y="316" text-anchor="middle" font-size="11.5" fill="#37312A">SQLite + JSON</text>
+    </g>
+    <text x="165" y="349" text-anchor="middle" font-size="11" fill="#B4542F">1 arquivo · 1 container · soberano</text>
+  </g>
+
+  <!-- ================= CARD 2 ================= -->
+  <g>
+    <rect x="330" y="115" width="250" height="245" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M330 129 a14 14 0 0 1 14 -14 h222 a14 14 0 0 1 14 14 v22 h-250 z" fill="#B4542F"/>
+    <text x="455" y="145" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">FONTES PRIMÁRIAS</text>
+    <text x="455" y="182" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#37312A">BioCultRelatos</text>
+    <text x="455" y="203" text-anchor="middle" font-size="11.5" fill="#7A7065">registro em campo, com a comunidade</text>
+    <text x="455" y="221" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#B4542F">CLPI obrigatório</text>
+    <rect x="362" y="235" width="186" height="26" rx="13" fill="#FBEBE2"/>
+    <text x="455" y="252" text-anchor="middle" font-size="11.5" fill="#B4542F">BioCultTermos · SKOS-XL</text>
+    <g>
+      <path d="M400 292 v34 a55 12 0 0 0 110 0 v-34 z" fill="#F3EDE2" stroke="#C9B79C" stroke-width="1.4"/>
+      <ellipse cx="455" cy="292" rx="55" ry="12" fill="#FFFFFF" stroke="#C9B79C" stroke-width="1.4"/>
+      <text x="455" y="316" text-anchor="middle" font-size="11.5" fill="#37312A">SQLite + JSON</text>
+    </g>
+    <text x="455" y="349" text-anchor="middle" font-size="11" fill="#B4542F">1 arquivo · 1 container · soberano</text>
+  </g>
+
+  <!-- ================= CARD 3 ================= -->
+  <g>
+    <rect x="620" y="115" width="250" height="245" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M620 129 a14 14 0 0 1 14 -14 h222 a14 14 0 0 1 14 14 v22 h-250 z" fill="#A8801F"/>
+    <text x="745" y="145" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">ACERVOS E MUSEUS</text>
+    <text x="745" y="182" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#37312A">BioCultAcervos</text>
+    <text x="745" y="203" text-anchor="middle" font-size="11.5" fill="#7A7065">coleções, arquivos e documentos</text>
+    <text x="745" y="221" text-anchor="middle" font-size="11.5" fill="#7A7065">preservados em instituições</text>
+    <rect x="652" y="235" width="186" height="26" rx="13" fill="#F6EFDC"/>
+    <text x="745" y="252" text-anchor="middle" font-size="11.5" fill="#8A6A19">BioCultTermos · SKOS-XL</text>
+    <g>
+      <path d="M690 292 v34 a55 12 0 0 0 110 0 v-34 z" fill="#F3EDE2" stroke="#C9B79C" stroke-width="1.4"/>
+      <ellipse cx="745" cy="292" rx="55" ry="12" fill="#FFFFFF" stroke="#C9B79C" stroke-width="1.4"/>
+      <text x="745" y="316" text-anchor="middle" font-size="11.5" fill="#37312A">SQLite + JSON</text>
+    </g>
+    <text x="745" y="349" text-anchor="middle" font-size="11" fill="#B4542F">1 arquivo · 1 container · soberano</text>
+  </g>
+
+  <!-- ================= CARD 4 ================= -->
+  <g>
+    <rect x="910" y="115" width="250" height="245" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M910 129 a14 14 0 0 1 14 -14 h222 a14 14 0 0 1 14 14 v22 h-250 z" fill="#3D5A80"/>
+    <text x="1035" y="145" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">NATURALISTAS séc. XVII–XIX</text>
+    <text x="1035" y="182" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#37312A">BioCultNaturalistas</text>
+    <text x="1035" y="203" text-anchor="middle" font-size="11.5" fill="#7A7065">obras e relatos de viajantes</text>
+    <text x="1035" y="221" text-anchor="middle" font-size="11.5" fill="#7A7065">que percorreram o Brasil</text>
+    <rect x="942" y="235" width="186" height="26" rx="13" fill="#E7EDF5"/>
+    <text x="1035" y="252" text-anchor="middle" font-size="11.5" fill="#3D5A80">BioCultTermos · SKOS-XL</text>
+    <g>
+      <path d="M980 292 v34 a55 12 0 0 0 110 0 v-34 z" fill="#F3EDE2" stroke="#C9B79C" stroke-width="1.4"/>
+      <ellipse cx="1035" cy="292" rx="55" ry="12" fill="#FFFFFF" stroke="#C9B79C" stroke-width="1.4"/>
+      <text x="1035" y="316" text-anchor="middle" font-size="11.5" fill="#37312A">SQLite + JSON</text>
+    </g>
+    <text x="1035" y="349" text-anchor="middle" font-size="11" fill="#B4542F">1 arquivo · 1 container · soberano</text>
+  </g>
+
+  <!-- Setas de harvest -->
+  <path d="M165 372 C 165 430, 430 430, 470 470" fill="none" stroke="#8C8377" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <path d="M455 372 C 455 430, 540 440, 560 470" fill="none" stroke="#8C8377" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <path d="M745 372 C 745 430, 660 440, 640 470" fill="none" stroke="#8C8377" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <path d="M1035 372 C 1035 430, 770 430, 730 470" fill="none" stroke="#8C8377" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+
+  <rect x="470" y="398" width="262" height="28" rx="14" fill="#FAF6EF" stroke="#D9CBB4" stroke-width="1.2"/>
+  <text x="601" y="416" text-anchor="middle" font-size="12.5" fill="#37312A">coleta periódica (harvest REST) — <tspan font-weight="bold">só o que é público</tspan></text>
+
+  <!-- Pluriverso -->
+  <rect x="215" y="472" width="770" height="132" rx="18" fill="#2E6B4F"/>
+  <text x="600" y="512" text-anchor="middle" font-size="25" font-weight="bold" fill="#FFFFFF" letter-spacing="1.5">PLURIVERSO</text>
+  <text x="600" y="538" text-anchor="middle" font-size="13.5" fill="#CFE3D6">middleware de federação — nunca a fonte da verdade, apenas um índice derivado</text>
+  <g font-size="12.5" fill="#FFFFFF">
+    <rect x="252" y="554" width="212" height="30" rx="15" fill="#3D7C5E"/>
+    <text x="358" y="573" text-anchor="middle">índice dos registros públicos</text>
+    <rect x="478" y="554" width="212" height="30" rx="15" fill="#3D7C5E"/>
+    <text x="584" y="573" text-anchor="middle">tradução semântica (SKOS-XL)</text>
+    <rect x="704" y="554" width="212" height="30" rx="15" fill="#3D7C5E"/>
+    <text x="810" y="573" text-anchor="middle">API pública unificada</text>
+  </g>
+
+  <text x="1010" y="530" font-size="11.5" fill="#7A7065">pode existir</text>
+  <text x="1010" y="546" font-size="11.5" fill="#7A7065">mais de um:</text>
+  <text x="1010" y="562" font-size="11.5" fill="#7A7065">uma associação</text>
+  <text x="1010" y="578" font-size="11.5" fill="#7A7065">roda o seu próprio</text>
+
+  <!-- Usuário -->
+  <path d="M600 604 V 662" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)" marker-start="url(#arrowG)"/>
+  <text x="614" y="638" font-size="12.5" fill="#2E6B4F" font-weight="bold">API</text>
+  <rect x="300" y="666" width="600" height="46" rx="23" fill="#FFFFFF" stroke="#2E6B4F" stroke-width="1.8"/>
+  <text x="600" y="695" text-anchor="middle" font-size="14" fill="#37312A">Pesquisadores · Comunidades · Gestores públicos · Público geral</text>
+
+  <!-- Rodapé de princípios -->
+  <g>
+    <rect x="40" y="742" width="360" height="62" rx="12" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.3"/>
+    <text x="62" y="768" font-size="13" font-weight="bold" fill="#2E6B4F">Soberania</text>
+    <text x="62" y="789" font-size="12" fill="#7A7065">o dado mora com quem o gerou</text>
+
+    <rect x="420" y="742" width="360" height="62" rx="12" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.3"/>
+    <text x="442" y="768" font-size="13" font-weight="bold" fill="#B4542F">Consentimento</text>
+    <text x="442" y="789" font-size="12" fill="#7A7065">sem CLPI, o registro não entra</text>
+
+    <rect x="800" y="742" width="360" height="62" rx="12" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.3"/>
+    <text x="822" y="768" font-size="13" font-weight="bold" fill="#3D5A80">Saída reversível</text>
+    <text x="822" y="789" font-size="12" fill="#7A7065">saiu da federação, some do índice</text>
+  </g>
+</svg>
