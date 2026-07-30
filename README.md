@@ -60,47 +60,9 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 A versão 3.3 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
 
-```mermaid
-graph TD
-    I1P(["BioCultPapers\n(desktop, fora do container)"])
+![Arquitetura BioCultural — versão 3.3, visão geral federada](docs/arquitetura-biocultural.png)
 
-    subgraph I1["Iniciativa de Fontes Secundárias — 1 container"]
-        I1A(BioCultDB) --> I1S[(SQLite+JSON)]
-        I1C(BioCultTermos) <--> I1S
-    end
-
-    I1P -.->|"exporta arquivo"| I1A
-
-    subgraph AC["Acervos Históricos e Museológicos — 1 container"]
-        ACA(BioCultAcervos) --> ACS[(SQLite+JSON)]
-        ACB(BioCultTermos) <--> ACS
-    end
-
-    subgraph NA["Obras de Naturalistas séc. XVII-XIX — 1 container"]
-        NAA(BioCultNaturalistas) --> NAS[(SQLite+JSON)]
-        NAB(BioCultTermos) <--> NAS
-    end
-
-    subgraph C2["Comunidade Tradicional #2 — 1 container"]
-        C2A(BioCultRelatos) --> C2S[(SQLite+JSON)]
-        C2B(BioCultTermos) <--> C2S
-    end
-
-    subgraph C3["Comunidade Tradicional #N — 1 container"]
-        C3A(BioCultRelatos) --> C3S[(SQLite+JSON)]
-        C3B(BioCultTermos) <--> C3S
-    end
-
-    PL{{"Pluriverso\nMiddleware de Federação"}}
-    U((Usuário /\nAplicação))
-
-    I1 -->|harvest REST| PL
-    AC -->|harvest REST| PL
-    NA -->|harvest REST| PL
-    C2 -->|harvest REST| PL
-    C3 -->|harvest REST| PL
-    U <-->|API| PL
-```
+> **Leitura recomendada:** o artigo do blog [*Arquitetando — Biodiversidade, Dados e Metadados*](https://eduardo.dalc.in/arquitetando/) explica, de forma didática e ilustrada, toda esta arquitetura federada — as quatro fontes de evidência, a soberania via SQLite+JSON, o papel do Pluriverso e a aposta na repartição de benefícios rastreável.
 
 ### Princípios da Federação
 
@@ -138,22 +100,7 @@ múltiplos escopos**:
 - **Harvest público agora**; harvest autenticado para registros `restricted` é extensão futura documentada,
   não implementada
 
-```mermaid
-graph TD
-    subgraph ASSOC["Associação de Comunidades Tradicionais"]
-        CA1(BioCultRelatos\nComunidade A) --> CA1S[(SQLite)]
-        CA2(BioCultRelatos\nComunidade B) --> CA2S[(SQLite)]
-        PLp{{"Pluriverso PRIVADO da Associação\n(índice SQLite próprio)"}}
-        CA1 -->|harvest REST público| PLp
-        CA2 -->|harvest REST público| PLp
-    end
-    PLg{{"Pluriverso PÚBLICO / GLOBAL\n(índice SQLite próprio)"}}
-    CA1 -->|harvest REST público| PLg
-    CA2 -->|harvest REST público| PLg
-    OUT(BioCultDB e outros membros) -->|harvest REST público| PLg
-    UA((Pesquisador da Associação)) <-->|API| PLp
-    UG((Público geral)) <-->|API| PLg
-```
+![Pluriverso — múltiplas instâncias: associação com índice privado, índice público global, sem hierarquia](docs/pluriverso-multi-instancia.png)
 
 Detalhes completos em [ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md);
 engine de persistência de cada instância em [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md).
@@ -346,29 +293,7 @@ Na arquitetura federada, o Pluriverso é o único componente com visão de todos
 
 ### Integração Federada entre Projetos
 
-```mermaid
-graph TD
-    EP["BioCultPapers\nExtração com IA\n(desktop, fora do container)"]
-
-    subgraph I1["Iniciativa de Fontes Secundárias — 1 container"]
-        EDB["BioCultDB\nAquisição · Curadoria · Apresentação"] <--> UDB1[("SQLite+JSON")]
-        ET1["BioCultTermos\nSKOS-XL"] <--> UDB1
-    end
-
-    EP -.->|"exporta arquivo"| EDB
-
-    subgraph C2["Comunidade Tradicional — 1 container"]
-        ER["BioCultRelatos\nAquisição Primária · CLPI"] <--> UDB2[("SQLite+JSON")]
-        ET2["BioCultTermos\nSKOS-XL"] <--> UDB2
-    end
-
-    PL{{"Pluriverso\nMiddleware de Federação\n(índice + mapeamentos SKOS)"}}
-    U((Usuário /\nAplicação))
-
-    I1 -->|"harvest REST\n(registros públicos)"| PL
-    C2 -->|"harvest REST\n(registros públicos + CLPI)"| PL
-    U <-->|API| PL
-```
+![Integração federada entre projetos: BioCultPapers fora do container, unidades federadas com SQLite+JSON próprio, harvest REST e Pluriverso](docs/integracao-federada.png)
 
 O fluxo federado funciona assim:
 
@@ -575,6 +500,24 @@ Essa documentação incorpora referências a:
 - Etnobiologia e conhecimento tradicional
 - Iniciativas brasileiras práticas (GEF Entre-Ciências, SISGEN, Useflor@, RCS)
 - Data sovereignty e consentimento livre, prévio e informado (CLPI)
+
+### Artigos e Publicações Relacionadas (APA)
+
+Dalcin, E. (2024, 2 de junho). Preservação do conhecimento tradicional sobre o uso das plantas – pensando "fora da caixinha". *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/conhecimento-tradicional/
+
+Dalcin, E. (2025, 28 de janeiro). Negligenciando a preservação do conhecimento tradicional. *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/negligenciando-a-preservacao-do-conhecimento-tradicional/
+
+Dalcin, E. (2025, 24 de fevereiro). A planta e a espécie. *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/a-planta-e-a-especie/
+
+Dalcin, E. (2025, 25 de dezembro). Modelo para dados secundários de conhecimento tradicional – o dilema entre a elegância e a praticidade. *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/modelo-para-dados-secundarios/
+
+Dalcin, E. (2026, 5 de julho). Sementes livres, solos próprios: por que o conhecimento tradicional exige uma arquitetura federada. *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/
+
+Dalcin, E. (2026, 29 de julho). Arquitetando: biodiversidade, dados e metadados. *Biodiversidade, Dados e Metadados*. https://eduardo.dalc.in/arquitetando/
+
+Pankararu, C. J., Teixidor-Toneu, I., Odonne, G., Asante, F., Bandeira, S. O., Barrera-Bello, Á. M., Benitez-Capistros, F. J., Dahdouh-Guebas, F., Dalcin, E., Dennehy-Carr, Z. H., Diallo, K., Drouet-Cruz, H. T., Fonseca-Kruel, V. S., Gallois, S., Gnansounou, S. C., Hamza, A. J., Hugé, J., Jordan, F. M., Kalle, R., ... Hanazaki, N. (2026). A global biodiversity use data infrastructure acknowledging indigenous and local knowledge. *npj Biodiversity*, *5*, Article 7. https://doi.org/10.1038/s44185-026-00121-0
+
+Zank, S., Julião, C. G., de Lima, A. S., da Silva, M. T., Levis, C., Hanazaki, N., & Peroni, N. (2025). Ethnobiology! Until when will the colonialist legacy be reinforced? *Journal of Ethnobiology and Ethnomedicine*, *21*, Article 1. https://doi.org/10.1186/s13002-024-00750-4
 
 ---
 
