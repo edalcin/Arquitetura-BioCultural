@@ -1991,6 +1991,127 @@ class DashboardCacheService {
 
 ---
 
+> **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
+
+## Contexto 4: Federação (Pluriverso)
+
+### Pluriverso - Componentes Internos
+
+Nomes canônicos, fixados em [`pluriverso/docs/arquitetura.md`](https://github.com/edalcin/pluriverso/blob/main/docs/arquitetura.md) (Nível 3) — referência de nomenclatura para toda documentação e código futuro do Pluriverso, sem variação.
+
+```mermaid
+graph TB
+    subgraph HTTP["Superfícies HTTP"]
+        PublicApi["PublicApi"]
+        CommitteeApi["CommitteeApi"]
+        WebUi["WebUi"]
+    end
+
+    subgraph Coleta["Coleta"]
+        HarvestScheduler["HarvestScheduler"]
+        HarvestClient["HarvestClient"]
+        RecordIndexer["RecordIndexer"]
+        ConceptHarvester["ConceptHarvester"]
+    end
+
+    subgraph Busca["Busca"]
+        SearchService["SearchService"]
+        SemanticExpander["SemanticExpander"]
+    end
+
+    subgraph Governanca["Governança"]
+        MembershipService["MembershipService"]
+        ProbeService["ProbeService"]
+        MappingService["MappingService"]
+        PurgeService["PurgeService"]
+        AuditService["AuditService"]
+    end
+
+    PublicApi --> SearchService
+    PublicApi --> MembershipService
+    PublicApi --> MappingService
+
+    CommitteeApi --> MembershipService
+    CommitteeApi --> ProbeService
+    CommitteeApi --> PurgeService
+    CommitteeApi --> MappingService
+    CommitteeApi --> AuditService
+    CommitteeApi --> HarvestScheduler
+    CommitteeApi --> ConceptHarvester
+
+    WebUi --> SearchService
+    WebUi --> MembershipService
+    WebUi --> MappingService
+
+    HarvestScheduler --> HarvestClient
+    HarvestScheduler --> ConceptHarvester
+    HarvestClient --> RecordIndexer
+    HarvestClient --> AuditService
+    ConceptHarvester --> AuditService
+
+    SearchService --> SemanticExpander
+
+    MembershipService --> ProbeService
+    MembershipService --> AuditService
+    MappingService --> AuditService
+    PurgeService --> AuditService
+
+    classDef http fill:#e8f0fe,stroke:#4285f4
+    classDef coleta fill:#fff3cd,stroke:#e6a817
+    classDef busca fill:#d5e8d4,stroke:#82b366
+    classDef governanca fill:#f8cecc,stroke:#b85450
+    class PublicApi,CommitteeApi,WebUi http
+    class HarvestScheduler,HarvestClient,RecordIndexer,ConceptHarvester coleta
+    class SearchService,SemanticExpander busca
+    class MembershipService,ProbeService,MappingService,PurgeService,AuditService governanca
+```
+
+#### Componentes Detalhados
+
+##### 1. `PublicApi`
+**Responsabilidade:** Superfície HTTP pública sem autenticação — busca federada, registro por id, membros ativos, mapeamentos aprovados, estatísticas, cadastro de adesão e `/health`.
+
+##### 2. `CommitteeApi`
+**Responsabilidade:** Superfície HTTP autenticada (HTTP Basic) do Comitê Federado — decisão de pedidos de adesão, probe, purge, harvest manual, mapeamentos, conceitos manuais e auditoria.
+
+##### 3. `WebUi`
+**Responsabilidade:** Interface web server-rendered (EJS + HTMX + Alpine.js) — busca com rolagem infinita e painéis de governança do Comitê.
+
+##### 4. `HarvestScheduler`
+**Responsabilidade:** Dispara runs de harvest por cron (`node-cron`, in-process), por membro e por modo (incremental/completo), além de runs manuais disparadas pelo Comitê.
+
+##### 5. `HarvestClient`
+**Responsabilidade:** Cliente HTTP paginado contra `GET /api/federation/records` de um membro, com validação anti-SSRF de `url_base` a cada run, timeout e retry com backoff exponencial.
+
+##### 6. `RecordIndexer`
+**Responsabilidade:** Upsert idempotente de registros por `federated_id`, extração do Perfil Mínimo de Publicação, sincronização do FTS5, e remoção de registros ausentes em modo completo.
+
+##### 7. `ConceptHarvester`
+**Responsabilidade:** Coleta opcional de `GET /api/federation/concepts`; também atende ao cadastro manual de conceito quando o membro não publica o endpoint.
+
+##### 8. `SearchService`
+**Responsabilidade:** Executa o pipeline de 6 etapas de busca federada — normalização, resolução de sementes, expansão semântica, recuperação, filtros estruturais e ranking.
+
+##### 9. `SemanticExpander`
+**Responsabilidade:** Expansão semântica SKOS por CTE recursiva sobre `concept_mappings` aprovados, por regra de transitividade de predicado.
+
+##### 10. `MembershipService`
+**Responsabilidade:** Fila de pedidos de adesão, geração de `member_id` (nunca reciclado) na aprovação, e transições de estado `pending → active | rejected`.
+
+##### 11. `ProbeService`
+**Responsabilidade:** Verificação técnica anti-SSRF do `url_base` declarado num pedido de adesão; o resultado é sinal, nunca decisão.
+
+##### 12. `MappingService`
+**Responsabilidade:** CRUD e workflow de aprovação/rejeição de mapeamentos SKOS entre conceitos de membros distintos — só o Comitê move `proposed` para `approved`/`rejected`.
+
+##### 13. `PurgeService`
+**Responsabilidade:** Executa `purge_by_member` numa única transação — remove registros, FTS, mapeamentos, conceitos e runs do membro, de forma auditável.
+
+##### 14. `AuditService`
+**Responsabilidade:** Única via de escrita append-only no `audit_log`, chamada pelos demais componentes de governança após qualquer mudança de estado relevante.
+
+---
+
 ## Padrões de Comunicação
 
 ### 1. Request-Response (Síncrono)

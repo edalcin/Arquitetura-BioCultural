@@ -566,6 +566,59 @@ GET    /painel/communities      - Análise de comunidades
 
 ---
 
+> **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
+
+### Containers da Federação (Versão 3.3)
+
+O Pluriverso é um middleware de federação instanciável ([ADR-009](../architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)), com sua própria topologia de contêiner, independente da arquitetura centralizada acima. Detalhamento completo (Nível 1–3) em [`pluriverso/docs/arquitetura.md`](https://github.com/edalcin/pluriverso/blob/main/docs/arquitetura.md).
+
+```mermaid
+graph TB
+    subgraph Membros["Instâncias de Membro (harvest periódico)"]
+        M1["BioCultDB<br/>fontes_secundarias"]
+        M2["BioCultRelatos<br/>comunidade_tradicional"]
+        M3["BioCultAcervos<br/>acervos_historicos"]
+        M4["BioCultNaturalistas<br/>obras_naturalistas"]
+    end
+
+    subgraph Container["Container Pluriverso — Node.js/Express :3100"]
+        App["Aplicação Node.js/Express<br/>(scheduler node-cron<br/>no mesmo processo)"]
+        DB[("Arquivo SQLite<br/>volume externo<br/>SQLITE_DB_PATH")]
+        App -- "better-sqlite3" --> DB
+    end
+
+    M1 & M2 & M3 & M4 -. "harvest REST<br/>GET /api/federation/records" .-> App
+
+    Usuario["Usuário / Aplicação"] -->|"GET /api/v1/*"| App
+    Comite["Comitê Federado"] -->|"/api/federation/*<br/>Basic Auth"| App
+
+    classDef container fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px
+    classDef db fill:#d5e8d4,stroke:#82b366
+    class App container
+    class DB db
+```
+
+#### Pluriverso - Middleware de Federação
+**GitHub:** [https://github.com/edalcin/pluriverso](https://github.com/edalcin/pluriverso)
+
+Middleware de federação que coleta (harvest periódico REST) registros públicos das unidades membro, mantém um índice central em SQLite+FTS5, calcula mapeamentos semânticos SKOS entre `ConceptScheme` de membros distintos, e serve uma API pública unificada de busca federada.
+
+**Stack Tecnológico:** Node.js 20 + Express + EJS + Tailwind CSS + Alpine.js/HTMX + better-sqlite3 (ver [`pluriverso/docs/decisions/ADR-001-stack-e-framework.md`](https://github.com/edalcin/pluriverso/blob/main/docs/decisions/ADR-001-stack-e-framework.md))
+
+**Responsabilidades:**
+- Harvest periódico REST paginado dos registros `visibility: public` de cada membro
+- Manutenção do índice central (SQLite + FTS5)
+- Mapeamento semântico SKOS entre membros, com aprovação do Comitê Federado
+- API pública unificada de busca federada
+- Governança da federação (adesão, purge, auditoria)
+
+**Características:**
+- Porta `3100`; arquivo de dados em `SQLITE_DB_PATH` (volume externo)
+- Processo único, com o agendador de harvest embutido via `node-cron` — sem worker separado, sem fila de mensagens
+- Engine SQLite embutida no mesmo container do processo Node, com o arquivo de dados em volume externo: não é contradição — é a decisão de [ADR-008/DB2 (Pluriverso Database Engine)](../architecture-decisions/ADR-008-pluriverso-database-engine.md)
+
+---
+
 ### Frontend Layer
 
 #### 1. Web Application (Interface Interna)

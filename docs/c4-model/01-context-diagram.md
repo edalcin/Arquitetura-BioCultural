@@ -179,6 +179,27 @@ graph TB
 - Fluxo de consentimento integrado (CLPI)
 - Suporte multilíngue (português, idiomas indígenas)
 
+> **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
+
+#### 7. Membro do Comitê Federado
+**Responsabilidades:**
+- Aprovar ou recusar pedidos de adesão à federação (Pluriverso)
+- Aprovar mapeamentos semânticos SKOS entre membros
+- Decidir remoção de membro da federação (purge_by_member)
+
+**Necessidades:**
+- Fila de pedidos de adesão com resultado do probe técnico visível
+- Painel de mapeamentos propostos para aprovação
+- Autenticação individual (accountability sobre cada decisão)
+
+#### 8. Solicitante de Adesão à Federação
+**Responsabilidades:**
+- Submeter cadastro self-service de nova unidade federada, com declaração de conformidade C.A.R.E.
+- Reenviar pedido recusado após corrigir pendências
+
+**Necessidades:**
+- Formulário de inscrição acessível pela interface pública do Pluriverso, sem depender de Git
+
 ### Usuários Externos (Públicos)
 
 #### 6. Público Geral
@@ -397,6 +418,20 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 - Suporte terminológico do BioCultTermos (SKOS-XL)
 - Os dados registrados seguem o mesmo workflow de curadoria do BioCultDB, com validação comunitária adicional
 
+> **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
+
+### Pluriverso - Middleware de Federação
+**GitHub:** [https://github.com/edalcin/pluriverso](https://github.com/edalcin/pluriverso)
+
+**Propósito:** Middleware de federação que coleta (harvest periódico REST) registros públicos dos membros, mantém índice central SQLite+FTS5, mapeamentos SKOS entre `ConceptScheme` de membros distintos, e serve uma API pública unificada de busca federada
+
+**Status:** Novo componente, especificado (não implementado)
+
+**Integração na Arquitetura:**
+- Instanciável em múltiplos escopos ([ADR-009](../architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)) — pode haver uma instância pública/global e instâncias privadas de associações, cada uma soberana e autocontida
+- Coleta via harvest periódico REST paginado dos membros com `visibility: public` ([ADR-004/D6](../architecture-decisions/ADR-004-federated-architecture.md)), nunca por push do membro
+- Não se conecta à topologia centralizada pré-v3.0 descrita nos diagramas deste documento — arquitetura, contêiner e componentes próprios em [`pluriverso/docs/arquitetura.md`](https://github.com/edalcin/pluriverso/blob/main/docs/arquitetura.md)
+
 ## Fluxos Principais
 
 ### Fluxo 1: Aquisição de Dados Primários
@@ -439,6 +474,16 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 3. Faz requisições HTTP para endpoints públicos
 4. Sistema retorna dados em JSON
 5. Desenvolvedor integra em aplicação terceira
+
+> **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
+
+### Fluxo 6: Federação via Pluriverso
+1. Instância de membro (BioCultDB, BioCultRelatos, BioCultAcervos ou BioCultNaturalistas) solicita adesão à federação via cadastro self-service
+2. Probe técnico anti-SSRF anexa sinal (não decisão) ao pedido
+3. Comitê Federado aprova e um `member_id` é gerado, nunca reciclado
+4. Harvest periódico coleta os registros `visibility: public` do membro via endpoint REST paginado
+5. Pesquisador ou aplicação consulta a API unificada do Pluriverso, com expansão semântica SKOS entre vocabulários de membros diferentes
+6. Membro sai da federação → `purge_by_member` remove imediatamente seus registros e mapeamentos do índice, de forma auditável
 
 ## Requisitos Não-Funcionais
 
