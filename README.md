@@ -271,7 +271,7 @@ Extrair e sistematizar evidências de conhecimento tradicional associado à biod
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada, o BioCultNaturalistas é o componente central do tipo de membro **Obras de Naturalistas**, seguindo o mesmo padrão dos demais membros: container próprio, arquivo SQLite+JSON compartilhado com uma instância soberana do BioCultTermos, e endpoint de harvest REST para o Pluriverso. **Projeto em fase inicial (apenas repositório e documentação).**
+Projeto com **planejamento de implementação completo**: modelo de dados (cinco entidades — Naturalista, Viagem, Obra, Táxon, Evidência), contextos e portas, contrato de vocabulário com o BioCultTermos e roadmap de 7 fases já documentados e aceitos (ver [BioCultNaturalistas/README.md](https://github.com/edalcin/BioCultNaturalistas)). **Implementação de código ainda não iniciada.**
 
 ### Pluriverso - Middleware de Federação
 
@@ -289,7 +289,7 @@ Middleware que conecta todos os membros da federação — sem gerenciar seus da
 
 **Integração na Arquitetura:**
 
-Na arquitetura federada, o Pluriverso é o único componente com visão de todos os membros do seu próprio escopo — mas nunca acessa dados além do que cada membro publica explicitamente. A engine de persistência é SQLite embutida (índice SQLite+JSON+FTS5, arquivo único via `SQLITE_DB_PATH`, [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md)), e o Pluriverso pode ser instanciado em múltiplos escopos ([ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)). **Projeto em fase inicial (ainda sem implementação de código).**
+Na arquitetura federada, o Pluriverso é o único componente com visão de todos os membros do seu próprio escopo — mas nunca acessa dados além do que cada membro publica explicitamente. A engine de persistência é SQLite embutida (índice SQLite+JSON+FTS5, arquivo único via `SQLITE_DB_PATH`, [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md)), e o Pluriverso pode ser instanciado em múltiplos escopos ([ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)). Projeto com **planejamento de implementação completo**: stack e framework, API pública REST, contrato de harvest, modelo de dados SQLite, autenticação e segurança do Comitê, busca semântica SKOS, arquitetura C4 e roadmap de 7 fases já documentados e aceitos (ver [pluriverso/docs/](https://github.com/edalcin/pluriverso/tree/main/docs)). **Implementação de código ainda não iniciada.**
 
 ### Integração Federada entre Projetos
 
@@ -452,8 +452,8 @@ Esta arquitetura integra projetos implementados e dialoga com iniciativas em des
 ### Projetos em Desenvolvimento
 - **[BioCultRelatos](https://github.com/edalcin/BioCultRelatos)** - Plataforma para aquisição de dados primários (CLPI) diretamente de comunidades tradicionais; componente central de cada comunidade membro
 - **[BioCultAcervos](https://github.com/edalcin/BioCultAcervos)** - Registro de evidências de conhecimento tradicional preservadas em acervos históricos e museológicos; novo tipo de membro da federação
-- **[BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas)** - Registro de evidências de conhecimento tradicional em obras de naturalistas em visita ao Brasil (séc. XVII-XIX); novo tipo de membro da federação
-- **[Pluriverso](https://github.com/edalcin/pluriverso)** - Middleware de federação; harvest periódico, índice central, mapeamentos semânticos SKOS e API pública unificada
+- **[BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas)** - Registro de evidências de conhecimento tradicional em obras de naturalistas em visita ao Brasil (séc. XVII-XIX); novo tipo de membro da federação; planejamento de implementação completo (modelo de dados, contextos e roadmap documentados)
+- **[Pluriverso](https://github.com/edalcin/pluriverso)** - Middleware de federação; harvest periódico, índice central, mapeamentos semânticos SKOS e API pública unificada; planejamento de implementação completo (stack, API, modelo de dados, C4 e roadmap documentados)
 
 ### Iniciativas Governamentais e Institucionais Brasileiras (Complementares)
 
