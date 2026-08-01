@@ -1,6 +1,6 @@
 # Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21396738-blue)](https://doi.org/10.5281/zenodo.21396738)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21738427-blue)](https://doi.org/10.5281/zenodo.21738427)
 [![Versão](https://img.shields.io/badge/Versão-3.4.0-green)](CHANGELOG.md)
 [![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](governanca/propostaGovernanca.md)
 
@@ -574,7 +574,7 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4 (Version v3.4) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21396738
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4 (Version v3.4) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21738427
 ```
 
 **BibTeX:**
@@ -585,12 +585,12 @@ Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimen
   version = {v3.4},
   year = {2026},
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.21396738},
-  url = {https://doi.org/10.5281/zenodo.21396738}
+  doi = {10.5281/zenodo.21738427},
+  url = {https://doi.org/10.5281/zenodo.21738427}
 }
 ```
 
-**DOI:** [10.5281/zenodo.21396738](https://doi.org/10.5281/zenodo.21396738)
+**DOI:** [10.5281/zenodo.21738427](https://doi.org/10.5281/zenodo.21738427)
 
 ---
 
