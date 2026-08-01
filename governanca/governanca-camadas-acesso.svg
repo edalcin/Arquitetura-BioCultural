@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8C8377"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E6B4F"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="800" fill="#FAF6EF"/>
+
+  <!-- Título -->
+  <text x="600" y="50" text-anchor="middle" font-size="31" font-weight="bold" fill="#37312A">Quatro camadas de acesso — e o que atravessa o harvest</text>
+  <text x="600" y="82" text-anchor="middle" font-size="17" fill="#7A7065">O Pluriverso só vê o que a comunidade publicou</text>
+
+  <!-- ================= PUBLIC ================= -->
+  <g>
+    <rect x="40" y="120" width="780" height="130" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M104 120 h-50 a14 14 0 0 0 -14 14 v102 a14 14 0 0 0 14 14 h50 z" fill="#2E6B4F"/>
+    <text x="124" y="158" font-size="16.5" font-weight="bold" fill="#2E6B4F">PUBLIC</text>
+    <text x="124" y="182" font-size="11.5" fill="#7A7065">qualquer pessoa acessa</text>
+    <text x="124" y="204" font-size="11.5" fill="#37312A">nome vernacular · uso genérico · táxon · município</text>
+    <text x="124" y="226" font-size="11" fill="#7A7065">conhecimento cotidiano, de circulação já ampla na comunidade</text>
+    <circle cx="730" cy="185" r="44" fill="#E4EFE7" stroke="#2E6B4F" stroke-width="1.5"/>
+    <text x="730" y="181" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#2E6B4F">sai no</text>
+    <text x="730" y="197" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#2E6B4F">harvest</text>
+  </g>
+
+  <!-- ================= RESTRICTED ================= -->
+  <g>
+    <rect x="40" y="270" width="780" height="130" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M104 270 h-50 a14 14 0 0 0 -14 14 v102 a14 14 0 0 0 14 14 h50 z" fill="#A8801F"/>
+    <text x="124" y="308" font-size="16.5" font-weight="bold" fill="#8A6A19">RESTRICTED</text>
+    <text x="124" y="332" font-size="11.5" fill="#7A7065">usuário autenticado e autorizado</text>
+    <text x="124" y="354" font-size="11.5" fill="#37312A">restrictions.allowedRoles · restrictions.allowedUsers</text>
+    <text x="124" y="376" font-size="11" fill="#B4542F">harvest autenticado é extensão futura, não implementada — ADR-009</text>
+    <circle cx="730" cy="335" r="44" fill="#F6EFDC" stroke="#A8801F" stroke-width="1.5"/>
+    <text x="730" y="331" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#8A6A19">não</text>
+    <text x="730" y="347" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#8A6A19">sai</text>
+  </g>
+
+  <!-- ================= COMMUNITY-ONLY ================= -->
+  <g>
+    <rect x="40" y="420" width="780" height="130" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M104 420 h-50 a14 14 0 0 0 -14 14 v102 a14 14 0 0 0 14 14 h50 z" fill="#3D5A80"/>
+    <text x="124" y="458" font-size="16.5" font-weight="bold" fill="#3D5A80">COMMUNITY-ONLY</text>
+    <text x="124" y="482" font-size="11.5" fill="#7A7065">somente membros da comunidade associada</text>
+    <text x="124" y="504" font-size="11.5" fill="#37312A">restrictions.allowedCommunities</text>
+    <text x="124" y="526" font-size="11" fill="#7A7065">conhecimento interno, de circulação restrita ao próprio grupo</text>
+    <circle cx="730" cy="485" r="44" fill="#E7EDF5" stroke="#3D5A80" stroke-width="1.5"/>
+    <text x="730" y="481" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#3D5A80">não</text>
+    <text x="730" y="497" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#3D5A80">sai</text>
+  </g>
+
+  <!-- ================= PRIVATE ================= -->
+  <g>
+    <rect x="40" y="570" width="780" height="130" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M104 570 h-50 a14 14 0 0 0 -14 14 v102 a14 14 0 0 0 14 14 h50 z" fill="#B4542F"/>
+    <text x="124" y="608" font-size="16.5" font-weight="bold" fill="#B4542F">PRIVATE / SIGILOSO</text>
+    <text x="124" y="632" font-size="11.5" fill="#7A7065">conhecimento sagrado, iniciático ou restrito por gênero</text>
+    <text x="124" y="654" font-size="11.5" font-weight="bold" fill="#B4542F">pode nunca ser digitado</text>
+    <text x="124" y="676" font-size="11" fill="#7A7065">não registrar é uma decisão legítima — e às vezes a correta</text>
+    <circle cx="730" cy="635" r="44" fill="#FBEBE2" stroke="#B4542F" stroke-width="1.5"/>
+    <text x="730" y="631" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#B4542F">não</text>
+    <text x="730" y="647" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#B4542F">sai</text>
+  </g>
+
+  <!-- ================= PAINEL CAMPOS OCULTADOS ================= -->
+  <g>
+    <rect x="850" y="200" width="310" height="330" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M850 214 a14 14 0 0 1 14 -14 h282 a14 14 0 0 1 14 14 v22 h-310 z" fill="#3D5A80"/>
+    <text x="1005" y="222" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">CAMPOS OCULTADOS</text>
+    <text x="1005" y="262" text-anchor="middle" font-size="11.5" fill="#7A7065">permissions.hiddenFields</text>
+    <text x="1005" y="282" text-anchor="middle" font-size="11" fill="#7A7065">valem mesmo em registro público</text>
+
+    <rect x="875" y="298" width="260" height="26" rx="13" fill="#E7EDF5"/>
+    <text x="1005" y="315" text-anchor="middle" font-size="11.5" fill="#3D5A80">location.coordinates</text>
+
+    <rect x="875" y="336" width="260" height="26" rx="13" fill="#E7EDF5"/>
+    <text x="1005" y="353" text-anchor="middle" font-size="11.5" fill="#3D5A80">community.name</text>
+
+    <rect x="875" y="374" width="260" height="26" rx="13" fill="#E7EDF5"/>
+    <text x="1005" y="391" text-anchor="middle" font-size="11.5" fill="#3D5A80">source.primary.informants</text>
+
+    <text x="1005" y="434" text-anchor="middle" font-size="11" fill="#37312A">campo restringido nunca fica vazio:</text>
+    <text x="1005" y="452" text-anchor="middle" font-size="11" fill="#37312A">é substituído por texto explicativo</text>
+    <text x="1005" y="482" text-anchor="middle" font-size="11" fill="#B4542F">generalizar, nunca randomizar</text>
+    <text x="1005" y="504" text-anchor="middle" font-size="11" fill="#B4542F">toda restrição tem data de revisão</text>
+  </g>
+
+  <!-- Rodapé -->
+  <text x="600" y="748" text-anchor="middle" font-size="12.5" fill="#B4542F">a decisão de camada é da comunidade, revisável a qualquer tempo</text>
+</svg>

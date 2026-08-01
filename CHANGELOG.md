@@ -6,6 +6,28 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.4.0] - 2026-08-01
+
+### Adicionado
+
+- **Proposta de Governança** (`governanca/propostaGovernanca.md`) — documento estruturante que define, em três camadas (dados, ferramentas e arquitetura), quem decide o quê, com que processo e o que acontece quando a decisão muda: princípios C.A.R.E. e a regra de precedência sobre FAIR, marco legal brasileiro e internacional artigo por artigo, a lacuna dos dados coletivos entre a LGPD e a Lei 13.123/2015, casos documentados de apropriação indevida, sete salvaguardas com seus limites declarados, CLPI como ciclo revisável, rotulagem cultural TK/BC, repartição de benefícios rastreável, conformidade LGPD, compromissos negativos, matriz de decisão e catorze lacunas abertas nomeadas
+- **Plano de elaboração da proposta** (`governanca/planoPropostaGovernanca.md`) — registro do planejamento que originou o documento de governança, com fontes, correções factuais obrigatórias e critérios de verificação
+- **Quatro ilustrações** no sistema visual da arquitetura (SVG fonte + PNG embutido), em `governanca/`: `governanca-tres-camadas`, `governanca-camadas-acesso`, `governanca-ciclo-clpi` e `governanca-reparticao`
+- Pasta **`governanca/`** na raiz do repositório, reunindo o documento de governança, seu plano de elaboração e as quatro ilustrações
+- Seção de destaque **"Novidade da v3.4 — Proposta de Governança"** no README, com a tabela das três camadas de decisão e link para o documento principal
+
+### Modificado
+
+- **README** promovido à versão 3.4: título, badge de versão, novo badge de governança, Visão Geral, seção "Arquitetura do Sistema", Estrutura da Documentação, Navegação (Proposta de Governança como item 1) e blocos de citação
+- **Seção "Licença" do README** passa a apontar para a proposta concreta de licenciamento em três regimes (§6.4 da Proposta de Governança), em vez de apenas registrar a lacuna
+- **Diagrama `docs/arquitetura-biocultural.svg/.png`** relabelado de "versão 3.3" para "versão 3.4"; o conteúdo técnico do diagrama não mudou
+
+### Contexto da Versão
+
+A v3.4 não altera o modelo de dados, o contrato de harvest nem qualquer ADR: acrescenta a camada de governança que os ADRs pressupõem mas não descrevem. O documento é publicado com status **"Proposta para consulta"**, submetido à validação das comunidades federadas e do Comitê Federado, e nomeia explicitamente o que ainda não existe — inclusive o bloqueador E4 do ADR-006 (autenticação da decisão do Comitê) e a licença do projeto, para a qual passa a haver proposta concreta (código em licença permissiva OSI, documentação em CC BY 4.0, dados de CTA fora de licença aberta).
+
+---
+
 ## [3.3.0] - 2026-07-20
 
 ### Adicionado

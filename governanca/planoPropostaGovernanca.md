@@ -2,7 +2,7 @@
 
 ## Context
 
-Criar **`docs/propostaGovernanca.md`** no repositório `Arquitetura-BioCultural` (v3.3): uma proposta de governança em três camadas — (1) **dados e informações** de conhecimento tradicional associado à biodiversidade (CTA), que é o núcleo e a maior parte do documento; (2) **ferramentas** que compõem a plataforma (BioCultDB, BioCultPapers, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, BioCultTermos, Pluriverso); (3) **arquitetura** em si (como ela evolui e quem decide).
+Criar **`governanca/propostaGovernanca.md`** no repositório `Arquitetura-BioCultural` (v3.3): uma proposta de governança em três camadas — (1) **dados e informações** de conhecimento tradicional associado à biodiversidade (CTA), que é o núcleo e a maior parte do documento; (2) **ferramentas** que compõem a plataforma (BioCultDB, BioCultPapers, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, BioCultTermos, Pluriverso); (3) **arquitetura** em si (como ela evolui e quem decide).
 
 O documento é fundamentado em pesquisa bibliográfica real (princípios C.A.R.E., soberania de dados indígenas, LGPD, Lei 13.123/2015, Protocolo de Nagoya, Convenção 169 OIT, casos documentados de apropriação indevida), tem **ilustrações SVG+PNG no mesmo sistema visual** de `docs/arquitetura-biocultural.svg`, e trata **explicitamente** o receio de lideranças e comunidades quanto ao mau uso dos dados (indústria farmacêutica, bioprospecção, pesquisa extrativa). Encerra com **"Referências Bibliográficas"** em ABNT NBR 6023:2018 (convenção já usada em `Referencias.md`).
 
@@ -40,7 +40,7 @@ Confirmados por leitura nesta sessão — o executor não precisa reinvestigar, 
 
 ## Insumos de pesquisa (produzidos nesta sessão)
 
-Quatro relatórios de pesquisa em PT-BR foram produzidos como **artefatos de sessão** — não são versionados neste repositório (existem apenas como `local://` na sessão que gerou este plano). A tabela abaixo resume o que cada um continha; a íntegra foi lida e incorporada ao conteúdo de `docs/propostaGovernanca.md` e à bibliografia consolidada durante a Etapa 1:
+Quatro relatórios de pesquisa em PT-BR foram produzidos como **artefatos de sessão** — não são versionados neste repositório (existem apenas como `local://` na sessão que gerou este plano). A tabela abaixo resume o que cada um continha; a íntegra foi lida e incorporada ao conteúdo de `governanca/propostaGovernanca.md` e à bibliografia consolidada durante a Etapa 1:
 
 | Relatório (artefato de sessão, não versionado) | Conteúdo | Volume |
 |---|---|---|
@@ -145,7 +145,7 @@ Rota padrão: ferramenta `browser` — `open` com `url: "file:///D:/git/Arquitet
 
 ---
 
-## Estrutura definitiva de `docs/propostaGovernanca.md`
+## Estrutura definitiva de `governanca/propostaGovernanca.md`
 
 Títulos exatos, na ordem exata. `##` = seção de primeiro nível do documento.
 
@@ -253,10 +253,10 @@ Formato obrigatório do checkpoint (ferramenta `ask`, uma pergunta):
 
 ### Etapa 1 — Insumos de pesquisa consolidados
 Os quatro relatórios de pesquisa (CARE, Jurídico, Técnico, Riscos e Casos) foram produzidos e lidos integralmente como artefatos de sessão — não versionados neste repositório. A seção **"Insumos de pesquisa"** acima resume o que há em cada um, lista as **nove correções obrigatórias**, os **achados que o documento precisa carregar** e as **citações-âncora já conferidas**.
-0. **Persistir este plano no repositório**, já que o usuário pediu o planejamento "em um documento separado": copiar o conteúdo deste arquivo para `docs/planoPropostaGovernanca.md`, sem alterações além de (a) trocar o título para `# Plano de Elaboração — Proposta de Governança` e (b) substituir cada referência aos relatórios de pesquisa por uma nota de que são artefatos de sessão, não versionados. Manter os dois em sincronia não é requisito: `docs/planoPropostaGovernanca.md` é o registro do planejamento para o usuário; o guia de execução original é o artefato de sessão.
+0. **Persistir este plano no repositório**, já que o usuário pediu o planejamento "em um documento separado": copiar o conteúdo deste arquivo para `governanca/planoPropostaGovernanca.md`, sem alterações além de (a) trocar o título para `# Plano de Elaboração — Proposta de Governança` e (b) substituir cada referência aos relatórios de pesquisa por uma nota de que são artefatos de sessão, não versionados. Manter os dois em sincronia não é requisito: `governanca/planoPropostaGovernanca.md` é o registro do planejamento para o usuário; o guia de execução original é o artefato de sessão.
 1. Ler os quatro relatórios na íntegra antes de escrever qualquer linha do documento. Descartar toda referência marcada `[NÃO VERIFICADO]` ou sem DOI/URL resolvível — não citar no documento, nem com ressalva.
 2. Consolidar a bibliografia em uma lista única ABNT NBR 6023:2018, ordenada alfabeticamente por sobrenome do primeiro autor, agrupada nas mesmas seções temáticas usadas em `Referencias.md` (Legislação Brasileira / Convenções e Protocolos Internacionais / Governança de Dados e Princípios / Etnobiologia e Conhecimento Tradicional / Padrões e Ferramentas). Deduplicar: as quatro fontes citam Carroll et al. 2020, Kukutai & Taylor 2016 e Local Contexts em duplicidade. Guardar em artefato de sessão — é o arquivo-fonte da §9.
-3. Criar `docs/propostaGovernanca.md` com: bloco de abertura, sumário (lista de links `#`-âncora para todas as seções de `##`), §1, §2 (texto, sem a imagem ainda — a referência à imagem entra na Etapa 5) e um esqueleto **apenas com os títulos** das §3–§8 seguidos da linha `*(em elaboração — ver `docs/planoPropostaGovernanca.md`)*`.
+3. Criar `governanca/propostaGovernanca.md` com: bloco de abertura, sumário (lista de links `#`-âncora para todas as seções de `##`), §1, §2 (texto, sem a imagem ainda — a referência à imagem entra na Etapa 5) e um esqueleto **apenas com os títulos** das §3–§8 seguidos da linha `*(em elaboração — ver `governanca/planoPropostaGovernanca.md`)*`.
    Exceção à regra "nada de placeholder": este esqueleto existe só entre as etapas 1 e 5 e é removido conforme cada seção é escrita. Ao final da Etapa 4 não pode restar nenhuma linha "(em elaboração)".
 4. Checkpoint.
 
@@ -317,13 +317,13 @@ Os quatro relatórios de pesquisa (CARE, Jurídico, Técnico, Riscos e Casos) fo
 
 Não há código; a prova é o documento renderizando correto, com conteúdo checável.
 
-1. **Estrutura e links** — `grep -n "^#" docs/propostaGovernanca.md` deve devolver exatamente os títulos da estrutura acima, na ordem. Cada link do sumário resolve para uma âncora existente (comparar slug do título com o link).
-2. **Nenhum placeholder ao final da Etapa 4** — `grep -c "em elaboração" docs/propostaGovernanca.md` = 0.
+1. **Estrutura e links** — `grep -n "^#" governanca/propostaGovernanca.md` deve devolver exatamente os títulos da estrutura acima, na ordem. Cada link do sumário resolve para uma âncora existente (comparar slug do título com o link).
+2. **Nenhum placeholder ao final da Etapa 4** — `grep -c "em elaboração" governanca/propostaGovernanca.md` = 0.
 3. **Integridade bibliográfica** (a checagem que exercita o conteúdo novo): extrair todas as citações `(AUTOR, ano)` do corpo e todas as entradas da §9 e comparar os dois conjuntos — zero citação sem entrada, zero entrada sem citação. Rodar com um one-liner Python via `eval` sobre o texto do arquivo; imprimir as duas diferenças (devem sair vazias).
 4. **Nenhum DOI/URL inventado** — `read https://doi.org/<doi>` devolve metadados do CrossRef (título, autores, veículo, ano) em markdown; conferir os quatro campos contra a entrada da §9. Cobertura obrigatória: 100% dos DOIs de artigo citados no corpo, **exceto** os já conferidos nesta sessão e listados em "Citações-âncora com DOI conferido nesta sessão". Se um DOI não resolver ou os metadados divergirem, remover a referência **e** a afirmação que dela dependia — nunca manter a afirmação sem fonte.
 5. **Ilustrações** — para cada um dos quatro PNGs: `read docs/<nome>.png` renderiza a imagem; conferir a olho fundo `#FAF6EF`, título legível, nenhum texto sobreposto ou fora do canvas, e paleta idêntica à de `arquitetura-biocultural.png` aberta lado a lado.
-6. **Markdown do GitHub** — abrir `docs/propostaGovernanca.md` no preview do VS Code (ou `read` do arquivo) e confirmar que todas as tabelas fecham, os blocos de código não engolem seções e as imagens têm caminho relativo correto (`nome.png`, mesmo diretório).
-7. **Coerência com o repo** — `grep -n "visibility\|hiddenFields\|purge_by_member\|member_id\|care_declaration" docs/propostaGovernanca.md` e conferir cada ocorrência contra o ADR de origem: nome idêntico, sem campo inventado sem a marca `[a implementar]`.
+6. **Markdown do GitHub** — abrir `governanca/propostaGovernanca.md` no preview do VS Code (ou `read` do arquivo) e confirmar que todas as tabelas fecham, os blocos de código não engolem seções e as imagens têm caminho relativo correto (`nome.png`, mesmo diretório).
+7. **Coerência com o repo** — `grep -n "visibility\|hiddenFields\|purge_by_member\|member_id\|care_declaration" governanca/propostaGovernanca.md` e conferir cada ocorrência contra o ADR de origem: nome idêntico, sem campo inventado sem a marca `[a implementar]`.
 
 ---
 
@@ -332,7 +332,7 @@ Não há código; a prova é o documento renderizando correto, com conteúdo che
 - **Idioma e norma**: documento inteiro em PT-BR, referências em ABNT NBR 6023:2018 (segue `Referencias.md`). *Se o usuário preferir APA* (usada na seção "Artigos e Publicações Relacionadas" do README), converter só a §9 — a estrutura não muda.
 - **Bibliografia vive no próprio documento**, não em `Referencias.md`, para evitar duplicação e deriva; `Referencias.md` fica intocado. *Se o usuário pedir consolidação*, mover a §9 para lá e deixar um link.
 - **Status do documento**: "Proposta para consulta — submetida à validação de comunidades e do Comitê Federado". Não é norma vigente; nenhuma seção afirma que a plataforma **já** cumpre o que ainda não existe (daí a marca `[a implementar]`).
-- **Escopo de arquivos alterados**: cria `docs/propostaGovernanca.md`, `docs/planoPropostaGovernanca.md` (cópia do planejamento, pedida pelo usuário) + 4 SVG + 4 PNG; edita `README.md` (2 linhas de navegação) e `CHANGELOG.md` (1 entrada). Nada mais. *Se durante a escrita ficar evidente que o ADR-003 precisa de campo novo*, isso vai para §8.1 como lacuna — **não** editar ADRs nesta tarefa.
+- **Escopo de arquivos alterados**: cria `governanca/propostaGovernanca.md`, `governanca/planoPropostaGovernanca.md` (cópia do planejamento, pedida pelo usuário) + 4 SVG + 4 PNG; edita `README.md` (2 linhas de navegação) e `CHANGELOG.md` (1 entrada). Nada mais. *Se durante a escrita ficar evidente que o ADR-003 precisa de campo novo*, isso vai para §8.1 como lacuna — **não** editar ADRs nesta tarefa.
 - **Nova versão no CHANGELOG**: entrada `[3.4.0]` por ser adição de documento estruturante, coerente com o histórico (a v3.2 subiu minor só por documentação). *Se o usuário preferir não versionar*, registrar sob `## [Não versionado]` no topo.
 - **Quatro ilustrações**, não mais. Se ao escrever §5.11 (LGPD) ficar tentador ilustrar a matriz de papéis, resistir: a matriz é tabela, não desenho.
 - **Se um checkpoint receber "Parar"**, o executor encerra o turno reportando etapa concluída e próxima etapa — sem adiantar trabalho da etapa seguinte "já que estava perto".

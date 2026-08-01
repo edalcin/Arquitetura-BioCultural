@@ -11,7 +11,7 @@
   <rect x="0" y="0" width="1200" height="840" fill="#FAF6EF"/>
 
   <!-- Título -->
-  <text x="600" y="50" text-anchor="middle" font-size="31" font-weight="bold" fill="#37312A">Arquitetura BioCultural — versão 3.3</text>
+  <text x="600" y="50" text-anchor="middle" font-size="31" font-weight="bold" fill="#37312A">Arquitetura BioCultural — versão 3.4</text>
   <text x="600" y="82" text-anchor="middle" font-size="17" fill="#7A7065">Cada um no seu solo. Todos na mesma ponte.</text>
 
   <!-- ================= CARD 1 ================= -->

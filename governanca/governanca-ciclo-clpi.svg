@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="1200" height="840" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8C8377"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E6B4F"/>
+    </marker>
+    <marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B4542F"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="840" fill="#FAF6EF"/>
+
+  <!-- Título -->
+  <text x="600" y="50" text-anchor="middle" font-size="31" font-weight="bold" fill="#37312A">O CLPI é um ciclo, não um formulário</text>
+  <text x="600" y="82" text-anchor="middle" font-size="17" fill="#7A7065">Consentir é um processo que pode ser revisto — e revogado</text>
+
+  <!-- ================= SETAS DO CICLO (verdes, sentido horário) ================= -->
+  <path d="M640 240 L 692 278" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+  <path d="M848 337 L 858 447" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+  <path d="M832 531 L 766 603" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+  <path d="M581 647 L 503 647" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+  <path d="M348 603 L 302 533" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+  <path d="M240 447 L 250 337" fill="none" stroke="#2E6B4F" stroke-width="2.2" marker-end="url(#arrowG)"/>
+
+  <!-- Seta terracota de revisão periódica: nó 7 -> nó 2, por cima -->
+  <path d="M282 257 C 282 110, 798 110, 798 255" fill="none" stroke="#B4542F" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#arrowT)"/>
+  <rect x="470" y="118" width="140" height="24" rx="12" fill="#FAF6EF"/>
+  <text x="540" y="135" text-anchor="middle" font-size="12" fill="#B4542F">revisão periódica</text>
+
+  <!-- ================= NÓ 1 ================= -->
+  <g>
+    <rect x="440" y="172" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M440 186 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#2E6B4F"/>
+    <text x="540" y="192" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">1 · CONSULTA PRÉVIA</text>
+    <text x="540" y="222" text-anchor="middle" font-size="11" fill="#37312A">protocolo próprio</text>
+    <text x="540" y="238" text-anchor="middle" font-size="11" fill="#7A7065">da comunidade</text>
+  </g>
+
+  <!-- ================= NÓ 2 ================= -->
+  <g>
+    <rect x="698" y="259" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M698 273 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#2E6B4F"/>
+    <text x="798" y="279" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">2 · ACORDO DE REGISTRO</text>
+    <text x="798" y="309" text-anchor="middle" font-size="11" fill="#37312A">escopo · prazo</text>
+    <text x="798" y="325" text-anchor="middle" font-size="11" fill="#7A7065">uso permitido</text>
+  </g>
+
+  <!-- ================= NÓ 3 ================= -->
+  <g>
+    <rect x="762" y="453" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M762 467 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#B4542F"/>
+    <text x="862" y="473" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">3 · REGISTRO DO RELATO</text>
+    <text x="862" y="503" text-anchor="middle" font-size="11" fill="#37312A">BioCultRelatos</text>
+    <text x="862" y="519" text-anchor="middle" font-size="11" fill="#7A7065">com proveniência</text>
+  </g>
+
+  <!-- ================= NÓ 4 ================= -->
+  <g>
+    <rect x="583" y="609" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M583 623 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#B4542F"/>
+    <text x="683" y="629" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.3">4 · VALIDAÇÃO COMUNITÁRIA</text>
+    <text x="683" y="659" text-anchor="middle" font-size="11" fill="#37312A">verifiedByCommunity</text>
+    <text x="683" y="675" text-anchor="middle" font-size="11" fill="#7A7065">é a última palavra</text>
+  </g>
+
+  <!-- ================= NÓ 5 ================= -->
+  <g>
+    <rect x="297" y="609" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M297 623 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#A8801F"/>
+    <text x="397" y="629" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.3">5 · CLASSIFICAÇÃO DE ACESSO</text>
+    <text x="397" y="659" text-anchor="middle" font-size="11" fill="#37312A">visibility + rótulos</text>
+    <text x="397" y="675" text-anchor="middle" font-size="11" fill="#7A7065">culturais</text>
+  </g>
+
+  <!-- ================= NÓ 6 ================= -->
+  <g>
+    <rect x="118" y="453" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M118 467 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#3D5A80"/>
+    <text x="218" y="473" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">6 · PUBLICAÇÃO SELETIVA</text>
+    <text x="218" y="503" text-anchor="middle" font-size="11" fill="#37312A">harvest só do que</text>
+    <text x="218" y="519" text-anchor="middle" font-size="11" fill="#7A7065">é público</text>
+  </g>
+
+  <!-- ================= NÓ 7 ================= -->
+  <g>
+    <rect x="182" y="259" width="200" height="76" rx="14" fill="#FFFFFF" stroke="#D9CBB4" stroke-width="1.5"/>
+    <path d="M182 273 a14 14 0 0 1 14 -14 h172 a14 14 0 0 1 14 14 v16 h-200 z" fill="#3D5A80"/>
+    <text x="282" y="279" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#FFFFFF" letter-spacing="0.6">7 · AUDITORIA E RETORNO</text>
+    <text x="282" y="309" text-anchor="middle" font-size="11" fill="#37312A">log de uso devolvido</text>
+    <text x="282" y="325" text-anchor="middle" font-size="11" fill="#7A7065">à comunidade</text>
+  </g>
+
+  <!-- ================= REVOGAÇÃO (centro para fora) ================= -->
+  <text x="540" y="420" text-anchor="middle" font-size="15" font-weight="bold" fill="#B4542F" letter-spacing="0.6">REVOGAÇÃO</text>
+  <text x="540" y="442" text-anchor="middle" font-size="11.5" fill="#B4542F">purge_by_member + remoção do índice</text>
+  <text x="540" y="462" text-anchor="middle" font-size="11" fill="#7A7065">a qualquer tempo, sem justificativa</text>
+  <path d="M566 474 L 906 666" fill="none" stroke="#B4542F" stroke-width="2.2" marker-end="url(#arrowT)"/>
+
+  <g>
+    <rect x="918" y="618" width="250" height="100" rx="18" fill="#B4542F"/>
+    <text x="1043" y="656" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">o dado sai da</text>
+    <text x="1043" y="676" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">federação</text>
+    <text x="1043" y="698" text-anchor="middle" font-size="12" fill="#FBEBE2">e do índice derivado</text>
+  </g>
+
+  <!-- Rodapé -->
+  <text x="600" y="790" text-anchor="middle" font-size="12" fill="#7A7065">prazo, finalidade e uso permitido são registrados como dado, não como PDF esquecido</text>
+</svg>

@@ -1,15 +1,47 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21396738-blue)](https://doi.org/10.5281/zenodo.21396738)
-[![Versão](https://img.shields.io/badge/Versão-3.3.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.4.0-green)](CHANGELOG.md)
+[![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](governanca/propostaGovernanca.md)
 
 ## Visão Geral
 
-Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX. A versão 3.3 fixa a engine de persistência do Pluriverso (SQLite embutida, ADR-008) e reconhece o Pluriverso como componente **instanciável em múltiplos escopos** (ADR-009), permitindo, por exemplo, que uma associação de comunidades opere sua própria instância federando apenas os seus membros.
+Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX. A versão 3.3 fixa a engine de persistência do Pluriverso (SQLite embutida, ADR-008) e reconhece o Pluriverso como componente **instanciável em múltiplos escopos** (ADR-009), permitindo, por exemplo, que uma associação de comunidades opere sua própria instância federando apenas os seus membros. A **versão 3.4** acrescenta a camada que faltava: uma **proposta de governança para toda a plataforma**, que nomeia quem decide o quê sobre os dados, as ferramentas e a própria arquitetura.
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
 > — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente esta proposta de arquitetura federada.
+
+
+## 🏛️ Novidade da v3.4 — Proposta de Governança
+
+A arquitetura sempre prometeu soberania. A **[Proposta de Governança](governanca/propostaGovernanca.md)** é o documento que diz **como essa promessa é cumprida na prática** — e onde ela ainda não é.
+
+> Arquitetura não é governança: dizer *como* o dado é armazenado não diz *quem decide* o que entra, o que sai, quem pode alterar o código que o processa, e quem responde quando uma comunidade pergunta por que um relato está público sem autorização.
+
+O documento organiza a governança em **três camadas**, cada uma com sua instância de decisão:
+
+| Camada | Quem decide | Sobre o quê |
+|---|---|---|
+| **Dados** | A comunidade | o que se registra · o que se publica · o que se retira |
+| **Ferramentas** | O mantenedor da instância | deploy · versão · backup · segurança |
+| **Arquitetura** | O Comitê Federado | ADRs · contrato de harvest · admissão de membros |
+
+[![Três camadas de governança: dados decididos pela comunidade, ferramentas pelo mantenedor da instância, arquitetura pelo Comitê Federado](governanca/governanca-tres-camadas.png)](governanca/propostaGovernanca.md)
+
+**O que o documento traz:**
+
+- Os princípios **C.A.R.E.** sub-princípio a sub-princípio, mapeados ao componente que os implementa — com o **estado real de cada um**, inclusive os vazios
+- O **marco legal** brasileiro e internacional artigo por artigo (LGPD, Lei 13.123/2015, Protocolo de Nagoya, Convenção nº 169 da OIT, UNDRIP, CDB)
+- A **lacuna dos dados coletivos**: a LGPD protege o titular individual, o CTA tem titularidade coletiva por lei — e os dois regimes não conversam
+- **Por que comunidades desconfiam de bancos de dados**, com casos documentados de apropriação indevida (cupuaçu, ayahuasca, jaborandi, espinheira-santa, Hoodia, nim, cúrcuma, quinoa, açaí) e as **sete salvaguardas** desta arquitetura — cada uma com o limite honesto do que ela **não** impede
+- **CLPI como ciclo revisável**, não como formulário assinado uma vez
+- **Rotulagem cultural** TK/BC Labels, **repartição de benefícios rastreável**, conformidade LGPD e **compromissos negativos** — o que a plataforma nunca fará
+- Uma **matriz de decisão** e **catorze lacunas abertas nomeadas**, com responsável e o que falta em cada uma
+
+> **Status: Proposta para consulta.** Não é norma vigente — o documento é submetido à validação das comunidades federadas e do Comitê Federado, e marca `[a implementar]` tudo o que ainda não existe.
+
+📄 **[Ler a Proposta de Governança completa →](governanca/propostaGovernanca.md)**
 
 ---
 
@@ -56,11 +88,11 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 ---
 
-## Arquitetura do Sistema — Versão 3.3 (Federada)
+## Arquitetura do Sistema — Versão 3.4 (Federada)
 
-A versão 3.3 organiza o sistema como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada.
+A versão 3.4 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. O que a v3.4 acrescenta não é técnico: é a [camada de governança](governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças.
 
-![Arquitetura BioCultural — versão 3.3, visão geral federada](docs/arquitetura-biocultural.png)
+![Arquitetura BioCultural — versão 3.4, visão geral federada](docs/arquitetura-biocultural.png)
 
 > **Leitura recomendada:** o artigo do blog [*Arquitetando — Biodiversidade, Dados e Metadados*](https://eduardo.dalc.in/arquitetando/) explica, de forma didática e ilustrada, toda esta arquitetura federada — as quatro fontes de evidência, a soberania via SQLite+JSON, o papel do Pluriverso e a aposta na repartição de benefícios rastreável.
 
@@ -70,7 +102,7 @@ A versão 3.3 organiza o sistema como uma **federação de entidades soberanas**
 - **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
 - **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
 - **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
-- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos
+- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos — detalhada na [Proposta de Governança](governanca/propostaGovernanca.md)
 
 ### Tipos de Membros da Federação
 
@@ -335,6 +367,13 @@ Este repositório está organizado da seguinte forma:
 ```
 Arquitetura-BioCultural/
 ├── README.md (este arquivo)
+├── governanca/
+│   ├── propostaGovernanca.md          ← documento principal de governança
+│   ├── planoPropostaGovernanca.md
+│   ├── governanca-tres-camadas.svg/.png
+│   ├── governanca-camadas-acesso.svg/.png
+│   ├── governanca-ciclo-clpi.svg/.png
+│   └── governanca-reparticao.svg/.png
 ├── docs/
 │   ├── metodologia-e-tecnologias.md
 │   ├── c4-model/
@@ -352,11 +391,13 @@ Arquitetura-BioCultural/
 
 ### Navegação da Documentação
 
-1. **[Diagrama de Contexto](docs/c4-model/01-context-diagram.md)** - Visão de alto nível do sistema e seus usuários
-2. **[Diagrama de Containers](docs/c4-model/02-container-diagram.md)** - Componentes principais e suas tecnologias
-3. **[Diagrama de Componentes](docs/c4-model/03-component-diagram.md)** - Detalhamento interno de cada contexto
-4. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
-5. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
+1. **[Proposta de Governança](governanca/propostaGovernanca.md)** — **documento principal da v3.4**: governança dos dados, das ferramentas e da arquitetura — princípios C.A.R.E., marco legal, salvaguardas contra o mau uso, CLPI como processo, rotulagem cultural, repartição rastreável, matriz de decisão e lacunas abertas
+2. **[Diagrama de Contexto](docs/c4-model/01-context-diagram.md)** - Visão de alto nível do sistema e seus usuários
+3. **[Diagrama de Containers](docs/c4-model/02-container-diagram.md)** - Componentes principais e suas tecnologias
+4. **[Diagrama de Componentes](docs/c4-model/03-component-diagram.md)** - Detalhamento interno de cada contexto
+5. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
+6. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
+7. **[Plano de elaboração da proposta de governança](governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
 
 
 
@@ -523,7 +564,7 @@ Zank, S., Julião, C. G., de Lima, A. S., da Silva, M. T., Levis, C., Hanazaki, 
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.3.0 (Pluriverso instanciável com engine SQLite embutida, persistência SQLite+JSON por unidade).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.4.0 (proposta de governança para toda a plataforma, sobre a base federada com Pluriverso instanciável e persistência SQLite+JSON por unidade).
 
 ---
 
@@ -533,15 +574,15 @@ Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
 
 **APA:**
 ```
-Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3 (Version v3.3) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21396738
+Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4 (Version v3.4) [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21396738
 ```
 
 **BibTeX:**
 ```bibtex
 @software{dalcin2026,
   author = {Dalcin, Eduardo},
-  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.3},
-  version = {v3.3},
+  title = {Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4},
+  version = {v3.4},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.21396738},
@@ -559,7 +600,7 @@ Este é um projeto em fase de proposta. Contribuições e sugestões são bem-vi
 
 ## Licença
 
-A definir - considerando licenças que respeitem os princípios C.A.R.E. e protejam adequadamente o conhecimento tradicional.
+A definir — considerando licenças que respeitem os princípios C.A.R.E. e protejam adequadamente o conhecimento tradicional. A [Proposta de Governança, §6.4](governanca/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo) apresenta uma proposta concreta para fechar esta lacuna: **código** em licença permissiva OSI, **documentação** em CC BY 4.0 e **dados de CTA fora de licença aberta** — regidos por consentimento com escopo, prazo e revogação, porque licença aberta é irrevogável e o CLPI não pode ser.
 
 ## Contato
 
