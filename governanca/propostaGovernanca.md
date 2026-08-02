@@ -386,7 +386,7 @@ Proveniência é o que separa um registro de conhecimento tradicional de um dado
 
 | Fonte | Cadeia de proveniência exigida |
 |---|---|
-| **Fontes secundárias** (BioCultDB / BioCultPapers) | `source.secondary` com referência completa, DOI/ISBN, página; identificação de quem extraiu (`extractedBy`) e por qual método (`extractionMethod`) — extração automatizada por IA precisa ser declarada como tal, não apresentada como leitura humana |
+| **Fontes secundárias** (BioCultDB, inclui Extração por IA) | `source.secondary` com referência completa, DOI/ISBN, página; identificação de quem extraiu (`extractedBy`) e por qual método (`extractionMethod`) — extração automatizada por IA precisa ser declarada como tal, não apresentada como leitura humana |
 | **Fontes primárias** (BioCultRelatos) | `source.primary` com método de coleta, data, quem coletou, informantes (com `anonymized` quando for o caso) e aprovação ética (`ethicsApproval`), somados ao bloco `community.consent` (§5.3) |
 | **Acervos** (BioCultAcervos) | Identificação da instituição custodiante, número de tombo ou registro, data de entrada no acervo e, quando conhecida, a cadeia de aquisição — inclusive quando ela é problemática |
 | **Naturalistas** (BioCultNaturalistas) | Obra, edição, página, autor, viagem e data; quando a obra nomeia quem prestou a informação, esse nome é parte da proveniência e não deve ser descartado como detalhe |

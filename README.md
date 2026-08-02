@@ -88,11 +88,11 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 ---
 
-## Arquitetura do Sistema — Versão 3.4 (Federada)
+## Arquitetura do Sistema — Versão 3.5 (Federada)
 
-A versão 3.4 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. O que a v3.4 acrescenta não é técnico: é a [camada de governança](governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças.
+A versão 3.5 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. A v3.4 acrescentou a [camada de governança](governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças; a v3.5 absorve o **BioCultPapers** pelo **BioCultDB** ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)) — a extração de dados por IA deixa de ser aplicativo desktop separado e passa a ser a funcionalidade **Extração por IA**, nativa do contexto de Aquisição.
 
-![Arquitetura BioCultural — versão 3.4, visão geral federada](docs/arquitetura-biocultural.png)
+![Arquitetura BioCultural — versão 3.5, visão geral federada](docs/arquitetura-biocultural.png)
 
 > **Leitura recomendada:** o artigo do blog [*Arquitetando — Biodiversidade, Dados e Metadados*](https://eduardo.dalc.in/arquitetando/) explica, de forma didática e ilustrada, toda esta arquitetura federada — as quatro fontes de evidência, a soberania via SQLite+JSON, o papel do Pluriverso e a aposta na repartição de benefícios rastreável.
 
@@ -561,7 +561,7 @@ Zank, S., Julião, C. G., de Lima, A. S., da Silva, M. T., Levis, C., Hanazaki, 
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.4.0 (proposta de governança para toda a plataforma, sobre a base federada com Pluriverso instanciável e persistência SQLite+JSON por unidade).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.5.0 (absorção do BioCultPapers pelo BioCultDB, sobre a base federada com governança proposta, Pluriverso instanciável e persistência SQLite+JSON por unidade).
 
 ---
 
