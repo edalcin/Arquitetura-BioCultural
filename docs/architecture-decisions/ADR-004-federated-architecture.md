@@ -78,6 +78,9 @@ O contrato mínimo do endpoint:
 **Consequência:** Cada membro (BioCultDB, BioCultRelatos, futuras implementações) precisa implementar esse endpoint. É a única dependência técnica que membros têm em relação à federação.
 
 ### D7 — Posição do BioCultPapers: Exclusivo de Iniciativas de Fontes Secundárias
+**Status:** Supersedido pelo ADR-011 (Absorção do BioCultPapers pelo BioCultDB) — o BioCultPapers deixou de ser componente do ecossistema.
+
+Ver [ADR-011](ADR-011-absorcao-biocultpapers.md) para a decisão vigente.
 
 O BioCultPapers é ferramenta especializada em extração de CTA de literatura científica (PDFs). Permanece como componente exclusivo de **iniciativas de fontes secundárias**. Comunidades tradicionais que registram conhecimento primário usam BioCultRelatos.
 

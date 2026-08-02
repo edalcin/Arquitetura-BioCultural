@@ -6,6 +6,27 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.5.0] - 2026-08-02
+
+### Adicionado
+
+- **ADR-011: Absorção do BioCultPapers pelo BioCultDB** — o BioCultPapers deixa de ser componente da arquitetura; sua funcionalidade de extração de dados por IA a partir de artigos científicos passa a ser **Extração por IA**, funcionalidade nativa do BioCultDB no contexto de Aquisição, acessível pelo navegador (PDF nunca sai do navegador do usuário; texto extraído vai ao provedor de IA; resultado vira Evidência pendente que entra na Curadoria como qualquer outra). Supersede o ponto D7 do ADR-004 e os pontos DA1 (parcial) e DA6 do ADR-005; registra a premissa corrigida de que o BioCultPapers já não usava MongoDB no momento da absorção — havia migrado para SQLite pelo próprio ADR-005 — e que o ganho real foi eliminar a entrega por arquivo entre as duas aplicações, não trocar de banco de dados. Registra pendência (não resolvida) de vocabulário: o termo "Evidência" adotado pelo BioCultDB precisa, se necessário, ser harmonizado pelo Comitê Federado caso o BioCultRelatos use outro termo para o mesmo conceito.
+- Subseção **"Extração por IA"** no README, descrevendo a funcionalidade como parte do BioCultDB, e componente **Extração por IA** no diagrama C4 de componentes (`docs/c4-model/03-component-diagram.md`), dentro do container do BioCultDB
+
+### Modificado
+
+- **README**: inventário de componentes ativos, tabela de tipos de membro da federação, seção "Integração Federada entre Projetos" e lista de "Projetos da Arquitetura (Implementados)" atualizados para remover o BioCultPapers como componente separado; título e badge de versão promovidos para 3.5.0
+- **Nota de status** adicionada ao ponto D7 do ADR-004 e aos pontos DA1 e DA6 do ADR-005, apontando para o ADR-011 — texto original de cada ponto preservado abaixo da nota, seguindo a convenção já usada no ADR-001
+- **`docs/c4-model/02-container-diagram.md`**: container `.NET 8/WPF` do BioCultPapers removido do diagrama de containers (nós, relações, estilo e descrição detalhada)
+- **BioCultPapers** removido do inventário de componentes ativos da federação — o repositório é congelado (fora do escopo desta versão); dados existentes migrados uma única vez via script de importação já existente entre as duas aplicações
+
+### Contexto da Versão
+
+O BioCultPapers nasceu como aplicativo desktop separado para suprir, no BioCultDB da época, a ausência de uma forma de processar PDFs com IA. Essa lacuna não existe mais: o BioCultDB ganhou a funcionalidade de Extração por IA diretamente no contexto de Aquisição, eliminando a ponte manual de entrega por arquivo entre as duas aplicações (DA6 do ADR-005). A v3.5 não altera o modelo de dados nem o contrato de harvest — apenas remove um componente cuja razão de existir (rodar fora do BioCultDB) deixou de se aplicar. Fica registrada, sem resolver, uma pendência de vocabulário: o termo "Evidência" foi adotado pelo BioCultDB para o resultado da extração; se o BioCultRelatos usa outro termo para o mesmo conceito, é decisão de vocabulário de arquitetura a cargo do Comitê Federado (ADR-011).
+
+---
+
+
 ## [3.4.0] - 2026-08-01
 
 ### Adicionado

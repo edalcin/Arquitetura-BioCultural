@@ -32,14 +32,22 @@ Adotar **SQLite com JSON (JSON1)** como mecanismo de persistência de cada unida
 MongoDB por membro previsto no ADR-001/ADR-004. A decisão se desdobra em oito pontos (DA1–DA8), harmonizados
 em todas as ferramentas (BioCultDB, BioCultTermos, BioCultRelatos, BioCultPapers, Pluriverso):
 
-- **DA1 — Um arquivo por unidade, compartilhado pelas ferramentas, um container por unidade.** Cada unidade
-  federada (Unidade de Fontes Secundárias = BioCultDB + BioCultTermos; Unidade Comunidade Tradicional =
-  BioCultRelatos + BioCultTermos) é empacotada como **um único container** e usa **um único arquivo SQLite**
-  (`SQLITE_DB_PATH`, default `/data/unidade.sqlite`), aberto em modo **WAL** (`journal_mode=WAL`,
-  `foreign_keys=ON`, `busy_timeout=5000`), permitindo que as múltiplas interfaces/processos da unidade leiam
-  e escrevam o mesmo arquivo com escrita serializada. As ferramentas da unidade compartilham o arquivo por
-  meio de **tabelas distintas**, nunca de uma tabela comum. BioCultPapers, por ser aplicativo desktop fora de
-  container de unidade, não participa deste compartilhamento (ver DA6).
+- **DA1 — Um arquivo por unidade, compartilhado pelas ferramentas, um container por unidade.**
+
+  **Status:** Parcialmente supersedido pelo [ADR-011](ADR-011-absorcao-biocultpapers.md) (Absorção do
+  BioCultPapers pelo BioCultDB) — a ressalva abaixo sobre o BioCultPapers como aplicativo desktop fora do
+  container de unidade não se aplica mais: o BioCultPapers deixou de existir como aplicativo separado, e a
+  extração por IA passa a participar deste mesmo compartilhamento como qualquer outra funcionalidade da
+  unidade. Ver ADR-011 para a decisão vigente.
+
+  Cada unidade federada (Unidade de Fontes Secundárias = BioCultDB + BioCultTermos; Unidade Comunidade
+  Tradicional = BioCultRelatos + BioCultTermos) é empacotada como **um único container** e usa **um único
+  arquivo SQLite** (`SQLITE_DB_PATH`, default `/data/unidade.sqlite`), aberto em modo **WAL**
+  (`journal_mode=WAL`, `foreign_keys=ON`, `busy_timeout=5000`), permitindo que as múltiplas
+  interfaces/processos da unidade leiam e escrevam o mesmo arquivo com escrita serializada. As ferramentas
+  da unidade compartilham o arquivo por meio de **tabelas distintas**, nunca de uma tabela comum.
+  BioCultPapers, por ser aplicativo desktop fora de container de unidade, não participa deste
+  compartilhamento (ver DA6).
 - **DA2 — Modelo de documento JSON por linha (JSON1), colunas geradas para índices.** Cada coleção Mongo vira
   uma tabela no formato `id TEXT PRIMARY KEY, doc TEXT NOT NULL CHECK (json_valid(doc)), created_at TEXT,
   updated_at TEXT`, com consultas via `json_extract`/`json_each`/`json_tree` e índices materializados como
@@ -48,9 +56,15 @@ em todas as ferramentas (BioCultDB, BioCultTermos, BioCultRelatos, BioCultPapers
 - **DA4 — FTS5 para busca textual.** Onde havia `$text`/`$regex` no MongoDB, uma tabela virtual **FTS5**
   (`tokenize='unicode61 remove_diacritics 2'`, ranking `bm25()`) sincronizada pela própria aplicação dentro da
   transação de escrita, substitui a busca nativa do Mongo.
-- **DA6 — BioCultPapers entrega por arquivo.** Sem sync direto a um banco compartilhado: BioCultPapers
-  persiste localmente em SQLite+JSON e **exporta** um arquivo JSON (array de registros), que o BioCultDB
-  **importa** via script/rota dedicada.
+- **DA6 — BioCultPapers entrega por arquivo.**
+
+  **Status:** Supersedido pelo [ADR-011](ADR-011-absorcao-biocultpapers.md) (Absorção do BioCultPapers pelo
+  BioCultDB) — a entrega por arquivo descrita abaixo era a ponte manual entre BioCultPapers e BioCultDB;
+  essa ponte deixa de existir porque a extração por IA passa a rodar dentro do próprio BioCultDB, gravando
+  diretamente no banco da unidade. Ver ADR-011 para a decisão vigente.
+
+  Sem sync direto a um banco compartilhado: BioCultPapers persiste localmente em SQLite+JSON e **exporta**
+  um arquivo JSON (array de registros), que o BioCultDB **importa** via script/rota dedicada.
 - **DA7 — Índice do Pluriverso também SQLite+JSON; contrato de harvest REST inalterado.** O Índice Central do
   Pluriverso adota o mesmo padrão de persistência (DA2) e busca (DA4). A mudança de persistência interna de
   cada unidade é **transparente** ao protocolo de harvest REST paginado definido no ADR-004 (D6), que

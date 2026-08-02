@@ -1,7 +1,7 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.4
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.5
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21738427-blue)](https://doi.org/10.5281/zenodo.21738427)
-[![Versão](https://img.shields.io/badge/Versão-3.4.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.5.0-green)](CHANGELOG.md)
 [![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](governanca/propostaGovernanca.md)
 
 ## Visão Geral
@@ -59,7 +59,7 @@ A Arquitetura BioCultural nasce da necessidade de **registrar e documentar evid�
 
 | Tipo de Fonte | Descrição | Ferramenta(s) |
 |---|---|---|
-| **Fontes secundárias** | Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) + [BioCultPapers](https://github.com/edalcin/BioCultPapers) |
+| **Fontes secundárias** | Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) (inclui Extração por IA) |
 | **Fontes primárias** | Relatos registrados diretamente em campo, junto às comunidades (CLPI obrigatório) | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
 | **Acervos históricos e museológicos** | Coleções, registros e documentos preservados em museus e arquivos históricos | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
 | **Obras de naturalistas** | Relatos e obras de naturalistas em visita ao Brasil nos séculos XVII, XVIII e XIX | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
@@ -108,7 +108,7 @@ A versão 3.4 mantém o sistema organizado como uma **federação de entidades s
 
 | Tipo | Componentes | Fonte de Dados |
 |------|-------------|----------------|
-| Iniciativa de Fontes Secundárias | BioCultDB + BioCultPapers + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Literatura científica (artigos, PDFs) |
+| Iniciativa de Fontes Secundárias | BioCultDB (inclui Extração por IA) + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Literatura científica (artigos, PDFs) |
 | Comunidade Tradicional | BioCultRelatos + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Registro primário direto (CLPI obrigatório) |
 | Acervos Históricos e Museológicos | BioCultAcervos + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Coleções, registros e documentos de acervos e museus |
 | Obras de Naturalistas (séc. XVII–XIX) | BioCultNaturalistas + BioCultTermos + SQLite+JSON (um por unidade, 1 container) | Relatos e obras de naturalistas em visita ao Brasil |
@@ -190,23 +190,22 @@ Componente da camada de Apresentação para exploração e análise visual dos d
 
 **Acesso:** Rota `/painel` na porta 3003
 
-### BioCultPapers - Extração Automatizada com IA
+#### Extração por IA - Aquisição via IA
 
-[![GitHub](https://img.shields.io/badge/GitHub-BioCultPapers-181717?logo=github)](https://github.com/edalcin/BioCultPapers)
+Funcionalidade da camada de **Aquisição** do BioCultDB para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial. Absorve a funcionalidade antes oferecida pelo aplicativo desktop **BioCultPapers**, hoje congelado ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)).
 
-Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
-
-**Características:**
-
-- **Plataforma:** Windows (.NET 8, WPF, MVVM)
-- **Extração com IA:**
+**Funcionalidades:**
+- Upload do PDF diretamente pelo navegador — o arquivo nunca sai do navegador do usuário
+- Texto extraído do PDF é enviado ao provedor de IA configurado:
   - Google Gemini (15 req/min, gratuito)
   - OpenAI GPT
   - Anthropic Claude
-- **Integração Nativa:** Persistência local SQLite+JSON; entrega ao BioCultDB por exportação de arquivo
+- Resultado da extração vira uma **Evidência** com status "pendente", que entra no mesmo fluxo de Curadoria de qualquer outra evidência — sem entrega por arquivo, sem aplicativo separado
 - **Dados Extraídos:**
   - Obrigatórios: Título, autores, ano, abstract
   - Opcionais: Espécies (nomes vernaculares e científicos), usos, comunidades, localização
+
+**Acesso:** Rota de Aquisição (porta 3001)
 
 ### BioCultTermos - Plataforma de Gestão Terminológica
 
@@ -325,16 +324,15 @@ Na arquitetura federada, o Pluriverso é o único componente com visão de todos
 
 ### Integração Federada entre Projetos
 
-![Integração federada entre projetos: BioCultPapers fora do container, unidades federadas com SQLite+JSON próprio, harvest REST e Pluriverso](docs/integracao-federada.png)
+![Integração federada entre projetos: unidades federadas com SQLite+JSON próprio, harvest REST e Pluriverso](docs/integracao-federada.png)
 
 O fluxo federado funciona assim:
 
-1. **BioCultPapers** processa PDFs e extrai metadados usando IA, exportando arquivo importado pelo BioCultDB da Iniciativa #1
-2. **BioCultDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários; publica registros aprovados no endpoint de harvest
-3. **BioCultRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
-4. **BioCultTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
-5. **Pluriverso** coleta periodicamente via REST, indexa registros públicos e disponibiliza via API unificada
-6. Usuário acessa o conjunto federado de CTAs pelo Pluriverso sem interagir diretamente com cada membro
+1. **BioCultDB** (Aquisição/Curadoria/Apresentação) gerencia dados secundários — inclui Extração por IA de PDFs pelo navegador ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)); publica registros aprovados no endpoint de harvest
+2. **BioCultRelatos** registra conhecimento primário diretamente de comunidades (CLPI obrigatório); publica registros consentidos no endpoint de harvest
+3. **BioCultTermos** (instância por membro) fornece vocabulários SKOS-XL soberanos; Pluriverso mantém mapeamentos entre instâncias
+4. **Pluriverso** coleta periodicamente via REST, indexa registros públicos e disponibiliza via API unificada
+5. Usuário acessa o conjunto federado de CTAs pelo Pluriverso sem interagir diretamente com cada membro
 
 > Acervos históricos/museológicos (BioCultAcervos) e obras de naturalistas (BioCultNaturalistas) seguirão o mesmo padrão de publicação e harvest, uma vez implementados — ver "Projetos Implementados" acima.
 
@@ -486,8 +484,7 @@ Integração planejada com principais sistemas brasileiros:
 Esta arquitetura integra projetos implementados e dialoga com iniciativas em desenvolvimento:
 
 ### Projetos da Arquitetura (Implementados)
-- **[BioCultDB](https://github.com/edalcin/BioCultDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional de fontes secundárias; membro de referência da federação
-- **[BioCultPapers](https://github.com/edalcin/BioCultPapers)** - Aplicativo desktop com extração automatizada de metadados via IA (Gemini, GPT-4, Claude); componente exclusivo de iniciativas de fontes secundárias
+- **[BioCultDB](https://github.com/edalcin/BioCultDB)** - Interface web com três contextos (Aquisição, Curadoria, Apresentação) para conhecimento tradicional de fontes secundárias, incluindo Extração por IA de PDFs ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)); membro de referência da federação
 - **[BioCultTermos](https://github.com/edalcin/BioCultTermos)** - Infraestrutura terminológica SKOS-XL; cada membro da federação opera sua própria instância soberana
 
 ### Projetos em Desenvolvimento
@@ -520,7 +517,7 @@ Resumos completos de cada iniciativa em [docs/iniciativas/](docs/iniciativas/REA
 - **[Estrutura de Dados Etnobotânicos](https://github.com/edalcin/Estrutura-de-Dados-Etnobotanicos)** - Modelos e esquemas para armazenamento de informações etnobotânicas
 
 Estes projetos complementares fornecem:
-- Implementações concretas da arquitetura (BioCultDB e BioCultPapers)
+- Implementações concretas da arquitetura (BioCultDB)
 - Padrões de dados interoperáveis
 - Vocabulários controlados para melhorar a qualidade dos dados
 - Exemplos práticos de implementação

@@ -146,6 +146,26 @@ opcional; cada unidade hospedeira valida o SHA do submodule e carimba `BUILD_INF
 
 ---
 
+### ADR-011: Absorção do BioCultPapers pelo BioCultDB
+**Status:** Aceito
+**Data:** Agosto 2026
+
+O BioCultPapers deixa de ser componente do ecossistema arquitetural: sua funcionalidade de extração de
+dados por IA a partir de artigos científicos passa a ser **Extração por IA**, funcionalidade nativa do
+BioCultDB no contexto de Aquisição, acessível pelo navegador — o PDF nunca sai do navegador do usuário, o
+texto extraído vai ao provedor de IA, e o resultado vira uma Evidência pendente que entra na Curadoria
+como qualquer outra. Supersede o D7 do ADR-004 e os pontos DA1 e DA6 do ADR-005; registra a premissa
+corrigida de que o BioCultPapers já não usava MongoDB no momento da absorção (havia migrado para SQLite
+pelo próprio ADR-005) — o ganho real foi eliminar a entrega por arquivo entre as duas aplicações, não
+trocar de banco de dados.
+
+**Decisão:** BioCultPapers deixa de existir como componente separado da arquitetura; repositório
+congelado; Extração por IA passa a ser funcionalidade do BioCultDB.
+
+**[Leia o documento completo →](ADR-011-absorcao-biocultpapers.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -224,7 +244,8 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-07-20 | ADR-008 | Engine de banco de dados do Pluriverso (SQLite embutida) |
 | 2026-07-20 | ADR-009 | Topologia multi-instância do Pluriverso |
 | 2026-07-22 | ADR-010 | Documentação central e verificação de build para mudanças no BioCultTermos |
+| 2026-08-02 | ADR-011 | Absorção do BioCultPapers pelo BioCultDB (Extração por IA no contexto de Aquisição) |
 
 ---
 
-**Última atualização:** Julho 2026
+**Última atualização:** Agosto 2026

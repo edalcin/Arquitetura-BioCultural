@@ -266,6 +266,54 @@ class QueueService {
 
 ---
 
+### Extração por IA (BioCultDB) - Componentes Internos
+
+Componente da camada de Aquisição que substitui o antigo aplicativo desktop BioCultPapers ([ADR-011](../architecture-decisions/ADR-011-absorcao-biocultpapers.md)). Roda inteiramente no navegador e no próprio BioCultDB: nenhum arquivo PDF é enviado a nenhum servidor além do próprio BioCultDB, e não há mais exportação/importação de arquivo entre aplicações separadas.
+
+```mermaid
+graph LR
+    subgraph "Extração por IA (BioCultDB - Aquisição)"
+        UPLOAD[PDF Upload<br/>Navegador do Usuário]
+        TXT[Extrator de Texto<br/>PDF → texto]
+        AI_CLIENT[Cliente de IA<br/>Gemini/GPT/Claude]
+        PARSER[Parser de Metadados<br/>resposta IA → registro]
+        EVID[Evidência<br/>status: pending]
+    end
+
+    UPLOAD --> TXT
+    TXT --> AI_PROVIDER[(Provedor de IA<br/>externo)]
+    AI_PROVIDER --> AI_CLIENT
+    AI_CLIENT --> PARSER
+    PARSER --> EVID
+    EVID --> DB[(Banco da Unidade<br/>SQLite+JSON)]
+    EVID --> CUR[Curadoria]
+
+    style UPLOAD fill:#85bbf0
+    style TXT fill:#a8dadc
+    style AI_CLIENT fill:#a8dadc
+    style PARSER fill:#a8dadc
+    style EVID fill:#457b9d,color:#ffffff
+```
+
+#### Componentes Detalhados
+
+##### 1. PDF Upload (navegador)
+**Responsabilidade:** Receber o PDF selecionado pelo pesquisador sem persistir o arquivo em nenhum servidor — o PDF nunca sai do navegador do usuário.
+
+##### 2. Extrator de Texto
+**Responsabilidade:** Extrair o texto do PDF no navegador para envio ao provedor de IA — apenas o texto extraído trafega pela rede, nunca o arquivo binário original.
+
+##### 3. Cliente de IA
+**Responsabilidade:** Enviar o texto extraído ao provedor de IA configurado (Google Gemini, OpenAI GPT ou Anthropic Claude) e receber os metadados estruturados de volta.
+
+##### 4. Parser de Metadados
+**Responsabilidade:** Validar e normalizar a resposta do provedor de IA no formato de registro do BioCultDB — mesmo schema de qualquer outra entrada de Aquisição.
+
+##### 5. Evidência (status pending)
+**Responsabilidade:** Persistir o resultado diretamente no arquivo SQLite+JSON da unidade, com status `pending` — entra no mesmo fluxo de Curadoria de qualquer outra evidência, sem entrega por arquivo e sem aplicativo separado (substitui DA6 do ADR-005; ver ADR-011).
+
+---
+
 ### ETL Service - Componentes Internos
 
 ```mermaid

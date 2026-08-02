@@ -32,7 +32,6 @@ graph TB
         BIOCULTDB_PUB[BioCultDB - Apresentação<br/>Node.js/Express/HTMX<br/>Porta 3003<br/>✓ IMPLEMENTADO]
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>MCP/IA<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Google Charts/HTMX<br/>Dashboard<br/>✓ IMPLEMENTADO]
-        BIOCULTPAPERS[BioCultPapers<br/>.NET 8/WPF<br/>Desktop Windows<br/>✓ IMPLEMENTADO]
         BIOCULTTERMOS[BioCultTermos<br/>Gestão Terminológica SKOS-XL<br/>Meilisearch/REST API<br/>✓ IMPLEMENTADO]
         BIOCULTRELATOS[BioCultRelatos<br/>Aquisição Primária<br/>Fontes Primárias/CLPI<br/>EM DESENVOLVIMENTO]
     end
@@ -74,7 +73,6 @@ graph TB
     end
 
     U1 --> WEB
-    U1 --> BIOCULTPAPERS
     U1 --> BIOCULTDB_ACQ
     U1 --> BIOCULTRELATOS
     U2 --> WEB
@@ -93,7 +91,6 @@ graph TB
     GATEWAY --> CUR_API
     GATEWAY --> PUB_API
 
-    BIOCULTPAPERS --> DB
     BIOCULTDB_ACQ --> DB
     BIOCULTDB_ACQ --> BIOCULTTERMOS
     BIOCULTDB_CUR --> DB
@@ -161,7 +158,6 @@ graph TB
     style BIOCULTDB_PUB fill:#28a745,stroke:#1e7e34,color:#ffffff
     style ETNOCHAT fill:#28a745,stroke:#1e7e34,color:#ffffff
     style PAINEL fill:#28a745,stroke:#1e7e34,color:#ffffff
-    style BIOCULTPAPERS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style BIOCULTTERMOS fill:#28a745,stroke:#1e7e34,color:#ffffff
     style BIOCULTRELATOS fill:#fd7e14,stroke:#dc6502,color:#ffffff
 ```
@@ -284,88 +280,6 @@ GET    /reference/:id        - Detalhes de referência
       }
     ]
   }
-}
-```
-
-#### BioCultPapers - Extração Automatizada com IA
-**GitHub:** [https://github.com/edalcin/BioCultPapers](https://github.com/edalcin/BioCultPapers)
-
-Aplicativo desktop Windows para extração automatizada de metadados de artigos científicos em PDF usando inteligência artificial.
-
-**Tecnologia:** .NET 8, WPF, MVVM, C#
-
-**Responsabilidades:**
-- Processamento de PDFs de artigos científicos
-- Extração de metadados via IA (Google Gemini, OpenAI GPT-4o-mini, Anthropic Claude 3.5 Haiku)
-- Persistência local em SQLite+JSON e exportação de arquivo para importação no BioCultDB
-- Interface desktop para pesquisadores
-
-**Características Técnicas:**
-- Arquitetura MVVM para separação de concerns
-- Integração com múltiplos provedores de IA:
-  - Google Gemini (gratuito, 15 req/min)
-  - OpenAI GPT-4o-mini
-  - Anthropic Claude 3.5 Haiku
-- Armazenamento local em SQLite+JSON (persistência primária, sem servidor de banco)
-- Exportação de arquivo JSON para importação no BioCultDB (sem sincronização direta)
-- Performance: 50% mais rápido que soluções locais (OLLAMA)
-- PDFs descartados pós-processamento (privacidade)
-
-**Dados Extraídos:**
-
-*Obrigatórios:*
-- Título normalizado
-- Autores (formato APA)
-- Ano de publicação
-- Abstract (traduzido para português brasileiro)
-
-*Opcionais:*
-- Espécies (nomes vernaculares e científicos)
-- Tipos de uso
-- Informações de comunidades
-- Dados geográficos (país, estado, município)
-- Metodologia
-
-**Workflow de Integração:**
-```
-1. Pesquisador seleciona PDF no BioCultPapers
-2. IA extrai metadados estruturados
-3. Dados armazenados localmente em SQLite+JSON e exportados como arquivo JSON, importado no BioCultDB com status "pending"
-4. Pesquisador revisa no BioCultDB-Aquisição (porta 3001)
-5. Curador valida no BioCultDB-Curadoria (porta 3002)
-6. Dados aprovados aparecem no BioCultDB-Apresentação (porta 3003)
-```
-
-**Requisitos:**
-- Windows 10 ou superior
-- Conexão com internet (APIs de IA)
-- Chave de API de provedor (Gemini/OpenAI/Anthropic)
-- Local de destino para o arquivo de exportação (JSON)
-
-**Formato de Saída (Arquivo JSON de Exportação):**
-```json
-{
-  "title": "Ethnobotanical study of...",
-  "authors": "Silva, J.; Santos, M.",
-  "year": 2025,
-  "abstract_pt": "Estudo etnobotânico sobre...",
-  "species": [
-    {
-      "scientific_name": "Manihot esculenta",
-      "vernacular_names": ["mandioca"],
-      "uses": ["alimentação"]
-    }
-  ],
-  "communities": [...],
-  "location": {
-    "country": "Brasil",
-    "state": "AM",
-    "municipality": "Manaus"
-  },
-  "status": "pending",
-  "source": "BioCultDB - gemini",
-  "createdAt": "2025-12-28T10:30:00Z",
-  "updatedAt": "2025-12-28T10:30:00Z"
 }
 ```
 
