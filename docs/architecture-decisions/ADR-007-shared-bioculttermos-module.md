@@ -173,3 +173,16 @@ primeira operação real deste padrão em produção (BioCultDB): documentação
 módulo compartilhado, e verificação obrigatória de que cada unidade hospedeira reflete no seu próprio
 build o que ela mesma acabou de commitar. **F3 não muda**: propagação para as demais unidades continua
 opcional e não-automática.
+
+## Atualização — 2026-08-09: F3 supersedido parcialmente pelo ADR-012
+
+O [ADR-012](ADR-012-manutencao-codigo-bioculttermos.md) **supersede a cláusula de opcionalidade do F3**
+(e a reafirmação dela na atualização de 2026-07-22 acima). A adoção de uma nova versão do módulo por
+uma unidade hospedeira passa a ser **obrigatória e assíncrona** (ADR-012 G4): cada unidade escolhe
+*quando*, não *se*. O restante do F3 permanece — a mudança nasce dentro de uma unidade, não há
+propagação automática, e nenhuma unidade é canônica.
+
+O ADR-012 também acrescenta duas regras que o F3 não cobria: uma Cópia de Trabalho por unidade
+hospedeira e nenhuma fora delas (G2), e a rede de proteção nativa do git como parte da configuração de
+desenvolvimento (G3). E especializa o **F5** com a decisão da **Fonte de Atribuição** `{tipo, nome}`
+(G5). F1, F2, F4 e F6 são ratificados sem alteração.

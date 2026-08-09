@@ -143,3 +143,14 @@ automaticamente (sem precisar já conhecer esta ADR), cada `CLAUDE.md` de unidad
 Revisar quando a primeira unidade além do BioCultDB (BioCultAcervos, BioCultNaturalistas ou
 BioCultRelatos) implementar seu próprio `Dockerfile.unidade` — confirmar que o padrão de G3 foi copiado
 corretamente, e que o `CHANGELOG.md` central (G2) está sendo mantido em uso real por mais de uma unidade.
+
+## Atualização — 2026-08-09: cláusula de bump opcional supersedida pelo ADR-012
+
+O [ADR-012](ADR-012-manutencao-codigo-bioculttermos.md) supersede o ponto em que este ADR reafirma que
+o bump entre unidades hospedeiras continua **opcional** (ADR-007 F3). A adoção passa a ser obrigatória
+e assíncrona (ADR-012 G4), com o Atraso de Módulo de cada unidade medido por
+`Arquitetura-BioCultural/bin/termos-status.ps1`.
+
+As demais obrigações deste ADR permanecem inalteradas e são justamente o mecanismo que torna o G4
+verificável: push ao remoto compartilhado (G1), registro no `CHANGELOG.md` central do módulo (G2), e
+validação do SHA do submodule com carimbo de `BUILD_INFO` antes de buildar (G3).

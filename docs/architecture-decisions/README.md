@@ -166,6 +166,30 @@ congelado; Extração por IA passa a ser funcionalidade do BioCultDB.
 
 ---
 
+### ADR-012: Manutenção do Código do BioCultTermos — Cópia de Trabalho Única por Unidade e Propagação Obrigatória
+**Status:** Aceito
+**Data:** Agosto 2026
+
+Fecha três lacunas do ADR-007/ADR-010 expostas por um sintoma medido: um clone standalone do
+BioCultTermos sobrevivendo fora de qualquer Unidade Hospedeira, sete commits atrás do remoto e com
+trabalho não publicado preso dentro dele. As lacunas: (1) nada dizia onde se edita — o clone não violava
+regra alguma porque não havia regra; (2) a rede de proteção nativa do git (`push.recurseSubmodules`,
+`submodule.recurse`, `status.submoduleSummary`, `branch` no `.gitmodules`) estava inteiramente desligada;
+(3) o bump entre unidades era declarado *opcional* pelo ADR-007 F3 e pelo ADR-010, contradizendo o
+princípio de que toda correção deve propagar, e sem nenhuma forma de medir o atraso. Define ainda a
+**Fonte de Atribuição** `{tipo, nome}` como a generalização correta do `AcquisitionService` — estrutura
+única, com a distinção entre Comunidade Tradicional e procedência histórica preservada no dado em vez de
+achatada.
+
+**Decisão:** uma Cópia de Trabalho por Unidade Hospedeira e nenhuma fora delas; edição na unidade que
+motivou a mudança; rede de proteção nativa do git obrigatória; adoção de novas versões **obrigatória e
+assíncrona** com Atraso de Módulo visível (`bin/termos-status.ps1`). Supersede parcialmente o ADR-007 F3
+e o ADR-010 na cláusula de bump opcional; ratifica ADR-007 F1, F2, F4 e F6.
+
+**[Leia o documento completo →](ADR-012-manutencao-codigo-bioculttermos.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -245,6 +269,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-07-20 | ADR-009 | Topologia multi-instância do Pluriverso |
 | 2026-07-22 | ADR-010 | Documentação central e verificação de build para mudanças no BioCultTermos |
 | 2026-08-02 | ADR-011 | Absorção do BioCultPapers pelo BioCultDB (Extração por IA no contexto de Aquisição) |
+| 2026-08-09 | ADR-012 | Manutenção do código do BioCultTermos: Cópia de Trabalho única por unidade, rede de proteção nativa do git e propagação obrigatória |
 
 ---
 
