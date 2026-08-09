@@ -120,9 +120,22 @@ em que ela foi escrita.
 pwsh D:/git/Arquitetura-BioCultural/bin/termos-status.ps1
 ```
 
-Somente leitura, sem dependência além de `git`. Reporta, por unidade: Versão Adotada, atraso em
-commits contra o remoto, alterações não publicadas na Cópia de Trabalho, e se a rede de proteção do
-git está ligada na máquina.
+Somente leitura, sem dependência além de `git`. Reporta, por unidade: estado operacional, Versão
+Adotada, atraso em commits contra o remoto, alterações não publicadas na Cópia de Trabalho, e se a
+rede de proteção do git está ligada na máquina.
+
+```
+Unidade             Estado      Adotada Atraso Copia
+BioCultDB           operacional f44e72d 0      limpa
+BioCultRelatos      sem app     f44e72d 0      limpa
+```
+
+A coluna **Estado** é derivada da presença de `docker/Dockerfile.unidade` no hospedeiro — não há flag
+a manter. Ela muda o peso do atraso:
+
+- `operacional` — a unidade builda e executa o módulo. Atraso aberto é cobrança real: adote e valide.
+- `sem app` — a unidade tem a Cópia de Trabalho mas ainda não tem como buildar nem exercitar nada.
+  O bump aqui é **escrituração**, não adoção verificada; zere junto com o primeiro build da unidade.
 
 Rode antes de começar a editar e depois de publicar.
 

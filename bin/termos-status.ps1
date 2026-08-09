@@ -99,13 +99,20 @@ foreach ($h in $Hosts) {
     $wc      = Join-Path $hostDir $Module
 
     if (-not (Test-Path $hostDir)) {
-        $rows += [pscustomobject]@{ Unidade=$h; Adotada='-'; Atraso='-'; Copia='repo ausente' }
+        $rows += [pscustomobject]@{ Unidade=$h; Estado='-'; Adotada='-'; Atraso='-'; Copia='repo ausente' }
         continue
     }
     if (-not (Test-Path (Join-Path $wc '.git'))) {
-        $rows += [pscustomobject]@{ Unidade=$h; Adotada='-'; Atraso='-'; Copia='sem Copia de Trabalho' }
+        $rows += [pscustomobject]@{ Unidade=$h; Estado='-'; Adotada='-'; Atraso='-'; Copia='sem Copia de Trabalho' }
         continue
     }
+
+    # Estado operacional, DERIVADO - nao ha flag a manter. Uma unidade so consegue
+    # validar a adocao de uma versao nova se tiver como buildar e executar o modulo
+    # (ADR-010 G3 exige o build com BUILD_INFO). Sem Dockerfile.unidade, bump e
+    # escrituracao, nao adocao verificada.
+    $operational = Test-Path (Join-Path $hostDir 'docker/Dockerfile.unidade')
+    $estado = if ($operational) { 'operacional' } else { 'sem app' }
 
     # Versao Adotada = o SHA que o hospedeiro registra, nao o HEAD da copia.
     $adopted = $null
@@ -128,6 +135,7 @@ foreach ($h in $Hosts) {
 
     $rows += [pscustomobject]@{
         Unidade = $h
+        Estado  = $estado
         Adotada = $adopted.Substring(0,7)
         Atraso  = $behind
         Copia   = ($notes -join '; ')
@@ -136,7 +144,8 @@ foreach ($h in $Hosts) {
 
 $rows | Format-Table -AutoSize
 
-$late = @($rows | Where-Object { $_.Atraso -match '^[1-9]' })
+$late      = @($rows | Where-Object { $_.Atraso -match '^[1-9]' -and $_.Estado -eq 'operacional' })
+$lateIdle  = @($rows | Where-Object { $_.Atraso -match '^[1-9]' -and $_.Estado -eq 'sem app' })
 $dirty = @($rows | Where-Object { $_.Copia -match 'NAO PUBLICADO|DETACHED' })
 
 Write-Host ''
@@ -148,6 +157,12 @@ if ($late.Count -gt 0) {
     Write-Host 'ACAO   Atraso de Modulo aberto - a adocao e obrigatoria (ADR-012 G4):' -ForegroundColor Yellow
     $late | ForEach-Object { Write-Host "         - $($_.Unidade): $($_.Atraso) commit(s) atras" -ForegroundColor Yellow }
     Write-Host '         Zere com: git submodule update --remote --merge bioculttermos' -ForegroundColor Yellow
+}
+if ($lateIdle.Count -gt 0) {
+    Write-Host 'NOTA   Atraso em unidade sem app - o bump aqui e escrituracao, nao adocao' -ForegroundColor DarkGray
+    Write-Host '       verificada: sem docker/Dockerfile.unidade nao ha como buildar nem exercitar' -ForegroundColor DarkGray
+    Write-Host '       o modulo (ADR-010 G3). Zere junto com o primeiro build da unidade.' -ForegroundColor DarkGray
+    $lateIdle | ForEach-Object { Write-Host "         - $($_.Unidade): $($_.Atraso) commit(s) atras" -ForegroundColor DarkGray }
 }
 if ($late.Count -eq 0 -and $dirty.Count -eq 0) {
     Write-Host 'OK     Nenhum Atraso de Modulo e nenhum trabalho preso.' -ForegroundColor Green

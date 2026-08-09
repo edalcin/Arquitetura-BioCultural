@@ -205,9 +205,20 @@ BioCultNaturalistas não pode quebrar o BioCultDB em produção. Isso proíbe, n
 específico de unidade dentro do módulo — o que o ADR-007 F5 já exigia e o G5 abaixo torna executável.
 
 Para tornar o atraso visível sem CI cross-repo, esta ADR cria um leitor de estado somente-leitura,
-`bin/termos-status.ps1` neste repositório, que reporta para as quatro unidades: Versão Adotada,
-Atraso de Módulo em número de commits, e se a Cópia de Trabalho tem alterações não publicadas. Ele
-não altera nada e não tem dependência além de `git`.
+`bin/termos-status.ps1` neste repositório, que reporta para as quatro unidades: estado operacional,
+Versão Adotada, Atraso de Módulo em número de commits, e se a Cópia de Trabalho tem alterações não
+publicadas. Ele não altera nada e não tem dependência além de `git`.
+
+**Adoção obrigatória não é carimbo.** Uma unidade só consegue *verificar* a adoção de uma versão nova
+se tiver como buildar e executar o módulo — o que o ADR-010 G3 já exige via `Dockerfile.unidade` e
+`BUILD_INFO`. As três unidades que hoje só têm documentação carregam a Cópia de Trabalho (G2) mas não
+têm como exercitá-la: para elas, o bump é **escrituração**, não adoção verificada, e zerar o atraso
+junto com o primeiro build da unidade é o comportamento correto.
+
+Essa distinção é **derivada, não declarada**: o leitor de estado a infere da presença de
+`docker/Dockerfile.unidade` no hospedeiro. Não há flag a manter, nada que possa mentir por estar
+desatualizado — uma unidade passa a ser cobrada como operacional no instante em que ganha o artefato
+que a torna operacional.
 
 ### G5 — Fonte de Atribuição: estrutura única, tipo preservado
 
