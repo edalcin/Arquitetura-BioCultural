@@ -190,6 +190,29 @@ e o ADR-010 na cláusula de bump opcional; ratifica ADR-007 F1, F2, F4 e F6.
 
 ---
 
+### ADR-013: Identidade Visual Compartilhada via Preset Tailwind no Módulo Compartilhado
+**Status:** Aceito
+**Data:** Agosto 2026
+
+A identidade visual é exigida como idêntica em todas as unidades federadas (`CLAUDE.md` de cada uma,
+`constitution.md` §III) e não era garantida por nada — com apenas duas ferramentas implementadas já
+havia divergido em três pontos: paleta `forest` 50–900 no BioCultDB contra 50–950 no BioCultTermos,
+`.btn` `px-4 py-2` contra `px-6 py-3`, e layout EJS centralizado contra replicado por contexto. Criar
+a home page das três unidades novas por cópia produziria cinco `tailwind.config.js` e cinco blocos
+`@layer components`: o problema do ADR-012 deslocado para a camada de apresentação. A decisão usa
+`presets`, recurso nativo do Tailwind, com os tokens dentro do Módulo Compartilhado que as quatro
+unidades já carregam — sem repositório novo, sem registry, propagando pelo mecanismo do ADR-012.
+Escopo deliberado: token sim, markup não; o layout EJS continua por unidade.
+
+**Decisão:** `tailwind.preset.cjs` e `frontend/src/styles/biocult-base.css` no repositório
+BioCultTermos como fonte única dos tokens; toda unidade consome via `presets` e `@import`, nenhuma
+redefine. Migração do BioCultDB e do próprio BioCultTermos é trabalho separado — os arquivos são
+aditivos e não mudam nada do que está em produção.
+
+**[Leia o documento completo →](ADR-013-identidade-visual-compartilhada.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -270,6 +293,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-07-22 | ADR-010 | Documentação central e verificação de build para mudanças no BioCultTermos |
 | 2026-08-02 | ADR-011 | Absorção do BioCultPapers pelo BioCultDB (Extração por IA no contexto de Aquisição) |
 | 2026-08-09 | ADR-012 | Manutenção do código do BioCultTermos: Cópia de Trabalho única por unidade, rede de proteção nativa do git e propagação obrigatória |
+| 2026-08-09 | ADR-013 | Identidade visual compartilhada via preset Tailwind no Módulo Compartilhado |
 
 ---
 
