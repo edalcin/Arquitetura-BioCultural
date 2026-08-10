@@ -6,6 +6,25 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.6.0] - 2026-08-10
+
+### Adicionado
+
+- **ADR-014: Nomenclatura Científica Fora do Escopo do Vocabulário Controlado** — nomenclatura biológica científica sai do escopo do vocabulário controlado do BioCultTermos em todas as unidades: sua autoridade é externa e já constituída (ICN, ICZN, WFO, IPNI, POWO, GBIF), sem decisão de curadoria legítima a tomar. O nome científico permanece dado de primeira classe da Unidade Hospedeira (N2); a ponte com o nome tradicional passa a ser associação no dado, nunca conceito espelho (N4). Os conceitos SKOS-XL de nome científico são removidos do `etnotermos` — rótulos, relações, e a opção "Nomes Científicos de Plantas" sai do pulldown "Campo semântico" do Admin —, exceto onde um conceito tiver `sourceFields` misto (nome científico + outro campo em escopo), caso em que só a entrada do campo científico é removida do `sourceFields`; relações órfãs são limpas e o SQLite é copiado em backup antes da purga (N5). `biocultdb_records` é dado de origem e não é tocado: o nome científico segue ali, na Evidência, exibido no BioCultDB. Origem operacional: `BioCultDB/docs/curadoria/decisao-nomes-cientificos-fora-de-escopo.md`, `BioCultTermos@2bbe950`.
+
+### Modificado
+
+- **Nota de retificação** acrescentada à seção G5 do **ADR-012**, apontando para a ADR-014 — a citação de `nomeCientifico` na travessia do `AcquisitionService` está incorreta desde 2026-08-10; texto original preservado abaixo da nota, seguindo a convenção já usada no ADR-001
+- **Nota de retificação** acrescentada à seção F5 do **ADR-007**, registrando que a configurabilidade de campos monitorados tem limite de escopo declarado por ADR-014 N3
+- **`docs/gestaoBioCultTermos/BioCultTermosEstrategia.md`**: árvore de campos monitorados do `AcquisitionService` atualizada para remover `nomeCientifico`, com nota apontando para a ADR-014
+- **`docs/architecture-decisions/README.md`**: nova entrada da ADR-014 na Lista de ADRs e no Histórico de Mudanças
+
+### Contexto da Versão
+
+A v3.6.0 não altera modelo de dados, contrato de harvest nem infraestrutura — fecha uma lacuna de escopo do vocabulário controlado exposta pela primeira tentativa real de curar o campo de nome científico (864 conceitos candidatos, zero curados em treze meses). Retifica, sem reescrever, os dois lugares normativos onde a travessia do `AcquisitionService` citava `nomeCientifico` entre os campos monitorados. Pendência aberta e fora deste repositório: `BioCultNaturalistas/docs/decisions/ADR-003` V2 precisa remover `bcn_taxons → $.nomeCientificoAtual` do seu contrato de campos monitorados.
+
+---
+
 ## [3.5.0] - 2026-08-02
 
 ### Adicionado

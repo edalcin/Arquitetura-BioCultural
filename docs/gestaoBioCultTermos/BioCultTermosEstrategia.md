@@ -147,9 +147,10 @@ biocultdb_records.doc
        ├─ atividadesEconomicas
        └─ plantas[]
             ├─ nomeVernacular
-            ├─ tipoUso
-            └─ nomeCientifico
+            └─ tipoUso
 ```
+
+*Nome científico saiu do escopo do vocabulário controlado por [ADR-014](../architecture-decisions/ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md) N1/N3 (2026-08-10) — continua dado da unidade, fora da travessia minerada pelo BioCultTermos.*
 
 O ADR-007 F5 descreveu o bloqueio como "tabela-fonte e campos monitorados fixos no código". É maior que
 isso. Tornar tabela e campos configuráveis resolve os campos — e não resolve `com.nome`, que não é um

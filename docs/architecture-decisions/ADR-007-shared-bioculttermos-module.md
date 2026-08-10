@@ -98,6 +98,10 @@ precisam generalizar para linguagem genérica ("a ferramenta principal desta uni
 documentado em cada ADR-001 local (BioCultRelatos, BioCultAcervos, BioCultNaturalistas) — não escopo
 desta ADR, que é só arquitetural/documental.
 
+> **Especializado pela ADR-014 (N3).** A configurabilidade decidida acima passa a ter um limite de
+> escopo declarado: nenhuma configuração de campo monitorado pode incluir caminho de nome científico,
+> em nenhuma unidade. Ver [ADR-014](ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md).
+
 ### F6 — Cada unidade hospedeira documenta sua própria integração localmente
 
 Toda unidade que integra o BioCultTermos mantém, no seu próprio repositório, um par de documentos:

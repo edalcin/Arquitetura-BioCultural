@@ -211,6 +211,24 @@ aditivos e não mudam nada do que está em produção.
 
 **[Leia o documento completo →](ADR-013-identidade-visual-compartilhada.md)**
 
+
+### ADR-014: Nomenclatura Científica Fora do Escopo do Vocabulário Controlado
+**Status:** Aceito
+**Data:** Agosto 2026
+
+Nomenclatura biológica científica sai do escopo do vocabulário controlado do BioCultTermos em todas
+as unidades: sua autoridade é externa e já constituída (ICN, ICZN, WFO, IPNI, POWO, GBIF), e não há
+decisão de curadoria legítima a tomar sobre ela. O nome científico permanece dado de primeira classe
+de cada Unidade Hospedeira; a ponte com o nome tradicional passa a ser associação no dado, nunca
+conceito espelho. Retifica o ADR-012 G5 e especializa o ADR-007 F5.
+
+**Decisão:** nenhuma Unidade Hospedeira declara caminho de nome científico como campo monitorado do
+`AcquisitionService`; os conceitos SKOS-XL de nome científico são removidos do `etnotermos` (rótulos,
+relações e a opção "Nomes Científicos de Plantas" saem do pulldown Admin) — o `biocultdb_records`
+(dado de origem) permanece intocado.
+
+**[Leia o documento completo →](ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md)**
+
 ---
 
 
@@ -294,6 +312,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-08-02 | ADR-011 | Absorção do BioCultPapers pelo BioCultDB (Extração por IA no contexto de Aquisição) |
 | 2026-08-09 | ADR-012 | Manutenção do código do BioCultTermos: Cópia de Trabalho única por unidade, rede de proteção nativa do git e propagação obrigatória |
 | 2026-08-09 | ADR-013 | Identidade visual compartilhada via preset Tailwind no Módulo Compartilhado |
+| 2026-08-10 | ADR-014 | Nomenclatura científica fora do escopo do vocabulário controlado |
 
 ---
 

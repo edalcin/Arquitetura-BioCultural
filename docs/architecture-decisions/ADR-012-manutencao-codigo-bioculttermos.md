@@ -230,6 +230,12 @@ fixos no código": `collectFieldValues` é uma travessia escrita à mão da form
 e — o ponto que importa — ela usa `com.nome` como a **dimensão de atribuição** de cada termo minerado.
 Tornar tabela e campos configuráveis resolve os campos e não resolve a atribuição.
 
+> **Retificado pela ADR-014 (N3).** A citação de `nomeCientifico` acima está incorreta desde
+> 2026-08-10: o campo saiu do escopo do vocabulário controlado do BioCultTermos e o
+> `AcquisitionService` já foi corrigido (`BioCultTermos@2bbe950`). O restante desta seção — Fonte de
+> Atribuição `{tipo, nome}` e a travessia declarada pela Unidade Hospedeira — permanece integralmente
+> válido. Ver [ADR-014](ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md).
+
 E a atribuição não é generalizável por descuido. No BioCultDB e no BioCultRelatos, a procedência de um
 termo é uma **Comunidade Tradicional** — categoria com definição jurídica (Decreto 8.750/2016) que
 invoca CLPI, CARE e repartição de benefícios. No BioCultNaturalistas, é um naturalista dos séculos
