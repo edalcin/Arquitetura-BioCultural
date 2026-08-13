@@ -66,7 +66,7 @@ A Arquitetura BioCultural nasce da necessidade de **registrar e documentar a rel
 
 Cada fonte exige um processo de aquisição e curadoria diferente — mas todas convergem para o mesmo objetivo: um registro rastreável até sua origem e compartilhado sob os princípios C.A.R.E.
 
-> **Regime é do registro, não da ferramenta.** A coluna acima indica o padrão de cada unidade, não uma regra: a narrativa de uma comunidade sobre uma peça de museu é **Conhecimento dentro do BioCultAcervos**, e a nota de campo do pesquisador é **Evidência dentro do BioCultRelatos**. O que distingue os dois regimes é *quem fala* — e o que a distinção decide é **quem pode classificar o acesso** do registro. Ver [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e o estudo em [`conhecimento/`](conhecimento/caracterizacao-do-conhecimento-tradicional.md).
+> **Regime é do registro, não da ferramenta.** A coluna acima indica o padrão de cada unidade. Na prática, BioCultDB, BioCultAcervos e BioCultNaturalistas são Evidência sempre; o único provedor com os dois regimes é o BioCultRelatos — a nota de campo em que o pesquisador registra o que observou é **Evidência**, porque é testemunho dele, não relato do detentor. Quando uma comunidade narra sobre um item de acervo, esse Relato vive na **unidade dela**, referenciando o item: conteúdo soberano nunca atravessa para a unidade de outro membro. O que distingue os dois regimes é *quem fala* — e o que a distinção decide é **quem pode classificar o acesso** do registro. Ver [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e o estudo em [`conhecimento/`](conhecimento/caracterizacao-do-conhecimento-tradicional.md).
 
 ### Imperativo Legal e Ético
 

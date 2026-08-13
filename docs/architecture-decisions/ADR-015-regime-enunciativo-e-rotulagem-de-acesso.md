@@ -50,14 +50,31 @@ A diferença é **enunciativa e deôntica** — quem fala, e quem tem autoridade
 
 Que a diferença é deôntica, e não epistêmica, se demonstra pelo que ela decide: **quem pode classificar o acesso.** A governança já opera essa distinção sem nomeá-la, em `propostaGovernanca.md:360-375` — a comunidade aplica *Labels*, a instituição só pode declarar *Notices*. Falta a propriedade do dado que determina qual dos dois se aplica.
 
-### Por que amarrar o regime ao provedor não funciona
+### Por que o regime é campo do registro, e não propriedade do provedor
 
-A aproximação natural — "Relatos é Conhecimento, os outros três são Evidência" — é correta como padrão e falsa como invariante, e quebra em dois casos que a própria governança já promete atender:
+A aproximação natural — "Relatos é Conhecimento, os outros três são Evidência" — é correta como padrão, e continua sendo o padrão que esta ADR adota. O que ela não pode ser é **invariante derivada do `member_id`**, por dois motivos.
 
-1. **Conhecimento dentro do BioCultAcervos.** `propostaGovernanca.md:419` adota os *Community Records* do Mukurtu: a narrativa da comunidade e a ficha catalográfica do museu coexistem sobre o mesmo item. A narrativa da comunidade é Conhecimento, produzida dentro de um provedor de Evidência.
-2. **Evidência dentro do BioCultRelatos.** A nota de campo em que o pesquisador registra o que observou é testemunho dele, não enunciado do detentor.
+**Primeiro, há um caso real de Evidência dentro do BioCultRelatos.** A nota de campo em que o pesquisador registra o que observou é testemunho dele, não relato do detentor: falha Q2 do teste de K1. Fosse o regime derivado do provedor, esse registro seria classificado como Conhecimento, e a comunidade apareceria como autoridade sobre uma observação que não é dela.
 
-Fosse o regime uma propriedade do provedor, os dois casos exigiriam exceção codificada. Sendo um campo do registro, são o funcionamento normal.
+**Segundo, o regime precisa viajar no payload de qualquer forma** (K6). Derivá-lo do `member_id` obrigaria todo consumidor do harvest a manter uma tabela de tipos de membro para interpretar cada registro — mais acoplamento entre membro e consumidor, não menos, e contra a autonomia de D1/D6 do ADR-004.
+
+#### O caso que **não** é exceção: acervos e a narrativa da comunidade
+
+`propostaGovernanca.md:419` adota a lição dos *Community Records* do Mukurtu: a narrativa da comunidade e a ficha catalográfica do museu coexistem sobre o mesmo item, sem que a institucional sobrescreva a comunitária. O texto diz que "as duas descrições coexistem **no registro**", e essa formulação admite uma leitura que esta ADR **rejeita expressamente**.
+
+A leitura rejeitada é a de que a narrativa da comunidade seria gravada dentro do BioCultAcervos. Ela viola o `Conteúdo Soberano` do `CONTEXT.md` — conteúdo curado por uma unidade "vive no arquivo SQLite daquela unidade, pertence a ela, e **nunca** atravessa para outra". Guardar o Relato da comunidade no SQLite do museu põe o conhecimento dela sob custódia dele: é a soberania invertida, e seria a arquitetura contradizendo em implementação exatamente o que promete em princípio.
+
+A leitura correta:
+
+- O **BioCultAcervos** guarda **Evidência** — o item físico e sua documentação: o material de Spruce na coleção de Kew, a exsicata no herbário do JBRJ, a peça na coleção etnológica.
+- A narrativa da comunidade sobre esse item é um **Relato no BioCultRelatos da própria comunidade**, que **referencia** o item do acervo.
+- A coexistência das duas narrativas acontece **na federação** — dois registros de dois membros, vinculados e apresentados juntos pelo Pluriverso —, não dentro de um banco. O Mukurtu é honrado e a soberania também.
+
+Isso gera um requisito, registrado aqui e **não resolvido por esta ADR**: o payload de harvest precisa expressar "este registro trata do mesmo objeto que aquele registro de outro membro". O DwC-DP tem `resource-relationship` para exatamente isso, e é o candidato natural. `[a especificar no contrato de harvest]`
+
+**E o acervo histórico que contém a fala de um indígena nomeado** — um cilindro de cera, um caderno de campo em que Spruce cita o informante? O teste de K1 resolve sem exceção: Q4 falha, porque a comunidade não tem hoje autoridade reconhecida e exercível sobre aquele registro. Resultado: `evidencia` com atribuição incompleta, e **Notice**, não Label (K4) — que é precisamente o tratamento que a governança já prescreve para acervos sobre comunidades que nunca foram consultadas. Se e quando a comunidade se manifestar, ela o faz pela sua própria unidade, com o vínculo acima.
+
+Na prática, portanto: **BioCultAcervos, BioCultDB e BioCultNaturalistas são `evidencia` sempre**; o único provedor com os dois regimes é o BioCultRelatos.
 
 ### A lacuna técnica: SKOS-XL rotula termos, não proposições
 
@@ -97,7 +114,7 @@ Documentar que Relatos guarda conhecimento e os demais guardam evidência, sem c
 - Custo zero de modelo.
 
 **Contras:**
-- Quebra nos dois casos já prometidos pela governança (*Community Records*; nota de campo).
+- Quebra no caso real de Evidência dentro do BioCultRelatos (nota de campo), e obriga todo consumidor do harvest a manter tabela de tipos de membro.
 - A regra fica em prosa, não em dado: nenhuma consulta consegue responder "liste todo o Conhecimento de que meu povo é detentor" — que é o requisito de CARE A2 (*Data for governance*).
 - Não resolve nada no nível da proposição nem no payload.
 
@@ -150,25 +167,27 @@ Regime **padrão** por unidade, explicitamente sobreponível registro a registro
 |---|---|---|
 | BioCultRelatos | `conhecimento` | Nota de campo do pesquisador → `evidencia` (falha Q2) |
 | BioCultDB | `evidencia` | — |
-| BioCultAcervos | `evidencia` | *Community Record* → `conhecimento` (`propostaGovernanca.md:419`) |
+| BioCultAcervos | `evidencia` | Nenhuma. A narrativa da comunidade sobre um item do acervo é Relato **no BioCultRelatos dela**, referenciando o item — ver Contexto |
 | BioCultNaturalistas | `evidencia` | — |
 
 **Evidência não é regime inferior.** Uma obra de 1817 é fonte insubstituível; o que a distingue é ter outro dono. O naturalista que anotou o uso de uma planta não é autor daquele conhecimento — é a testemunha que o registrou, leitura que `propostaGovernanca.md:400` já faz com base na ressalva do art. 45 da Lei 9.610/1998.
 
-### K2 — A unidade de Conhecimento é o Enunciado
+### K2 — A unidade de Conhecimento é o Relato
 
-Registro de regime `conhecimento` contém ao menos um **Enunciado**, com quatro componentes obrigatórios:
+Registro de regime `conhecimento` contém ao menos um **Relato**, com quatro componentes obrigatórios:
 
-1. **Detentor** — pessoa ou coletivo, com sua comunidade. Sem detentor não há Enunciado; o que há é Evidência.
+1. **Detentor** — pessoa ou coletivo, com sua comunidade. Sem detentor não há Relato; o que há é Evidência.
 2. **Ato de enunciação** — data, lugar (com precisão declarada), **língua** e protocolo.
-3. **Mídia-fonte** — quando houver gravação, o Enunciado aponta para ela.
+3. **Mídia-fonte** — quando houver gravação, o Relato aponta para ela.
 4. **Classificação de acesso** — decidida pela comunidade, com data de revisão (K3, K7).
+
+Um Relato **vive sempre na unidade da comunidade detentora**, nunca na unidade de quem custodia o objeto de que ele fala. Quando se refere a item sob custódia de outro membro — uma exsicata do JBRJ, o material de Spruce em Kew —, o vínculo é uma referência entre registros de membros distintos, resolvida na federação.
 
 O que se modela **não é o conteúdo do conhecimento; é o ato de enunciá-lo, com tudo que o ancora.** Guardar `planta X → uso Y` é a compartimentalização que a crítica antropológica identifica como perda do que tornava aquilo conhecimento. Guardar *quem disse, quando, onde, em que língua, diante de quê, sob que consentimento* preserva o ato.
 
-Em implementação, o Enunciado mapeia para `dwc:Assertion` do Darwin Core Data Package (guia ratificado TDWG, 2026-04-17), cujas tabelas `*-assertion` — inclusive `media-assertion` — trazem exatamente: `assertionBy` / `assertionByID` (agente responsável, interno ou externo ao dataset), `assertionType` / `assertionValue` com `assertionTypeIRI` / `assertionValueIRI` para vocabulário controlado, `assertionMadeDate`, `assertionProtocol_fk` e a chave para a mídia. O gancho para o BioCultTermos é `assertionValueIRI` + `assertionValueSource`.
+Em implementação, o Relato mapeia para `dwc:Assertion` do Darwin Core Data Package (guia ratificado TDWG, 2026-04-17), cujas tabelas `*-assertion` — inclusive `media-assertion` — trazem exatamente: `assertionBy` / `assertionByID` (agente responsável, interno ou externo ao dataset), `assertionType` / `assertionValue` com `assertionTypeIRI` / `assertionValueIRI` para vocabulário controlado, `assertionMadeDate`, `assertionProtocol_fk` e a chave para a mídia. O gancho para o BioCultTermos é `assertionValueIRI` + `assertionValueSource`.
 
-**Enunciado** é a linguagem de domínio; `dwc:Assertion` é a implementação. Os dois nomes permanecem separados: o glossário da federação não importa jargão de padrão.
+**Relato** é a linguagem de domínio; `dwc:Assertion` é a implementação. Os dois nomes permanecem separados: o glossário da federação não importa jargão de padrão. O termo já é o usado pelo projeto — inclusive no modelo de entidade do projeto Panará/JBRJ (`dadosEtnoJBRJ_Panara/relatos.md`), que define Relato como "a menção de uma planta por um participante (ou grupo) em um contexto específico".
 
 ### K3 — Três níveis de rotulagem, e o nível efetivo é o mais restritivo
 
@@ -177,7 +196,7 @@ Existem três objetos rotuláveis, cada um com seu portador:
 | Nível | Objeto | Portador do `accessLevel` |
 |---|---|---|
 | **Termo** | `skosxl:Label` — a forma textual de um conceito | `accessLevel` no Label, com `sourcePeople`, `holderPeople`, `priorInformedConsent` (já especificado) |
-| **Enunciado** | a proposição atribuída ao detentor | `accessLevel` no Enunciado (**novo**) |
+| **Relato** | a proposição atribuída ao detentor | `accessLevel` no Relato (**novo**) |
 | **Registro / Mídia** | o registro e o arquivo | `permissions.visibility` (`ADR-003:343`) e o acesso da mídia (**novo**) |
 
 E a regra que os amarra:
@@ -187,7 +206,7 @@ E a regra que os amarra:
 Três corolários que só ficam visíveis quando a regra é enunciada:
 
 - Registro `public` contendo rótulo `sacred` **não** é rebaixado a `sacred`, nem publica o rótulo: publica-se o registro **com o rótulo suprimido e a supressão declarada** (K6).
-- Rótulo `public` dentro de Enunciado `restricted`: o nome segue público no vocabulário, o Enunciado não sai.
+- Rótulo `public` dentro de Relato `restricted`: o nome segue público no vocabulário, o Relato não sai.
 - Herança descendente é proibida. Registro público não torna público o que ele contém.
 
 Toda classificação de acesso, em qualquer nível, tem **data de revisão obrigatória** (`permissions.restrictions.reviewDate`, proposto em `propostaGovernanca.md:301`). Restrição imposta em 2026 por motivo específico não sobrevive por inércia a 2040 — e liberação também não.
@@ -209,9 +228,9 @@ Quando a comunidade se manifesta sobre um registro de Evidência, a Notice cede 
 
 **O texto das Notices não pode ser alterado.** O identificador do rótulo e o texto canônico são referenciados, nunca editados localmente.
 
-### K5 — Língua do Enunciado em ISO 639-3, obrigatória; tradução é entidade derivada
+### K5 — Língua do Relato em ISO 639-3, obrigatória; tradução é entidade derivada
 
-Todo Enunciado declara a língua em que foi proferido, em **ISO 639-3** — a mesma convenção já obrigatória no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. Onde não houver código, registra-se o glotônimo por extenso (`propostaGovernanca.md:396`). O campo `metadata.language: "pt-BR"` do `ADR-003:371` é retificado por esta cláusula: `pt-BR` não codifica `kre`.
+Todo Relato declara a língua em que foi proferido, em **ISO 639-3** — a mesma convenção já obrigatória no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. Onde não houver código, registra-se o glotônimo por extenso (`propostaGovernanca.md:396`). O campo `metadata.language: "pt-BR"` do `ADR-003:371` é retificado por esta cláusula: `pt-BR` não codifica `kre`.
 
 **A língua é constitutiva, não veículo.** É a leitura operacional do sub-princípio **CARE R3 — *For Indigenous languages and worldviews***: um enunciado em `kre` armazenado apenas em português não é o mesmo dado noutra roupa, é um derivado, e a derivação é irreversível.
 
@@ -254,20 +273,20 @@ O contrato de `ADR-004 D6` é ampliado. O payload mínimo passa a ser:
 
 A alternativa, *redaction at rest* (nunca gravar o campo restrito), oferece proteção maior contra bug e foi **rejeitada** por dois motivos: a perda é irreversível inclusive para a própria comunidade, e contradiz o direito de exportação integral de `propostaGovernanca.md:473`. O risco de bug de filtro é mitigável; a perda de dado não é mitigável por nada. A mitigação é obrigatória: **teste automatizado que falhe se qualquer registro com nível efetivo diferente de `public` atravessar o endpoint de harvest** — condição de aceitação do endpoint em cada unidade.
 
-### K7 — Enunciado nasce restrito; Termo herda o padrão do vocabulário
+### K7 — Relato nasce restrito; Termo herda o padrão do vocabulário
 
 Padrões de omissão deliberadamente diferentes por nível:
 
 | Nível | Padrão | Justificativa |
 |---|---|---|
 | **Termo** (`skosxl:Label`) | `public` | Mantém `manual/03-rotulos.md:72`. Confirmado pela campanha de tipos de uso: dos 713 termos, **nenhum** exigiu reclassificação de `accessLevel` — eram termos de literatura, em português e inglês, sem nome em língua indígena |
-| **Enunciado** | `restricted` | Publicar por omissão o que nunca foi consentido é inaceitável |
+| **Relato** | `restricted` | Publicar por omissão o que nunca foi consentido é inaceitável |
 | **Registro** de regime `conhecimento` | `restricted` | Idem |
 | **Registro** de regime `evidencia` | segue o ADR-003 | Não muda |
 
-Um Enunciado só se torna `public` por **ato positivo da comunidade** — que é literalmente o estágio 5 do ciclo CLPI de `propostaGovernanca.md:349`, "Classificação de acesso", cujo responsável declarado é a instância de decisão da comunidade e cujo critério de passagem é "camada definida e justificada; data de revisão fixada".
+Um Relato só se torna `public` por **ato positivo da comunidade** — que é literalmente o estágio 5 do ciclo CLPI de `propostaGovernanca.md:349`, "Classificação de acesso", cujo responsável declarado é a instância de decisão da comunidade e cujo critério de passagem é "camada definida e justificada; data de revisão fixada".
 
-Corolário de conformidade: **nenhum Enunciado sem CLPI válido atinge nível efetivo `public`**, reafirmando o estágio 6 do mesmo ciclo. `visibility: public` é consequência do CLPI, nunca substituto dele (`propostaGovernanca.md:319`).
+Corolário de conformidade: **nenhum Relato sem CLPI válido atinge nível efetivo `public`**, reafirmando o estágio 6 do mesmo ciclo. `visibility: public` é consequência do CLPI, nunca substituto dele (`propostaGovernanca.md:319`).
 
 ## Relações
 
@@ -289,19 +308,19 @@ Corolário de conformidade: **nenhum Enunciado sem CLPI válido atinge nível ef
 - O registro sonoro/audiovisual de fala ganha representação primária. O vídeo Panará passa a ter onde existir — com as ausências (transcrição, grafia, CLPI, classificação) **visíveis e bloqueantes** em vez de implícitas num arquivo numa pasta.
 - Uma classe inteira de vazamento deixa de ser possível: rótulo sagrado dentro de registro público.
 - CARE **A2** (*Data for governance*) ganha implementação: a comunidade pode consultar "todo o Conhecimento de que sou detentora" sem depender de quem digitou.
-- CARE **R3** deixa de ser recomendação e vira restrição de esquema: sem língua ISO 639-3, o Enunciado é incompleto.
+- CARE **R3** deixa de ser recomendação e vira restrição de esquema: sem língua ISO 639-3, o Relato é incompleto.
 - Três das quatro unidades absorvem tudo isto como restrição de projeto **antes da primeira linha de código** — o momento mais barato possível, como no ADR-014.
 
 ### Negativas
 
 - O contrato de harvest fica maior e o Pluriverso passa a ter de interpretar nível efetivo em vez de filtrar um booleano. *Aceito:* é o requisito que originou a ADR; um índice que só sabe "público/não público" não consegue exibir por que um campo está ausente.
 - O teste do regime (K1) acrescenta atrito na aquisição. *Mitigação:* quatro perguntas, respondidas uma vez por registro, com padrão por unidade já preenchido — o operador confirma ou sobrepõe.
-- `Enunciado` é palavra pouco usual em português técnico corrente. *Aceito e aberto a substituição* — as alternativas descartadas estão em §"O que esta ADR não decide", Q2.
+- O termo **Relato** passa a ter dois usos próximos: a unidade de Conhecimento e o nome da unidade hospedeira BioCultRelatos. *Aceito:* a proximidade é coerente — é a unidade que existe para produzir Relatos —, e o glossário distingue os dois verbetes.
 - Registros já existentes no BioCultDB (29 Evidências) precisam de valor de `regime`. *Trivial:* padrão `evidencia`, correto para todos por construção da unidade.
 
 ### Neutras
 
-- Nenhum dado é reclassificado automaticamente. `accessLevel` mais restritivo por omissão vale para **Enunciado novo**; nada que hoje está publicado muda de nível por efeito desta ADR.
+- Nenhum dado é reclassificado automaticamente. `accessLevel` mais restritivo por omissão vale para **Relato novo**; nada que hoje está publicado muda de nível por efeito desta ADR.
 
 ## O que esta ADR não decide
 
@@ -310,7 +329,7 @@ Seis pontos permanecem abertos e devem ser resolvidos antes da mudança de statu
 | # | Questão | Recomendação |
 |---|---|---|
 | **Q1** | O regime entra no glossário da federação (`CONTEXT.md` raiz) ou fica interno a cada unidade? | **Federação.** Se determina o que trafega no harvest, é linguagem da federação por definição. Deixá-lo interno reproduz o problema atual, em que "Evidência" só existe no `BioCultDB/CONTEXT.md` |
-| **Q2** | "Enunciado" é o nome certo? | Descartados: *Relato* (colide com BioCultRelatos), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial). Aberto a substituição |
+| **Q2** | ~~"Enunciado" é o nome certo?~~ | **Decidido em 2026-08-13: o termo é `Relato`**, já usado pelo projeto e pelo modelo Panará. Descartados *Enunciado* (pouco usual), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial) |
 | **Q3** | Como identificar o detentor sem expor a pessoa? | Tensão real entre `assertionByID` (quer identificador estável) e LGPD. Opções: (a) identificador interno + `anonymized: true`, exposto só como papel; (b) atribuição exclusivamente coletiva no que for público; (c) **pseudônimo escolhido pelo próprio detentor** — a única que respeita simultaneamente CARE A1 e o direito ao reconhecimento, e a única que exige perguntar à pessoa |
 | **Q4** | Adotar a API do Local Contexts Hub ou espelhar os rótulos localmente? | Adotar mantém a autoridade com a comunidade e cria dependência externa; espelhar inverte. **Meio-termo:** armazenar o identificador do rótulo e do projeto, exibir o texto canônico com cache, nunca editar o texto |
 | **Q5** | Que vocabulário controlado usar em `assertionType`? | Fora do escopo desta ADR; é campo do BioCultTermos e matéria do Comitê |

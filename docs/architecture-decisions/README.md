@@ -248,13 +248,14 @@ em língua `kre`, o registro que melhor materializa a razão de ser da arquitetu
 no modelo de dados (`ADR-003:337-338` — `media: []`, "(futuro)").
 
 **Decisão:** K1 regime é campo do registro, nunca propriedade do provedor, decidido por um teste de
-quatro perguntas; K2 a unidade de Conhecimento é o **Enunciado** (detentor + ato de enunciação +
-mídia-fonte + classificação), mapeado para `dwc:Assertion`; K3 três níveis de rotulagem — Termo,
-Enunciado, Registro — com **nível efetivo pelo mais restritivo** e sem herança descendente; K4 Label
+quatro perguntas; K2 a unidade de Conhecimento é o **Relato** (detentor + ato de enunciação +
+mídia-fonte + classificação), mapeado para `dwc:Assertion`, e vivendo sempre na unidade da comunidade
+detentora — nunca na de quem custodia o objeto de que ele fala; K3 três níveis de rotulagem — Termo,
+Relato, Registro — com **nível efetivo pelo mais restritivo** e sem herança descendente; K4 Label
 sobre Conhecimento, Notice sobre Evidência; K5 língua em ISO 639-3 obrigatória, tradução como entidade
 derivada; K6 o harvest passa a carregar nível efetivo e supressão declarada
 (`dwc:informationWithheld`, `dwc:dataGeneralizations`) — **supersede o contrato de payload do
-ADR-004 D6**; K7 Enunciado nasce `restricted`, Termo herda o padrão do vocabulário. Seis questões
+ADR-004 D6**; K7 Relato nasce `restricted`, Termo herda o padrão do vocabulário. Cinco questões
 permanecem explicitamente abertas antes da promoção a *Aceito*.
 
 **[Leia o documento completo →](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)**
