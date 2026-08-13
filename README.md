@@ -47,28 +47,30 @@ O documento organiza a governança em **três camadas**, cada uma com sua instâ
 
 ## Motivação e Justificativa
 
-### O Problema: Evidências Dispersas e Não Registradas
+### O Problema: Conhecimento e Evidências Dispersos e Não Registrados
 
-A relação entre comunidades tradicionais brasileiras e a biodiversidade produziu, ao longo de séculos, um vasto conjunto de evidências: conhecimentos, práticas e usos documentados em artigos científicos, relatados diretamente por seus detentores em campo, preservados em acervos históricos e museológicos, e registrados nas obras de naturalistas que visitaram o Brasil entre os séculos XVII e XIX. Essas evidências existem — mas estão dispersas em bibliotecas, museus, bases de dados isoladas e na memória viva das comunidades, sem uma arquitetura comum que permita registrá-las, relacioná-las e compartilhá-las com o devido respeito à sua origem.
+A relação entre comunidades tradicionais brasileiras e a biodiversidade produziu, ao longo de séculos, um vasto acervo de duas naturezas distintas. De um lado, **conhecimento**: a relação enunciada por quem a detém — na fala dos mais velhos, na demonstração ao pé da árvore, na língua originária, viva na memória das comunidades. De outro, **evidências** dessa relação: o que terceiros registraram sobre ela em artigos científicos, em acervos históricos e museológicos, e nas obras de naturalistas que visitaram o Brasil entre os séculos XVII e XIX. Os dois existem — mas estão dispersos em bibliotecas, museus e bases de dados isoladas, sem uma arquitetura comum que permita registrá-los, relacioná-los e compartilhá-los com o devido respeito à sua origem.
 
-### A Motivação: Registrar e Compartilhar Evidências com Respeito Pleno ao C.A.R.E.
+### A Motivação: Registrar e Compartilhar com Respeito Pleno ao C.A.R.E.
 
-A Arquitetura BioCultural nasce da necessidade de **registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade**, provenientes de diferentes fontes. O objetivo é ofertar uma arquitetura que permita registrar e compartilhar essas evidências com respeito **pleno e absoluto** aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) — independentemente de a fonte ser um artigo científico, um relato de campo, um item de acervo museológico ou a obra de um naturalista do século XVIII: se a evidência descreve o conhecimento ou a prática de uma comunidade tradicional, essa comunidade mantém autoridade sobre como ela é registrada, usada e compartilhada.
+A Arquitetura BioCultural nasce da necessidade de **registrar e documentar a relação entre comunidades tradicionais e a biodiversidade**, proveniente de diferentes fontes. O objetivo é ofertar uma arquitetura que permita registrar e compartilhar esse acervo com respeito **pleno e absoluto** aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics) — independentemente de a fonte ser um artigo científico, um relato de campo, um item de acervo museológico ou a obra de um naturalista do século XVIII: se o registro descreve o conhecimento ou a prática de uma comunidade tradicional, essa comunidade mantém autoridade sobre como ele é registrado, usado e compartilhado.
 
-### Quatro Fontes de Evidência
+### Quatro Fontes
 
-| Tipo de Fonte | Descrição | Ferramenta(s) |
-|---|---|---|
-| **Fontes secundárias** | Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) (inclui Extração por IA) |
-| **Fontes primárias** | Relatos registrados diretamente em campo, junto às comunidades (CLPI obrigatório) | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
-| **Acervos históricos e museológicos** | Coleções, registros e documentos preservados em museus e arquivos históricos | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
-| **Obras de naturalistas** | Relatos e obras de naturalistas em visita ao Brasil nos séculos XVII, XVIII e XIX | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
+| Tipo de Fonte | Descrição | Regime predominante | Ferramenta(s) |
+|---|---|---|---|
+| **Fontes primárias** | Registrado diretamente em campo, junto às comunidades (CLPI obrigatório) | **Conhecimento** | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
+| **Fontes secundárias** | Artigos científicos publicados | Evidência | [BioCultDB](https://github.com/edalcin/BioCultDB) (inclui Extração por IA) |
+| **Acervos históricos e museológicos** | Coleções, registros e documentos preservados em museus e arquivos históricos | Evidência | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
+| **Obras de naturalistas** | Relatos e obras de naturalistas em visita ao Brasil nos séculos XVII, XVIII e XIX | Evidência | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
 
-Cada fonte exige um processo de aquisição e curadoria diferente — mas todas convergem para o mesmo objetivo: uma evidência registrada, rastreável até sua origem, e compartilhada sob os princípios C.A.R.E.
+Cada fonte exige um processo de aquisição e curadoria diferente — mas todas convergem para o mesmo objetivo: um registro rastreável até sua origem e compartilhado sob os princípios C.A.R.E.
+
+> **Regime é do registro, não da ferramenta.** A coluna acima indica o padrão de cada unidade, não uma regra: a narrativa de uma comunidade sobre uma peça de museu é **Conhecimento dentro do BioCultAcervos**, e a nota de campo do pesquisador é **Evidência dentro do BioCultRelatos**. O que distingue os dois regimes é *quem fala* — e o que a distinção decide é **quem pode classificar o acesso** do registro. Ver [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e o estudo em [`conhecimento/`](conhecimento/caracterizacao-do-conhecimento-tradicional.md).
 
 ### Imperativo Legal e Ético
 
-Registrar essas evidências com respeito ao C.A.R.E. não é apenas um princípio — é uma obrigação legal:
+Registrar esse acervo com respeito ao C.A.R.E. não é apenas um princípio — é uma obrigação legal:
 - **Lei 13.123/2015** (Lei da Biodiversidade): exige consentimento e repartição de benefícios no acesso e uso de conhecimento tradicional associado
 - **Protocolo de Nagoya**: exige rastreabilidade de origem e consentimento no acesso a conhecimento tradicional
 - **CDB Art. 8(j)**: exige respeito, preservação e manutenção do conhecimento tradicional com aprovação e participação de seus detentores
@@ -365,6 +367,9 @@ Este repositório está organizado da seguinte forma:
 ```
 Arquitetura-BioCultural/
 ├── README.md (este arquivo)
+├── CONTEXT.md                          ← glossário da federação
+├── conhecimento/
+│   └── caracterizacao-do-conhecimento-tradicional.md   ← Conhecimento × Evidência
 ├── governanca/
 │   ├── propostaGovernanca.md          ← documento principal de governança
 │   ├── planoPropostaGovernanca.md
@@ -379,9 +384,8 @@ Arquitetura-BioCultural/
 │   │   ├── 02-container-diagram.md
 │   │   └── 03-component-diagram.md
 │   ├── architecture-decisions/
-│   │   ├── ADR-001-database-selection.md
-│   │   ├── ADR-002-api-standards.md
-│   │   └── ADR-003-data-model.md
+│   │   ├── ADR-001-database-selection.md … ADR-014-…
+│   │   └── ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md
 │   └── diagrams/
 │       ├── data-flow.md
 │       └── integration-patterns.md
@@ -396,6 +400,7 @@ Arquitetura-BioCultural/
 5. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
 6. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
 7. **[Plano de elaboração da proposta de governança](governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
+8. **[Caracterização do Conhecimento Tradicional](conhecimento/caracterizacao-do-conhecimento-tradicional.md)** — estudo que distingue **Conhecimento** (a relação enunciada por quem a detém) de **Evidência** (a atestação por terceiros de que ela existe), e as consequências para a rotulagem SKOS-XL de nível de acesso; base do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
 
 
 

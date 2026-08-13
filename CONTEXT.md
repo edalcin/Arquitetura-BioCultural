@@ -56,6 +56,37 @@ toda hospedeira deve, eventualmente, zerar o seu. Atraso que deixa de ser medido
 atraso e vira bifurcação.
 _Avoid_: Divergência, Fork, Defasagem, Drift
 
+### Conhecimento e evidência
+
+**Conhecimento**:
+A relação de uma Comunidade Tradicional com a biodiversidade **enunciada por quem a detém**.
+Existe sempre como um Enunciado: um ato de fala ou de demonstração, datado, localizado, numa
+língua declarada, atribuído a um detentor individual ou coletivo. Sua autoridade é a da
+comunidade detentora, que pode reclassificá-lo ou revogá-lo a qualquer tempo, sem justificativa.
+_Avoid_: Saber, Informação, Dado etnobotânico, Conteúdo
+
+**Evidência**:
+A **atestação, por um terceiro**, de que a relação entre uma Comunidade Tradicional e a
+biodiversidade existe. Está sempre presa a um artefato — artigo, item de acervo, obra de
+naturalista — e sua autoridade é a do artefato e de quem o produziu. Documenta o Conhecimento
+sem ser o Conhecimento. Não é regime inferior: é conhecimento com outro dono.
+_Avoid_: Registro, Record, Referência, Fonte (é a procedência, não a evidência)
+
+**Enunciado**:
+A unidade de Conhecimento. Tem, obrigatoriamente: um detentor (pessoa ou coletivo), um ato de
+enunciação (quando, onde, em que língua, sob que protocolo), uma mídia-fonte quando houver
+gravação, e uma classificação de acesso decidida pela comunidade. Um Enunciado nunca existe sem
+detentor; sem detentor, o que existe é Evidência.
+_Avoid_: Relato (colide com a Unidade Hospedeira), Asserção (jargão de implementação), Fato,
+Afirmação, Depoimento
+
+**Regime Enunciativo**:
+A propriedade de todo registro da federação que declara se ele é Conhecimento ou Evidência. É
+ortogonal à Fonte de Atribuição e à procedência, e é campo do registro — nunca propriedade da
+unidade que o guarda. Determina **quem pode classificar o acesso** daquele registro, e portanto
+se a unidade pode aplicar um Label (Conhecimento) ou apenas declarar um Notice (Evidência).
+_Avoid_: Tipo de registro, Categoria, Natureza
+
 ### Vocabulário e procedência
 
 **Vocabulário Controlado**:
@@ -88,4 +119,5 @@ _Avoid_: População, Grupo, Etnia
 
 - `docs/architecture-decisions/ADR-007` — distribuição do Módulo Compartilhado
 - `docs/architecture-decisions/ADR-012` — manutenção do código do BioCultTermos
+- `docs/architecture-decisions/ADR-015` — Regime Enunciativo e os três níveis de rotulagem de acesso
 - `BioCultDB/CONTEXT.md` — linguagem interna da Unidade de Fontes Secundárias

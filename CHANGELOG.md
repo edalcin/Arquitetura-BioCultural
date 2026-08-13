@@ -6,6 +6,35 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.7.0] - 2026-08-13
+
+### Adicionado
+
+- **ADR-015: Regime Enunciativo e os Três Níveis de Rotulagem de Acesso** (status **Proposto**) — responde à pendência de vocabulário de arquitetura deixada em aberto pela v3.5.0 (ver abaixo) e conclui que ela não era de vocabulário: BioCultDB e BioCultRelatos não usam termos diferentes para o mesmo conceito, guardam **conceitos diferentes com o mesmo termo**. Acrescenta um segundo eixo, ortogonal ao da procedência — o **Regime Enunciativo**, com dois valores: `conhecimento` (a relação com a biodiversidade enunciada por quem a detém, em primeira pessoa, presa a um ato de enunciação) e `evidencia` (a atestação, por um terceiro, de que essa relação existe, em terceira pessoa, presa a um artefato). A distinção é **deôntica, não epistêmica**: Evidência não é regime inferior, é conhecimento com outro dono; o que a distinção decide é **quem pode classificar o acesso** — e portanto se cabe um TK/BC Label (comunidade) ou apenas um Notice (instituição), regra que `propostaGovernanca.md` §5.5 já aplicava sem ter a propriedade do dado que a determina. Sete pontos de decisão: **K1** regime é campo do registro, nunca propriedade do provedor, decidido por um teste de quatro perguntas (a equação "provedor = regime" quebra nos dois casos que a governança já promete: *Community Record* de comunidade sobre peça de museu é Conhecimento dentro do BioCultAcervos; nota de campo do pesquisador é Evidência dentro do BioCultRelatos); **K2** a unidade de Conhecimento é o **Enunciado** — detentor, ato de enunciação, mídia-fonte e classificação de acesso —, mapeado em implementação para `dwc:Assertion` do Darwin Core Data Package; **K3** três níveis de rotulagem (Termo `skosxl:Label`, Enunciado, Registro/Mídia) com **nível efetivo pelo mais restritivo** e herança descendente proibida; **K4** Label sobre Conhecimento, Notice sobre Evidência, em campo separado de `permissions.license`; **K5** língua do Enunciado em ISO 639-3 obrigatória, com transcrição e tradução como entidades derivadas que nunca substituem a gravação; **K6** o payload de harvest passa a carregar regime, nível efetivo e supressão declarada (`dwc:informationWithheld`, `dwc:dataGeneralizations`), com redação na fronteira do endpoint e teste automatizado como condição de aceitação; **K7** Enunciado nasce `restricted` e só se torna público por ato positivo da comunidade, enquanto o Termo mantém o padrão `public` do vocabulário. Seis questões ficam **explicitamente abertas** antes da promoção a *Aceito*, entre elas como identificar o detentor sem expor a pessoa
+- **`conhecimento/caracterizacao-do-conhecimento-tradicional.md`** — estudo que originou a ADR-015, com o prompt que o encomendou, o levantamento das dez ambiguidades atuais (com arquivo e linha), a fundamentação conceitual e jurídica, os ganchos técnicos verificados nas fontes primárias (tabelas `*-assertion` e `usage-policy` do DwC-DP, TK/BC Labels e a API do Local Contexts Hub, PROV-O, ISO 639-3), o caso Panará modelado ponta a ponta e as decisões pendentes
+- **Quatro termos no glossário da federação** (`CONTEXT.md`), em nova seção "Conhecimento e evidência": **Conhecimento**, **Evidência**, **Enunciado** e **Regime Enunciativo**, cada um com sua lista `_Avoid_`. Fecha a lacuna de o glossário da federação não definir nenhum dos dois conceitos centrais — "Evidência" só existia, e em sentido mais estreito, no `BioCultDB/CONTEXT.md`
+- **`.gitignore`**: `*.mp4` em todo o repositório. Motivação imediata é tamanho; o efeito é exigido por `propostaGovernanca.md` §5.10 — nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros
+
+### Modificado
+
+- **README**: seção "O Problema" renomeada para "Conhecimento e Evidências Dispersos e Não Registrados" e reescrita para nomear as duas naturezas em vez de subordinar conhecimento a evidência; "Quatro Fontes de Evidência" passa a **"Quatro Fontes"**, com nova coluna *Regime predominante* e o BioCultRelatos promovido à primeira linha; nota de escopo esclarecendo que **regime é do registro, não da ferramenta**; item 8 na Navegação da Documentação; `conhecimento/` e `CONTEXT.md` acrescentados à árvore de Estrutura da Documentação
+- **`docs/architecture-decisions/README.md`**: nova entrada da ADR-015 na Lista de ADRs e no Histórico de Mudanças
+- **`CONTEXT.md`**: ADR-015 acrescentada às Referências
+
+### Contexto da Versão
+
+A v3.7.0 não altera infraestrutura, persistência nem topologia da federação. Ela fecha uma lacuna **conceitual** que estava travando duas coisas ao mesmo tempo: a aplicação precisa dos rótulos de nível de acesso (`public` / `restricted` / `sacred`) e a promessa de que só a comunidade classifica o que é seu.
+
+O sintoma que a expôs é concreto e verificável: um vídeo de 42 segundos em que um homem Panará, ao lado de uma árvore, descreve a árvore e seus usos **na língua Panará** (ISO 639-3 `kre`). É o registro que melhor materializa a razão de ser desta arquitetura, e não havia onde guardá-lo — `ADR-003:337-338` é `media: []` com o comentário `// (futuro)`, e o modelo que chega mais perto (`dadosEtnoJBRJ_Panara/relatos.md`) tem `id_video`, `idioma` e `conteudo_transcrito`, mas nenhum campo de nível de acesso, consentimento ou detentor. O modelo que melhor descreve o conhecimento era o que menos o protegia.
+
+A ADR-015 é a primeira a **superseder o contrato de payload do ADR-004 D6** (K6): `{id, visibility, updated_at, data}` é um booleano e não consegue expressar o caso comum — registro público contendo rótulo sagrado, que deve ser publicado com o rótulo suprimido e a supressão declarada. Sem isso, a regra de `propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não tinha implementação possível do lado do consumidor.
+
+Duas retificações menores ficam registradas na própria ADR-015, sem reescrever o ADR-003, que segue em status *Proposto* e entra na mesma rodada de validação com comunidades: `metadata.language: "pt-BR"` migra para ISO 639-3 (K5) — `pt-BR` não codifica `kre`, e o BioCultTermos já exige ISO 639-3 desde a migração de 2601 conceitos de `pt` para `por` —, e `media` deixa de ser "(futuro)".
+
+Pendências abertas e nomeadas: as seis questões de decisão da ADR-015; nenhuma unidade implementou ainda os campos de acesso do ADR-003; e o caso Panará depende de localizar ou formalizar o CLPI, obter transcrição em `kre` com falante nativo e verificar a grafia com pesquisadores Panará antes de qualquer publicação.
+
+---
+
 ## [3.6.0] - 2026-08-10
 
 ### Adicionado

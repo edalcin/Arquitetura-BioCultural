@@ -231,6 +231,36 @@ relações e a opção "Nomes Científicos de Plantas" saem do pulldown Admin) �
 
 ---
 
+### ADR-015: Regime Enunciativo e os Três Níveis de Rotulagem de Acesso
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Responde à pendência de vocabulário de arquitetura registrada no `CHANGELOG.md` (v3.5.0, "Contexto da
+Versão") e descobre que ela
+não era de vocabulário: BioCultDB e BioCultRelatos não usam termos diferentes para o mesmo conceito,
+guardam conceitos diferentes com o mesmo termo. Acrescenta à arquitetura um segundo eixo, ortogonal ao
+da procedência: o **Regime Enunciativo** — `conhecimento` (a relação com a biodiversidade enunciada por
+quem a detém, em primeira pessoa, presa a um ato de enunciação) ou `evidencia` (a atestação por um
+terceiro de que essa relação existe, em terceira pessoa, presa a um artefato). A distinção é deôntica,
+não epistêmica: ela decide **quem pode classificar o acesso**, e portanto se cabe um TK/BC Label
+(comunidade) ou apenas um Notice (instituição). Sintoma que a originou: um vídeo de 42 s de fala Panará
+em língua `kre`, o registro que melhor materializa a razão de ser da arquitetura, não tem onde existir
+no modelo de dados (`ADR-003:337-338` — `media: []`, "(futuro)").
+
+**Decisão:** K1 regime é campo do registro, nunca propriedade do provedor, decidido por um teste de
+quatro perguntas; K2 a unidade de Conhecimento é o **Enunciado** (detentor + ato de enunciação +
+mídia-fonte + classificação), mapeado para `dwc:Assertion`; K3 três níveis de rotulagem — Termo,
+Enunciado, Registro — com **nível efetivo pelo mais restritivo** e sem herança descendente; K4 Label
+sobre Conhecimento, Notice sobre Evidência; K5 língua em ISO 639-3 obrigatória, tradução como entidade
+derivada; K6 o harvest passa a carregar nível efetivo e supressão declarada
+(`dwc:informationWithheld`, `dwc:dataGeneralizations`) — **supersede o contrato de payload do
+ADR-004 D6**; K7 Enunciado nasce `restricted`, Termo herda o padrão do vocabulário. Seis questões
+permanecem explicitamente abertas antes da promoção a *Aceito*.
+
+**[Leia o documento completo →](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -313,6 +343,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-08-09 | ADR-012 | Manutenção do código do BioCultTermos: Cópia de Trabalho única por unidade, rede de proteção nativa do git e propagação obrigatória |
 | 2026-08-09 | ADR-013 | Identidade visual compartilhada via preset Tailwind no Módulo Compartilhado |
 | 2026-08-10 | ADR-014 | Nomenclatura científica fora do escopo do vocabulário controlado |
+| 2026-08-13 | ADR-015 | Regime enunciativo (Conhecimento × Evidência) e os três níveis de rotulagem de acesso |
 
 ---
 
