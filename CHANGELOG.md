@@ -6,6 +6,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.9.1] - 2026-08-13
+
+### Modificado
+
+- **Reorganização de `docs/`**: as 12 imagens soltas na raiz (`arquitetura-biocultural`, `integracao-federada`, `pluriverso-multi-instancia` em `.png`/`.svg`, mais `arquiteturaV1.4{,b}.png` e as quatro `IlustraBlog*.png`) e a pasta `etnoImagens/` movidas para `docs/images/`, com `legacy/` (diagramas de versões anteriores) e `blog/` (ilustrações do artigo externo) como subpastas; `etnoImagens/` renomeada para `docs/images/etno/`. Movidas com `git mv`, histórico preservado. Nenhum arquivo perdido; nenhuma pasta já organizada (`architecture-decisions/`, `c4-model/`, `gestaoBioCultTermos/`, `iniciativas/`, `agents/`, `diagrams/`, `apresentacoes/`) foi alterada
+- Referências atualizadas em `README.md` (3 imagens embutidas + diagrama de estrutura da documentação) e `governanca/planoPropostaGovernanca.md` (3 citações do SVG-fonte)
+
+### Contexto da Versão
+
+Organização puramente estrutural, sem mudança de conteúdo técnico ou decisão de arquitetura.
+
 ## [3.9.0] - 2026-08-13
 
 ### Adicionado

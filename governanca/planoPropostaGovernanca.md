@@ -4,7 +4,7 @@
 
 Criar **`governanca/propostaGovernanca.md`** no repositório `Arquitetura-BioCultural` (v3.3): uma proposta de governança em três camadas — (1) **dados e informações** de conhecimento tradicional associado à biodiversidade (CTA), que é o núcleo e a maior parte do documento; (2) **ferramentas** que compõem a plataforma (BioCultDB, BioCultPapers, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, BioCultTermos, Pluriverso); (3) **arquitetura** em si (como ela evolui e quem decide).
 
-O documento é fundamentado em pesquisa bibliográfica real (princípios C.A.R.E., soberania de dados indígenas, LGPD, Lei 13.123/2015, Protocolo de Nagoya, Convenção 169 OIT, casos documentados de apropriação indevida), tem **ilustrações SVG+PNG no mesmo sistema visual** de `docs/arquitetura-biocultural.svg`, e trata **explicitamente** o receio de lideranças e comunidades quanto ao mau uso dos dados (indústria farmacêutica, bioprospecção, pesquisa extrativa). Encerra com **"Referências Bibliográficas"** em ABNT NBR 6023:2018 (convenção já usada em `Referencias.md`).
+O documento é fundamentado em pesquisa bibliográfica real (princípios C.A.R.E., soberania de dados indígenas, LGPD, Lei 13.123/2015, Protocolo de Nagoya, Convenção 169 OIT, casos documentados de apropriação indevida), tem **ilustrações SVG+PNG no mesmo sistema visual** de `docs/images/arquitetura-biocultural.svg`, e trata **explicitamente** o receio de lideranças e comunidades quanto ao mau uso dos dados (indústria farmacêutica, bioprospecção, pesquisa extrativa). Encerra com **"Referências Bibliográficas"** em ABNT NBR 6023:2018 (convenção já usada em `Referencias.md`).
 
 Nenhum código é escrito. Entregável: 1 documento markdown + 4 ilustrações (SVG fonte + PNG embutido) + link no README + entrada no CHANGELOG.
 
@@ -100,7 +100,7 @@ Resolvidas via CrossRef/fonte oficial durante o planejamento — podem ser citad
 - COULDRY, N.; MEJIAS, U. A. Data colonialism: rethinking big data's relation to the contemporary subject. **Television & New Media**, v. 20, n. 4, p. 336–349, 2019. DOI: 10.1177/1527476418796632.
 - Além de FAIR (WILKINSON et al., 2016 — DOI 10.1038/sdata.2016.18) e das duas referências já no repositório que devem ser reaproveitadas: PANKARARU et al. (2026) *npj Biodiversity* DOI 10.1038/s44185-026-00121-0 e ZANK et al. (2025) *J. Ethnobiol. Ethnomed.* DOI 10.1186/s13002-024-00750-4 — ambas com coautoria/tema diretamente ligados a esta arquitetura.
 
-## Sistema visual das ilustrações (extraído de `docs/arquitetura-biocultural.svg`)
+## Sistema visual das ilustrações (extraído de `docs/images/arquitetura-biocultural.svg`)
 
 Tokens **literais** a reusar. Toda nova ilustração usa exclusivamente esta paleta e estes padrões — nada de gradientes, sombras, ícones externos, fontes web ou emojis.
 
@@ -305,7 +305,7 @@ Os quatro relatórios de pesquisa (CARE, Jurídico, Técnico, Riscos e Casos) fo
 
 ## Critical files & anchors
 
-- `docs/arquitetura-biocultural.svg` — **fonte única do sistema visual**; reler antes de criar cada ilustração e copiar `<defs>`, cores e padrões de card literalmente.
+- `docs/images/arquitetura-biocultural.svg` — **fonte única do sistema visual**; reler antes de criar cada ilustração e copiar `<defs>`, cores e padrões de card literalmente.
 - `docs/architecture-decisions/ADR-003-data-model.md` — campos `visibility`, `restrictions`, `permissions.hiddenFields`, `community.consent`, `verifiedByCommunity`; reler linhas ~200–350 e ~580–610 antes de escrever §5.2, §5.3 e §5.11 para grafar os nomes exatamente.
 - `docs/architecture-decisions/ADR-006-federation-membership-protocol.md` — Comitê Federado, fila `pending/active/rejected`, `care_declaration`, E4 como bloqueador; base de §6.1 e §7.2.
 - `docs/architecture-decisions/ADR-004-federated-architecture.md` — D3 (governança/Comitê), D4 (saída reversível/purge), D6 (contrato de harvest); citar as decisões pelo identificador (`D3`, `D4`, `D6`).

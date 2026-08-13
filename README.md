@@ -94,7 +94,7 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 A versão 3.5 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. A v3.4 acrescentou a [camada de governança](governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças; a v3.5 absorve o **BioCultPapers** pelo **BioCultDB** ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)) — a extração de dados por IA deixa de ser aplicativo desktop separado e passa a ser a funcionalidade **Extração por IA**, nativa do contexto de Aquisição.
 
-![Arquitetura BioCultural — versão 3.5, visão geral federada](docs/arquitetura-biocultural.png)
+![Arquitetura BioCultural — versão 3.5, visão geral federada](docs/images/arquitetura-biocultural.png)
 
 > **Leitura recomendada:** o artigo do blog [*Arquitetando — Biodiversidade, Dados e Metadados*](https://eduardo.dalc.in/arquitetando/) explica, de forma didática e ilustrada, toda esta arquitetura federada — as quatro fontes de evidência, a soberania via SQLite+JSON, o papel do Pluriverso e a aposta na repartição de benefícios rastreável.
 
@@ -134,7 +134,7 @@ múltiplos escopos**:
 - **Harvest público agora**; harvest autenticado para registros `restricted` é extensão futura documentada,
   não implementada
 
-![Pluriverso — múltiplas instâncias: associação com índice privado, índice público global, sem hierarquia](docs/pluriverso-multi-instancia.png)
+![Pluriverso — múltiplas instâncias: associação com índice privado, índice público global, sem hierarquia](docs/images/pluriverso-multi-instancia.png)
 
 Detalhes completos em [ADR-009](docs/architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md);
 engine de persistência de cada instância em [ADR-008](docs/architecture-decisions/ADR-008-pluriverso-database-engine.md).
@@ -326,7 +326,7 @@ Na arquitetura federada, o Pluriverso é o único componente com visão de todos
 
 ### Integração Federada entre Projetos
 
-![Integração federada entre projetos: unidades federadas com SQLite+JSON próprio, harvest REST e Pluriverso](docs/integracao-federada.png)
+![Integração federada entre projetos: unidades federadas com SQLite+JSON próprio, harvest REST e Pluriverso](docs/images/integracao-federada.png)
 
 O fluxo federado funciona assim:
 
@@ -377,19 +377,18 @@ Arquitetura-BioCultural/
 │   ├── governanca-camadas-acesso.svg/.png
 │   ├── governanca-ciclo-clpi.svg/.png
 │   └── governanca-reparticao.svg/.png
-├── docs/
-│   ├── metodologia-e-tecnologias.md
-│   ├── contrato-harvest.md
-│   ├── c4-model/
-│   │   ├── 01-context-diagram.md
-│   │   ├── 02-container-diagram.md
-│   │   └── 03-component-diagram.md
-│   ├── architecture-decisions/
-│   │   ├── ADR-001-database-selection.md … ADR-014-…
-│   │   └── ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md
-│   └── diagrams/
-│       ├── data-flow.md
-│       └── integration-patterns.md
+└── docs/
+    ├── metodologia-e-tecnologias.md
+    ├── contrato-harvest.md
+    ├── PrincipiosCAREnaPratica.md
+    ├── v3.1-migration-progress.md
+    ├── architecture-decisions/     ← ADR-001 … ADR-015
+    ├── c4-model/                   ← diagramas C4: contexto, containers, componentes
+    ├── diagrams/                   ← fontes .excalidraw + exports + notas de integração
+    ├── images/                     ← diagramas da arquitetura (.png/.svg) + legacy/ + blog/ + etno/
+    ├── agents/                     ← convenções para agentes de codificação
+    ├── apresentacoes/              ← slides
+    └── iniciativas/                ← iniciativas governamentais/institucionais correlatas
 ```
 
 ### Navegação da Documentação
