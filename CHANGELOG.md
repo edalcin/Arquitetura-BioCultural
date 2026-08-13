@@ -6,6 +6,32 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.8.0] - 2026-08-13
+
+### Adicionado
+
+- **`docs/contrato-harvest.md`** (status **Proposto**) — o contrato de payload do harvest especificado **campo a campo**, decorrente de K6 da ADR-015. Fixa a envoltória (inalterada), o registro (`id`, `regime`, `accessLevel`, `informationWithheld`, `dataGeneralizations`, `culturalLabels`, `holderPeople`, `relatedResources`, `updated_at`, `data`), a ordem de restritividade `public < restricted < community-only < private` para o cálculo do **nível efetivo** de K3, e a regra de que campo **ausente** e campo **retido** são coisas distintas — retido exige `informationWithheld` preenchido, e campo restringido nunca fica nulo (`propostaGovernanca.md:300`)
+- **`relatedResources`** no payload — resolve o requisito que a ADR-015 registrou e deixou sem especificação: "este registro trata do mesmo objeto que aquele registro de outro membro". Subconjunto da tabela `resource-relationship` do DwC-DP com os nomes de campo do padrão preservados, verificados na fonte primária (`relationshipType`, `relatedResourceID`, `externalRelatedResourceID`, `externalRelatedResourceSource`, `relatedResourceType`, `relationshipAccordingTo`, `relationshipEstablishedDate`, `relationshipRemarks`). É a lição do Mukurtu (`propostaGovernanca.md:419`) implementada **na federação** — Relato na unidade da comunidade, ficha do museu na unidade do museu, os dois vinculados e nenhum gravado dentro do banco do outro
+- **Condição de aceitação do endpoint de harvest** (§7 do contrato) — sete cenários que o teste automatizado obrigatório de K6 deve cobrir, inclusive os dois que costumam faltar: registro `public` de regime `conhecimento` **sem CLPI válido** deve estar ausente, e mudança de nível de `public` para `restricted` deve desaparecer da coleta seguinte, com `purge` no índice do Pluriverso (ADR-004 D4)
+
+### Modificado
+
+- **Nota de retificação** acrescentada à seção "1. Registro Principal (Record)" do **ADR-003**, apontando para a ADR-015 — três retificações (`type` constante ganha `regime` de K1; `media: []` deixa de ser "(futuro)" por K5; `metadata.language: "pt-BR"` migra para ISO 639-3 por K5) e quatro acréscimos (entidade `relato` de K2, `accessLevel` por nível de K3, `permissions.restrictions.reviewDate` de K3, padrão de acesso por regime de K7). Texto original preservado integralmente abaixo da nota, seguindo a convenção do ADR-001 e da v3.6.0. A nota **não promove nem reescreve** o ADR-003, que segue *Proposto*
+- **Nota de retificação** acrescentada ao ponto **D6** do **ADR-004** e ao bloco "Contrato de Publicação", registrando a supersessão do payload por K6 e o que **permanece válido**: paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id` e a regra de que só o nível efetivo `public` atravessa o harvest. Fica **sinalizado no próprio texto** que o ADR-004 está *Aceito* e a ADR-015 está *Proposta* — a supersessão só tem efeito quando a ADR-015 for aceita; até lá a nota registra a decisão em discussão, não a aplica
+- **Nota de retificação** acrescentada ao ponto **E3** do **ADR-006** — o probe de admissão conferia a presença de `visibility` na resposta do endpoint, campo que K6 remove. Um membro que implementasse o contrato vigente **falharia o probe**. A conferência passa a ser `member_id`, `id`, `regime` e `accessLevel`; o probe como **sinal, nunca gate**, e a mitigação anti-SSRF permanecem intactos
+- **ADR-015**: corrigida a citação "entidade `enunciado`" em Relações, que contradizia K2 e a decisão de 2026-08-13 pelo termo **`Relato`**; K6 e as Referências passam a apontar para `docs/contrato-harvest.md`
+- **README** e **`CONTEXT.md`**: `docs/contrato-harvest.md` acrescentado à Estrutura da Documentação, à Navegação da Documentação (item 9) e às Referências da linguagem da federação
+
+### Contexto da Versão
+
+A v3.8.0 executa os três passos que a v3.7.0 deixou prontos e sem dependência: leva a decisão da ADR-015 aos lugares normativos que ela toca (ADR-003, ADR-004 D6 e — descoberto no caminho — ADR-006 E3) e converte o esqueleto de K6 em contrato implementável.
+
+Nada aqui decide o que a ADR-015 deixou aberto. As duas pendências que bloqueiam o esquema do Relato continuam abertas e agora estão nomeadas dentro do próprio contrato (§8): o **formato do detentor individual** — nome protegido, atribuição só coletiva, ou pseudônimo escolhido pela própria pessoa, sendo esta a única que exige perguntar — e o **texto dos rótulos culturais**, API do Local Contexts Hub ou cache local. A segunda não bloqueia o contrato: as duas resoluções consomem o mesmo identificador, e o texto do rótulo não trafega no payload em nenhuma hipótese.
+
+Uma regra derivada foi introduzida e está marcada como tal, para que não passe por decisão tomada: o `accessLevel` `sacred` do nível de Termo não pertence à escala de quatro camadas de `propostaGovernanca.md:277-282` e, para efeito de cálculo do nível efetivo, equivale a `private` — nunca atravessa. Se o Comitê discordar, o lugar de corrigir é §4.1 do contrato.
+
+---
+
 ## [3.7.0] - 2026-08-13
 
 ### Adicionado

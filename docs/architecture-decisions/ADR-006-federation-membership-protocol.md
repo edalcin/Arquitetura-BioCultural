@@ -53,6 +53,13 @@ stateDiagram-v2
 
 Antes de entrar visível na fila, o Pluriverso faz probe em `{URL-BASE}/api/federation/records?page=1&size=1` — o mesmo contrato definido no ADR-004/D6. O probe confere: resposta paginada válida, presença de `visibility` e `member_id`, **HTTPS obrigatório**, e bloqueio de IP privado/loopback/link-local (RFC1918, `127.0.0.0/8`, `169.254.0.0/16` etc. — mitigação de SSRF, já que o Pluriverso está prestes a fazer uma requisição de saída para uma URL fornecida por terceiro não autenticado). O resultado (ok/erro, timestamp) fica anexado ao pedido e visível ao Comitê, mas **não bloqueia** a entrada na fila — um endpoint ainda não pronto pode ser um pedido antecipado legítimo.
 
+> **Retificado pela ADR-015 (K6).** O probe confere `visibility`, campo que o contrato de payload de
+> K6 **remove** — em seu lugar entram `regime` e `accessLevel`. Um membro que implemente o contrato
+> vigente falharia num probe escrito contra o contrato antigo. A lista de conferência passa a ser:
+> resposta paginada válida, presença de `member_id`, `id`, `regime` e `accessLevel`, HTTPS
+> obrigatório e o bloqueio anti-SSRF. Tudo o mais neste ponto — o probe como **sinal, nunca gate** —
+> permanece integralmente válido. Contrato em [`docs/contrato-harvest.md`](../contrato-harvest.md).
+
 **Alternativas descartadas:**
 - *Rejeitar automaticamente pedidos com probe falho*: candidato pode estar em fase de implantação; rejeição automática perde o pedido em vez de dar visibilidade ao Comitê para orientar o solicitante.
 - *Sem probe algum*: Comitê teria que testar manualmente cada URL — repete trabalho que a máquina faz melhor e mais rápido.

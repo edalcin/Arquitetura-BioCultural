@@ -103,6 +103,31 @@ erDiagram
 
 Entidade central que representa um item de conhecimento tradicional.
 
+> **Retificado e ampliado pela ADR-015 (K1, K2, K3, K5).** A estrutura abaixo é anterior à adoção do
+> **Regime Enunciativo** e está incompleta em três pontos, e ausente em quatro campos. O texto
+> original é preservado integralmente abaixo; nada nele é invalidado.
+>
+> *Retificações:*
+>
+> | Onde | O que muda |
+> |---|---|
+> | `type: "traditional_knowledge"` | Não distingue nada, por ser constante. Acrescenta-se `regime`, `conhecimento` \| `evidencia`, decidido registro a registro pelo teste de quatro perguntas de **K1**, nunca derivado do provedor. Padrão por unidade: `conhecimento` no BioCultRelatos, `evidencia` nas demais |
+> | `media: []` — `// (futuro)` | Deixa de ser "(futuro)". Para registro de regime `conhecimento`, `media` é **entidade de primeira classe** (**K5**), com `language` em ISO 639-3, duração, formato aberto sem DRM e armazenamento soberano — o único original de uma gravação nunca reside em plataforma de terceiros |
+> | `metadata.language: "pt-BR"` | Migra para **ISO 639-3** (**K5**). `pt-BR` não codifica `kre` (Panará), e o BioCultTermos já exige ISO 639-3 desde a migração de 2601 conceitos de `pt` para `por` (`bioculttermos/manual/03-rotulos.md:44-46`). Onde não houver código, registra-se o glotônimo por extenso |
+>
+> *Acréscimos:*
+>
+> | Campo | Origem | Regra |
+> |---|---|---|
+> | entidade `relato` | **K2** | Registro de regime `conhecimento` contém ao menos um Relato, com detentor, ato de enunciação (data, lugar, língua, protocolo), mídia-fonte e classificação de acesso. Relato vive sempre na unidade da comunidade detentora |
+> | `accessLevel` por nível | **K3** | Termo (`skosxl:Label`), Relato e Registro/Mídia são rotuláveis independentemente. O nível efetivo é **o mais restritivo entre os três**, e herança descendente é proibida: registro público não torna público o que ele contém |
+> | `permissions.restrictions.reviewDate` | **K3** | Data de revisão **obrigatória** em toda classificação de acesso, em qualquer nível. Restrição e liberação não sobrevivem por inércia |
+> | padrão de acesso por regime | **K7** | Relato e registro de regime `conhecimento` nascem `restricted`; `public` só por ato positivo da comunidade, e nenhum Relato sem CLPI válido atinge nível efetivo `public`. Registro de regime `evidencia` segue o padrão desta ADR, sem mudança |
+>
+> Esta nota **não promove nem reescreve** o ADR-003, que permanece em status *Proposto* e entra na
+> mesma rodada de validação com comunidades que a ADR-015. Ver
+> [ADR-015](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md).
+
 ```javascript
 {
   // ============ IDENTIFICAÇÃO ============

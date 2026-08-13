@@ -290,8 +290,9 @@ Corolário de conformidade: **nenhum Relato sem CLPI válido atinge nível efeti
 
 ## Relações
 
-- **Supersede o contrato de payload do ADR-004 D6** — o registro deixa de ser `{id, visibility, updated_at, data}` e passa ao contrato de K6. O restante do D6 (paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id`) permanece integralmente válido.
-- **Acrescenta ao ADR-003, sem invalidar** — `regime`, entidade `enunciado`, `media` como primeira classe, `accessLevel` por nível, `reviewDate`. Retifica dois pontos: `metadata.language` migra para ISO 639-3 (K5) e `media: []` deixa de ser "(futuro)" (K5). O ADR-003 está em status **Proposto**; esta ADR entra na mesma rodada de validação com comunidades.
+- **Supersede o contrato de payload do ADR-004 D6** — o registro deixa de ser `{id, visibility, updated_at, data}` e passa ao contrato de K6, especificado campo a campo em [`docs/contrato-harvest.md`](../contrato-harvest.md). O restante do D6 (paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id`) permanece integralmente válido.
+- **Acrescenta ao ADR-003, sem invalidar** — `regime`, entidade `relato`, `media` como primeira classe, `accessLevel` por nível, `reviewDate`. Retifica dois pontos: `metadata.language` migra para ISO 639-3 (K5) e `media: []` deixa de ser "(futuro)" (K5). O ADR-003 está em status **Proposto**; esta ADR entra na mesma rodada de validação com comunidades. Nota de retificação registrada em `ADR-003`, §"1. Registro Principal (Record)".
+- **Retifica o ADR-006 E3** — o probe de admissão confere a presença de `visibility` na resposta do endpoint, campo que K6 remove; a conferência passa a ser `member_id`, `id`, `regime` e `accessLevel`. Sem isso, um membro que implemente o contrato vigente falharia o probe. O probe como sinal, nunca gate, permanece.
 - **Formaliza `propostaGovernanca.md` §5.5** — a distinção Label/Notice ganha a propriedade do dado que a determina (K1/K4). A governança descrevia a regra; faltava o campo.
 - **Implementa `propostaGovernanca.md:300`** — `informationWithheld` e `dataGeneralizations` saem de `[a implementar no modelo de dados]` e entram no contrato de harvest (K6).
 - **Implementa `propostaGovernanca.md:429`** — a coexistência de rótulo público em português e rótulo restrito na língua da comunidade passa a ter regra de resolução (K3, a regra do mais restritivo).
@@ -338,6 +339,7 @@ Seis pontos permanecem abertos e devem ser resolvidos antes da mudança de statu
 ## Referências
 
 - `conhecimento/caracterizacao-do-conhecimento-tradicional.md` — estudo que originou esta ADR, com a pesquisa completa e as fontes
+- `docs/contrato-harvest.md` — contrato de payload do harvest, campo a campo, decorrente de K6
 - `governanca/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
 - `BioCultDB/bioculttermos/manual/03-rotulos.md` — `accessLevel`, `sourcePeople`, `holderPeople`, ISO 639-3
 - `dadosEtnoJBRJ_Panara/relatos.md` — modelo de entidade `relato` do projeto Panará/JBRJ

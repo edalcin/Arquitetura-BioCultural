@@ -2,7 +2,7 @@
 
 **Para quem retoma:** leia este arquivo primeiro, depois `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Os dois juntos dão o estado completo sem precisar reler a sessão inteira.
 
-**Estado do repositório:** `main`, árvore limpa. Último commit relevante: `fc3ebe2` (ADR-015) + o commit desta retomada.
+**Estado do repositório:** `main`, árvore limpa. Últimos commits relevantes: `fc3ebe2` (ADR-015), o commit da v3.7.0 e o commit da **v3.8.0** — Passos 1–3 concluídos.
 
 ---
 
@@ -38,57 +38,23 @@ Uma versão anterior dizia que a narrativa de uma comunidade sobre uma peça de 
 
 ---
 
-## 3. Comece por aqui: os três passos prontos
+## 3. Concluído na v3.8.0 — Passos 1, 2 e 3
 
-Nenhum depende de decisão pendente nem de ida a campo. Executáveis na ordem.
+Os três estavam prontos e sem dependência. Foram executados.
 
-### Passo 1 — Nota de retificação no ADR-003
-
-**Arquivo:** `docs/architecture-decisions/ADR-003-data-model.md`
-**Convenção do repositório:** nota no topo do ponto afetado, **texto original preservado abaixo** — como feito no ADR-001 e nas retificações da v3.6.0 (ver `CHANGELOG.md`, v3.6.0, "Modificado").
-
-Três pontos a retificar:
-
-| Linha | Hoje | Retificação (ADR-015) |
+| Passo | O que foi feito | Onde |
 |---|---|---|
-| `110` | `type: "traditional_knowledge", // Fixo por enquanto` | Acrescentar campo `regime` (`conhecimento` \| `evidencia`) — K1 |
-| `337-338` | `// Vídeos, áudios, etc. (futuro)` / `media: []` | `media` deixa de ser "(futuro)": entidade de primeira classe para registros `conhecimento` — K5 |
-| `371` | `language: "pt-BR"` | Migra para **ISO 639-3**. `pt-BR` não codifica `kre`; o BioCultTermos já exige ISO 639-3 desde a migração de 2601 conceitos de `pt` para `por` — K5 |
+| **1** ✔ | Nota de retificação no ADR-003, seção "1. Registro Principal (Record)": três retificações (`type` → `regime` de K1; `media` deixa de ser "(futuro)" por K5; `language` → ISO 639-3 por K5) e quatro acréscimos (`relato` de K2, `accessLevel` por nível e `reviewDate` de K3, padrão de acesso por regime de K7). Texto original preservado; o ADR-003 **não** foi promovido nem reescrito | `docs/architecture-decisions/ADR-003-data-model.md:106-129` |
+| **2** ✔ | Nota de retificação no ADR-004, em **D6** e no bloco "Contrato de Publicação". Registra o que **permanece válido** (paginação, `updated_since`, `member_id` + `record_id`) e sinaliza no próprio texto que a supersessão só tem efeito quando a ADR-015 for aceita — o conflito *Aceito* × *Proposto* ficou explícito, não resolvido por omissão | `docs/architecture-decisions/ADR-004-federated-architecture.md:80-96` e `:150-154` |
+| **3** ✔ | Contrato de payload campo a campo, com a envoltória, o registro, o cálculo do nível efetivo, a redação na fronteira da API, `culturalLabels`, `relatedResources` e a condição de aceitação em sete cenários | `docs/contrato-harvest.md` |
 
-Acrescentar também: entidade `relato` (K2), `accessLevel` por nível (K3) e `permissions.restrictions.reviewDate` (K3).
+Três coisas que o Passo 3 fechou e que estavam em aberto:
 
-> **Atenção:** o ADR-003 está em status *Proposto*. A nota de retificação não o promove nem o reescreve.
+- **`relatedResources`** — o vínculo entre registros de membros distintos (§2 acima). Subconjunto de `resource-relationship` do DwC-DP, com os nomes de campo verificados na fonte primária. O caso entre membros usa `externalRelatedResourceID` + `externalRelatedResourceSource`.
+- **Condição de aceitação de K6** — especificada em sete cenários, inclusive os dois que costumam faltar: registro `public` de regime `conhecimento` **sem CLPI válido** deve estar ausente, e mudança de nível de `public` para `restricted` deve desaparecer da coleta seguinte (senão o índice do Pluriverso guarda a cópia anterior).
+- **Ordem de restritividade** — `public < restricted < community-only < private`, com `sacred` do nível de Termo equivalendo a `private`. Esta última equivalência é **derivada de K3 e não está na ADR-015**; está marcada como tal em §4.1 do contrato, para o Comitê corrigir se discordar.
 
-### Passo 2 — Nota de retificação no ADR-004 D6
-
-**Arquivo:** `docs/architecture-decisions/ADR-004-federated-architecture.md`, ponto **D6** (payload em `:145-148`).
-
-K6 **supersede o contrato de payload**. O restante do D6 — paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id` — permanece válido e deve ser dito na nota.
-
-> **Sinalizado e não resolvido:** o ADR-004 está `Aceito`; o ADR-015 está `Proposto`. É revogação de decisão aceita por documento ainda em discussão. Se isso incomodar, a alternativa é extrair K6 para um ADR próprio. **Decisão pendente do responsável.**
-
-### Passo 3 — Contrato de payload do harvest, campo a campo
-
-Especificar, a partir do esqueleto de K6:
-
-```json
-{
-  "id": "<member_id>/<record_id>",
-  "regime": "conhecimento | evidencia",
-  "accessLevel": "public",
-  "informationWithheld": "…",
-  "dataGeneralizations": "…",
-  "culturalLabels": [{ "tipo": "label | notice", "id": "…" }],
-  "holderPeople": "…",
-  "updated_at": "…",
-  "data": { }
-}
-```
-
-Pendências a fechar neste passo:
-- Acrescentar o vínculo entre registros de membros distintos (`resource-relationship`) — §2 acima.
-- **Condição de aceitação obrigatória (K6):** teste automatizado que **falhe** se qualquer registro com nível efetivo diferente de `public` atravessar o endpoint de harvest.
-- Redação na **fronteira da API**, não *at rest* — a justificativa e a alternativa rejeitada estão em K6.
+Correção de percurso: a ADR-015 ainda dizia "entidade `enunciado`" em Relações, contradizendo K2 e a decisão pelo termo **`Relato`**. Corrigido.
 
 ---
 
@@ -141,7 +107,7 @@ Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restri
 |---|---|
 | `BioCultDB` | 29 registros existentes precisam de valor de `regime`. Trivial: `evidencia` para todos, correto por construção da unidade |
 | `BioCultDB` | Campos de acesso do ADR-003 (`visibility`, `restrictions`, `permissions`) **nunca foram materializados** no banco de produção |
-| `BioCultRelatos` | Absorve K1–K7 como restrição de projeto **antes da primeira linha de código** — momento mais barato |
+| `BioCultRelatos` | Absorve K1–K7 e o contrato de `docs/contrato-harvest.md` como restrição de projeto **antes da primeira linha de código** — momento mais barato. Inclui a condição de aceitação em sete cenários (§7 do contrato) |
 | `BioCultNaturalistas` | `docs/decisions/ADR-003` V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (pendência da v3.6.0, ADR-014 N3 — **não é desta sessão**) |
 | `dadosEtnoJBRJ_Panara` | `docs/esclarecer.md:218-221` pergunta sobre CLPI, ética, FUNAI e SisGen, sem resposta registrada |
 
@@ -151,9 +117,9 @@ Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restri
 
 ```mermaid
 flowchart TD
-    A["ADR-015 · Proposto ✔"] --> P1["Passo 1<br/>retificar ADR-003"]
-    A --> P2["Passo 2<br/>retificar ADR-004 D6"]
-    P1 --> P3["Passo 3<br/>contrato de payload"]
+    A["ADR-015 · Proposto ✔"] --> P1["Passo 1 ✔<br/>ADR-003 retificado"]
+    A --> P2["Passo 2 ✔<br/>ADR-004 D6 retificado"]
+    P1 --> P3["Passo 3 ✔<br/>contrato de payload"]
     P2 --> P3
     Q1["① detentor<br/>DECISÃO"] --> P4["Passo 4<br/>esquema do Relato"]
     Q2["② rótulos<br/>DECISÃO"] --> P4
@@ -164,6 +130,9 @@ flowchart TD
     P4 --> P5
     P5 --> F["ADR-015 → Aceito"]
     style A fill:#28a745,color:#fff
+    style P1 fill:#28a745,color:#fff
+    style P2 fill:#28a745,color:#fff
+    style P3 fill:#28a745,color:#fff
     style C fill:#fd7e14,color:#fff
     style F fill:#1168bd,color:#fff
 ```
@@ -177,6 +146,7 @@ flowchart TD
 | Estudo completo, fontes verificadas, caso Panará modelado | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
 | Registro da sessão + **pauta da comunidade (§5)** | `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
+| Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Glossário da federação | `CONTEXT.md` → seção "Conhecimento e evidência" |
 | Governança de acesso, CLPI, rotulagem | `governanca/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
@@ -201,8 +171,9 @@ Não precisam ser reconferidas.
 
 ## 10. Primeira coisa a fazer ao retomar
 
-Escolher entre:
+Os Passos 1–3 estão feitos. O que resta ou depende de decisão, ou depende da comunidade. Escolher entre:
 
-- **"Siga com os passos 1–3"** — trabalho de documentação, sem dependências, fecha a decisão nos lugares normativos.
-- **"Responda ① e ②"** — se já houver conversa com a comunidade, destrava o Passo 4.
-- **"Extraia K6 para ADR próprio"** — se a revogação do ADR-004 D6 por documento *Proposto* incomodar.
+- **"Responda ① e ②"** — destrava o Passo 4 (esquema do Relato). ① só se resolve honestamente perguntando à pessoa; ② tem meio-termo recomendado e não bloqueia o contrato de harvest.
+- **"Extraia K6 para ADR próprio"** — se a supersessão do ADR-004 D6 (*Aceito*) por documento *Proposto* incomodar. A nota do Passo 2 deixou o conflito visível em vez de resolvê-lo; extrair K6 é a alternativa registrada.
+- **"Prepare a conversa com a comunidade"** — `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5 já tem o roteiro em linguagem não-técnica; é o caminho crítico de tudo que sobrou.
+- **"Promova a ADR-015"** — só depois das seis questões de §"O que esta ADR não decide". Não é opção hoje.

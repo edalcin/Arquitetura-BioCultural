@@ -120,4 +120,5 @@ _Avoid_: População, Grupo, Etnia
 - `docs/architecture-decisions/ADR-007` — distribuição do Módulo Compartilhado
 - `docs/architecture-decisions/ADR-012` — manutenção do código do BioCultTermos
 - `docs/architecture-decisions/ADR-015` — Regime Enunciativo e os três níveis de rotulagem de acesso
+- `docs/contrato-harvest.md` — contrato de payload do harvest da federação (K6 do ADR-015)
 - `BioCultDB/CONTEXT.md` — linguagem interna da Unidade de Fontes Secundárias

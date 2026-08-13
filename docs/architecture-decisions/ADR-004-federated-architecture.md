@@ -77,6 +77,24 @@ O contrato mínimo do endpoint:
 
 **Consequência:** Cada membro (BioCultDB, BioCultRelatos, futuras implementações) precisa implementar esse endpoint. É a única dependência técnica que membros têm em relação à federação.
 
+> **Contrato de payload supersedido pela ADR-015 (K6).** O registro deixa de ser
+> `{id, visibility, updated_at, data}` e passa ao contrato de K6, detalhado campo a campo em
+> [`docs/contrato-harvest.md`](../contrato-harvest.md). O motivo: `visibility` é um booleano e não
+> consegue expressar o caso comum — registro público que contém um rótulo `sacred`, que deve ser
+> publicado **com o rótulo suprimido e a supressão declarada**, e não rebaixado nem omitido. Sem
+> isso, a regra de `governanca/propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não
+> tinha implementação possível do lado do consumidor.
+>
+> **Permanece integralmente válido** todo o restante deste ponto: paginação obrigatória, filtro
+> `updated_since` para coleta incremental, identificador único estável (`member_id` + `record_id`) e
+> a consequência de que o endpoint é a única dependência técnica do membro em relação à federação.
+> Permanece válida também a regra de fundo — **só o nível efetivo `public` atravessa o harvest** —,
+> agora expressa por `regime` + `accessLevel` em vez de `visibility`.
+>
+> *Sinalizado e não resolvido:* este ADR está **Aceito** e a ADR-015 está **Proposta**. A supersessão
+> só tem efeito quando a ADR-015 for aceita; até lá esta nota registra a decisão em discussão, não a
+> aplica. Ver [ADR-015](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md).
+
 ### D7 — Posição do BioCultPapers: Exclusivo de Iniciativas de Fontes Secundárias
 **Status:** Supersedido pelo ADR-011 (Absorção do BioCultPapers pelo BioCultDB) — o BioCultPapers deixou de ser componente do ecossistema.
 
@@ -128,6 +146,12 @@ graph TD
 ## Contrato de Publicação (endpoint de harvest)
 
 Cada membro deve implementar:
+
+> **Retificado pela ADR-015 (K6).** O objeto de `records[]` abaixo está desatualizado: `visibility`
+> dá lugar a `regime` + `accessLevel`, e acrescentam-se `informationWithheld`,
+> `dataGeneralizations`, `culturalLabels`, `holderPeople` e `relatedResources`. A envoltória
+> (`member_id`, `total`, `page`, parâmetros de consulta) permanece como está. Contrato vigente e
+> completo em [`docs/contrato-harvest.md`](../contrato-harvest.md); original preservado abaixo.
 
 ```
 GET /api/federation/records
