@@ -6,6 +6,35 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.9.0] - 2026-08-13
+
+### Adicionado
+
+- **ADR-015, ponto K8: Relato de prática** — a ADR-015 foi escrita a partir de um caso de fala (um homem descrevendo uma árvore) e generalizou desse caso. K8 corrige a generalização em três frentes, antes que ela vire esquema:
+  - **K8.1 — o ato de enunciação inclui o ato de demonstração.** Alguém preparando um chá, trançando uma cesta com fibra de palmeira, escolhendo qual folha colher: **o conhecimento está no gesto, na sequência e no material**, e pode não haver uma palavra dita. Consequência que muda o modelo: em Relato de prática, **a mídia não é anexo do Relato — ela é o Relato**, e a descrição escrita é derivada dela, com a mesma cadeia PROV-O que K5 impõe à tradução
+  - **K8.2 — língua obrigatória passa a língua declarada.** Deixar `language` vazio reintroduz o problema que K5 existe para resolver, porque campo nulo é lido como português. Registro sem fala recebe **`zxx`** (*No linguistic content*) e língua não identificada recebe **`und`** (*Undetermined*) — ambos ISO 639-3 *Active*, escopo *Special*, verificados na fonte primária. Fala em mais de uma língua vira lista, na ordem em que ocorrem
+  - **K8.3 — enunciação coletiva.** Oficina, mutirão, roda de conversa: cada participante identificável é detentor com direito próprio sobre voz e imagem (LGPD art. 11; CARE A1; Lei 13.123). O nível efetivo da mídia é **o mais restritivo entre as pessoas gravadas** — a regra de K3 aplicada a um eixo novo, entre pessoas. Revogação por um participante retira a mídia da publicação, sem exigir justificativa; **editar a gravação para suprimir alguém não é decisão da plataforma**, é derivado novo e só existe se a comunidade pedir. Consentimento individual sobre voz e imagem e CLPI da comunidade são **dois consentimentos**, e nenhum substitui o outro
+  - **K8.4** reafirma para vídeo o corolário de K5: nasce `restricted` no BioCultRelatos da comunidade, formato aberto sem DRM, e **o único original nunca reside em plataforma de terceiros** — vídeo é justamente onde o custo de armazenamento torna a cessão tentadora
+- **Três cenários novos na condição de aceitação do harvest** (§7 de `docs/contrato-harvest.md`, agora dez): gravação coletiva com **um** participante `restricted` não atravessa; revogação de um participante retira a mídia na coleta seguinte, sem gerar versão editada; registro de prática sem fala publica `language: zxx`, e falha se vier vazio ou inferido como `por`
+
+### Modificado
+
+- **`docs/contrato-harvest.md`**: §4.1 ganha o **quarto eixo** do nível efetivo — entre as pessoas gravadas —, com a consequência explícita para quem implementa o filtro: não basta olhar o `accessLevel` do registro e do Relato, é preciso percorrer a lista de participantes; `holderPeople` passa a cobrir explicitamente o Relato de enunciação coletiva
+- **Nota de retificação do ADR-003** estendida com K8: `media` em Relato de prática **é** o Relato; `language` aceita `zxx` e `und`; detentor coletivo com direito individual sobre voz e imagem; nova linha de acréscimo "acesso de mídia coletiva"
+- **ADR-015**: cabeçalho da Decisão passa de K1–K7 para **K1–K8**, com notas de "Ampliado por K8" em K2 e K5, nos pontos exatos que pressupunham fala
+- **`proximosPassos.md`**: quinta pauta para a conversa com a comunidade — gravações de prática e oficinas coletivas, incluindo o que fazer quando um participante muda de ideia depois
+- **Apresentação** (`Arquitetura BioCultural.pptx`, fora deste repositório): o slide de perguntas às lideranças deixa de falar em "gravações de fala" e passa a tratar de prática filmada e oficinas coletivas
+
+### Contexto da Versão
+
+A v3.9.0 nasce de uma observação de campo, não de uma revisão de documento: **vídeo não é fala com imagem.** Uma pessoa fazendo um chá ou trançando uma cesta com determinada planta está registrando conhecimento inteiro, e uma gravação de oficina registra várias pessoas ao mesmo tempo, cada uma com direito próprio sobre a própria imagem.
+
+As duas coisas quebravam premissas da ADR-015 escritas dias antes: K5 exigia "a língua em que foi proferido", e K2 tratava o detentor coletivo como um bloco que decide junto. A correção foi feita como ponto novo (K8) em vez de reescrita, para que a premissa antiga e sua correção fiquem visíveis lado a lado — o mesmo critério das notas de retificação da v3.6.0 e da v3.8.0.
+
+A regra adotada para o caso difícil — um participante de gravação coletiva muda de ideia — é deliberadamente a mais conservadora: **a gravação inteira sai**. É pergunta aberta para as comunidades, registrada como quinta pauta em `proximosPassos.md` §5. A plataforma não decide isso; enquanto não houver decisão, obedece ao mais restritivo.
+
+---
+
 ## [3.8.0] - 2026-08-13
 
 ### Adicionado

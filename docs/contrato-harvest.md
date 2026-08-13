@@ -54,7 +54,7 @@ expressa supressão parcial. Em seu lugar entram `regime` e `accessLevel`.
 | `informationWithheld` | condicional | string | `dwc:informationWithheld` | **Obrigatório sempre que algo foi suprimido.** Texto legível dizendo *o que* foi retido e *por decisão de quem*. Campo restringido nunca fica nulo (`propostaGovernanca.md:300`) |
 | `dataGeneralizations` | condicional | string | `dwc:dataGeneralizations` | Obrigatório sempre que algum valor foi generalizado em vez de removido. Diz o quê e com que granularidade. Generalizar, nunca randomizar |
 | `culturalLabels` | não | array | K4 | §5 |
-| `holderPeople` | condicional | string | K2, `bioculttermos/manual/03-rotulos.md` | Coletivo detentor. **Obrigatório quando `regime: conhecimento`**; ausente ou de preenchimento parcial em `evidencia` com atribuição incompleta (Q4 de K1). Formato do detentor individual: **pendência ①**, §8 |
+| `holderPeople` | condicional | string | K2, K8.3, `bioculttermos/manual/03-rotulos.md` | Coletivo detentor. **Obrigatório quando `regime: conhecimento`**; ausente ou de preenchimento parcial em `evidencia` com atribuição incompleta (Q4 de K1). Vale igualmente para Relato de **enunciação coletiva** — oficina, mutirão, roda de conversa —, em que o detentor é o grupo e cada participante identificável tem direito próprio sobre voz e imagem. Formato do detentor individual: **pendência ①**, §8 |
 | `relatedResources` | não | array | DwC-DP | §6 |
 | `updated_at` | sim | ISO 8601 | ADR-004 D6 | Instante da última alteração que o consumidor precisa ver. Muda quando muda a supressão, mesmo que o conteúdo não mude — senão a coleta incremental não propaga uma restrição nova |
 | `data` | sim | objeto | ADR-004 D6 | Campos definidos pelo Comitê Federado, já redigidos (§4). Nunca contém campo suprimido, nem com valor nulo, nem com chave presente e vazia |
@@ -70,6 +70,16 @@ não publica, e nesse caso `informationWithheld` diz por quê.
 Nível efetivo = **o mais restritivo** entre os três níveis envolvidos — Termo (`skosxl:Label`),
 Relato e Registro/Mídia (K3). Herança descendente é proibida: registro público não torna público o
 que ele contém.
+
+A regra tem um **quarto eixo**, quando o registro é uma gravação com vários participantes (K8.3):
+o nível efetivo da mídia é também **o mais restritivo entre as pessoas gravadas**. Um participante
+que pede reserva reserva a gravação inteira; revogação por um deles retira a mídia da publicação, sem
+exigir justificativa. Suprimir a pessoa por edição não é decisão da plataforma: a versão editada é um
+derivado novo, e só existe se a comunidade pedir.
+
+Consequência para quem implementa o filtro: **não basta olhar o `accessLevel` do registro e o do
+Relato.** Se houver mídia com participantes, o cálculo percorre também a lista de participantes — e
+um só `restricted` entre eles basta para o registro inteiro não atravessar.
 
 Ordem de restritividade, crescente, conforme `propostaGovernanca.md:277-282`:
 
@@ -199,6 +209,9 @@ deliberadamente ao menos um caso de cada linha:
 | 5 | Registro com campo generalizado | `dataGeneralizations` preenchido; nenhum campo suprimido presente com valor nulo ou string vazia |
 | 6 | Registro `regime: evidencia` com `culturalLabels[].tipo: "label"` | Erro de validação na publicação — não é caso de filtro, é dado inválido (K4) |
 | 7 | Registro cujo nível mudou de `public` para `restricted` | Desaparece da coleta seguinte, e o `updated_at` do membro reflete a mudança |
+| 8 | Registro `public` com gravação coletiva em que **um** participante está `restricted` | Ausente. O mais restritivo entre as pessoas gravadas vale para a mídia inteira (K8.3) |
+| 9 | Participante revoga o consentimento sobre a própria voz ou imagem | A mídia sai da publicação na coleta seguinte. Nenhuma versão editada é gerada automaticamente |
+| 10 | Registro de prática **sem fala** | Presente, com `language` = `zxx`. Falha se o campo vier vazio, nulo ou inferido como `por` (K8.2) |
 
 O cenário 7 é o que quase sempre falta: um filtro correto na leitura não basta se a mudança de nível
 não propaga, porque o índice do Pluriverso guarda a cópia anterior. Registro removido do harvest

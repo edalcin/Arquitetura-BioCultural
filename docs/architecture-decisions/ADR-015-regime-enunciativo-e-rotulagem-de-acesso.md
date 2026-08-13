@@ -144,7 +144,7 @@ Estender o `accessLevel` do rótulo e considerar o problema resolvido no vocabul
 
 ## Decisão
 
-Acrescentam-se os pontos **K1–K7**. **K6 supersede o contrato de payload do ADR-004 D6.** K1–K5 e K7 acrescentam ao ADR-003 sem invalidar nada nele.
+Acrescentam-se os pontos **K1–K8**. **K6 supersede o contrato de payload do ADR-004 D6.** K1–K5, K7 e K8 acrescentam ao ADR-003 sem invalidar nada nele. **K8 amplia K2 e K5**, escritos a partir de um caso de fala.
 
 ### K1 — Regime Enunciativo é campo do registro, nunca propriedade do provedor
 
@@ -184,6 +184,8 @@ Registro de regime `conhecimento` contém ao menos um **Relato**, com quatro com
 Um Relato **vive sempre na unidade da comunidade detentora**, nunca na unidade de quem custodia o objeto de que ele fala. Quando se refere a item sob custódia de outro membro — uma exsicata do JBRJ, o material de Spruce em Kew —, o vínculo é uma referência entre registros de membros distintos, resolvida na federação.
 
 O que se modela **não é o conteúdo do conhecimento; é o ato de enunciá-lo, com tudo que o ancora.** Guardar `planta X → uso Y` é a compartimentalização que a crítica antropológica identifica como perda do que tornava aquilo conhecimento. Guardar *quem disse, quando, onde, em que língua, diante de quê, sob que consentimento* preserva o ato.
+
+> **Ampliado por K8.** O ato de enunciação inclui o **ato de demonstração** — uma prática filmada, sem fala —, e o detentor pode ser um coletivo cujos participantes não decidem igual. Ver K8.1 e K8.3.
 
 Em implementação, o Relato mapeia para `dwc:Assertion` do Darwin Core Data Package (guia ratificado TDWG, 2026-04-17), cujas tabelas `*-assertion` — inclusive `media-assertion` — trazem exatamente: `assertionBy` / `assertionByID` (agente responsável, interno ou externo ao dataset), `assertionType` / `assertionValue` com `assertionTypeIRI` / `assertionValueIRI` para vocabulário controlado, `assertionMadeDate`, `assertionProtocol_fk` e a chave para a mídia. O gancho para o BioCultTermos é `assertionValueIRI` + `assertionValueSource`.
 
@@ -247,6 +249,8 @@ Consequência prática: **transcrição e tradução nunca substituem a gravaç�
 
 Corolário sobre a mídia: `media` deixa de ser `[]` com comentário "(futuro)" no ADR-003 e passa a ser entidade de primeira classe para registros de regime `conhecimento`, com `language`, duração, formato aberto sem DRM (`propostaGovernanca.md:471`) e armazenamento soberano — o único original de uma gravação nunca reside em plataforma de terceiros.
 
+> **Ampliado por K8.2.** "A língua em que foi proferido" pressupõe fala. Quando não há, `language` recebe `zxx` (*No linguistic content*) — declarado, nunca vazio. Língua não identificada recebe `und` e é pendência de curadoria.
+
 ### K6 — O harvest carrega o nível efetivo e a supressão declarada
 
 O contrato de `ADR-004 D6` é ampliado. O payload mínimo passa a ser:
@@ -287,6 +291,78 @@ Padrões de omissão deliberadamente diferentes por nível:
 Um Relato só se torna `public` por **ato positivo da comunidade** — que é literalmente o estágio 5 do ciclo CLPI de `propostaGovernanca.md:349`, "Classificação de acesso", cujo responsável declarado é a instância de decisão da comunidade e cujo critério de passagem é "camada definida e justificada; data de revisão fixada".
 
 Corolário de conformidade: **nenhum Relato sem CLPI válido atinge nível efetivo `public`**, reafirmando o estágio 6 do mesmo ciclo. `visibility: public` é consequência do CLPI, nunca substituto dele (`propostaGovernanca.md:319`).
+
+### K8 — Relato de prática: o ato pode não ter fala, e pode ter muitos autores
+
+K2 e K5 foram escritos a partir de um caso de fala — um homem descrevendo uma árvore. A generalização
+implícita está errada em duas direções, e K8 a corrige antes que vire esquema.
+
+#### K8.1 — O ato de enunciação inclui o ato de demonstração
+
+Uma pessoa preparando um chá, trançando uma cesta com a fibra de uma palmeira, escolhendo qual folha
+colher e qual deixar: **o conhecimento está no gesto, na sequência e no material escolhido**, e pode
+não haver uma só palavra dita. Filmar isso não é ilustrar um texto — é registrar o conhecimento em
+sua forma primária.
+
+Consequência que muda o modelo: em Relato de prática, **a mídia não é anexo do Relato; ela é o
+Relato.** A descrição escrita — "aqui ela separa a fibra e põe de molho" — é derivada, e a cadeia do
+PROV-O de K5 se estende sem exceção:
+
+```
+gravação        prov:hadPrimarySource  ato-de-demonstração
+descrição       prov:wasDerivedFrom    gravação
+prática         prov:wasAttributedTo   detentor(es)
+```
+
+Uma interface que exibe a descrição sem a gravação exibe um derivado, e deve dizê-lo — mesma regra
+que K5 já impõe à tradução.
+
+#### K8.2 — Língua obrigatória passa a língua declarada; a ausência de fala é um valor, não um vazio
+
+K5 exige a língua "em que foi proferido". Em Relato de prática pode não haver fala, e deixar o campo
+vazio reintroduz o problema que K5 existe para resolver: campo nulo é interpretado como português por
+quem consome. O ISO 639-3 já tem códigos para os dois casos, ambos *Active*, escopo *Special*:
+
+| Situação | `language` |
+|---|---|
+| Há fala | Código ISO 639-3 da língua, como em K5. `kre` para o Panará |
+| **Não há fala** | **`zxx`** — *No linguistic content*. Declarado, nunca vazio, nunca inferido como `por` |
+| Há fala em mais de uma língua | Lista, na ordem em que ocorrem. O caso comum em oficina bilíngue |
+| Há fala cuja língua não se identificou | **`und`** — *Undetermined*. É **pendência de curadoria**, não estado final aceitável |
+
+`zxx` e `und` verificados em <https://iso639-3.sil.org/code/zxx> e <https://iso639-3.sil.org/code/und>.
+
+#### K8.3 — Enunciação coletiva: muitos detentores em um só registro
+
+Uma oficina, um mutirão, uma roda de conversa gravada: várias pessoas se manifestam, e o
+conhecimento registrado é de todas elas. K2 já admite detentor coletivo; o que faltava é a regra
+quando **as pessoas dentro do coletivo não decidem igual**.
+
+1. **Cada participante identificável é detentor com direito próprio** sobre a sua voz e a sua imagem
+   — dado sensível pela LGPD art. 11, e reconhecimento devido por CARE A1 e pela Lei 13.123.
+2. **O nível efetivo da mídia é o mais restritivo entre os participantes.** É a regra de K3 aplicada
+   a um eixo novo: não entre termo, Relato e registro, mas **entre pessoas**. Um participante que
+   pede reserva reserva a gravação inteira.
+3. **Revogação por um participante retira a mídia da publicação**, imediatamente e sem exigir
+   justificativa (`propostaGovernanca.md` §4.3). Editar a gravação para suprimir aquela pessoa **não
+   é decisão da plataforma nem do curador**: a versão editada é um derivado novo, com sua própria
+   cadeia PROV, e só existe se a comunidade pedir.
+4. **São dois consentimentos, e nenhum substitui o outro.** O consentimento individual sobre voz e
+   imagem não autoriza a publicação do conhecimento; o CLPI da comunidade sobre o conhecimento não
+   autoriza expor a face de quem não quis aparecer.
+
+#### K8.4 — Onde o arquivo mora
+
+Vale integralmente o corolário de K5: registro de prática nasce no **BioCultRelatos da comunidade**,
+`restricted` por omissão (K7), em formato aberto sem DRM, e **o único original nunca reside em
+plataforma de terceiros** (`propostaGovernanca.md:471`). Vídeo é o caso em que a tentação de usar
+serviço de terceiro é maior — custo de armazenamento e de banda — e é exatamente onde ceder
+significaria entregar a chave do conhecimento a quem não é parte da federação.
+
+**Sobre a capacidade de decisão que isto exige:** classificar acesso de uma gravação coletiva é mais
+difícil do que classificar um texto, porque a decisão de uma pessoa afeta o registro de todas. A
+arquitetura não resolve isso com campo — resolve declarando que a decisão é da comunidade, no
+protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver decisão.
 
 ## Relações
 
