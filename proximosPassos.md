@@ -2,7 +2,7 @@
 
 **Para quem retoma:** leia este arquivo primeiro, depois `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Os dois juntos dão o estado completo sem precisar reler a sessão inteira.
 
-**Estado do repositório:** `main`, árvore limpa. Últimos commits relevantes: `fc3ebe2` (ADR-015), o commit da v3.7.0 e o commit da **v3.8.0** — Passos 1–3 concluídos.
+**Estado do repositório:** `main`, árvore limpa. Últimos commits relevantes: `fc3ebe2` (ADR-015), v3.7.0, **v3.8.0** (Passos 1–3) e **v3.9.0** (`c6a8357`, ponto K8 — Relato de prática).
 
 ---
 
@@ -170,11 +170,60 @@ Não precisam ser reconferidas.
 
 ---
 
-## 10. Primeira coisa a fazer ao retomar
+## 10. Pendências da discussão "conhecimento × evidência"
 
-Os Passos 1–3 estão feitos. O que resta ou depende de decisão, ou depende da comunidade. Escolher entre:
+Consolida tudo o que a discussão abriu e não fechou, em um só lugar. Nenhum item aqui está resolvido; onde há recomendação, ela está marcada e **não foi aplicada**.
+
+### 10.1 O que já ficou decidido (para não reabrir)
+
+| Questão | Decisão | Onde |
+|---|---|---|
+| Nome da unidade de Conhecimento | **`Relato`**. Descartados *Enunciado*, *Asserção*, *Depoimento* | ADR-015 K2, Q2 |
+| Regime é campo do registro ou propriedade do provedor? | **Campo do registro**, com padrão por unidade sobreponível | ADR-015 K1 |
+| Onde vive a narrativa da comunidade sobre peça de acervo | **No BioCultRelatos dela**, referenciando o item; nunca no banco do museu | ADR-015 §Contexto, §2 acima |
+| O regime entra no glossário da federação? | **Sim.** Quatro termos acrescentados ao `CONTEXT.md` na v3.7.0 — resolve a Q1 da ADR-015, que ainda consta como aberta no texto da ADR | `CONTEXT.md`, "Conhecimento e evidência" |
+| Mídia é anexo ou é o registro? | Em Relato de prática, **a mídia é o Relato**; a descrição é derivada | ADR-015 K8.1 |
+| Língua sem fala | `zxx`; não identificada, `und` | ADR-015 K8.2 |
+
+> **Limpeza pendente, trivial:** a Q1 da seção "O que esta ADR não decide" da ADR-015 já foi respondida pela v3.7.0 e continua listada como aberta. Fechar a linha quando a ADR for revisada, para que a contagem de questões em aberto seja verdadeira.
+
+### 10.2 Decisões que dependem de você
+
+| # | Pendência | Recomendação | O que trava |
+|---|---|---|---|
+| ① | Formato do detentor individual | Pseudônimo escolhido pela pessoa (§4) | Esquema do Relato (Passo 4) |
+| ② | Rótulos culturais: API do Hub ou cópia local | Guardar identificador + cache do texto canônico (§4) | Nada no contrato; trava só a interface |
+| ③ | Extrair **K6** para ADR próprio | Sem recomendação. A nota do Passo 2 deixou o conflito visível: ADR-004 *Aceito* sendo supersedido por ADR-015 *Proposto* | Promoção da ADR-015 |
+| ④ | `sacred` (nível de Termo) equivale a `private` no cálculo do nível efetivo | **Regra derivada por mim, não está na ADR-015.** Marcada em `contrato-harvest.md` §4.1 | Implementação do filtro de harvest |
+| ⑤ | Vocabulário de `relationshipType` no vínculo entre membros | DwC-DP sugere `same as`. Precisa de acordo do Comitê para valer como contrato | Interoperabilidade real entre membros |
+| ⑥ | Vocabulário controlado de `assertionType` | Q5 da ADR-015: matéria do BioCultTermos e do Comitê, fora do escopo | Esquema do Relato |
+| ⑦ | Promoção da ADR-015 a *Aceito* | Depende das questões abertas e da validação com comunidades | Tudo o que depende de ADR aceita |
+
+### 10.3 Aberturas que o K8 criou
+
+O ponto K8 nasceu de uma observação de campo — vídeo registra prática, não só fala — e abriu quatro coisas que não têm resposta ainda.
+
+| # | Aberto | Por quê |
+|---|---|---|
+| ⑧ | **Quem autoriza a gravação de uma prática coletiva** — cada participante, ou o grupo? | Pauta 5 da conversa com a comunidade (§5). A regra adotada por ora é a mais conservadora: um pede reserva, sai tudo |
+| ⑨ | **Versão editada de gravação** após revogação de um participante | K8.3 diz que a plataforma não edita por conta própria e que a versão editada é derivado novo. Falta dizer **se** e **como** a comunidade pede isso, e quem confere o resultado |
+| ⑩ | **Onde mora o vídeo** | K8.4 exige original em armazenamento soberano, fora de plataforma de terceiros. Uma comunidade com dezenas de gravações de 60 MB tem um problema real de custo e de banda, e a arquitetura ainda não diz como resolver sem trair o princípio |
+| ⑪ | **`und` como estado transitório** | Precisa de um lugar na curadoria que liste os registros em `und` e cobre resolução; senão vira estado final por inércia, que é o que K8.2 quer evitar |
+
+### 10.4 Consistência a verificar quando houver fôlego
+
+- **README, "Quatro Fontes"** — a coluna de regime foi acrescentada na v3.7.0, mas o corpo do texto ainda fala em "evidências" como termo guarda-chuva em vários pontos. Não é erro; é vocabulário anterior à distinção.
+- **`propostaGovernanca.md`** — descreve Label/Notice (§5.5) sem citar o regime, que é a propriedade que decide qual dos dois se aplica. Vale uma nota de vínculo quando o documento for revisado.
+- **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde K6.
+- **`conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5** — tem roteiro de perguntas para as quatro pautas originais; **a quinta (gravações de prática e oficinas) ainda não tem roteiro**.
+
+---
+
+## 11. Primeira coisa a fazer ao retomar
+
+Os Passos 1–3 estão feitos e o K8 está registrado. O que resta ou depende de decisão sua, ou depende da comunidade. Escolher entre:
 
 - **"Responda ① e ②"** — destrava o Passo 4 (esquema do Relato). ① só se resolve honestamente perguntando à pessoa; ② tem meio-termo recomendado e não bloqueia o contrato de harvest.
-- **"Extraia K6 para ADR próprio"** — se a supersessão do ADR-004 D6 (*Aceito*) por documento *Proposto* incomodar. A nota do Passo 2 deixou o conflito visível em vez de resolvê-lo; extrair K6 é a alternativa registrada.
-- **"Prepare a conversa com a comunidade"** — `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5 já tem o roteiro em linguagem não-técnica; é o caminho crítico de tudo que sobrou.
-- **"Promova a ADR-015"** — só depois das seis questões de §"O que esta ADR não decide". Não é opção hoje.
+- **"Decida ③, ④ e ⑤"** — as três de arquitetura pura, sem ida a campo: extrair K6, confirmar a equivalência de `sacred` e fixar o vocabulário de vínculo entre membros.
+- **"Prepare a conversa com a comunidade"** — inclui escrever o roteiro da quinta pauta, que ainda não existe. É o caminho crítico de tudo o que sobrou.
+- **"Resolva ⑩"** — onde mora o vídeo. É a pendência com maior risco de virar decisão por omissão: se ninguém decidir, alguém sobe para uma plataforma de terceiros e o princípio se perde na prática.
