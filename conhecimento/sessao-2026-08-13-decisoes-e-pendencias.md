@@ -128,7 +128,7 @@ Quatro pendências, nenhuma resolvível daqui. Enquanto existirem, o arquivo é 
 
 | # | Pendência | Situação |
 |---|---|---|
-| 1 | **CLPI** | `dadosEtnoJBRJ_Panara/docs/esclarecer.md` pergunta se existe consentimento livre, prévio e informado, aprovação de comitê de ética, autorização FUNAI e cadastro SisGen. **Não há resposta registrada.** Sem isso o registro não é publicável — `visibility: public` é consequência do CLPI, nunca substituto dele |
+| 1 | **CLPI** | Pergunta se existe consentimento livre, prévio e informado, aprovação de comitê de ética, autorização FUNAI e cadastro SisGen. **Não há resposta registrada.** Sem isso o registro não é publicável — `visibility: public` é consequência do CLPI, nunca substituto dele |
 | 2 | **Consentimento específico para imagem e voz** | Gravar em vídeo aciona três regimes ao mesmo tempo: direito de personalidade (Código Civil, art. 20), dado sensível (LGPD, art. 11 — exige consentimento **específico e destacado**) e forma legal de comprovar o CLPI (Lei 13.123/2015, art. 9º, §1º, II). Um termo genérico não cobre os três |
 | 3 | **Transcrição em Panará** | Não existe. Precisa de falante nativo. A tradução para o português é entidade **derivada** — e derivada com perda, porque a língua é constitutiva do conhecimento, não seu veículo (CARE R3) |
 | 4 | **Grafia** | O próprio repositório Panará anota que a grafia dos nomes precisa ser verificada com pesquisadores Panará (Sophoa, Sewa). O nome da planta é a informação mínima do relato: grafia não verificada é identidade comprometida |
@@ -226,6 +226,4 @@ Passos 1–3 podem começar agora e não presumem nenhuma resposta da comunidade
 | Glossário da federação | `CONTEXT.md`, seção "Conhecimento e evidência" |
 | Governança de acesso, CLPI e rotulagem | `governanca/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
-| Modelo de relato do projeto Panará | `dadosEtnoJBRJ_Panara/relatos.md` |
-| Pendências do projeto Panará | `dadosEtnoJBRJ_Panara/docs/esclarecer.md` |
 | Commit | `fc3ebe2` — `docs: ADR-015 — regime enunciativo (Conhecimento × Evidência) e rotulagem de acesso` |
