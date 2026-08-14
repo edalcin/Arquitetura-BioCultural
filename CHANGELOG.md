@@ -6,6 +6,21 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.10.1] - 2026-08-14
+
+### Modificado
+
+- **Apresentação `Arquitetura BioCultural v2` — paleta harmonizada com os diagramas.** Os diagramas embutidos já tinham fundo `#FAF6EF`; os slides eram brancos (`FFFFFF` do tema) ou cinza-frio (`F3F2F2`), e a moldura aparecia em volta de cada imagem. Agora:
+  - **Fundo de todos os 27 slides**: `#FAF6EF`. Aplicado nos dois lugares que decidem a cor — `p:bg` explícito dos slides e `lt1` do tema do slide-mestre (`theme2.xml`), que é de onde vinham os slides sem fundo próprio
+  - **Slides de seção** (3, 6, 9, 17, 19): o quase-preto frio `#262525` passa a `#26221D`, mesma luminosidade, matiz da família do fundo. O texto claro sobre eles vira o próprio creme
+  - **Tinta do texto**: `#000000` passa a `#201F1D` — a cor que já dominava o restante do deck (205 ocorrências). Preto puro sobre creme é duro; contraste do novo par é 15,3:1, bem acima de WCAG AAA
+  - **Quatro imagens-tira** (`image6`, `image8`, `image9`, `image11`), que traziam fundo `F3F2F2` embutido: neutros claros re-tingidos para a família do creme, preservando os glifos e os acentos de cor
+- PDF exportado regenerado a partir do `.pptx`
+
+### Contexto da Versão
+
+Só estética, nenhuma decisão de arquitetura. Verificado por renderização, não por inspeção de XML: os 27 slides foram convertidos e a cor dominante de cada um conferida — 22 em `#FAF6EF`, 5 em `#26221D`, nenhum branco restante.
+
 ## [3.10.0] - 2026-08-14
 
 ### Adicionado
