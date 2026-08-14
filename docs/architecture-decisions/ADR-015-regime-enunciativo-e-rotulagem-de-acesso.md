@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposto** — Agosto 2026. Aguarda decisão sobre os seis pontos de §"O que esta ADR não decide" e validação com comunidades, como o ADR-003 do qual depende.
+**Proposto** — Agosto 2026. Aguarda decisão sobre Q3–Q6 em §"O que esta ADR não decide" e validação com comunidades, como o ADR-003 do qual depende. O ponto K6 foi extraído para a [ADR-016](ADR-016-contrato-de-harvest.md), que tem ciclo de aceitação próprio.
 
 ## Contexto
 
@@ -253,6 +253,13 @@ Corolário sobre a mídia: `media` deixa de ser `[]` com comentário "(futuro)" 
 
 ### K6 — O harvest carrega o nível efetivo e a supressão declarada
 
+> **Extraído para a [ADR-016](ADR-016-contrato-de-harvest.md) em Agosto 2026.** K6 supersedia o
+> contrato de payload do ADR-004 D6, que está **Aceito**, a partir de um texto **Proposto** que
+> depende de validação com comunidades. O contrato de harvest é consequência técnica e não precisa
+> dessa espera: passou a ter ADR própria, com ciclo de aceitação próprio. O que segue permanece como
+> registro da decisão original; **o texto vigente é o da ADR-016 e o de
+> [`docs/contrato-harvest.md`](../contrato-harvest.md)**.
+
 O contrato de `ADR-004 D6` é ampliado. O payload mínimo passa a ser:
 
 ```json
@@ -366,9 +373,9 @@ protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver 
 
 ## Relações
 
-- **Supersede o contrato de payload do ADR-004 D6** — o registro deixa de ser `{id, visibility, updated_at, data}` e passa ao contrato de K6, especificado campo a campo em [`docs/contrato-harvest.md`](../contrato-harvest.md). O restante do D6 (paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id`) permanece integralmente válido.
+- **K6 foi extraído para a [ADR-016](ADR-016-contrato-de-harvest.md)** — o contrato de payload que supersede o ADR-004 D6 tem ADR própria, para poder ser aceito sem esperar a validação com comunidades que trava esta ADR. Especificação campo a campo em [`docs/contrato-harvest.md`](../contrato-harvest.md). O restante do D6 (paginação obrigatória, `updated_since`, identificador estável `member_id` + `record_id`) permanece integralmente válido.
 - **Acrescenta ao ADR-003, sem invalidar** — `regime`, entidade `relato`, `media` como primeira classe, `accessLevel` por nível, `reviewDate`. Retifica dois pontos: `metadata.language` migra para ISO 639-3 (K5) e `media: []` deixa de ser "(futuro)" (K5). O ADR-003 está em status **Proposto**; esta ADR entra na mesma rodada de validação com comunidades. Nota de retificação registrada em `ADR-003`, §"1. Registro Principal (Record)".
-- **Retifica o ADR-006 E3** — o probe de admissão confere a presença de `visibility` na resposta do endpoint, campo que K6 remove; a conferência passa a ser `member_id`, `id`, `regime` e `accessLevel`. Sem isso, um membro que implemente o contrato vigente falharia o probe. O probe como sinal, nunca gate, permanece.
+- **Retifica o ADR-006 E3** — o probe de admissão confere a presença de `visibility` na resposta do endpoint, campo que o contrato remove; a conferência passa a ser `member_id`, `id`, `regime` e `accessLevel`. Sem isso, um membro que implemente o contrato vigente falharia o probe. O probe como sinal, nunca gate, permanece. Registrado também na ADR-016.
 - **Formaliza `propostaGovernanca.md` §5.5** — a distinção Label/Notice ganha a propriedade do dado que a determina (K1/K4). A governança descrevia a regra; faltava o campo.
 - **Implementa `propostaGovernanca.md:300`** — `informationWithheld` e `dataGeneralizations` saem de `[a implementar no modelo de dados]` e entram no contrato de harvest (K6).
 - **Implementa `propostaGovernanca.md:429`** — a coexistência de rótulo público em português e rótulo restrito na língua da comunidade passa a ter regra de resolução (K3, a regra do mais restritivo).
@@ -401,24 +408,25 @@ protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver 
 
 ## O que esta ADR não decide
 
-Seis pontos permanecem abertos e devem ser resolvidos antes da mudança de status para *Aceito*. Estão registrados aqui, com recomendação, para que a ausência de decisão seja visível em vez de presumida.
+Quatro pontos permanecem abertos — Q3 a Q6 — e devem ser resolvidos antes da mudança de status para *Aceito*. Q1 e Q2 já foram decididas e ficam registradas como tal. Estão aqui, com recomendação, para que a ausência de decisão seja visível em vez de presumida.
+
+Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nível efetivo é **H-Q1 da [ADR-016](ADR-016-contrato-de-harvest.md)**: nasceu do contrato, não desta ADR, e vai à reunião com as lideranças.
 
 | # | Questão | Recomendação |
 |---|---|---|
-| **Q1** | O regime entra no glossário da federação (`CONTEXT.md` raiz) ou fica interno a cada unidade? | **Federação.** Se determina o que trafega no harvest, é linguagem da federação por definição. Deixá-lo interno reproduz o problema atual, em que "Evidência" só existe no `BioCultDB/CONTEXT.md` |
+| **Q1** | ~~O regime entra no glossário da federação?~~ | **Decidido na v3.7.0: entra.** Quatro termos acrescentados ao `CONTEXT.md` raiz. Se determina o que trafega no harvest, é linguagem da federação por definição |
 | **Q2** | ~~"Enunciado" é o nome certo?~~ | **Decidido em 2026-08-13: o termo é `Relato`**, já usado pelo projeto e pelo modelo Panará. Descartados *Enunciado* (pouco usual), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial) |
 | **Q3** | Como identificar o detentor sem expor a pessoa? | Tensão real entre `assertionByID` (quer identificador estável) e LGPD. Opções: (a) identificador interno + `anonymized: true`, exposto só como papel; (b) atribuição exclusivamente coletiva no que for público; (c) **pseudônimo escolhido pelo próprio detentor** — a única que respeita simultaneamente CARE A1 e o direito ao reconhecimento, e a única que exige perguntar à pessoa |
 | **Q4** | Adotar a API do Local Contexts Hub ou espelhar os rótulos localmente? | Adotar mantém a autoridade com a comunidade e cria dependência externa; espelhar inverte. **Meio-termo:** armazenar o identificador do rótulo e do projeto, exibir o texto canônico com cache, nunca editar o texto |
 | **Q5** | Que vocabulário controlado usar em `assertionType`? | Fora do escopo desta ADR; é campo do BioCultTermos e matéria do Comitê |
-| **Q6** | O vídeo Panará, concretamente | Antes de qualquer implementação: localizar ou formalizar o CLPI, obter transcrição em `kre` com falante nativo, verificar grafia com pesquisadores Panará (`dadosEtnoJBRJ_Panara/docs/esclarecer.md`), e perguntar à comunidade o nível de acesso. Até lá, `restricted` de fato |
+| **Q6** | O vídeo Panará, concretamente | Antes de qualquer implementação: localizar ou formalizar o CLPI, obter transcrição em `kre` com falante nativo, verificar grafia com pesquisadores Panará, e perguntar à comunidade o nível de acesso. Até lá, `restricted` de fato |
 
 ## Referências
 
 - `conhecimento/caracterizacao-do-conhecimento-tradicional.md` — estudo que originou esta ADR, com a pesquisa completa e as fontes
-- `docs/contrato-harvest.md` — contrato de payload do harvest, campo a campo, decorrente de K6
+- [ADR-016](ADR-016-contrato-de-harvest.md) e `docs/contrato-harvest.md` — contrato de payload do harvest, campo a campo, extraído de K6
 - `governanca/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
 - `BioCultDB/bioculttermos/manual/03-rotulos.md` — `accessLevel`, `sourcePeople`, `holderPeople`, ISO 639-3
-- `dadosEtnoJBRJ_Panara/relatos.md` — modelo de entidade `relato` do projeto Panará/JBRJ
 - Darwin Core Data Package guide, TDWG, 2026-04-17 — <https://dwc.tdwg.org/dp/>; tabelas `*-assertion` e `usage-policy` em <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
 - Darwin Core, `informationWithheld` e `dataGeneralizations` — <https://dwc.tdwg.org/terms/>
 - W3C PROV-O — <https://www.w3.org/TR/prov-o/>
@@ -429,4 +437,4 @@ Seis pontos permanecem abertos e devem ser resolvidos antes da mudança de statu
 
 ## Data de Revisão
 
-Revisitar quando (a) as seis questões abertas forem decididas, para promoção a *Aceito*; (b) o ADR-003 for validado com comunidades, já que esta ADR depende dele; ou (c) o piloto de TK/BC Labels do *Task Group on Indigenous Data Governance* do GBIF (`propostaGovernanca.md:379`) publicar resultado que contradiga K4 ou K6.
+Revisitar quando (a) Q3 a Q6 forem decididas, para promoção a *Aceito*; (b) o ADR-003 for validado com comunidades, já que esta ADR depende dele; ou (c) o piloto de TK/BC Labels do *Task Group on Indigenous Data Governance* do GBIF (`propostaGovernanca.md:379`) publicar resultado que contradiga K4. O contrato de harvest saiu daqui: ver ADR-016.

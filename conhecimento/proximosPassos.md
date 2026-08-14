@@ -1,8 +1,8 @@
-# Próximos Passos — retomada após a sessão de 2026-08-13
+# Próximos Passos — estado em 2026-08-14
 
 **Para quem retoma:** leia este arquivo primeiro, depois `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Os dois juntos dão o estado completo sem precisar reler a sessão inteira.
 
-**Estado do repositório:** `main`, árvore limpa. Últimos commits relevantes: `fc3ebe2` (ADR-015), v3.7.0, **v3.8.0** (Passos 1–3) e **v3.9.0** (`c6a8357`, ponto K8 — Relato de prática).
+**Estado do repositório:** `main`, árvore limpa. Últimos marcos: **v3.8.0** (`5e1d575`, Passos 1–3), **v3.9.0** (`c6a8357`, ponto K8) e **v3.10.0** (ADR-016, extração de K6 e vocabulário de vínculo).
 
 ---
 
@@ -58,6 +58,20 @@ Correção de percurso: a ADR-015 ainda dizia "entidade `enunciado`" em Relaçõ
 
 ---
 
+## 3-bis. Concluído na v3.10.0 — as decisões de arquitetura pura
+
+Triagem entre o que se decide na mesa e o que só se decide na roda. Das três pendências que não dependiam da comunidade, duas foram decididas e uma se revelou mal classificada.
+
+| # | Decisão | Onde |
+|---|---|---|
+| **③** ✔ | **K6 extraído para a ADR-016** — Contrato de Harvest da Federação, *Proposto*, com H1 (payload), H2 (redação na fronteira), H3 (vocabulário de vínculo) e H4 (condição de aceitação). Motivo: K6 supersedia o ADR-004 D6, **Aceito**, a partir de texto que depende de validação com comunidades. Agora o contrato tem ciclo de aceitação próprio e não espera a ADR-015 | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
+| **⑤** ✔ | **`relationshipType` fechado em três valores**: `refers to`, `same as`, `derived from`. E uma correção: o exemplo usava `same as` entre Relato e exsicata — errado, o Relato **fala sobre** a exsicata, não **é** a exsicata. `same as` afirmaria identidade e colapsaria os dois no índice do Pluriverso | `docs/contrato-harvest.md` §6 |
+| **④** → reunião | **`sacred` ≡ `private` não é decisão técnica.** Parecia; não é. O que é sagrado quem diz é a comunidade, e a equivalência pode estar tecnicamente certa e semanticamente errada. Virou **H-Q1 da ADR-016**, foi para a pauta das lideranças e para o slide de perguntas. Regra interina até lá: trata-se como `private`, que erra para o lado de não publicar | `contrato-harvest.md` §4.1, `ADR-016` H-Q1 |
+
+Limpeza junto: a Q1 da ADR-015 ("o regime entra no glossário da federação?") constava aberta desde a v3.7.0, que já a respondera. Fechada — a contagem de questões abertas passa de seis para quatro (Q3–Q6) e agora é verdadeira.
+
+---
+
 ## 4. Bloqueado: precisa de decisão
 
 Duas perguntas. A recomendação está marcada; nenhuma foi respondida.
@@ -90,13 +104,16 @@ Tensão: soberania e simplicidade pedem não depender de serviço externo; mas c
 
 ## 5. Bloqueado: precisa da comunidade
 
-Detalhado com roteiro de perguntas em `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` **§5** — a seção feita para sair do computador. Resumo das cinco pautas (a quinta acrescentada por K8, e ainda sem roteiro naquele arquivo):
+Detalhado com roteiro de perguntas em `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` **§5** — a seção feita para sair do computador. Resumo das **seis** pautas (a quinta veio de K8 e a sexta da triagem da v3.10.0; nenhuma das duas tem roteiro naquele arquivo ainda). As pautas 1, 4, 5 e 6 são as quatro que já estão na apresentação, mais a pergunta de nomeação:
 
 1. **Como quem fala quer ser nomeado** — resolve ① acima.
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial, e quem tem legitimidade para dizer em nome de todos.
 3. **O vídeo Panará**, quatro pendências: CLPI não localizado; consentimento específico para imagem e voz; transcrição em `kre` inexistente; grafia não verificada com pesquisadores Panará.
 4. **O que não deve ser registrado** — `propostaGovernanca.md:286`: para conhecimento sagrado, a decisão correta pode ser **não registrar**, e a plataforma tem obrigação de dizer isso.
 5. **Gravações de prática e oficinas coletivas** (novo, K8) — filmar alguém fazendo um chá ou trançando uma cesta registra conhecimento sem que uma palavra seja dita; e uma oficina grava várias pessoas de uma vez. Perguntar: quem autoriza a gravação de uma prática; se cada participante decide sobre a própria imagem ou se a decisão é do grupo; e o que deve acontecer quando **um** participante muda de ideia depois — a regra adotada por ora é a mais conservadora, a gravação inteira sai.
+6. **O que é sagrado — e o que acontece com ele** (novo, v3.10.0, ④/H-Q1) — quando um saber é sagrado, o registro dele deve sumir por inteiro, ou pode ficar visível que ele existe sem mostrar o conteúdo? E quem diz, por todos, que um saber é sagrado? Tecnicamente a pergunta é se `sacred` equivale a `private` ou merece nível próprio; a decisão, porém, não é técnica. Regra interina: equivale a `private`, nunca atravessa.
+
+As pautas 1, 4, 5 e 6 estão no slide "Cinco perguntas que só vocês podem responder" de `docs/apresentacoes/Arquitetura BioCultural v2.pptx`, junto com a pauta 2.
 
 Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restricted` de fato, não atravessa harvest, e o `.gitignore` de `*.mp4` deve permanecer.
 
@@ -117,24 +134,30 @@ Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restri
 
 ```mermaid
 flowchart TD
-    A["ADR-015 · Proposto ✔"] --> P1["Passo 1 ✔<br/>ADR-003 retificado"]
+    A["ADR-015 · Proposto"] --> P1["Passo 1 ✔<br/>ADR-003 retificado"]
     A --> P2["Passo 2 ✔<br/>ADR-004 D6 retificado"]
     P1 --> P3["Passo 3 ✔<br/>contrato de payload"]
     P2 --> P3
+    P3 --> H["ADR-016 ✔ · Proposto<br/>contrato extraído de K6"]
+    H --> HA["ADR-016 → Aceito<br/>não depende da comunidade"]
     Q1["① detentor<br/>DECISÃO"] --> P4["Passo 4<br/>esquema do Relato"]
     Q2["② rótulos<br/>DECISÃO"] --> P4
-    C["Conversa com<br/>a comunidade"] --> Q1
+    C["Reunião com<br/>as lideranças"] --> Q1
     C --> Q2
+    C --> Q4["④ sagrado<br/>H-Q1 da ADR-016"]
+    Q4 --> HA
     C --> P5["Passo 5<br/>piloto Panará"]
     P3 --> P5
     P4 --> P5
     P5 --> F["ADR-015 → Aceito"]
-    style A fill:#28a745,color:#fff
     style P1 fill:#28a745,color:#fff
     style P2 fill:#28a745,color:#fff
     style P3 fill:#28a745,color:#fff
+    style H fill:#28a745,color:#fff
     style C fill:#fd7e14,color:#fff
+    style Q4 fill:#fd7e14,color:#fff
     style F fill:#1168bd,color:#fff
+    style HA fill:#1168bd,color:#fff
 ```
 
 ---
@@ -147,10 +170,10 @@ flowchart TD
 | Registro da sessão + **pauta da comunidade (§5)** | `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
+| Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
 | Glossário da federação | `CONTEXT.md` → seção "Conhecimento e evidência" |
 | Governança de acesso, CLPI, rotulagem | `governanca/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
-| Modelo de relato do projeto Panará | `dadosEtnoJBRJ_Panara/relatos.md` |
 | Vídeo caso-teste (não versionado) | `conhecimento/conhecimentoPanara.mp4` — 42 s, HEVC 1080p, língua `kre` |
 
 ---
@@ -171,7 +194,7 @@ Não precisam ser reconferidas.
 
 ## 10. Pendências da discussão "conhecimento × evidência"
 
-Consolida tudo o que a discussão abriu e não fechou, em um só lugar. Nenhum item aqui está resolvido; onde há recomendação, ela está marcada e **não foi aplicada**.
+Consolida tudo o que a discussão abriu, em um só lugar. Itens riscados foram decididos na v3.10.0; o resto continua aberto, e onde há recomendação ela está marcada como tal.
 
 ### 10.1 O que já ficou decidido (para não reabrir)
 
@@ -180,23 +203,24 @@ Consolida tudo o que a discussão abriu e não fechou, em um só lugar. Nenhum i
 | Nome da unidade de Conhecimento | **`Relato`**. Descartados *Enunciado*, *Asserção*, *Depoimento* | ADR-015 K2, Q2 |
 | Regime é campo do registro ou propriedade do provedor? | **Campo do registro**, com padrão por unidade sobreponível | ADR-015 K1 |
 | Onde vive a narrativa da comunidade sobre peça de acervo | **No BioCultRelatos dela**, referenciando o item; nunca no banco do museu | ADR-015 §Contexto, §2 acima |
-| O regime entra no glossário da federação? | **Sim.** Quatro termos acrescentados ao `CONTEXT.md` na v3.7.0 — resolve a Q1 da ADR-015, que ainda consta como aberta no texto da ADR | `CONTEXT.md`, "Conhecimento e evidência" |
+| O regime entra no glossário da federação? | **Sim.** Quatro termos acrescentados ao `CONTEXT.md` na v3.7.0. A Q1 da ADR-015 foi fechada na v3.10.0 | `CONTEXT.md`, "Conhecimento e evidência" |
 | Mídia é anexo ou é o registro? | Em Relato de prática, **a mídia é o Relato**; a descrição é derivada | ADR-015 K8.1 |
 | Língua sem fala | `zxx`; não identificada, `und` | ADR-015 K8.2 |
-
-> **Limpeza pendente, trivial:** a Q1 da seção "O que esta ADR não decide" da ADR-015 já foi respondida pela v3.7.0 e continua listada como aberta. Fechar a linha quando a ADR for revisada, para que a contagem de questões em aberto seja verdadeira.
+| Onde vive o contrato de harvest | **ADR própria, a ADR-016**, para poder ser aceita sem esperar a validação com comunidades | ADR-016, §3-bis |
+| Tipos de vínculo entre registros de membros | **Três, fechados:** `refers to`, `same as`, `derived from` | ADR-016 H3 |
 
 ### 10.2 Decisões que dependem de você
 
 | # | Pendência | Recomendação | O que trava |
 |---|---|---|---|
-| ① | Formato do detentor individual | Pseudônimo escolhido pela pessoa (§4) | Esquema do Relato (Passo 4) |
-| ② | Rótulos culturais: API do Hub ou cópia local | Guardar identificador + cache do texto canônico (§4) | Nada no contrato; trava só a interface |
-| ③ | Extrair **K6** para ADR próprio | Sem recomendação. A nota do Passo 2 deixou o conflito visível: ADR-004 *Aceito* sendo supersedido por ADR-015 *Proposto* | Promoção da ADR-015 |
-| ④ | `sacred` (nível de Termo) equivale a `private` no cálculo do nível efetivo | **Regra derivada por mim, não está na ADR-015.** Marcada em `contrato-harvest.md` §4.1 | Implementação do filtro de harvest |
-| ⑤ | Vocabulário de `relationshipType` no vínculo entre membros | DwC-DP sugere `same as`. Precisa de acordo do Comitê para valer como contrato | Interoperabilidade real entre membros |
+| ① | Formato do detentor individual | Pseudônimo escolhido pela pessoa (§4). **Vai à reunião** | Esquema do Relato (Passo 4) |
+| ② | Rótulos culturais: API do Hub ou cópia local | Guardar identificador + cache do texto canônico (§4). Decisão técnica, **não vai à reunião** — mas quem tem legitimidade para aplicar rótulo em nome de todos, sim (Pauta 2) | Nada no contrato; trava só a interface |
+| ~~③~~ | ~~Extrair **K6** para ADR próprio~~ | **Decidido na v3.10.0: extraído para a ADR-016** | — |
+| ④ | `sacred` equivale a `private`? | **Reclassificada na v3.10.0: não é decisão técnica.** Virou H-Q1 da ADR-016 e **vai à reunião** (Pauta 6). Regra interina: equivale a `private` | Promoção da ADR-016 a *Aceito* |
+| ~~⑤~~ | ~~Vocabulário de `relationshipType`~~ | **Decidido na v3.10.0:** `refers to`, `same as`, `derived from`. `same as` entre Relato e exsicata estava errado e foi corrigido | — |
 | ⑥ | Vocabulário controlado de `assertionType` | Q5 da ADR-015: matéria do BioCultTermos e do Comitê, fora do escopo | Esquema do Relato |
-| ⑦ | Promoção da ADR-015 a *Aceito* | Depende das questões abertas e da validação com comunidades | Tudo o que depende de ADR aceita |
+| ⑦ | Promoção da ADR-015 a *Aceito* | Depende de Q3–Q6 e da validação com comunidades | Tudo o que depende de ADR aceita |
+| ⑫ | Promoção da **ADR-016** a *Aceito* | Depende só de H-Q1 (④) e do Comitê. **Não depende da comunidade para existir** — depende dela para uma linha | Implementação do endpoint de harvest |
 
 ### 10.3 Aberturas que o K8 criou
 
@@ -204,25 +228,25 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 
 | # | Aberto | Por quê |
 |---|---|---|
-| ⑧ | **Quem autoriza a gravação de uma prática coletiva** — cada participante, ou o grupo? | Pauta 5 da conversa com a comunidade (§5). A regra adotada por ora é a mais conservadora: um pede reserva, sai tudo |
-| ⑨ | **Versão editada de gravação** após revogação de um participante | K8.3 diz que a plataforma não edita por conta própria e que a versão editada é derivado novo. Falta dizer **se** e **como** a comunidade pede isso, e quem confere o resultado |
-| ⑩ | **Onde mora o vídeo** | K8.4 exige original em armazenamento soberano, fora de plataforma de terceiros. Uma comunidade com dezenas de gravações de 60 MB tem um problema real de custo e de banda, e a arquitetura ainda não diz como resolver sem trair o princípio |
-| ⑪ | **`und` como estado transitório** | Precisa de um lugar na curadoria que liste os registros em `und` e cobre resolução; senão vira estado final por inércia, que é o que K8.2 quer evitar |
+| ⑧ | **Quem autoriza a gravação de uma prática coletiva** — cada participante, ou o grupo? | Pauta 5. **Vai à reunião.** A regra adotada por ora é a mais conservadora: um pede reserva, sai tudo |
+| ⑨ | **Versão editada de gravação** após revogação de um participante | K8.3 diz que a plataforma não edita por conta própria e que a versão editada é derivado novo. Falta dizer **se** e **como** a comunidade pede isso, e quem confere o resultado. **Não foi para a pauta desta reunião** |
+| ⑩ | **Onde mora o vídeo** | K8.4 exige original em armazenamento soberano. Uma comunidade com dezenas de gravações de 60 MB tem problema real de custo e banda. **Vai à reunião** — a solução depende do que elas têm e aceitam |
+| ⑪ | **`und` como estado transitório** | Precisa de um lugar na curadoria que liste os registros em `und` e cobre resolução; senão vira estado final por inércia. Puramente técnico, **não vai à reunião** |
 
 ### 10.4 Consistência a verificar quando houver fôlego
 
 - **README, "Quatro Fontes"** — a coluna de regime foi acrescentada na v3.7.0, mas o corpo do texto ainda fala em "evidências" como termo guarda-chuva em vários pontos. Não é erro; é vocabulário anterior à distinção.
 - **`propostaGovernanca.md`** — descreve Label/Notice (§5.5) sem citar o regime, que é a propriedade que decide qual dos dois se aplica. Vale uma nota de vínculo quando o documento for revisado.
-- **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde K6.
-- **`conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5** — tem roteiro de perguntas para as quatro pautas originais; **a quinta (gravações de prática e oficinas) ainda não tem roteiro**.
+- **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde a ADR-016.
+- **`conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5** — tem roteiro de perguntas para as quatro pautas originais; **a quinta (gravações e oficinas) e a sexta (o sagrado) ainda não têm roteiro**.
 
 ---
 
 ## 11. Primeira coisa a fazer ao retomar
 
-Os Passos 1–3 estão feitos e o K8 está registrado. O que resta ou depende de decisão sua, ou depende da comunidade. Escolher entre:
+Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **"Responda ① e ②"** — destrava o Passo 4 (esquema do Relato). ① só se resolve honestamente perguntando à pessoa; ② tem meio-termo recomendado e não bloqueia o contrato de harvest.
-- **"Decida ③, ④ e ⑤"** — as três de arquitetura pura, sem ida a campo: extrair K6, confirmar a equivalência de `sacred` e fixar o vocabulário de vínculo entre membros.
-- **"Prepare a conversa com a comunidade"** — inclui escrever o roteiro da quinta pauta, que ainda não existe. É o caminho crítico de tudo o que sobrou.
-- **"Resolva ⑩"** — onde mora o vídeo. É a pendência com maior risco de virar decisão por omissão: se ninguém decidir, alguém sobe para uma plataforma de terceiros e o princípio se perde na prática.
+- **Escrever o roteiro das pautas 5 e 6** — gravações/oficinas e o sagrado. São as duas perguntas da reunião que ainda não têm roteiro em `sessao-2026-08-13-decisoes-e-pendencias.md` §5, e a reunião é o caminho crítico de quase tudo. **Primeira coisa.**
+- **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
+- **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
+- **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto Panará)** continua travado pela Pauta 3.

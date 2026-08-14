@@ -77,8 +77,8 @@ O contrato mínimo do endpoint:
 
 **Consequência:** Cada membro (BioCultDB, BioCultRelatos, futuras implementações) precisa implementar esse endpoint. É a única dependência técnica que membros têm em relação à federação.
 
-> **Contrato de payload supersedido pela ADR-015 (K6).** O registro deixa de ser
-> `{id, visibility, updated_at, data}` e passa ao contrato de K6, detalhado campo a campo em
+> **Contrato de payload supersedido pela [ADR-016](ADR-016-contrato-de-harvest.md).** O registro deixa de ser
+> `{id, visibility, updated_at, data}` e passa ao contrato da ADR-016, detalhado campo a campo em
 > [`docs/contrato-harvest.md`](../contrato-harvest.md). O motivo: `visibility` é um booleano e não
 > consegue expressar o caso comum — registro público que contém um rótulo `sacred`, que deve ser
 > publicado **com o rótulo suprimido e a supressão declarada**, e não rebaixado nem omitido. Sem
@@ -91,9 +91,11 @@ O contrato mínimo do endpoint:
 > Permanece válida também a regra de fundo — **só o nível efetivo `public` atravessa o harvest** —,
 > agora expressa por `regime` + `accessLevel` em vez de `visibility`.
 >
-> *Sinalizado e não resolvido:* este ADR está **Aceito** e a ADR-015 está **Proposta**. A supersessão
-> só tem efeito quando a ADR-015 for aceita; até lá esta nota registra a decisão em discussão, não a
-> aplica. Ver [ADR-015](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md).
+> *Estado:* este ADR está **Aceito** e a ADR-016 está **Proposta**; a supersessão só tem efeito
+> quando ela for aceita. A ADR-016 foi extraída do ponto K6 da
+> [ADR-015](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) exatamente para encurtar essa
+> espera: o contrato de harvest tem ciclo de aceitação próprio e não depende da validação com
+> comunidades que trava a ADR-015.
 
 ### D7 — Posição do BioCultPapers: Exclusivo de Iniciativas de Fontes Secundárias
 **Status:** Supersedido pelo ADR-011 (Absorção do BioCultPapers pelo BioCultDB) — o BioCultPapers deixou de ser componente do ecossistema.

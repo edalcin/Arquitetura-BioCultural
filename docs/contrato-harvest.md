@@ -2,16 +2,22 @@
 
 ## Status
 
-**Proposto** — Agosto 2026. Vigente quando a [ADR-015](architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) for aceita.
+**Proposto** — Agosto 2026. Normativo em conjunto com a
+[ADR-016](architecture-decisions/ADR-016-contrato-de-harvest.md), e vigente quando ela for aceita.
 
-Este documento especifica, campo a campo, o contrato que a ADR-015 **K6** define em esqueleto e que
+Este documento especifica, campo a campo, o contrato que a ADR-016 define em esqueleto e que
 **supersede o payload do [ADR-004](architecture-decisions/ADR-004-federated-architecture.md) D6**.
 Permanece integralmente válido o restante do D6: paginação obrigatória, filtro `updated_since`,
 identificador estável `member_id` + `record_id`, e o endpoint como única dependência técnica do
 membro em relação à federação.
 
-Não é uma ADR: não decide nada que a ADR-015 já não tenha decidido. Onde este documento encontrou
-uma lacuna, ela está marcada como **pendência** em §8, nunca resolvida por conveniência de escrita.
+A ADR-016 nasceu do ponto **K6** da [ADR-015](architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
+e foi extraída dela para não depender da validação com comunidades. Os conceitos que este contrato
+usa — `regime` (K1), nível efetivo (K3), Label/Notice (K4), padrão por nível (K7) e enunciação
+coletiva (K8.3) — continuam definidos na ADR-015.
+
+Onde este documento encontrou uma lacuna, ela está marcada como **pendência** em §8, nunca resolvida
+por conveniência de escrita.
 
 ---
 
@@ -88,9 +94,14 @@ public  <  restricted  <  community-only  <  private
 ```
 
 O `accessLevel` `sacred` do nível de Termo (`bioculttermos/manual/03-rotulos.md`) não pertence a essa
-escala de quatro camadas: para efeito de cálculo, equivale a `private` — nunca atravessa, em nenhuma
-hipótese. *Esta equivalência é derivada de K3 e não está escrita na ADR-015; se o Comitê discordar, é
-aqui que se corrige.*
+escala de quatro camadas. **Regra interina, conservadora:** para efeito de cálculo equivale a
+`private` — nunca atravessa, em nenhuma hipótese.
+
+> **Pendência aberta, não resolvida aqui.** A equivalência é derivada de K3 e não está escrita na
+> ADR-015. É **H-Q1 da ADR-016** e foi levada à reunião com as lideranças: o que é sagrado quem diz é
+> a comunidade, e a equivalência pode estar tecnicamente certa e semanticamente errada — `sacred`
+> pode merecer nível próprio, acima de `private`, com regra distinta inclusive para o metadado. Até
+> a resposta, vale a regra interina acima, que erra para o lado de não publicar.
 
 ### 4.2 O que atravessa
 
@@ -116,7 +127,7 @@ rótulo suprimido e a supressão declarada:
   "holderPeople": "Panará",
   "relatedResources": [
     {
-      "relationshipType": "same as",
+      "relationshipType": "refers to",
       "externalRelatedResourceID": "jbrj-herbario/rb-00123456",
       "externalRelatedResourceSource": "https://…/api/federation/records",
       "relatedResourceType": "MaterialEntity",
@@ -170,7 +181,7 @@ implícito e não trafega.
 
 | Campo | Obrigatório | Regra |
 |---|---|---|
-| `relationshipType` | sim | Vocabulário do padrão. Para o caso desta arquitetura, `same as` — o Relato e o item do acervo tratam do mesmo objeto |
+| `relationshipType` | sim | **Vocabulário fechado em três valores** (ADR-016 H3): `refers to`, `same as`, `derived from`. Ver a tabela abaixo |
 | `relationshipTypeIRI` | não | IRI do predicado, quando houver vocabulário controlado |
 | `relatedResourceID` | condicional | Quando o alvo é registro **do mesmo membro** |
 | `externalRelatedResourceID` | condicional | Quando o alvo é registro **de outro membro** — o caso normal aqui. Valor no formato `<member_id>/<record_id>` |
@@ -179,6 +190,20 @@ implícito e não trafega.
 | `relationshipAccordingTo` | não | Agente que afirma a relação. Relevante porque a relação pode ser afirmada por um terceiro, e não pelos dois membros |
 | `relationshipEstablishedDate` | não | ISO 8601 |
 | `relationshipRemarks` | não | Texto livre |
+
+**Vocabulário de `relationshipType` — fechado** (ADR-016 H3). Um membro que emita um quarto valor
+emite dado que o Pluriverso não sabe interpretar; ampliar é ato do Comitê Federado, com o caso de uso
+que a motivou.
+
+| Valor | Quando | Exemplo |
+|---|---|---|
+| `refers to` | O registro **fala sobre** um recurso custodiado por outro membro. **É o caso normal aqui** | Relato Panará sobre a exsicata `jbrj-herbario/rb-00123456` |
+| `same as` | Os dois registros descrevem **o mesmo objeto** | Duplicata do mesmo espécime em dois herbários |
+| `derived from` | O registro é **derivado** de outro | Versão editada de gravação, transcrição, tradução (K5, K8.3) |
+
+Correção em relação à primeira versão deste contrato, que usava `same as` para o vínculo entre Relato
+e exsicata: o Relato **não é** a exsicata, ele fala sobre ela. `same as` afirma identidade e
+colapsaria os dois no índice do Pluriverso, apagando exatamente a distinção que a ADR-015 preserva.
 
 `relatedResourceID` e `externalRelatedResourceID` são **mutuamente exclusivos**; ao menos um dos dois
 é obrigatório.
@@ -194,7 +219,7 @@ vinculadas — nenhuma gravada dentro do banco da outra.
 
 ## 7. Condição de aceitação do endpoint
 
-**Obrigatória em cada unidade que implementar o endpoint** (K6). Sem ela, o endpoint não é aceito.
+**Obrigatória em cada unidade que implementar o endpoint** (ADR-016 H4). Sem ela, o endpoint não é aceito.
 
 Teste automatizado que **falhe** se qualquer registro com nível efetivo diferente de `public`
 atravessar o endpoint. O mínimo verificável, contra um conjunto de dados que contenha
@@ -226,10 +251,12 @@ membro.
 | ② | Texto dos rótulos culturais: API do Local Contexts Hub a cada exibição ou cache local do texto canônico (Q4 da ADR-015). Recomendada: **guardar identificador, exibir texto canônico com cache, nunca editar** | Nenhum. `culturalLabels` carrega identificador nas duas resoluções |
 | ③ | Vocabulário controlado de `assertionType` (Q5 da ADR-015) | Matéria do BioCultTermos e do Comitê. Vive dentro de `data`, não na envoltória |
 | ④ | Conteúdo de `data` | Definido pelo Comitê Federado, como no ADR-004 D6. Este contrato especifica a envoltória e as regras de acesso, não o esquema do conteúdo |
+| ⑤ | `sacred` equivale a `private` no cálculo do nível efetivo? (H-Q1 da ADR-016) | Vale a **regra interina** de §4.1 — trata-se como `private`. Se as lideranças pedirem nível próprio, muda a escala de §4.1 e o cenário 3 de §7 |
 
 ## 9. Referências
 
-- [ADR-015](architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) — K1, K3, K4, K6, K7
+- [ADR-016](architecture-decisions/ADR-016-contrato-de-harvest.md) — H1 a H4, normativa em conjunto com este documento
+- [ADR-015](architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) — K1, K3, K4, K7, K8.3
 - [ADR-004](architecture-decisions/ADR-004-federated-architecture.md) — D1, D4, D6
 - [ADR-003](architecture-decisions/ADR-003-data-model.md) — modelo de dados, com a nota de retificação da ADR-015
 - `governanca/propostaGovernanca.md` §5.2 (camadas de acesso), §5.4 (CLPI), §5.5 (rotulagem cultural)

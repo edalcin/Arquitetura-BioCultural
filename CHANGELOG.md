@@ -6,6 +6,33 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.10.0] - 2026-08-14
+
+### Adicionado
+
+- **ADR-016 — Contrato de Harvest da Federação** (`docs/architecture-decisions/ADR-016-contrato-de-harvest.md`), status *Proposto*. Extrai o ponto **K6** da ADR-015 para ADR própria, com quatro pontos: **H1** payload com nível efetivo e supressão declarada; **H2** redação na fronteira da API, com *redaction at rest* rejeitada; **H3** vocabulário fechado de `relationshipType`; **H4** condição de aceitação do endpoint. Motivo da extração: K6 supersede o ADR-004 D6, que está **Aceito**, a partir de texto *Proposto* que depende de validação com comunidades. O contrato de harvest é consequência técnica e não precisa dessa espera — passa a ter ciclo de aceitação próprio
+- **Vocabulário de `relationshipType` fechado em três valores** (ADR-016 H3, `contrato-harvest.md` §6): `refers to` (o registro fala sobre recurso de outro membro), `same as` (mesmo objeto, duplicata entre acervos) e `derived from` (versão editada, transcrição, tradução). Ampliar é ato do Comitê Federado
+
+### Corrigido
+
+- **`same as` estava errado no vínculo entre Relato e item de acervo.** O Relato Panará **não é** a exsicata do herbário; ele fala sobre ela. `same as` afirma identidade e colapsaria os dois no índice do Pluriverso, apagando exatamente a distinção que a ADR-015 existe para preservar. O caso normal passa a ser `refers to`
+- **ADR-015, §"O que esta ADR não decide"**: Q1 (regime no glossário da federação) constava como aberta desde a v3.7.0, que já a respondeu. Fechada. A contagem passa de seis para **quatro questões abertas** (Q3–Q6), refletida no Status e na Data de Revisão
+
+### Modificado
+
+- **`docs/contrato-harvest.md`**: passa a ser normativo em conjunto com a ADR-016; §4.1 marca a equivalência `sacred` ≡ `private` como **regra interina, conservadora**, com a pendência aberta em destaque; nova pendência ⑤ em §8
+- **ADR-004 D6** e **ADR-015 K6/Relações**: notas repontadas para a ADR-016
+- **Apresentação** (`docs/apresentacoes/Arquitetura BioCultural v2.pptx` e o PDF exportado): o slide de perguntas às lideranças passa de quatro para **cinco perguntas**, com a nova — "O que é sagrado — e o que acontece com ele" — em card de largura inteira; grade re-espaçada em três linhas
+- **`conhecimento/proximosPassos.md`**: estado do repositório, pendências ③ e ⑤ fechadas, ④ movida para a pauta da reunião, e referência residual a projeto externo removida de §8
+
+### Contexto da Versão
+
+Sessão de triagem: separar o que se decide na mesa do que só se decide na roda.
+
+Três pendências de arquitetura pura estavam paradas junto com as que dependem das comunidades, e não precisavam estar. Duas foram decididas (③ extração de K6, ⑤ vocabulário de vínculo). A terceira, ④ — se `sacred` equivale a `private` —, parecia técnica e não é: **o que é sagrado quem diz é a comunidade**, e a equivalência pode estar tecnicamente certa e semanticamente errada. Foi para a pauta da reunião com as lideranças, e virou a quinta pergunta da apresentação. Até a resposta vale a regra interina, que erra para o lado de não publicar.
+
+A extração de K6 resolve um impasse de status que se arrastava desde a v3.8.0: um ADR *Aceito* sendo supersedido por um *Proposto*, sem prazo. Agora o contrato pode ser aceito sozinho, e a ADR-015 continua o ciclo dela, no tempo das comunidades.
+
 ## [3.9.1] - 2026-08-13
 
 ### Modificado
