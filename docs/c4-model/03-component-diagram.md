@@ -6,6 +6,8 @@ Este documento detalha os componentes internos de cada container do sistema, org
 
 **Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
+> **Nota (v3.10):** desde a v3.5, as evoluções da arquitetura foram no **contrato de dados**, não nos componentes deste diagrama: Regime Enunciativo e três níveis de rotulagem de acesso ([ADR-015](../architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)); contrato de harvest com nível efetivo e supressão declarada ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md)) — o payload que `HarvestClient`/`RecordIndexer` consomem passa a carregar `regime`, `accessLevel`, `informationWithheld`/`dataGeneralizations` e `relatedResources`; composição multi-espécie no registro ([ADR-017](../architecture-decisions/ADR-017-composicao-multiespecie.md)); consolidação no [Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md). Os trechos de código neste documento são ilustrativos do desenho de componentes, não contratos.
+
 ---
 
 ## Contexto 1: Aquisição

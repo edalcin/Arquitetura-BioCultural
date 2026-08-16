@@ -6,6 +6,8 @@ O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema
 
 **Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
+> **Nota (v3.10):** desde a v3.5, as evoluções da arquitetura foram no **contrato de dados**, não nos containers deste diagrama: Regime Enunciativo e três níveis de rotulagem de acesso ([ADR-015](../architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)); contrato de harvest com nível efetivo e supressão declarada — `visibility` deixou de existir no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md)); composição multi-espécie ([ADR-017](../architecture-decisions/ADR-017-composicao-multiespecie.md)); consolidação no [Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md). Os exemplos de estrutura de dados neste documento são ilustrativos — o contrato vigente é o UDM.
+
 ## Diagrama de Arquitetura
 
 ```mermaid
@@ -344,11 +346,14 @@ O BioCultTermos funciona como **infraestrutura terminológica transversal**:
    - Exportação em SKOS/RDF para interoperabilidade
 
 **Estrutura de Dados (Termo):**
+
+> Exemplo simplificado, anterior à migração SKOS-XL. A forma vigente do rótulo — `pref`/`alt`/`hidden`, idioma ISO 639-3, `accessLevel` CARE e proveniência — está na [Referência Central de Rótulos SKOS-XL](../rotulos-skos-xl.md).
+
 ```json
 {
   "id": "ET001",
   "term": "mandioca",
-  "language": "pt-BR",
+  "language": "por",
   "definition": "Raiz tuberosa da planta Manihot esculenta",
   "scope_note": "Uso comum em comunidades tradicionais brasileiras",
   "broader_terms": ["tubérculos", "alimentos tradicionais"],
@@ -520,7 +525,7 @@ Middleware de federação que coleta (harvest periódico REST) registros públic
 **Stack Tecnológico:** Node.js 20 + Express + EJS + Tailwind CSS + Alpine.js/HTMX + better-sqlite3 (ver [`pluriverso/docs/decisions/ADR-001-stack-e-framework.md`](https://github.com/edalcin/pluriverso/blob/main/docs/decisions/ADR-001-stack-e-framework.md))
 
 **Responsabilidades:**
-- Harvest periódico REST paginado dos registros `visibility: public` de cada membro
+- Harvest periódico REST paginado dos registros com nível efetivo `public` de cada membro ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md))
 - Manutenção do índice central (SQLite + FTS5)
 - Mapeamento semântico SKOS entre membros, com aprovação do Comitê Federado
 - API pública unificada de busca federada

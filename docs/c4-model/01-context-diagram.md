@@ -6,6 +6,8 @@ O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Info
 
 **Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
+> **Nota (v3.10):** desde a v3.5, as evoluções da arquitetura foram no **contrato de dados**, não na topologia deste diagrama: Regime Enunciativo, Relato e três níveis de rotulagem de acesso ([ADR-015](../architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)); contrato de harvest com nível efetivo e supressão declarada — `visibility` deixou de existir no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md)); composição multi-espécie ([ADR-017](../architecture-decisions/ADR-017-composicao-multiespecie.md)); e a consolidação de tudo no [Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md), que é a referência de dados para todos os níveis do C4.
+
 ## Diagrama
 
 ```mermaid
@@ -429,7 +431,7 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 
 **Integração na Arquitetura:**
 - Instanciável em múltiplos escopos ([ADR-009](../architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)) — pode haver uma instância pública/global e instâncias privadas de associações, cada uma soberana e autocontida
-- Coleta via harvest periódico REST paginado dos membros com `visibility: public` ([ADR-004/D6](../architecture-decisions/ADR-004-federated-architecture.md)), nunca por push do membro
+- Coleta via harvest periódico REST paginado dos registros com **nível efetivo `public`** de cada membro ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md), que supersede o payload do ADR-004/D6) — o payload carrega `regime`, `accessLevel` e supressão declarada (`informationWithheld`/`dataGeneralizations`); nunca por push do membro
 - Não se conecta à topologia centralizada pré-v3.0 descrita nos diagramas deste documento — arquitetura, contêiner e componentes próprios em [`pluriverso/docs/arquitetura.md`](https://github.com/edalcin/pluriverso/blob/main/docs/arquitetura.md)
 
 ## Fluxos Principais
@@ -481,7 +483,7 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 1. Instância de membro (BioCultDB, BioCultRelatos, BioCultAcervos ou BioCultNaturalistas) solicita adesão à federação via cadastro self-service
 2. Probe técnico anti-SSRF anexa sinal (não decisão) ao pedido
 3. Comitê Federado aprova e um `member_id` é gerado, nunca reciclado
-4. Harvest periódico coleta os registros `visibility: public` do membro via endpoint REST paginado
+4. Harvest periódico coleta os registros com nível efetivo `public` do membro via endpoint REST paginado, com supressões declaradas no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md))
 5. Pesquisador ou aplicação consulta a API unificada do Pluriverso, com expansão semântica SKOS entre vocabulários de membros diferentes
 6. Membro sai da federação → `purge_by_member` remove imediatamente seus registros e mapeamentos do índice, de forma auditável
 
