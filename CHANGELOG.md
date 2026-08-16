@@ -6,6 +6,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.10.2] - 2026-08-16
+
+### Adicionado
+
+- **Apresentação `Arquitetura BioCultural v3.pptx`** (28 slides), evolução narrativa da v2 sem alteração de conteúdo técnico:
+  - **Novo slide 2 — a analogia da casa**: "Uma casa se constrói para quem vai morar nela". A analogia (plano da casa = arquitetura; moradores = comunidades; chave = soberania; cômodos = camadas de acesso; praça = Pluriverso; alicerces = CARE; regras da casa = governança) vira o fio condutor de toda a apresentação
+  - **Agenda e slides de seção reescritos na imagem da casa**: "Por que esta casa precisa existir", "Os materiais", "A planta", "A obra", "As regras da casa"
+  - **Reordenação da seção da federação**: o medo (biopirataria) antes da resposta (chave), a resposta antes do diagrama, o diagrama antes das camadas de acesso. Diagrama de repartição de benefícios movido para o bloco de governança, depois do ciclo de CLPI
+  - **Notas do apresentador realinhadas**: na v2, as notas dos slides finais estavam deslocadas do conteúdo (a nota do slide 24 pertencia ao 27, a do 26 ao 24, a do 27 ao 25); todas reescritas por slide, com o conteúdo de apoio acadêmico e o contexto das cinco perguntas preservados nos slides certos
+- **`docs/apresentacoes/roteiro.md`** — roteiro completo da apresentação: fala sugerida por slide, transições, tempos por bloco, tabela da analogia da casa, conteúdo "para acadêmicos" separado da fala principal e contexto de apoio das cinco perguntas do slide de escuta
+
 ## [3.10.1] - 2026-08-14
 
 ### Modificado
