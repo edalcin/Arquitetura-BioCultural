@@ -128,6 +128,13 @@ Entidade central que representa um item de conhecimento tradicional.
 > Esta nota **não promove nem reescreve** o ADR-003, que permanece em status *Proposto* e entra na
 > mesma rodada de validação com comunidades que a ADR-015. Ver
 > [ADR-015](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md).
+>
+> **Retificado também pelo [ADR-017](ADR-017-composicao-multiespecie.md).** A estrutura abaixo é
+> centrada em `species` (singular) com `uses[]` aninhado — um uso pertence a uma espécie. Isso não
+> representa usos, preparos e artefatos **compostos por mais de uma planta** (o Daime do Santo Daime:
+> *Banisteriopsis caapi* + *Psychotria viridis*; garrafadas; artefatos multi-material). O ADR-017
+> registra a demanda e os requisitos R1–R7: composição como entidade referenciando 1..n plantas, com
+> papel por componente, nome próprio do composto e classificação de acesso sobre a combinação.
 
 ```javascript
 {

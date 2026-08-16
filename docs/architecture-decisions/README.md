@@ -262,6 +262,43 @@ permanecem explicitamente abertas antes da promoção a *Aceito*.
 
 ---
 
+### ADR-016: Contrato de Harvest da Federação
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Extraído do ponto K6 da ADR-015 para poder ser aceito sozinho. O payload do harvest passa a carregar
+`regime`, nível efetivo de acesso, supressão declarada (`dwc:informationWithheld`,
+`dwc:dataGeneralizations`), rótulos culturais por identificador e vínculos entre registros de membros
+distintos (`relatedResources`). A redação acontece na fronteira da API — o campo restrito é gravado
+normalmente e filtrado na saída. Supersede o contrato de payload do ADR-004 D6.
+
+**Decisão:** payload com nível efetivo e supressão declarada; especificação normativa campo a campo em
+[`docs/contrato-harvest.md`](../contrato-harvest.md).
+
+**[Leia o documento completo →](ADR-016-contrato-de-harvest.md)**
+
+---
+
+### ADR-017: Composição Multi-Espécie de Usos, Preparos e Artefatos
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Registra a demanda de que toda unidade federada e o Pluriverso suportem usos, preparos e artefatos
+compostos por **mais de uma planta** — o caso do Daime (Santo Daime): *Banisteriopsis caapi*
+(jagube/cipó/mariri) + *Psychotria viridis* (rainha/chacrona/folha), em que o uso, o nome e o próprio
+efeito só existem na combinação. O padrão recorre em garrafadas, defumações, curares e artefatos
+multi-material. Define os requisitos R1–R7: composição como entidade referenciando 1..n plantas, papel
+de cada componente (vocabulário SKOS-XL), nome próprio do composto, classificação de acesso sobre a
+composição (a receita pode ser `sacred` com componentes `public`), compatibilidade retroativa,
+travessia no harvest e Relato multi-planta (generaliza o K2 do ADR-015).
+
+**Decisão:** extensão aditiva — entidade de composição referenciando plantas por identificador estável;
+unidades ainda sem código absorvem como restrição de projeto.
+
+**[Leia o documento completo →](ADR-017-composicao-multiespecie.md)**
+
+---
+
 
 ## Template para Novos ADRs
 

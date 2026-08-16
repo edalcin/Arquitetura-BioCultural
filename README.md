@@ -219,6 +219,11 @@ Plataforma digital para preservação e organização do conhecimento etnobotân
 
 Documentar termos e conhecimentos de comunidades tradicionais brasileiras sobre plantas e animais, garantindo reconhecimento cultural, padronização terminológica e justiça na distribuição de benefícios. O padrão SKOS-XL viabiliza interoperabilidade com padrões de dados abertos (Linked Data, RDF) e integração com iniciativas como GBIF, SiBBr e Wikidata.
 
+Os rótulos SKOS-XL que a arquitetura propõe e usa — tipos (`prefLabel`/`altLabel`/`hiddenLabel`),
+metadados (idioma ISO 639-3, `accessLevel` CARE, proveniência), regras e exemplos de estudos de
+caso reais — estão consolidados na referência central
+**[docs/rotulos-skos-xl.md](docs/rotulos-skos-xl.md)**.
+
 **Características:**
 
 - **Gestão de Conceitos (SKOS-XL):**
@@ -380,6 +385,7 @@ Arquitetura-BioCultural/
 └── docs/
     ├── metodologia-e-tecnologias.md
     ├── contrato-harvest.md
+    ├── rotulos-skos-xl.md          ← referência central dos rótulos SKOS-XL
     ├── PrincipiosCAREnaPratica.md
     ├── v3.1-migration-progress.md
     ├── architecture-decisions/     ← ADR-001 … ADR-015
@@ -402,6 +408,8 @@ Arquitetura-BioCultural/
 7. **[Plano de elaboração da proposta de governança](governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
 8. **[Caracterização do Conhecimento Tradicional](conhecimento/caracterizacao-do-conhecimento-tradicional.md)** — estudo que distingue **Conhecimento** (a relação enunciada por quem a detém) de **Evidência** (a atestação por terceiros de que ela existe), e as consequências para a rotulagem SKOS-XL de nível de acesso; base do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
 9. **[Contrato de Harvest](docs/contrato-harvest.md)** — o payload da federação campo a campo: `regime`, nível efetivo de acesso, supressão declarada (`informationWithheld` / `dataGeneralizations`), rótulos culturais e vínculo entre registros de membros distintos. Decorre de K6 do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e supersede o payload do ADR-004 D6
+10. **[Rótulos SKOS-XL — Referência Central](docs/rotulos-skos-xl.md)** — todos os rótulos SKOS-XL que a arquitetura suporta, com descrição, regras e exemplos das curadorias reais (campanha "Tipos de Usos de Plantas"); normativo para as quatro unidades federadas e o Pluriverso
+11. **[ADR-017 — Composição Multi-Espécie](docs/architecture-decisions/ADR-017-composicao-multiespecie.md)** — a demanda de que usos, preparos e artefatos compostos por mais de uma planta (o Daime: jagube *Banisteriopsis caapi* + rainha *Psychotria viridis*) sejam representáveis em todas as ferramentas, com papel por componente e classificação de acesso sobre a combinação
 
 
 
