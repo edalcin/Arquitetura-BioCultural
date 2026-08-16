@@ -386,6 +386,7 @@ Arquitetura-BioCultural/
     ├── metodologia-e-tecnologias.md
     ├── contrato-harvest.md
     ├── rotulos-skos-xl.md          ← referência central dos rótulos SKOS-XL
+    ├── modelo-de-dados-unificado.md← UDM — objeto do acordo JBRJ ↔ USEFLORA
     ├── PrincipiosCAREnaPratica.md
     ├── v3.1-migration-progress.md
     ├── architecture-decisions/     ← ADR-001 … ADR-015
@@ -410,6 +411,7 @@ Arquitetura-BioCultural/
 9. **[Contrato de Harvest](docs/contrato-harvest.md)** — o payload da federação campo a campo: `regime`, nível efetivo de acesso, supressão declarada (`informationWithheld` / `dataGeneralizations`), rótulos culturais e vínculo entre registros de membros distintos. Decorre de K6 do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e supersede o payload do ADR-004 D6
 10. **[Rótulos SKOS-XL — Referência Central](docs/rotulos-skos-xl.md)** — todos os rótulos SKOS-XL que a arquitetura suporta, com descrição, regras e exemplos das curadorias reais (campanha "Tipos de Usos de Plantas"); normativo para as quatro unidades federadas e o Pluriverso
 11. **[ADR-017 — Composição Multi-Espécie](docs/architecture-decisions/ADR-017-composicao-multiespecie.md)** — a demanda de que usos, preparos e artefatos compostos por mais de uma planta (o Daime: jagube *Banisteriopsis caapi* + rainha *Psychotria viridis*) sejam representáveis em todas as ferramentas, com papel por componente e classificação de acesso sobre a combinação
+12. **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)** — o contrato lógico de dados de toda a arquitetura num documento único: princípios, entidades, documento canônico JSON, obrigatoriedade de campos, interoperabilidade (Darwin Core/DwC-DP, SKOS-XL) e checklist de conformidade; **objeto do acordo de cooperação técnica entre o JBRJ e o USEFLORA**
 
 
 

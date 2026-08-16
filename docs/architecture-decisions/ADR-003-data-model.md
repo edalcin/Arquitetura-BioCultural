@@ -135,6 +135,26 @@ Entidade central que representa um item de conhecimento tradicional.
 > *Banisteriopsis caapi* + *Psychotria viridis*; garrafadas; artefatos multi-material). O ADR-017
 > registra a demanda e os requisitos R1–R7: composição como entidade referenciando 1..n plantas, com
 > papel por componente, nome próprio do composto e classificação de acesso sobre a combinação.
+>
+> **Persistência e engine — atualizado pelo [ADR-005](ADR-005-sqlite-json-persistence.md) e
+> [ADR-008](ADR-008-pluriverso-database-engine.md).** O modelo abaixo é um **documento JSON** e
+> permanece o contrato lógico da arquitetura, **independente de engine**. O que mudou é onde ele
+> vive: a persistência deixou de ser MongoDB (ADR-001, depreciado) e passou a ser **SQLite com
+> JSON1** — um documento JSON por linha (`id TEXT PRIMARY KEY, doc TEXT CHECK (json_valid(doc))`),
+> índices por colunas geradas, busca por FTS5, **um único arquivo por Unidade Federada** (ADR-005
+> DA1/DA2/DA4; Pluriverso idem, ADR-008). Nada da estrutura JSON deste ADR é invalidado pela troca
+> de engine.
+>
+> Duas atualizações decorrentes, além das notas acima:
+> - **Todos** os códigos de idioma dos exemplos (`pt-BR`, `en`, `es` — em `commonNames`,
+>   `description`, preferências e §Multilinguagem) leem-se como **ISO 639-3** (`por`, `eng`, `spa`),
+>   pela mesma regra K5 do ADR-015 que a nota acima aplica a `metadata.language`.
+> - `permissions.visibility` permanece campo **interno** da unidade; no payload da federação ele
+>   **não existe mais** — o harvest carrega `regime` + `accessLevel` efetivo + supressão declarada
+>   ([ADR-016](ADR-016-contrato-de-harvest.md)).
+>
+> A consolidação de tudo isto num contrato único está no
+> **[Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md)**.
 
 ```javascript
 {
