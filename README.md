@@ -43,6 +43,20 @@ O documento organiza a governança em **três camadas**, cada uma com sua instâ
 
 📄 **[Ler a Proposta de Governança completa →](governanca/propostaGovernanca.md)**
 
+## 🧬 Modelo de Dados Unificado (UDM)
+
+Toda a arquitetura — e as ferramentas que a implementam — compartilha um único contrato lógico de dados: o **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)**. É o documento que consolida, num contrato único e citável, o que hoje está distribuído entre o ADR-003 e suas retificações (ADR-005/008 de persistência; ADR-014/015/016/017 de vocabulário, regime enunciativo, harvest e composição) — e é o **objeto técnico do acordo de cooperação entre o Instituto de Pesquisas Jardim Botânico do Rio de Janeiro (JBRJ) e o USEFLORA**.
+
+**O que o UDM define:**
+
+- Um **documento JSON** autocontido e independente de engine — persistido, na implementação de referência, em SQLite+JSON1 (ADR-005)
+- **Regime Enunciativo**, **Relato** e três níveis de rotulagem de acesso (Termo/Relato/Registro), com nível efetivo sempre o mais restritivo
+- **Composição multi-espécie**: usos, preparos e artefatos com 1..n plantas e papel por componente (ADR-017)
+- Interoperabilidade mapeada com **Darwin Core**, **DwC-DP** e o vocabulário **SKOS-XL** do BioCultTermos
+- Um **checklist de conformidade (C1–C10)** pelo qual qualquer ferramenta — interna ou externa à federação — declara aderência ao contrato
+
+📄 **[Ler o Modelo de Dados Unificado completo →](docs/modelo-de-dados-unificado.md)**
+
 ---
 
 ## Motivação e Justificativa
