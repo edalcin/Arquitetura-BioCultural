@@ -34,12 +34,13 @@ A pesquisa combina três frentes: (i) construção conceitual (modelo de dados u
 
 O problema tem, portanto, duas faces inseparáveis. A primeira é de **representação**: o domínio do CTA se manifesta em enunciados de detentores, em atestações de terceiros, em acervos, em obras históricas e em registros de campo, e nenhum padrão vigente o descreve sem perda. A segunda é de **garantia**: representar bem não basta se a autoridade da comunidade detentora sobre o registro depender da política de uso da instituição custodiante, e não da própria arquitetura. Os princípios C.A.R.E. e a repartição de benefícios da Lei 13.123/2015 só são plenos quando têm consequência técnica verificável — campo, contrato e topologia — e não apenas cláusula declarada.
 
-O problema desdobra-se em quatro dificuldades concretas:
+O problema desdobra-se em cinco dificuldades concretas:
 
-1. **Dispersão heterogênea.** Quatro tipos de fonte (artigos científicos, registro primário de campo, acervos museológicos, obras de naturalistas dos séculos XVII–XIX) exigem processos de aquisição e curadoria distintos, mas precisam de um contrato de dados comum para serem relacionáveis.
-2. **Assimetria de autoridade.** Um registro sobre conhecimento tradicional produzido por um terceiro é hoje governado por esse terceiro. Nenhum padrão vigente distingue formalmente *quem fala* — e é *quem fala* que deveria decidir a classificação de acesso.
-3. **Vazio normativo dos dados coletivos.** A LGPD protege o titular individual; a Lei 13.123/2015 atribui titularidade coletiva ao CTA. Os dois regimes não conversam, e nenhuma implementação conhecida resolve a lacuna.
-4. **Desconfiança historicamente fundamentada.** Há casos documentados de apropriação indevida (cupuaçu, ayahuasca, jaborandi, espinheira-santa, Hoodia, nim, cúrcuma, quinoa, açaí). Qualquer proposta de base de dados de CTA precisa demonstrar, tecnicamente, o que **não** consegue impedir.
+1. **Ausência de proposta concreta e testada.** Não existe, na literatura científica e acadêmica, proposta de estrutura de dados concreta e testada que represente com precisão e robustez a complexidade do conjunto **dado, informação e conhecimento** tradicional associado à biodiversidade, em suas diferentes manifestações, em diferentes culturas, línguas e povos — cada qual com sua visão de mundo única. O que existe são padrões parciais (ocorrência, uso, metadado bibliográfico) e implementações institucionais fechadas, nenhuma validada como estrutura de representação desse conjunto.
+2. **Dispersão heterogênea.** Quatro tipos de fonte (artigos científicos, registro primário de campo, acervos museológicos, obras de naturalistas dos séculos XVII–XIX) exigem processos de aquisição e curadoria distintos, mas precisam de um contrato de dados comum para serem relacionáveis.
+3. **Assimetria de autoridade.** Um registro sobre conhecimento tradicional produzido por um terceiro é hoje governado por esse terceiro. Nenhum padrão vigente distingue formalmente *quem fala* — e é *quem fala* que deveria decidir a classificação de acesso.
+4. **Vazio normativo dos dados coletivos.** A LGPD protege o titular individual; a Lei 13.123/2015 atribui titularidade coletiva ao CTA. Os dois regimes não conversam, e nenhuma implementação conhecida resolve a lacuna.
+5. **Desconfiança historicamente fundamentada.** Há casos documentados de apropriação indevida (cupuaçu, ayahuasca, jaborandi, espinheira-santa, Hoodia, nim, cúrcuma, quinoa, açaí). Qualquer proposta de base de dados de CTA precisa demonstrar, tecnicamente, o que **não** consegue impedir.
 
 ---
 
