@@ -5,7 +5,15 @@
 **Proponente:** Eduardo Dalcin — Instituto de Pesquisas Jardim Botânico do Rio de Janeiro (JBRJ)
 **Versão do documento:** 1.0 (primeira formalização como projeto de pesquisa)
 **Data:** 2026-08-19
-**Estado da produção técnica:** Arquitetura v3.5 publicada (DOI [10.5281/zenodo.21738427](https://doi.org/10.5281/zenodo.21738427)); repositório de arquitetura em v3.10.0
+**Estado da produção técnica:**
+- **Arquitetura:** v3.5 publicada e citável (DOI [10.5281/zenodo.21738427](https://doi.org/10.5281/zenodo.21738427)); repositório em v3.10.0; 17 ADRs (ADR-015 e ADR-016 em estado *Proposto*, demais *Aceitos*); diagramas C4 de contexto, contêiner e componente (letra desatualizada desde a ADR-016).
+- **BioCultDB** (unidade de fontes secundárias): em produção, com três interfaces (Aquisição, Curadoria, Apresentação), extração de metadados de PDF por IA (absorveu o BioCultPapers, ADR-011), painel analítico e etnoChat.
+- **BioCultTermos** (módulo SKOS-XL compartilhado): implementado, com API REST e exportação RDF/JSON-LD/Dublin Core/CSV; em produção apenas como módulo hospedado no BioCultDB.
+- **BioCultRelatos** (unidade de registro primário, CLPI): fase inicial.
+- **BioCultAcervos** (acervos museológicos e históricos): repositório e documentação apenas.
+- **BioCultNaturalistas** (obras dos séculos XVII–XIX): planejamento completo (cinco entidades, roadmap de 7 fases); código não iniciado.
+- **Pluriverso** (middleware de federação): planejamento completo (stack, API, contrato de harvest, C4, roadmap de 7 fases); código não iniciado.
+- **Documentação normativa concluída:** Modelo de Dados Unificado (UDM) com checklist de conformidade C1–C10; caracterização Conhecimento × Evidência; contrato de harvest campo a campo com dez cenários de aceitação; referência de rótulos SKOS-XL; Proposta de Governança em três camadas (em consulta); glossário federado (`CONTEXT.md`); levantamento de iniciativas correlatas.
 **Origem:** proposta inicial de "Base de Dados de Plantas Medicinais" (jan/2024, com Dra. Viviane Fonseca), sucessivamente corrigida até a arquitetura federada atual
 
 ---
@@ -22,7 +30,9 @@ A pesquisa combina três frentes: (i) construção conceitual (modelo de dados u
 
 ## 2. Problema de pesquisa
 
-**Como registrar, documentar e compartilhar conhecimento tradicional associado à biodiversidade de modo que a autoridade da comunidade detentora sobre esse registro seja garantida pela própria arquitetura do sistema — e não apenas prometida por sua política de uso?**
+**Como conceber uma arquitetura de sistema, uma estrutura e padrões de dados que representem com precisão o domínio do conhecimento tradicional associado à biodiversidade — suas diferentes manifestações e fontes — e que, ao mesmo tempo, garantam em plenitude os princípios C.A.R.E. e a repartição justa e equitativa de benefícios prevista na legislação?**
+
+O problema tem, portanto, duas faces inseparáveis. A primeira é de **representação**: o domínio do CTA se manifesta em enunciados de detentores, em atestações de terceiros, em acervos, em obras históricas e em registros de campo, e nenhum padrão vigente o descreve sem perda. A segunda é de **garantia**: representar bem não basta se a autoridade da comunidade detentora sobre o registro depender da política de uso da instituição custodiante, e não da própria arquitetura. Os princípios C.A.R.E. e a repartição de benefícios da Lei 13.123/2015 só são plenos quando têm consequência técnica verificável — campo, contrato e topologia — e não apenas cláusula declarada.
 
 O problema desdobra-se em quatro dificuldades concretas:
 
@@ -45,17 +55,11 @@ O problema desdobra-se em quatro dificuldades concretas:
 
 ---
 
-## 4. Questões de pesquisa
+## 4. Questões emergentes
 
-| # | Questão | Estado |
-|---|---|---|
-| Q1 | Uma federação de unidades soberanas, sem base central de verdade, sustenta consulta integrada útil ao pesquisador? | Especificado; implementação do Pluriverso pendente |
-| Q2 | O regime enunciativo (Conhecimento × Evidência) é distinção operacionalizável em esquema de dados e em contrato de publicação? | Formalizado (ADR-015, ADR-016); validação pendente |
-| Q3 | Como identificar o detentor individual sem expor a pessoa, conciliando `assertionByID`, LGPD art. 11 e o direito ao reconhecimento (CARE A1 / Lei 13.123)? | **Aberto** — recomendação: pseudônimo escolhido pela própria pessoa |
-| Q4 | O que é sagrado deve desaparecer por inteiro do índice, ou pode restar visível que existe sem mostrar conteúdo? Quem diz, por todos, que um saber é sagrado? | **Aberto** — decisão da comunidade, não técnica |
-| Q5 | Quem autoriza a gravação de uma prática coletiva: cada participante ou o grupo? O que acontece quando um participante revoga depois? | **Aberto** — regra interina conservadora: a gravação inteira sai |
-| Q6 | Onde reside fisicamente a mídia soberana quando a comunidade tem dezenas de gravações de dezenas de MB e banda limitada? | **Aberto** — depende de infraestrutura real das comunidades |
-| Q7 | A repartição de benefícios pode ser tornada rastreável pela arquitetura, e não apenas declarada? | Especificado na proposta de governança; sem implementação |
+Este projeto não parte de um conjunto fechado de questões de pesquisa. Diversas questões surgirão ao longo da pesquisa, formuladas em especial pelas **comunidades tradicionais** e pela **academia**, à medida que a arquitetura for apresentada, consultada e usada. **Responder a essas questões e demandas é a essência deste projeto** — e é o que determina o que a arquitetura precisa passar a garantir.
+
+Questões já nomeadas em documentos técnicos permanecem registradas onde nasceram, com estado explícito: as ADRs mantêm suas questões abertas numeradas, e as pautas de validação comunitária estão listadas na seção 9.1. Nenhuma delas é tratada como decisão técnica quando a decisão pertence a quem detém o conhecimento.
 
 ---
 
@@ -63,18 +67,20 @@ O problema desdobra-se em quatro dificuldades concretas:
 
 ### 5.1 Objetivo geral
 
-Conceber, especificar, implementar e validar com comunidades detentoras uma arquitetura federada de informação para conhecimento tradicional associado à biodiversidade, na qual a soberania das comunidades sobre seus registros seja garantida por construção e verificável por terceiros.
+Conceber, especificar, implementar e validar com comunidades detentoras uma arquitetura de sistema — com estrutura e padrões de dados próprios — que represente com precisão o domínio do conhecimento tradicional associado à biodiversidade em suas diferentes manifestações e fontes, e que garanta por construção, de modo verificável por terceiros, os princípios C.A.R.E. e a repartição justa e equitativa de benefícios prevista na legislação.
 
 ### 5.2 Objetivos específicos
 
-1. **Caracterizar** conceitualmente a distinção entre Conhecimento e Evidência e suas consequências para a classificação de acesso.
-2. **Especificar** um Modelo de Dados Unificado (UDM), independente de engine, com checklist de conformidade verificável por ferramentas externas à federação.
-3. **Definir** o contrato de publicação (*harvest*) entre unidades federadas e middleware, com condição de aceitação testável.
-4. **Implementar** a unidade de referência (fontes secundárias) e o módulo de vocabulário controlado SKOS-XL compartilhado.
-5. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
-6. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
-7. **Validar** a arquitetura em piloto com comunidade detentora, incluindo processo de CLPI como ciclo revisável.
-8. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
+1. **Caracterizar** o domínio do CTA em suas diferentes manifestações e fontes, formalizando a distinção entre Conhecimento e Evidência e suas consequências para a classificação de acesso.
+2. **Especificar** um Modelo de Dados Unificado (UDM), independente de engine, que represente esse domínio sem perda e cuja conformidade seja verificável por ferramentas externas à federação.
+3. **Mapear** cada subprincípio C.A.R.E. e cada exigência da Lei 13.123/2015 ao componente técnico que o implementa, nomeando explicitamente os que ainda não têm implementação.
+4. **Definir** o contrato de publicação (*harvest*) entre unidades federadas e middleware, com condição de aceitação testável que faça da autoridade da comunidade um requisito do sistema.
+5. **Implementar** a unidade de referência (fontes secundárias) e o módulo de vocabulário controlado SKOS-XL compartilhado.
+6. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
+7. **Tornar rastreável pela arquitetura** — e não apenas declarada — a repartição de benefícios decorrente do uso dos registros.
+8. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
+9. **Validar** a arquitetura em piloto com comunidade detentora, incluindo processo de CLPI como ciclo revisável, e responder às questões que a consulta trouxer.
+10. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
 
 ---
 
@@ -165,7 +171,7 @@ Seis artigos de divulgação publicados (2024–2026) e dois artigos revisados p
 
 Seis pautas para a reunião com lideranças. Nada abaixo pode ser decidido no computador.
 
-1. **Como quem fala quer ser nomeado** (destrava Q3 e o esquema do Relato).
+1. **Como quem fala quer ser nomeado** (destrava o esquema do Relato: conciliar `assertionByID`, LGPD art. 11 e o direito ao reconhecimento previsto em CARE A1 e na Lei 13.123/2015).
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial — e quem tem legitimidade para dizê-lo por todos.
 3. **Vídeo Panará** — quatro pendências: CLPI não localizado; consentimento específico para imagem e voz; transcrição em `kre` inexistente; grafia não verificada com pesquisadores Panará.
 4. **O que não deve ser registrado** — para conhecimento sagrado, a decisão correta pode ser *não registrar*, e a plataforma tem obrigação de dizer isso.
@@ -194,7 +200,7 @@ Pendência imediata: escrever o roteiro das pautas 5 e 6, ainda inexistente.
 ### 9.4 Governança e formalização
 
 - Promover ADR-016 a *Aceito* (depende apenas de H-Q1 e do Comitê).
-- Promover ADR-015 a *Aceito* (depende de Q3–Q6 e da validação comunitária).
+- Promover ADR-015 a *Aceito* (depende da validação comunitária).
 - Constituir formalmente o Comitê Federado, com protocolo de admissão de membros.
 - Fechar as catorze lacunas nomeadas na proposta de governança.
 - Definir o licenciamento: código em licença permissiva OSI, documentação em CC BY 4.0, dados de CTA **fora** de licença aberta — porque licença aberta é irrevogável e o CLPI não pode ser.
@@ -235,7 +241,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 |---|---|
 | Validação comunitária não ocorrer no prazo, travando C, D e F | Regras interinas sempre conservadoras (o sagrado equivale a `private`; um participante revoga, a gravação inteira sai); ADR-016 desacoplada da ADR-015 para poder ser aceita antes |
 | Arquitetura federada não sustentar consulta integrada útil | Índice do Pluriverso com FTS5 e mapeamento SKOS; medição de utilidade no piloto |
-| Custo de armazenamento de mídia inviável para a comunidade | Questão Q6 explicitamente aberta; solução dependente da infraestrutura real, não presumida |
+| Custo de armazenamento de mídia inviável para a comunidade | Questão explicitamente aberta; solução dependente da infraestrutura real das comunidades, não presumida |
 | Dependência de serviço externo (Local Contexts Hub) | Identificador + cache do texto canônico; degradação para a última versão conhecida |
 | Reprodução de apropriação indevida apesar das salvaguardas | Sete salvaguardas documentadas **com o limite honesto de cada uma**; compromissos negativos explícitos |
 | Sobreposição com iniciativas governamentais | Posicionamento explícito de complementaridade; UDM oferecido como contrato adotável |
@@ -255,6 +261,7 @@ Dados de CTA não recebem licença aberta. Onde a decisão correta for **não re
 - **Proponente:** Eduardo Dalcin (JBRJ) — arquitetura, modelagem de dados, implementação.
 - **Parcerias institucionais:** JBRJ; USEFLORA (acordo de cooperação técnica tendo o UDM como objeto); FUNAI.
 - **Interlocução técnica e ética:** Dra. Viviane Fonseca (JBRJ), Lucas Zelesco (FUNAI), Comitê Gestor USEFLORA.
+- **Pós-graduação:** Luisa Ridolph e Camila Dantas, alunas da pós-graduação da Escola Nacional de Botânica Tropical (ENBT/JBRJ).
 - **Comunidades:** povo Panará (piloto planejado); demais comunidades a serem convidadas como unidades federadas soberanas.
 - **A constituir:** Comitê Federado, com representação de cada membro.
 
