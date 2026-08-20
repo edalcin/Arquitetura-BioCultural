@@ -259,12 +259,9 @@ Dados de CTA não recebem licença aberta. Onde a decisão correta for **não re
 
 ## 14. Equipe e parcerias
 
-- **Proponente:** Eduardo Dalcin (JBRJ) — arquitetura, modelagem de dados, implementação.
-- **Parcerias institucionais:** JBRJ; USEFLORA (acordo de cooperação técnica tendo o UDM como objeto); FUNAI.
-- **Interlocução técnica e ética:** Dra. Viviane Fonseca (JBRJ), Lucas Zelesco (FUNAI), Comitê Gestor USEFLORA.
-- **Pós-graduação:** Luisa Ridolph e Camila Dantas, alunas da pós-graduação da Escola Nacional de Botânica Tropical (ENBT/JBRJ).
-- **Comunidades:** povo Panará (piloto planejado); demais comunidades a serem convidadas como unidades federadas soberanas.
-- **A constituir:** Comitê Federado, com representação de cada membro.
+**Proponente:** Eduardo Dalcin (JBRJ)
+
+**Interlocução conceitual, técnica e ética:** Dra. Viviane Fonseca (JBRJ), Lucas Zelesco (FUNAI), Comitê Gestor USEFLORA, Luisa Ridolph (ENBT/JBRJ) e Camila Dantas (ENBT/JBRJ).
 
 ---
 
