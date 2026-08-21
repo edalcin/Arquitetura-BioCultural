@@ -188,4 +188,5 @@ Campos Semânticos (`sourceFields`). Estado atual e propostas:
 | Nível efetivo e supressão no harvest | [ADR-016](architecture-decisions/ADR-016-contrato-de-harvest.md) · [contrato-harvest.md](contrato-harvest.md) |
 | Composição multi-espécie (papéis, nome do composto) | [ADR-017](architecture-decisions/ADR-017-composicao-multiespecie.md) |
 | Nomenclatura científica fora do vocabulário | [ADR-014](architecture-decisions/ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md) |
+| Fundamentação teórica da extensão (reificação, axiomas S53–S57, ISO 25964) | [Entendendo os Rótulos no SKOS-XL](Entendendo-os-Rotulos-no-SKOS-XL.md) |
 | Padrão W3C | [SKOS-XL Reference](https://www.w3.org/TR/skos-reference/skos-xl.html) |
