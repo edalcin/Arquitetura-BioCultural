@@ -74,6 +74,8 @@ GUPTA, V. Traditional knowledge digital library. In: SUB-REGIONAL EXPERTS MEETIN
 
 TJIEK, T. et al. Desa informasi: The role of digital libraries in the preservation and dissemination of indigenous knowledge. *The International Information & Library Review*, v. 38, n. 3, p. 123–131, 2006.
 
+KOCK, S.; LLOPIS, J.C.; FERNÁNDEZ, M.; MORAES R., M.; FERNÁNDEZ-LLAMAZARES, Á. Characterizing tree species richness in indigenous peoples' lands: addressing often-overlooked data limitations and biases. *npj Biodiversity*, 2026. Disponível em: https://doi.org/10.1038/s44185-026-00153-6
+
 ---
 
 ## 7. Tecnologias Móveis para Coleta de Dados

@@ -46,7 +46,7 @@ O problema desdobra-se em cinco dificuldades concretas:
 
 ## 3. Justificativa
 
-**Científica.** Não há, no Brasil, modelo de dados publicado que trate a distinção Conhecimento × Evidência como propriedade de primeira classe do registro, com consequência operacional sobre a rotulagem de acesso. Os padrões de referência (Darwin Core, DwC-DP, SocioBio) tratam de ocorrência e de uso, não de regime enunciativo. A tabela `usage-policy` do DwC-DP, verificada na fonte primária, contém apenas campos de direito autoral — **nenhum** de protocolo cultural.
+**Científica.** Não há, no Brasil, modelo de dados publicado que trate a distinção Conhecimento × Evidência como propriedade de primeira classe do registro, com consequência operacional sobre a rotulagem de acesso. Os padrões de referência (Darwin Core, DwC-DP, SocioBio) tratam de ocorrência e de uso, não de regime enunciativo. A tabela `usage-policy` do DwC-DP, verificada na fonte primária, contém apenas campos de direito autoral — **nenhum** de protocolo cultural. Kock et al. (2026), ao caracterizar riqueza de espécies arbóreas em Terras Indígenas na Bolívia com Red List, GBIF e BBON, mostram empiricamente o mesmo vazio no domínio de ocorrência biológica: a maioria dos dados vem de instituições internacionais sem qualquer metadado sobre contribuição indígena, o que "complicates sensitive interpretation and weakens visibility of Indigenous knowledge systems" — evidência externa e quantificada de que nenhum padrão vigente, nem para CTA nem para ocorrência, registra formalmente *quem fala*.
 
 **Legal.** Lei 13.123/2015, Protocolo de Nagoya e CDB Art. 8(j) exigem consentimento, rastreabilidade de origem e participação dos detentores. A conformidade exige mecanismo técnico, não apenas cláusula contratual.
 
@@ -95,7 +95,7 @@ Conceber, especificar, implementar e validar com comunidades detentoras uma arqu
 | Padrões de dados | Darwin Core; DwC-DP (guia ratificado TDWG, 2026-04-17); Dublin Core; SKOS-XL (W3C); PROV-O; SocioBio (SiBBr) |
 | Arquitetura de sistemas | C4 Model (documentação); NIKMAS (África do Sul) — modelo dual artefato/metadado, nós distribuídos, catálogo de detentores; Mukurtu — coexistência de narrativas |
 | Tecnologias móveis e participação | CyberTracker; MAPEO |
-| Crítica etnobiológica | Zank et al. (2025); Pankararu et al. (2026) |
+| Crítica etnobiológica | Zank et al. (2025); Pankararu et al. (2026); Kock et al. (2026) — viés de proveniência em dados globais de ocorrência em Terras Indígenas |
 
 Referências completas em [`Referencias.md`](Referencias.md), norma ABNT NBR 6023:2018.
 
