@@ -36,6 +36,12 @@ PLINIAN Core: Standard for species information. Biodiversity Information Standar
 
 SIBBR. SocioBio: Padrão de Dados para Sociobiodiversidade. Disponível em: https://github.com/sibbr/sociobio
 
+MILES, A.; BECHHOFER, S. (ed.). SKOS Simple Knowledge Organization System Reference. W3C Recommendation, 18 ago. 2009. Disponível em: https://www.w3.org/TR/skos-reference/
+
+MILES, A.; BECHHOFER, S. (ed.). SKOS Simple Knowledge Organization System eXtension for Labels (SKOS-XL). W3C Recommendation, 18 ago. 2009. Disponível em: https://www.w3.org/TR/skos-reference/skos-xl.html
+
+ISAAC, A.; SUMMERS, E. (ed.). SKOS Simple Knowledge Organization System Primer. W3C Working Group Note, 18 ago. 2009. Disponível em: https://www.w3.org/TR/skos-primer/
+
 ---
 
 ## 4. Governança de Dados e Princípios

@@ -95,7 +95,8 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 | Governança de dados indígenas | Princípios C.A.R.E. (GIDA), em complemento — e tensão — com FAIR |
 | Rotulagem cultural | TK/BC Labels e Notices (Local Contexts Hub) |
 | Marco legal | Lei 13.123/2015; LGPD; Protocolo de Nagoya; CDB Art. 8(j); Convenção 169 OIT; UNDRIP; Decreto 8.750/2016 (29 categorias de comunidades) |
-| Padrões de dados | Darwin Core; DwC-DP (guia ratificado TDWG, 2026-04-17); Dublin Core; SKOS-XL (W3C); PROV-O; SocioBio (SiBBr) |
+| Padrões de dados | Darwin Core; DwC-DP (guia ratificado TDWG, 2026-04-17); Dublin Core; PROV-O; SocioBio (SiBBr) |
+| Organização do conhecimento | **SKOS** (*Simple Knowledge Organization System*, W3C Recommendation, 2009) — esquemas de conceitos, relações hierárquicas e associativas, mapeamento entre vocabulários; e **SKOS-XL** (*SKOS eXtension for Labels*) — o rótulo reificado como recurso, condição para atribuir a cada denominação sua língua (ISO 639-3), sua proveniência, seu nível de acesso e seu detentor. É essa extensão que torna representável o fato de um mesmo conceito ter nomes distintos em povos distintos, com regimes de acesso distintos |
 | Arquitetura de sistemas | C4 Model (documentação); NIKMAS (África do Sul) — modelo dual artefato/metadado, nós distribuídos, catálogo de detentores; Mukurtu — coexistência de narrativas |
 | Tecnologias móveis e participação | CyberTracker; MAPEO |
 | Crítica etnobiológica | Zank et al. (2025); Pankararu et al. (2026); Kock et al. (2026) — viés de proveniência em dados globais de ocorrência em Terras Indígenas |
