@@ -100,7 +100,7 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 | Arquitetura de sistemas | C4 Model (documentação); NIKMAS (África do Sul) — modelo dual artefato/metadado, nós distribuídos, catálogo de detentores; Mukurtu — coexistência de narrativas |
 | Crítica etnobiológica | Zank et al. (2025); Pankararu et al. (2026); Kock et al. (2026) — viés de proveniência em dados globais de ocorrência em Terras Indígenas |
 
-Referências completas em [`Referencias.md`](Referencias.md), norma ABNT NBR 6023:2018.
+Referências completas em [`Referencias.md`](../Referencias.md), norma ABNT NBR 6023:2018.
 
 ---
 
@@ -190,14 +190,14 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 
 | Documento | Caminho |
 |---|---|
-| Arquitetura completa (v3.5) | [`README.md`](README.md) |
-| Modelo de Dados Unificado | [`docs/modelo-de-dados-unificado.md`](docs/modelo-de-dados-unificado.md) |
-| Proposta de Governança | [`governanca/propostaGovernanca.md`](governanca/propostaGovernanca.md) |
-| Conhecimento × Evidência | [`conhecimento/caracterizacao-do-conhecimento-tradicional.md`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
-| Contrato de harvest | [`docs/contrato-harvest.md`](docs/contrato-harvest.md) |
-| Rótulos SKOS-XL | [`docs/rotulos-skos-xl.md`](docs/rotulos-skos-xl.md) |
-| Decisões arquiteturais (ADR-001…017) | [`docs/architecture-decisions/`](docs/architecture-decisions/) |
-| Metodologia e tecnologias | [`docs/metodologia-e-tecnologias.md`](docs/metodologia-e-tecnologias.md) |
-| Glossário federado | [`CONTEXT.md`](CONTEXT.md) |
-| Estado operacional e pendências | [`conhecimento/proximosPassos.md`](conhecimento/proximosPassos.md) |
-| Referências bibliográficas (ABNT) | [`Referencias.md`](Referencias.md) |
+| Arquitetura completa (v3.5) | [`README.md`](../README.md) |
+| Modelo de Dados Unificado | [`docs/modelo-de-dados-unificado.md`](modelo-de-dados-unificado.md) |
+| Proposta de Governança | [`governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md) |
+| Conhecimento × Evidência | [`conhecimento/caracterizacao-do-conhecimento-tradicional.md`](../conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
+| Contrato de harvest | [`docs/contrato-harvest.md`](contrato-harvest.md) |
+| Rótulos SKOS-XL | [`docs/rotulos-skos-xl.md`](rotulos-skos-xl.md) |
+| Decisões arquiteturais (ADR-001…017) | [`docs/architecture-decisions/`](architecture-decisions/) |
+| Metodologia e tecnologias | [`docs/metodologia-e-tecnologias.md`](metodologia-e-tecnologias.md) |
+| Glossário federado | [`CONTEXT.md`](../CONTEXT.md) |
+| Estado operacional e pendências | [`conhecimento/proximosPassos.md`](../conhecimento/proximosPassos.md) |
+| Referências bibliográficas (ABNT) | [`Referencias.md`](../Referencias.md) |

@@ -397,6 +397,8 @@ Arquitetura-BioCultural/
 │   ├── governanca-ciclo-clpi.svg/.png
 │   └── governanca-reparticao.svg/.png
 └── docs/
+    ├── projetoPesquisa.md          ← projeto de pesquisa formalizado
+    ├── anthropicProposal.md        ← proposta ao Anthropic AI for Science Program
     ├── metodologia-e-tecnologias.md
     ├── contrato-harvest.md
     ├── rotulos-skos-xl.md          ← referência central dos rótulos SKOS-XL
@@ -426,6 +428,7 @@ Arquitetura-BioCultural/
 10. **[Rótulos SKOS-XL — Referência Central](docs/rotulos-skos-xl.md)** — todos os rótulos SKOS-XL que a arquitetura suporta, com descrição, regras e exemplos das curadorias reais (campanha "Tipos de Usos de Plantas"); normativo para as quatro unidades federadas e o Pluriverso
 11. **[ADR-017 — Composição Multi-Espécie](docs/architecture-decisions/ADR-017-composicao-multiespecie.md)** — a demanda de que usos, preparos e artefatos compostos por mais de uma planta (o Daime: jagube *Banisteriopsis caapi* + rainha *Psychotria viridis*) sejam representáveis em todas as ferramentas, com papel por componente e classificação de acesso sobre a combinação
 12. **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)** — o contrato lógico de dados de toda a arquitetura num documento único: princípios, entidades, documento canônico JSON, obrigatoriedade de campos, interoperabilidade (Darwin Core/DwC-DP, SKOS-XL) e checklist de conformidade; **objeto do acordo de cooperação técnica entre o JBRJ e o USEFLORA**
+13. **[Projeto de Pesquisa](docs/projetoPesquisa.md)** — a formalização da arquitetura como projeto de pesquisa: problema, justificativa, objetivos, fundamentação, metodologia (*design science*), estudos de caso por unidade federada, cronograma por fases e resultados esperados
 
 
 
