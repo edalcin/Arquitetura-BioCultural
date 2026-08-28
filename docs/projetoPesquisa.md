@@ -24,7 +24,7 @@ O conhecimento tradicional associado à biodiversidade (CTA) brasileira existe e
 
 Este projeto investiga e constrói uma alternativa: uma **arquitetura federada** em que cada comunidade ou iniciativa opera uma unidade soberana (um contêiner, um arquivo SQLite, suas ferramentas), publica apenas o que decide publicar, e é integrada por um middleware de coleta (*Pluriverso*) que indexa exclusivamente o que foi explicitamente publicado. A hipótese central é que **soberania de dados é propriedade da arquitetura, não da política de uso** — e, portanto, é verificável, auditável e reversível.
 
-A pesquisa combina três frentes: (i) construção conceitual (modelo de dados unificado, regime enunciativo, vocabulário controlado SKOS-XL); (ii) implementação de referência em software livre (cinco ferramentas + middleware); e (iii) validação com iniciativas de sistematização de conhecimento tradicional associado à biodiversidade, por meio dos estudos de caso do projeto **USEFLORA** e do projeto GEF MCTI **"Entre-Ciências: Territórios de Saber em Diálogo"** (Componente 03, Produto 3.2.3).
+A pesquisa combina três frentes: (i) construção conceitual (modelo de dados unificado, regime enunciativo, vocabulário controlado SKOS-XL); (ii) implementação de referência em software livre (cinco ferramentas + middleware); e (iii) validação com iniciativas de sistematização de conhecimento tradicional associado à biodiversidade, por meio dos estudos de caso do projeto **USEFLORA**, do projeto GEF MCTI **"Entre-Ciências: Territórios de Saber em Diálogo"** (Componente 03, Produto 3.2.3) e de dois mestrados do PPG em Botânica da ENBT/JBRJ, um sobre obras históricas e exsicatas digitalizadas e outro sobre saberes locais em quintais.
 
 ---
 
@@ -83,7 +83,7 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 7. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
 8. **Tornar rastreável pela arquitetura** — e não apenas declarada — a repartição de benefícios decorrente do uso dos registros.
 9. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
-10. **Validar** a arquitetura junto às iniciativas de sistematização de CTA — estudos de caso do USEFLORA e do GEF MCTI "Entre-Ciências" — e responder às questões que a consulta trouxer.
+10. **Validar** a arquitetura junto às iniciativas de sistematização de CTA — estudos de caso do USEFLORA, do GEF MCTI "Entre-Ciências" e dos mestrados de Camila Nascimento Dantas (obras históricas e exsicatas digitalizadas) e Luisa Ridolph Tostes Braga (saberes locais em quintais de Silveiras, SP) — e responder às questões que a consulta trouxer.
 11. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
 
 ---
@@ -117,7 +117,7 @@ Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato �
 3. **Linguagem ubíqua.** Glossário federado único (`CONTEXT.md`) governa os termos que atravessam todos os repositórios; termos internos vivem no repositório da ferramenta.
 4. **Contrato antes de código.** O contrato de *harvest* é especificado campo a campo, com dez cenários de aceitação, antes da implementação das unidades que o cumprirão.
 5. **Implementação de referência.** Software livre, contêineres pequenos, dependências mínimas, persistência em arquivo único SQLite+JSON1 por unidade.
-6. **Validação por estudo de caso.** A arquitetura é submetida a iniciativas de sistematização de CTA — USEFLORA e GEF MCTI "Entre-Ciências" — como conjuntos de dados reais e como interlocução técnica: cada estudo de caso testa a conformidade do UDM, o contrato de *harvest* e a suficiência do vocabulário SKOS-XL. Pautas que dependem de decisão comunitária são levadas às iniciativas como perguntas abertas, não como decisões a ratificar.
+6. **Validação por estudo de caso.** A arquitetura é submetida a iniciativas de sistematização de CTA — USEFLORA, GEF MCTI "Entre-Ciências" e os dois mestrados descritos em 7.3 — como conjuntos de dados reais e como interlocução técnica: cada estudo de caso testa a conformidade do UDM, o contrato de *harvest* e a suficiência do vocabulário SKOS-XL. Pautas que dependem de decisão comunitária são levadas às iniciativas como perguntas abertas, não como decisões a ratificar.
 
 ### 7.3 Estudos de caso por unidade
 
