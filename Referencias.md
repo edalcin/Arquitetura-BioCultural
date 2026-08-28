@@ -76,6 +76,8 @@ TJIEK, T. et al. Desa informasi: The role of digital libraries in the preservati
 
 KOCK, S.; LLOPIS, J.C.; FERNÁNDEZ, M.; MORAES R., M.; FERNÁNDEZ-LLAMAZARES, Á. Characterizing tree species richness in indigenous peoples' lands: addressing often-overlooked data limitations and biases. *npj Biodiversity*, 2026. Disponível em: https://doi.org/10.1038/s44185-026-00153-6
 
+FONSECA-KRUEL, V.S.; COIMBRA JR., C.E.A.; SILVA, L.A.E.; OLIVEIRA, F.A.; MESQUITA, M.P.V.; TANIGUCHI, M.; FORZZA, R.C. Connecting tradition and technology: The digitization of the ethnobotanical collection at the Rio de Janeiro Botanical Garden. *Plants, People, Planet*, v. 8, n. 4, p. 1104–1115, 2026. Disponível em: https://doi.org/10.1002/ppp3.70105
+
 ---
 
 ## 7. Tecnologias Móveis para Coleta de Dados

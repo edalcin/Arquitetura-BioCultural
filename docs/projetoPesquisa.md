@@ -24,7 +24,7 @@ O conhecimento tradicional associado à biodiversidade (CTA) brasileira existe e
 
 Este projeto investiga e constrói uma alternativa: uma **arquitetura federada** em que cada comunidade ou iniciativa opera uma unidade soberana (um contêiner, um arquivo SQLite, suas ferramentas), publica apenas o que decide publicar, e é integrada por um middleware de coleta (*Pluriverso*) que indexa exclusivamente o que foi explicitamente publicado. A hipótese central é que **soberania de dados é propriedade da arquitetura, não da política de uso** — e, portanto, é verificável, auditável e reversível.
 
-A pesquisa combina três frentes: (i) construção conceitual (modelo de dados unificado, regime enunciativo, vocabulário controlado SKOS-XL); (ii) implementação de referência em software livre (cinco ferramentas + middleware); e (iii) validação com comunidades tradicionais, com um piloto planejado junto ao povo Panará.
+A pesquisa combina três frentes: (i) construção conceitual (modelo de dados unificado, regime enunciativo, vocabulário controlado SKOS-XL); (ii) implementação de referência em software livre (cinco ferramentas + middleware); e (iii) validação com iniciativas de sistematização de conhecimento tradicional associado à biodiversidade, por meio dos estudos de caso do projeto **USEFLORA** e do projeto GEF MCTI **"Entre-Ciências: Territórios de Saber em Diálogo"** (Componente 03, Produto 3.2.3).
 
 ---
 
@@ -48,6 +48,8 @@ O problema desdobra-se em cinco dificuldades concretas:
 
 **Científica.** Não há, no Brasil, modelo de dados publicado que trate a distinção Conhecimento × Evidência como propriedade de primeira classe do registro, com consequência operacional sobre a rotulagem de acesso. Os padrões de referência (Darwin Core, DwC-DP, SocioBio) tratam de ocorrência e de uso, não de regime enunciativo. A tabela `usage-policy` do DwC-DP, verificada na fonte primária, contém apenas campos de direito autoral — **nenhum** de protocolo cultural. Kock et al. (2026), ao caracterizar riqueza de espécies arbóreas em Terras Indígenas na Bolívia com Red List, GBIF e BBON, mostram empiricamente o mesmo vazio no domínio de ocorrência biológica: a maioria dos dados vem de instituições internacionais sem qualquer metadado sobre contribuição indígena, o que "complicates sensitive interpretation and weakens visibility of Indigenous knowledge systems" — evidência externa e quantificada de que nenhum padrão vigente, nem para CTA nem para ocorrência, registra formalmente *quem fala*.
 
+**Harmonização de iniciativas dispersas.** Uma arquitetura capaz de tratar, sob um contrato de dados comum, as quatro naturezas de fonte de CTA — artigos científicos, trabalho de campo junto às comunidades, coleções e acervos etnobiológicos, e registros de naturalistas — permite harmonizar iniciativas hoje dispersas e mutuamente ilegíveis. O ganho é concreto e imediato: alunos de pós-graduação, projetos de pesquisa e programas institucionais passam a consolidar dados e informações numa plataforma aberta e interoperável, em vez de em planilhas e bases isoladas que morrem com o projeto. O resultado é um corpo de dados robusto e rastreável até a fonte — condição para que a governança do CTA e a repartição justa e equitativa de benefícios possam ser exercidas sobre evidência, e não sobre estimativa.
+
 **Legal.** Lei 13.123/2015, Protocolo de Nagoya e CDB Art. 8(j) exigem consentimento, rastreabilidade de origem e participação dos detentores. A conformidade exige mecanismo técnico, não apenas cláusula contratual.
 
 **Ética.** Os princípios C.A.R.E. (Collective Benefit, Authority to Control, Responsibility, Ethics) só se tornam auditáveis quando mapeados, subprincípio a subprincípio, ao componente de software que os implementa — inclusive os que ainda não têm implementação.
@@ -60,7 +62,7 @@ O problema desdobra-se em cinco dificuldades concretas:
 
 Este projeto não parte de um conjunto fechado de questões de pesquisa. Diversas questões surgirão ao longo da pesquisa, formuladas em especial pelas **comunidades tradicionais** e pela **academia**, à medida que a arquitetura for apresentada, consultada e usada. **Responder a essas questões e demandas é a essência deste projeto** — e é o que determina o que a arquitetura precisa passar a garantir.
 
-Questões já nomeadas em documentos técnicos permanecem registradas onde nasceram, com estado explícito: as ADRs mantêm suas questões abertas numeradas, e as pautas de validação comunitária estão listadas na seção 9.1. Nenhuma delas é tratada como decisão técnica quando a decisão pertence a quem detém o conhecimento.
+Questões já nomeadas em documentos técnicos permanecem registradas onde nasceram, com estado explícito: as ADRs mantêm suas questões abertas numeradas. Nenhuma delas é tratada como decisão técnica quando a decisão pertence a quem detém o conhecimento.
 
 ---
 
@@ -68,7 +70,7 @@ Questões já nomeadas em documentos técnicos permanecem registradas onde nasce
 
 ### 5.1 Objetivo geral
 
-Conceber, especificar, implementar e validar com comunidades detentoras uma arquitetura de sistema — com estrutura e padrões de dados próprios — que represente com precisão o domínio do conhecimento tradicional associado à biodiversidade em suas diferentes manifestações e fontes, e que garanta por construção, de modo verificável por terceiros, os princípios C.A.R.E. e a repartição justa e equitativa de benefícios prevista na legislação.
+Conceber, especificar, implementar e validar com iniciativas de sistematização de conhecimento tradicional associado à biodiversidade uma arquitetura de sistema — com estrutura e padrões de dados próprios — que represente com precisão o domínio do conhecimento tradicional associado à biodiversidade em suas diferentes manifestações e fontes, e que garanta por construção, de modo verificável por terceiros, os princípios C.A.R.E. e a repartição justa e equitativa de benefícios prevista na legislação.
 
 ### 5.2 Objetivos específicos
 
@@ -76,12 +78,13 @@ Conceber, especificar, implementar e validar com comunidades detentoras uma arqu
 2. **Especificar** um Modelo de Dados Unificado (UDM), independente de engine, que represente esse domínio sem perda e cuja conformidade seja verificável por ferramentas externas à federação.
 3. **Mapear** cada subprincípio C.A.R.E. e cada exigência da Lei 13.123/2015 ao componente técnico que o implementa, nomeando explicitamente os que ainda não têm implementação.
 4. **Definir** o contrato de publicação (*harvest*) entre unidades federadas e middleware, com condição de aceitação testável que faça da autoridade da comunidade um requisito do sistema.
-5. **Implementar** a unidade de referência (fontes secundárias) e o módulo de vocabulário controlado SKOS-XL compartilhado.
-6. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
-7. **Tornar rastreável pela arquitetura** — e não apenas declarada — a repartição de benefícios decorrente do uso dos registros.
-8. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
-9. **Validar** a arquitetura em piloto com comunidade detentora, incluindo processo de CLPI como ciclo revisável, e responder às questões que a consulta trouxer.
-10. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
+5. **Prospectar e avaliar** as tecnologias capazes de suportar a implementação da arquitetura — engines de persistência, formatos de serialização semântica, mecanismos de busca federada, empacotamento e distribuição, e acesso móvel *offline-first* — com critérios explícitos de soberania, custo de operação e dependência mínima.
+6. **Implementar** a unidade de referência (fontes secundárias) e o módulo de vocabulário controlado SKOS-XL compartilhado.
+7. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
+8. **Tornar rastreável pela arquitetura** — e não apenas declarada — a repartição de benefícios decorrente do uso dos registros.
+9. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
+10. **Validar** a arquitetura junto às iniciativas de sistematização de CTA — estudos de caso do USEFLORA e do GEF MCTI "Entre-Ciências" — e responder às questões que a consulta trouxer.
+11. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
 
 ---
 
@@ -105,7 +108,7 @@ Referências completas em [`Referencias.md`](Referencias.md), norma ABNT NBR 602
 
 ### 7.1 Natureza
 
-Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato — arquitetura, modelo de dados e implementação de referência — é simultaneamente o resultado e o instrumento de investigação. A validação é feita por conformidade especificada, por implementação executável e por consulta às comunidades detentoras.
+Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato — arquitetura, modelo de dados e implementação de referência — é simultaneamente o resultado e o instrumento de investigação. A validação é feita por conformidade especificada, por implementação executável e por consulta à iniciativas de sistematização de conhecimento tradicional associado à biodiversidade. Nenhuma validação desta pesquisa é feita por comunidades tradicionais: a interlocução com comunidades pertence às iniciativas que já a mantêm, e é por meio delas que as questões comunitárias chegam à arquitetura.
 
 ### 7.2 Procedimentos
 
@@ -114,9 +117,27 @@ Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato �
 3. **Linguagem ubíqua.** Glossário federado único (`CONTEXT.md`) governa os termos que atravessam todos os repositórios; termos internos vivem no repositório da ferramenta.
 4. **Contrato antes de código.** O contrato de *harvest* é especificado campo a campo, com dez cenários de aceitação, antes da implementação das unidades que o cumprirão.
 5. **Implementação de referência.** Software livre, contêineres pequenos, dependências mínimas, persistência em arquivo único SQLite+JSON1 por unidade.
-6. **Validação participativa.** Pautas levadas às lideranças comunitárias como perguntas abertas, não como decisões a ratificar; piloto com o povo Panará.
+6. **Validação por estudo de caso.** A arquitetura é submetida a iniciativas de sistematização de CTA — USEFLORA e GEF MCTI "Entre-Ciências" — como conjuntos de dados reais e como interlocução técnica: cada estudo de caso testa a conformidade do UDM, o contrato de *harvest* e a suficiência do vocabulário SKOS-XL. Pautas que dependem de decisão comunitária são levadas às iniciativas como perguntas abertas, não como decisões a ratificar.
 
-### 7.3 Decisões arquiteturais estruturantes
+### 7.3 Estudos de caso por unidade
+
+Cada unidade da federação tem um estudo de caso próprio, que fornece o conjunto de dados real, os requisitos de visualização e a crítica de usabilidade que orientam sua especificação. Nenhuma unidade é projetada sobre requisito presumido.
+
+| Unidade | Estudo de caso | Origem |
+|---|---|---|
+| **BioCultDB** (fontes secundárias) | Subconjunto de dados de CTA do **USEFLORA** e literatura acadêmica; curadoria do Campo Semântico "Tipos de Usos de Plantas" (713 termos brutos → 332 conceitos SKOS-XL) | Acordo de Cooperação Técnica JBRJ ↔ USEFLORA |
+| **BioCultNaturalistas** (obras dos séc. XVII–XIX) | **"Da Obra Histórica à Exsicata Digital: A Salvaguarda do Conhecimento Biocultural e a Resiliência do Uso de Plantas no Brasil"** — mestrado de Camila Nascimento Dantas (orientação Dra. Viviane Stern da Fonseca-Kruel) | PPG em Botânica, ENBT/JBRJ; iniciado no âmbito do Projeto CESP/GBIF ID 015-2024 |
+| **BioCultRelatos** (registro primário, CLPI) | **"O Uso de Plantas Medicinais e os Saberes Locais em Quintais de Silveiras (SP): diante de desafios climáticos e socioeconômicos no entorno da Serra da Bocaina"** — mestrado de Luisa Ridolph Tostes Braga (orientação Dra. Viviane Stern da Fonseca-Kruel; coorientação Dr. Nivaldo Peroni) | PPG em Botânica, ENBT/JBRJ |
+| **BioCultAcervos** (acervos museológicos) | **Coleção Etnobotânica do JBRJ (RBetno)** — acervo de matérias-primas e artefatos vegetais registrado no *Index Herbariorum* desde 2012, catalogado no sistema Jabot, com digitalização 2D descrita em Fonseca-Kruel et al. (2026) | Coleções do JBRJ |
+| **Pluriverso** (middleware) | Federação das unidades acima mais o **GEF MCTI "Entre-Ciências"** (Componente 03, Produto 3.2.3) como consumidor de dados harmonizados | RNP / IEB / JBRJ |
+
+**O que cada mestrado exige da arquitetura.** O trabalho de Camila Dantas sistematiza as espécies registradas em comum na *Historia Naturalis Brasiliae* (Piso & Marcgrave, 1648) e no *Systema Materiae Medicae Vegetabilis Brasiliensis* (Martius, 1843), confronta-as com exsicatas de metadados etnobotânicos em repositórios digitalizados (JABOT, Reflora) e cruza as localidades em SIG com Territórios Tradicionais e Unidades de Conservação. Disso decorrem requisitos diretos do **BioCultNaturalistas**: nomenclatura pré-linneana transposta para o sistema binomial sem perder a grafia original; nomes vernaculares rastreados na persistência, variação ou substituição entre séculos; atribuição de autoria aos detentores silenciados sob a homogeneização linguística do "tupi" — que é exatamente o problema do regime enunciativo (ADR-015) aplicado à fonte histórica; e evidência física (exsicata) ligada ao enunciado de uso. Hoje esses dados são mantidos em plataforma externa (GRIST), o que torna o mestrado também um teste de migração e de conformidade do UDM.
+
+O trabalho de Luisa Ridolph inventaria o Conhecimento Ecológico Local sobre plantas medicinais em quintais de Silveiras (SP) — município integralmente decretado APA, portal de entrada do PARNA Serra da Bocaina, altitudes de 615 a 1.800 m — por entrevistas semiestruturadas em amostragem estratificada, sob TCLE, aprovação da CONEP (Resolução CNS 466/2012) e submissão ao SisGen, com devolutiva dos resultados à comunidade. Disso decorrem requisitos diretos do **BioCultRelatos**: registro primário enunciado por quem detém o conhecimento (indicação de uso, modo de preparo, dosagem, contraindicação); consentimento como ciclo revisável, e não como formulário; dado sociodemográfico do participante sob LGPD convivendo com titularidade coletiva do CTA; coordenada de quintal como dado sensível; e devolutiva como função da própria ferramenta, não como anexo do projeto.
+
+Os dois mestrados cumprem, além do papel de fonte de requisitos, a função descrita na justificativa: são o caso concreto de trabalho de pós-graduação que consolida dados numa plataforma aberta e interoperável, em vez de em base isolada que termina com a dissertação.
+
+### 7.4 Decisões arquiteturais estruturantes
 
 | Decisão | Consequência de pesquisa |
 |---|---|
@@ -130,134 +151,34 @@ Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato �
 
 ---
 
-## 8. O que já foi realizado
+## 8. Cronograma por fases
 
-### 8.1 Produção conceitual e normativa
-
-| Produto | Estado |
-|---|---|
-| Arquitetura v3.5, publicada e citável (DOI Zenodo) | Concluído |
-| Modelo de Dados Unificado (UDM) — documento JSON canônico, interoperabilidade DwC/DwC-DP/SKOS-XL, checklist de conformidade C1–C10 | Concluído; objeto do acordo JBRJ ↔ USEFLORA |
-| Caracterização Conhecimento × Evidência, com caso Panará modelado | Concluído |
-| ADR-015 — regime enunciativo e três níveis de rotulagem de acesso (K1–K8) | Proposto |
-| ADR-016 — contrato de harvest (H1–H4) | Proposto; depende de uma única questão comunitária (H-Q1) |
-| Contrato de harvest campo a campo, com dez cenários de aceitação | Concluído |
-| Referência central de rótulos SKOS-XL (tipos, ISO 639-3, `accessLevel`, proveniência) | Concluído |
-| Proposta de Governança em três camadas, com marco legal artigo por artigo, sete salvaguardas com seus limites honestos, compromissos negativos e catorze lacunas nomeadas | Proposta para consulta |
-| Glossário federado (`CONTEXT.md`) | Concluído |
-| Diagramas C4 (contexto, contêiner, componente) | Concluído (letra desatualizada desde ADR-016) |
-| Levantamento de iniciativas correlatas (GEF Entre-Ciências, RCS, SISGEN, USEFLORA) | Concluído |
-
-### 8.2 Produção de software
-
-| Componente | Estado |
-|---|---|
-| **BioCultDB** — unidade de fontes secundárias, três interfaces (Aquisição, Curadoria, Apresentação), 29 classificações de comunidade, painel analítico, etnoChat | **Em produção** |
-| **Extração por IA** — extração de metadados de PDF no navegador, com provedor configurável; absorve o extinto BioCultPapers (ADR-011) | Implementado |
-| **BioCultTermos** — módulo SKOS-XL compartilhado, exportação RDF/JSON-LD/Dublin Core/CSV, API REST | Implementado; em produção apenas no BioCultDB |
-| **BioCultRelatos** — unidade de fonte primária (CLPI) | Fase inicial |
-| **BioCultAcervos** — unidade de acervos históricos e museológicos | Repositório e documentação apenas |
-| **BioCultNaturalistas** — unidade de obras de naturalistas (séc. XVII–XIX) | Planejamento completo (cinco entidades, roadmap de 7 fases); código não iniciado |
-| **Pluriverso** — middleware de federação | Planejamento completo (stack, API, contrato, C4, roadmap de 7 fases); código não iniciado |
-
-### 8.3 Divulgação
-
-Seis artigos de divulgação publicados (2024–2026) e dois artigos revisados por pares com participação do proponente: Pankararu et al. (2026), *npj Biodiversity*; e o debate aberto por Zank et al. (2025), *Journal of Ethnobiology and Ethnomedicine*.
-
----
-
-## 9. O que falta fazer
-
-### 9.1 Caminho crítico — validação comunitária
-
-Seis pautas para a reunião com lideranças. Nada abaixo pode ser decidido no computador.
-
-1. **Como quem fala quer ser nomeado** (destrava o esquema do Relato: conciliar `assertionByID`, LGPD art. 11 e o direito ao reconhecimento previsto em CARE A1 e na Lei 13.123/2015).
-2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial — e quem tem legitimidade para dizê-lo por todos.
-3. **Vídeo Panará** — quatro pendências: CLPI não localizado; consentimento específico para imagem e voz; transcrição em `kre` inexistente; grafia não verificada com pesquisadores Panará.
-4. **O que não deve ser registrado** — para conhecimento sagrado, a decisão correta pode ser *não registrar*, e a plataforma tem obrigação de dizer isso.
-5. **Gravações de prática e oficinas coletivas** — quem autoriza; decisão individual ou do grupo; o que acontece na revogação posterior de um participante.
-6. **O que é sagrado, e o que acontece com ele** (H-Q1 da ADR-016).
-
-Pendência imediata: escrever o roteiro das pautas 5 e 6, ainda inexistente.
-
-### 9.2 Decisões técnicas pendentes (não vão à reunião)
-
-- Rótulos culturais: consultar a API do Local Contexts Hub a cada acesso, copiar localmente, ou guardar identificador + cache do texto canônico (recomendada). Texto de Notice nunca é editável.
-- Fila de curadoria para registros com língua `und`, sob pena de o estado transitório virar final por inércia.
-
-### 9.3 Implementação pendente
-
-| Frente | O que falta |
-|---|---|
-| BioCultDB | Materializar campos de acesso do ADR-003 (`visibility`, `restrictions`, `permissions`), nunca criados em produção; atribuir `regime: evidencia` aos 29 registros existentes |
-| BioCultRelatos | Absorver K1–K8 e o contrato de harvest **antes da primeira linha de código**: mídia como registro primário, participantes de gravação coletiva com decisão de acesso própria, dez cenários de aceitação |
-| BioCultAcervos | Modelo de dados, contextos, integração com BioCultTermos, implementação |
-| BioCultNaturalistas | Executar o roadmap de 7 fases; remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) |
-| Pluriverso | Executar o roadmap de 7 fases: harvest, índice SQLite+FTS5, mapeamento SKOS entre vocabulários, API pública, autenticação do Comitê |
-| BioCultTermos | Integrar às três unidades hospedeiras restantes (padrão já documentado) |
-| Transversal | Integração taxonômica (Flora e Funga do Brasil, Fauna do Brasil, GBIF como *fallback*); integração territorial (Plataforma de Territórios Tradicionais do MPF); acesso móvel *offline-first* |
-
-### 9.4 Governança e formalização
-
-- Promover ADR-016 a *Aceito* (depende apenas de H-Q1 e do Comitê).
-- Promover ADR-015 a *Aceito* (depende da validação comunitária).
-- Constituir formalmente o Comitê Federado, com protocolo de admissão de membros.
-- Fechar as catorze lacunas nomeadas na proposta de governança.
-- Definir o licenciamento: código em licença permissiva OSI, documentação em CC BY 4.0, dados de CTA **fora** de licença aberta — porque licença aberta é irrevogável e o CLPI não pode ser.
-- Executar o piloto Panará de ponta a ponta e submeter a arquitetura a auditoria externa.
-
----
-
-## 10. Cronograma por fases
-
-Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase B depende de agenda comunitária, que não é do pesquisador.
+Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase B depende da agenda das iniciativas parceiras, que não é do pesquisador.
 
 | Fase | Escopo | Depende de |
 |---|---|---|
 | **A — Fundação conceitual** ✔ | UDM, regime enunciativo, contrato de harvest, governança proposta, unidade de referência em produção | — |
-| **B — Validação comunitária** | Seis pautas; roteiros das pautas 5 e 6; decisão sobre nomeação do detentor e sobre o sagrado | Agenda das lideranças |
+| **B — Validação por estudos de caso** | Submissão do UDM, do contrato de harvest e do vocabulário aos estudos de caso do USEFLORA e do GEF MCTI "Entre-Ciências"; consolidação das questões que retornarem | Agenda das iniciativas parceiras |
 | **C — Fechamento normativo** | ADR-015 e ADR-016 a *Aceito*; esquema do Relato; licenciamento; Comitê Federado constituído | B |
 | **D — Implementação da federação** | BioCultRelatos; Pluriverso; BioCultTermos nas quatro hospedeiras | C (parcialmente paralelizável com B) |
 | **E — Expansão de fontes** | BioCultAcervos; BioCultNaturalistas; integrações taxonômica e territorial | D |
-| **F — Piloto e avaliação** | Piloto Panará ponta a ponta; auditoria externa; medição de conformidade C1–C10 | B, D |
+| **F — Avaliação** | Execução ponta a ponta nos estudos de caso; auditoria externa; medição de conformidade C1–C10 | B, D |
 | **G — Publicação** | Artigos revisados por pares; versão citável consolidada; disseminação às iniciativas correlatas | F |
 
 ---
 
-## 11. Resultados esperados
+## 9. Resultados esperados
 
 1. Arquitetura federada especificada, implementada e validada em uso real, adotável por qualquer iniciativa nacional.
 2. Modelo de Dados Unificado com conformidade declarável por ferramentas de terceiros.
 3. Cinco ferramentas e um middleware em software livre, todos containerizados e de dependência mínima.
-4. Proposta de governança validada por comunidades e por Comitê Federado constituído.
-5. Evidência empírica, do piloto, sobre se a soberania garantida por arquitetura é percebida como tal por quem detém o conhecimento.
+4. Proposta de governança validada pelas iniciativas de sistematização de CTA e por Comitê Federado constituído.
+5. Evidência empírica, dos estudos de caso, sobre se a soberania garantida por arquitetura é verificável por terceiros e reconhecida pelas iniciativas que a adotam.
 6. Artigos revisados por pares sobre o regime enunciativo e sobre a arquitetura federada como resposta à lacuna dos dados coletivos.
 
 ---
 
-## 12. Riscos e mitigações
-
-| Risco | Mitigação |
-|---|---|
-| Validação comunitária não ocorrer no prazo, travando C, D e F | Regras interinas sempre conservadoras (o sagrado equivale a `private`; um participante revoga, a gravação inteira sai); ADR-016 desacoplada da ADR-015 para poder ser aceita antes |
-| Arquitetura federada não sustentar consulta integrada útil | Índice do Pluriverso com FTS5 e mapeamento SKOS; medição de utilidade no piloto |
-| Custo de armazenamento de mídia inviável para a comunidade | Questão explicitamente aberta; solução dependente da infraestrutura real das comunidades, não presumida |
-| Dependência de serviço externo (Local Contexts Hub) | Identificador + cache do texto canônico; degradação para a última versão conhecida |
-| Reprodução de apropriação indevida apesar das salvaguardas | Sete salvaguardas documentadas **com o limite honesto de cada uma**; compromissos negativos explícitos |
-| Sobreposição com iniciativas governamentais | Posicionamento explícito de complementaridade; UDM oferecido como contrato adotável |
-
----
-
-## 13. Considerações éticas
-
-O projeto opera sob CLPI entendido como **ciclo revisável**, não como formulário assinado uma única vez: a comunidade pode reclassificar ou revogar um Relato a qualquer tempo, sem justificativa. Registros de regime `conhecimento` sem CLPI válido não atravessam o harvest — condição de aceitação testável, não promessa. A mídia do caso-teste Panará permanece `restricted` de fato e fora do versionamento enquanto sua pauta não fechar.
-
-Dados de CTA não recebem licença aberta. Onde a decisão correta for **não registrar**, a plataforma tem a obrigação de dizê-lo.
-
----
-
-## 14. Equipe e parcerias
+## 10. Equipe e parcerias
 
 **Proponente:** Eduardo Dalcin (JBRJ)
 
@@ -265,7 +186,7 @@ Dados de CTA não recebem licença aberta. Onde a decisão correta for **não re
 
 ---
 
-## 15. Documentos de referência do projeto
+## 11. Documentos de referência do projeto
 
 | Documento | Caminho |
 |---|---|
