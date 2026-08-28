@@ -12,6 +12,9 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 >
 > — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente esta proposta de arquitetura federada.
 
+> [!NOTE]
+> **Esta arquitetura é o objeto de um projeto de pesquisa.** Problema, justificativa, objetivos, fundamentação teórica, metodologia (*design science*), estudos de caso por unidade federada, cronograma e resultados esperados estão formalizados em **[docs/projetoPesquisa.md](docs/projetoPesquisa.md)**. Este `README.md` descreve *o que* a arquitetura é; o projeto de pesquisa descreve *por que* ela é assim e *como* ela é validada.
+
 
 ## 🏛️ Novidade da v3.4 — Proposta de Governança
 
