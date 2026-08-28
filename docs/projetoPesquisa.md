@@ -108,7 +108,7 @@ Referências completas em [`Referencias.md`](Referencias.md), norma ABNT NBR 602
 
 ### 7.1 Natureza
 
-Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato — arquitetura, modelo de dados e implementação de referência — é simultaneamente o resultado e o instrumento de investigação. A validação é feita por conformidade especificada, por implementação executável e por consulta à iniciativas de sistematização de conhecimento tradicional associado à biodiversidade. Nenhuma validação desta pesquisa é feita por comunidades tradicionais: a interlocução com comunidades pertence às iniciativas que já a mantêm, e é por meio delas que as questões comunitárias chegam à arquitetura.
+Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato — arquitetura, modelo de dados e implementação de referência — é simultaneamente o resultado e o instrumento de investigação. A validação é feita por conformidade especificada, por implementação executável e por consulta à iniciativas de sistematização de conhecimento tradicional associado à biodiversidade.
 
 ### 7.2 Procedimentos
 
