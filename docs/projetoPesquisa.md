@@ -78,7 +78,7 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 2. **Especificar** um Modelo de Dados Unificado (UDM), independente de engine, que represente esse domínio sem perda e cuja conformidade seja verificável por ferramentas externas à federação.
 3. **Mapear** cada subprincípio C.A.R.E. e cada exigência da Lei 13.123/2015 ao componente técnico que o implementa, nomeando explicitamente os que ainda não têm implementação.
 4. **Definir** o contrato de publicação (*harvest*) entre unidades federadas e middleware, com condição de aceitação testável que faça da autoridade da comunidade um requisito do sistema.
-5. **Prospectar e avaliar** as tecnologias capazes de suportar a implementação da arquitetura — engines de persistência, formatos de serialização semântica, mecanismos de busca federada, empacotamento e distribuição, e acesso móvel *offline-first* — com critérios explícitos de soberania, custo de operação e dependência mínima.
+5. **Prospectar e avaliar** as tecnologias capazes de suportar a implementação da arquitetura — engines de persistência, formatos de serialização semântica, mecanismos de busca federada, empacotamento e distribuição — com critérios explícitos de soberania, custo de operação e dependência mínima.
 6. **Implementar** a unidade de referência (fontes secundárias) e o módulo de vocabulário controlado SKOS-XL compartilhado.
 7. **Implementar** as demais unidades (primária, acervos, naturalistas) e o middleware Pluriverso.
 8. **Tornar rastreável pela arquitetura** — e não apenas declarada — a repartição de benefícios decorrente do uso dos registros.
@@ -98,7 +98,6 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 | Padrões de dados | Darwin Core; DwC-DP (guia ratificado TDWG, 2026-04-17); Dublin Core; PROV-O; SocioBio (SiBBr) |
 | Organização do conhecimento | **SKOS** (*Simple Knowledge Organization System*, W3C Recommendation, 2009) — esquemas de conceitos, relações hierárquicas e associativas, mapeamento entre vocabulários; e **SKOS-XL** (*SKOS eXtension for Labels*) — o rótulo reificado como recurso, condição para atribuir a cada denominação sua língua (ISO 639-3), sua proveniência, seu nível de acesso e seu detentor. É essa extensão que torna representável o fato de um mesmo conceito ter nomes distintos em povos distintos, com regimes de acesso distintos |
 | Arquitetura de sistemas | C4 Model (documentação); NIKMAS (África do Sul) — modelo dual artefato/metadado, nós distribuídos, catálogo de detentores; Mukurtu — coexistência de narrativas |
-| Tecnologias móveis e participação | CyberTracker; MAPEO |
 | Crítica etnobiológica | Zank et al. (2025); Pankararu et al. (2026); Kock et al. (2026) — viés de proveniência em dados globais de ocorrência em Terras Indígenas |
 
 Referências completas em [`Referencias.md`](Referencias.md), norma ABNT NBR 6023:2018.
