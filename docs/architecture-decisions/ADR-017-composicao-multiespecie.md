@@ -58,11 +58,11 @@ planta (`comunidades[].plantas[].tipoUso[]`). Representar o Daime hoje obriga a 
 **ADR-003**: o registro é centrado em `species` (singular) com `uses[]` aninhado — mesmo limite,
 um uso pertence a uma espécie.
 
-**ADR-015 K2**: define o Relato citando o modelo Panará — *"a menção de **uma** planta por um
-participante em um contexto específico"*. Um mestre daimista descrevendo o feitio do Daime é **um**
-ato de enunciação sobre **duas** plantas; fatiá-lo em dois Relatos é exatamente a
+**ADR-015 K2**: o Relato guarda quem enunciou, quando, onde e sob que protocolo — mas a
 compartimentalização que o próprio K2 condena ("guardar `planta X → uso Y` é a
-compartimentalização que a crítica antropológica identifica como perda").
+compartimentalização que a crítica antropológica identifica como perda") vale igualmente para o
+número de plantas por Relato. Um mestre daimista descrevendo o feitio do Daime é **um**
+ato de enunciação sobre **duas** plantas; fatiá-lo em dois Relatos repete o mesmo erro.
 
 **BioCultAcervos / BioCultNaturalistas**: ainda sem código — absorvem esta demanda como restrição
 de projeto antes da primeira linha, o momento mais barato (mesmo argumento do ADR-014 e ADR-015).

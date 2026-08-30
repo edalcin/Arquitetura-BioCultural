@@ -116,15 +116,15 @@ rótulo suprimido e a supressão declarada:
 
 ```json
 {
-  "id": "comunidade-panara/rec-0042",
+  "id": "comunidade-exemplo/rec-0042",
   "regime": "conhecimento",
   "accessLevel": "public",
-  "informationWithheld": "nome da planta em kre suprimido por decisão da comunidade Panará",
+  "informationWithheld": "nome da planta na língua da comunidade suprimido por decisão dela",
   "dataGeneralizations": "coordenada do ato de enunciação generalizada para 0,1°",
   "culturalLabels": [
     { "tipo": "label", "id": "tk-attribution", "hubId": "https://localcontextshub.org/labels/…" }
   ],
-  "holderPeople": "Panará",
+  "holderPeople": "…",
   "relatedResources": [
     {
       "relationshipType": "refers to",
@@ -197,7 +197,7 @@ que a motivou.
 
 | Valor | Quando | Exemplo |
 |---|---|---|
-| `refers to` | O registro **fala sobre** um recurso custodiado por outro membro. **É o caso normal aqui** | Relato Panará sobre a exsicata `jbrj-herbario/rb-00123456` |
+| `refers to` | O registro **fala sobre** um recurso custodiado por outro membro. **É o caso normal aqui** | Relato de uma comunidade sobre a exsicata `jbrj-herbario/rb-00123456` |
 | `same as` | Os dois registros descrevem **o mesmo objeto** | Duplicata do mesmo espécime em dois herbários |
 | `derived from` | O registro é **derivado** de outro | Versão editada de gravação, transcrição, tradução (K5, K8.3) |
 

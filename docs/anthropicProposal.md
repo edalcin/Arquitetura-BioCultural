@@ -77,7 +77,7 @@ Select:
 
 ## 3. Research team
 
-**Description of the research team (fewer than 300 words)** * — *271 words*
+**Description of the research team (fewer than 300 words)** * — *266 words*
 
 ```
 Eduardo Dalcin (PI) is a biodiversity informatics specialist and technologist at JBRJ, the
@@ -102,8 +102,8 @@ Key members who will use Claude:
   conformance auditing.
 - Dr. Viviane Fonseca (JBRJ) — ethnobotany; curation of extracted assertions and of the
   SKOS-XL controlled vocabulary. [CONFIRM role and title]
-- Lucas Zelesco (FUNAI, the Brazilian Indigenous affairs agency) — community liaison and free,
-  prior and informed consent process for the Panará pilot. [CONFIRM role]
+- Lucas Zelesco (FUNAI, the Brazilian Indigenous affairs agency) — ethical and legal liaison
+  for community consent processes. [CONFIRM role]
 - Luisa Ridolph and Camila Dantas (ENBT/JBRJ graduate school) — historical sources, museum
   collections and naturalist works. [CONFIRM roles]
 - USEFLORA Steering Committee — institutional partner; the Unified Data Model is the technical
@@ -126,7 +126,7 @@ Architecture and all documentation (open source): https://doi.org/10.5281/zenodo
 
 ## 4. Research proposal
 
-**Describe your research project (fewer than 500 words)** * — *457 words*
+**Describe your research project (fewer than 500 words)** * — *495 words*
 
 ```
 SCIENTIFIC QUESTION
@@ -155,7 +155,10 @@ published. Every architectural choice is recorded as an ADR with an explicit sta
 are specified before code: the harvest contract has ten testable acceptance scenarios. A
 record of the Knowledge regime without valid consent does not pass the harvest. That is a
 test, not a promise. Validation is participatory: six agenda items go to community leaders as
-open questions, and a pilot runs with the Panará people.
+open questions, and BioCultRelatos is validated against Luisa Ridolph Tostes Braga's
+master's research (ENBT/JBRJ) on local ecological knowledge of medicinal plants in home
+gardens in Silveiras, São Paulo, conducted under informed consent, CONEP approval and
+SisGen registration, with results returned to the community.
 
 EXPECTED OUTCOMES AND DELIVERABLES
 
@@ -177,8 +180,9 @@ TIMELINE (6 MONTHS)
 
 Month 1: community validation agenda; freeze the Relato schema; promote the harvest ADR to
 Accepted. Months 1-3: BioCultRelatos. Months 2-4: Pluriverso. Months 3-5: historical and
-literature corpus ingestion and taxonomic reconciliation. Months 4-6: end-to-end Panará
-pilot, conformance measurement, external audit, paper submission.
+literature corpus ingestion and taxonomic reconciliation. Months 4-6: end-to-end validation
+against the Luisa Ridolph case study, conformance measurement, external audit, paper
+submission.
 ```
 
 **How specifically will Claude's capabilities be used (200 words max)** * — *178 words*
@@ -317,8 +321,8 @@ Breakdown and expected impact:
 4. Vocabulary and conformance work — 3,000 USD. SKOS-XL candidate labels, cross-vocabulary
    mapping proposals, and audit of the ten-point checklist.
 
-5. Retrieval assistant during the Panará pilot — 2,000 USD. Query over published evidence
-   only.
+5. Retrieval assistant during the Luisa Ridolph case-study validation — 2,000 USD. Query over
+   published evidence only.
 ```
 
 ---

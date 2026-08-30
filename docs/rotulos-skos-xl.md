@@ -84,7 +84,7 @@ Todo `skosxl:Label` da arquitetura carrega:
 | Campo | Obrigatório | Descrição | Exemplo |
 |---|---|---|---|
 | `literalForm` | sim | A forma textual do rótulo | `jagube` |
-| `language` | sim | **ISO 639-3, e só ela** (`por`, `eng`, `kre`, `tup`…) — nunca ISO 639-1 (`pt` não codifica as línguas que o vocabulário existe para abrigar). Sem código: glotônimo por extenso. Conteúdo sem fala: `zxx`; língua não identificada: `und` — nunca vazio | `por` |
+| `language` | sim | **ISO 639-3, e só ela** (`por`, `eng`, `tup`…) — nunca ISO 639-1 (`pt` não codifica as línguas que o vocabulário existe para abrigar). Sem código: glotônimo por extenso. Conteúdo sem fala: `zxx`; língua não identificada: `und` — nunca vazio | `por` |
 | `accessLevel` | sim (padrão `public`) | Nível de acesso CARE do rótulo — ver §4 | `sacred` |
 | `sourcePeople` | não | Povo/comunidade de quem vem este nome | `Guarani` |
 | `holderPeople` | não | Povo **detentor** do conhecimento (pode diferir de quem forneceu o dado) | `Baniwa` |

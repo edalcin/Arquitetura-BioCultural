@@ -2,7 +2,7 @@
 
 **Data:** 2026-08-13
 **Escopo:** distinção conceitual entre *Conhecimento* e *Evidência*, e suas consequências para a aplicação de rótulos SKOS-XL de nível de acesso (`public` / `restricted` / `sacred`), para humanos e para máquinas.
-**Caso-teste:** `conhecimento/conhecimentoPanara.mp4`
+**Caso-teste:** o estudo de caso do BioCultRelatos — mestrado de Luisa Ridolph Tostes Braga, "O Uso de Plantas Medicinais e os Saberes Locais em Quintais de Silveiras (SP): diante de desafios climáticos e socioeconômicos no entorno da Serra da Bocaina" (`docs/projetoPesquisa.md` §7.3)
 **Status:** documento de discussão — não é decisão. Contém pontos que exigem escolha do responsável pela arquitetura (§12).
 
 ---
@@ -13,17 +13,15 @@
 >
 > O conceito de "conhecimento" deve ficar claro e caracterizado na arquitetura, pois é ele que deve receber rótulos específicos SKOS-XL relacionados com nível de acesso (public, restrict e sacred, conforme em `../BioCultDB/bioculttermos/manual/03-rotulos.md`), não só para humanos, na interface, como para máquinas (fluxo de dados entre provedores — BioCultDB, BioCultAcervos, BioCultRelatos, BioCultNaturalistas).
 >
-> Penso que "evidência", como o registrado em BioCult{Acervos, DB e Naturalistas} é diferente do "conhecimento", explicitamente expresso em BioCultRelatos, como este registrado aqui: `conhecimento/conhecimentoPanara.mp4`
+> Penso que "evidência", como o registrado em BioCult{Acervos, DB e Naturalistas} é diferente do "conhecimento", explicitamente expresso em BioCultRelatos.
 >
 > Faça uma pesquisa cuidadosa e profunda nos conceitos e visões sobre o tema, sempre relacionado ao "conhecimento tradicional" e reporte em `conhecimento/`, em um arquivo no formato .md, juntamente com este prompt.
 >
 > Considere como reconhecer, caracterizar ou diferenciar explicitamente o "conhecimento tradicional" na arquitetura, para aplicação precisa de rótulos no padrão SKOS-XL, respeitando todos os princípios C.A.R.E. e considerando toda a proposta da arquitetura, até agora.
 
-**Esclarecimento 1 (sobre o conteúdo do vídeo):**
+*Paráfrase.* O prompt original ilustrava a distinção Evidência/Conhecimento com um registro específico que não faz parte desta proposta e foi removido da citação acima; a pergunta conceitual — evidência é diferente de conhecimento — permanece intacta.
 
-> O vídeo mostra um indígena da tribo Panará ao lado de uma árvore, descrevendo esta árvore e para que esta árvore serve/é usada, na língua Panará.
-
-**Esclarecimento 2 (sobre o sentido de "Evidência"):**
+**Esclarecimento (sobre o sentido de "Evidência"):**
 
 > A "Evidência" que me refiro, e de que trata a arquitetura, é a "evidência da relação de uma comunidade com a biodiversidade que a cerca".
 
@@ -49,27 +47,13 @@ O segundo eixo tem dois valores:
 
 ---
 
-## 3. O caso que força a distinção
+## 3. Quatro critérios do que é Conhecimento
 
-`conhecimento/conhecimentoPanara.mp4` — verificado com `ffprobe`:
+A distinção entre Conhecimento e Evidência não depende de julgamento subjetivo caso a caso: um Relato primário é reconhecível por quatro critérios simultâneos, e nenhum deles é acessório.
 
-| Propriedade | Valor |
-|---|---|
-| Duração | 42,24 s |
-| Vídeo | HEVC, 1920×1080 |
-| Áudio | AAC |
-| Tamanho | 61,9 MB |
-| Conteúdo | mulher Panará, ao lado de uma árvore, descrevendo a árvore e seus usos, **em língua Panará** |
-| Transcrição / tradução no repositório | **nenhuma** |
-| Código ISO 639-3 da língua | `kre` — Panará, *Active*, *Individual*, *Living* |
-
-Um detalhe do próprio padrão merece registro, porque é exatamente a operação que este documento propõe fazer na arquitetura: a *reference name* do código `kre` foi **`Kreen-Akarore` até 2007**, exônimo derivado de um termo Kayapó, e foi alterada para **`Panará`** — o autônimo, que na língua significa "gente" — pela solicitação de mudança 2006-019, adotada em 18/07/2007. O registro de línguas foi descolonizado por um pedido formal; um vocabulário controlado pode ser.
-
-Este vídeo é o **exemplar canônico de Conhecimento** por quatro razões simultâneas, e é útil porque nenhuma delas é acessória:
-
-1. **Primeira pessoa.** Não é alguém dizendo que os Panará usam a árvore; é um Panará dizendo para que ela serve.
-2. **Língua originária.** O enunciado está em `kre`. Não existe versão "sem língua" desse conhecimento — a tradução é uma entidade *derivada*, e derivada com perda.
-3. **Referente físico presente.** A árvore está ali. O gesto de apontar é parte do enunciado; sem o vídeo, "esta árvore" perde o referente.
+1. **Primeira pessoa.** Não é um terceiro dizendo que a comunidade usa a planta; é quem detém o conhecimento dizendo para que ela serve.
+2. **Língua originária.** O enunciado está na língua da comunidade, identificada por código ISO 639-3 — nunca ISO 639-1 —, com `zxx` para conteúdo sem fala e `und` para língua não identificada. Não existe versão "sem língua" desse conhecimento — a tradução é uma entidade *derivada*, e derivada com perda.
+3. **Referente físico presente, quando houver.** Se há uma planta, um lugar, um objeto, o gesto de apontar é parte do enunciado; sem o registro que o ancora, o referente se perde.
 4. **Ato datado e localizado.** Houve um momento e um lugar. O conhecimento não paira: ele foi *dito*.
 
 **E hoje ele não cabe em lugar nenhum da arquitetura.** `ADR-003-data-model.md:337-338`:
@@ -79,9 +63,9 @@ Este vídeo é o **exemplar canônico de Conhecimento** por quatro razões simul
 media: [],
 ```
 
-O único campo que aceitaria o registro mais importante que o projeto possui é um array vazio com um comentário. O modelo `relatos` do projeto Panará (`dadosEtnoJBRJ_Panara/relatos.md:84-89`) chega mais perto — tem `origem_registro ENUM('flipchart','caderno_campo','video','audio')`, `id_video`, `conteudo_transcrito`, `idioma ENUM('panara','portugues','bilingue')` — e mesmo assim **não tem nenhum campo de nível de acesso, consentimento ou detentor**. O modelo que melhor descreve o conhecimento é o que menos o protege.
+O único campo que aceitaria o registro primário do BioCultRelatos é um array vazio com um comentário — sem nenhum campo de nível de acesso, consentimento ou detentor. É exatamente essa lacuna que o estudo de caso de Silveiras (SP) — mestrado de Luisa Ridolph Tostes Braga, `docs/projetoPesquisa.md` §7.3 — torna concreta: entrevistas semiestruturadas sob TCLE, com dado sociodemográfico do participante sob LGPD convivendo com titularidade coletiva do CTA, exigem uma modelagem de detentor, consentimento e nível de acesso que o modelo atual não oferece.
 
-> **Nota lateral, mas de governança.** O `.gitignore` deste repositório passou a excluir `*.mp4` nesta mesma sessão. A motivação foi tamanho, mas o efeito é correto por outra razão, e ela está escrita em `propostaGovernanca.md:471`: nenhuma unidade pode manter o único original de uma gravação de CLPI em plataforma de terceiros. Um remoto público do GitHub é plataforma de terceiros. Voz e imagem de indígena identificável associadas a etnia são dado pessoal sensível (LGPD, art. 11) e o consentimento para a gravação precisa ser específico e destacado (LGPD, art. 11, I) — ponto que a `propostaGovernanca.md:317` já detalha como "tríplice regime do registro audiovisual".
+> **Nota lateral, mas de governança** (caso geral da arquitetura, para quando houver gravação audiovisual). O `.gitignore` deste repositório passou a excluir `*.mp4` nesta mesma sessão. A motivação foi tamanho, mas o efeito é correto por outra razão, e ela está escrita em `propostaGovernanca.md:471`: nenhuma unidade pode manter o único original de uma gravação de CLPI em plataforma de terceiros. Um remoto público do GitHub é plataforma de terceiros. Voz e imagem de pessoa identificável associada a etnia são dado pessoal sensível (LGPD, art. 11) e o consentimento para a gravação precisa ser específico e destacado (LGPD, art. 11, I) — ponto que a `propostaGovernanca.md:317` já detalha como "tríplice regime do registro audiovisual".
 
 ---
 
@@ -97,8 +81,8 @@ Levantamento com caminho e linha. Não são erros: são consequências de nunca 
 | 4 | `BioCultDB/CONTEXT.md:12-16` | "**Evidência**: o conteúdo etnobotânico que um artigo científico documentou… Um artigo, uma Evidência" | Definição correta **e local**: amarra Evidência ao artefato bibliográfico. Não se estende a acervo, naturalista nem fala |
 | 5 | `ADR-003-data-model.md:110` | `type: "traditional_knowledge", // Fixo por enquanto` | O único campo de tipo do modelo é constante — não distingue nada |
 | 6 | `ADR-003-data-model.md:337-338` | `media: []` — "(futuro)" | Sem lugar para áudio/vídeo, o Conhecimento oral não tem representação primária |
-| 7 | `ADR-003-data-model.md:371` | `language: "pt-BR"` | Contradiz a regra já vigente no BioCultTermos: **ISO 639-3 e só ela** (`bioculttermos/manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. `pt-BR` não codifica `kre` |
-| 8 | `ADR-004…md:145-148` | Payload de harvest: `{id, visibility, updated_at, data}` | `visibility` é binário na prática (só `public` trafega) e `data` é indefinido. Não há como dizer "público, mas com o nome em `kre` suprimido" |
+| 7 | `ADR-003-data-model.md:371` | `language: "pt-BR"` | Contradiz a regra já vigente no BioCultTermos: **ISO 639-3 e só ela** (`bioculttermos/manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. `pt-BR` não codifica língua indígena sem código ISO 639-1 (ex.: `tup`) |
+| 8 | `ADR-004…md:145-148` | Payload de harvest: `{id, visibility, updated_at, data}` | `visibility` é binário na prática (só `public` trafega) e `data` é indefinido. Não há como dizer "público, mas com o nome na língua da comunidade suprimido" |
 | 9 | `propostaGovernanca.md:419` | Mukurtu *Community Records*: narrativa comunitária e institucional coexistem sobre o mesmo item — "as duas descrições coexistem **no registro**" | A formulação admite a leitura de que a narrativa da comunidade ficaria gravada dentro do BioCultAcervos, o que violaria `Conteúdo Soberano`. Falta dizer que a coexistência é **federada** — dois registros de dois membros, vinculados —, não intra-unidade |
 | 10 | `propostaGovernanca.md:429` | "um mesmo conceito pode ter rótulo público em português e rótulo restrito na língua da comunidade" | Regra correta e ainda `[a implementar]`; hoje o `accessLevel` do BioCultTermos existe no manual, não no fluxo federado |
 
@@ -117,9 +101,9 @@ O eixo correto é **enunciativo e deôntico**: quem fala, e quem tem autoridade 
 - **Agrawal** desmonta a dicotomia rígida indígena/científico e alerta para o efeito da arquivização: retirado do contexto de sua prática, o conhecimento vira mercadoria informacional.
 - **Ellen & Harris** insistem no caráter *situado* — o conhecimento é performado, não estocado.
 
-A consequência para modelagem não é "não modele". É: **o que se modela não é o conteúdo do conhecimento, é o ato de enunciá-lo, com tudo que o ancora.** Um sistema que guarda `planta X → uso Y` fez compartimentalização. Um sistema que guarda `no dia D, na aldeia A, em kre, o detentor P, ao lado desta árvore, disse isto (mídia M), e sua comunidade C classificou como público` guardou um Relato.
+A consequência para modelagem não é "não modele". É: **o que se modela não é o conteúdo do conhecimento, é o ato de enunciá-lo, com tudo que o ancora.** Um sistema que guarda `planta X → uso Y` fez compartimentalização. Um sistema que guarda `no dia D, no local L, na língua da comunidade (código ISO 639-3), o detentor P, diante do referente do relato, disse isto (mídia M, quando houver), e sua comunidade C classificou como público` guardou um Relato.
 
-**A língua é constitutiva, não veículo.** É por isso que o sub-princípio **R3 do CARE — *For Indigenous languages and worldviews*** — não é um item de acessibilidade: é uma condição de integridade do dado. Um enunciado em `kre` traduzido para `por` e armazenado só em `por` não é o mesmo dado com outra roupa; é uma entidade derivada, e a derivação é irreversível. Daí a regra prática de documentação linguística que este documento adota: **transcrição e tradução nunca substituem a gravação, e nunca se armazenam sem apontar para ela.**
+**A língua é constitutiva, não veículo.** É por isso que o sub-princípio **R3 do CARE — *For Indigenous languages and worldviews*** — não é um item de acessibilidade: é uma condição de integridade do dado. Um enunciado na língua originária da comunidade, traduzido para `por` e armazenado só em `por`, não é o mesmo dado com outra roupa; é uma entidade derivada, e a derivação é irreversível. Daí a regra prática de documentação linguística que este documento adota: **transcrição e tradução nunca substituem a gravação, e nunca se armazenam sem apontar para ela.**
 
 **Evidência não é inferior.** Uma obra de 1817 é fonte insubstituível. O ponto é que ela é *testemunho*, e testemunho tem outro dono: o naturalista europeu que anotou o uso de uma planta não é autor daquele conhecimento, é a testemunha que o registrou — leitura que `propostaGovernanca.md:400` já faz, com a ressalva do art. 45 da Lei 9.610/1998, que preserva "a proteção legal aos conhecimentos étnicos e tradicionais" mesmo em obra de domínio público.
 
@@ -145,7 +129,7 @@ Para inclusão em `CONTEXT.md` (raiz), na seção **Vocabulário e procedência*
 > A propriedade de todo registro da federação que declara se ele é Conhecimento ou Evidência. É ortogonal à Fonte de Atribuição e à procedência: determina **quem pode classificar o acesso** daquele registro, e portanto se a unidade pode aplicar um Label (Conhecimento) ou apenas um Notice (Evidência).
 > _Avoid_: Tipo de registro, Categoria, Natureza
 
-O termo **Relato** é a linguagem de domínio; a implementação mapeia para `dwc:Assertion` (§9). Manter os dois nomes separados é deliberado: o glossário não deve importar jargão de padrão. **Decidido em 2026-08-13**, em favor de *Relato* contra *Enunciado*: é a palavra que o projeto já usa, inclusive no modelo de entidade do projeto Panará/JBRJ (`dadosEtnoJBRJ_Panara/relatos.md`).
+O termo **Relato** é a linguagem de domínio; a implementação mapeia para `dwc:Assertion` (§9). Manter os dois nomes separados é deliberado: o glossário não deve importar jargão de padrão. **Decidido em 2026-08-13**, em favor de *Relato* contra *Enunciado*: é a palavra que o projeto já usa, coerente com o nome da própria unidade que existe para produzi-los (BioCultRe*latos*).
 
 ---
 
@@ -183,15 +167,15 @@ O resultado esperado por provedor — **como padrão, não como invariante**:
 
 Aqui está o ponto técnico mais importante do documento.
 
-**SKOS-XL rotula termos. Conhecimento tradicional é proposição.** `skosxl:Label` é o portador certo para "o nome desta árvore em `kre`". Ele não é, e não pode ser, o portador de "*esta* árvore serve para *isto*, segundo *este* detentor". A primeira é uma entrada de vocabulário; a segunda é um enunciado sobre o mundo. Aplicar `accessLevel` só no rótulo protege o nome e deixa a proposição a descoberto.
+**SKOS-XL rotula termos. Conhecimento tradicional é proposição.** `skosxl:Label` é o portador certo para "o nome desta planta na língua da comunidade". Ele não é, e não pode ser, o portador de "*esta* planta serve para *isto*, segundo *este* detentor". A primeira é uma entrada de vocabulário; a segunda é um enunciado sobre o mundo. Aplicar `accessLevel` só no rótulo protege o nome e deixa a proposição a descoberto.
 
 Existem, portanto, **três objetos rotuláveis**, e cada um precisa do seu campo:
 
-| Nível | Objeto | Exemplo no caso Panará | Portador do `accessLevel` | Estado |
+| Nível | Objeto | Exemplo ilustrativo | Portador do `accessLevel` | Estado |
 |---|---|---|---|---|
-| **1. Termo** | `skosxl:Label` — a forma textual de um conceito | o nome da árvore em `kre` | `accessLevel` no Label + `sourcePeople`, `holderPeople`, `priorInformedConsent` | Especificado no manual (`03-rotulos.md:52-92`); **não trafega no fluxo federado** |
-| **2. Relato** | a proposição atribuída ao detentor | "esta árvore serve para X" | **campo inexistente** | **Lacuna central** |
-| **3. Registro / Mídia** | o registro que embala tudo e o arquivo de vídeo | `conhecimentoPanara.mp4` | `permissions.visibility` (`ADR-003:343`) | Especificado, **não implementado em nenhum provedor** |
+| **1. Termo** | `skosxl:Label` — a forma textual de um conceito | o nome popular de uma planta na língua da comunidade | `accessLevel` no Label + `sourcePeople`, `holderPeople`, `priorInformedConsent` | Especificado no manual (`03-rotulos.md:52-92`); **não trafega no fluxo federado** |
+| **2. Relato** | a proposição atribuída ao detentor | "esta planta serve para X" | **campo inexistente** | **Lacuna central** |
+| **3. Registro / Mídia** | o registro que embala tudo, com ou sem mídia associada | `comunidade-exemplo/rec-0042` | `permissions.visibility` (`ADR-003:343`) | Especificado, **não implementado em nenhum provedor** |
 
 E a regra que amarra os três:
 
@@ -210,10 +194,10 @@ Consequências que só aparecem quando se enuncia a regra:
   "id": "<member_id>/<record_id>",
   "regime": "conhecimento",
   "accessLevel": "public",
-  "informationWithheld": "rótulo em kre suprimido por decisão da comunidade (sacred)",
+  "informationWithheld": "rótulo em língua indígena sem código ISO 639-1 suprimido por decisão da comunidade (sacred)",
   "dataGeneralizations": "coordenada generalizada para 0,1°",
   "culturalLabels": ["tk-attribution", "tk-community-voice", "tk-non-commercial"],
-  "holderPeople": "Panará",
+  "holderPeople": "…",
   "updated_at": "…",
   "data": { }
 }
@@ -251,7 +235,7 @@ assertionReferences, assertionRemarks
 
 Isto é, literalmente: **quem asseriu (`assertionBy` / `assertionByID` → tabela `agent`), o quê (`assertionType` / `assertionValue`, com IRI de vocabulário controlado), quando (`assertionMadeDate`), sob que protocolo (`assertionProtocol_fk`), ancorado em qual mídia (`media_fk`).** É a estrutura do Relato, já padronizada, já com o gancho para o BioCultTermos via `assertionValueIRI` + `assertionValueSource`.
 
-`assertionByID` aceita identificador de `dcterms:Agent` interno ou externo ao dataset — ou seja, **nada impede que o agente seja um detentor Panará ou o coletivo de uma aldeia**. O que o padrão não resolve é *como* identificar esse agente sem expor pessoa; isso é decisão da arquitetura (§12, Q3).
+`assertionByID` aceita identificador de `dcterms:Agent` interno ou externo ao dataset — ou seja, **nada impede que o agente seja um detentor de uma comunidade tradicional ou o coletivo de uma aldeia**. O que o padrão não resolve é *como* identificar esse agente sem expor pessoa; isso é decisão da arquitetura (§12, Q3).
 
 ### 9.2 `dwc:UsagePolicy` — existe, e **não** serve para protocolo cultural
 
@@ -269,33 +253,33 @@ Precedente institucional já citado em `propostaGovernanca.md:379`: o GBIF insti
 
 ### 9.4 PROV-O — a cadeia gravação → transcrição → tradução
 
-Já adotado como vocabulário (não como pilha RDF) em `propostaGovernanca.md:394`. Para o caso Panará, a modelagem correta é:
+Já adotado como vocabulário (não como pilha RDF) em `propostaGovernanca.md:394`. Para um Relato com gravação em língua sem tradução direta — caso geral da arquitetura; o estudo de caso de Silveiras é conduzido por entrevista em português —, a modelagem correta é:
 
 ```
 :relato-001         a prov:Entity ;
-                    prov:wasAttributedTo :detentor-panara ;
+                    prov:wasAttributedTo :detentor-001 ;
                     prov:wasGeneratedBy  :ato-de-enunciacao-20260401 .
-:video-panara       a prov:Entity ;
+:midia-001          a prov:Entity ;
                     prov:hadPrimarySource :ato-de-enunciacao-20260401 .
-:transcricao-kre    prov:wasDerivedFrom  :video-panara .
-:traducao-por       prov:wasDerivedFrom  :transcricao-kre .
+:transcricao-001    prov:wasDerivedFrom  :midia-001 .
+:traducao-001       prov:wasDerivedFrom  :transcricao-001 .
 ```
 
-A cadeia deixa explícito o que a prosa deste documento afirma: a tradução em português está a **duas derivações** de distância da fonte primária. Um sistema que mostra só a tradução está mostrando um derivado de derivado e chamando de dado.
+A cadeia deixa explícito o que a prosa deste documento afirma: quando há tradução, ela está a **duas derivações** de distância da fonte primária. Um sistema que mostra só a tradução está mostrando um derivado de derivado e chamando de dado.
 
 ### 9.5 Documentação linguística
 
-Para um vídeo de fala, o conjunto mínimo de metadados é consenso na área (OLAC / IMDI / ELAN): falante, língua em ISO 639-3, data, local, gênero discursivo, consentimento, transcrição alinhada temporalmente, tradução, e o vínculo persistente entre anotação e gravação. O ponto operacional para a arquitetura: **transcrição sem ponteiro para a gravação é dado degradado**, e a arquitetura já tem o campo certo no modelo Panará (`id_video`) sem ter o objeto que ele deveria apontar.
+Para uma gravação de fala — vídeo ou áudio, caso geral da arquitetura, não necessariamente presente no estudo de caso de Silveiras, conduzido por entrevista —, o conjunto mínimo de metadados é consenso na área (OLAC / IMDI / ELAN): falante, língua em ISO 639-3, data, local, gênero discursivo, consentimento, transcrição alinhada temporalmente, tradução, e o vínculo persistente entre anotação e gravação. O ponto operacional para a arquitetura: **transcrição sem ponteiro para a gravação é dado degradado**, e o campo `media` de `ADR-003-data-model.md:337-338` hoje não tem o objeto que deveria apontar.
 
 ---
 
-## 10. O vídeo Panará, modelado ponta a ponta
+## 10. Um Relato de exemplo, modelado ponta a ponta
 
-Como ficaria o registro sob a proposta. Formato ilustrativo, coerente com o JSON do ADR-003 e com o modelo `relatos` do projeto Panará.
+Como ficaria um Relato do estudo de caso de Silveiras (SP) sob a proposta — uma indicação de uso de planta medicinal enunciada por moradora de quintal, em entrevista semiestruturada em português, sob TCLE e submissão ao SisGen (`docs/projetoPesquisa.md` §7.3). Formato ilustrativo, coerente com o JSON do ADR-003.
 
 ```json
 {
-  "id": "relatos-panara/relato-0001",
+  "id": "biocultrelatos-silveiras/relato-0001",
   "regime": "conhecimento",
 
   "relato": {
@@ -304,57 +288,48 @@ Como ficaria o registro sob a proposta. Formato ilustrativo, coerente com o JSON
       "nomePublico": null,
       "papel": "detentor",
       "anonimizado": true,
-      "comunidade": "Panará",
-      "aldeia": "<id_aldeia>"
+      "comunidade": "moradores de quintal de Silveiras (SP)",
+      "localidade": "<id_quintal>"
     },
     "atoDeEnunciacao": {
       "data": "2026-03-20",
-      "ambiente": "trilha_mata",
+      "ambiente": "entrevista_semiestruturada",
       "coordenadas": { "precision": "region-only" },
-      "lingua": "kre",
-      "protocolo": "caminhada guiada, 1ª expedição"
+      "lingua": "por",
+      "protocolo": "entrevista semiestruturada, amostragem estratificada"
     },
     "conteudo": {
-      "linguaOriginal": "kre",
+      "linguaOriginal": "por",
       "transcricao": null,
       "transcricaoRevisadaPor": null,
-      "traducao": [{ "language": "por", "text": null, "derivadaDe": "transcricao" }]
+      "traducao": []
     },
     "sobre": {
-      "nomeVernacular": { "label": "<nome em kre>", "language": "kre" },
+      "nomeVernacular": { "label": "<nome popular da planta>", "language": "por" },
       "nomeCientifico": null,
-      "usos": ["<a extrair da transcrição>"]
+      "usos": ["indicação de uso", "modo de preparo", "dosagem", "contraindicação"]
     }
   },
 
-  "media": [{
-    "mediaID": "conhecimentoPanara",
-    "mediaType": "video",
-    "format": "video/mp4",
-    "duration": 42.24,
-    "language": "kre",
-    "hadPrimarySource": "atoDeEnunciacao",
-    "armazenamento": "soberano-local",
-    "acessoPublico": false
-  }],
+  "media": [],
 
   "consentimento": {
-    "obtained": false,
-    "type": null,
-    "scope": null,
-    "purpose": null,
-    "permittedUses": [],
+    "obtained": true,
+    "type": "TCLE",
+    "scope": "pesquisa acadêmica, PPG em Botânica, ENBT/JBRJ",
+    "purpose": "inventário do Conhecimento Ecológico Local sobre plantas medicinais",
+    "permittedUses": ["pesquisa", "devolutiva à comunidade"],
     "expiresAt": null,
-    "protocolReference": null,
-    "language": null,
+    "protocolReference": "CONEP — Resolução CNS 466/2012; SisGen",
+    "language": "por",
     "revokedAt": null,
-    "_bloqueio": "sem CLPI documentado — não publicável"
+    "_bloqueio": null
   },
 
   "acesso": {
     "registro":  { "accessLevel": "restricted", "definidoPor": null },
     "relato":    { "accessLevel": "restricted", "definidoPor": null },
-    "rotulos":   [{ "label": "<nome em kre>", "accessLevel": "restricted" }],
+    "rotulos":   [{ "label": "<nome popular da planta>", "accessLevel": "restricted" }],
     "efetivo":   "restricted",
     "reviewDate": null
   },
@@ -367,9 +342,13 @@ Como ficaria o registro sob a proposta. Formato ilustrativo, coerente com o JSON
 }
 ```
 
-**Leia os `null`.** Eles não são preguiça de preenchimento: são a lista de trabalho. O registro mais importante do projeto está hoje sem transcrição, sem tradução, sem grafia verificada, sem CLPI documentado, sem classificação de acesso pela comunidade e sem detentor identificado. O modelo torna essas ausências **visíveis e bloqueantes**, em vez de deixá-las implícitas num arquivo `.mp4` numa pasta.
+**Leia os `null`.** Não descrevem lacuna real do estudo de caso — o TCLE, a aprovação da CONEP e a submissão ao SisGen já estão documentados (`docs/projetoPesquisa.md` §7.3) — descrevem a lista de trabalho que todo Relato carrega até ser transcrito, verificado e classificado pela comunidade quanto ao nível de acesso. O modelo torna essas etapas **visíveis e bloqueantes**, em vez de deixá-las implícitas numa planilha de campo.
 
-**Padrão seguro por omissão.** Note que `accessLevel` nasce `restricted`, não `public`. Isto é uma inversão deliberada do padrão do BioCultTermos, onde `03-rotulos.md:72` registra que "o padrão do sistema é `public`". Para **Termo** de literatura, `public` por omissão é defensável — foi a conclusão honesta da campanha de tipos de uso, em que nenhum dos 713 termos exigiu reclassificação. Para **Relato sem CLPI**, `public` por omissão é inaceitável: significaria publicar por inércia o que nunca foi consentido. A regra proposta é: **Termo herda o padrão do vocabulário; Relato nasce restrito e só se torna público por ato positivo da comunidade** — que é literalmente o estágio 5 do ciclo CLPI de `propostaGovernanca.md:349`.
+**Consentimento de participação não é classificação de acesso.** O TCLE autoriza a pesquisa; não decide, por si, se o Relato pode circular publicamente. Essa segunda decisão é da comunidade, e é o que os campos `acesso.*` capturam separadamente de `consentimento.*`.
+
+**Caso geral, não deste estudo de caso.** Quando o Relato inclui gravação audiovisual em língua sem código ISO 639-1, `media[]` carrega `language` em ISO 639-3 — nunca ISO 639-1 —, com `zxx` para conteúdo sem fala e `und` para língua não identificada, e a tradução é modelada como entidade derivada (PROV-O, §9.4). O estudo de caso de Silveiras é conduzido por entrevista em português e não aciona este requisito, que permanece como regra geral da arquitetura.
+
+**Padrão seguro por omissão.** Note que `accessLevel` nasce `restricted`, não `public`. Isto é uma inversão deliberada do padrão do BioCultTermos, onde `03-rotulos.md:72` registra que "o padrão do sistema é `public`". Para **Termo** de literatura, `public` por omissão é defensável — foi a conclusão honesta da campanha de tipos de uso, em que nenhum dos 713 termos exigiu reclassificação. Para **Relato**, `public` por omissão é inaceitável mesmo quando o consentimento de participação (TCLE) já foi obtido: significaria publicar por inércia o que a comunidade ainda não classificou. A regra proposta é: **Termo herda o padrão do vocabulário; Relato nasce restrito e só se torna público por ato positivo da comunidade** — que é literalmente o estágio 5 do ciclo CLPI de `propostaGovernanca.md:349`.
 
 ---
 
@@ -383,7 +362,7 @@ Sub-princípios conforme a formulação da GIDA.
 | **A2** — *Data for governance* | O regime é um campo consultável: a comunidade pode listar "tudo que é meu Conhecimento" sem depender de quem digitou |
 | **A3** — *Governance of data* | Só o Conhecimento admite Label. É a tradução mecânica de "só a comunidade classifica o que é seu" |
 | **R1** — *For positive relationships* | O Notice em Evidência é convite explícito ao contato, não simulação de consentimento |
-| **R3** — *For Indigenous languages and worldviews* | `kre` como língua do Relato, não como campo opcional; tradução modelada como derivada, com perda declarada |
+| **R3** — *For Indigenous languages and worldviews* | língua da comunidade como língua do Relato (ISO 639-3), não como campo opcional; tradução modelada como derivada, com perda declarada |
 | **E1** — *For minimizing harm* | A regra do mais restritivo impede que um rótulo sagrado vaze dentro de um registro público |
 | **E3** — *For future use* | `reviewDate` obrigatório: nenhuma classificação sobrevive por inércia |
 | **C2** — *For improved governance and citizen engagement* | O log de uso por regime permite o relatório anual devolvido à comunidade (`propostaGovernanca.md:455`) |
@@ -398,7 +377,7 @@ Nenhuma destas é técnica; todas mudam o documento se respondidas de outra form
 Recomendação: **glossário da federação** (`CONTEXT.md` raiz). Se o regime determina o que trafega no harvest, ele é linguagem da federação por definição. Deixá-lo interno reproduz o problema atual, em que "Evidência" só está definida no `BioCultDB/CONTEXT.md`.
 
 **Q2 — ~~"Enunciado" é o nome certo?~~ Decidido em 2026-08-13.**
-O termo é **Relato**. É a palavra que o projeto já usa, em português natural, coerente com o nome da unidade que existe para produzi-los (BioCultRe*latos*), e já definida com precisão no modelo Panará: "a menção de uma planta por um participante (ou grupo) em um contexto específico". Descartados: *Enunciado* (preciso, mas pouco usual em português técnico corrente), *Asserção* (importa jargão de padrão para dentro do domínio) e *Depoimento* (carga jurídico-policial).
+O termo é **Relato**. É a palavra que o projeto já usa, em português natural, coerente com o nome da unidade que existe para produzi-los (BioCultRe*latos*). Descartados: *Enunciado* (preciso, mas pouco usual em português técnico corrente), *Asserção* (importa jargão de padrão para dentro do domínio) e *Depoimento* (carga jurídico-policial).
 
 **Q3 — Como identificar o detentor sem expor a pessoa?**
 Tensão real e não resolvida: `assertionByID` quer um identificador estável; a LGPD e o bom senso querem anonimato. Opções: (a) identificador interno estável + `anonymized: true`, exposto só como papel ("ancião", "detentora"); (b) atribuição exclusivamente coletiva (a aldeia, o povo) para tudo que é público; (c) pseudônimo escolhido pelo próprio detentor. A opção (c) é a única que respeita simultaneamente CARE A1 e o direito ao reconhecimento — e é a que exige perguntar à pessoa.
@@ -408,9 +387,6 @@ Recomendação: carregar. Um índice federado que só sabe "público/não públi
 
 **Q5 — Adotar a API do Local Contexts Hub ou espelhar os rótulos localmente?**
 Adotar a API mantém a autoridade da comunidade sobre o rótulo (ela muda no Hub, muda em todo lugar) e cria dependência de serviço externo — o que colide com a diretriz de simplicidade e soberania. Espelhar localmente inverte os dois. Meio-termo defensável: **armazenar o identificador do rótulo e o identificador do projeto no Hub, exibir o texto canônico obtido por consulta com cache, e nunca editar o texto** (as Notices, em particular, não podem ter o texto alterado).
-
-**Q6 — O que fazer com o vídeo Panará agora?**
-Concretamente, antes de qualquer implementação: localizar ou formalizar o CLPI, obter transcrição em `kre` com falante nativo, verificar grafia com pesquisadores Panará, e perguntar à comunidade em que nível de acesso o registro deve ficar. Até lá o arquivo é `restricted` de fato, e o `.gitignore` está certo.
 
 ---
 
@@ -431,7 +407,6 @@ Concretamente, antes de qualquer implementação: localizar ou formalizar o CLPI
 
 **Normas e padrões**
 
-- ISO 639-3, código `kre` (Panará) — registrar SIL: <https://iso639-3.sil.org/code/kre>; solicitação de mudança 2006-019 (reference name `Kreen-Akarore` → `Panará`, adotada 2007-07-18): <https://iso639-3.sil.org/request/2006-019>
 - Darwin Core Data Package guide, TDWG, 2026-04-17: <https://dwc.tdwg.org/dp/> · <http://rs.tdwg.org/dwc/doc/dp/2026-04-17>
 - DwC-DP *table schemas* (tabelas `*-assertion`, `agent`, `media`, `usage-policy`): <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
 - DwC-DP Quick Reference Guide: <https://gbif.github.io/dwc-dp/qrg/>
@@ -469,4 +444,4 @@ Concretamente, antes de qualquer implementação: localizar ou formalizar o CLPI
 
 **Documentos internos consultados**
 
-`README.md` · `CONTEXT.md` · `docs/architecture-decisions/ADR-003-data-model.md` · `ADR-004-federated-architecture.md` · `docs/c4-model/01-context-diagram.md` · `governanca/propostaGovernanca.md` (§5.1-§5.10) · `BioCultDB/CONTEXT.md` · `BioCultDB/bioculttermos/manual/03-rotulos.md` · `dadosEtnoJBRJ_Panara/relatos.md`
+`README.md` · `CONTEXT.md` · `docs/architecture-decisions/ADR-003-data-model.md` · `ADR-004-federated-architecture.md` · `docs/c4-model/01-context-diagram.md` · `governanca/propostaGovernanca.md` (§5.1-§5.10) · `BioCultDB/CONTEXT.md` · `BioCultDB/bioculttermos/manual/03-rotulos.md` · `docs/projetoPesquisa.md` (§7.3)

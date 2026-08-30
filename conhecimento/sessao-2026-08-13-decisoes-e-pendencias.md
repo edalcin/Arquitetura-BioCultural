@@ -8,7 +8,7 @@
 
 ## 1. Resumo em seis linhas
 
-A arquitetura chamava tudo de **Evidência** e organizava por procedência (artigo, campo, acervo, obra de naturalista). Um vídeo de 42 segundos — um homem Panará, ao pé de uma árvore, descrevendo seus usos **na língua Panará** — expôs que essa organização achatava duas coisas diferentes. *Evidência* é a atestação, **por um terceiro**, de que a relação de uma comunidade com a biodiversidade existe. *Conhecimento* é essa relação **enunciada por quem a detém**. A diferença não é de valor nem de veracidade: é de **voz e autoridade** — e o que ela decide, na prática, é **quem pode classificar o nível de acesso** daquele registro. Foi criado o ADR-015 para tornar isso um campo do dado, e não uma convenção que alguém precisa lembrar.
+A arquitetura chamava tudo de **Evidência** e organizava por procedência (artigo, campo, acervo, obra de naturalista). Essa organização achatava duas coisas diferentes. *Evidência* é a atestação, **por um terceiro**, de que a relação de uma comunidade com a biodiversidade existe. *Conhecimento* é essa relação **enunciada por quem a detém**. A diferença não é de valor nem de veracidade: é de **voz e autoridade** — e o que ela decide, na prática, é **quem pode classificar o nível de acesso** daquele registro. Foi criado o ADR-015 para tornar isso um campo do dado, e não uma convenção que alguém precisa lembrar.
 
 ---
 
@@ -17,7 +17,7 @@ A arquitetura chamava tudo de **Evidência** e organizava por procedência (arti
 | Pedido | Resposta |
 |---|---|
 | Excluir `*.mp4` do repositório remoto | `.gitignore` atualizado. Motivação foi tamanho; o efeito é exigido por `propostaGovernanca.md` §5.10 — o único original de gravação de CLPI não pode viver em plataforma de terceiros, e um remoto público é plataforma de terceiros |
-| Pesquisar e caracterizar "conhecimento tradicional" na arquitetura | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` — 468 linhas, com o prompt, 10 ambiguidades atuais localizadas por arquivo e linha, fundamentação, ganchos técnicos verificados nas fontes primárias, o caso Panará modelado ponta a ponta |
+| Pesquisar e caracterizar "conhecimento tradicional" na arquitetura | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` — 468 linhas, com o prompt, 10 ambiguidades atuais localizadas por arquivo e linha, fundamentação, ganchos técnicos verificados nas fontes primárias, o estudo de caso do BioCultRelatos modelado ponta a ponta |
 | "Você concorda que existe diferença e que precisa ser tratada?" | Sim, com uma correção no argumento — §3 |
 | Prosseguir para o próximo passo | ADR-015 + glossário + README + CHANGELOG, commitados |
 | Explicar o que falta decidir | Este documento |
@@ -77,7 +77,7 @@ A coluna da esquerda é engenharia. A da direita é `propostaGovernanca.md:305` 
 
 ### Pauta 1 — Como quem fala quer ser nomeado
 
-**O impasse, sem jargão.** No vídeo, quem fala é uma pessoa. O sistema precisa registrar *alguém* como autor daquele conhecimento. E há duas obrigações que se contradizem:
+**O impasse, sem jargão.** Em todo Relato, quem fala é uma pessoa. O sistema precisa registrar *alguém* como autor daquele conhecimento. E há duas obrigações que se contradizem:
 
 - **Proteger.** Voz, imagem e etnia juntas são dado pessoal sensível (LGPD, art. 11).
 - **Reconhecer.** A pessoa tem direito de ser identificada como detentora do conhecimento (CARE A1; Lei 13.123/2015).
@@ -88,8 +88,8 @@ Apagar o nome "para proteger" é o que a ciência fez por um século com informa
 
 | | O sistema guarda | O público vê | Quem decidiu |
 |---|---|---|---|
-| A | nome real, protegido | "um ancião Panará" | nós |
-| B | só o coletivo: "Panará", a aldeia | "Panará" | nós |
+| A | nome real, protegido | "um detentor da comunidade" | nós |
+| B | só o coletivo: o nome da comunidade | o nome da comunidade | nós |
 | C | pseudônimo escolhido pela pessoa | o pseudônimo | **ela** |
 
 **As perguntas para levar a campo:**
@@ -122,22 +122,7 @@ A pergunta 5 é técnica com consequência política: se a comunidade aplica no 
 
 ---
 
-### Pauta 3 — O vídeo Panará, especificamente
-
-Quatro pendências, nenhuma resolvível daqui. Enquanto existirem, o arquivo é `restricted` de fato e não atravessa o harvest.
-
-| # | Pendência | Situação |
-|---|---|---|
-| 1 | **CLPI** | Pergunta se existe consentimento livre, prévio e informado, aprovação de comitê de ética, autorização FUNAI e cadastro SisGen. **Não há resposta registrada.** Sem isso o registro não é publicável — `visibility: public` é consequência do CLPI, nunca substituto dele |
-| 2 | **Consentimento específico para imagem e voz** | Gravar em vídeo aciona três regimes ao mesmo tempo: direito de personalidade (Código Civil, art. 20), dado sensível (LGPD, art. 11 — exige consentimento **específico e destacado**) e forma legal de comprovar o CLPI (Lei 13.123/2015, art. 9º, §1º, II). Um termo genérico não cobre os três |
-| 3 | **Transcrição em Panará** | Não existe. Precisa de falante nativo. A tradução para o português é entidade **derivada** — e derivada com perda, porque a língua é constitutiva do conhecimento, não seu veículo (CARE R3) |
-| 4 | **Grafia** | O próprio repositório Panará anota que a grafia dos nomes precisa ser verificada com pesquisadores Panará (Sophoa, Sewa). O nome da planta é a informação mínima do relato: grafia não verificada é identidade comprometida |
-
-**Um detalhe que vale contar à comunidade**, porque é sobre eles: o código internacional da língua Panará é `kre`. Até 2007 esse código se chamava oficialmente *"Kreen-Akarore"* — nome vindo de fora, de um termo Kayapó. Um pedido formal de correção (solicitação 2006-019) trocou o nome do registro para **Panará**, o autônimo, que na língua significa "gente". O padrão mundial de línguas foi corrigido porque alguém pediu. É exatamente o que se propõe fazer aqui com o vocabulário.
-
----
-
-### Pauta 4 — O que não deve ser registrado
+### Pauta 3 — O que não deve ser registrado
 
 A conversa mais importante, e a que um documento técnico tende a omitir.
 
@@ -151,6 +136,19 @@ A conversa mais importante, e a que um documento técnico tende a omitir.
 1. Há coisas que vocês preferem que não entrem em computador nenhum?
 2. Se entrarem por engano, como vocês querem ser avisados, e o que deve acontecer?
 3. Quem, na comunidade, precisa ser consultado antes de qualquer registro novo?
+
+---
+
+### Pauta 4 — Gravações de prática e oficinas coletivas
+
+Toda gravação feita em campo — oficina, demonstração de preparo, entrevista registrada em áudio ou vídeo — aciona duas pendências que não se resolvem com o termo de consentimento genérico do CLPI.
+
+| # | Pendência | Situação |
+|---|---|---|
+| 1 | **Consentimento específico para imagem e voz** | Gravar em áudio ou vídeo aciona três regimes ao mesmo tempo: direito de personalidade (Código Civil, art. 20), dado sensível (LGPD, art. 11 — exige consentimento **específico e destacado**) e forma legal de comprovar o CLPI (Lei 13.123/2015, art. 9º, §1º, II). Um termo genérico não cobre os três |
+| 2 | **Transcrição em língua originária** | Exige falante nativo. A tradução para o português é entidade **derivada** — e derivada com perda, porque a língua é constitutiva do conhecimento, não seu veículo (CARE R3) |
+
+**A pergunta para levar a campo:** antes de qualquer gravação, qual das quatro formas do art. 9º, §1º da Lei 13.123/2015 (ver §5.5) a comunidade prefere para comprovar o consentimento?
 
 ---
 
@@ -188,11 +186,11 @@ Separado honestamente do §5. São escolhas de engenharia, reversíveis, com rec
 | ④ | O regime entra no glossário da federação? | **Sim — já aplicado.** Se decide o que atravessa o harvest, é linguagem da federação | Sim |
 | ⑤ | Vocabulário controlado de `assertionType` | Adiar. É matéria do Comitê e do BioCultTermos | — |
 
-**Nota sobre ③, para desfazer um mal-entendido.** O `_Avoid_: Relato` escrito no glossário **não descarta a palavra de lugar nenhum**. `grep` confirma que "Relato" não é termo definido em `CONTEXT.md`, no `README.md` nem no ADR-003 — aparece só como prosa corrente (`README.md:20,56`) e como nome próprio de duas coisas que **não mudam**: a unidade hospedeira **BioCultRelatos** e a tabela `relatos` do projeto Panará/JBRJ (`dadosEtnoJBRJ_Panara/relatos.md`, outro repositório, modelo de trabalho de um projeto). O alcance da nota é uma linha só: *no glossário da federação, o verbete da unidade de Conhecimento não se chama "Relato"*. É a mesma convenção que o glossário já usa quando escreve `_Avoid_: Taxonomia` sob *Vocabulário Controlado* — sem que ninguém tenha apagado "taxonomia" do projeto.
+**Nota sobre ③, para desfazer um mal-entendido.** O `_Avoid_: Relato` escrito no glossário **não descarta a palavra de lugar nenhum**. `grep` confirma que "Relato" não é termo definido em `CONTEXT.md`, no `README.md` nem no ADR-003 — aparece só como prosa corrente (`README.md:20,56`) e como nome próprio de uma coisa que **não muda**: a unidade hospedeira **BioCultRelatos**. O alcance da nota é uma linha só: *no glossário da federação, o verbete da unidade de Conhecimento não se chama "Relato"*. É a mesma convenção que o glossário já usa quando escreve `_Avoid_: Taxonomia` sob *Vocabulário Controlado* — sem que ninguém tenha apagado "taxonomia" do projeto.
 
 O mérito é apertado, e vale registrar os dois lados:
 
-- **A favor de "Relato"**, e foi o que se decidiu — já em uso, português natural, e a unidade que mais produz Conhecimento chama-se BioCultRe*latos*: a coerência é boa. O modelo Panará já define a entidade com precisão: *"a menção de uma planta por um participante (ou grupo) em um contexto específico"*.
+- **A favor de "Relato"**, e foi o que se decidiu — já em uso, português natural, e a unidade que mais produz Conhecimento chama-se BioCultRe*latos*: a coerência é boa.
 - **Contra, e o que se respondeu** — *relato* carrega um traço de terceira pessoa. Aceito: o glossário resolve pela definição, que exige detentor. A objeção original — "um Relato dentro do BioCultAcervos lê-se como erro" — **caiu junto com a correção do caso Acervos**: esse Relato nunca esteve no Acervos, está na unidade da comunidade.
 
 ---
@@ -208,10 +206,7 @@ O mérito é apertado, e vale registrar os dois lados:
 **Bloqueados nas Pautas 1 e 2 do §5:**
 
 4. Esquema do Relato como tabela — o formato de `relato.detentor` depende da Pauta 1; o de `rotulosCulturais` depende da Pauta 2.
-
-**Bloqueado na Pauta 3:**
-
-5. Piloto do vídeo Panará ponta a ponta, que é o que validaria o modelo inteiro contra um caso real.
+5. Piloto ponta a ponta no estudo de caso do BioCultRelatos (mestrado de Luisa Ridolph Tostes Braga, PPG em Botânica da ENBT/JBRJ — ver `docs/projetoPesquisa.md` §7.3), que é o que validaria o modelo inteiro contra um caso real.
 
 Passos 1–3 podem começar agora e não presumem nenhuma resposta da comunidade. É a divisão que respeita o que dá para decidir daqui e o que não dá.
 

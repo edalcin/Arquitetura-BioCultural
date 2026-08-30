@@ -50,7 +50,7 @@
 | **P4** | **Nível efetivo = o mais restritivo.** Termo, Relato e Registro/Mídia são rotuláveis independentemente; herança descendente proibida; toda classificação tem data de revisão | ADR-015 K3 |
 | **P5** | **Vocabulário controlado em SKOS-XL; nomenclatura científica fora dele.** Termos de uso, nomes vernaculares e papéis vêm do BioCultTermos; o binômio latino é dado de primeira classe validado em autoridade externa (Flora e Funga / GBIF) | [rotulos-skos-xl.md](rotulos-skos-xl.md), ADR-014 |
 | **P6** | **Composição multi-espécie.** Usos, preparos e artefatos referenciam 1..n plantas, com papel por componente e nome próprio do composto; o caso mono-espécie é o caso n=1 | ADR-017 R1–R7 |
-| **P7** | **Língua em ISO 639-3, sempre.** `por`, `eng`, `kre`… — nunca ISO 639-1; `zxx` para conteúdo sem fala, `und` para língua não identificada; glotônimo por extenso onde não houver código | ADR-015 K5/K8.2 |
+| **P7** | **Língua em ISO 639-3, sempre.** `por`, `eng`, `tup`… — nunca ISO 639-1; `zxx` para conteúdo sem fala, `und` para língua não identificada; glotônimo por extenso onde não houver código | ADR-015 K5/K8.2 |
 | **P8** | **Proveniência estruturada.** Todo dado atribuído tem Fonte de Atribuição `{tipo, nome}`; o tipo `comunidade_tradicional` invoca CLPI, CARE e repartição de benefícios — os demais, não | ADR-012, `CONTEXT.md` |
 
 ## 3. Entidades
@@ -156,7 +156,7 @@ Registro de regime `conhecimento` acrescenta, em `relatos[]`:
                 "comunidade": "…",
                 "identificacao": "pseudônimo ou papel" }, // nunca expor pessoa sem decisão dela
   "enunciacao": { "data": "2026-05-10", "lugar": "…",
-                  "lingua": "kre",                       // ISO 639-3; zxx sem fala; und desconhecida
+                  "lingua": "tup",                       // ISO 639-3; zxx sem fala; und desconhecida
                   "protocolo": "roda de conversa, CLPI 2026-04" },
   "midiaFonte": "midia_001",
   "accessLevel": "restricted",                           // nasce restricted (ADR-015 K7)

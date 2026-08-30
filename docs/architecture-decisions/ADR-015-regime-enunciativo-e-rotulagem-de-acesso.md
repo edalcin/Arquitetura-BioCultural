@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposto** — Agosto 2026. Aguarda decisão sobre Q3–Q6 em §"O que esta ADR não decide" e validação com comunidades, como o ADR-003 do qual depende. O ponto K6 foi extraído para a [ADR-016](ADR-016-contrato-de-harvest.md), que tem ciclo de aceitação próprio.
+**Proposto** — Agosto 2026. Aguarda decisão sobre Q3–Q5 em §"O que esta ADR não decide" e validação com comunidades, como o ADR-003 do qual depende. O ponto K6 foi extraído para a [ADR-016](ADR-016-contrato-de-harvest.md), que tem ciclo de aceitação próprio.
 
 ## Contexto
 
@@ -15,18 +15,17 @@ Esta ADR responde a essa pendência, e descobre no caminho que ela não era de v
 
 ### O sintoma medido
 
-Um vídeo de 42 segundos, `conhecimento/conhecimentoPanara.mp4` (HEVC 1080p, 61,9 MB): um homem Panará, ao lado de uma árvore, descreve a árvore e seus usos **na língua Panará** (ISO 639-3 `kre`). Não há transcrição, tradução, grafia verificada nem CLPI documentado.
+A arquitetura organiza tudo por um eixo — a procedência do registro — e chama o resultado de Evidência, como a seção seguinte detalha. Essa organização não tem onde guardar um registro em **primeira pessoa**: enunciado por quem detém o conhecimento, em língua originária, diante de um referente físico presente, num ato datado e localizado.
 
-Este é o registro que melhor materializa a razão de ser da arquitetura — e **não existe campo para ele em lugar nenhum**:
+Um registro sonoro ou audiovisual de fala com essas características — alguém descrevendo, na própria língua, o uso de uma planta ao lado dela — não tem campo para si em lugar nenhum:
 
 | Onde deveria caber | O que há hoje |
 |---|---|
 | `ADR-003:337-338` | `media: []` — comentado como "(futuro)" |
 | `ADR-003:110` | `type: "traditional_knowledge"` — constante, não distingue nada |
-| `ADR-003:371` | `language: "pt-BR"` — não codifica `kre`; contradiz a regra ISO 639-3 já vigente no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por` |
-| `dadosEtnoJBRJ_Panara/relatos.md:84-89` | Modelo mais próximo: tem `origem_registro ENUM(…'video'…)`, `id_video`, `conteudo_transcrito`, `idioma ENUM('panara','portugues','bilingue')` — e **nenhum** campo de nível de acesso, consentimento ou detentor |
+| `ADR-003:371` | `language: "pt-BR"` — não codifica língua indígena brasileira alguma; contradiz a regra ISO 639-3 já vigente no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por` |
 
-O modelo que melhor descreve o conhecimento é o que menos o protege. Isso não é descuido de implementação: é consequência de a arquitetura nunca ter declarado o que é conhecimento.
+Não há, em nenhum dos quatro provedores, campo para detentor, para ato de enunciação nem para nível de acesso sobre uma proposição. Isso não é descuido de implementação: é consequência de a arquitetura nunca ter declarado o que é conhecimento.
 
 ### O achatamento no vocabulário atual
 
@@ -37,7 +36,7 @@ A arquitetura organiza tudo em **um eixo** — a procedência do registro — e 
 - `CONTEXT.md` (raiz), glossário da federação, 11 termos — **não define nem "Conhecimento" nem "Evidência"**.
 - `BioCultDB/CONTEXT.md:12-16` — define Evidência corretamente **e localmente**: "o conteúdo etnobotânico que um artigo científico documentou… Um artigo, uma Evidência". A definição amarra Evidência ao artefato bibliográfico e não se estende a acervo, a obra de naturalista nem a uma fala.
 
-O sentido pretendido de Evidência na arquitetura é mais amplo que o do BioCultDB: **evidência da relação de uma comunidade com a biodiversidade que a cerca**. Mesmo nesse sentido amplo, ele não cobre o vídeo Panará — porque o vídeo não *atesta* a relação, ele **é** a relação sendo enunciada.
+O sentido pretendido de Evidência na arquitetura é mais amplo que o do BioCultDB: **evidência da relação de uma comunidade com a biodiversidade que a cerca**. Mesmo nesse sentido amplo, ele não cobre um registro em primeira pessoa — porque esse registro não *atesta* a relação, ele **é** a relação sendo enunciada.
 
 ### A distinção que falta, e por que não é epistemológica
 
@@ -78,13 +77,13 @@ Na prática, portanto: **BioCultAcervos, BioCultDB e BioCultNaturalistas são `e
 
 ### A lacuna técnica: SKOS-XL rotula termos, não proposições
 
-O BioCultTermos adota SKOS-XL porque `skosxl:Label` é recurso de primeira classe e carrega metadados próprios — `accessLevel`, `sourcePeople`, `holderPeople`, `priorInformedConsent` (`manual/03-rotulos.md:52-92`). Isso resolve o nível do **termo**: o nome da árvore em `kre` pode ser `sacred` enquanto o nome em português é `public`, exatamente como `manual/03-rotulos.md:67-68` e `propostaGovernanca.md:429` descrevem.
+O BioCultTermos adota SKOS-XL porque `skosxl:Label` é recurso de primeira classe e carrega metadados próprios — `accessLevel`, `sourcePeople`, `holderPeople`, `priorInformedConsent` (`manual/03-rotulos.md:52-92`). Isso resolve o nível do **termo**: o nome da árvore na língua da comunidade pode ser `sacred` enquanto o nome em português é `public`, exatamente como `manual/03-rotulos.md:67-68` e `propostaGovernanca.md:429` descrevem.
 
 Não resolve o nível da **proposição**. "Esta árvore serve para isto, segundo este detentor" não é uma entrada de vocabulário; é uma afirmação sobre o mundo, atribuída a alguém. Um vocabulário SKOS não tem, e não deve ter, onde guardá-la. Hoje a arquitetura protege o nome e deixa a proposição a descoberto.
 
 ### O contrato de harvest não sabe expressar supressão parcial
 
-`ADR-004:145-148` define o payload como `{id, visibility, updated_at, data}`, e o D6 estabelece que só registros `visibility: public` trafegam. É um booleano. Não há como publicar "este registro é público, mas o rótulo em `kre` foi suprimido por decisão da comunidade" — que é o caso comum, não a exceção.
+`ADR-004:145-148` define o payload como `{id, visibility, updated_at, data}`, e o D6 estabelece que só registros `visibility: public` trafegam. É um booleano. Não há como publicar "este registro é público, mas o rótulo em língua indígena foi suprimido por decisão da comunidade" — que é o caso comum, não a exceção.
 
 Isso deixa sem implementação possível uma regra que a governança já adotou (`propostaGovernanca.md:300`): **campo restringido nunca fica nulo**, é substituído por texto explicativo, para que o consumidor saiba que há informação retida e por quê. Do lado do consumidor, hoje, não há campo onde ler esse texto.
 
@@ -189,7 +188,7 @@ O que se modela **não é o conteúdo do conhecimento; é o ato de enunciá-lo, 
 
 Em implementação, o Relato mapeia para `dwc:Assertion` do Darwin Core Data Package (guia ratificado TDWG, 2026-04-17), cujas tabelas `*-assertion` — inclusive `media-assertion` — trazem exatamente: `assertionBy` / `assertionByID` (agente responsável, interno ou externo ao dataset), `assertionType` / `assertionValue` com `assertionTypeIRI` / `assertionValueIRI` para vocabulário controlado, `assertionMadeDate`, `assertionProtocol_fk` e a chave para a mídia. O gancho para o BioCultTermos é `assertionValueIRI` + `assertionValueSource`.
 
-**Relato** é a linguagem de domínio; `dwc:Assertion` é a implementação. Os dois nomes permanecem separados: o glossário da federação não importa jargão de padrão. O termo já é o usado pelo projeto — inclusive no modelo de entidade do projeto Panará/JBRJ (`dadosEtnoJBRJ_Panara/relatos.md`), que define Relato como "a menção de uma planta por um participante (ou grupo) em um contexto específico".
+**Relato** é a linguagem de domínio; `dwc:Assertion` é a implementação. Os dois nomes permanecem separados: o glossário da federação não importa jargão de padrão. O termo já é o usado pelo projeto.
 
 ### K3 — Três níveis de rotulagem, e o nível efetivo é o mais restritivo
 
@@ -232,9 +231,9 @@ Quando a comunidade se manifesta sobre um registro de Evidência, a Notice cede 
 
 ### K5 — Língua do Relato em ISO 639-3, obrigatória; tradução é entidade derivada
 
-Todo Relato declara a língua em que foi proferido, em **ISO 639-3** — a mesma convenção já obrigatória no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. Onde não houver código, registra-se o glotônimo por extenso (`propostaGovernanca.md:396`). O campo `metadata.language: "pt-BR"` do `ADR-003:371` é retificado por esta cláusula: `pt-BR` não codifica `kre`.
+Todo Relato declara a língua em que foi proferido, em **ISO 639-3** — a mesma convenção já obrigatória no BioCultTermos (`manual/03-rotulos.md:44-46`), sob a qual 2601 conceitos foram migrados de `pt` para `por`. Onde não houver código, registra-se o glotônimo por extenso (`propostaGovernanca.md:396`). O campo `metadata.language: "pt-BR"` do `ADR-003:371` é retificado por esta cláusula: `pt-BR` não codifica línguas indígenas brasileiras.
 
-**A língua é constitutiva, não veículo.** É a leitura operacional do sub-princípio **CARE R3 — *For Indigenous languages and worldviews***: um enunciado em `kre` armazenado apenas em português não é o mesmo dado noutra roupa, é um derivado, e a derivação é irreversível.
+**A língua é constitutiva, não veículo.** É a leitura operacional do sub-princípio **CARE R3 — *For Indigenous languages and worldviews***: um enunciado em língua indígena armazenado apenas em português não é o mesmo dado noutra roupa, é um derivado, e a derivação é irreversível.
 
 Daí a cadeia obrigatória, no vocabulário do PROV-O já adotado por `propostaGovernanca.md:394`:
 
@@ -267,7 +266,7 @@ O contrato de `ADR-004 D6` é ampliado. O payload mínimo passa a ser:
   "id": "<member_id>/<record_id>",
   "regime": "conhecimento | evidencia",
   "accessLevel": "public",
-  "informationWithheld": "rótulo em kre suprimido por decisão da comunidade",
+  "informationWithheld": "rótulo em língua indígena suprimido por decisão da comunidade",
   "dataGeneralizations": "coordenada generalizada para 0,1°",
   "culturalLabels": [{ "tipo": "label | notice", "id": "…" }],
   "holderPeople": "…",
@@ -332,7 +331,7 @@ quem consome. O ISO 639-3 já tem códigos para os dois casos, ambos *Active*, e
 
 | Situação | `language` |
 |---|---|
-| Há fala | Código ISO 639-3 da língua, como em K5. `kre` para o Panará |
+| Há fala | Código ISO 639-3 da língua, como em K5 — `tup` para o Tupi, por exemplo |
 | **Não há fala** | **`zxx`** — *No linguistic content*. Declarado, nunca vazio, nunca inferido como `por` |
 | Há fala em mais de uma língua | Lista, na ordem em que ocorrem. O caso comum em oficina bilíngue |
 | Há fala cuja língua não se identificou | **`und`** — *Undetermined*. É **pendência de curadoria**, não estado final aceitável |
@@ -389,7 +388,7 @@ protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver 
 ### Positivas
 
 - O critério de quem pode classificar o acesso passa a ser derivável do dado, e não do provedor onde ele por acaso está.
-- O registro sonoro/audiovisual de fala ganha representação primária. O vídeo Panará passa a ter onde existir — com as ausências (transcrição, grafia, CLPI, classificação) **visíveis e bloqueantes** em vez de implícitas num arquivo numa pasta.
+- O registro sonoro/audiovisual de fala ganha representação primária, com as ausências (transcrição, grafia, CLPI, classificação) **visíveis e bloqueantes** em vez de implícitas num arquivo numa pasta.
 - Uma classe inteira de vazamento deixa de ser possível: rótulo sagrado dentro de registro público.
 - CARE **A2** (*Data for governance*) ganha implementação: a comunidade pode consultar "todo o Conhecimento de que sou detentora" sem depender de quem digitou.
 - CARE **R3** deixa de ser recomendação e vira restrição de esquema: sem língua ISO 639-3, o Relato é incompleto.
@@ -408,18 +407,17 @@ protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver 
 
 ## O que esta ADR não decide
 
-Quatro pontos permanecem abertos — Q3 a Q6 — e devem ser resolvidos antes da mudança de status para *Aceito*. Q1 e Q2 já foram decididas e ficam registradas como tal. Estão aqui, com recomendação, para que a ausência de decisão seja visível em vez de presumida.
+Três pontos permanecem abertos — Q3 a Q5 — e devem ser resolvidos antes da mudança de status para *Aceito*. Q1 e Q2 já foram decididas e ficam registradas como tal. Estão aqui, com recomendação, para que a ausência de decisão seja visível em vez de presumida.
 
 Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nível efetivo é **H-Q1 da [ADR-016](ADR-016-contrato-de-harvest.md)**: nasceu do contrato, não desta ADR, e vai à reunião com as lideranças.
 
 | # | Questão | Recomendação |
 |---|---|---|
 | **Q1** | ~~O regime entra no glossário da federação?~~ | **Decidido na v3.7.0: entra.** Quatro termos acrescentados ao `CONTEXT.md` raiz. Se determina o que trafega no harvest, é linguagem da federação por definição |
-| **Q2** | ~~"Enunciado" é o nome certo?~~ | **Decidido em 2026-08-13: o termo é `Relato`**, já usado pelo projeto e pelo modelo Panará. Descartados *Enunciado* (pouco usual), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial) |
+| **Q2** | ~~"Enunciado" é o nome certo?~~ | **Decidido em 2026-08-13: o termo é `Relato`**, já usado pelo projeto. Descartados *Enunciado* (pouco usual), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial) |
 | **Q3** | Como identificar o detentor sem expor a pessoa? | Tensão real entre `assertionByID` (quer identificador estável) e LGPD. Opções: (a) identificador interno + `anonymized: true`, exposto só como papel; (b) atribuição exclusivamente coletiva no que for público; (c) **pseudônimo escolhido pelo próprio detentor** — a única que respeita simultaneamente CARE A1 e o direito ao reconhecimento, e a única que exige perguntar à pessoa |
 | **Q4** | Adotar a API do Local Contexts Hub ou espelhar os rótulos localmente? | Adotar mantém a autoridade com a comunidade e cria dependência externa; espelhar inverte. **Meio-termo:** armazenar o identificador do rótulo e do projeto, exibir o texto canônico com cache, nunca editar o texto |
 | **Q5** | Que vocabulário controlado usar em `assertionType`? | Fora do escopo desta ADR; é campo do BioCultTermos e matéria do Comitê |
-| **Q6** | O vídeo Panará, concretamente | Antes de qualquer implementação: localizar ou formalizar o CLPI, obter transcrição em `kre` com falante nativo, verificar grafia com pesquisadores Panará, e perguntar à comunidade o nível de acesso. Até lá, `restricted` de fato |
 
 ## Referências
 
@@ -433,8 +431,7 @@ Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nív
 - W3C SKOS Reference §5 (SKOS-XL) — <https://www.w3.org/TR/skos-reference/#xl>
 - Local Contexts — TK Labels <https://localcontexts.org/labels/traditional-knowledge-labels/>; BC Labels <https://localcontexts.org/labels/biocultural-labels/>; Hub <https://localcontextshub.org/>
 - CARE Principles for Indigenous Data Governance, GIDA — <https://www.gida-global.org/careprinciples>
-- ISO 639-3 `kre` (Panará) — <https://iso639-3.sil.org/code/kre>; solicitação 2006-019, que trocou a *reference name* de `Kreen-Akarore` para `Panará` em 2007 — <https://iso639-3.sil.org/request/2006-019>
 
 ## Data de Revisão
 
-Revisitar quando (a) Q3 a Q6 forem decididas, para promoção a *Aceito*; (b) o ADR-003 for validado com comunidades, já que esta ADR depende dele; ou (c) o piloto de TK/BC Labels do *Task Group on Indigenous Data Governance* do GBIF (`propostaGovernanca.md:379`) publicar resultado que contradiga K4. O contrato de harvest saiu daqui: ver ADR-016.
+Revisitar quando (a) Q3 a Q5 forem decididas, para promoção a *Aceito*; (b) o ADR-003 for validado com comunidades, já que esta ADR depende dele; ou (c) o piloto de TK/BC Labels do *Task Group on Indigenous Data Governance* do GBIF (`propostaGovernanca.md:379`) publicar resultado que contradiga K4. O contrato de harvest saiu daqui: ver ADR-016.

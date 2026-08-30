@@ -120,7 +120,7 @@ Triagem entre o que se decide na mesa e o que só se decide na roda. Das três p
 | **⑤** ✔ | **`relationshipType` fechado em três valores**: `refers to`, `same as`, `derived from`. E uma correção: o exemplo usava `same as` entre Relato e exsicata — errado, o Relato **fala sobre** a exsicata, não **é** a exsicata. `same as` afirmaria identidade e colapsaria os dois no índice do Pluriverso | `docs/contrato-harvest.md` §6 |
 | **④** → reunião | **`sacred` ≡ `private` não é decisão técnica.** Parecia; não é. O que é sagrado quem diz é a comunidade, e a equivalência pode estar tecnicamente certa e semanticamente errada. Virou **H-Q1 da ADR-016**, foi para a pauta das lideranças e para o slide de perguntas. Regra interina até lá: trata-se como `private`, que erra para o lado de não publicar | `contrato-harvest.md` §4.1, `ADR-016` H-Q1 |
 
-Limpeza junto: a Q1 da ADR-015 ("o regime entra no glossário da federação?") constava aberta desde a v3.7.0, que já a respondera. Fechada — a contagem de questões abertas passa de seis para quatro (Q3–Q6) e agora é verdadeira.
+Limpeza junto: a Q1 da ADR-015 ("o regime entra no glossário da federação?") constava aberta desde a v3.7.0, que já a respondera. Fechada — a contagem de questões abertas passa de seis para quatro e agora é verdadeira. (Depois desta triagem, a Q6, que tratava de um caso concreto retirado do escopo do projeto, também deixou de existir: restam três, Q3–Q5.)
 
 ---
 
@@ -136,8 +136,8 @@ Conflito real: `assertionByID` quer identificador estável; LGPD art. 11 protege
 
 | | O sistema guarda | O público vê | Quem decidiu |
 |---|---|---|---|
-| A | nome real, protegido | "um ancião Panará" | nós |
-| B | só o coletivo | "Panará" | nós |
+| A | nome real, protegido | "um detentor da comunidade" | nós |
+| B | só o coletivo | o nome da comunidade | nós |
 | **C ← recomendada** | pseudônimo escolhido pela pessoa | o pseudônimo | **ela** |
 
 **C é a única que exige ir a campo perguntar** — e é exatamente por isso que A e B são suspeitas: são as que se decidem sozinho.
@@ -160,14 +160,14 @@ Detalhado com roteiro de perguntas em `conhecimento/sessao-2026-08-13-decisoes-e
 
 1. **Como quem fala quer ser nomeado** — resolve ① acima.
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial, e quem tem legitimidade para dizer em nome de todos.
-3. **O vídeo Panará**, quatro pendências: CLPI não localizado; consentimento específico para imagem e voz; transcrição em `kre` inexistente; grafia não verificada com pesquisadores Panará.
+3. **Consentimento para imagem e voz em gravação** — gravar aciona três regimes ao mesmo tempo: direito de personalidade (Código Civil art. 20), dado pessoal sensível (LGPD art. 11, que exige consentimento específico e destacado) e forma legal de comprovar o CLPI (Lei 13.123/2015 art. 9º §1º II). Um termo genérico não cobre os três. Some-se a transcrição em língua originária, que exige falante nativo — a tradução é entidade derivada, e derivada com perda (CARE R3).
 4. **O que não deve ser registrado** — `propostaGovernanca.md:286`: para conhecimento sagrado, a decisão correta pode ser **não registrar**, e a plataforma tem obrigação de dizer isso.
 5. **Gravações de prática e oficinas coletivas** (novo, K8) — filmar alguém fazendo um chá ou trançando uma cesta registra conhecimento sem que uma palavra seja dita; e uma oficina grava várias pessoas de uma vez. Perguntar: quem autoriza a gravação de uma prática; se cada participante decide sobre a própria imagem ou se a decisão é do grupo; e o que deve acontecer quando **um** participante muda de ideia depois — a regra adotada por ora é a mais conservadora, a gravação inteira sai.
 6. **O que é sagrado — e o que acontece com ele** (novo, v3.10.0, ④/H-Q1) — quando um saber é sagrado, o registro dele deve sumir por inteiro, ou pode ficar visível que ele existe sem mostrar o conteúdo? E quem diz, por todos, que um saber é sagrado? Tecnicamente a pergunta é se `sacred` equivale a `private` ou merece nível próprio; a decisão, porém, não é técnica. Regra interina: equivale a `private`, nunca atravessa.
 
 As pautas 1, 4, 5 e 6 estão no slide "Cinco perguntas que só vocês podem responder" de `docs/apresentacoes/Arquitetura BioCultural v2.pptx`, junto com a pauta 2.
 
-Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restricted` de fato, não atravessa harvest, e o `.gitignore` de `*.mp4` deve permanecer.
+A regra de `.gitignore` para `*.mp4` permanece: nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros (`propostaGovernanca.md` §5.10).
 
 ---
 
@@ -202,7 +202,7 @@ flowchart TD
     C --> Q2
     C --> Q4["④ sagrado<br/>H-Q1 da ADR-016"]
     Q4 --> HA
-    C --> P5["Passo 5<br/>piloto Panará"]
+    C --> P5["Passo 5<br/>piloto ponta a ponta<br/>no estudo de caso"]
     P3 --> P5
     P4 --> P5
     P5 --> F["ADR-015 → Aceito"]
@@ -222,7 +222,7 @@ flowchart TD
 
 | Artefato | Caminho |
 |---|---|
-| Estudo completo, fontes verificadas, caso Panará modelado | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
+| Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
 | Registro da sessão + **pauta da comunidade (§5)** | `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
@@ -230,7 +230,6 @@ flowchart TD
 | Glossário da federação | `CONTEXT.md` → seção "Conhecimento e evidência" |
 | Governança de acesso, CLPI, rotulagem | `governanca/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
-| Vídeo caso-teste (não versionado) | `conhecimento/conhecimentoPanara.mp4` — 42 s, HEVC 1080p, língua `kre` |
 
 ---
 
@@ -238,7 +237,7 @@ flowchart TD
 
 Não precisam ser reconferidas.
 
-- ISO 639-3 `kre` = Panará, *Active* — <https://iso639-3.sil.org/code/kre>. A *reference name* era `Kreen-Akarore` até a solicitação 2006-019, adotada em 2007-07-18: <https://iso639-3.sil.org/request/2006-019>
+- ISO 639-3, registro de códigos de língua — <https://iso639-3.sil.org/>
 - DwC-DP, guia ratificado TDWG 2026-04-17 — <https://dwc.tdwg.org/dp/>
 - Tabelas `*-assertion` e `usage-policy` — <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>. Confirmado: `usage-policy` só tem campos de direito autoral, **nenhum** de protocolo cultural
 - TK Labels, 20 rótulos em três categorias — <https://localcontexts.org/labels/traditional-knowledge-labels/>
@@ -275,7 +274,7 @@ Consolida tudo o que a discussão abriu, em um só lugar. Itens riscados foram d
 | ④ | `sacred` equivale a `private`? | **Reclassificada na v3.10.0: não é decisão técnica.** Virou H-Q1 da ADR-016 e **vai à reunião** (Pauta 6). Regra interina: equivale a `private` | Promoção da ADR-016 a *Aceito* |
 | ~~⑤~~ | ~~Vocabulário de `relationshipType`~~ | **Decidido na v3.10.0:** `refers to`, `same as`, `derived from`. `same as` entre Relato e exsicata estava errado e foi corrigido | — |
 | ⑥ | Vocabulário controlado de `assertionType` | Q5 da ADR-015: matéria do BioCultTermos e do Comitê, fora do escopo | Esquema do Relato |
-| ⑦ | Promoção da ADR-015 a *Aceito* | Depende de Q3–Q6 e da validação com comunidades | Tudo o que depende de ADR aceita |
+| ⑦ | Promoção da ADR-015 a *Aceito* | Depende de Q3–Q5 e da validação com comunidades | Tudo o que depende de ADR aceita |
 | ⑫ | Promoção da **ADR-016** a *Aceito* | Depende só de H-Q1 (④) e do Comitê. **Não depende da comunidade para existir** — depende dela para uma linha | Implementação do endpoint de harvest |
 
 ### 10.3 Aberturas que o K8 criou
@@ -314,6 +313,6 @@ Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e le
 - **Escrever o roteiro das pautas 5 e 6** — gravações/oficinas e o sagrado. São as duas perguntas da reunião que ainda não têm roteiro em `sessao-2026-08-13-decisoes-e-pendencias.md` §5, e a reunião é o caminho crítico de quase tudo. **Primeira coisa fora do computador.**
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
-- **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto Panará)** continua travado pela Pauta 3.
+- **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto ponta a ponta)** continua travado pelo esquema do Relato e pela agenda do estudo de caso do BioCultRelatos.
 - **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
 - **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.

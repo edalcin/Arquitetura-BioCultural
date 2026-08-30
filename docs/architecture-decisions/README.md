@@ -243,9 +243,9 @@ da procedência: o **Regime Enunciativo** — `conhecimento` (a relação com a 
 quem a detém, em primeira pessoa, presa a um ato de enunciação) ou `evidencia` (a atestação por um
 terceiro de que essa relação existe, em terceira pessoa, presa a um artefato). A distinção é deôntica,
 não epistêmica: ela decide **quem pode classificar o acesso**, e portanto se cabe um TK/BC Label
-(comunidade) ou apenas um Notice (instituição). Sintoma que a originou: um vídeo de 42 s de fala Panará
-em língua `kre`, o registro que melhor materializa a razão de ser da arquitetura, não tem onde existir
-no modelo de dados (`ADR-003:337-338` — `media: []`, "(futuro)").
+(comunidade) ou apenas um Notice (instituição). Sintoma que a originou: o registro em primeira pessoa —
+enunciado por quem detém o conhecimento, em língua originária, junto ao referente físico — não tem onde
+existir no modelo de dados (`ADR-003:337-338` — `media: []`, "(futuro)").
 
 **Decisão:** K1 regime é campo do registro, nunca propriedade do provedor, decidido por um teste de
 quatro perguntas; K2 a unidade de Conhecimento é o **Relato** (detentor + ato de enunciação +
@@ -255,7 +255,7 @@ Relato, Registro — com **nível efetivo pelo mais restritivo** e sem herança 
 sobre Conhecimento, Notice sobre Evidência; K5 língua em ISO 639-3 obrigatória, tradução como entidade
 derivada; K6 o harvest passa a carregar nível efetivo e supressão declarada
 (`dwc:informationWithheld`, `dwc:dataGeneralizations`) — **supersede o contrato de payload do
-ADR-004 D6**; K7 Relato nasce `restricted`, Termo herda o padrão do vocabulário. Cinco questões
+ADR-004 D6**; K7 Relato nasce `restricted`, Termo herda o padrão do vocabulário. Três questões
 permanecem explicitamente abertas antes da promoção a *Aceito*.
 
 **[Leia o documento completo →](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)**

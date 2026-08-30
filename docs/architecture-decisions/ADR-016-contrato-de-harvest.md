@@ -34,7 +34,7 @@ O registro do harvest passa a ser:
   "id": "<member_id>/<record_id>",
   "regime": "conhecimento | evidencia",
   "accessLevel": "public",
-  "informationWithheld": "rótulo em kre suprimido por decisão da comunidade",
+  "informationWithheld": "rótulo em língua indígena suprimido por decisão da comunidade",
   "dataGeneralizations": "coordenada generalizada para 0,1°",
   "culturalLabels": [{ "tipo": "label | notice", "id": "…" }],
   "holderPeople": "…",
@@ -71,7 +71,7 @@ de `relationshipType` fica **fechado em três valores**, cada um com um caso rea
 
 | Valor | Quando | Exemplo |
 |---|---|---|
-| `refers to` | O registro **fala sobre** um recurso custodiado por outro membro | Relato Panará sobre a exsicata `jbrj-herbario/rb-00123456` |
+| `refers to` | O registro **fala sobre** um recurso custodiado por outro membro | Relato sobre a exsicata `jbrj-herbario/rb-00123456` |
 | `same as` | Os dois registros descrevem **o mesmo objeto** | Duplicata do mesmo espécime em dois herbários |
 | `derived from` | O registro é **derivado** de outro | Versão editada de gravação, transcrição, tradução (K5, K8.3) |
 
