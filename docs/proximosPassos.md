@@ -1,4 +1,10 @@
-# Próximos Passos — estado em 2026-08-19
+# Próximos Passos — estado do projeto e pendências
+
+> **Arquivo de referência único do projeto.** Registra onde o projeto está e o que falta fazer. É o ponto de entrada obrigatório de qualquer nova sessão de trabalho — humana ou assistida por IA — e a garantia de continuidade entre sessões: toda pendência aberta está aqui, com estado e bloqueio explícitos.
+>
+> **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão com o que foi feito e (iv) a §11 com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
+
+**Estado em:** 2026-08-19
 
 **Para quem retoma:** leia a **§0** (sessão de 2026-08-19, projeto de pesquisa) e siga para a **§11**. Depois, se precisar do estado da discussão conhecimento × evidência, leia `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Da §1 em diante, este arquivo é o estado de 2026-08-14 e continua válido.
 

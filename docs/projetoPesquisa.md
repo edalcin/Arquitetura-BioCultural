@@ -225,5 +225,5 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 | Decisões arquiteturais (ADR-001…017) | [`docs/architecture-decisions/`](architecture-decisions/) |
 | Metodologia e tecnologias | [`docs/metodologia-e-tecnologias.md`](metodologia-e-tecnologias.md) |
 | Glossário federado | [`CONTEXT.md`](../CONTEXT.md) |
-| Estado operacional e pendências | [`conhecimento/proximosPassos.md`](../conhecimento/proximosPassos.md) |
+| **Estado do projeto e pendências (referência de continuidade)** | [`docs/proximosPassos.md`](proximosPassos.md) |
 | Referências bibliográficas (ABNT) | [`Referencias.md`](../Referencias.md) |
