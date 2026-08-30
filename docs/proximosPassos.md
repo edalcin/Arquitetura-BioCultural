@@ -11,7 +11,7 @@
 
 > **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
 
-**Estado em:** 2026-08-19
+**Estado em:** 2026-08-30 (conteúdo das §0–§10 é de 2026-08-19, salvo a §6)
 
 **Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1** e a **§10**. Se precisar do estado da discussão conhecimento × evidência, leia `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Da §1 em diante, este arquivo é o estado de 2026-08-14 e continua válido.
 
@@ -171,14 +171,18 @@ Enquanto a Pauta 3 não fechar, `conhecimento/conhecimentoPanara.mp4` é `restri
 
 ---
 
-## 6. Fora deste repositório
+## 6. Pendências dos componentes (fora deste repositório)
 
-| Onde | O quê |
-|---|---|
-| `BioCultDB` | 29 registros existentes precisam de valor de `regime`. Trivial: `evidencia` para todos, correto por construção da unidade |
-| `BioCultDB` | Campos de acesso do ADR-003 (`visibility`, `restrictions`, `permissions`) **nunca foram materializados** no banco de produção |
-| `BioCultRelatos` | Absorve K1–K8 e o contrato de `docs/contrato-harvest.md` como restrição de projeto **antes da primeira linha de código** — momento mais barato. Inclui **upload de mídia como registro primário** (K8.1), participantes de gravação coletiva com decisão de acesso própria (K8.3) e a condição de aceitação em dez cenários (§7 do contrato) |
-| `BioCultNaturalistas` | `docs/decisions/ADR-003` V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (pendência da v3.6.0, ADR-014 N3 — **não é desta sessão**) |
+Cada componente mantém o seu próprio `docs/proximosPassos.md`, que é a fonte de verdade das suas pendências. Aqui fica só o resumo e o link. **Regra:** pendência de implementação de uma unidade mora no repositório dela; pendência de arquitetura, contrato ou governança mora aqui.
+
+| Componente | Estado | Pendências principais | Documento |
+|---|---|---|---|
+| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
+| **BioCultRelatos** (registro primário, CLPI) | Documentação + scaffold; sem código de produção | Esquema do Relato travado pela decisão ①; protocolo CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva como função da ferramenta | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
+| **BioCultAcervos** (acervos museológicos) | Repositório, documentação e home page (Express na 3003) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources` para o vínculo com Relatos; harvest; scaffold Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
+| **BioCultNaturalistas** (obras séc. XVII–XIX) | Só documentação de fundação (F0); roadmap de 7 fases | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; ADR-003 V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
+| **Pluriverso** (middleware) | Só documentação; arquitetura, contrato e stack fixados | Fase 0 esqueleto + CI; Fase 1 membership e probe anti-SSRF; Fase 2 harvest + índice FTS5; Fases 3–6 API pública, SKOS, purge, detecção de remoção. Nenhum provedor real existe: Fase 2 termina em membro simulado | [`pluriverso/docs/proximosPassos.md`](https://github.com/edalcin/pluriverso/blob/main/docs/proximosPassos.md) |
+| **BioCultTermos** (módulo SKOS-XL) | Implementado; em produção só como módulo hospedado no BioCultDB | Generalizar o `AcquisitionService` para lista de pares `{tabela, campos[]}` — **bloqueia Relatos, Acervos e Naturalistas**; hospedagem nas outras três unidades | Vive como submodule; pendência registrada no `docs/proximosPassos.md` do BioCultDB |
 
 ---
 
@@ -311,3 +315,5 @@ Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e le
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
 - **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto Panará)** continua travado pela Pauta 3.
+- **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
+- **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.
