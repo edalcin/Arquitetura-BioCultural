@@ -85,6 +85,7 @@ Conceber, especificar, implementar e validar com iniciativas de sistematização
 9. **Formular** e submeter à consulta uma proposta de governança em três camadas (dados, ferramentas, arquitetura).
 10. **Validar** a arquitetura junto às iniciativas de sistematização de CTA — estudos de caso do USEFLORA, do GEF MCTI "Entre-Ciências" e dos mestrados de Camila Nascimento Dantas (obras históricas e exsicatas digitalizadas) e Luisa Ridolph Tostes Braga (saberes locais em quintais de Silveiras, SP) — e responder às questões que a consulta trouxer.
 11. **Publicar** os resultados como software livre, documentação citável e artigos revisados por pares.
+12. **Explorar, documentar e avaliar criticamente o uso de Inteligência Artificial em todas as etapas do projeto** — concepção, detalhamento, documentação, decisão arquitetural, definição de estrutura de dados, codificação, implementação e curadoria — tratando a própria prática assistida por IA como objeto de registro e de aprendizado, com os limites e falhas observados nomeados explicitamente (ver 7.5).
 
 ---
 
@@ -118,6 +119,7 @@ Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato �
 4. **Contrato antes de código.** O contrato de *harvest* é especificado campo a campo, com dez cenários de aceitação, antes da implementação das unidades que o cumprirão.
 5. **Implementação de referência.** Software livre, contêineres pequenos, dependências mínimas, persistência em arquivo único SQLite+JSON1 por unidade.
 6. **Validação por estudo de caso.** A arquitetura é submetida a iniciativas de sistematização de CTA — USEFLORA, GEF MCTI "Entre-Ciências" e os dois mestrados descritos em 7.3 — como conjuntos de dados reais e como interlocução técnica: cada estudo de caso testa a conformidade do UDM, o contrato de *harvest* e a suficiência do vocabulário SKOS-XL. Pautas que dependem de decisão comunitária são levadas às iniciativas como perguntas abertas, não como decisões a ratificar.
+7. **Prática assistida por IA, registrada como método.** Todas as etapas do projeto são conduzidas com assistência de agentes de IA, e o modo de uso, os ganhos e as falhas observadas são registrados como resultado de pesquisa, não como detalhe operacional (7.5).
 
 ### 7.3 Estudos de caso por unidade
 
@@ -149,6 +151,29 @@ Os dois mestrados cumprem, além do papel de fonte de requisitos, a função des
 | Módulo de vocabulário compartilhado, dados nunca compartilhados (ADR-007, ADR-012) | O código atravessa sempre; o conteúdo soberano, nunca |
 | Composição multiespécie (ADR-017) | Usos e preparos com N plantas (ex.: o Daime) são representáveis com papel por componente |
 
+### 7.5 Inteligência Artificial como método transversal
+
+O projeto é conduzido, em todas as suas etapas, com assistência de agentes de IA — não como ferramenta acessória de escrita, mas como parte declarada do método. Isso abrange: formulação e crítica conceitual; redação e revisão da documentação normativa; produção e revisão das ADRs; desenho dos diagramas C4; definição e verificação da estrutura de dados; geração e refatoração de código das unidades; extração de metadados de fontes secundárias (já em produção no BioCultDB, ADR-011); e curadoria assistida de vocabulário SKOS-XL.
+
+A consequência metodológica é tripla. Primeiro, **exaustividade da documentação**: o custo de redigir e manter documentação normativa deixa de ser o fator limitante, e por isso todas as etapas do processo e todas as decisões arquiteturais são registradas — dezessete ADRs, o UDM com checklist C1–C10, o contrato de *harvest* campo a campo com dez cenários de aceitação, a caracterização Conhecimento × Evidência, a referência de rótulos SKOS-XL e o glossário federado. Numa pesquisa de um único proponente, esse nível de documentação não seria exequível sem assistência de IA; é o que torna a arquitetura auditável por terceiros, requisito do próprio objetivo geral. Segundo, **rastreabilidade**: como toda decisão é registrada em ADR e todo artefato vive em repositório versionado, o histórico de uso de IA fica auditável junto ao artefato que produziu. Terceiro, **objeto de pesquisa próprio**: o projeto acumula evidência sobre o que a assistência por IA sustenta e o que não sustenta num domínio de alta sensibilidade ética e jurídica — em particular, onde a IA acelera a especificação e onde ela produz plausibilidade sem fundamento, risco inaceitável quando o registro trata de conhecimento de terceiros. Nenhuma decisão que pertença a quem detém o conhecimento é delegada a um agente; a IA opera sobre a forma técnica, nunca sobre a autoridade do enunciado.
+
+**Ambiente e instrumentos.** O trabalho é conduzido em dois harnesses de agente sobre modelos de linguagem de fronteira — [`oh-my-pi`](https://github.com/can1357/oh-my-pi) e Claude Code CLI — estendidos por *skills*: instruções especializadas, versionadas e reutilizáveis que fixam a competência do agente em um domínio ou formato. As utilizadas no projeto:
+
+| Skill | Função no projeto |
+|---|---|
+| [`darwin-core`](https://www.skills.sh/edalcin/biodiversitydataskills/darwin-core), [`skos-xl`](https://www.skills.sh/edalcin/biodiversitydataskills/skos-xl), [`dataprovenance`](https://www.skills.sh/edalcin/biodiversitydataskills/dataprovenance) | Conformidade do UDM aos padrões de dados adotados (DwC/DwC-DP, SKOS-XL, PROV-O) |
+| [`biohousekeeper`](https://www.skills.sh/edalcin/biodiversitydataskills/biohousekeeper), [`grist-master`](https://www.skills.sh/edalcin/biodiversitydataskills/grist-master) | Diagnóstico e migração dos conjuntos de dados dos estudos de caso, incluindo a saída do GRIST (7.3) |
+| [`c4-architecture`](https://www.skills.sh/softaworks/agent-toolkit/c4-architecture), [`design-doc-mermaid`](https://www.skills.sh/spillwavesolutions/design-doc-mermaid/design-doc-mermaid) | Diagramas C4 e Mermaid da arquitetura e das unidades |
+| [`sqlite-database-expert`](https://www.skills.sh/martinholovsky/claude-skills-generator/sqlite-database-expert) | Esquema, índices e integridade da persistência SQLite+JSON1 de cada unidade |
+| [`docx`](https://www.skills.sh/anthropics/skills/docx), [`pdf`](https://www.skills.sh/anthropics/skills/pdf), [`xlsx`](https://www.skills.sh/anthropics/skills/xlsx), [`pptx`](https://www.skills.sh/anthropics/skills/pptx) | Leitura das fontes secundárias e produção dos entregáveis documentais |
+| [`graphify`](https://www.skills.sh/graphify-labs/graphify/graphify) | Navegação e consulta da base de código e da documentação como grafo de conhecimento |
+| [`ponytail`](https://www.skills.sh/dietrichgebert/ponytail/ponytail) | Disciplina de dependência mínima e menor diff — requisito de soberania, não estilo |
+| [`mattpocock/skills`](https://www.skills.sh/mattpocock/skills) | Padrões de implementação da camada de aplicação |
+| [`caveman`](https://www.skills.sh/juliusbrussee/caveman/caveman) | Compressão da interação com o agente, para reduzir custo de operação |
+| [`skill-creator`](https://www.skills.sh/anthropics/skills/skill-creator) | Autoria das próprias *skills* de dados de biodiversidade listadas acima |
+
+As *skills* de domínio biológico (`darwin-core`, `skos-xl`, `dataprovenance`, `biohousekeeper`, `grist-master`) são produzidas neste projeto e publicadas abertamente: são, elas mesmas, um resultado reutilizável por outras iniciativas do domínio.
+
 ---
 
 ## 8. Cronograma por fases
@@ -175,6 +200,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 4. Proposta de governança validada pelas iniciativas de sistematização de CTA e por Comitê Federado constituído.
 5. Evidência empírica, dos estudos de caso, sobre se a soberania garantida por arquitetura é verificável por terceiros e reconhecida pelas iniciativas que a adotam.
 6. Artigos revisados por pares sobre o regime enunciativo e sobre a arquitetura federada como resposta à lacuna dos dados coletivos.
+7. Relato metodológico e conjunto de *skills* publicadas sobre o uso de IA em todas as etapas do projeto, com os limites observados nomeados — insumo reutilizável por outras iniciativas do domínio.
 
 ---
 
