@@ -2,15 +2,24 @@
 
 > **Arquivo de referência único do projeto.** Registra onde o projeto está e o que falta fazer. É o ponto de entrada obrigatório de qualquer nova sessão de trabalho — humana ou assistida por IA — e a garantia de continuidade entre sessões: toda pendência aberta está aqui, com estado e bloqueio explícitos.
 >
-> **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão com o que foi feito e (iv) a §11 com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
+> **Duas frentes, sempre separadas.** O documento é dividido em duas partes, e toda atualização futura deve respeitar essa divisão:
+>
+> - **Parte I — Projeto de pesquisa** (`docs/projetoPesquisa.md`): o documento de pesquisa em si — problema, objetivos, metodologia, fundamentação, referências, publicação.
+> - **Parte II — Arquitetura BioCultural e seus componentes**: a arquitetura, as ADRs, o UDM, o contrato de harvest, a governança e as unidades (BioCultDB, BioCultTermos, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, Pluriverso).
+>
+> Pendência que atravessa as duas (ex.: uma decisão de arquitetura que muda um texto do projeto de pesquisa) fica registrada na parte de onde nasce, com o vínculo explícito para a outra. Nenhuma pendência mora nas duas ao mesmo tempo.
+
+> **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
 
 **Estado em:** 2026-08-19
 
-**Para quem retoma:** leia a **§0** (sessão de 2026-08-19, projeto de pesquisa) e siga para a **§11**. Depois, se precisar do estado da discussão conhecimento × evidência, leia `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Da §1 em diante, este arquivo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1** e a **§10**. Se precisar do estado da discussão conhecimento × evidência, leia `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Da §1 em diante, este arquivo é o estado de 2026-08-14 e continua válido.
 
 **Estado do repositório:** `main`, árvore limpa, sincronizado com o remoto. Últimos commits: `ada39eb` e `15365bc` (projeto de pesquisa), sobre `6392bfc`. Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016).
 
 ---
+
+# Parte I — Projeto de pesquisa (`docs/projetoPesquisa.md`)
 
 ## 0. Sessão 2026-08-19 — `projetoPesquisa.md` e uma afirmativa a verificar
 
@@ -46,6 +55,8 @@ Regras a repetir no despacho, porque são o que dá valor ao resultado: abrir a 
 **Destino das referências:** `Referencias.md`, em seção nova (ex.: "13. Estruturas de dados para conhecimento tradicional — estado da arte"), norma ABNT NBR 6023:2018; atualizar o rodapé "Última atualização", que ainda diz Janeiro 2025. Citar no corpo do item 1 de §2 e reforçar o parágrafo "Científica" de §3, que hoje afirma a lacuna apenas para a distinção Conhecimento × Evidência no Brasil.
 
 ---
+
+# Parte II — Arquitetura BioCultural e seus componentes
 
 ## 1. Em uma página: o que mudou
 
@@ -283,11 +294,19 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 
 ---
 
-## 11. Primeira coisa a fazer ao retomar
+# §11 — Próximas ações, por frente
+
+Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
+
+### 11.1 Parte I — Projeto de pesquisa
+
+- **Refazer a pesquisa profunda da §0.2** — verificar a afirmativa do item 1 de §2 do `projetoPesquisa.md` e levar as referências para o `Referencias.md`. A afirmativa está publicada **sem base citada**; é a única coisa da sessão de 2026-08-19 que ficou pela metade. **Primeira coisa no computador.**
+- **Registrar o resultado da §0.2** onde ele tem consequência: item 1 de §2 (qualificar ou manter) e parágrafo "Científica" de §3.
+
+### 11.2 Parte II — Arquitetura e componentes
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **Refazer a pesquisa profunda da §0.2** — verificar a afirmativa do item 1 de §2 do `projetoPesquisa.md` e levar as referências para o `Referencias.md`. A afirmativa está publicada **sem base citada**; é a única coisa desta sessão que ficou pela metade. **Primeira coisa no computador.**
 - **Escrever o roteiro das pautas 5 e 6** — gravações/oficinas e o sagrado. São as duas perguntas da reunião que ainda não têm roteiro em `sessao-2026-08-13-decisoes-e-pendencias.md` §5, e a reunião é o caminho crítico de quase tudo. **Primeira coisa fora do computador.**
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
