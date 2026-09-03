@@ -1,5 +1,8 @@
 graphify-out/
 *.mp4
 
-# Documentos de terceiros com circulação não verificada — ficam apenas no local
-docs/iniciativas/redeConhecimento/*.pdf
+# Documentos de terceiros com circulação não verificada — ficam apenas no local.
+# A pasta inteira fica fora do rastreamento, exceto os resumos em Markdown, que
+# são texto próprio do projeto.
+docs/iniciativas/redeConhecimento/*
+!docs/iniciativas/redeConhecimento/*.md
