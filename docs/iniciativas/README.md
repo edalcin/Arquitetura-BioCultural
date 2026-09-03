@@ -14,6 +14,8 @@ As iniciativas documentadas compartilham objetivos comuns:
 
 ## Iniciativas Documentadas
 
+> Ver também [`atoresNacionais.md`](atoresNacionais.md): grafo dos atores nacionais (governo, academia, financiadores, ONGs, sistemas e comunidades) envolvidos direta ou indiretamente na Arquitetura BioCultural, como beneficiários ou provedores de dados.
+
 ### 1. Projeto GEF 'Entre-Ciências'
 **Arquivo**: [MCTI-GEF/Projeto-GEF_Entre-Ciencias_RESUMO.md](MCTI-GEF/Projeto-GEF_Entre-Ciencias_RESUMO.md)
 

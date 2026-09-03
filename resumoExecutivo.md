@@ -59,7 +59,7 @@ Regime é propriedade do registro, não da ferramenta que o guarda: BioCultDB, B
 | **BioCultNaturalistas** | Documenta obras de naturalistas dos séculos XVII a XIX | Só documentação de fundação; código não iniciado |
 | **Pluriverso** | Middleware de federação: coleta (harvest) e indexa apenas o que cada unidade publicou | Só documentação; código não iniciado |
 
-Nenhum componente além do BioCultDB está em produção. O UDM — Modelo de Dados Unificado, o contrato lógico que qualquer ferramenta precisa seguir para "falar" com a federação — está formalizado, mas em status de proposta (versão 1.0.0-proposta), assim como as decisões técnicas que fecham a distinção Conhecimento × Evidência (ADR-015) e o contrato de coleta federada (ADR-016), ambas hoje "Proposto".
+Nenhum componente além do BioCultDB está em produção. E as duas decisões técnicas que sustentam a proposta — a distinção Conhecimento × Evidência (ADR-015) e o contrato de coleta federada (ADR-016) — estão ambas em status "Proposto", aguardando a validação que as pendências da seção 7 bloqueiam.
 
 ## 5. Governança — quem decide o quê
 
@@ -102,7 +102,6 @@ Compromissos negativos, porque são mais verificáveis do que promessas:
 |---|---|
 | Arquitetura completa | [`README.md`](README.md) |
 | Projeto de pesquisa (problema, objetivos, metodologia) | [`docs/projetoPesquisa.md`](docs/projetoPesquisa.md) |
-| Modelo de Dados Unificado (UDM) | [`docs/modelo-de-dados-unificado.md`](docs/modelo-de-dados-unificado.md) |
 | Proposta de Governança | [`governanca/propostaGovernanca.md`](governanca/propostaGovernanca.md) |
 | Contrato de harvest, campo a campo | [`docs/contrato-harvest.md`](docs/contrato-harvest.md) |
 | Decisões arquiteturais (ADRs) | [`docs/architecture-decisions/`](docs/architecture-decisions/) |
