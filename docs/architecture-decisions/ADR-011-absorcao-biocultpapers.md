@@ -113,6 +113,22 @@ ativo do ecossistema.
     extração por IA já depende de uma API externa (Provedor de IA) para funcionar, portanto já pressupõe
     conectividade.
 
+> **Nota de retificação — 2026-09-03.** A afirmação acima de que *"não há demanda reportada por uso
+> offline até o momento"* deixou de ser verdadeira. Em reunião com o Comitê Gestor do USEFLORA em
+> **18/08/2026** foi levantada a necessidade de infraestrutura para comunidades com baixa conectividade,
+> com sincronização assíncrona (por laptop ou pen-drive, "quando houver conexão"). A demanda está
+> registrada em `docs/reunioes/reuniao-useflora-2026-08-18.md` e como pendência em
+> `docs/proximosPassos.md`. O texto original é preservado acima.
+>
+> O que a nota **não** decide: o mecanismo. Sincronização assíncrona de unidade soberana com resolução
+> de conflito é problema de arquitetura em aberto — o [ADR-005](ADR-005-sqlite-json-persistence.md)
+> fixou um arquivo SQLite com WAL por unidade, que é *single-writer*, e não se sabe ainda se a resposta
+> é replicação, exportação/importação por arquivo, ou apenas cópia de segurança levada fisicamente. A
+> ADR do mecanismo nasce quando houver alternativas reais a comparar; esta nota apenas registra que o
+> requisito existe. Note-se que os diagramas C4 já traziam a restrição — `docs/c4-model/01-context-diagram.md`
+> fala em "offline-first para coleta" e `02-container-diagram.md` em suporte PWA no BioCultRelatos —,
+> de modo que a contradição estava dentro do próprio repositório antes desta nota.
+
 ### Consequências para este repositório (Arquitetura-BioCultural)
 
 O inventário de componentes e os diagramas C4 (Level 2 — Containers, Level 3 — Componentes) deste

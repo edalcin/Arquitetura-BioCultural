@@ -27,6 +27,15 @@ _Avoid_: Consumidor, Host, Container pai, Repositório pai
 O corpo que decide admissão de membros, mapeamentos entre vocabulários e vocabulário de
 arquitetura. Nenhuma unidade decide por outra.
 
+**Ponto-Focal**:
+A pessoa que uma iniciativa parceira designa para a interlocução com a arquitetura: recebe as
+pendências que dependem de consideração humana, sistematiza demandas e encaminha ao corpo que
+decide dentro da iniciativa. É **canal**, nunca **titular** — a resposta de um Ponto-Focal é a
+posição da iniciativa que o designou, e nunca substitui o consentimento da Comunidade Tradicional
+detentora sobre um registro concreto, que é coletivo e se dá registro a registro. Quem indica o
+Ponto-Focal é a iniciativa, nunca a arquitetura.
+_Avoid_: Representante, Interlocutor, Mediador, Contato
+
 ### Código compartilhado
 
 **Módulo Compartilhado**:

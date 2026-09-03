@@ -83,7 +83,7 @@ A Arquitetura BioCultural nasce da necessidade de **registrar e documentar a rel
 
 Cada fonte exige um processo de aquisição e curadoria diferente — mas todas convergem para o mesmo objetivo: um registro rastreável até sua origem e compartilhado sob os princípios C.A.R.E.
 
-> **Regime é do registro, não da ferramenta.** A coluna acima indica o padrão de cada unidade. Na prática, BioCultDB, BioCultAcervos e BioCultNaturalistas são Evidência sempre; o único provedor com os dois regimes é o BioCultRelatos — a nota de campo em que o pesquisador registra o que observou é **Evidência**, porque é testemunho dele, não relato do detentor. Quando uma comunidade narra sobre um item de acervo, esse Relato vive na **unidade dela**, referenciando o item: conteúdo soberano nunca atravessa para a unidade de outro membro. O que distingue os dois regimes é *quem fala* — e o que a distinção decide é **quem pode classificar o acesso** do registro. Ver [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e o estudo em [`conhecimento/`](conhecimento/caracterizacao-do-conhecimento-tradicional.md).
+> **Regime é do registro, não da ferramenta.** A coluna acima indica o padrão de cada unidade. Na prática, BioCultDB, BioCultAcervos e BioCultNaturalistas são Evidência sempre; o único provedor com os dois regimes é o BioCultRelatos — a nota de campo em que o pesquisador registra o que observou é **Evidência**, porque é testemunho dele, não relato do detentor. Quando uma comunidade narra sobre um item de acervo, esse Relato vive na **unidade dela**, referenciando o item: conteúdo soberano nunca atravessa para a unidade de outro membro. O que distingue os dois regimes é *quem fala* — e o que a distinção decide é **quem pode classificar o acesso** do registro. Ver [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e o estudo em [`docs/conhecimento/`](docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md).
 
 ### Imperativo Legal e Ético
 
@@ -389,9 +389,8 @@ Este repositório está organizado da seguinte forma:
 ```
 Arquitetura-BioCultural/
 ├── README.md (este arquivo)
+├── resumoExecutivo.md                  ← introdução objetiva e sintética à proposta
 ├── CONTEXT.md                          ← glossário da federação
-├── conhecimento/
-│   └── caracterizacao-do-conhecimento-tradicional.md   ← Conhecimento × Evidência
 ├── governanca/
 │   ├── propostaGovernanca.md          ← documento principal de governança
 │   ├── planoPropostaGovernanca.md
@@ -401,6 +400,7 @@ Arquitetura-BioCultural/
 │   └── governanca-reparticao.svg/.png
 └── docs/
     ├── projetoPesquisa.md          ← projeto de pesquisa formalizado
+    ├── proximosPassos.md           ← estado do projeto e pendências (referência de continuidade)
     ├── anthropicProposal.md        ← proposta ao Anthropic AI for Science Program
     ├── metodologia-e-tecnologias.md
     ├── contrato-harvest.md
@@ -408,7 +408,11 @@ Arquitetura-BioCultural/
     ├── modelo-de-dados-unificado.md← UDM — objeto do acordo JBRJ ↔ USEFLORA
     ├── PrincipiosCAREnaPratica.md
     ├── v3.1-migration-progress.md
-    ├── architecture-decisions/     ← ADR-001 … ADR-015
+    ├── conhecimento/               ← Conhecimento × Evidência e a pauta das comunidades
+    │   ├── caracterizacao-do-conhecimento-tradicional.md
+    │   └── pauta-comunidades.md    ← o que precisa ser encaminhado com as comunidades
+    ├── reunioes/                   ← memórias de reuniões com iniciativas parceiras
+    ├── architecture-decisions/     ← ADR-001 … ADR-017
     ├── c4-model/                   ← diagramas C4: contexto, containers, componentes
     ├── diagrams/                   ← fontes .excalidraw + exports + notas de integração
     ├── images/                     ← diagramas da arquitetura (.png/.svg) + legacy/ + blog/ + etno/
@@ -426,12 +430,14 @@ Arquitetura-BioCultural/
 5. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
 6. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
 7. **[Plano de elaboração da proposta de governança](governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
-8. **[Caracterização do Conhecimento Tradicional](conhecimento/caracterizacao-do-conhecimento-tradicional.md)** — estudo que distingue **Conhecimento** (a relação enunciada por quem a detém) de **Evidência** (a atestação por terceiros de que ela existe), e as consequências para a rotulagem SKOS-XL de nível de acesso; base do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
+8. **[Caracterização do Conhecimento Tradicional](docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md)** — estudo que distingue **Conhecimento** (a relação enunciada por quem a detém) de **Evidência** (a atestação por terceiros de que ela existe), e as consequências para a rotulagem SKOS-XL de nível de acesso; base do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
 9. **[Contrato de Harvest](docs/contrato-harvest.md)** — o payload da federação campo a campo: `regime`, nível efetivo de acesso, supressão declarada (`informationWithheld` / `dataGeneralizations`), rótulos culturais e vínculo entre registros de membros distintos. Decorre de K6 do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e supersede o payload do ADR-004 D6
 10. **[Rótulos SKOS-XL — Referência Central](docs/rotulos-skos-xl.md)** — todos os rótulos SKOS-XL que a arquitetura suporta, com descrição, regras e exemplos das curadorias reais (campanha "Tipos de Usos de Plantas"); normativo para as quatro unidades federadas e o Pluriverso
 11. **[ADR-017 — Composição Multi-Espécie](docs/architecture-decisions/ADR-017-composicao-multiespecie.md)** — a demanda de que usos, preparos e artefatos compostos por mais de uma planta (o Daime: jagube *Banisteriopsis caapi* + rainha *Psychotria viridis*) sejam representáveis em todas as ferramentas, com papel por componente e classificação de acesso sobre a combinação
 12. **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)** — o contrato lógico de dados de toda a arquitetura num documento único: princípios, entidades, documento canônico JSON, obrigatoriedade de campos, interoperabilidade (Darwin Core/DwC-DP, SKOS-XL) e checklist de conformidade; **objeto do acordo de cooperação técnica entre o JBRJ e o USEFLORA**
 13. **[Projeto de Pesquisa](docs/projetoPesquisa.md)** — a formalização da arquitetura como projeto de pesquisa: problema, justificativa, objetivos, fundamentação, metodologia (*design science*), estudos de caso por unidade federada, cronograma por fases e resultados esperados
+14. **[Resumo Executivo](resumoExecutivo.md)** — a introdução objetiva e sintética à proposta: o problema, a arquitetura, os componentes e seu estado real, a governança e o que ainda não está resolvido. É o ponto de partida para quem chega ao projeto
+15. **[Pauta das comunidades](docs/conhecimento/pauta-comunidades.md)** — o que a arquitetura precisa ver encaminhado com as comunidades tradicionais, separado entre pautas de desenho (decidíveis com corpo de representação mista) e pautas de consentimento (só a comunidade detentora, registro a registro), com roteiro de perguntas em linguagem não-técnica
 
 
 

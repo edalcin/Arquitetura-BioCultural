@@ -11,11 +11,11 @@
 
 > **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
 
-**Estado em:** 2026-08-30 (conteúdo das §0–§10 é de 2026-08-19, salvo a §6)
+**Estado em:** 2026-09-03 (conteúdo das §0–§10 é de 2026-08-19, salvo a §6 e as seções marcadas com a data desta sessão)
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1** e a **§10**. Se precisar do estado da discussão conhecimento × evidência, leia `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md`. Da §1 em diante, este arquivo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10** e a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras). O que depende das comunidades tradicionais está em `docs/conhecimento/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
-**Estado do repositório:** `main`, árvore limpa, sincronizado com o remoto. Últimos commits: `ada39eb` e `15365bc` (projeto de pesquisa), sobre `6392bfc`. Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016).
+**Estado do repositório:** `main`, sincronizado com o remoto. Últimos commits: `ada39eb` e `15365bc` (projeto de pesquisa), sobre `6392bfc`. Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016).
 
 ---
 
@@ -156,7 +156,7 @@ Tensão: soberania e simplicidade pedem não depender de serviço externo; mas c
 
 ## 5. Bloqueado: precisa da comunidade
 
-Detalhado com roteiro de perguntas em `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` **§5** — a seção feita para sair do computador. Resumo das **seis** pautas (a quinta veio de K8 e a sexta da triagem da v3.10.0; nenhuma das duas tem roteiro naquele arquivo ainda). As pautas 1, 4, 5 e 6 são as quatro que já estão na apresentação, mais a pergunta de nomeação:
+Detalhado com roteiro de perguntas em **`docs/conhecimento/pauta-comunidades.md`** — documento próprio, feito para sair do computador, com as pautas separadas em duas seções: **pautas de desenho** (decidíveis com um corpo de representação mista, e para as quais o ponto-focal de uma iniciativa parceira responde) e **pautas de consentimento** (só a comunidade detentora, registro a registro, e que nenhum interlocutor fecha por atacado). Resumo das **sete** pautas — a quinta veio de K8, a sexta da triagem da v3.10.0 e a sétima da sessão de 2026-09-03:
 
 1. **Como quem fala quer ser nomeado** — resolve ① acima.
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial, e quem tem legitimidade para dizer em nome de todos.
@@ -164,6 +164,7 @@ Detalhado com roteiro de perguntas em `conhecimento/sessao-2026-08-13-decisoes-e
 4. **O que não deve ser registrado** — `propostaGovernanca.md:286`: para conhecimento sagrado, a decisão correta pode ser **não registrar**, e a plataforma tem obrigação de dizer isso.
 5. **Gravações de prática e oficinas coletivas** (novo, K8) — filmar alguém fazendo um chá ou trançando uma cesta registra conhecimento sem que uma palavra seja dita; e uma oficina grava várias pessoas de uma vez. Perguntar: quem autoriza a gravação de uma prática; se cada participante decide sobre a própria imagem ou se a decisão é do grupo; e o que deve acontecer quando **um** participante muda de ideia depois — a regra adotada por ora é a mais conservadora, a gravação inteira sai.
 6. **O que é sagrado — e o que acontece com ele** (novo, v3.10.0, ④/H-Q1) — quando um saber é sagrado, o registro dele deve sumir por inteiro, ou pode ficar visível que ele existe sem mostrar o conteúdo? E quem diz, por todos, que um saber é sagrado? Tecnicamente a pergunta é se `sacred` equivale a `private` ou merece nível próprio; a decisão, porém, não é técnica. Regra interina: equivale a `private`, nunca atravessa.
+7. **O detentor apagado pela publicação** (novo, 2026-09-03) — em fonte secundária, o detentor do conhecimento frequentemente foi registrado pelo autor do artigo como "informante, 62 anos" e não há caminho de volta até a pessoa. O que a arquitetura faz com um registro de Conhecimento cujo detentor é inalcançável: publicar como Evidência do autor (é o que o teste de K1 da ADR-015 já implica), manter restrito por não haver quem consinta, ou tratar como caso próprio com rótulo de "detentor não identificável na fonte"? A Lei 13.123/2015, art. 2º, III distingue CTA de **origem não identificável**, e `propostaGovernanca.md` §5.1 registra que o BioCultDB lida frequentemente com esse caso. Classificar como Evidência resolve *quem manda no registro*; não resolve que o conhecimento tem dono e o dono foi apagado. **É a única pauta que o USEFLORA pode responder de imediato, e bloqueia dado já em produção** (§6: 29 registros sem `regime`).
 
 As pautas 1, 4, 5 e 6 estão no slide "Cinco perguntas que só vocês podem responder" de `docs/apresentacoes/Arquitetura BioCultural v2.pptx`, junto com a pauta 2.
 
@@ -177,7 +178,7 @@ Cada componente mantém o seu próprio `docs/proximosPassos.md`, que é a fonte 
 
 | Componente | Estado | Pendências principais | Documento |
 |---|---|---|---|
-| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
+| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; **auditoria dos prompts contra vazamento de dado sensível a provedor externo de IA** (⑰, política em `governanca/propostaGovernanca.md` §5.12-9 — distinta da qualidade: aquela é acurácia, esta é vazamento); generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
 | **BioCultRelatos** (registro primário, CLPI) | Documentação + scaffold; sem código de produção | Esquema do Relato travado pela decisão ①; protocolo CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva como função da ferramenta | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
 | **BioCultAcervos** (acervos museológicos) | Repositório, documentação e home page (Express na 3003) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources` para o vínculo com Relatos; harvest; scaffold Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
 | **BioCultNaturalistas** (obras séc. XVII–XIX) | Só documentação de fundação (F0); roadmap de 7 fases | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; ADR-003 V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
@@ -222,8 +223,11 @@ flowchart TD
 
 | Artefato | Caminho |
 |---|---|
-| Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
-| Registro da sessão + **pauta da comunidade (§5)** | `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` |
+| Introdução objetiva e sintética à proposta | `resumoExecutivo.md` |
+| Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
+| **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/conhecimento/pauta-comunidades.md` |
+| Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
+| Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `governanca/propostaGovernanca.md` §2, nota de estado |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
@@ -293,8 +297,53 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 - **README, "Quatro Fontes"** — a coluna de regime foi acrescentada na v3.7.0, mas o corpo do texto ainda fala em "evidências" como termo guarda-chuva em vários pontos. Não é erro; é vocabulário anterior à distinção.
 - **`propostaGovernanca.md`** — descreve Label/Notice (§5.5) sem citar o regime, que é a propriedade que decide qual dos dois se aplica. Vale uma nota de vínculo quando o documento for revisado.
 - **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde a ADR-016.
-- **`conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` §5** — tem roteiro de perguntas para as quatro pautas originais; **a quinta (gravações e oficinas) e a sexta (o sagrado) ainda não têm roteiro**.
+- **`docs/conhecimento/pauta-comunidades.md`** — recebeu na sessão de 2026-09-03 o roteiro das pautas 5 (gravações e oficinas) e 6 (o sagrado), que faltavam, e a pauta 7. Resta verificar se o slide "Cinco perguntas que só vocês podem responder" (`docs/apresentacoes/`) continua coerente com sete pautas em duas seções.
+- **`CHANGELOG.md` v3.7.0** — as entradas daquela versão citam `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` e `conhecimento/caracterizacao-do-conhecimento-tradicional.md` nos caminhos antigos. São registro histórico e ficam como estão; o movimento para `docs/conhecimento/` e a renomeação para `pauta-comunidades.md` estão registrados na entrada da versão desta sessão.
 
+
+---
+
+## 10-bis. Sessão 2026-09-03 — a interlocução com iniciativas parceiras passa a ter registro
+
+A sessão não produziu decisão de modelo de dados. Produziu o que faltava para que as decisões que **não são nossas** tenham para onde ir — e consolidou os documentos de pendência em um só.
+
+### 10-bis.1 Consolidação documental
+
+| O que | Onde ficou |
+|---|---|
+| `conhecimento/` migrado para dentro de `docs/` | `docs/conhecimento/` |
+| `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | `docs/conhecimento/pauta-comunidades.md` — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
+| Memórias de reunião ganharam lugar próprio | `docs/reunioes/` |
+| Introdução objetiva à proposta | `resumoExecutivo.md`, na raiz |
+
+**Este arquivo continua sendo o único documento de pendências.** A `pauta-comunidades.md` não é um segundo: é o recorte do que só se decide fora do computador, escrito para circular.
+
+### 10-bis.2 O papel do Ponto-Focal, e o estado honesto da governança
+
+Registrado como decisão de governança, sem ADR — não houve alternativa genuína descartada, é a prática que emergiu.
+
+- **Ponto-Focal** é a pessoa que uma **iniciativa parceira designa** para a interlocução com a arquitetura. Verbete em `CONTEXT.md`, com `_Avoid_: Representante` — `representante` já significa, no repositório, quem senta no Comitê Federado por um membro.
+- **A resposta de um Ponto-Focal é a posição da iniciativa, nunca o consentimento da comunidade detentora** sobre um registro concreto (§5.1 da governança; Lei 13.123/2015, art. 10, §1º). Ele desenha o campo; nunca preenche o valor dele. É essa fronteira que virou **estrutura** nas duas seções da `pauta-comunidades.md`.
+- **Nota de estado na `propostaGovernanca.md` §2:** as três camadas são proposta em consulta, o Comitê Federado **não está constituído**, hoje o pesquisador acumula as três, e o único mecanismo em operação real é o ponto-focal por iniciativa parceira. A governança emergiu de baixo, pela necessidade de resolver pendências — e isso é achado do projeto (§7.2 do `projetoPesquisa.md`), não detalhe administrativo.
+
+### 10-bis.3 Pendências novas, vindas da reunião de 18/08/2026 com o USEFLORA
+
+Fonte: `docs/reunioes/reuniao-useflora-2026-08-18.md` (versão publicável, sem atribuição nominal de falas; nomes só nos encaminhamentos com responsável).
+
+| # | Pendência | Estado | Onde se resolve |
+|---|---|---|---|
+| ⑬ | **Indicação do ponto-focal do USEFLORA** | **Solicitada em 18/08/2026, prazo sugerido de 2 semanas — em atraso.** Bloqueia o canal de todas as pautas | USEFLORA (coordenação). Cobrança é ação do pesquisador |
+| ⑭ | **Princípios mínimos que toda instância federada deve aceitar** (registro de logs, respeito a rótulos de sensibilidade, CLPI como ciclo) | Aberta. Encaminhada ao Comitê Gestor do USEFLORA, 4–6 semanas sugeridas. **Não é matéria nova:** o conteúdo tem casa em `ADR-004` D3 (admissão), `propostaGovernanca.md` §5.11 (contrato de adesão) e §8.1 item 13 (SDK de adesão) | Comitê Gestor + ponto-focal; consolidação em ADR quando houver texto |
+| ⑮ | **Proposta de governança operacional** enviada por Laura Madeira por e-mail | Aguardando recebimento; incorporar à `propostaGovernanca.md` quando chegar | Este repositório |
+| ⑯ | **Sincronização assíncrona para comunidades com baixa conectividade** (laptop/pen-drive "quando houver conexão") | Aberta, **requisito sem mecanismo**. Nota de retificação já lançada no `ADR-011`, que afirmava não haver demanda por offline. O `ADR-005` fixou um SQLite com WAL por unidade, que é *single-writer*; não se sabe se a resposta é replicação, exportação/importação por arquivo ou cópia física. ADR do mecanismo nasce quando houver alternativas a comparar | Arquitetura. Os diagramas C4 já traziam "offline-first para coleta" — a contradição era interna |
+| ⑰ | **Política de IA × dado sensível** — nenhum prompt faz trafegar por provedor externo de IA conteúdo de registro com nível efetivo diferente de `public` | **Política escrita:** `propostaGovernanca.md` §5.12, item 9. Torna verificável o item 3 daquela lista, que proíbe o treinamento mas não o envio | Auditoria dos prompts é pendência do BioCultDB (§6), que opera extração por IA em produção hoje |
+| ⑱ | **Capacitação das comunidades** para operar e curar a própria instância | Aberta. É o sub-princípio **R2** do C.A.R.E., já declarado como *gap* em `propostaGovernanca.md` §3.1, e é modalidade de repartição não monetária prevista na Lei 13.123/2015, art. 19 | Governança + agenda das iniciativas parceiras |
+
+### 10-bis.4 O que a sessão deixou explícito e não resolveu
+
+- **Consulta por procuração.** O USEFLORA é a única iniciativa com representação de comunidades tradicionais ao alcance hoje, e seu Comitê Gestor é **misto** (academia + comunidades). Ele serve, informalmente, como interlocução para pendências que nascem também do **BioCultRelatos** e do **Pluriverso**. Isso é insumo de desenho legítimo — e **não** é consentimento.
+- **O vazio fica visível.** Na seção de pautas de consentimento da `pauta-comunidades.md`, o campo "com quem" está **vazio** para BioCultRelatos (a comunidade de Silveiras, SP entra pelo mestrado, sob CONEP e SisGen) e para Pluriverso (não existe membro real na federação). Preencher com "USEFLORA" seria o atalho que o projeto existe para não dar.
+- **O vídeo `conhecimentoPanara.mp4`** ficou em `docs/conhecimento/`, ignorado pelo git como antes, mas agora **documentado** (§15 da caracterização): o que é, povo indicado no nome, consentimento `[não verificado]`, e o registro de que o destino correto é armazenamento soberano fora da árvore de qualquer repositório — a pendência ⑩.
 ---
 
 # §11 — Próximas ações, por frente
@@ -310,9 +359,12 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **Escrever o roteiro das pautas 5 e 6** — gravações/oficinas e o sagrado. São as duas perguntas da reunião que ainda não têm roteiro em `sessao-2026-08-13-decisoes-e-pendencias.md` §5, e a reunião é o caminho crítico de quase tudo. **Primeira coisa fora do computador.**
+- **Cobrar a indicação do ponto-focal do USEFLORA (⑬)** — solicitada em 18/08/2026 com prazo de 2 semanas, vencido. Sem ela, as sete pautas de `docs/conhecimento/pauta-comunidades.md` não têm canal. **Primeira coisa fora do computador.**
+- **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
 - **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto ponta a ponta)** continua travado pelo esquema do Relato e pela agenda do estudo de caso do BioCultRelatos.
+- **Encaminhar as pendências novas da §10-bis.3:** ⑭ princípios mínimos da federação (ao Comitê Gestor, com o conteúdo que já existe em `ADR-004` D3 e `propostaGovernanca.md` §5.11/§8.1-13), ⑮ receber e incorporar a proposta de governança de Laura Madeira, ⑯ requisito de sincronização assíncrona (sem mecanismo definido), ⑰ auditoria dos prompts no BioCultDB contra a política nova de `propostaGovernanca.md` §5.12-9, ⑱ capacitação como repartição não monetária.
 - **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
 - **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.
+- **Grafo de atores nacionais concluído** — `docs/iniciativas/atoresNacionais.md` mapeia beneficiários e provedores de dados (diretos e indiretos) ligados à arquitetura, a partir das quatro iniciativas documentadas e de pesquisa externa sobre o panorama nacional de dados de CTA (CGEN, FUNAI/SII, MPF/Territórios Tradicionais, ISA). Sem pendência aberta.

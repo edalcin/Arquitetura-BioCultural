@@ -445,3 +445,22 @@ Adotar a API mantém a autoridade da comunidade sobre o rótulo (ela muda no Hub
 **Documentos internos consultados**
 
 `README.md` · `CONTEXT.md` · `docs/architecture-decisions/ADR-003-data-model.md` · `ADR-004-federated-architecture.md` · `docs/c4-model/01-context-diagram.md` · `governanca/propostaGovernanca.md` (§5.1-§5.10) · `BioCultDB/CONTEXT.md` · `BioCultDB/bioculttermos/manual/03-rotulos.md` · `docs/projetoPesquisa.md` (§7.3)
+
+---
+
+## 15. Mídia neste diretório — `conhecimentoPanara.mp4`
+
+Este diretório contém um arquivo de vídeo que **não está sob controle de versão** e nunca estará: `.gitignore` exclui `*.mp4` em todo o repositório. A regra tem motivação de tamanho e efeito exigido por `governanca/propostaGovernanca.md` §5.10 — nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros.
+
+Registro do arquivo, porque um arquivo de 62 MB sem documentação é pior que um arquivo exposto:
+
+| Campo | Valor |
+|---|---|
+| Nome | `conhecimentoPanara.mp4` |
+| Tamanho e formato | 61,9 MB · 1920×1080 · 42,2 s · HEVC + AAC |
+| O que é | Exemplo de **Conhecimento** no sentido deste documento — a relação com a biodiversidade enunciada por quem a detém, registrada em vídeo, e portanto também um exemplo do objeto do BioCultRelatos, em que a mídia **é** o Relato e a descrição é derivada (ADR-015, K8.1) |
+| Detentor e povo | `[não verificado]` — o nome do arquivo indica o povo **Panará**; a identificação de quem fala, a que título e sob que forma quer ser nomeado é exatamente a Pauta 1 de `pauta-comunidades.md`, e não se presume aqui |
+| Estado do consentimento | `[não verificado]` — não há CLPI registrado como dado para este arquivo. Enquanto não houver, ele é material de estudo da arquitetura e **não** dado de nenhuma unidade federada |
+| Onde deve morar | Não aqui, no destino final. O lugar correto é o armazenamento soberano que o BioCultRelatos vier a usar, fora da árvore de qualquer repositório — pelo mesmo princípio do ADR-005, que já mantém o arquivo SQLite de cada unidade fora do container, em caminho declarado por variável de ambiente. É a pendência ⑩ ("onde mora o vídeo") de `docs/proximosPassos.md` |
+
+A permanência dele neste diretório é, portanto, **transitória e declarada**, não uma decisão de arquitetura.

@@ -219,7 +219,9 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 | Arquitetura completa (v3.5) | [`README.md`](../README.md) |
 | Modelo de Dados Unificado | [`docs/modelo-de-dados-unificado.md`](modelo-de-dados-unificado.md) |
 | Proposta de Governança | [`governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md) |
-| Conhecimento × Evidência | [`conhecimento/caracterizacao-do-conhecimento-tradicional.md`](../conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
+| Conhecimento × Evidência | [`docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
+| Pauta das comunidades (o que depende delas) | [`docs/conhecimento/pauta-comunidades.md`](conhecimento/pauta-comunidades.md) |
+| Memórias de reunião com iniciativas parceiras | [`docs/reunioes/`](reunioes/) |
 | Contrato de harvest | [`docs/contrato-harvest.md`](contrato-harvest.md) |
 | Rótulos SKOS-XL | [`docs/rotulos-skos-xl.md`](rotulos-skos-xl.md) |
 | Decisões arquiteturais (ADR-001…017) | [`docs/architecture-decisions/`](architecture-decisions/) |
