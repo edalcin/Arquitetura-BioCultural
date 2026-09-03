@@ -1,2 +1,5 @@
 graphify-out/
 *.mp4
+
+# Documentos de terceiros com circulação não verificada — ficam apenas no local
+docs/iniciativas/redeConhecimento/*.pdf
