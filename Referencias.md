@@ -172,6 +172,56 @@ UNITED NATIONS DEVELOPMENT PROGRAMME. Biodiversity Management. Disponível em: h
 
 ---
 
+## 13. Estruturas de Dados para Conhecimento Tradicional e Lacunas na Literatura
+
+AGRAWAL, A. Dismantling the divide between indigenous and scientific knowledge. *Development and Change*, v. 26, n. 3, p. 413–439, 1995. DOI: https://doi.org/10.1111/j.1467-7660.1995.tb00560.x
+
+AGRAWAL, A. Indigenous knowledge and the politics of classification. *International Social Science Journal*, v. 54, n. 173, p. 287–297, 2002. DOI: https://doi.org/10.1111/1468-2451.00382
+
+ANDERSON, J.; CHRISTEN, K. Decolonizing attribution: traditions of exclusion. *Journal of Radical Librarianship*, v. 5, p. 113–152, 2019. Disponível em: https://journal.radicallibrarianship.org/index.php/journal/article/view/38
+
+CHRISTEN, K. Does information really want to be free? Indigenous knowledge systems and the ethics of open access. *GeoJournal*, v. 77, n. 6, p. 793–805, 2012. DOI: https://doi.org/10.1007/s10708-012-9469-7
+
+CHRISTEN, K.; MERRILL, A.; WYNNE, M. A community of relations: Mukurtu hubs and spokes. *D-Lib Magazine*, v. 23, n. 5/6, 2017. DOI: https://doi.org/10.1045/may2017-christen
+
+COUNCIL OF SCIENTIFIC & INDUSTRIAL RESEARCH (CSIR). *Traditional Knowledge Digital Library (TKDL) and Traditional Knowledge Resource Classification (TKRC)*. New Delhi: CSIR / Ministry of AYUSH, Governo da Índia, 2006. Disponível em: https://www.csir.res.in/en/documents/tkdl
+
+FERRARI, P. A. *Banco de dados etnobotânicos: construção de uma ferramenta de armazenamento e proteção de informações sobre a sociobiodiversidade*. 2020. 73 f. Trabalho de Conclusão de Curso (Graduação em Ciências Biológicas) – Universidade Federal de Santa Catarina, Florianópolis, 2020. Disponível em: https://repositorio.ufsc.br/handle/123456789/204033
+
+GADGIL, M.; SESHAGIRI RAO, P. R.; UTKARSH, G. et al. New meanings for old knowledge: the people’s biodiversity registers programme. *Ecological Applications*, v. 10, n. 5, p. 1307–1317, 2000. DOI: https://doi.org/10.1890/1051-0761(2000)010[1307:NMFOKT]2.0.CO;2
+
+GLOBAL BIODIVERSITY INFORMATION FACILITY (GBIF); BIODIVERSITY INFORMATION STANDARDS (TDWG). *Darwin Core Data Package (DwC-DP): Usage Policy Specification*. Versão 1.0-RC.1. GBIF/TDWG, 2024. Disponível em: https://github.com/gbif/dwc-dp
+
+HEINRICH, M.; LARDOS, A.; LEONTI, M. et al. Best practice in research: Consensus statement on ethnopharmacological field studies–ConSEFS. *Journal of Ethnopharmacology*, v. 211, p. 329–339, 2018. DOI: https://doi.org/10.1016/j.jep.2017.08.015
+
+INTERNATIONAL ORGANIZATION FOR STANDARDIZATION (ISO). *ISO/TS 17938:2014 — Health informatics — Semantic network framework of traditional Chinese medicine language system*. Geneva: ISO, 2014.
+
+JENNINGS, L. L.; ANDERSON, T. G.; MARTINEZ, A. et al. Applying the ‘CARE Principles for Indigenous Data Governance’ to ecology and biodiversity research. *Nature Ecology & Evolution*, v. 7, p. 1547–1551, 2023. DOI: https://doi.org/10.1038/s41559-023-02161-2
+
+LOCAL CONTEXTS. *Local Contexts Hub API Guide (Version 2)*. Local Contexts, 2025. Disponível em: https://localcontexts.org/support/api-guide/v2/
+
+LWOGA, E. T.; NGULUBE, P.; STILWELL, C. Managing indigenous knowledge for sustainable agricultural development in developing countries: Knowledge management approaches in the context of Tanzania. *Information Development*, v. 26, n. 4, p. 278–285, 2010. DOI: https://doi.org/10.1177/0266666910381954
+
+MONTENEGRO, M. Subverting the universality of metadata standards: The TK labels as a tool to promote Indigenous data sovereignty. *Journal of Documentation*, v. 75, n. 4, p. 731–749, 2019. DOI: https://doi.org/10.1108/JD-08-2018-0124
+
+NADASDY, P. The politics of TEK: power and the "integration" of knowledge. *Arctic Anthropology*, v. 36, n. 1/2, p. 1–18, 1999.
+
+NGULUBE, P. Managing and preserving indigenous knowledge in the knowledge management era: challenges and issues for information professionals in developing countries. *Information Development*, v. 18, n. 2, p. 95–102, 2002. DOI: https://doi.org/10.1177/026666602400842486
+
+SISTEMA DE INFORMAÇÃO SOBRE A BIODIVERSIDADE BRASILEIRA (SiBBr). *SocioBio: Extensão Darwin Core para Sociobiodiversidade*. Versão 1.0. Brasília: SiBBr / TDWG Task Group on Sociobiodiversity, 2024. Disponível em: https://github.com/sibbr/sociobio
+
+WECKERLE, C. S.; DE BOER, H. J.; PURI, R. K. et al. Recommended standards for conducting and reporting ethnopharmacological field studies. *Journal of Ethnopharmacology*, v. 210, p. 125–132, 2018. DOI: https://doi.org/10.1016/j.jep.2017.08.018
+
+WORLD INTELLECTUAL PROPERTY ORGANIZATION (WIPO). *Report on the Compilation of Materials on Databases Relating to Genetic Resources and Associated Traditional Knowledge*. WIPO/GRTKF/IC/46/8. Geneva: WIPO Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore, 2022. Disponível em: https://www.wipo.int/edocs/mdocs/tk/en/wipo_grtkf_ic_46/wipo_grtkf_ic_46_8.pdf
+
+WORLD INTELLECTUAL PROPERTY ORGANIZATION (WIPO). *Joint Recommendation on the Use of Databases for the Defensive Protection of Genetic Resources and Traditional Knowledge*. WIPO/GRTKF/IC/46/12. Geneva: WIPO Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore, 2023. Disponível em: https://www.wipo.int/edocs/mdocs/tk/en/wipo_grtkf_ic_46/wipo_grtkf_ic_46_12.pdf
+
+ZANK, S.; JULIÃO, C. G.; LIMA, A. S. et al. Ethnobiology! Until when will the colonialist legacy be reinforced? *Journal of Ethnobiology and Ethnomedicine*, v. 21, n. 1, p. 1–11, 2025. DOI: https://doi.org/10.1186/s13002-024-00750-4
+
+ZHOU, X.; CHEN, J.; HE, M. et al. An ontological framework for the formalization, organization and usage of TCM-Knowledge. *BMC Medical Informatics and Decision Making*, v. 19, n. Suppl 2, p. 53, 2019. DOI: https://doi.org/10.1186/s12911-019-0760-9
+
+---
+
 ## Nota Sobre Formatação
 
 As referências acima foram formatadas seguindo a **Norma ABNT NBR 6023:2018** (Associação Brasileira de Normas Técnicas), que é o padrão brasileiro para apresentação de referências bibliográficas.
@@ -192,5 +242,5 @@ Os URLs foram incluídos para facilitar o acesso aos recursos online.
 
 ---
 
-**Última atualização**: Janeiro 2025
+**Última atualização**: Setembro 2026
 

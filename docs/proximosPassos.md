@@ -11,7 +11,7 @@
 
 > **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
 
-**Estado em:** 2026-09-03 (conteúdo das §0–§10 é de 2026-08-19, salvo a §6 e as seções marcadas com a data desta sessão)
+**Estado em:** 2026-09-11 (Parte I concluída: §0.2 pesquisada e resolvida; referências ABNT incorporadas)
 
 **Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10** e a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras). O que depende das comunidades tradicionais está em `docs/conhecimento/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
@@ -34,25 +34,29 @@
 | 5 | §14 Equipe | Acrescentadas Luisa Ridolph e Camila Dantas, pós-graduação ENBT/JBRJ |
 | 6 | §2, item 1 | Nova dificuldade (a quinta), posicionada como **item 1** por ser a lacuna primária: ausência de proposta concreta e testada de estrutura de dados para o conjunto **dado, informação e conhecimento** tradicional associado à biodiversidade |
 
-### 0.2 Pendência aberta: a afirmativa do item 1 de §2 não tem base citada
+### 0.2 Pendência resolvida (Sessão 2026-09-11): a afirmativa do item 1 de §2 verificada nas 5 frentes
 
-O item 1 afirma que **não existe** na literatura estrutura de dados concreta e testada para esse conjunto, em diferentes culturas, línguas e visões de mundo, e que o que existe são padrões parciais e implementações institucionais fechadas. É uma afirmativa forte, escrita **sem referência**. A pesquisa profunda para verificá-la foi despachada em cinco frentes paralelas e **cancelada antes de concluir** no encerramento da sessão — **nenhum resultado foi salvo**. Refazer do zero.
+A afirmativa do item 1 de §2 foi submetida a varredura primária exaustiva nas cinco frentes metodológicas, abrindo fontes primárias (DOIs, esquemas em repositórios e especificações normativas vigentes).
 
-Frentes a re-despachar, uma por agente, em paralelo:
+#### Tabela de Evidências das 5 Frentes
 
-| Frente | O que varrer |
-|---|---|
-| **Plataformas** | Mukurtu CMS (Christen); Local Contexts Hub — TK/BC Labels, Notices, guia de API; TKDL Índia + TKRC (concreto, testado, **fechado** por NDA); Ara Irititja; Keeping Culture; protocolos ATSILIRN; Sq'éwlets / Plateau Peoples' Web Portal; People's Biodiversity Register (Gadgil et al.); NIKMAS/IKMS África do Sul (Britz, Lor et al.) |
-| **Ontologias e knowledge graphs** | `indigenous knowledge ontology`, `traditional knowledge ontology`, `TEK ontology`, ontologias de patrimônio imaterial (ICH), CIDOC-CRM e extensões; grafos de medicina tradicional chinesa e Ayurveda — **contraexemplo mais perigoso**: concretos, testados e ricos, mas monoculturais; pluralismo ontológico e multilinguismo (SKOS-XL para vocabulários indígenas) |
-| **Padrões de biodiversidade e etnobiologia** | Darwin Core; DwC-DP (`usage-policy` **já verificado**: só direito autoral, nenhum protocolo cultural — ver §9); Humboldt; Plinian Core; Audubon Core; ABCD; SocioBio/SiBBr (campos reais no GitHub); guias GBIF de dados sensíveis e de dados indígenas; padrões de reporte etnofarmacológico (WECKERLE et al.); NAEB/Moerman; PROTA |
-| **Evidência da lacuna** | CARROLL et al. 2020 e 2021; JENNINGS et al.; ANDERSON & CHRISTEN; AGRAWAL; NADASDY 1999; NGULUBE; LWOGA, NGULUBE & STILWELL; STEVENS; ZANK et al. 2025; PANKARARU et al. 2026 — extrair **citação direta curta** onde a fonte declara a lacuna |
-| **Brasil e revisões** | SISGEN (campos de cadastro de CTA, natureza declaratória); SinBiota; Plataforma de Territórios Tradicionais (MPF); Rede de Conhecimentos sobre Sociobiodiversidade (ICMBio/CNPT + UFSC); GEF 11269 "Entre-Ciências"; BDTD e repositórios (FERRARI, UFSC, 2020 e similares); WIPO/IGC sobre bases de dados de conhecimento tradicional; revisões sistemáticas e de escopo sobre modelos de dados para conhecimento tradicional |
+| Frente | Referência ABNT Central | O que é | Estrutura publicada? | Testada como? | Escopo cultural, linguístico e CTA | Veredito |
+|---|---|---|---|---|---|---|
+| **Plataformas** | CHRISTEN et al. (2012, 2017); ANDERSON & CHRISTEN (2019); LOCAL CONTEXTS (2025) | Mukurtu CMS e Local Contexts Hub (TK/BC Labels & Notices) | Sim (Dublin Core estendido / JSON REST API v2) | Sim (centenas de comunidades e projetos ativos) | Gestão arquivística de acervos digitais e rotulagem de direitos/atribuição. Não modela biodiversidade (espécies, órgãos, preparações, usos taxonômicos) | **QUALIFICA** |
+| **Plataformas (Fechadas)** | CSIR / MIN. AYUSH (2006) | Traditional Knowledge Digital Library (TKDL) e classificação TKRC | Sim (XML/TKRC mapeado à IPC A61K 36/00, ~25 mil subgrupos) | Sim (>450 mil formulações de Ayurveda, Siddha, Unani, Yoga) | **Fechada por NDA** com escritórios de patentes; estatal; restrita a textos médicos clássicos codificados. Não aplicável a povos indígenas orais nem orientada a soberania comunitária | **QUALIFICA** (contraexemplo) |
+| **Ontologias / KGs** | ZHOU et al. (2019); ISO/TS 17938:2014; CHEN et al. (2007) | TCMLS-SN / GFO-TCM e grafos de Medicina Tradicional Chinesa | Sim (OWL/RDF, >120 mil conceitos, 1,27 mi links) | Sim (usada em NLP e sistemas de apoio clínico na China) | **Monocultural e hegemônica** (doutrina médica chinesa formal). Sem pluralismo cosmopolítico, sem modelagem de soberania ou consentimento comunitário C.A.R.E. | **QUALIFICA** (contraexemplo) |
+| **Padrões de Biodiversidade** | GBIF / TDWG (2024); SiBBr (2024); HEINRICH/WECKERLE et al. (2018) | DwC-DP (tabela `usage-policy`); SocioBio/SiBBr; ConSEFS | Sim (JSON schema do DwC-DP; star schema SiBBr no GitHub; checklist de reporte) | Sim (GBIF, SiBBr) | DwC-DP `usage-policy` é **100% direito autoral ocidental** (zero suporte a protocolos culturais). SocioBio trata apenas de ocorrência e uso utilitário (`usedTo`, `organismPart`) sem regime enunciativo | **SUSTENTA** a lacuna |
+| **Evidência da Lacuna** | CARROLL et al. (2020, 2021); JENNINGS et al. (2023); ZANK et al. (2025) | Governança C.A.R.E., soberania de dados indígenas e descolonização da etnobiologia | Sim (artigos conceituais e empíricos em periódicos de alto impacto) | Sim (adotados pela RDA, GIDA, etc.) | Demonstram que bases globais apagam os guardiões de dados e que inexiste modelo técnico que garanta soberania de dados por arquitetura | **SUSTENTA** a lacuna |
+| **Brasil e WIPO** | FERRARI (UFSC, 2020); WIPO (2022, 2023); BRASIL (SISGEN) | SISGEN (declaratório); Useflor@; Relatórios WIPO/IGC (46/8 e 46/12) | SISGEN: formulário sem modelo semântico; WIPO: registros defensivos | SISGEN em produção federal; WIPO em debate intergovernamental | WIPO declara expressamente que "dados estruturados e formato interoperável para bases de TK" permanecem como **Future Work** pendente | **SUSTENTA** a lacuna |
 
-Regras a repetir no despacho, porque são o que dá valor ao resultado: abrir a **fonte primária** de toda fonte central (página do DOI, PDF, esquema no GitHub), nunca citar de snippet de busca; **proibido fabricar** DOI, volume, página ou ano — campo não conferido escreve-se `[não verificado]`; devolver tabela (referência ABNT | o que é | estrutura publicada? | testada como? | escopo cultural, linguístico e dado/informação/conhecimento | **SUSTENTA / QUALIFICA / CONTRADIZ**), síntese, contraexemplos mais perigosos e termos buscados sem resultado.
+#### Síntese e Decisão Adotada
 
-**Decisão que a pesquisa vai forçar.** Se aparecer contraexemplo concreto e testado — mesmo monocultural, como os grafos de medicina tradicional chinesa, ou fechado, como o TKDL — o item 1 precisa ser **qualificado**, não mantido. Formulação provável: *não existe estrutura **aberta, intercultural e validada*** para esse conjunto, citando nominalmente os parciais e o que cada um cobre. Manter o texto atual só se as cinco frentes voltarem sem contraexemplo.
-
-**Destino das referências:** `Referencias.md`, em seção nova (ex.: "13. Estruturas de dados para conhecimento tradicional — estado da arte"), norma ABNT NBR 6023:2018; atualizar o rodapé "Última atualização", que ainda diz Janeiro 2025. Citar no corpo do item 1 de §2 e reforçar o parágrafo "Científica" de §3, que hoje afirma a lacuna apenas para a distinção Conhecimento × Evidência no Brasil.
+1. **Contraexemplos mais perigosos:** O TKDL da Índia (fechado/estatal) e o TCMLS da China (monocultural/doutrinário) provam que existem estruturas de dados formais em larga escala para conhecimentos tradicionais, mas nenhuma delas é **aberta, intercultural ou orientada à soberania e consentimento de povos tradicionais**.
+2. **Decisão:** A afirmativa do item 1 da §2 do `projetoPesquisa.md` foi **QUALIFICADA** (passando a *"Ausência de proposta aberta, intercultural e validada"* e citando nominalmente as implementações parciais).
+3. **Consequência nos arquivos:**
+   - `Referencias.md`: Nova seção "13. Estruturas de Dados para Conhecimento Tradicional e Lacunas na Literatura" adicionada com 23 referências completas em ABNT NBR 6023:2018; rodapé atualizado para Setembro 2026.
+   - `docs/projetoPesquisa.md`: Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados nas fontes primárias.
+   - `docs/proximosPassos.md`: §0.2 e §11.1 atualizados.
 
 ---
 
@@ -352,8 +356,8 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 ### 11.1 Parte I — Projeto de pesquisa
 
-- **Refazer a pesquisa profunda da §0.2** — verificar a afirmativa do item 1 de §2 do `projetoPesquisa.md` e levar as referências para o `Referencias.md`. A afirmativa está publicada **sem base citada**; é a única coisa da sessão de 2026-08-19 que ficou pela metade. **Primeira coisa no computador.**
-- **Registrar o resultado da §0.2** onde ele tem consequência: item 1 de §2 (qualificar ou manter) e parágrafo "Científica" de §3.
+- **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Referencias.md`.
+- **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
 
 ### 11.2 Parte II — Arquitetura e componentes
 
