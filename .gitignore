@@ -6,3 +6,6 @@ graphify-out/
 # são texto próprio do projeto.
 docs/iniciativas/redeConhecimento/*
 !docs/iniciativas/redeConhecimento/*.md
+
+# Transcrições brutas de reunião (fala atribuída a terceiros, não revisada)
+docs/reunioes/*.txt
