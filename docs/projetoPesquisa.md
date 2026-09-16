@@ -218,7 +218,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 |---|---|
 | Arquitetura completa (v3.5) | [`README.md`](../README.md) |
 | Modelo de Dados Unificado | [`docs/modelo-de-dados-unificado.md`](modelo-de-dados-unificado.md) |
-| Proposta de Governança | [`governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md) |
+| Proposta de Governança | [`docs/governanca/propostaGovernanca.md`](governanca/propostaGovernanca.md) |
 | Conhecimento × Evidência | [`docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
 | Pauta das comunidades (o que depende delas) | [`docs/pautaComunidades/pauta-comunidades.md`](pautaComunidades/pauta-comunidades.md) |
 | Memórias de reunião com iniciativas parceiras | [`docs/reunioes/`](reunioes/) |

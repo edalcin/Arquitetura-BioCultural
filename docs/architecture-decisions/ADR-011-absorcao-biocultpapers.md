@@ -117,7 +117,7 @@ ativo do ecossistema.
 > offline até o momento"* deixou de ser verdadeira. Em reunião com o Comitê Gestor do USEFLORA em
 > **18/08/2026** foi levantada a necessidade de infraestrutura para comunidades com baixa conectividade,
 > com sincronização assíncrona (por laptop ou pen-drive, "quando houver conexão"). A demanda está
-> registrada em `docs/reunioes/reuniao-useflora-2026-08-18.md` e como pendência em
+> registrada em `docs/reunioes/2026-08-18-reuniao-useflora.md` e como pendência em
 > `docs/proximosPassos.md`. O texto original é preservado acima.
 >
 > O que a nota **não** decide: o mecanismo. Sincronização assíncrona de unidade soberana com resolução

@@ -6,6 +6,20 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.11.1] - 2026-09-16
+
+### Adicionado
+
+- **`docs/reunioes/2026-09-16-reuniao-sofia.md`** — resumo revisado da reunião com Sofia Zank (Ponto-Focal do USEFLORA), reescrito a partir da transcrição integral, com seções **Decisões** (12) e **Insights** (15), e uma nota de leitura que mapeia os nomes corrompidos pela transcrição automática (CGen, APIB, Local Contexts, Pluriverso, BioCultDB)
+- **Regra no `.gitignore` para `docs/reunioes/*.txt`** — transcrições brutas atribuem fala não revisada a terceiros nomeados e não vão para o remoto público; a versão versionada é o resumo em Markdown
+
+### Alterado
+
+- **`docs/reunioes/reuniao-useflora-2026-08-18.md` → `docs/reunioes/2026-08-18-reuniao-useflora.md`** — padrão data-primeiro para memórias de reunião
+- **Todas as referências de caminho atualizadas** após a movimentação de `governanca/` para `docs/governanca/` e a renomeação acima: `README.md`, `resumoExecutivo.md`, `CONTEXT.md`-adjacentes, ADR-004, ADR-011, ADR-014, ADR-015, ADR-016, ADR-017, `docs/contrato-harvest.md`, `docs/modelo-de-dados-unificado.md`, `docs/projetoPesquisa.md`, `docs/proximosPassos.md`, `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`, `docs/pautaComunidades/*` e os dois documentos de `docs/governanca/`. A árvore de documentação do `README.md` foi corrigida (`governanca/` aparecia na raiz). As entradas anteriores deste changelog ficam com os caminhos da época, como registro histórico
+
+---
+
 ## [3.11.0] - 2026-09-03
 
 ### Adicionado

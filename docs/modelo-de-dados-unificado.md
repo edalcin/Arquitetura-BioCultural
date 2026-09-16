@@ -38,7 +38,7 @@
 - Uma centralização de dados — o UDM define a **forma** do registro; os dados permanecem no
   arquivo soberano de cada unidade (ADR-004, ADR-005). Adotar o UDM não transfere dado algum.
 - Um substituto do CLPI ou da governança — nenhum campo deste modelo autoriza publicar o que a
-  comunidade não consentiu ([Proposta de Governança](../governanca/propostaGovernanca.md)).
+  comunidade não consentiu ([Proposta de Governança](governanca/propostaGovernanca.md)).
 
 ## 2. Princípios do modelo
 
@@ -234,4 +234,4 @@ forma divergente.
 | Persistência SQLite+JSON1 | [ADR-005](architecture-decisions/ADR-005-sqlite-json-persistence.md) · [ADR-008](architecture-decisions/ADR-008-pluriverso-database-engine.md) |
 | Vocabulário e rótulos | [rotulos-skos-xl.md](rotulos-skos-xl.md) · [ADR-014](architecture-decisions/ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md) |
 | Fonte de Atribuição | [ADR-012](architecture-decisions/ADR-012-manutencao-codigo-bioculttermos.md) · [`CONTEXT.md`](../CONTEXT.md) |
-| Governança, CLPI, salvaguardas | [Proposta de Governança](../governanca/propostaGovernanca.md) |
+| Governança, CLPI, salvaguardas | [Proposta de Governança](governanca/propostaGovernanca.md) |

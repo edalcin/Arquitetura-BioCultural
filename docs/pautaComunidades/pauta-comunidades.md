@@ -2,9 +2,9 @@
 
 **O que este documento é.** Não é mais um registro de sessão de trabalho — isso já vive em `docs/proximosPassos.md`. Este é o documento objetivo do Ponto-Focal: o que a Arquitetura BioCultural precisa ver encaminhado com comunidades tradicionais para poder seguir. Foi feito para sair do computador. Quem o recebe precisa conseguir lê-lo inteiro e agir a partir dele, sem precisar abrir mais nada.
 
-**Para quem é.** O leitor principal é o **Ponto-Focal** — a pessoa indicada por uma iniciativa parceira (hoje, o Comitê Gestor do USEFLORA) para conversar com esta arquitetura. A resposta do Ponto-Focal é a **posição da iniciativa que o indicou**: informada, tecnicamente competente, e válida para as perguntas que dizem respeito a como a arquitetura deve se comportar em geral. Ela **nunca** é o consentimento da comunidade detentora sobre um registro concreto — a titularidade do conhecimento tradicional associado é sempre coletiva e da comunidade que o detém (Lei nº 13.123/2015, art. 10, §1º; `governanca/propostaGovernanca.md` §5.1). O Ponto-Focal desenha o campo; nunca preenche o valor dele.
+**Para quem é.** O leitor principal é o **Ponto-Focal** — a pessoa indicada por uma iniciativa parceira (hoje, o Comitê Gestor do USEFLORA) para conversar com esta arquitetura. A resposta do Ponto-Focal é a **posição da iniciativa que o indicou**: informada, tecnicamente competente, e válida para as perguntas que dizem respeito a como a arquitetura deve se comportar em geral. Ela **nunca** é o consentimento da comunidade detentora sobre um registro concreto — a titularidade do conhecimento tradicional associado é sempre coletiva e da comunidade que o detém (Lei nº 13.123/2015, art. 10, §1º; `docs/governanca/propostaGovernanca.md` §5.1). O Ponto-Focal desenha o campo; nunca preenche o valor dele.
 
-**Onde isto se encaixa na governança.** As três camadas de governança descritas em `governanca/propostaGovernanca.md` §2 são uma **proposta em consulta**, não uma estrutura em funcionamento — o próprio documento se declara "Proposta para consulta". O Comitê Federado que a proposta descreve **não existe ainda**. O único mecanismo de governança em operação real, hoje, é o Ponto-Focal indicado por uma iniciativa parceira; enquanto isso, o pesquisador responsável (Eduardo Dalcin, JBRJ) acumula, na prática, as três camadas que a proposta separa. É por isso que este documento — e não uma ata de comitê — é o instrumento disponível para levar pendências a quem pode falar por uma iniciativa.
+**Onde isto se encaixa na governança.** As três camadas de governança descritas em `docs/governanca/propostaGovernanca.md` §2 são uma **proposta em consulta**, não uma estrutura em funcionamento — o próprio documento se declara "Proposta para consulta". O Comitê Federado que a proposta descreve **não existe ainda**. O único mecanismo de governança em operação real, hoje, é o Ponto-Focal indicado por uma iniciativa parceira; enquanto isso, o pesquisador responsável (Eduardo Dalcin, JBRJ) acumula, na prática, as três camadas que a proposta separa. É por isso que este documento — e não uma ata de comitê — é o instrumento disponível para levar pendências a quem pode falar por uma iniciativa.
 
 > **Nada aqui se decide no computador.** A arquitetura promete que a comunidade é a autoridade sobre o próprio conhecimento. Se as perguntas abaixo forem respondidas no escritório — mesmo com boa intenção, mesmo tecnicamente bem fundamentadas —, a promessa vira texto. São escolhas cuja legitimidade depende de quem responde, não de quão bem sejam justificadas.
 
@@ -61,7 +61,7 @@ Respondem a **"como a arquitetura deve se comportar"**. São decidíveis com um 
 
 **O impasse, sem jargão.** Quando um saber é sagrado ou iniciático, duas perguntas diferentes se escondem atrás de uma só resposta técnica: o registro deve sumir por inteiro, ou pode ficar visível que ele existe, sem mostrar o conteúdo? E, mais fundo: quem, dentro de uma comunidade, tem legitimidade para dizer, em nome de todos, que um saber é sagrado?
 
-**A regra interina, hoje em vigor sem validação:** `sacred` equivale a `private` — o registro nunca atravessa o *harvest* da federação, nunca chega ao índice do Pluriverso. `governanca/propostaGovernanca.md` §5.2 já classifica `private` como o nível para "conhecimento iniciático, sagrado ou restrito por gênero". Mas essa equivalência foi **derivada por quem desenha o sistema, não pela comunidade** — está registrada como tal em `docs/contrato-harvest.md` §4.1 e virou a questão H-Q1 da `docs/architecture-decisions/ADR-016-contrato-de-harvest.md`, exatamente para que um corpo com legitimidade a confirme ou a corrija.
+**A regra interina, hoje em vigor sem validação:** `sacred` equivale a `private` — o registro nunca atravessa o *harvest* da federação, nunca chega ao índice do Pluriverso. `docs/governanca/propostaGovernanca.md` §5.2 já classifica `private` como o nível para "conhecimento iniciático, sagrado ou restrito por gênero". Mas essa equivalência foi **derivada por quem desenha o sistema, não pela comunidade** — está registrada como tal em `docs/contrato-harvest.md` §4.1 e virou a questão H-Q1 da `docs/architecture-decisions/ADR-016-contrato-de-harvest.md`, exatamente para que um corpo com legitimidade a confirme ou a corrija.
 
 **As perguntas para levar a quem tiver autoridade sobre isso:**
 
@@ -77,7 +77,7 @@ Respondem a **"como a arquitetura deve se comportar"**. São decidíveis com um 
 
 | Consideração do parceiro | Validação com a comunidade afetada |
 |---|---|
-| Pendente — aguardando indicação do ponto-focal do USEFLORA, solicitada em 18/08/2026, prazo sugerido de 2 semanas, em atraso desde 01/09/2026 (`docs/reunioes/reuniao-useflora-2026-08-18.md`) | Pendente — depende de qual comunidade tiver, na prática, um registro classificado como sagrado; nenhum caso concreto identificado ainda |
+| Pendente — aguardando indicação do ponto-focal do USEFLORA, solicitada em 18/08/2026, prazo sugerido de 2 semanas, em atraso desde 01/09/2026 (`docs/reunioes/2026-08-18-reuniao-useflora.md`) | Pendente — depende de qual comunidade tiver, na prática, um registro classificado como sagrado; nenhum caso concreto identificado ainda |
 
 ---
 
@@ -85,7 +85,7 @@ Respondem a **"como a arquitetura deve se comportar"**. São decidíveis com um 
 
 **O impasse, sem jargão.** Muitos dos registros que chegam pelo BioCultDB vêm de artigos científicos publicados há décadas. Nesses artigos, é comum que o detentor do conhecimento tenha sido registrado pelo autor apenas como "informante, 62 anos" — sem nome, sem comunidade nomeada, sem qualquer caminho de volta até a pessoa ou seu povo. O apagamento já aconteceu antes de a Arquitetura BioCultural existir; a pergunta que sobra é o que a arquitetura faz com o registro dele.
 
-**A base legal, e por que ela não fecha a questão sozinha.** A Lei nº 13.123/2015, art. 2º, III distingue CTA de origem identificável de CTA de **origem não identificável** — "em que não há a possibilidade de vincular a sua origem a, pelo menos, uma população indígena, comunidade tradicional ou agricultor tradicional". `governanca/propostaGovernanca.md` §5.1 já registra que essa é situação **frequente no BioCultDB**. A lei resolve a pergunta jurídica — dispensa consentimento prévio nesse caso (art. 9º, §2º) e exige repartição obrigatoriamente monetária (art. 23) — mas não resolve a pergunta de arquitetura: o que aparece na tela quando alguém abre esse registro.
+**A base legal, e por que ela não fecha a questão sozinha.** A Lei nº 13.123/2015, art. 2º, III distingue CTA de origem identificável de CTA de **origem não identificável** — "em que não há a possibilidade de vincular a sua origem a, pelo menos, uma população indígena, comunidade tradicional ou agricultor tradicional". `docs/governanca/propostaGovernanca.md` §5.1 já registra que essa é situação **frequente no BioCultDB**. A lei resolve a pergunta jurídica — dispensa consentimento prévio nesse caso (art. 9º, §2º) e exige repartição obrigatoriamente monetária (art. 23) — mas não resolve a pergunta de arquitetura: o que aparece na tela quando alguém abre esse registro.
 
 **Três caminhos, apresentados sem preferência:**
 
@@ -200,9 +200,9 @@ A conversa mais importante, e a que um documento técnico tende a omitir.
 
 ### USEFLORA
 
-**Estado do ponto-focal.** Solicitado em reunião de **18/08/2026**, prazo sugerido de **2 semanas** (até 01/09/2026). **Em atraso** — hoje é 2026-09-03. Fonte: `docs/reunioes/reuniao-useflora-2026-08-18.md`.
+**Estado do ponto-focal.** Solicitado em reunião de **18/08/2026**, prazo sugerido de **2 semanas** (até 01/09/2026). **Em atraso** — hoje é 2026-09-03. Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md`.
 
-**O que foi combinado.** Que a arquitetura, ao ser desenhada, gera pendências que só membros de comunidades tradicionais podem sanar — não a academia, não o pesquisador que a mantém — e que a indicação de um ponto-focal pelo Comitê Gestor misto do USEFLORA existe precisamente para abrir esse canal. Ver `docs/reunioes/reuniao-useflora-2026-08-18.md`.
+**O que foi combinado.** Que a arquitetura, ao ser desenhada, gera pendências que só membros de comunidades tradicionais podem sanar — não a academia, não o pesquisador que a mantém — e que a indicação de um ponto-focal pelo Comitê Gestor misto do USEFLORA existe precisamente para abrir esse canal. Ver `docs/reunioes/2026-08-18-reuniao-useflora.md`.
 
 **Pautas que se aplicam.** Pauta 6 (o sagrado) e Pauta 7 (o detentor apagado pela publicação, **prioritária**) — nenhuma das duas depende de gravação de campo nem de conteúdo específico de uma comunidade determinada.
 

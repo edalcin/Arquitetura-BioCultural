@@ -2,7 +2,7 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21738427-blue)](https://doi.org/10.5281/zenodo.21738427)
 [![Versão](https://img.shields.io/badge/Versão-3.5.0-green)](CHANGELOG.md)
-[![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](governanca/propostaGovernanca.md)
+[![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](docs/governanca/propostaGovernanca.md)
 
 ## Visão Geral
 
@@ -18,7 +18,7 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 
 ## 🏛️ Novidade da v3.4 — Proposta de Governança
 
-A arquitetura sempre prometeu soberania. A **[Proposta de Governança](governanca/propostaGovernanca.md)** é o documento que diz **como essa promessa é cumprida na prática** — e onde ela ainda não é.
+A arquitetura sempre prometeu soberania. A **[Proposta de Governança](docs/governanca/propostaGovernanca.md)** é o documento que diz **como essa promessa é cumprida na prática** — e onde ela ainda não é.
 
 > Arquitetura não é governança: dizer *como* o dado é armazenado não diz *quem decide* o que entra, o que sai, quem pode alterar o código que o processa, e quem responde quando uma comunidade pergunta por que um relato está público sem autorização.
 
@@ -30,7 +30,7 @@ O documento organiza a governança em **três camadas**, cada uma com sua instâ
 | **Ferramentas** | O mantenedor da instância | deploy · versão · backup · segurança |
 | **Arquitetura** | O Comitê Federado | ADRs · contrato de harvest · admissão de membros |
 
-[![Três camadas de governança: dados decididos pela comunidade, ferramentas pelo mantenedor da instância, arquitetura pelo Comitê Federado](governanca/governanca-tres-camadas.png)](governanca/propostaGovernanca.md)
+[![Três camadas de governança: dados decididos pela comunidade, ferramentas pelo mantenedor da instância, arquitetura pelo Comitê Federado](docs/governanca/governanca-tres-camadas.png)](docs/governanca/propostaGovernanca.md)
 
 **O que o documento traz:**
 
@@ -44,7 +44,7 @@ O documento organiza a governança em **três camadas**, cada uma com sua instâ
 
 > **Status: Proposta para consulta.** Não é norma vigente — o documento é submetido à validação das comunidades federadas e do Comitê Federado, e marca `[a implementar]` tudo o que ainda não existe.
 
-📄 **[Ler a Proposta de Governança completa →](governanca/propostaGovernanca.md)**
+📄 **[Ler a Proposta de Governança completa →](docs/governanca/propostaGovernanca.md)**
 
 ## 🧬 Modelo de Dados Unificado (UDM)
 
@@ -109,7 +109,7 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 ## Arquitetura do Sistema — Versão 3.5 (Federada)
 
-A versão 3.5 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. A v3.4 acrescentou a [camada de governança](governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças; a v3.5 absorve o **BioCultPapers** pelo **BioCultDB** ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)) — a extração de dados por IA deixa de ser aplicativo desktop separado e passa a ser a funcionalidade **Extração por IA**, nativa do contexto de Aquisição.
+A versão 3.5 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. A v3.4 acrescentou a [camada de governança](docs/governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças; a v3.5 absorve o **BioCultPapers** pelo **BioCultDB** ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)) — a extração de dados por IA deixa de ser aplicativo desktop separado e passa a ser a funcionalidade **Extração por IA**, nativa do contexto de Aquisição.
 
 ![Arquitetura BioCultural — versão 3.5, visão geral federada](docs/images/arquitetura-biocultural.png)
 
@@ -121,7 +121,7 @@ A versão 3.5 mantém o sistema organizado como uma **federação de entidades s
 - **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
 - **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
 - **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
-- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos — detalhada na [Proposta de Governança](governanca/propostaGovernanca.md)
+- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos — detalhada na [Proposta de Governança](docs/governanca/propostaGovernanca.md)
 
 ### Tipos de Membros da Federação
 
@@ -391,13 +391,6 @@ Arquitetura-BioCultural/
 ├── README.md (este arquivo)
 ├── resumoExecutivo.md                  ← introdução objetiva e sintética à proposta
 ├── CONTEXT.md                          ← glossário da federação
-├── governanca/
-│   ├── propostaGovernanca.md          ← documento principal de governança
-│   ├── planoPropostaGovernanca.md
-│   ├── governanca-tres-camadas.svg/.png
-│   ├── governanca-camadas-acesso.svg/.png
-│   ├── governanca-ciclo-clpi.svg/.png
-│   └── governanca-reparticao.svg/.png
 └── docs/
     ├── projetoPesquisa.md          ← projeto de pesquisa formalizado
     ├── proximosPassos.md           ← estado do projeto e pendências (referência de continuidade)
@@ -408,12 +401,21 @@ Arquitetura-BioCultural/
     ├── modelo-de-dados-unificado.md← UDM — objeto do acordo JBRJ ↔ USEFLORA
     ├── PrincipiosCAREnaPratica.md
     ├── v3.1-migration-progress.md
+    ├── governanca/                 ← governança em três camadas + ilustrações
+    │   ├── propostaGovernanca.md   ← documento principal de governança
+    │   ├── planoPropostaGovernanca.md
+    │   ├── governanca-tres-camadas.svg/.png
+    │   ├── governanca-camadas-acesso.svg/.png
+    │   ├── governanca-ciclo-clpi.svg/.png
+    │   └── governanca-reparticao.svg/.png
     ├── conhecimento/               ← Conhecimento × Evidência
     │   └── caracterizacao-do-conhecimento-tradicional.md
     ├── pautaComunidades/           ← Pauta com as comunidades, preparação e encaminhamentos
     │   ├── pauta-comunidades.md    ← o que precisa ser encaminhado com as comunidades
     │   └── preparacao-reuniao-2026-09-16.md
     ├── reunioes/                   ← memórias de reuniões com iniciativas parceiras
+    │   ├── 2026-08-18-reuniao-useflora.md
+    │   └── 2026-09-16-reuniao-sofia.md
     ├── architecture-decisions/     ← ADR-001 … ADR-017
     ├── c4-model/                   ← diagramas C4: contexto, containers, componentes
     ├── diagrams/                   ← fontes .excalidraw + exports + notas de integração
@@ -425,13 +427,13 @@ Arquitetura-BioCultural/
 
 ### Navegação da Documentação
 
-1. **[Proposta de Governança](governanca/propostaGovernanca.md)** — **documento principal da v3.4**: governança dos dados, das ferramentas e da arquitetura — princípios C.A.R.E., marco legal, salvaguardas contra o mau uso, CLPI como processo, rotulagem cultural, repartição rastreável, matriz de decisão e lacunas abertas
+1. **[Proposta de Governança](docs/governanca/propostaGovernanca.md)** — **documento principal da v3.4**: governança dos dados, das ferramentas e da arquitetura — princípios C.A.R.E., marco legal, salvaguardas contra o mau uso, CLPI como processo, rotulagem cultural, repartição rastreável, matriz de decisão e lacunas abertas
 2. **[Diagrama de Contexto](docs/c4-model/01-context-diagram.md)** - Visão de alto nível do sistema e seus usuários
 3. **[Diagrama de Containers](docs/c4-model/02-container-diagram.md)** - Componentes principais e suas tecnologias
 4. **[Diagrama de Componentes](docs/c4-model/03-component-diagram.md)** - Detalhamento interno de cada contexto
 5. **[Decisões Arquiteturais](docs/architecture-decisions/)** - ADRs documentando escolhas técnicas
 6. **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** - C4 Model, contextos de Aquisição/Curadoria/Apresentação e tecnologias avaliadas
-7. **[Plano de elaboração da proposta de governança](governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
+7. **[Plano de elaboração da proposta de governança](docs/governanca/planoPropostaGovernanca.md)** - Registro do planejamento, fontes e critérios de verificação que originaram o documento de governança
 8. **[Caracterização do Conhecimento Tradicional](docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md)** — estudo que distingue **Conhecimento** (a relação enunciada por quem a detém) de **Evidência** (a atestação por terceiros de que ela existe), e as consequências para a rotulagem SKOS-XL de nível de acesso; base do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)
 9. **[Contrato de Harvest](docs/contrato-harvest.md)** — o payload da federação campo a campo: `regime`, nível efetivo de acesso, supressão declarada (`informationWithheld` / `dataGeneralizations`), rótulos culturais e vínculo entre registros de membros distintos. Decorre de K6 do [ADR-015](docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) e supersede o payload do ADR-004 D6
 10. **[Rótulos SKOS-XL — Referência Central](docs/rotulos-skos-xl.md)** — todos os rótulos SKOS-XL que a arquitetura suporta, com descrição, regras e exemplos das curadorias reais (campanha "Tipos de Usos de Plantas"); normativo para as quatro unidades federadas e o Pluriverso
@@ -641,7 +643,7 @@ Este é um projeto em fase de proposta. Contribuições e sugestões são bem-vi
 
 ## Licença
 
-A definir — considerando licenças que respeitem os princípios C.A.R.E. e protejam adequadamente o conhecimento tradicional. A [Proposta de Governança, §6.4](governanca/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo) apresenta uma proposta concreta para fechar esta lacuna: **código** em licença permissiva OSI, **documentação** em CC BY 4.0 e **dados de CTA fora de licença aberta** — regidos por consentimento com escopo, prazo e revogação, porque licença aberta é irrevogável e o CLPI não pode ser.
+A definir — considerando licenças que respeitem os princípios C.A.R.E. e protejam adequadamente o conhecimento tradicional. A [Proposta de Governança, §6.4](docs/governanca/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo) apresenta uma proposta concreta para fechar esta lacuna: **código** em licença permissiva OSI, **documentação** em CC BY 4.0 e **dados de CTA fora de licença aberta** — regidos por consentimento com escopo, prazo e revogação, porque licença aberta é irrevogável e o CLPI não pode ser.
 
 ## Contato
 

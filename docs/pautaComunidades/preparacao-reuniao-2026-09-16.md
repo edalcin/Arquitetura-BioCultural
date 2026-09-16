@@ -5,7 +5,7 @@
 > **Documentos de referência no repositório:**
 > - `docs/pautaComunidades/pauta-comunidades.md` (Documento objetivo do Ponto-Focal)
 > - `docs/governanca/propostaGovernanca.md` (Proposta de Governança em 3 Camadas)
-> - `docs/reunioes/reuniao-useflora-2026-08-18.md` (Memória da reunião anterior com USEFLORA)
+> - `docs/reunioes/2026-08-18-reuniao-useflora.md` (Memória da reunião anterior com USEFLORA)
 > - `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md`
 > - `docs/architecture-decisions/ADR-016-contrato-de-harvest.md`
 > - Base de dados real: `/Storage/appsdata/biocultdb/data/biocultdb.sqlite` (tabela `biocultdb_records`)

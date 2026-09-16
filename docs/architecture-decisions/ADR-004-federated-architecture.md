@@ -82,7 +82,7 @@ O contrato mínimo do endpoint:
 > [`docs/contrato-harvest.md`](../contrato-harvest.md). O motivo: `visibility` é um booleano e não
 > consegue expressar o caso comum — registro público que contém um rótulo `sacred`, que deve ser
 > publicado **com o rótulo suprimido e a supressão declarada**, e não rebaixado nem omitido. Sem
-> isso, a regra de `governanca/propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não
+> isso, a regra de `docs/governanca/propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não
 > tinha implementação possível do lado do consumidor.
 >
 > **Permanece integralmente válido** todo o restante deste ponto: paginação obrigatória, filtro

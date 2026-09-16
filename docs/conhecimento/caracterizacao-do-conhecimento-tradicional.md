@@ -424,7 +424,7 @@ Adotar a API mantém a autoridade da comunidade sobre o rótulo (ela muda no Hub
 - Local Contexts Hub — API: <https://localcontextshub.org/> · guia de implementação: <https://localcontexts.org/wp-content/uploads/2023/08/API-Implementation-Guide.pdf>
 - Mukurtu CMS — Cultural Protocols: <https://mukurtu.org/>
 
-**Legislação brasileira** (conforme já compilado em `governanca/propostaGovernanca.md`)
+**Legislação brasileira** (conforme já compilado em `docs/governanca/propostaGovernanca.md`)
 
 - Lei nº 13.123/2015 — art. 9º, §1º (quatro formas de comprovação do CLPI); arts. 19-24 (repartição): <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13123.htm>
 - Decreto nº 8.772/2016 (regulamentação, CGen, SisGen): <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/decreto/d8772.htm>
@@ -444,13 +444,13 @@ Adotar a API mantém a autoridade da comunidade sobre o rótulo (ela muda no Hub
 
 **Documentos internos consultados**
 
-`README.md` · `CONTEXT.md` · `docs/architecture-decisions/ADR-003-data-model.md` · `ADR-004-federated-architecture.md` · `docs/c4-model/01-context-diagram.md` · `governanca/propostaGovernanca.md` (§5.1-§5.10) · `BioCultDB/CONTEXT.md` · `BioCultDB/bioculttermos/manual/03-rotulos.md` · `docs/projetoPesquisa.md` (§7.3)
+`README.md` · `CONTEXT.md` · `docs/architecture-decisions/ADR-003-data-model.md` · `ADR-004-federated-architecture.md` · `docs/c4-model/01-context-diagram.md` · `docs/governanca/propostaGovernanca.md` (§5.1-§5.10) · `BioCultDB/CONTEXT.md` · `BioCultDB/bioculttermos/manual/03-rotulos.md` · `docs/projetoPesquisa.md` (§7.3)
 
 ---
 
 ## 15. Mídia neste diretório — `conhecimentoPanara.mp4`
 
-Este diretório contém um arquivo de vídeo que **não está sob controle de versão** e nunca estará: `.gitignore` exclui `*.mp4` em todo o repositório. A regra tem motivação de tamanho e efeito exigido por `governanca/propostaGovernanca.md` §5.10 — nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros.
+Este diretório contém um arquivo de vídeo que **não está sob controle de versão** e nunca estará: `.gitignore` exclui `*.mp4` em todo o repositório. A regra tem motivação de tamanho e efeito exigido por `docs/governanca/propostaGovernanca.md` §5.10 — nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros.
 
 Registro do arquivo, porque um arquivo de 62 MB sem documentação é pior que um arquivo exposto:
 

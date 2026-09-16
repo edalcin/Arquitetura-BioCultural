@@ -115,7 +115,7 @@ Importar WFO/GBIF periodicamente para dentro do `etnotermos`, como conceitos de 
 - Alinha o vocabulário à sua premissa fundadora.
 - Alinha ao Darwin Core, que a federação já adota como referência de interoperabilidade:
   `scientificName` é identidade do táxon, `vernacularName` é atributo **associado**.
-- Coerente com o nível 2 da validação prevista em `governanca/propostaGovernanca.md`, que já
+- Coerente com o nível 2 da validação prevista em `docs/governanca/propostaGovernanca.md`, que já
   atribui a conferência do nome científico a bases externas (Flora e Funga do Brasil, Fauna do
   Brasil, *fallback* GBIF) — e não ao BioCultTermos.
 
@@ -223,7 +223,7 @@ marcação. É o custo aceito por não manter um vocabulário que ninguém pode 
   assíncrona, como qualquer outra; para as unidades sem build próprio, é escrituração.
 - **Não altera o ADR-002 nem o ADR-003** — `scientificName` como dado e como campo de API segue
   inalterado (N2).
-- **Coerente com `governanca/propostaGovernanca.md`** — a validação taxonômica (nível 2) já era
+- **Coerente com `docs/governanca/propostaGovernanca.md`** — a validação taxonômica (nível 2) já era
   atribuída a bases externas, não ao BioCultTermos. Esta ADR remove a ambiguidade que restava.
 
 ## Consequências

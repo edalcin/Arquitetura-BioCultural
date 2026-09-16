@@ -17,7 +17,7 @@ O D6 do ADR-004 define o payload do harvest como `{id, visibility, updated_at, d
 `visibility` não expressa o caso comum desta arquitetura: **registro público que contém um rótulo
 `sacred`**, que deve ser publicado com o rótulo suprimido e a supressão declarada — não rebaixado,
 não omitido. Sem um campo para dizer *o que foi retido e por decisão de quem*, a regra de
-`governanca/propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não tem implementação
+`docs/governanca/propostaGovernanca.md:300` ("campo restringido nunca fica nulo") não tem implementação
 possível do lado do consumidor.
 
 A ADR-015 diagnosticou a causa: campo ausente e campo retido são coisas diferentes, e a diferença
@@ -139,7 +139,7 @@ participante `restricted`.
 - [`docs/contrato-harvest.md`](../contrato-harvest.md) — especificação campo a campo
 - Darwin Core, `informationWithheld` e `dataGeneralizations` — <https://dwc.tdwg.org/terms/>
 - DwC-DP, tabela `resource-relationship` — <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
-- `governanca/propostaGovernanca.md` §5.2, §5.4, §5.5
+- `docs/governanca/propostaGovernanca.md` §5.2, §5.4, §5.5
 
 ## Data de Revisão
 

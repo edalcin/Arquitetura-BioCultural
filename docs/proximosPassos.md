@@ -182,7 +182,7 @@ Cada componente mantém o seu próprio `docs/proximosPassos.md`, que é a fonte 
 
 | Componente | Estado | Pendências principais | Documento |
 |---|---|---|---|
-| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; **auditoria dos prompts contra vazamento de dado sensível a provedor externo de IA** (⑰, política em `governanca/propostaGovernanca.md` §5.12-9 — distinta da qualidade: aquela é acurácia, esta é vazamento); generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
+| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; **auditoria dos prompts contra vazamento de dado sensível a provedor externo de IA** (⑰, política em `docs/governanca/propostaGovernanca.md` §5.12-9 — distinta da qualidade: aquela é acurácia, esta é vazamento); generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
 | **BioCultRelatos** (registro primário, CLPI) | Documentação + scaffold; sem código de produção | Esquema do Relato travado pela decisão ①; protocolo CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva como função da ferramenta | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
 | **BioCultAcervos** (acervos museológicos) | Repositório, documentação e home page (Express na 3003) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources` para o vínculo com Relatos; harvest; scaffold Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
 | **BioCultNaturalistas** (obras séc. XVII–XIX) | Só documentação de fundação (F0); roadmap de 7 fases | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; ADR-003 V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
@@ -231,12 +231,12 @@ flowchart TD
 | Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
 | **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/pautaComunidades/pauta-comunidades.md` |
 | Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
-| Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `governanca/propostaGovernanca.md` §2, nota de estado |
+| Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `docs/governanca/propostaGovernanca.md` §2, nota de estado |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
 | Glossário da federação | `CONTEXT.md` → seção "Conhecimento e evidência" |
-| Governança de acesso, CLPI, rotulagem | `governanca/propostaGovernanca.md` §5.1–§5.10 |
+| Governança de acesso, CLPI, rotulagem | `docs/governanca/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
 
 ---
@@ -316,7 +316,7 @@ A sessão não produziu decisão de modelo de dados. Produziu o que faltava para
 | O que | Onde ficou |
 |---|---|
 | `conhecimento/` migrado para dentro de `docs/` | `docs/conhecimento/` |
-| `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | `docs/conhecimento/pauta-comunidades.md` — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
+| `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | hoje em `docs/pautaComunidades/pauta-comunidades.md` (à época, `docs/conhecimento/pauta-comunidades.md`) — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
 | Memórias de reunião ganharam lugar próprio | `docs/reunioes/` |
 | Introdução objetiva à proposta | `resumoExecutivo.md`, na raiz |
 
@@ -332,7 +332,7 @@ Registrado como decisão de governança, sem ADR — não houve alternativa genu
 
 ### 10-bis.3 Pendências novas, vindas da reunião de 18/08/2026 com o USEFLORA
 
-Fonte: `docs/reunioes/reuniao-useflora-2026-08-18.md` (versão publicável, sem atribuição nominal de falas; nomes só nos encaminhamentos com responsável).
+Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem atribuição nominal de falas; nomes só nos encaminhamentos com responsável).
 
 | # | Pendência | Estado | Onde se resolve |
 |---|---|---|---|

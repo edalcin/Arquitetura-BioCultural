@@ -214,6 +214,6 @@ enunciado — conferir em `docs/pautaComunidades/pauta-comunidades.md`.
 
 - Preparação para esta reunião: https://github.com/edalcin/Arquitetura-BioCultural/blob/main/docs/pautaComunidades/preparacao-reuniao-2026-09-16.md
 - Pauta de comunidades: https://github.com/edalcin/Arquitetura-BioCultural/blob/main/docs/pautaComunidades/pauta-comunidades.md
-- Registro da reunião anterior (2026-08-18): https://github.com/edalcin/Arquitetura-BioCultural/blob/main/docs/reunioes/reuniao-useflora-2026-08-18.md
+- Registro da reunião anterior (2026-08-18): https://github.com/edalcin/Arquitetura-BioCultural/blob/main/docs/reunioes/2026-08-18-reuniao-useflora.md
 - Plataforma de Territórios Tradicionais — precedente de prova de representatividade
 - Local Contexts — precedente de Notices e Labels

@@ -34,7 +34,7 @@ GET /api/federation/records
 
 Sem autenticação. O harvest autenticado é extensão futura não implementada (ADR-009); enquanto não
 existir, nível efetivo diferente de `public` é simplesmente invisível para a federação
-(`governanca/propostaGovernanca.md:284`).
+(`docs/governanca/propostaGovernanca.md:284`).
 
 ## 2. Envoltória da resposta
 
@@ -259,7 +259,7 @@ membro.
 - [ADR-015](architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md) — K1, K3, K4, K7, K8.3
 - [ADR-004](architecture-decisions/ADR-004-federated-architecture.md) — D1, D4, D6
 - [ADR-003](architecture-decisions/ADR-003-data-model.md) — modelo de dados, com a nota de retificação da ADR-015
-- `governanca/propostaGovernanca.md` §5.2 (camadas de acesso), §5.4 (CLPI), §5.5 (rotulagem cultural)
+- `docs/governanca/propostaGovernanca.md` §5.2 (camadas de acesso), §5.4 (CLPI), §5.5 (rotulagem cultural)
 - Darwin Core, `informationWithheld` e `dataGeneralizations` — <https://dwc.tdwg.org/terms/>
 - DwC-DP, tabela `resource-relationship` — <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
 - Local Contexts — TK/BC Labels e Notices — <https://localcontexts.org/labels/traditional-knowledge-labels/>

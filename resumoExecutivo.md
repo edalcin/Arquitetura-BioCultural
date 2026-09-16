@@ -63,7 +63,7 @@ Nenhum componente além do BioCultDB está em produção. E as duas decisões t�
 
 ## 5. Governança — quem decide o quê
 
-A [Proposta de Governança](governanca/propostaGovernanca.md) organiza a decisão em três camadas, cada uma com sua instância própria:
+A [Proposta de Governança](docs/governanca/propostaGovernanca.md) organiza a decisão em três camadas, cada uma com sua instância própria:
 
 | Camada | Quem decide | Sobre o quê |
 |---|---|---|
@@ -102,7 +102,7 @@ Compromissos negativos, porque são mais verificáveis do que promessas:
 |---|---|
 | Arquitetura completa | [`README.md`](README.md) |
 | Projeto de pesquisa (problema, objetivos, metodologia) | [`docs/projetoPesquisa.md`](docs/projetoPesquisa.md) |
-| Proposta de Governança | [`governanca/propostaGovernanca.md`](governanca/propostaGovernanca.md) |
+| Proposta de Governança | [`docs/governanca/propostaGovernanca.md`](docs/governanca/propostaGovernanca.md) |
 | Contrato de harvest, campo a campo | [`docs/contrato-harvest.md`](docs/contrato-harvest.md) |
 | Decisões arquiteturais (ADRs) | [`docs/architecture-decisions/`](docs/architecture-decisions/) |
 | Glossário da federação | [`CONTEXT.md`](CONTEXT.md) |

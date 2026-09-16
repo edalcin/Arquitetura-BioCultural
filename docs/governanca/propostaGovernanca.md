@@ -6,7 +6,7 @@
 **Data:** 1º de agosto de 2026
 **Autor:** Eduardo Dalcin
 
-Esta proposta nomeia, para os dados, as ferramentas e a arquitetura da [Arquitetura BioCultural](../README.md), quem decide o quê, com que processo, e o que acontece quando uma decisão muda — fundamentada nos princípios **C.A.R.E.**, no marco legal brasileiro e internacional de acesso a conhecimento tradicional associado, e em literatura e precedentes institucionais verificados.
+Esta proposta nomeia, para os dados, as ferramentas e a arquitetura da [Arquitetura BioCultural](../../README.md), quem decide o quê, com que processo, e o que acontece quando uma decisão muda — fundamentada nos princípios **C.A.R.E.**, no marco legal brasileiro e internacional de acesso a conhecimento tradicional associado, e em literatura e precedentes institucionais verificados.
 
 ## Sumário
 
@@ -60,7 +60,7 @@ Três princípios atravessam as três camadas e resumem o compromisso desta prop
 
 > **Nota de estado — 2026-09-03.** As três camadas descritas nesta seção são **proposta em consulta**, não estrutura existente. O **Comitê Federado não está constituído**: é vocabulário desta proposta e do glossário da federação (`CONTEXT.md`), sem corpo, sem membros e sem processo decisório definido — o bloqueador E4 descrito em §6.1 é uma das razões. Hoje as três camadas estão acumuladas em uma pessoa, o pesquisador proponente, e a arquitetura é conduzida como projeto de pesquisa (`docs/projetoPesquisa.md`).
 >
-> O único mecanismo de governança **em operação real** é outro, e nasceu de baixo: cada iniciativa parceira designa um **Ponto-Focal** (verbete em `CONTEXT.md`) que recebe as pendências que dependem de consideração humana, sistematiza demandas e as encaminha ao corpo que decide dentro daquela iniciativa. Foi assim que a interlocução começou a existir — pela necessidade prática de resolver pendências que a arquitetura não pode resolver sozinha, antes e independentemente da estrutura formal proposta acima. O primeiro pedido de indicação foi feito ao Comitê Gestor do USEFLORA em 18/08/2026 (`docs/reunioes/reuniao-useflora-2026-08-18.md`); a indicação ainda não ocorreu.
+> O único mecanismo de governança **em operação real** é outro, e nasceu de baixo: cada iniciativa parceira designa um **Ponto-Focal** (verbete em `CONTEXT.md`) que recebe as pendências que dependem de consideração humana, sistematiza demandas e as encaminha ao corpo que decide dentro daquela iniciativa. Foi assim que a interlocução começou a existir — pela necessidade prática de resolver pendências que a arquitetura não pode resolver sozinha, antes e independentemente da estrutura formal proposta acima. O primeiro pedido de indicação foi feito ao Comitê Gestor do USEFLORA em 18/08/2026 (`docs/reunioes/2026-08-18-reuniao-useflora.md`); a indicação ainda não ocorreu.
 >
 > O que o Ponto-Focal **não** é: titular. Sua resposta é a posição da iniciativa que o designou, e nunca o consentimento da comunidade detentora sobre um registro concreto — que é coletivo (§5.1, Lei nº 13.123/2015, art. 10, §1º) e se dá registro a registro. A pauta que separa uma coisa da outra vive em `docs/pautaComunidades/pauta-comunidades.md`, em duas seções: pautas de desenho, decidíveis com um corpo de representação mista, e pautas de consentimento, que nenhum interlocutor fecha por atacado.
 
@@ -512,7 +512,7 @@ Compromissos negativos são mais verificáveis que promessas. Esta lista é curt
 6. **Nunca publicar registro sem CLPI válido**, e nunca tratar `visibility: public` como substituto de consentimento (§5.3).
 7. **Nunca exigir justificativa para revogação ou saída** (§4.3, salvaguarda 7).
 8. **Nunca aplicar TK ou BC Labels em nome de uma comunidade** — rótulo aplicado por terceiro é Notice, por definição (§5.5).
-9. **Nunca fazer trafegar por provedor externo de IA conteúdo de registro cujo nível efetivo de acesso seja diferente de `public`.** O compromisso alcança qualquer etapa automatizada — extração de metadados, sumarização, geração de *embeddings*, busca conversacional — e vale tanto para o conteúdo do registro quanto para o texto do prompt que o carrega. Decorre de (3) e o torna verificável: o item 3 proíbe o treinamento; este proíbe o **envio**, que é o que de fato acontece a cada chamada. A verificação é por auditoria dos prompts e do ponto do fluxo em que o envio ocorre, e o resultado deve ser declarado por cada unidade que use IA. Levantado em reunião com o Comitê Gestor do USEFLORA em 18/08/2026 (`docs/reunioes/reuniao-useflora-2026-08-18.md`); o BioCultDB opera extração por IA em produção hoje ([ADR-011](../docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)), e a auditoria correspondente está registrada como pendência em `BioCultDB/docs/proximosPassos.md`.
+9. **Nunca fazer trafegar por provedor externo de IA conteúdo de registro cujo nível efetivo de acesso seja diferente de `public`.** O compromisso alcança qualquer etapa automatizada — extração de metadados, sumarização, geração de *embeddings*, busca conversacional — e vale tanto para o conteúdo do registro quanto para o texto do prompt que o carrega. Decorre de (3) e o torna verificável: o item 3 proíbe o treinamento; este proíbe o **envio**, que é o que de fato acontece a cada chamada. A verificação é por auditoria dos prompts e do ponto do fluxo em que o envio ocorre, e o resultado deve ser declarado por cada unidade que use IA. Levantado em reunião com o Comitê Gestor do USEFLORA em 18/08/2026 (`docs/reunioes/2026-08-18-reuniao-useflora.md`); o BioCultDB opera extração por IA em produção hoje ([ADR-011](../architecture-decisions/ADR-011-absorcao-biocultpapers.md)), e a auditoria correspondente está registrada como pendência em `BioCultDB/docs/proximosPassos.md`.
 
 ## 6. Governança das ferramentas
 
@@ -671,7 +671,7 @@ Nenhum desses indicadores mede quantidade de registros. É deliberado: uma feder
 
 ## 9. Referências Bibliográficas
 
-Formatadas segundo a **ABNT NBR 6023:2018**, mesma convenção de [`Referencias.md`](../Referencias.md). Duas observações sobre o critério de inclusão:
+Formatadas segundo a **ABNT NBR 6023:2018**, mesma convenção de [`Referencias.md`](../../Referencias.md). Duas observações sobre o critério de inclusão:
 
 - **Legislação e instrumentos internacionais** são citados no corpo pelo nome da norma e pelo artigo exato (ex.: "LGPD, art. 11, §1º"), conforme a prática da área, e listados na primeira seção abaixo. Os demais itens são citados no corpo no formato `(AUTOR, ano)`.
 - **Nada entra sem verificação.** Referências que a pesquisa de base não conseguiu confirmar em fonte primária foram descartadas, e com elas as afirmações que delas dependiam. Em particular, não são citados: o Acórdão nº 1.384/2022 do TCU (referido apenas indiretamente por Prestes, Preve e Bona, 2024), a norma IEEE 2890-2025, o artigo de Wynberg e Foster sobre o caso Hoodia, e casos de apropriação sem número de patente e desfecho verificáveis (kava, andiroba e copaíba), tratados em §4.1 como padrão documentado na literatura e não como caso nominal.

@@ -40,7 +40,7 @@ O sentido pretendido de Evidência na arquitetura é mais amplo que o do BioCult
 
 ### A distinção que falta, e por que não é epistemológica
 
-A tentação é definir a diferença como *fato objetivo* × *afirmação subjetiva*. Essa leitura é rejeitada por esta ADR: ela reintroduziria por via técnica a hierarquia epistêmica que os princípios C.A.R.E. existem para desfazer — precisamente o que `governanca/propostaGovernanca.md:415` já proíbe ao estabelecer que a validação comunitária pode reverter a curadoria científica.
+A tentação é definir a diferença como *fato objetivo* × *afirmação subjetiva*. Essa leitura é rejeitada por esta ADR: ela reintroduziria por via técnica a hierarquia epistêmica que os princípios C.A.R.E. existem para desfazer — precisamente o que `docs/governanca/propostaGovernanca.md:415` já proíbe ao estabelecer que a validação comunitária pode reverter a curadoria científica.
 
 A diferença é **enunciativa e deôntica** — quem fala, e quem tem autoridade sobre o que foi dito:
 
@@ -424,7 +424,7 @@ Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nív
 - `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` — estudo que originou esta ADR, com a pesquisa completa e as fontes
 - `docs/pautaComunidades/pauta-comunidades.md` — as pautas que dependem das comunidades, com roteiro de perguntas; é onde as questões abertas desta ADR que não são técnicas foram levadas
 - [ADR-016](ADR-016-contrato-de-harvest.md) e `docs/contrato-harvest.md` — contrato de payload do harvest, campo a campo, extraído de K6
-- `governanca/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
+- `docs/governanca/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
 - `BioCultDB/bioculttermos/manual/03-rotulos.md` — `accessLevel`, `sourcePeople`, `holderPeople`, ISO 639-3
 - Darwin Core Data Package guide, TDWG, 2026-04-17 — <https://dwc.tdwg.org/dp/>; tabelas `*-assertion` e `usage-policy` em <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
 - Darwin Core, `informationWithheld` e `dataGeneralizations` — <https://dwc.tdwg.org/terms/>

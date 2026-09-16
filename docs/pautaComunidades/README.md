@@ -9,5 +9,5 @@ Esta pasta reúne documentos de preparação, alinhamento e encaminhamentos estr
 
 ## Referências Centrais no Repositório
 
-- [`governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md): Modelo de governança em três camadas e conformidade C.A.R.E.
-- [`docs/reunioes/reuniao-useflora-2026-08-18.md`](../reunioes/reuniao-useflora-2026-08-18.md): Memória da reunião de apresentação ao Comitê Gestor do USEFLORA.
+- [`docs/governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md): Modelo de governança em três camadas e conformidade C.A.R.E.
+- [`docs/reunioes/2026-08-18-reuniao-useflora.md`](../reunioes/2026-08-18-reuniao-useflora.md): Memória da reunião de apresentação ao Comitê Gestor do USEFLORA.

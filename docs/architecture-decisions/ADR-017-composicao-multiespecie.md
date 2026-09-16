@@ -36,7 +36,7 @@ O caso não é exótico — é um padrão recorrente do domínio:
 - **Corantes com fixador**: a planta tintória e a planta mordente.
 
 E o caso do Daime carrega um agravante que a
-[Proposta de Governança](../../governanca/propostaGovernanca.md) já documenta: a **ayahuasca é um
+[Proposta de Governança](../governanca/propostaGovernanca.md) já documenta: a **ayahuasca é um
 dos casos históricos de apropriação indevida** (patente US Plant Patent 5.751 sobre *B. caapi*).
 Um modelo que não sabe representar a composição também não sabe protegê-la — a classificação de
 acesso e a rotulagem cultural precisam poder incidir sobre **a combinação**, não apenas sobre cada
