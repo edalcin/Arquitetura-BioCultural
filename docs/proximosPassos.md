@@ -13,7 +13,7 @@
 
 **Estado em:** 2026-09-11 (Parte I concluída: §0.2 pesquisada e resolvida; referências ABNT incorporadas)
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10** e a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras). O que depende das comunidades tradicionais está em `docs/conhecimento/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10** e a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras). O que depende das comunidades tradicionais está em `docs/pautaComunidades/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
 **Estado do repositório:** `main`, sincronizado com o remoto. Últimos commits: `ada39eb` e `15365bc` (projeto de pesquisa), sobre `6392bfc`. Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016).
 
@@ -160,7 +160,7 @@ Tensão: soberania e simplicidade pedem não depender de serviço externo; mas c
 
 ## 5. Bloqueado: precisa da comunidade
 
-Detalhado com roteiro de perguntas em **`docs/conhecimento/pauta-comunidades.md`** — documento próprio, feito para sair do computador, com as pautas separadas em duas seções: **pautas de desenho** (decidíveis com um corpo de representação mista, e para as quais o ponto-focal de uma iniciativa parceira responde) e **pautas de consentimento** (só a comunidade detentora, registro a registro, e que nenhum interlocutor fecha por atacado). Resumo das **sete** pautas — a quinta veio de K8, a sexta da triagem da v3.10.0 e a sétima da sessão de 2026-09-03:
+Detalhado com roteiro de perguntas em **`docs/pautaComunidades/pauta-comunidades.md`** — documento próprio, feito para sair do computador, com as pautas separadas em duas seções: **pautas de desenho** (decidíveis com um corpo de representação mista, e para as quais o ponto-focal de uma iniciativa parceira responde) e **pautas de consentimento** (só a comunidade detentora, registro a registro, e que nenhum interlocutor fecha por atacado). Resumo das **sete** pautas — a quinta veio de K8, a sexta da triagem da v3.10.0 e a sétima da sessão de 2026-09-03:
 
 1. **Como quem fala quer ser nomeado** — resolve ① acima.
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial, e quem tem legitimidade para dizer em nome de todos.
@@ -229,7 +229,7 @@ flowchart TD
 |---|---|
 | Introdução objetiva e sintética à proposta | `resumoExecutivo.md` |
 | Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
-| **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/conhecimento/pauta-comunidades.md` |
+| **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/pautaComunidades/pauta-comunidades.md` |
 | Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
 | Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `governanca/propostaGovernanca.md` §2, nota de estado |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
@@ -301,7 +301,7 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 - **README, "Quatro Fontes"** — a coluna de regime foi acrescentada na v3.7.0, mas o corpo do texto ainda fala em "evidências" como termo guarda-chuva em vários pontos. Não é erro; é vocabulário anterior à distinção.
 - **`propostaGovernanca.md`** — descreve Label/Notice (§5.5) sem citar o regime, que é a propriedade que decide qual dos dois se aplica. Vale uma nota de vínculo quando o documento for revisado.
 - **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde a ADR-016.
-- **`docs/conhecimento/pauta-comunidades.md`** — recebeu na sessão de 2026-09-03 o roteiro das pautas 5 (gravações e oficinas) e 6 (o sagrado), que faltavam, e a pauta 7. Resta verificar se o slide "Cinco perguntas que só vocês podem responder" (`docs/apresentacoes/`) continua coerente com sete pautas em duas seções.
+- **`docs/pautaComunidades/pauta-comunidades.md`** — recebeu na sessão de 2026-09-03 o roteiro das pautas 5 (gravações e oficinas) e 6 (o sagrado), que faltavam, e a pauta 7. Resta verificar se o slide "Cinco perguntas que só vocês podem responder" (`docs/apresentacoes/`) continua coerente com sete pautas em duas seções.
 - **`CHANGELOG.md` v3.7.0** — as entradas daquela versão citam `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` e `conhecimento/caracterizacao-do-conhecimento-tradicional.md` nos caminhos antigos. São registro histórico e ficam como estão; o movimento para `docs/conhecimento/` e a renomeação para `pauta-comunidades.md` estão registrados na entrada da versão desta sessão.
 
 
@@ -363,7 +363,7 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **Cobrar a indicação do ponto-focal do USEFLORA (⑬)** — solicitada em 18/08/2026 com prazo de 2 semanas, vencido. Sem ela, as sete pautas de `docs/conhecimento/pauta-comunidades.md` não têm canal. **Primeira coisa fora do computador.**
+- **Cobrar a indicação do ponto-focal do USEFLORA (⑬)** — solicitada em 18/08/2026 com prazo de 2 semanas, vencido. Sem ela, as sete pautas de `docs/pautaComunidades/pauta-comunidades.md` não têm canal. **Primeira coisa fora do computador.**
 - **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).

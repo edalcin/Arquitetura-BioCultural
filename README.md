@@ -408,9 +408,11 @@ Arquitetura-BioCultural/
     ├── modelo-de-dados-unificado.md← UDM — objeto do acordo JBRJ ↔ USEFLORA
     ├── PrincipiosCAREnaPratica.md
     ├── v3.1-migration-progress.md
-    ├── conhecimento/               ← Conhecimento × Evidência e a pauta das comunidades
-    │   ├── caracterizacao-do-conhecimento-tradicional.md
-    │   └── pauta-comunidades.md    ← o que precisa ser encaminhado com as comunidades
+    ├── conhecimento/               ← Conhecimento × Evidência
+    │   └── caracterizacao-do-conhecimento-tradicional.md
+    ├── pautaComunidades/           ← Pauta com as comunidades, preparação e encaminhamentos
+    │   ├── pauta-comunidades.md    ← o que precisa ser encaminhado com as comunidades
+    │   └── preparacao-reuniao-2026-09-16.md
     ├── reunioes/                   ← memórias de reuniões com iniciativas parceiras
     ├── architecture-decisions/     ← ADR-001 … ADR-017
     ├── c4-model/                   ← diagramas C4: contexto, containers, componentes
@@ -437,7 +439,7 @@ Arquitetura-BioCultural/
 12. **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)** — o contrato lógico de dados de toda a arquitetura num documento único: princípios, entidades, documento canônico JSON, obrigatoriedade de campos, interoperabilidade (Darwin Core/DwC-DP, SKOS-XL) e checklist de conformidade; **objeto do acordo de cooperação técnica entre o JBRJ e o USEFLORA**
 13. **[Projeto de Pesquisa](docs/projetoPesquisa.md)** — a formalização da arquitetura como projeto de pesquisa: problema, justificativa, objetivos, fundamentação, metodologia (*design science*), estudos de caso por unidade federada, cronograma por fases e resultados esperados
 14. **[Resumo Executivo](resumoExecutivo.md)** — a introdução objetiva e sintética à proposta: o problema, a arquitetura, os componentes e seu estado real, a governança e o que ainda não está resolvido. É o ponto de partida para quem chega ao projeto
-15. **[Pauta das comunidades](docs/conhecimento/pauta-comunidades.md)** — o que a arquitetura precisa ver encaminhado com as comunidades tradicionais, separado entre pautas de desenho (decidíveis com corpo de representação mista) e pautas de consentimento (só a comunidade detentora, registro a registro), com roteiro de perguntas em linguagem não-técnica
+15. **[Pauta das comunidades](docs/pautaComunidades/pauta-comunidades.md)** — o que a arquitetura precisa ver encaminhado com as comunidades tradicionais, separado entre pautas de desenho (decidíveis com corpo de representação mista) e pautas de consentimento (só a comunidade detentora, registro a registro), com roteiro de perguntas em linguagem não-técnica
 
 
 

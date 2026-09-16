@@ -79,5 +79,5 @@ Apresentar e discutir a arquitetura federada de dados em desenvolvimento — gov
 ## Onde cada encaminhamento foi registrado
 
 - As pendências de arquitetura decorrentes desta reunião estão registradas em `docs/proximosPassos.md`.
-- As pautas que dependem das comunidades (incluindo a indicação do ponto-focal e a consolidação de princípios mínimos) estão registradas em `docs/conhecimento/pauta-comunidades.md`.
+- As pautas que dependem das comunidades (incluindo a indicação do ponto-focal e a consolidação de princípios mínimos) estão registradas em `docs/pautaComunidades/pauta-comunidades.md`.
 - A demanda por sincronização offline (laptop/pen-drive) para comunidades com baixa conectividade está registrada como nota de retificação em `docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md`.

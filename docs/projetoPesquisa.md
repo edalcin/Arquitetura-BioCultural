@@ -220,7 +220,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 | Modelo de Dados Unificado | [`docs/modelo-de-dados-unificado.md`](modelo-de-dados-unificado.md) |
 | Proposta de Governança | [`governanca/propostaGovernanca.md`](../governanca/propostaGovernanca.md) |
 | Conhecimento × Evidência | [`docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
-| Pauta das comunidades (o que depende delas) | [`docs/conhecimento/pauta-comunidades.md`](conhecimento/pauta-comunidades.md) |
+| Pauta das comunidades (o que depende delas) | [`docs/pautaComunidades/pauta-comunidades.md`](pautaComunidades/pauta-comunidades.md) |
 | Memórias de reunião com iniciativas parceiras | [`docs/reunioes/`](reunioes/) |
 | Contrato de harvest | [`docs/contrato-harvest.md`](contrato-harvest.md) |
 | Rótulos SKOS-XL | [`docs/rotulos-skos-xl.md`](rotulos-skos-xl.md) |

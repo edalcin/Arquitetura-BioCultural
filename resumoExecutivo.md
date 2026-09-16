@@ -107,5 +107,5 @@ Compromissos negativos, porque são mais verificáveis do que promessas:
 | Decisões arquiteturais (ADRs) | [`docs/architecture-decisions/`](docs/architecture-decisions/) |
 | Glossário da federação | [`CONTEXT.md`](CONTEXT.md) |
 | Estado do projeto e pendências | [`docs/proximosPassos.md`](docs/proximosPassos.md) |
-| Pauta das comunidades — o que depende delas, com roteiro | [`docs/conhecimento/pauta-comunidades.md`](docs/conhecimento/pauta-comunidades.md) |
+| Pauta das comunidades — o que depende delas, com roteiro | [`docs/pautaComunidades/pauta-comunidades.md`](docs/pautaComunidades/pauta-comunidades.md) |
 | Conhecimento × Evidência, o estudo completo | [`docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`](docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md) |

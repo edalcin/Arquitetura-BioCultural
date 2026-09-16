@@ -3,8 +3,8 @@
 > **Contexto:** Reunião bilateral de alinhamento entre **Eduardo Couto Dalcin** (JBRJ) e **Sofia Zank** (USEFLORA / Comitê Gestor) agendada para 16/09/2026, 09:00–10:00.  
 > **Objetivo:** Alinhar o encaminhamento prático das demandas de governança e pautas comunitárias levantadas na reunião do Comitê Gestor do USEFLORA de 18/08/2026, definindo a interlocução formal e os critérios para destravar a federação.  
 > **Documentos de referência no repositório:**
-> - `docs/conhecimento/pauta-comunidades.md` (Documento objetivo do Ponto-Focal)
-> - `governanca/propostaGovernanca.md` (Proposta de Governança em 3 Camadas)
+> - `docs/pautaComunidades/pauta-comunidades.md` (Documento objetivo do Ponto-Focal)
+> - `docs/governanca/propostaGovernanca.md` (Proposta de Governança em 3 Camadas)
 > - `docs/reunioes/reuniao-useflora-2026-08-18.md` (Memória da reunião anterior com USEFLORA)
 > - `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md`
 > - `docs/architecture-decisions/ADR-016-contrato-de-harvest.md`
