@@ -157,6 +157,12 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   Quase toda a documentação nasce de um agente: quando há lacuna, o agente interroga
   exaustivamente (20–25 perguntas por sessão) e cada resposta vira um ADR; as não-respostas viram
   pauta de comunidade.
+- **A arquitetura é um conjunto de documentos, e é isso que a torna negociável.** Eduardo explicitou
+  o que a arquitetura é, materialmente: documentos que possibilitam construir as ferramentas que a
+  suportam — camada de apresentação, camada de negócio e camada de persistência, as mesmas da
+  oficina anterior. O que a reunião produz são **regras de negócio**, escritas pelas duas partes,
+  com reflexo no banco de dados. Cada interação com o Ponto-Focal gera, portanto, uma lista de
+  questões que precisam de decisão para que a arquitetura seja o mais precisa possível.
 - **Atrito de onboarding do Ponto-Focal.** Sofia — autodeclarada novata — procurou os documentos de
   governança referenciados e não os encontrou, e evitou explorar o repositório por não saber se
   podia. Repositório aberto não é repositório navegável: falta um ponto de entrada para quem
