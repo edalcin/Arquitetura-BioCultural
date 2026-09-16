@@ -25,6 +25,9 @@
 
 ## 2. A Issue Crítica: A Ausência do Campo `regime` no BioCultDB
 
+> ⚠️ **Alerta de Escopo da Reunião:**  
+> **O USEFLORA atua prioritariamente sobre a literatura etnobotânica publicada (fontes secundárias). Portanto, a conversa deve focar nas pautas de desenho que não dependem de gravações de campo.** As pautas de dados primários e consentimento direto (BioCultRelatos) pertencem exclusivamente às comunidades na ponta e não devem ser adiantadas por procuração com o comitê acadêmico.
+
 ### Diagnóstico Técnico e Bloqueio Prático
 Na base de produção do BioCultDB (`biocultdb.sqlite`), existem hoje **29 artigos catalogados e aprovados**. Uma inspeção direta no banco revela que o campo `regime` está **completamente ausente (`None`)** em todos os 29 documentos JSON.
 
