@@ -1,6 +1,6 @@
 # Iniciativas Relacionadas ao Conhecimento Tradicional e Sociobiodiversidade
 
-Este diretório contém resumos de iniciativas brasileiras relacionadas à gestão de conhecimento tradicional, sociobiodiversidade e patrimônio genético. Estas iniciativas servem como fontes de dados, informações e referências arquiteturais para o projeto Arquitetura BioCultural.
+Este diretório contém resumos de iniciativas relacionadas à gestão de conhecimento tradicional, sociobiodiversidade e patrimônio genético. Quatro são brasileiras; a quinta — Guardian Connector — é internacional e entra porque tem duas parceiras no Brasil e porque já implementou em produção um mecanismo que aqui é pendência aberta. Estas iniciativas servem como fontes de dados, informações e referências arquiteturais para o projeto Arquitetura BioCultural.
 
 ## Visão Geral
 
@@ -104,6 +104,27 @@ As iniciativas documentadas compartilham objetivos comuns:
 - Estratégias de importação em lote
 - Ocultação de campos sensíveis para usuários públicos
 - Modelo de empoderamento comunitário através do registro
+
+### 5. Guardian Connector — plataforma de guardianança indígena
+**Arquivo**: [guardianConnector.md](guardianConnector.md)
+
+**Desenvolvimento**: Conservation Metrics, Inc. com Nia Tero e 12 organizações indígenas parceiras
+**Escopo**: internacional (parceiras brasileiras: Instituto Iepé e UNIVAJA)
+**Documentação**: https://docs.guardianconnector.net/
+
+**Destaques**:
+- Software livre em produção; uma instalação soberana por organização indígena (VM + CapRover)
+- Data warehouse PostgreSQL privado + armazenamento de arquivos por instalação
+- Conectores para CoMapeo, KoboToolbox, Timelapse, ODK, iNaturalist, GFW, ArcGIS e outros (Windmill)
+- **Integração com o Local Contexts Hub já implementada**: rótulos TK/BC sincronizados por API, identificador em tabela companheira, texto e ícone em cache, nunca editados
+- Guias de soberania de dados, CLPI e decisão de publicar (ou não) no GBIF
+
+**Relevância Arquitetural**:
+- Precedente implementado para a pendência ② (`docs/proximosPassos.md` §4) e a Q4 do ADR-015 — coincide com a opção recomendada: guardar identificador, exibir texto em cache, nunca editar
+- Granularidade dos rótulos é de **dataset**, não de registro: a regra reaproveitável é a separação (rótulo fora da linha de dado), não o esquema
+- Legitimidade do Label vem de quem opera a instalação ser a própria comunidade — na nossa federação, isso é mecanismo de código (ADR-015 K1), não consequência da posse do servidor
+- Contraponto de stack: SaaS externo (Auth0, Mapbox, Twilio) numa plataforma cuja tese é soberania de infraestrutura
+- Não modela conhecimento, não tem vocabulário controlado, não federa e não trata fonte secundária — reforça o veredito **QUALIFICA** da linha "Plataformas" em `docs/proximosPassos.md` §0.2
 
 ## Temas Transversais
 
@@ -280,6 +301,8 @@ Para o projeto Arquitetura BioCultural, as iniciativas documentadas sugerem:
 - SISGEN: https://sisgen.gov.br
 - Useflora: www.useflora.ufsc.br
 - Plataforma Territórios Tradicionais: https://territoriostradicionais.mpf.mp.br
+- Guardian Connector: https://docs.guardianconnector.net
+- Local Contexts Hub: https://localcontextshub.org
 
 ### Padrões e Ferramentas
 - DarwinCore: https://dwc.tdwg.org

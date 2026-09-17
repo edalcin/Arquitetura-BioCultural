@@ -112,6 +112,8 @@ BOWKER, G. *Memory practices in the sciences*. Cambridge, MA: MIT Press, 2005.
 
 KOHLMANN, B.; VARGAS-Z., J.M.; DELGADO, B. et al. The GBIF Integrated Publishing Toolkit: Facilitating the Efficient Publishing of Biodiversity Data on the Internet. *PLOS ONE*, v. 7, n. 11, p. e50623, 2012.
 
+CONSERVATION METRICS, INC. *Guardian Connector Documentation*. [S.l.]: Conservation Metrics, 2026. Disponível em: https://docs.guardianconnector.net/. Acesso em: 17 set. 2026.
+
 ---
 
 ## 11. Recursos Online e Documentação Técnica

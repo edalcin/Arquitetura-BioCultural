@@ -431,6 +431,7 @@ Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nív
 - W3C PROV-O — <https://www.w3.org/TR/prov-o/>
 - W3C SKOS Reference §5 (SKOS-XL) — <https://www.w3.org/TR/skos-reference/#xl>
 - Local Contexts — TK Labels <https://localcontexts.org/labels/traditional-knowledge-labels/>; BC Labels <https://localcontexts.org/labels/biocultural-labels/>; Hub <https://localcontextshub.org/>
+- `docs/iniciativas/guardianConnector.md` — Guardian Connector: implementação em produção do fluxo do Local Contexts Hub (identificador + cache, rotulagem por dataset). Precedente para a Q4; não a decide
 - CARE Principles for Indigenous Data Governance, GIDA — <https://www.gida-global.org/careprinciples>
 
 ## Data de Revisão

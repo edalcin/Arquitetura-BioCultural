@@ -156,6 +156,13 @@ Conflito real: `assertionByID` quer identificador estável; LGPD art. 11 protege
 
 Tensão: soberania e simplicidade pedem não depender de serviço externo; mas copiar o rótulo para dentro significa passar a controlar algo que é da comunidade. **Nunca editar o texto** — o das Notices, em particular, é imutável por regra do Local Contexts.
 
+**Precedente implementado (2026-09-17).** O **Guardian Connector** (Conservation Metrics, *Integration
+Partner* certificada do Local Contexts) opera exatamente a terceira linha desta tabela: script agendado
+puxa os rótulos do Hub por API, o identificador fica em tabela companheira ao dataset — nunca dentro da
+linha de dado —, o texto e o ícone ficam em cache local e não são editados, e a exibição resolve por
+junção. A diferença que resta é de granularidade: lá o rótulo vale para a tabela inteira, aqui precisa
+valer por registro. Análise em [`docs/iniciativas/guardianConnector.md`](iniciativas/guardianConnector.md) §3.
+
 ---
 
 ## 5. Bloqueado: precisa da comunidade

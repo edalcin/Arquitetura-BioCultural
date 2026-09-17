@@ -6,6 +6,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.11.2] - 2026-09-17
+
+### Adicionado
+
+- **`docs/iniciativas/guardianConnector.md`** — análise do **Guardian Connector** (Conservation Metrics, Inc. com Nia Tero e 12 organizações indígenas parceiras, entre elas **Instituto Iepé** e **UNIVAJA**): topologia real da plataforma (uma VM com CapRover, warehouse PostgreSQL privado, Windmill/GC Scripts Hub, GC Explorer, Superset, File Browser), integrações de coleta (CoMapeo, KoboToolbox, Timelapse, ODK, iNaturalist, GFW e outras), o que ela **não** resolve (não modela conhecimento, sem vocabulário controlado, sem federação, sem fonte secundária, CLPI como prática e não como estado do registro) e as divergências de stack, incluindo a dependência de SaaS externo (Auth0, Mapbox, Twilio) numa plataforma cuja tese é soberania de infraestrutura
+- **Precedente implementado para a pendência ②** (`docs/proximosPassos.md` §4) e para a **Q4 do ADR-015**: o Guardian Connector — *Integration Partner* certificada do Local Contexts — opera a opção recomendada aqui (identificador do rótulo em tabela companheira ao dataset, texto e ícone em cache sincronizado por API, nunca editados, exibição por junção). A diferença que resta é de granularidade: lá o rótulo vale para a tabela inteira, aqui precisa valer por registro. Registrada uma segunda consequência: no Guardian Connector a legitimidade do **Label** decorre de a própria comunidade operar a instalação, enquanto aqui a distinção Label × Notice é mecanismo de código (ADR-015 K1) — o desenho deles não se copia sem perder a distinção
+- **Quinta entrada em `docs/iniciativas/README.md`**, primeira iniciativa internacional do diretório, com nota de escopo na abertura e dois links novos (Guardian Connector, Local Contexts Hub) na lista de sistemas e plataformas
+- **Referência ABNT** em `Referencias.md` §10 e citação na seção "Referências" do `ADR-015`
+
+---
+
 ## [3.11.1] - 2026-09-16
 
 ### Adicionado
