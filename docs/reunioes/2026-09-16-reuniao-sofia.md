@@ -111,8 +111,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   mecanismos de proteção que os próprios coletivos já usam. "Essa discussão não é minha."
 - **O papel da governança é expor consequência, não escolher.** Toda decisão de acesso deve chegar
   à comunidade acompanhada do leque de opções técnicas e das consequências de cada uma, positivas
-  e negativas. Sem o leque, a discussão fica estéril ("eu não quero" × "eu quero"). Exemplo de
-  opção técnica levantado: supressão de rosto e síntese de voz, como no Google Street View.
+  e negativas. Sem o leque, a discussão fica estéril ("eu não quero" × "eu quero"). 
 - **Empoderamento técnico é pré-requisito de consentimento informado.** Enquanto as comunidades não
   tiverem ferramental e noção de modelagem de dados, de banco e de sistema de informação, não têm
   como decidir confortavelmente entendendo o que estão decidindo. Capacitação não é acessório da
@@ -172,13 +171,13 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   e sistematização da farmacopeia popular, hoje migrando de registro escrito/físico para banco de
   dados. Experiência diretamente aproveitável para o desenho do Conhecimento de fonte primária,
   em especial plantas medicinais. Dado indígena é caso distinto, com complexidade própria — é a
-  frente em que Vivi trabalha no BioCultRelatos.
+  frente em que Viviane trabalha no BioCultRelatos.
 
 ## Pendências e encaminhamentos
 
 - **Formalização da designação do Ponto-Focal** — pendente. Basta um e-mail informal, sem ofício,
   partindo do UseFlora (Nivaldo ficou de enviar; Sofia assumiu encaminhar), declarando que Sofia é
-  o Ponto-Focal. Único item da pauta preparada que não avançou.
+  o Ponto-Focal. Único item da pauta preparada que não avançou. **(Resolvido com e-mail de Nivaldo, em 17/09/2026)**
 - **Concluir as anotações de Sofia** — a próxima reunião retoma do ponto em que parou; as
   anotações não foram esgotadas.
 - **Camadas de governança: quem decide o quê, em que camada** — questão aberta levantada por
@@ -187,7 +186,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   comitês/conselhos. Hoje a camada de arquitetura é, de fato, esta reunião de duas pessoas.
 - **Modelo de metadados de acesso** — flags para: existência de Conhecimento Tradicional
   Associado, sagrado, secreto, nível de sensibilidade dentro do sagrado, detentor não identificado
-  na fonte, níveis de compartilhamento (comunidade detentora, comunidade vizinha, MCTI, público).
+  na fonte, níveis de compartilhamento (p.ex.: comunidade detentora, comunidade vizinha, MCTI, público).
 - **Revisitar a equivalência `privado` = `secreto` no ADR-015** — Eduardo observou que a
   arquitetura hoje trata privado como secreto, e a decisão 4 estabelece que existe sagrado
   não-secreto. A equivalência precisa ser reexaminada.
