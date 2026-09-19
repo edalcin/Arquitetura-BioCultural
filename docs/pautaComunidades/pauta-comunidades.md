@@ -200,7 +200,7 @@ A conversa mais importante, e a que um documento técnico tende a omitir.
 
 ### USEFLORA
 
-**Estado do ponto-focal.** Solicitado em reunião de **18/08/2026**, prazo sugerido de **2 semanas** (até 01/09/2026). **Em atraso** — hoje é 2026-09-03. Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md`.
+**Estado do ponto-focal.** Solicitado em reunião de **18/08/2026**; **designado em 17/09/2026** — Dra. Sofia Zank, por e-mail do UseFlora. Duas reuniões de trabalho realizadas (16 e 18/09/2026), com resumo em `docs/reunioes/` e impacto sobre a arquitetura consolidado em `docs/reunioes/impactos-na-arquitetura.md`. O ciclo é procedimento de pesquisa declarado (`docs/projetoPesquisa.md` §7.2, item 7).
 
 **O que foi combinado.** Que a arquitetura, ao ser desenhada, gera pendências que só membros de comunidades tradicionais podem sanar — não a academia, não o pesquisador que a mantém — e que a indicação de um ponto-focal pelo Comitê Gestor misto do USEFLORA existe precisamente para abrir esse canal. Ver `docs/reunioes/2026-08-18-reuniao-useflora.md`.
 

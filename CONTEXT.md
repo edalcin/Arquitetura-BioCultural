@@ -34,6 +34,11 @@ decide dentro da iniciativa. É **canal**, nunca **titular** — a resposta de u
 posição da iniciativa que o designou, e nunca substitui o consentimento da Comunidade Tradicional
 detentora sobre um registro concreto, que é coletivo e se dá registro a registro. Quem indica o
 Ponto-Focal é a iniciativa, nunca a arquitetura.
+A interlocução com o Ponto-Focal é conduzida como ciclo, e o ciclo é método de projeto: reunião →
+resumo em `docs/reunioes/` → log de impacto sobre os documentos de arquitetura em
+`docs/reunioes/impactos-na-arquitetura.md` → alteração do documento de destino por ato próprio. É
+por esse canal que a visão de uso, impacto e benefício da arquitetura em campo chega ao desenho
+(`docs/projetoPesquisa.md` §7.2, item 7).
 _Avoid_: Representante, Interlocutor, Mediador, Contato
 
 ### Código compartilhado

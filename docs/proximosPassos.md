@@ -11,11 +11,11 @@
 
 > **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
 
-**Estado em:** 2026-09-11 (Parte I concluída: §0.2 pesquisada e resolvida; referências ABNT incorporadas)
+**Estado em:** 2026-09-19 (o ciclo de reuniões com o Ponto-Focal passa a ser procedimento declarado de pesquisa — §7.2, item 7, do `projetoPesquisa.md`; registro aqui na §10-ter)
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10** e a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras). O que depende das comunidades tradicionais está em `docs/pautaComunidades/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras) e a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa). O que depende das comunidades tradicionais está em `docs/pautaComunidades/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
-**Estado do repositório:** `main`, sincronizado com o remoto. Últimos commits: `ada39eb` e `15365bc` (projeto de pesquisa), sobre `6392bfc`. Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016).
+**Estado do repositório:** `main`, sincronizado com o remoto. Últimos commits: `4f29518` (log de impactos das reuniões com o Ponto-Focal), `d2db0dc` e `6d49950` (resumos de reunião). Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector).
 
 ---
 
@@ -239,6 +239,7 @@ flowchart TD
 | **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/pautaComunidades/pauta-comunidades.md` |
 | Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
 | Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `docs/governanca/propostaGovernanca.md` §2, nota de estado |
+| **Ciclo de reuniões com o Ponto-Focal, e o impacto de cada uma sobre a arquitetura** | `docs/reunioes/impactos-na-arquitetura.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 7 |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
@@ -343,7 +344,7 @@ Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem 
 
 | # | Pendência | Estado | Onde se resolve |
 |---|---|---|---|
-| ⑬ | **Indicação do ponto-focal do USEFLORA** | **Solicitada em 18/08/2026, prazo sugerido de 2 semanas — em atraso.** Bloqueia o canal de todas as pautas | USEFLORA (coordenação). Cobrança é ação do pesquisador |
+| ⑬ | **Indicação do ponto-focal do USEFLORA** | **Resolvida** — solicitada em 18/08/2026 e atendida em 17/09/2026, por e-mail de Nivaldo, designando Sofia Zank (`docs/reunioes/2026-09-18-reuniao-sofia.md`). O canal das pautas está aberto e opera como ciclo (§10-ter) | USEFLORA (coordenação) — feito |
 | ⑭ | **Princípios mínimos que toda instância federada deve aceitar** (registro de logs, respeito a rótulos de sensibilidade, CLPI como ciclo) | Aberta. Encaminhada ao Comitê Gestor do USEFLORA, 4–6 semanas sugeridas. **Não é matéria nova:** o conteúdo tem casa em `ADR-004` D3 (admissão), `propostaGovernanca.md` §5.11 (contrato de adesão) e §8.1 item 13 (SDK de adesão) | Comitê Gestor + ponto-focal; consolidação em ADR quando houver texto |
 | ⑮ | **Proposta de governança operacional** enviada por Laura Madeira por e-mail | Aguardando recebimento; incorporar à `propostaGovernanca.md` quando chegar | Este repositório |
 | ⑯ | **Sincronização assíncrona para comunidades com baixa conectividade** (laptop/pen-drive "quando houver conexão") | Aberta, **requisito sem mecanismo**. Nota de retificação já lançada no `ADR-011`, que afirmava não haver demanda por offline. O `ADR-005` fixou um SQLite com WAL por unidade, que é *single-writer*; não se sabe se a resposta é replicação, exportação/importação por arquivo ou cópia física. ADR do mecanismo nasce quando houver alternativas a comparar | Arquitetura. Os diagramas C4 já traziam "offline-first para coleta" — a contradição era interna |
@@ -355,6 +356,31 @@ Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem 
 - **Consulta por procuração.** O USEFLORA é a única iniciativa com representação de comunidades tradicionais ao alcance hoje, e seu Comitê Gestor é **misto** (academia + comunidades). Ele serve, informalmente, como interlocução para pendências que nascem também do **BioCultRelatos** e do **Pluriverso**. Isso é insumo de desenho legítimo — e **não** é consentimento.
 - **O vazio fica visível.** Na seção de pautas de consentimento da `pauta-comunidades.md`, o campo "com quem" está **vazio** para BioCultRelatos (a comunidade de Silveiras, SP entra pelo mestrado, sob CONEP e SisGen) e para Pluriverso (não existe membro real na federação). Preencher com "USEFLORA" seria o atalho que o projeto existe para não dar.
 - **O vídeo `conhecimentoPanara.mp4`** ficou em `docs/conhecimento/`, ignorado pelo git como antes, mas agora **documentado** (§15 da caracterização): o que é, povo indicado no nome, consentimento `[não verificado]`, e o registro de que o destino correto é armazenamento soberano fora da árvore de qualquer repositório — a pendência ⑩.
+
+---
+
+## 10-ter. Sessão 2026-09-19 — o ciclo do Ponto-Focal passa a ser método declarado
+
+O papel do Ponto-Focal já tinha verbete (§10-bis.2). O que faltava era declarar que a **interlocução com ele é procedimento de pesquisa** — a via pela qual o uso real, o impacto e o benefício da arquitetura em campo entram no desenho — e não consulta acessória ao lado da especificação.
+
+### 10-ter.1 O que mudou, e onde
+
+| # | Onde | O que mudou |
+|---|---|---|
+| 1 | `docs/projetoPesquisa.md` §7.2 | **Item 7 novo** — ciclo do Ponto-Focal: reunião → resumo em `docs/reunioes/` → log de impacto em `docs/reunioes/impactos-na-arquitetura.md` → alteração do documento de destino por ato próprio. Os itens passaram de sete para oito (a prática assistida por IA virou o item 8) |
+| 2 | `docs/projetoPesquisa.md` §7.2 | Parágrafo de evidência: das duas primeiras reuniões saíram quinze itens de impacto, **cinco contradizendo** texto normativo vigente e **dois abrindo** problema sem solução no texto — nenhum deles originado da especificação |
+| 3 | `docs/projetoPesquisa.md` §8 | Fase B renomeada para "Validação por estudos de caso **e ciclo do Ponto-Focal**", com o ciclo no escopo |
+| 4 | `docs/projetoPesquisa.md` §10 | Ponto-Focal por iniciativa parceira: Sofia Zank (UseFlora), formalizada em 17/09/2026, com a nota de que o papel é canal e não equipe de pesquisa |
+| 5 | `docs/projetoPesquisa.md` §11 | Linha nova na tabela de documentos: o log de impacto |
+| 6 | `CONTEXT.md`, verbete **Ponto-Focal** | Acrescentado o ciclo e o log; a fronteira canal × titular fica intacta |
+| 7 | `docs/governanca/propostaGovernanca.md` §2 | **Atualização de 2026-09-19** na nota de estado: a indicação, registrada como "ainda não ocorrida", foi atendida em 17/09/2026; o único mecanismo em operação real agora opera como ciclo, com log |
+| 8 | Este arquivo | §8 ganhou a linha do ciclo e do log; §11.2 atualizada |
+
+### 10-ter.2 O que a sessão não faz
+
+- **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os quinze itens do `impactos-na-arquitetura.md` continuam com estado *Não aplicado*: a mudança é de método, não de modelo. O log aponta; o destino muda por ato próprio.
+- **Pendência ⑬ (indicação do ponto-focal do USEFLORA) — resolvida** em 17/09/2026, por e-mail de Nivaldo. Registro em `docs/reunioes/2026-09-18-reuniao-sofia.md`.
+- **Não constitui o Comitê Federado**, nem resolve o bloqueador E4. A camada de arquitetura continua sendo, de fato, uma reunião de duas pessoas — item **I-15** do log, em aberto.
 ---
 
 # §11 — Próximas ações, por frente
@@ -370,7 +396,8 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **Cobrar a indicação do ponto-focal do USEFLORA (⑬)** — solicitada em 18/08/2026 com prazo de 2 semanas, vencido. Sem ela, as sete pautas de `docs/pautaComunidades/pauta-comunidades.md` não têm canal. **Primeira coisa fora do computador.**
+- **Indicação do ponto-focal do USEFLORA (⑬)** ✔ — atendida em 17/09/2026 (Sofia Zank, UseFlora). O canal das sete pautas de `docs/pautaComunidades/pauta-comunidades.md` está aberto, e a interlocução já roda como ciclo (§10-ter).
+- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — quinze itens, nenhum aplicado. As duas ADRs propostas na §5 daquele log (**ADR-018**, identificação do detentor; **ADR-019**, sagrado como dimensão) são o próximo ato de arquitetura, e destravam a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
 - **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).

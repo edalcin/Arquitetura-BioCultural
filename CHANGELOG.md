@@ -6,6 +6,29 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.11.3] - 2026-09-19
+
+### Adicionado
+
+- **`docs/projetoPesquisa.md` §7.2, item 7 — o ciclo de reuniões com o Ponto-Focal passa a ser procedimento declarado de pesquisa**, e não consulta acessória: reunião → resumo versionado em `docs/reunioes/` → confronto com os documentos de arquitetura no log `docs/reunioes/impactos-na-arquitetura.md`, que classifica cada decisão em *fecha*, *contradiz*, *acrescenta*, *confirma* ou *abre* e nomeia o documento de destino → alteração do destino por ato próprio. É por esse canal que o **uso real, o impacto e o benefício** da arquitetura em campo entram no desenho. A fronteira do papel permanece: o Ponto-Focal responde pelas pautas de desenho, nunca pelo consentimento da comunidade detentora sobre um registro concreto
+- **Parágrafo de evidência na mesma §7.2** — das duas primeiras reuniões com o Ponto-Focal (16 e 18/09/2026) saíram quinze itens de impacto, **cinco contradizendo** texto normativo vigente (detentor sempre coletivo; coletivo como entidade e não *string*; nome real opcional na persistência; sagrado como dimensão e não nível de acesso; recusa individual suprimindo a pessoa e não o registro coletivo) e **dois abrindo** problema sem solução no texto. Nenhum deles nasceu da especificação: todos vêm de caso concreto de campo. Especificação sem esse canal produz modelo internamente coerente e falso no uso
+- **`docs/proximosPassos.md` §10-ter** — sessão de 2026-09-19, com o que mudou e onde, e o que a sessão explicitamente **não** faz: nenhuma ADR, o UDM e o contrato de harvest seguem intactos, e os quinze itens do log continuam com estado *Não aplicado*
+
+### Alterado
+
+- **`docs/projetoPesquisa.md` §8** — a Fase B passa a chamar-se "Validação por estudos de caso **e ciclo do Ponto-Focal**", com o ciclo no escopo; **§10** ganha o Ponto-Focal por iniciativa parceira (Dra. Sofia Zank, UseFlora, formalizada em 17/09/2026), com a nota de que o papel é canal e não equipe de pesquisa; **§11** ganha a linha do log de impacto
+- **`CONTEXT.md`, verbete `Ponto-Focal`** — acrescentado o ciclo e o log de impacto como método de projeto; a fronteira canal × titular fica intacta
+- **`docs/governanca/propostaGovernanca.md` §2** — atualização de 2026-09-19 na nota de estado: a indicação do Ponto-Focal do UseFlora, registrada como "ainda não ocorrida", foi atendida em 17/09/2026; o único mecanismo de governança em operação real agora opera como ciclo, com log de impacto
+- **`resumoExecutivo.md` §5 e §7** — o ciclo do Ponto-Focal descrito na governança, e a pendência "a indicação ainda não ocorreu" corrigida
+- **`docs/pautaComunidades/pauta-comunidades.md`** — estado do ponto-focal do USEFLORA: designado, com duas reuniões realizadas
+- **`docs/proximosPassos.md`** — pendência **⑬** (indicação do ponto-focal do USEFLORA) marcada como **resolvida**; §8 ganha a linha do ciclo e do log; §11.2 passa a apontar a aplicação dos itens do log (ADR-018 e ADR-019) como próximo ato de arquitetura
+
+### Notas
+
+Nenhuma decisão de modelo de dados. A versão declara como **método** aquilo que já era prática: a arquitetura avança pelo confronto entre o texto normativo e o que o Ponto-Focal traz do mundo real. O que o ciclo produz continua sendo aplicado por ato próprio no documento de destino — o log aponta, não altera.
+
+---
+
 ## [3.11.2] - 2026-09-17
 
 ### Adicionado

@@ -119,7 +119,10 @@ Pesquisa aplicada, de caráter **construtivo** (*design science*): o artefato �
 4. **Contrato antes de código.** O contrato de *harvest* é especificado campo a campo, com dez cenários de aceitação, antes da implementação das unidades que o cumprirão.
 5. **Implementação de referência.** Software livre, contêineres pequenos, dependências mínimas, persistência em arquivo único SQLite+JSON1 por unidade.
 6. **Validação por estudo de caso.** A arquitetura é submetida a iniciativas de sistematização de CTA — USEFLORA, GEF MCTI "Entre-Ciências" e os dois mestrados descritos em 7.3 — como conjuntos de dados reais e como interlocução técnica: cada estudo de caso testa a conformidade do UDM, o contrato de *harvest* e a suficiência do vocabulário SKOS-XL. Pautas que dependem de decisão comunitária são levadas às iniciativas como perguntas abertas, não como decisões a ratificar.
-7. **Prática assistida por IA, registrada como método.** Todas as etapas do projeto são conduzidas com assistência de agentes de IA, e o modo de uso, os ganhos e as falhas observadas são registrados como resultado de pesquisa, não como detalhe operacional (7.5).
+7. **Ciclo de reuniões com o Ponto-Focal.** Cada iniciativa parceira designa um **Ponto-Focal** (verbete em `CONTEXT.md`), e a interlocução com ele é conduzida como ciclo fechado: reunião → resumo versionado em [`docs/reunioes/`](reunioes/) → confronto de cada decisão com os documentos de arquitetura no log [`docs/reunioes/impactos-na-arquitetura.md`](reunioes/impactos-na-arquitetura.md), que a classifica em *fecha*, *contradiz*, *acrescenta*, *confirma* ou *abre* e nomeia o documento de destino → alteração do destino por ato próprio (ADR, `CONTEXT.md`, UDM, contrato de *harvest*). Este ciclo é **parte integrante e fundamental** do avanço da arquitetura, não consulta acessória: é por ele que entram no desenho o **uso real, o impacto e o benefício** da arquitetura no mundo — o que o Ponto-Focal vê em campo, junto às comunidades e às iniciativas, e o que não se vê do escritório. A fronteira do papel é fixa: o Ponto-Focal responde pelas **pautas de desenho**; nenhuma resposta dele substitui o consentimento da comunidade detentora sobre um registro concreto, que é coletivo (Lei nº 13.123/2015, art. 10, §1º) e se dá registro a registro (`docs/pautaComunidades/pauta-comunidades.md`).
+8. **Prática assistida por IA, registrada como método.** Todas as etapas do projeto são conduzidas com assistência de agentes de IA, e o modo de uso, os ganhos e as falhas observadas são registrados como resultado de pesquisa, não como detalhe operacional (7.5).
+
+**Por que o ciclo do Ponto-Focal é fundamental, e não ornamental.** Duas reuniões com o Ponto-Focal do UseFlora (16 e 18/09/2026) produziram quinze itens de impacto, dos quais **cinco contradizem** texto normativo vigente — o detentor deixa de ser `individual | coletivo` e passa a coletivo obrigatório; o coletivo deixa de ser *string* e passa a entidade com raiz na denominação legal; o nome real passa a poder não existir na persistência; o sagrado sai da escala de acesso e vira dimensão do registro; a recusa individual passa a suprimir a pessoa, e não o registro coletivo — e **dois abrem** problemas que nenhum documento resolve hoje. Nenhum deles surgiu da especificação: todos vêm de caso concreto de campo (perseguição religiosa como causa da recusa de nomear, benzedeira sem coletivo organizado, farmacopeia popular para quem registrar é proteger). Especificação sem esse canal produz modelo internamente coerente e falso no uso — e é por isso que a Fase B do cronograma (§8) depende da agenda das iniciativas parceiras, e não do pesquisador.
 
 ### 7.3 Estudos de caso por unidade
 
@@ -183,7 +186,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 | Fase | Escopo | Depende de |
 |---|---|---|
 | **A — Fundação conceitual** ✔ | UDM, regime enunciativo, contrato de harvest, governança proposta, unidade de referência em produção | — |
-| **B — Validação por estudos de caso** | Submissão do UDM, do contrato de harvest e do vocabulário aos estudos de caso do USEFLORA e do GEF MCTI "Entre-Ciências"; consolidação das questões que retornarem | Agenda das iniciativas parceiras |
+| **B — Validação por estudos de caso e ciclo do Ponto-Focal** | Submissão do UDM, do contrato de harvest e do vocabulário aos estudos de caso do USEFLORA e do GEF MCTI "Entre-Ciências"; ciclo de reuniões com o Ponto-Focal de cada iniciativa (7.2, item 7), com resumo e log de impacto por reunião; consolidação das questões que retornarem | Agenda das iniciativas parceiras |
 | **C — Fechamento normativo** | ADR-015 e ADR-016 a *Aceito*; esquema do Relato; licenciamento; Comitê Federado constituído | B |
 | **D — Implementação da federação** | BioCultRelatos; Pluriverso; BioCultTermos nas quatro hospedeiras | C (parcialmente paralelizável com B) |
 | **E — Expansão de fontes** | BioCultAcervos; BioCultNaturalistas; integrações taxonômica e territorial | D |
@@ -210,6 +213,8 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 
 **Interlocução conceitual, técnica e ética:** Dra. Viviane Fonseca (JBRJ), Lucas Zelesco (FUNAI), Comitê Gestor USEFLORA, Luisa Ridolph (ENBT/JBRJ) e Camila Dantas (ENBT/JBRJ).
 
+**Ponto-Focal por iniciativa parceira:** Dra. Sofia Zank (UseFlora), designação formalizada em 17/09/2026. O Ponto-Focal não integra a equipe de pesquisa: é o canal pelo qual a posição da iniciativa parceira — e a visão de uso, impacto e benefício em campo — entra no desenho da arquitetura (7.2, item 7). As demais iniciativas parceiras ainda não designaram Ponto-Focal.
+
 ---
 
 ## 11. Documentos de referência do projeto
@@ -222,6 +227,7 @@ Fases lógicas, encadeadas por dependência e não por calendário fixo: a Fase 
 | Conhecimento × Evidência | [`docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) |
 | Pauta das comunidades (o que depende delas) | [`docs/pautaComunidades/pauta-comunidades.md`](pautaComunidades/pauta-comunidades.md) |
 | Memórias de reunião com iniciativas parceiras | [`docs/reunioes/`](reunioes/) |
+| **Log de impacto das reuniões com o Ponto-Focal sobre a arquitetura** | [`docs/reunioes/impactos-na-arquitetura.md`](reunioes/impactos-na-arquitetura.md) |
 | Contrato de harvest | [`docs/contrato-harvest.md`](contrato-harvest.md) |
 | Rótulos SKOS-XL | [`docs/rotulos-skos-xl.md`](rotulos-skos-xl.md) |
 | Decisões arquiteturais (ADR-001…017) | [`docs/architecture-decisions/`](architecture-decisions/) |
