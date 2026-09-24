@@ -27,6 +27,21 @@
 
 ---
 
+## Abertura — Anuência para transcrição e uso de IA (2 min)
+
+Antes de ligar a transcrição. Pedir a Sofia anuência explícita para:
+
+1. **Transcrição integral** da reunião pelo Tactiq.
+2. **Processamento por IA** da transcrição, para gerar o resumo publicado em `docs/reunioes/` e
+   avaliar o impacto na arquitetura (`docs/projetoPesquisa.md` §7.2, item 7, e §7.5).
+3. **Retroativo:** a mesma anuência para as transcrições e resumos de 16/09 e 18/09, que já foram
+   feitos sem registro de anuência.
+
+A resposta fica registrada na transcrição e no cabeçalho do resumo de 29/09. A transcrição bruta
+não é versionada (`.gitignore`); só o resumo revisado é publicado.
+
+---
+
 ## Bloco 1 — Retorno de Brasília e articulações (10 min)
 
 Informes de Sofia. Não pedem decisão; registram o estado das pontes abertas em 18/09.
@@ -107,6 +122,7 @@ Registrados para não serem esquecidos, mas sem espaço hoje:
 
 ## Checklist de encerramento
 
+- [ ] Anuência de Sofia para transcrição e processamento por IA (29/09 e retroativa) registrada
 - [ ] Informes de Brasília registrados (ICMBio, farmacopeia popular, GEF)
 - [ ] Revisão de Sofia dos resumos de 16/09 e 18/09 recebida ou com data
 - [ ] Anotações de Sofia concluídas, ou ponto de parada registrado
@@ -119,4 +135,4 @@ Registrados para não serem esquecidos, mas sem espaço hoje:
 
 Seguir o ciclo do Ponto-Focal: resumo em `docs/reunioes/2026-09-29-reuniao-sofia.md` → nova entrada
 em [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) → alteração dos documentos de destino
-por ato próprio.
+por ato próprio → episódio E-04 em [`../ia/uso-de-ia.md`](../ia/uso-de-ia.md).

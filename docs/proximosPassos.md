@@ -240,6 +240,7 @@ flowchart TD
 | Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
 | Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `docs/governanca/propostaGovernanca.md` §2, nota de estado |
 | **Ciclo de reuniões com o Ponto-Focal, e o impacto de cada uma sobre a arquitetura** | `docs/reunioes/impactos-na-arquitetura.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 7 |
+| **Uso de IA como resultado de pesquisa — método e log de episódios** | `docs/ia/uso-de-ia.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 8, e §7.5 |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
@@ -391,6 +392,7 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 - **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Referencias.md`.
 - **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
+- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**; o ciclo só fecha com ele. Próximo: E-04, reunião de 29/09, com o registro da anuência de Sofia para a transcrição e o processamento por IA (pedido na Abertura da pauta de 29/09).
 
 ### 11.2 Parte II — Arquitetura e componentes
 
