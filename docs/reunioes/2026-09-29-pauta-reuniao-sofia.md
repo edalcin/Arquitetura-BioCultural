@@ -63,7 +63,7 @@ Retomar exatamente do ponto em que parou em 18/09. Eduardo não conduz este bloc
 
 - **Revisão do resumo de 16/09.** Sofia fez a revisão pedida em 18/09? Há correção de conteúdo, em
   especial nas decisões 3, 4 e 7, que viraram impacto direto (I-03, I-04, I-10)?
-- **Revisão do resumo de 18/09.** Mesmo pedido, agora para o segundo resumo.
+- **Revisão do resumo de 18/09** — feita por Sofia (PR #1, 28/09). Confirmar se a revisão está completa.
 - **Anotações restantes** sobre `pauta-comunidades.md` e demais documentos.
 
 ---
@@ -80,7 +80,8 @@ Sofia que a leitura está certa. Uma pergunta por item, com a resposta do log ao
 | 3.2 | Quando o artigo publicado descreve o conteúdo sagrado, a unidade **não guarda** esse trecho, nem internamente? | Sim: *redaction at rest* para conteúdo sagrado em Evidência — exceção à regra geral da ADR-015 | I-04 |
 | 3.3 | Se uma pessoa recusa aparecer num vídeo autorizado pela comunidade, quem produz a versão editada, e quem confere? | A plataforma não edita por conta própria; a recusa dispara **pedido** de derivado editado; o original fica restrito até existir o derivado | I-05 |
 | 3.4 | O default privado vale para **todo** o Coletivo, ou cada Coletivo pode escolher o seu (ex.: farmacopeia popular, para quem registrar é proteger)? | Default privado como omissão segura, revisável por Coletivo | I-11, I-13 |
-| 3.5 | A raiz legal dos Coletivos é o **Decreto nº 8.750/2016** (institui o CNPCT) ou o **nº 8.772/2016** (regulamenta a Lei 13.123)? | O `CONTEXT.md` usa o 8.750; o resumo de 18/09 registrou "8772" a partir da transcrição automática | Log §6 |
+| 3.5 | A raiz legal dos Coletivos é o **Decreto nº 8.750/2016** (institui o CNPCT) ou o **nº 8.772/2016** (regulamenta a Lei 13.123)? | O `CONTEXT.md` usa o 8.750; o resumo de 18/09 registrou "8772"; Sofia manteve o número na revisão de 28/09 | Log §6 |
+| 3.6 | "Segmento" (benzedeiras, raizeiras…) é o mesmo que a categoria legal do Decreto? | Sim: o nível mínimo do Coletivo é a categoria legal; "segmento" não está no `CONTEXT.md` | I-07 |
 
 ---
 
@@ -100,8 +101,8 @@ ampliadas?
    do UseFlora, ou esperar a proposta de Laura Madeira (pendência ⑮)?
 4. **Princípios mínimos da federação** (pendência ⑭). Encaminhados ao Comitê Gestor em 18/08, com
    4–6 semanas sugeridas — **o prazo vence nesta data**. Há retorno do Comitê?
-5. **Uso real de TK/BC Labels.** Sofia pediu apoio de IA para o levantamento. Combinar o escopo da
-   busca (quais agregadores, quais países) antes de rodar.
+5. **Uso real de TK/BC Labels.** Sofia pediu apoio de IA para o levantamento. Escopo parcial definido
+   na revisão de 28/09: bancos de dados de CTA. Falta definir quais agregadores e quais países.
 
 ---
 

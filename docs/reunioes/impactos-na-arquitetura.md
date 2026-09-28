@@ -213,6 +213,9 @@ Fonte: [`2026-09-18-reuniao-sofia.md`](2026-09-18-reuniao-sofia.md). Doze decis�
   a benzedeira Sueli, em comunidades diferentes, sem grupo entre elas. Forçar nível intermediário
   produz dado falso; deixar a pessoa fora de qualquer coletivo contradiz a natureza coletiva do
   Conhecimento. O único nível disponível é a categoria legal, e é suficiente.
+- Na revisão de 28/09, Sofia chamou o nível mínimo de "segmento" (ex.: segmento das benzedeiras),
+  aplicável mesmo sem organização local. Isto confirma a leitura acima. O termo não está no
+  `CONTEXT.md` (ver pauta de 29/09, pergunta 3.6).
 
 **I-08 — o nome real pode não existir na persistência** (decisão 3).
 
@@ -239,8 +242,8 @@ Fonte: [`2026-09-18-reuniao-sofia.md`](2026-09-18-reuniao-sofia.md). Doze decis�
 
 - **Decisão 10** — adoção prática do Local Contexts **adiada** até o recurso do GEF, com reunião a
   marcar com Keila e o MCTI. Isso mantém a **Q4** da `ADR-015:419` aberta, agora com motivo
-  registrado: modelo de negócio pago, e um único caso de uso real encontrado — um Notice, em
-  repositório pequeno, que **não propagou** para os agregadores.
+  registrado: modelo de negócio pago, e um único caso de uso real encontrado no contexto de DSI — um
+  Notice, em repositório pequeno, que **não propagou** para os agregadores.
 - **Decisão 11** — etiqueta em exsicata de herbário viaja com o registro para o GBIF: é o argumento
   de por que adotar padrão em vez de convenção local, e confirma o caminho do BioCultAcervos.
 - **Decisão 12** — resumos separados, um por reunião, com a consolidação do impacto como etapa à
@@ -313,8 +316,9 @@ Dois itens ficam de fora do plano por não terem resposta: **I-14** e **I-15**.
   classificação dos coletivos no **Decreto nº 8.772/2016** e no Conselho Nacional de Povos e
   Comunidades Tradicionais. O `CONTEXT.md:120-125` e o UDM §3 ancoram nas **29 categorias do Decreto
   nº 8.750/2016**. São decretos distintos — o 8.750 institui o CNPCT; o 8.772 regulamenta a Lei nº
-  13.123/2015. A nota de leitura do resumo registra "8772" como transcrição automática. Conferir
-  antes de citar em ADR: se for 8.750, corrige-se o resumo; se a menção ao 8.772 for intencional,
+  13.123/2015. A nota de leitura do resumo registra "8772" como transcrição automática; Sofia
+  manteve o número na revisão de 28/09. Conferir antes de citar em ADR: se for 8.750, corrige-se o
+  resumo; se a menção ao 8.772 for intencional,
   revisa-se o `CONTEXT.md`.
 - **`community: null`.** O `planoPropostaGovernanca.md:271` prescreve `community: null` + rótulo de
   atribuição incompleta para CTA de origem não identificável. É exatamente o **nulo silencioso** que o
