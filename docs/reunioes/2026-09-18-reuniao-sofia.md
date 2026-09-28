@@ -26,8 +26,7 @@ Decisões firmadas na conversa. As marcadas **provisória** são default de prec
    brasileira estabelece o Conhecimento Tradicional como coletivo, e é o coletivo que figura como
    detentor. Mas a arquitetura deve prever um campo distinto para **quem compartilhou** — o
    especialista, quando ele quiser aparecer, e na forma como ele quiser. Registrar o especialista
-   nunca substitui o vínculo com o coletivo: mesmo uma benzedeira isolada tem de ser vinculada ao
-   coletivo das benzedeiras.
+   nunca substitui o vínculo com o coletivo: mesmo uma benzedeira isolada, que não esteja vinculada a uma organização local, ela está vinculada ao segmento das benzedeiras.
 2. **Como a pessoa quer ser nomeada é escolha dela, em três opções.** Nome verdadeiro, pseudônimo
    escolhido pela própria pessoa, ou pseudônimo gerado pelo sistema. A escolha é individual e
    soberana, nunca do coletivo. Precedente citado por Sofia: tese sobre benzedeiras que publicou
@@ -46,11 +45,11 @@ Decisões firmadas na conversa. As marcadas **provisória** são default de prec
 5. **Hierarquia de coletivos com raiz na legislação.** A raiz que define coletivos é a denominação
    legal — as comunidades tradicionais reconhecidas no Decreto nº 8.772/2016 e no Conselho
    Nacional de Povos e Comunidades Tradicionais. Abaixo dela há níveis intermediários quando
-   existem (Comunidades Quilombolas → Quilombolas do Vale do Ribeira → Comunidade Quilombola do
+   existem (Comunidades Quilombolas → Quilombolas do município de Garopaba → Comunidade Quilombola do
    Morro do Fortunato) e podem não existir: a benzedeira Camila e a benzedeira Sueli são
    benzedeiras em comunidades diferentes, sem coletivo organizado entre elas. Nesses casos o único
    nível disponível é a categoria legal, e isso é suficiente — a pessoa é classificada como
-   pertencente ao coletivo ainda que não participe de nenhum grupo concreto.
+   pertencente ao coletivo/segmento ainda que não participe de nenhum grupo concreto.
 6. **Pertencimento é múltiplo, não exclusivo.** Uma mesma pessoa pode ser benzedeira, raizeira e
    quilombola ao mesmo tempo. A estrutura não é uma árvore de pertencimento único: é relação
    muitos-para-muitos entre pessoa e coletivos.
@@ -86,7 +85,7 @@ Decisões firmadas na conversa. As marcadas **provisória** são default de prec
 
 Pontos que não são decisão de arquitetura, mas mudam como as decisões devem ser tomadas.
 
-- **O protótipo foi o que destravou a discussão de governança em Brasília.** Sofia levou o
+- **O protótipo foi o que destravou a discussão de governança em Brasília.** Useflora levou o
   protótipo do UseFlora não para validar interface, mas para tornar concreto o que é um banco de
   dados. O efeito foi maior que o esperado: os Guardiões **perderam o medo**, visualizaram o que
   estava em jogo e a discussão de política de dados que veio depois surpreendeu — eles passaram a
@@ -95,7 +94,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
 - **O medo de nomear tem causa concreta e datada: perseguição religiosa.** Entre as benzedeiras
   que recusaram divulgação do nome, a recusa veio das de religião de matriz africana, que sofrem
   preconceito. Não é preferência abstrata de privacidade: é cálculo de risco de dano. O mesmo
-  padrão aparece na recusa de registrar coordenada geográfica, relatada por Daniela em conversas
+  padrão aparece na recusa de registrar coordenada geográfica, relatada por Daniela (Raízes) em conversas
   anteriores. A arquitetura precisa tratar não-identificação como proteção contra dano, não como
   lacuna de qualidade de dado.
 - **A desconfiança é sobre a promessa, não sobre o campo.** Sofia supôs que a maioria não se oporia
@@ -108,13 +107,13 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   qualquer coletivo — o que contradiz a natureza coletiva do Conhecimento.
 - **Local Contexts é referência internacional, mas quase não tem uso comprovado.** Sofia encontrou
   a iniciativa citada nos estudos da CDB sobre DSI como mecanismo para vincular Conhecimento
-  Tradicional em bancos de dados, e é hoje a referência de como aplicar os princípios. Ao procurar
-  uso real, porém, achou **um único caso** — e era um Notice, não um Label, num repositório
+  Tradicional em bancos de dados, e é hoje a referência de como aplicar os princípios CARE. Ao procurar
+  uso real no contexto de DSI, porém, achou **um único caso** — e era um Notice, não um Label, num repositório
   pequeno, que **não propagou** para os agregadores grandes. Adotar por reputação sem verificar
   propagação seria adotar um selo que não atravessa a cadeia.
 - **A demanda por dados primários chega mesmo sem estar no escopo.** Nem o UseFlora nem o JBRJ
-  tratam dados primários no GEF. Mas das 16 iniciativas apoiadas, algumas já estão inserindo dados
-  primários no SiBBr e, ao ouvirem a discussão do UseFlora, **se preocuparam** — nunca tinham
+  tratam dados primários no GEF. Mas das 16 iniciativas apoiadas pelo GEF, algumas já estão inserindo dados
+  primários no SiBBr e, ao ouvirem a discussão do UseFlora em um evento de Pesquisa Intercultural, **se preocuparam** — nunca tinham
   parado para pensar no que a disponibilização pode gerar. A demanda começou a chegar, uma a uma,
   para discutir política de dados. Não é escopo formal, mas é pressão real.
 - **O BioCultDB tangencia dados primários pela porta do Relato.** Retomando a decisão 9 da reunião
@@ -127,7 +126,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   não pode ter um único default de sensibilidade para todos os coletivos, e essa diferença é
   argumento adicional para a decisão de default privado ser revisável pela comunidade.
 - **O ICMBio descobriu Conhecimento Tradicional dentro das próprias bases.** O Programa Monitora
-  (Rodrigo Jorge) constatou que há Conhecimento Tradicional nas suas bases de dados e quer saber
+  (Rodrigo Jorge) reconheceu que há Conhecimento Tradicional nas bases de dados do Programa Monitora e quer saber
   como lidar — pauta forte para o próximo ano. É o terceiro ator independente a chegar ao mesmo
   problema.
 - **Convergência simultânea é oportunidade de unificação.** Sofia: o tópico ficou quente e as
@@ -147,8 +146,6 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
 ## Pendências e encaminhamentos
 
 - **Designação do Ponto-Focal** — **resolvida**. E-mail de Nivaldo em 17/09/2026.
-- **Concluir as anotações de Sofia** — ainda não esgotadas; a próxima reunião retoma do ponto em
-  que parou, e só depois se volta ao documento de preparação.
 - **Reunião sobre domesticação e manejo** — Nivaldo e Carol querem pauta específica; é pendência
   antiga, originada da confusão entre dois bancos distintos, um de uso e outro de manejo. Ainda
   não entraram em contato com Eduardo; agendamento pelo link de slots.
@@ -156,8 +153,8 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   na denominação legal), níveis hierárquicos intermediários opcionais, pertencimento múltiplo,
   autodenominação do coletivo, campo do especialista que compartilhou, escolha de nome
   real/pseudônimo próprio/pseudônimo gerado, e nome real opcionalmente ausente do armazenamento.
-- **Verificar uso real dos TK/BC Labels** — Sofia encontrou um único caso, e sem propagação para
-  agregadores. Levantar se há experiências efetivas antes de decidir adoção. Sofia sinalizou que
+- **Verificar uso real dos TK/BC Labels** — Sofia encontrou um único caso no contexto de DSI, e sem propagação para
+  agregadores. Levantar se há experiências efetivas em bancos de dados de CTA antes de decidir adoção. Sofia sinalizou que
   gostaria de apoio de IA nessa busca.
 - **Desenhar o conjunto de rótulos adequado à realidade brasileira** — e a tabela de
   correspondência com TK/BC Labels para exportação.
