@@ -140,7 +140,7 @@ Cabeçalho do SVG, idêntico ao padrão existente:
 
 O repositório embute PNG no markdown (`README.md` usa `docs/*.png`) mantendo o SVG como fonte. **Não há** `rsvg-convert`, `inkscape` nem ImageMagick nesta máquina (verificado: só `C:\Windows\System32\convert.exe`, que é o utilitário de FAT→NTFS); Node v22.23.0 disponível.
 
-Rota padrão: ferramenta `browser` — `open` com `url: "file:///D:/git/Arquitetura-BioCultural/docs/<nome>.svg"` e `viewport: {width: W, height: H, scale: 2}`, depois `run` com `tab.screenshot({ fullPage: false })`, e mover o arquivo retornado para `docs/<nome>.png`.
+Rota padrão: ferramenta `browser` — `open` com `url: "file:///S:/git/Arquitetura-BioCultural/docs/<nome>.svg"` e `viewport: {width: W, height: H, scale: 2}`, depois `run` com `tab.screenshot({ fullPage: false })`, e mover o arquivo retornado para `docs/<nome>.png`.
 **Contingência:** se o screenshot sair com barra de rolagem, faixa branca ou dimensão errada, envolver o SVG em um HTML temporário com `<style>html,body{margin:0;background:#FAF6EF}</style>` e screenshot do elemento (`tab.screenshot({selector:"svg"})`). Se a rota browser falhar por completo, usar `npx -y sharp-cli --input docs/<nome>.svg --output docs/<nome>.png resize {W*2}`. Se nenhuma funcionar, **embutir o `.svg` diretamente no markdown** (`![alt](nome.svg)` — GitHub renderiza SVG) e registrar a ausência do PNG numa linha do CHANGELOG. Em nenhuma hipótese entregar imagem embutida quebrada.
 
 ---

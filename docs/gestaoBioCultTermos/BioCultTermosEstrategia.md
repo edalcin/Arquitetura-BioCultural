@@ -35,7 +35,7 @@ Havia, na máquina de desenvolvimento, uma quinta cópia que não pertencia a un
 ```
 origin/main (github.com/edalcin/BioCultTermos)  = a209b4d
 BioCultDB/bioculttermos/  (Cópia de Trabalho)   = a209b4d   ← em dia
-D:/git/BioCultTermos/     (clone standalone)    = 24ca993   ← 7 commits atrás
+S:/git/BioCultTermos/     (clone standalone)    = 24ca993   ← 7 commits atrás
                                                               + CLAUDE.md modificado
                                                               + docs/agents/ não rastreado
 ```
@@ -58,7 +58,7 @@ Clonar o BioCultTermos isoladamente é proibido (ADR-012 G2). Desde o congelamen
 um clone assim não pode ser executado, não pode ser testado, e a única coisa que faz de forma confiável
 é envelhecer.
 
-O clone `D:/git/BioCultTermos/` foi removido, depois de transplantados os três artefatos não publicados
+O clone `S:/git/BioCultTermos/` foi removido, depois de transplantados os três artefatos não publicados
 que estavam nele.
 
 ### 2. Edite na unidade que motivou a mudança

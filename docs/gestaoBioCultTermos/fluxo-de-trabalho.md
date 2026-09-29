@@ -59,7 +59,7 @@ em produção.
 HOST=BioCultDB          # ou BioCultRelatos / BioCultNaturalistas / BioCultAcervos
 
 # 1. Sincronize a Cópia de Trabalho ANTES de editar
-git -C D:/git/$HOST/bioculttermos pull --ff-only
+git -C S:/git/$HOST/bioculttermos pull --ff-only
 ```
 
 > `--ff-only` é deliberado. Se aquela Cópia de Trabalho tiver commits locais esquecidos, ele **falha em
@@ -68,7 +68,7 @@ git -C D:/git/$HOST/bioculttermos pull --ff-only
 
 ```bash
 # 2. Edite dentro de bioculttermos/ e teste na unidade real
-cd D:/git/$HOST
+cd S:/git/$HOST
 docker compose -f docker/docker-compose.unidade.yml up --build
 
 # 3. Commit DENTRO do submodule
@@ -101,7 +101,7 @@ Obrigatório (ADR-012 G4), no seu tempo. Para cada hospedeiro que ainda não ado
 ```bash
 HOST=BioCultRelatos
 
-cd D:/git/$HOST
+cd S:/git/$HOST
 git submodule update --remote --merge bioculttermos    # traz o topo de main
 git add bioculttermos
 git commit -m "chore(bioculttermos): zera Atraso de Módulo"
@@ -117,7 +117,7 @@ em que ela foi escrita.
 ## 3. Ver o Atraso de Módulo das quatro unidades
 
 ```powershell
-pwsh D:/git/Arquitetura-BioCultural/bin/termos-status.ps1
+pwsh S:/git/Arquitetura-BioCultural/bin/termos-status.ps1
 ```
 
 Somente leitura, sem dependência além de `git`. Reporta, por unidade: estado operacional, Versão

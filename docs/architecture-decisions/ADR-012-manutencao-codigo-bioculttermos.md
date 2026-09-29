@@ -21,7 +21,7 @@ Na máquina de desenvolvimento existiam, simultaneamente, duas cópias editávei
 ```
 origin/main (github.com/edalcin/BioCultTermos)  = a209b4d
 BioCultDB/bioculttermos/  (Cópia de Trabalho)   = a209b4d   ← em dia
-D:/git/BioCultTermos/     (clone standalone)    = 24ca993   ← 7 commits atrás
+S:/git/BioCultTermos/     (clone standalone)    = 24ca993   ← 7 commits atrás
                                                               + CLAUDE.md modificado
                                                               + docs/agents/ não rastreado
 ```
@@ -133,7 +133,7 @@ funciona.
 congelamento do produto standalone (ADR-007 F2), um clone assim não tem como ser executado, não tem
 como ser testado, e a única coisa que ele faz de forma confiável é envelhecer.
 
-O clone `D:/git/BioCultTermos/` é removido pela execução desta ADR, depois de transplantados para
+O clone `S:/git/BioCultTermos/` é removido pela execução desta ADR, depois de transplantados para
 `BioCultDB/bioculttermos/` os três artefatos não publicados que estavam nele
 (`CLAUDE.md`, `docs/agents/domain.md`, `docs/agents/issue-tracker.md`).
 
