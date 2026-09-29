@@ -27,7 +27,7 @@ Decisões firmadas na conversa. As marcadas **provisória** são default de prec
    gestão da arquitetura e as Comunidades Tradicionais, e sempre que houver disponibilidade e
    interesse a ponte também vale para o conhecimento de fontes primárias.
 2. **Consentimento coletivo e consentimento individual são camadas distintas.** Quem decide sobre
-   o Conhecimento é o coletivo, porque o Conhecimento é coletivo. O indivíduo permanece soberano
+   o Conhecimento é o coletivo, porque o Conhecimento é de natureza coletiva. O indivíduo permanece soberano
    sobre a própria imagem, voz e fala. Consequência operacional firmada: se a comunidade autoriza
    a publicação de um vídeo e uma pessoa não quer aparecer, **sai a pessoa, não sai o vídeo** —
    supressão individual (rosto, voz, trecho), não supressão do registro coletivo. Fundamento
@@ -105,7 +105,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
   Tradicionais.** As lideranças presentes na oficina citaram-na repetidamente. O mecanismo não
   aceita que alguém se declare representante: exige ata ou carta assinada por várias pessoas. Isso
   responde diretamente à dúvida da arquitetura sobre como verificar representatividade — e a
-  resposta é adotar o que as comunidades já construíram, não inventar critério próprio.
+  resposta é adotar o que as comunidades já construíram e adaptar para a realidade da arquitetura.
 - **A dúvida de representatividade não é da arquitetura.** Se a regra interna do coletivo é que
   uma pessoa responde por todos, não cabe à arquitetura questionar. O que cabe é oferecer
   mecanismos de proteção que os próprios coletivos já usam. "Essa discussão não é minha."
