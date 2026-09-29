@@ -13,11 +13,15 @@ Cada reunião com o Ponto-Focal gera três documentos, nesta ordem:
 |---|---|---|---|
 | 1 | **Resumo** | `AAAA-MM-DD-reuniao-<ponto-focal>.md` | Registra o que foi dito e decidido: decisões, insights, pendências, pontos de atenção, notas de leitura da transcrição. Não classifica impacto |
 | 2 | **Impactos** | `AAAA-MM-DD-impactos-reuniao-<ponto-focal>.md` | Confronta cada decisão com os documentos de arquitetura e a classifica em *fecha*, *contradiz*, *acrescenta*, *confirma* ou *abre*, com o documento de destino. Cria os itens novos (`I-xx`) e revê os antigos |
-| 3 | **Próxima pauta** | `proxima-pauta-reuniao-<ponto-focal>.md` → `AAAA-MM-DD-pauta-reuniao-<ponto-focal>.md` | Leva à próxima reunião o que ficou aberto no resumo e nos impactos |
+| 3 | **Próxima pauta** | `proxima-pauta-reuniao-<ponto-focal>.md` → `AAAA-MM-DD-pauta-reuniao-<ponto-focal>.md` | Abre com o **retrospecto da pauta anterior** (o que foi tratado, o que ficou pendente, onde segue) e leva à próxima reunião o que ficou aberto no resumo e nos impactos |
 
 A data do nome é sempre a **data da reunião a que o documento se refere**. Por isso, na listagem da
 pasta, a pauta, o resumo e os impactos de uma mesma reunião aparecem juntos. A pauta nasce sem data
 (`proxima-pauta-…`) e é renomeada com `git mv` quando a reunião é marcada.
+
+**A pauta congela quando a reunião acontece.** Ela fica como memória do que foi proposto, e nunca
+recebe o resultado da reunião. O resultado vai para o resumo, para os impactos e para o
+retrospecto da pauta seguinte.
 
 O quarto documento é único e vivo: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md), o
 **estado consolidado**, com uma linha por item de impacto de todas as reuniões. Os documentos de
@@ -50,6 +54,8 @@ atualiza a tabela de [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md).
 
 **Próxima pauta.** Escrita para quem não é da área técnica:
 
+- abre com o **retrospecto da pauta anterior**: uma linha por item, com o que aconteceu na reunião
+  e onde segue (encerrado, bloco desta pauta, fora da pauta);
 - cada pergunta que pede decisão vem com **o que está em jogo** (em palavras simples), **o que a
   arquitetura faz hoje**, as **opções** com a consequência de cada uma, e a **pergunta** em uma frase;
 - todo código (`I-04`, `⑭`, `K7`) vem com o que ele significa, na mesma linha;

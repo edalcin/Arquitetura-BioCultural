@@ -33,6 +33,44 @@
 
 ---
 
+## Retrospecto da pauta de 29/09
+
+A pauta de 29/09 ([`2026-09-29-pauta-reuniao-sofia.md`](2026-09-29-pauta-reuniao-sofia.md)) fica
+congelada como memória. O que foi tratado e o que ficou pendente está aqui. "d." = decisão do
+[resumo de 29/09](2026-09-29-reuniao-sofia.md).
+
+| Item da pauta de 29/09 | O que aconteceu | Onde segue |
+|---|---|---|
+| Abertura — anuência para transcrição e IA | Dada para a reunião de 29/09 (d. 1). A parte retroativa (16/09 e 18/09) não foi dita em separado | Abertura, item 1 |
+| 1.1 ICMBio / Programa Monitora | Sofia falou com Rodrigo Jorge em Brasília; o ICMBio quer saber o que pode ser público. Sofia pediu ao CNPT que a rede interna faça a ponte; sem resposta | Eduardo manda mensagem informal a Rodrigo depois desta reunião (fora da pauta) |
+| 1.2 Farmacopeia popular (Jaqueline) | Suspensa: sem apoio institucional, Jaqueline não quer tocar a nova fase sozinha | Fora da pauta, até haver cenário adequado |
+| 1.3 Iniciativas do GEF no SiBBr | Nenhuma demanda nova chegou | Encerrado |
+| 1.4 Domesticação e manejo | Nivaldo e Carol precisam conversar entre eles antes; Eduardo pediu para ouvir essa conversa | Bloco 1, item 2 (I-19) |
+| 2 — Revisão dos resumos de 16/09 e 18/09 | Feitas por Sofia (PR #1 e PR #2) | Encerrado |
+| 2 — Anotações de Sofia | Concluídas: Sofia não tem mais anotações. A dúvida dela sobre os códigos `I-xx` foi resolvida na reunião | Encerrado |
+| 3.1 Existência do sagrado publicável | Sim: "o aviso precisa aparecer" (d. 2). Ressalva: o que protege pode ser o sigilo (d. 3) | Bloco 2.2 |
+| 3.2 Conteúdo sagrado de artigo: guardar ou não | Sem decisão: a resposta de 29/09 difere da de 16/09 (d. 4) | Bloco 2.1 |
+| 3.3 Quem edita o vídeo | Fora do escopo deste canal: é fonte primária (d. 5) | Bloco 1, item 1; fora da pauta |
+| 3.4 Default privado por coletivo | Cada coletivo define o que é privado (d. 6) | Encerrado (I-11, I-13) |
+| 3.5 Decreto 8.750 × 8.772 | Os dois valem: a raiz é a Lei nº 13.123, regulamentada pelo 8.772; o 8.750 lista os segmentos (d. 11) | Encerrado (I-16) |
+| 3.6 "Segmento" = categoria legal | Sim, e a lista do decreto não é exaustiva (d. 11) | Encerrado (I-07, I-16) |
+| 3.7 Sagrado muda com o tempo | Sim, nos dois sentidos (d. 8) | Encerrado; vai para a ADR-019 |
+| 3.8 Nomeação muda por assunto | Não: uma escolha geral por pessoa (d. 10) | Encerrado (I-01) |
+| 4.1 Relato sobre Evidência (I-14) | Não tratado | Bloco 4, item 1 |
+| 4.2 Existe secreto não-sagrado? | Sim (d. 3) | Encerrado |
+| 4.3 Camadas de governança (I-15) | Não tratado. Eduardo convidou Viviane para fontes primárias; não espera mais a proposta de Laura Madeira (⑮) | Bloco 1, item 1; Bloco 4, item 2 |
+| 4.4 Princípios mínimos da federação (⑭) | Não tratado; explicado a Sofia na reunião. Sem retorno do Comitê Gestor | Bloco 1, item 3 |
+| 4.5 Uso real de TK/BC Labels | Não tratado | Bloco 4, item 3 |
+| 4.6 Conjunto brasileiro de rótulos (I-12) | Não tratado | Bloco 4, item 4 |
+| 4.7 Quem controla o rótulo | Não tratado | Bloco 4, item 5 |
+| 4.8 Contato para mudar de ideia | Não tratado | Bloco 4, item 6 |
+| Checklist — data da próxima reunião | Sofia agenda, com pelo menos 15 dias | Cabeçalho desta pauta |
+
+Temas novos que não estavam na pauta de 29/09: conflito entre coletivos (d. 7, I-17) e incerteza
+declarada (d. 9, I-18) → Bloco 3.
+
+---
+
 ## Abertura (5 min)
 
 1. **Anuência retroativa.** Em 29/09 Sofia deu anuência para a transcrição e o processamento por IA
@@ -213,7 +251,7 @@ congelados em 28/09/2026. Tabela copiada da pauta de 29/09, com a coluna *Estado
 | Prep §2, §4 | `regime` ausente nos 29 registros; pipeline | Decisão técnica pendente | Fora desta reunião |
 | P1 q1–q2 | Como a pessoa quer ser nomeada | Desenho decidido em 18/09; valor é consentimento | I-01, I-02 → ADR-018 |
 | P1 q3 | Nomeação muda por assunto? | **Decidido em 29/09: não** (d. 10) | I-01 → ADR-018 |
-| P1 q4 | Contato para mudar de ideia | Aberta | Bloco 4.6 |
+| P1 q4 | Contato para mudar de ideia | Aberta; não tratada em 29/09 | Bloco 4.6 |
 | P1 q5 | Nome do grupo | Decidido em 18/09 (autodenominação); raiz legal decidida em 29/09 (d. 11) | I-07, I-16 → ADR-018 |
 | P2 q1–q4 | Época, gênero, usos, legitimidade | Princípio decidido em 18/09; conjunto a desenhar | Bloco 4.4 |
 | P2 q5 | Quem controla o rótulo | Aberta | Bloco 4.5 |
