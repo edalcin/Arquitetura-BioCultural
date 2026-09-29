@@ -239,7 +239,7 @@ flowchart TD
 | **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/pautaComunidades/pauta-comunidades.md` |
 | Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
 | Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `docs/governanca/propostaGovernanca.md` §2, nota de estado |
-| **Ciclo de reuniões com o Ponto-Focal, e o impacto de cada uma sobre a arquitetura** | `docs/reunioes/impactos-na-arquitetura.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 7 |
+| **Ciclo de reuniões com o Ponto-Focal: resumo, impactos e pauta por reunião; estado consolidado dos itens de impacto** | `docs/reunioes/README.md` (convenção e índice); `docs/reunioes/impactos-na-arquitetura.md` (estado consolidado); procedimento em `docs/projetoPesquisa.md` §7.2, item 7 |
 | **Uso de IA como resultado de pesquisa — método e log de episódios** | `docs/ia/uso-de-ia.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 8, e §7.5 |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
@@ -382,6 +382,27 @@ O papel do Ponto-Focal já tinha verbete (§10-bis.2). O que faltava era declara
 - **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os quinze itens do `impactos-na-arquitetura.md` continuam com estado *Não aplicado*: a mudança é de método, não de modelo. O log aponta; o destino muda por ato próprio.
 - **Pendência ⑬ (indicação do ponto-focal do USEFLORA) — resolvida** em 17/09/2026, por e-mail de Nivaldo. Registro em `docs/reunioes/2026-09-18-reuniao-sofia.md`.
 - **Não constitui o Comitê Federado**, nem resolve o bloqueador E4. A camada de arquitetura continua sendo, de fato, uma reunião de duas pessoas — item **I-15** do log, em aberto.
+
+## 10-quater. Sessão 2026-09-29 — terceira reunião com o Ponto-Focal e três documentos por reunião
+
+Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `docs/reunioes/2026-09-29-reuniao-sofia.md`.
+
+### 10-quater.1 O que mudou, e onde
+
+| # | Onde | O que mudou |
+|---|---|---|
+| 1 | `docs/reunioes/` | Cada reunião do ciclo gera **três documentos**: resumo, impactos e próxima pauta. O log único de impactos foi separado: a análise de 16/09 e de 18/09 foi para `2026-09-16-impactos-reuniao-sofia.md` e `2026-09-18-impactos-reuniao-sofia.md`; `impactos-na-arquitetura.md` passou a ser só o **estado consolidado** (tabela de itens, buraco estrutural, plano de documentos, verificações). Convenção e índice em `docs/reunioes/README.md` |
+| 2 | `docs/projetoPesquisa.md` §7.2, itens 7 e 8; §11 | Os três documentos, o estado consolidado e a regra de pauta didática entram no procedimento |
+| 3 | `CONTEXT.md` (Ponto-Focal); `resumoExecutivo.md` §5 | Ciclo descrito com os três documentos |
+| 4 | `docs/reunioes/2026-09-29-impactos-reuniao-sofia.md` | Itens novos **I-16** (raiz legal com três grupos), **I-17** (conflito entre coletivos: o privado prevalece), **I-18** (incerteza declarada), **I-19** (evidência de domesticação e manejo). **I-04 em revisão**; I-05 fora do escopo do canal UseFlora |
+| 5 | `docs/ia/uso-de-ia.md` | Episódio **E-04**, com a anuência de Sofia; diagrama do método atualizado |
+| 6 | `docs/reunioes/guiaContrib/README.md` | Como registrar dúvida sobre a pauta por *Issue*; nota sobre o *fork* |
+
+### 10-quater.2 O que a sessão não faz
+
+- **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os dezenove itens seguem *Não aplicado*, *Em aberto* ou *Em revisão*.
+- **A ADR-018 está liberada** (todos os itens que ela consome foram confirmados). **A ADR-019 continua bloqueada** pelas perguntas 2.1 e 2.2 da próxima pauta.
+- **A revisão humana do resumo de 29/09 está pendente** — conferência contra a transcrição e revisão de Sofia.
 ---
 
 # §11 — Próximas ações, por frente
@@ -392,14 +413,14 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 - **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Referencias.md`.
 - **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
-- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**; o ciclo só fecha com ele. Próximo: E-04, reunião de 29/09, com o registro da anuência de Sofia para a transcrição e o processamento por IA (pedido na Abertura da pauta de 29/09).
+- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**; o ciclo só fecha com ele. E-04 (29/09) registrado, com a anuência de Sofia; a revisão humana daquele resumo está pendente, e a anuência retroativa (16/09 e 18/09) vai à próxima pauta.
 
 ### 11.2 Parte II — Arquitetura e componentes
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
 - **Indicação do ponto-focal do USEFLORA (⑬)** ✔ — atendida em 17/09/2026 (Sofia Zank, UseFlora). O canal das sete pautas de `docs/pautaComunidades/pauta-comunidades.md` está aberto, e a interlocução já roda como ciclo (§10-ter).
-- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — quinze itens, nenhum aplicado. As duas ADRs propostas na §5 daquele log (**ADR-018**, identificação do detentor; **ADR-019**, sagrado como dimensão) são o próximo ato de arquitetura, e destravam a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
+- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — dezenove itens, nenhum aplicado. Das duas ADRs propostas na §3 daquele documento, a **ADR-018** (identificação do detentor, agora com o grupo legal da Lei nº 13.123) pode ser escrita; a **ADR-019** (sagrado como dimensão) espera as perguntas 2.1 e 2.2 de `docs/reunioes/proxima-pauta-reuniao-sofia.md`. A ADR-018 destrava a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
 - **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).

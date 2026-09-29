@@ -6,6 +6,24 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.11.4] - 2026-09-29
+
+### Adicionado
+
+- **`docs/reunioes/2026-09-29-reuniao-sofia.md`** — resumo da terceira reunião com o Ponto-Focal (Sofia Zank; Viviane Kruel convidada): anuência para transcrição e IA; aviso de sagrado publicável; existe secreto não-sagrado; cada coletivo define o que é privado; em conflito entre coletivos, o privado prevalece; classificação muda nos dois sentidos; "não tenho certeza" como classificação válida; uma forma de nomeação por pessoa; raiz legal na Lei nº 13.123/2015, com listas de categorias não exaustivas
+- **`docs/reunioes/2026-09-29-impactos-reuniao-sofia.md`** — itens novos I-16 (raiz legal com três grupos), I-17 (conflito entre coletivos), I-18 (incerteza declarada), I-19 (evidência de domesticação e manejo); I-04 posto em revisão; I-05 fora do escopo do canal UseFlora
+- **`docs/reunioes/proxima-pauta-reuniao-sofia.md`** — pauta da quarta reunião, ainda sem data, no formato didático: cada decisão com o que está em jogo, o que a arquitetura faz hoje e opções com consequências
+- **`docs/reunioes/README.md`** — convenção dos três documentos por reunião (resumo, impactos, próxima pauta), regras de cada um e índice das reuniões
+- **`docs/ia/uso-de-ia.md`, episódio E-04**; **`docs/reunioes/guiaContrib/README.md`** — dúvidas sobre a pauta por *Issue*
+
+### Modificado
+
+- **`docs/reunioes/impactos-na-arquitetura.md`** — deixa de ser log corrido e passa a **estado consolidado** (tabela de itens com origem e estado, buraco estrutural, plano de documentos, verificações). A análise de 16/09 e de 18/09 foi para `2026-09-16-impactos-reuniao-sofia.md` e `2026-09-18-impactos-reuniao-sofia.md`, sem mudança de conteúdo
+- **`docs/projetoPesquisa.md` §7.2, itens 7 e 8, e §11**; **`CONTEXT.md`** (Ponto-Focal); **`resumoExecutivo.md`** §5 — o ciclo do Ponto-Focal passa a gerar três documentos por reunião, com estado consolidado único e pauta didática
+- **`docs/proximosPassos.md`** — §10-quater (sessão de 2026-09-29); §8, §11.1 e §11.2 atualizadas: ADR-018 liberada, ADR-019 bloqueada pela próxima pauta
+
+---
+
 ## [3.11.3] - 2026-09-19
 
 ### Adicionado

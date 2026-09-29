@@ -55,7 +55,7 @@ Informes de Sofia. Não pedem decisão; registram o estado das pontes abertas em
 2. **Farmacopeia popular (Jaqueline).** Sofia encaminhou o contato? Data possível para a conversa
    sobre a fase piloto no Cerrado e o banco de dados deles.
 3. **Iniciativas do GEF com dados primários no SiBBr.** Chegou mais demanda de política de dados?
-   É pressão de escopo registrada, sem decisão (log §3.5).
+   É pressão de escopo registrada, sem decisão ([impactos de 18/09](2026-09-18-impactos-reuniao-sofia.md) §5).
 4. **Reunião sobre domesticação e manejo (Nivaldo e Carol).** Ainda sem contato; confirmar se Sofia
    pode reforçar o pedido de agendamento.
 
@@ -84,7 +84,7 @@ Sofia que a leitura está certa. Uma pergunta por item, com a resposta do log ao
 | 3.2 | Quando o artigo publicado descreve o conteúdo sagrado, a unidade **não guarda** esse trecho, nem internamente? | Sim: *redaction at rest* para conteúdo sagrado em Evidência — exceção à regra geral da ADR-015 | I-04 |
 | 3.3 | Se uma pessoa recusa aparecer num vídeo autorizado pela comunidade, quem produz a versão editada, e quem confere? | A plataforma não edita por conta própria; a recusa dispara **pedido** de derivado editado; o original fica restrito até existir o derivado | I-05 |
 | 3.4 | O default privado vale para **todo** o Coletivo, ou cada Coletivo pode escolher o seu (ex.: farmacopeia popular, para quem registrar é proteger)? | Default privado como omissão segura, revisável por Coletivo | I-11, I-13 |
-| 3.5 | A raiz legal dos Coletivos é o **Decreto nº 8.750/2016** (institui o CNPCT) ou o **nº 8.772/2016** (regulamenta a Lei 13.123)? | O `CONTEXT.md` usa o 8.750; o resumo de 18/09 registrou "8772"; Sofia manteve o número na revisão de 28/09 | Log §6 |
+| 3.5 | A raiz legal dos Coletivos é o **Decreto nº 8.750/2016** (institui o CNPCT) ou o **nº 8.772/2016** (regulamenta a Lei 13.123)? | O `CONTEXT.md` usa o 8.750; o resumo de 18/09 registrou "8772"; Sofia manteve o número na revisão de 28/09 | Verificação resolvida em 29/09 (I-16) |
 | 3.6 | "Segmento" (benzedeiras, raizeiras…) é o mesmo que a categoria legal do Decreto? | Sim: o nível mínimo do Coletivo é a categoria legal; "segmento" não está no `CONTEXT.md` | I-07 |
 | 3.7 | Um saber classificado como sagrado pode **deixar de ser** sagrado com o tempo? Quem pede a mudança? | O log cobre só um sentido: a supressão retroativa, quando algo passa a ser sagrado. O sentido contrário não tem leitura | I-03, I-04 (Pauta 6 q3) |
 | 3.8 | A forma de nomeação é **uma por pessoa**, ou pode mudar conforme o assunto (ex.: nome no uso alimentar, pseudônimo no ritual)? | Não há leitura. A decisão 4 de 18/09 varia a exibição por público, não por assunto | I-01 (Pauta 1 q3) |
@@ -185,6 +185,7 @@ congelados em 28/09/2026. Valores de registro concreto (consentimento) nunca fec
 
 ## Depois da reunião
 
-Seguir o ciclo do Ponto-Focal: resumo em `docs/reunioes/2026-09-29-reuniao-sofia.md` → nova entrada
-em [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) → alteração dos documentos de destino
-por ato próprio → episódio E-04 em [`../ia/uso-de-ia.md`](../ia/uso-de-ia.md).
+Realizada. Documentos gerados: resumo em [`2026-09-29-reuniao-sofia.md`](2026-09-29-reuniao-sofia.md),
+impactos em [`2026-09-29-impactos-reuniao-sofia.md`](2026-09-29-impactos-reuniao-sofia.md) e próxima
+pauta em [`proxima-pauta-reuniao-sofia.md`](proxima-pauta-reuniao-sofia.md); episódio E-04 em
+[`../ia/uso-de-ia.md`](../ia/uso-de-ia.md).

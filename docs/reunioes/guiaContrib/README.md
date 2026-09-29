@@ -63,6 +63,21 @@ histórico guarda a versão anterior.
 **O botão do lápis não aparece.** Confira se você entrou com a conta `sofiazank` e se está vendo o
 arquivo, não a pasta.
 
+**O GitHub criou um *fork* ("sofiazank/Arquitetura-BioCultural").** Não é preciso: com a sua conta,
+o lápis cria o ramo direto no repositório original. O *fork* pode ser apagado; Eduardo ajuda.
+
+---
+
+## Como registrar uma dúvida sobre a pauta (*Issue*)
+
+Para dúvidas e comentários entre reuniões, sem editar nenhum documento.
+
+1. Abra <https://github.com/edalcin/Arquitetura-BioCultural/issues>.
+2. Clique no botão verde **New issue**.
+3. No título, cite o arquivo e o item (ex.: `proxima-pauta-reuniao-sofia.md — item 2.1`).
+4. Escreva a dúvida. A barra de formatação ajuda a fazer listas.
+5. Clique em **Create**. Eduardo recebe um aviso por e-mail e responde ali, como num fórum.
+
 ---
 
 ## O que acontece depois
@@ -70,7 +85,7 @@ arquivo, não a pasta.
 ```mermaid
 flowchart LR
   S["Sofia envia<br/>pull request"] --> E["Eduardo confere<br/>e faz o merge"]
-  E --> L["Eduardo reavalia o log<br/>impactos-na-arquitetura.md"]
+  E --> L["Eduardo reavalia os impactos<br/>daquela reunião"]
 ```
 
 Uma correção numa memória pode mudar a leitura que a arquitetura faz da reunião. Por isso cada
