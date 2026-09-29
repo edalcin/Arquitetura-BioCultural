@@ -73,15 +73,55 @@ original, sem *fork*. Um *fork* que não é mais necessário pode ser apagado; E
 
 ---
 
-## Como registrar uma dúvida sobre a pauta (*Issue*)
+## Issues: conversar sobre a arquitetura entre as reuniões
 
-Para dúvidas e comentários entre reuniões, sem editar nenhum documento.
+Uma *Issue* é uma conversa com título, aberta no próprio repositório. Funciona como um fórum: uma
+pessoa abre o assunto, as outras respondem embaixo, e tudo fica guardado e ligado aos documentos.
+Não é preciso editar nenhum documento para usar.
+
+### Quando abrir uma Issue
+
+| Situação | Exemplo de título |
+|---|---|
+| Não entendi um trecho de um documento | `Dúvida: proxima-pauta-reuniao-sofia.md — item 2.1` |
+| Quero propor ou questionar uma ideia da arquitetura | `Proposta: rótulo para uso comercial proibido` |
+| Lembrei de algo que não foi dito na reunião | `Complemento à reunião de 29/09 — conflito entre coletivos` |
+| Achei um erro, mas não sei como corrigir | `Erro: nome do decreto no resumo de 18/09` |
+| Quero trazer um caso de campo ou uma referência | `Caso: sigilo sobre modo de preparo no Rio Negro` |
+
+Correção simples de texto num resumo? Use os 4 passos acima (*pull request*). Assunto que precisa de
+conversa? Abra uma *Issue*.
+
+### Como abrir
 
 1. Abra <https://github.com/edalcin/Arquitetura-BioCultural/issues>.
 2. Clique no botão verde **New issue**.
-3. No título, cite o arquivo e o item (ex.: `proxima-pauta-reuniao-sofia.md — item 2.1`).
-4. Escreva a dúvida. A barra de formatação ajuda a fazer listas.
-5. Clique em **Create**. Eduardo recebe um aviso por e-mail e responde ali, como num fórum.
+3. **Título:** uma frase curta. Comece com o tipo (Dúvida, Proposta, Complemento, Erro, Caso) e cite
+   o arquivo e o item quando houver.
+4. **Texto:** diga o que você pensa e por quê. Se falar de um documento, cole o link dele. A barra de
+   formatação ajuda a fazer listas e negrito.
+5. Clique em **Create**.
+
+### Depois de abrir
+
+- Eduardo recebe um aviso por e-mail e responde na própria *Issue*. Outras pessoas também podem
+  responder.
+- Para chamar alguém para a conversa, escreva `@` e o nome da conta (ex.: `@edalcin`). A pessoa
+  recebe um aviso.
+- Quando o assunto muda um documento, a *Issue* ganha o link da alteração. Quando o assunto termina,
+  ela é **fechada** (*Close*). Nada se apaga: *Issues* fechadas continuam visíveis e podem ser
+  reabertas.
+- Assuntos que precisam de decisão vão para a pauta da próxima reunião, com o número da *Issue*
+  (ex.: `#7`).
+
+### Cuidados
+
+- **Tudo é público.** O repositório é aberto. Nunca escreva numa *Issue* conhecimento tradicional de
+  uma comunidade, nome de detentor, local sensível ou dado pessoal. Fale do **desenho** (que campo,
+  que regra, que opção), nunca do **valor** de um registro concreto.
+- Um assunto por *Issue*. Dois assuntos? Duas *Issues*.
+- Não há pergunta boba. Dúvida de quem não é da área técnica mostra onde a documentação precisa
+  melhorar.
 
 ---
 
