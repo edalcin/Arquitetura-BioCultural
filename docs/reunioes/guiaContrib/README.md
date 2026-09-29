@@ -1,6 +1,7 @@
 # Guia — como corrigir uma memória de reunião no GitHub
 
-Para Sofia Zank. Não é preciso instalar nada nem conhecer git: tudo acontece no site do GitHub.
+Para quem participa das reuniões e quer corrigir o registro. Não é preciso instalar nada nem conhecer
+git: tudo acontece no site do GitHub.
 
 Cada correção vira um **pedido de alteração** (*pull request*). Eduardo recebe um aviso, confere
 o texto e incorpora a correção ao documento. Nada que você fizer apaga a versão anterior: o GitHub
@@ -10,7 +11,9 @@ guarda todo o histórico.
 
 ## Antes de começar
 
-- Entre no GitHub com a sua conta (`sofiazank`).
+- Entre no GitHub com a sua conta. Se ainda não tem, crie uma em <https://github.com/signup>.
+- Se você participa com frequência, peça a Eduardo acesso de colaborador ao repositório. Sem esse
+  acesso o guia também funciona (ver "Perguntas comuns").
 - As memórias ficam em:
   <https://github.com/edalcin/Arquitetura-BioCultural/tree/main/docs/reunioes>
 
@@ -60,11 +63,13 @@ correção é o normal.
 **Marquei a opção errada no passo 3 e o commit foi direto.** Não tem problema. Avise Eduardo; o
 histórico guarda a versão anterior.
 
-**O botão do lápis não aparece.** Confira se você entrou com a conta `sofiazank` e se está vendo o
+**O botão do lápis não aparece.** Confira se você entrou com a sua conta e se está vendo o
 arquivo, não a pasta.
 
-**O GitHub criou um *fork* ("sofiazank/Arquitetura-BioCultural").** Não é preciso: com a sua conta,
-o lápis cria o ramo direto no repositório original. O *fork* pode ser apagado; Eduardo ajuda.
+**O GitHub criou um *fork* (uma cópia do repositório na minha conta).** Isso acontece quando a sua
+conta não tem acesso de colaborador. Siga os mesmos passos: o *pull request* chega ao repositório
+original do mesmo modo. Com acesso de colaborador, o lápis cria o ramo direto no repositório
+original, sem *fork*. Um *fork* que não é mais necessário pode ser apagado; Eduardo ajuda.
 
 ---
 
@@ -84,7 +89,7 @@ Para dúvidas e comentários entre reuniões, sem editar nenhum documento.
 
 ```mermaid
 flowchart LR
-  S["Sofia envia<br/>pull request"] --> E["Eduardo confere<br/>e faz o merge"]
+  S["Contribuidor envia<br/>pull request"] --> E["Eduardo confere<br/>e faz o merge"]
   E --> L["Eduardo reavalia os impactos<br/>daquela reunião"]
 ```
 
