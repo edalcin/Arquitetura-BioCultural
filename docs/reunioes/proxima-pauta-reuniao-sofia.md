@@ -8,8 +8,10 @@
 
 > **Ponto principal desta reunião: a nova proposta de método.** O item central é discutir o
 > documento de análise ([`novaFaseArquitetura-analise.md`](../novaFaseArquitetura-analise.md)) e
-> escolher uma alternativa, ou validar a recomendada. Os Blocos 1 a 4 entram no tempo que sobrar; o
-> que não couber segue para a reunião seguinte, já no formato escolhido.
+> escolher uma alternativa, ou validar a recomendada. Os Blocos 1 a 4 entram no tempo que sobrar.
+> **Se a opção B for aprovada, esta é a última pauta neste formato:** o que ela não resolver vira
+> *Issue* (lista inicial no Apêndice A da análise), e ela fica congelada como retrato. As tabelas de
+> rastreio não passam para a pauta seguinte.
 
 > **Como ler esta pauta.** Cada pergunta que pede decisão vem em quatro partes: **o que está em
 > jogo**, em palavras simples; **o que a arquitetura faz hoje**; as **opções**, com a consequência

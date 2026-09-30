@@ -253,7 +253,7 @@ confere o que a IA escreveu (princípio 4).
 | Risco de adoção | Nenhum | Médio | Alto |
 | Esforço de implantação | Horas | Uma sessão | Várias sessões |
 
-**Recomendação: B.** C pode vir depois, peça por peça, se B mostrar que precisa (§7, Fase 4).
+**Recomendação: B.** C pode vir depois, peça por peça, se B mostrar que precisa (§7, Fase 5).
 
 ---
 
@@ -557,28 +557,40 @@ pouco agora e mais depois. A decisão depende do nome do fórum (§8, item 4).
       29/09, no estado consolidado e na próxima pauta, a leitura de `I-17` (decisão 7) e de `I-18`
       (decisão 9: "secreto", não "sagrado") — `de6a5ac`, 30/09.
 
-### Fase 1 — Antes da próxima reunião (uma sessão de trabalho)
+### Fase 1 — Antes da próxima reunião
+
+A proposta é decidida **na** reunião (Bloco 0 da [próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md)).
+Antes dela, nada se implementa.
+
+- [ ] Mandar a Sofia o *link* deste documento, com a indicação das seções mais úteis para ela: §1,
+      §2.3, Apêndice C.
+
+### Fase 2 — Na próxima reunião
+
+- [ ] Escolher A, B ou C, ou validar B com ajustes, e as decisões da §8 que Sofia quiser opinar.
+
+### Fase 3 — Logo depois da aprovação (uma sessão de trabalho)
+
+Se B for aprovado, a pauta atual é a **última no formato antigo** e muda de papel: deixa de ser a
+lista de pendências e fica como retrato congelado.
 
 - [ ] Criar os sete *labels* (§5.2).
 - [ ] Criar dois *templates*: `.github/ISSUE_TEMPLATE/questao.yml` (Apêndice B) e `duvida.yml`.
-- [ ] Criar a *milestone* "Próxima reunião".
-- [ ] Criar as *Issues* do Apêndice A, depois de Eduardo conferir a lista.
-- [ ] Fechar a *Issue* #3, com *link* para as novas.
-- [ ] Gerar a pauta curta a partir da *milestone*. Congelar a atual `proxima-pauta-reuniao-sofia.md`
-      como último retrato, com nota no topo.
+- [ ] Converter em *Issues* tudo o que a pauta atual não resolveu: a lista do Apêndice A, menos o
+      que a reunião fechar, mais o que ela abrir. As tabelas de rastreio (Estado de partida,
+      Retrospecto, Rastreio da pauta das comunidades) não são copiadas para nenhum lugar: cada linha
+      aberta vira uma *Issue*, e as fechadas ficam no retrato.
+- [ ] Criar a *milestone* da reunião seguinte e fechar a *Issue* #3, com *link* para as novas.
+- [ ] Gerar a primeira pauta curta a partir da *milestone*.
 - [ ] Atualizar [`reunioes/README.md`](reunioes/README.md), o
       [guia de contribuição](reunioes/guiaContrib/README.md) (seção de *Issues*) e
       [`agents/issue-tracker.md`](agents/issue-tracker.md).
 - [ ] Mandar a Sofia uma mensagem curta com três *links*: a pauta, a *milestone* e uma *Issue*.
 
-### Fase 2 — Na próxima reunião
+### Fase 4 — Na reunião seguinte e depois dela
 
-- [ ] Dez minutos: mostrar a *milestone* e uma *Issue*.
-- [ ] Um item da pauta: "O novo formato funciona para você?" É a pessoa que o formato serve quem
-      valida o formato.
-
-### Fase 3 — Depois da próxima reunião
-
+- [ ] Dez minutos: mostrar a *milestone* e uma *Issue*. Perguntar: "O novo formato funciona para
+      você?"
 - [ ] Primeiro resumo com a seção "Da pauta" e as decisões ligadas às *Issues*.
 - [ ] Reestruturar [`reunioes/impactos-na-arquitetura.md`](reunioes/impactos-na-arquitetura.md) em
       índice e blocos (§5.5).
@@ -586,7 +598,7 @@ pouco agora e mais depois. A decisão depende do nome do fórum (§8, item 4).
       `CONTEXT.md`, verbete **Ponto-Focal**; `resumoExecutivo.md` §5; `ia/uso-de-ia.md` §1 (diagrama e
       campos do episódio); `proximosPassos.md` (pendências de pessoas → *Issues*).
 
-### Fase 4 — Depois de duas reuniões no formato novo
+### Fase 5 — Depois de duas reuniões no formato novo
 
 - [ ] Comparar as medidas da §5.8 com os números da §2.1.
 - [ ] Decidir se alguma peça do cenário C faz falta.
