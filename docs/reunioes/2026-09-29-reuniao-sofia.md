@@ -36,7 +36,7 @@ confirmar com as comunidades; as marcadas **adiada** foram reconhecidas e poster
 3. **Existe secreto não-sagrado — e talvez o eixo que protege seja o sigilo, não o sagrado —
    provisória.** Responde a pergunta aberta desde 16/09: sim, há conhecimento secreto que não é
    sagrado, por exemplo o que um coletivo usa economicamente e não quer divulgar. Viviane trouxe a
-   analogia legal: o **segredo industrial** da propriedade intelectual, que no regime do CGen se
+   analogia legal: o **segredo industrial** da propriedade intelectual, que no regime do SisGen se
    chama **sigilo**. Sofia foi além: talvez a questão central não seja o sagrado, que se aproxima de
    uma categoria de uso, mas a **sensibilidade da informação** — o que não pode ser publicado, mas
    pode ser interessante guardar no banco. A matriz sagrado × secreto passa a ter quatro células
@@ -59,18 +59,17 @@ confirmar com as comunidades; as marcadas **adiada** foram reconhecidas e poster
    como princípio inalienável: se um coletivo diz público e outro diz privado, tudo fica privado até
    que os coletivos resolvam o conflito entre eles. Sofia acrescentou o mecanismo: um coletivo
    **representativo** — com ata, na lógica da Plataforma de Territórios Tradicionais — pode pedir
-   que a informação não fique pública enquanto o conflito não se resolve. A arquitetura não julga
-   quem tem razão: registra o que cada coletivo decide e obedece ao mais restritivo. O mecanismo de
+   que a informação não fique pública enquanto o conflito não se resolve, mesmo em situações em que um outro coletivo representativo tenha autorizada a inserção. A arquitetura não julga quem tem razão: registra o que cada coletivo decide e obedece ao mais restritivo. O mecanismo de
    detecção fica aberto.
 8. **A classificação muda nos dois sentidos** (pergunta 3.7). Um saber sagrado pode deixar de ser
    sagrado; um registro privado pode ficar público. A autonomia é do coletivo, como na revogação do
    consentimento. Sofia: as comunidades muitas vezes começam restritivas por insegurança e abrem
-   depois, quando se sentem seguras.
+   depois, quando se sentem seguras, desta forma é interessante ter esse mecanismo nos dois sentidos.
 9. **"Não tenho certeza" é uma classificação válida.** Proposta de Eduardo, aceita por Sofia: quem
-   classifica pode registrar que não sabe se algo é sagrado ou se pode ser publicado. O registro vai
+   classifica pode registrar que não sabe se algo é secreto ou se pode ser publicado. O registro vai
    para o privado por default, mas a dúvida fica registrada e entra num relatório. O relatório serve
    para levar a dúvida a quem pode ajudar a decidir — segundo Sofia, não só à própria comunidade, mas
-   a instâncias maiores, como a Câmara Setorial dos Guardiões ou a APIB.
+   a instâncias maiores, como a Câmara Setorial dos Guardiões ou a APIB, por exemplo.
 10. **A forma de nomeação é uma escolha geral por pessoa** (pergunta 3.8). Não muda conforme o
     assunto (nome no uso alimentar, pseudônimo no ritual). A pessoa escolhe uma vez, para toda a
     informação que acrescenta.
@@ -170,7 +169,7 @@ Pontos que não são decisão de arquitetura, mas mudam como as decisões devem 
 - **Proposta de governança de Laura Madeira (⑮)** — Eduardo não espera mais o envio; a pendência
   continua aberta, com baixa expectativa.
 - **ICMBio / Programa Monitora** — Sofia sugeriu à coordenação do CNPT que a rede interna de
-  conhecimento tradicional do ICMBio faça a articulação com o Monitora; sem resposta. Eduardo manda
+  conhecimento tradicional do ICMBio faça a articulação com o Monitora. Eduardo manda
   mensagem informal a Rodrigo Jorge oferecendo apresentação da arquitetura, depois da próxima
   reunião.
 - **Farmacopeia popular (Jaqueline)** — suspensa. Sem apoio institucional agora, ela não quer tocar a
