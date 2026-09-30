@@ -27,7 +27,7 @@ I-16.
 **"Existe secreto não-sagrado?"** — pendente desde 16/09 — **sim** (decisão 3). Afeta **I-03**.
 
 - Exemplo: conhecimento que um coletivo usa economicamente e não quer divulgar. Analogia legal:
-  segredo industrial (propriedade intelectual) e **sigilo** (regime do CGen).
+  segredo industrial (propriedade intelectual) e **sigilo** (regime do SisGen; revisão de Sofia, PR #4).
 - Consequência: a matriz `sagrado × secreto` tem quatro células, nenhuma vazia. A ADR-019 não pode
   tratar o secreto como nível dentro do sagrado (redação de 16/09, decisão 4): secreto e sagrado são
   **independentes**.
@@ -70,8 +70,8 @@ I-16.
 
 | # | Requisito | De onde vem | Destino e nota de implementação |
 |---|---|---|---|
-| **I-17** | **Conflito entre coletivos: o privado prevalece.** Se um coletivo quer publicar e outro, também representativo, não quer, a informação fica privada até que eles resolvam o conflito. Um coletivo representativo (com ata) pode pedir esse **embargo** | decisão 7; insight do caso Krahô | É a regra do **mais restritivo** (`ADR-015:205`, K3) num eixo novo. K3 compara termo, Relato e registro; K8.3 compara pessoas numa gravação (`ADR-015:349`); I-17 compara **coletivos**. Destino: emenda à `ADR-015` K3; estado `embargado` no ciclo do registro; o embargo entra no relatório de pendências (I-09). Dentro de uma unidade é implementável. Entre unidades, ver §5 |
-| **I-18** | **Incerteza declarada.** "Não tenho certeza" é valor válido nas classificações que pedem decisão da comunidade (sagrado, sigilo, publicação). O nível efetivo é o privado; a dúvida fica gravada e entra num relatório dirigido à instância que o coletivo escolher (Câmara Setorial dos Guardiões, APIB, outra) | decisão 9 | Hoje a dúvida vira privado e some (I-11): não se distingue "decidido privado" de "privado porque não se sabe". Destino: `ADR-015` K7 (terceiro estado de classificação, ao lado de decidido e não decidido); UDM; relatório de pendências (I-09). Liga-se a ⑱ (capacitação) |
+| **I-17** | **Conflito entre coletivos: o privado prevalece.** Se um coletivo quer publicar e outro, também representativo, não quer, a informação fica privada até que eles resolvam o conflito. Um coletivo representativo (com ata) pode pedir esse **embargo**, **mesmo quando outro coletivo representativo já autorizou a inserção** (revisão de Sofia, PR #4). A autorização de um coletivo não impede o embargo pedido por outro | decisão 7; insight do caso Krahô | É a regra do **mais restritivo** (`ADR-015:205`, K3) num eixo novo. K3 compara termo, Relato e registro; K8.3 compara pessoas numa gravação (`ADR-015:349`); I-17 compara **coletivos**. Destino: emenda à `ADR-015` K3; estado `embargado` no ciclo do registro, que se sobrepõe a uma autorização já dada; o embargo entra no relatório de pendências (I-09). Dentro de uma unidade é implementável. Entre unidades, ver §5 |
+| **I-18** | **Incerteza declarada.** "Não tenho certeza" é valor válido quando quem classifica não sabe se algo é **secreto** ou se pode ser **publicado** (revisão de Sofia, PR #4: a decisão 9 fala de secreto, não de sagrado). O nível efetivo é o privado; a dúvida fica gravada e entra num relatório dirigido a quem pode ajudar a decidir — por exemplo, a Câmara Setorial dos Guardiões ou a APIB | decisão 9 | Hoje a dúvida vira privado e some (I-11): não se distingue "decidido privado" de "privado porque não se sabe". Destino: `ADR-015` K7 (terceiro estado de classificação, ao lado de decidido e não decidido); UDM; relatório de pendências (I-09). Liga-se a ⑱ (capacitação). Se o "não sei" também vale para a marca de sagrado fica em aberto: pergunta da próxima pauta |
 
 ## 4. O que confirma
 

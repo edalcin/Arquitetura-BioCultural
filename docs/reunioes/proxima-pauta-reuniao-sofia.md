@@ -42,7 +42,7 @@ congelada como memória. O que foi tratado e o que ficou pendente está aqui. "d
 | Item da pauta de 29/09 | O que aconteceu | Onde segue |
 |---|---|---|
 | Abertura — anuência para transcrição e IA | Dada para a reunião de 29/09 (d. 1). A parte retroativa (16/09 e 18/09) não foi dita em separado | Abertura, item 1 |
-| 1.1 ICMBio / Programa Monitora | Sofia falou com Rodrigo Jorge em Brasília; o ICMBio quer saber o que pode ser público. Sofia pediu ao CNPT que a rede interna faça a ponte; sem resposta | Eduardo manda mensagem informal a Rodrigo depois desta reunião (fora da pauta) |
+| 1.1 ICMBio / Programa Monitora | Sofia falou com Rodrigo Jorge em Brasília; o ICMBio quer saber o que pode ser público. Sofia sugeriu ao CNPT que a rede interna faça a ponte | Eduardo manda mensagem informal a Rodrigo depois desta reunião (fora da pauta) |
 | 1.2 Farmacopeia popular (Jaqueline) | Suspensa: sem apoio institucional, Jaqueline não quer tocar a nova fase sozinha | Fora da pauta, até haver cenário adequado |
 | 1.3 Iniciativas do GEF no SiBBr | Nenhuma demanda nova chegou | Encerrado |
 | 1.4 Domesticação e manejo | Nivaldo e Carol precisam conversar entre eles antes; Eduardo pediu para ouvir essa conversa | Bloco 1, item 2 (I-19) |
@@ -158,7 +158,7 @@ As duas regras foram firmadas em 29/09. O que falta é o **mecanismo**.
 ### 3.1 Conflito entre coletivos (I-17)
 
 **A regra firmada:** se um coletivo quer publicar e outro, também representativo, não quer, tudo fica
-privado até eles resolverem.
+privado até eles resolverem — mesmo que um deles já tenha autorizado a inserção.
 
 **O que está em jogo.** Quando os dois coletivos usam a **mesma** unidade, o sistema consegue aplicar
 a regra. Quando cada um tem a sua unidade (por exemplo, dois BioCultRelatos), o sistema **não tem como
@@ -179,7 +179,8 @@ Plataforma de Territórios Tradicionais?
 **A regra firmada:** "não tenho certeza" é uma resposta válida. O registro fica privado, e a dúvida
 vai para um relatório.
 
-**Perguntas:** em quais classificações o "não sei" vale (sagrado? sigilo? publicação?). Quem recebe o
+**Perguntas:** a regra firmada fala do "não sei" sobre o que é **secreto** e sobre o que pode ser
+**publicado**. Ele vale também para a marca de **sagrado**? Quem recebe o
 relatório: o próprio coletivo escolhe a instância (Câmara Setorial dos Guardiões, APIB, outra), ou há
 uma instância padrão?
 

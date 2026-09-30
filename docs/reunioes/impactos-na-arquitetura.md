@@ -59,8 +59,8 @@ impactos daquela reunião tem a análise.
 | I-14 | Relato da comunidade sobre Evidência publicada | **abre** — sem solução no texto vigente | `ADR-015:76,183`; ver §2 | [16/09](2026-09-16-impactos-reuniao-sofia.md) | Em aberto. Reafirmado em 29/09 |
 | I-15 | Composição e mandato das camadas de governança | **abre** | `propostaGovernanca.md`; `proximosPassos.md` | [16/09](2026-09-16-impactos-reuniao-sofia.md) | Em aberto. Convite a Viviane Kruel (fontes primárias), 29/09 |
 | I-16 | Raiz legal com três grupos (Lei nº 13.123); listas de categorias não exaustivas | contradiz | `CONTEXT.md:127-128`; `modelo-de-dados-unificado.md:77` | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Não aplicado |
-| I-17 | Conflito entre coletivos: o privado prevalece (embargo) | acrescenta; **abre** entre unidades | `ADR-015:205` (K3); relatórios (I-09) | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Não aplicado; mecanismo entre unidades em aberto |
-| I-18 | Incerteza declarada como valor de classificação | acrescenta | `ADR-015:288-296` (K7); UDM; relatórios (I-09) | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Não aplicado |
+| I-17 | Conflito entre coletivos: o privado prevalece (embargo), mesmo contra autorização já dada por outro coletivo | acrescenta; **abre** entre unidades | `ADR-015:205` (K3); relatórios (I-09) | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Não aplicado; mecanismo entre unidades em aberto. Leitura ajustada pela revisão de Sofia (PR #4) |
+| I-18 | Incerteza declarada ("não sei se é secreto ou se pode ser publicado") como valor de classificação | acrescenta | `ADR-015:288-296` (K7); UDM; relatórios (I-09) | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Não aplicado. Leitura ajustada pela revisão de Sofia (PR #4): secreto, não sagrado; se vale para sagrado, em aberto |
 | I-19 | Evidência de domesticação e manejo | **abre** | Nenhum documento hoje | [29/09](2026-09-29-impactos-reuniao-sofia.md) | Em aberto |
 
 ```mermaid
