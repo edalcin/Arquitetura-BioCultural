@@ -562,8 +562,9 @@ pouco agora e mais depois. A decisão depende do nome do fórum (§8, item 4).
 A proposta é decidida **na** reunião (Bloco 0 da [próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md)).
 Antes dela, nada se implementa.
 
-- [ ] Mandar a Sofia o *link* deste documento, com a indicação das seções mais úteis para ela: §1,
-      §2.3, Apêndice C.
+- [x] Mandar a Sofia o *link* deste documento, com a indicação das seções mais úteis para ela: §1,
+      §2.3, Apêndice C — feito pela [Issue #5](https://github.com/edalcin/Arquitetura-BioCultural/issues/5)
+      (30/09), que também testa o formato do Apêndice B.
 
 ### Fase 2 — Na próxima reunião
 

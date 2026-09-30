@@ -92,6 +92,8 @@ declarada (d. 9, I-18) → Bloco 3.
 
 ## Bloco 0 — Nova proposta de método para as reuniões (ponto principal, 30 min)
 
+Dúvidas e opiniões antes da reunião: [Issue #5](https://github.com/edalcin/Arquitetura-BioCultural/issues/5).
+
 **O que está em jogo.** A pauta cresce a cada reunião: 1.117 palavras em 16/09, 2.121 em 29/09 e
 3.212 nesta. Ela guarda o estado de tudo o que está aberto, usa muitos códigos e não cabe em 60
 minutos. O documento de análise mostra as causas e propõe como mudar.
