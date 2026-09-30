@@ -4,7 +4,12 @@
 - **Duração de referência:** 60 min
 - **Data:** a definir por Sofia; ela pediu pelo menos 15 dias depois de 29/09. Quando a data for marcada, este arquivo passa a se chamar `AAAA-MM-DD-pauta-reuniao-sofia.md`
 - **Contexto:** quarta reunião do ciclo do Ponto-Focal (`docs/projetoPesquisa.md` §7.2, item 7)
-- **Base:** [`2026-09-29-reuniao-sofia.md`](2026-09-29-reuniao-sofia.md) · [`2026-09-29-impactos-reuniao-sofia.md`](2026-09-29-impactos-reuniao-sofia.md) · [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) · [`2026-09-29-pauta-reuniao-sofia.md`](2026-09-29-pauta-reuniao-sofia.md)
+- **Base:** [`../novaFaseArquitetura-analise.md`](../novaFaseArquitetura-analise.md) · [`2026-09-29-reuniao-sofia.md`](2026-09-29-reuniao-sofia.md) · [`2026-09-29-impactos-reuniao-sofia.md`](2026-09-29-impactos-reuniao-sofia.md) · [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) · [`2026-09-29-pauta-reuniao-sofia.md`](2026-09-29-pauta-reuniao-sofia.md)
+
+> **Ponto principal desta reunião: a nova proposta de método.** O item central é discutir o
+> documento de análise ([`novaFaseArquitetura-analise.md`](../novaFaseArquitetura-analise.md)) e
+> escolher uma alternativa, ou validar a recomendada. Os Blocos 1 a 4 entram no tempo que sobrar; o
+> que não couber segue para a reunião seguinte, já no formato escolhido.
 
 > **Como ler esta pauta.** Cada pergunta que pede decisão vem em quatro partes: **o que está em
 > jogo**, em palavras simples; **o que a arquitetura faz hoje**; as **opções**, com a consequência
@@ -30,6 +35,8 @@
 | Bloco 4 da pauta de 29/09 (questões abertas) | Não tratado; vem inteiro para esta pauta, menos o item 2 (respondido) |
 | Anotações de Sofia sobre a pauta das comunidades | Concluídas em 29/09 |
 | Anuência para transcrição e IA | Dada em 29/09; parte retroativa (16/09 e 18/09) a confirmar |
+| Revisão do resumo de 29/09 | Feita por Sofia (PR #4, incorporado em 30/09) |
+| Método das reuniões | Análise e proposta em [`novaFaseArquitetura-analise.md`](../novaFaseArquitetura-analise.md); **decisão nesta reunião** (Bloco 0) |
 
 ---
 
@@ -76,8 +83,32 @@ declarada (d. 9, I-18) → Bloco 3.
 1. **Anuência retroativa.** Em 29/09 Sofia deu anuência para a transcrição e o processamento por IA
    daquela reunião. Falta confirmar que a mesma anuência vale para as reuniões de 16/09 e 18/09, cujos
    resumos já estão publicados.
-2. **Revisão do resumo de 29/09.** Sofia revisou? Há correção de conteúdo, em especial nas decisões
-   3, 4 e 7?
+2. **Revisão do resumo de 29/09.** Feita por Sofia (PR #4, incorporado em 30/09). As leituras de I-17
+   e I-18 foram ajustadas; a pergunta 3.2 desta pauta já traz a mudança.
+
+---
+
+## Bloco 0 — Nova proposta de método para as reuniões (ponto principal, 30 min)
+
+**O que está em jogo.** A pauta cresce a cada reunião: 1.117 palavras em 16/09, 2.121 em 29/09 e
+3.212 nesta. Ela guarda o estado de tudo o que está aberto, usa muitos códigos e não cabe em 60
+minutos. O documento de análise mostra as causas e propõe como mudar.
+
+**O que fazemos hoje.** A cada reunião, a IA gera resumo, impactos e próxima pauta. A pauta copia
+as tabelas de rastreio da anterior e leva adiante tudo o que ficou pendente.
+
+| | Opção A — ajuste mínimo | Opção B — Issues como fila de questões (recomendada) | Opção C — B com quadros e automação |
+|---|---|---|---|
+| O que acontece | A pauta ganha limites e perde os códigos. Nada muda de ferramenta | Cada questão aberta vira uma *Issue* com número fixo. A pauta fica curta (até 3 decisões) e nasce das *Issues*. O resumo é revisado antes dos outros documentos | Tudo de B, mais quadro no GitHub, *Discussions* e pauta gerada automaticamente |
+| A favor | Nada novo para aprender | Resolve o acúmulo na causa; cada questão tem um número que não muda | Menos trabalho manual |
+| Contra | O acúmulo continua, em outro lugar | Sofia comenta nas *Issues* do GitHub (Eduardo cria todas) | Muitas ferramentas de uma vez |
+
+**Perguntas.**
+
+1. A, B ou C? Se B: validar como está, ou com ajustes?
+2. Das decisões da §8 do documento de análise, quais Sofia quer opinar: decisão tomada fora da
+   reunião, pela *Issue*, vale? Qual o prazo para a revisão do resumo? Qual o nome do fórum
+   (`-sofia`, `-useflora`, `-governanca`)?
 
 ---
 
@@ -277,6 +308,7 @@ congelados em 28/09/2026. Tabela copiada da pauta de 29/09, com a coluna *Estado
 - [ ] Decisão 2.1 (guardar ou não o conteúdo sagrado de artigo) — libera a ADR-019
 - [ ] Decisão 2.2 (uma marca ou duas) — libera a ADR-019
 - [ ] Mecanismo do conflito entre coletivos (3.1) e da incerteza (3.2)
+- [ ] **Nova proposta de método escolhida ou validada (Bloco 0)**, com as decisões da §8 da análise
 - [ ] Posição ou encaminhamento para cada item do Bloco 4
 - [ ] Data da próxima reunião
 
