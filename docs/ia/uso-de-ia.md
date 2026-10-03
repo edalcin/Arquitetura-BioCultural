@@ -7,17 +7,22 @@
 
 ## 1. Método: da reunião ao impacto na arquitetura
 
-As reuniões do ciclo do Ponto-Focal (`docs/projetoPesquisa.md` §7.2, item 7) seguem esta cadeia:
+As reuniões de governança da arquitetura (`docs/projetoPesquisa.md` §7.2, item 7) seguem esta
+cadeia. Desde 03/10/2026, os documentos derivados só nascem depois da validação do resumo, e toda
+geração de impactos ou de pauta passa por uma revisão das questões abertas (*Issues*). Diagrama
+completo do ciclo, com os passos e a revisão das *Issues*: [`../reunioes/README.md`](../reunioes/README.md).
 
 ```mermaid
 flowchart LR
     F[Fala na reunião] --> T[Transcrição integral<br/>Tactiq]
     T --> R[Resumo por IA]
-    R --> V[Revisão humana<br/>contra a transcrição]
-    V --> P[Resumo publicado<br/>docs/reunioes/]
-    P --> I[Documento de impactos<br/>da reunião]
+    R --> V[Conferência humana<br/>contra a transcrição]
+    V --> PF[Revisão do Ponto-Focal<br/>pull request]
+    PF --> RI[Revisão das Issues]
+    RI --> I[Impactos da reunião]
     I --> C[Estado consolidado<br/>impactos-na-arquitetura.md]
-    I --> N[Próxima pauta]
+    RI --> Q[Issues atualizadas]
+    Q --> N[Pauta curta]
     I --> E[Episódio neste log]
 ```
 
@@ -26,15 +31,17 @@ flowchart LR
 - **Resumo por IA.** Um agente de IA produz o resumo a partir da transcrição: decisões, insights,
   pontos de atenção e as "Notas de leitura da transcrição", que registram cada termo corrompido e a
   leitura adotada.
-- **Revisão humana.** O resumo é conferido contra a transcrição completa. Nada entra no documento
-  de impactos sem esta conferência.
+- **Conferência humana.** O resumo é conferido contra a transcrição completa.
+- **Revisão do Ponto-Focal.** O Ponto-Focal corrige o resumo por *pull request*. Só o rascunho dos
+  impactos, marcado "sujeito à revisão", pode nascer antes; as *Issues* e a pauta, nunca.
+- **Revisão das Issues.** Todas as questões abertas e as fechadas desde a reunião anterior são
+  revistas uma a uma; a tabela da revisão fica no documento de impactos da reunião.
 - **Impactos.** Cada decisão do resumo é confrontada com os documentos de arquitetura e
-  classificada em *fecha*, *contradiz*, *acrescenta*, *confirma* ou *abre*, num documento de
-  impactos da reunião; o estado de cada item é consolidado em `impactos-na-arquitetura.md`.
-- **Próxima pauta.** Escrita a partir do resumo e dos impactos, em linguagem para quem não é da
+  classificada em *fecha*, *contradiz*, *acrescenta*, *confirma* ou *abre*; o estado de cada item é
+  consolidado em `impactos-na-arquitetura.md`.
+- **Pauta.** Gerada das *Issues* escolhidas para a próxima reunião, em linguagem para quem não é da
   área técnica (`docs/reunioes/README.md`).
-- **Episódio.** O ciclo só fecha quando o episódio da reunião é escrito neste log, na mesma sessão
-  de trabalho em que o resumo é revisado.
+- **Episódio.** O ciclo só fecha quando o episódio da reunião é escrito neste log.
 
 A cadeia é de proveniência, no sentido PROV-O: o resumo é derivado da transcrição, que é derivada
 da fala. É a mesma regra que a arquitetura aplica aos Relatos (ADR-015), aplicada ao próprio
@@ -51,22 +58,26 @@ publicado.
 
 **Anuência.** O Ponto-Focal deu anuência para a transcrição e o processamento por IA na reunião de
 2026-09-29 (episódio E-04). A anuência retroativa para as reuniões de 16/09 e 18/09 não foi dita em
-separado e está na abertura da próxima pauta
-([`proxima-pauta-reuniao-sofia.md`](../reunioes/proxima-pauta-reuniao-sofia.md)).
+separado e é a questão [#7](https://github.com/edalcin/Arquitetura-BioCultural/issues/7), na
+abertura da [próxima pauta](../reunioes/proxima-pauta-reuniao-sofia.md).
 
 ## 2. Quando um episódio é criado
 
 Um episódio é **passo obrigatório** do ciclo de reuniões: uma reunião, um episódio. Só as reuniões
 têm uma fonte primária externa (a transcrição) contra a qual se pode conferir o que a IA produziu.
 Outros usos de IA (ADRs, UDM, código) ficam descritos em prosa na §7.5 do projeto de pesquisa até
-existir um critério de conferência equivalente para eles.
+existir um critério de conferência equivalente para eles. Desde 2026-10-03, todo pedido feito à IA
+fica registrado literalmente em [`registro-de-prompts.md`](registro-de-prompts.md): é a entrada
+conferível desses outros usos, e o *commit* citado em cada entrada é a saída.
 
 Os episódios retroativos (§3) foram reconstruídos a partir dos resumos em `docs/reunioes/` e do
 histórico git, e não de um registro feito na hora.
 
 ## 3. Log de episódios
 
-Seis campos obrigatórios por episódio. Se não houve falha, o campo diz "nenhuma observada".
+Seis campos obrigatórios por episódio. Se não houve falha, o campo diz "nenhuma observada". Desde
+2026-10-03 há um sétimo, **Issues**: as questões que a IA criou, fechou ou comentou naquele ciclo, e
+quantas delas uma pessoa confirmou ou corrigiu.
 
 ### E-01 — 2026-08-18 — Reunião com o Comitê Gestor do USEFLORA
 
@@ -111,9 +122,9 @@ nomeá-las com precisão.
 |---|---|
 | Data e etapa | 2026-09-29 — documentação de reunião (feita no mesmo dia) |
 | Instrumento | Tactiq (transcrição integral) + agente de IA (resumo, impactos e próxima pauta). Durante a reunião, agente de IA consultado ao vivo, em sessão compartilhada, para responder dúvidas sobre a pauta |
-| Entrada → saída | transcrição + pauta de 29/09 → [`2026-09-29-reuniao-sofia.md`](../reunioes/2026-09-29-reuniao-sofia.md), [`2026-09-29-impactos-reuniao-sofia.md`](../reunioes/2026-09-29-impactos-reuniao-sofia.md), [`proxima-pauta-reuniao-sofia.md`](../reunioes/proxima-pauta-reuniao-sofia.md) |
+| Entrada → saída | transcrição + pauta de 29/09 → [`2026-09-29-reuniao-sofia.md`](../reunioes/2026-09-29-reuniao-sofia.md), [`2026-09-29-impactos-reuniao-sofia.md`](../reunioes/2026-09-29-impactos-reuniao-sofia.md), próxima pauta (congelada sem uso em 03/10 como [retrato](../reunioes/2026-10-03-retrato-pauta-formato-antigo.md)) |
 | Anuência | Dada por Sofia no início da reunião, para esta transcrição e o processamento por IA; retroativa a confirmar |
-| Revisão humana | Pendente: conferência de Eduardo contra a transcrição e revisão de Sofia por *pull request*. O documento de impactos e a próxima pauta foram gerados na mesma sessão do resumo, antes desta conferência, e ficam sujeitos a ela |
+| Revisão humana | Revisão de Sofia por *pull request* feita (PR #4, incorporado em 30/09): mudou as decisões 7 e 9, e o documento de impactos, o estado consolidado e a próxima pauta foram ajustados à mão (`de6a5ac`). Os dois documentos derivados tinham sido gerados na mesma sessão do resumo, antes da revisão. A conferência de Eduardo contra a transcrição não tem registro próprio |
 | Falha observada | (1) A pauta de 29/09, gerada por IA, usava códigos sem texto (`I-03`, `I-14`, `⑭`, `⑮`): o Ponto-Focal estudou a pauta e não conseguiu associar os códigos ao conteúdo; o próprio autor ficou em dúvida sobre a origem de algumas afirmações. (2) Transcrição: "anuência" saiu como "a doença", e "issues" como "eixos", "nichos" e "lixo"; "Fenaleiro" e "Lucas elesco" sem leitura |
 | Consequência na arquitetura | Doze decisões; itens novos I-16 a I-19; I-04 posto em revisão ([`2026-09-29-impactos-reuniao-sofia.md`](../reunioes/2026-09-29-impactos-reuniao-sofia.md)). No método: três documentos por reunião e pauta didática (`docs/projetoPesquisa.md` §7.2, item 7) |
 
@@ -133,3 +144,8 @@ escreveu: a correção virou regra de método.
 - **Documento escrito por IA precisa ser legível por quem vai usá-lo.** Uma pauta coerente para o
   autor e ilegível para o Ponto-Focal (códigos sem texto) falha no ciclo mesmo sem erro de conteúdo
   (E-04). A regra de pauta didática (`docs/reunioes/README.md`) é a correção.
+- **Derivar antes de validar propaga o erro.** Em E-04, impactos e pauta nasceram na mesma sessão
+  do resumo; a revisão do Ponto-Focal (PR #4) corrigiu o resumo depois, e três documentos tiveram de
+  ser ajustados à mão. Desde 03/10/2026, as *Issues* e a pauta só nascem depois da revisão
+  (`docs/reunioes/README.md`). Medidas para avaliar o formato novo:
+  [`../metodo-de-evolucao.md`](../metodo-de-evolucao.md) §5.

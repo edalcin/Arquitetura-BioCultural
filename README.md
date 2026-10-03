@@ -1,12 +1,16 @@
-# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.5
+# Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade - Versão 3.12
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21738427-blue)](https://doi.org/10.5281/zenodo.21738427)
-[![Versão](https://img.shields.io/badge/Versão-3.5.0-green)](CHANGELOG.md)
+[![Versão](https://img.shields.io/badge/Versão-3.12.0-green)](CHANGELOG.md)
 [![Governança](https://img.shields.io/badge/Governança-Proposta%20para%20consulta-B4542F)](docs/governanca/propostaGovernanca.md)
+[![Governança da arquitetura](https://img.shields.io/badge/Governança%20da%20arquitetura-em%20operação-2E7D32)](docs/metodo-de-evolucao.md)
+[![Questões abertas](https://img.shields.io/github/issues/edalcin/Arquitetura-BioCultural?label=Quest%C3%B5es%20abertas)](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)
 
 ## Visão Geral
 
 Este repositório contém a proposta de arquitetura para um sistema de informações dedicado a registrar e documentar evidências da relação entre comunidades tradicionais e a biodiversidade, provenientes de múltiplas fontes, com respeito pleno e absoluto aos princípios **C.A.R.E.** (Collective Benefit, Authority to Control, Responsibility, Ethics). A versão 3.0 redefine o sistema como uma **arquitetura explicitamente federada**: cada iniciativa ou comunidade é completamente soberana na gestão de seus próprios dados. O **Pluriverso** atua como middleware de federação, provendo acesso integrado ao conjunto de CTAs das entidades federadas. A versão 3.1 aprofunda essa soberania na camada de persistência: cada unidade federada passa a armazenar seus dados em um único arquivo **SQLite com JSON** (JSON1), compartilhado entre as ferramentas da própria unidade, eliminando a dependência de um servidor de banco de dados centralizado. A versão 3.2 amplia as fontes de evidência suportadas de duas para quatro: além de fontes secundárias (artigos científicos) e primárias (registro de campo), a federação passa a acolher acervos históricos/museológicos e obras de naturalistas dos séculos XVII-XIX. A versão 3.3 fixa a engine de persistência do Pluriverso (SQLite embutida, ADR-008) e reconhece o Pluriverso como componente **instanciável em múltiplos escopos** (ADR-009), permitindo, por exemplo, que uma associação de comunidades opere sua própria instância federando apenas os seus membros. A **versão 3.4** acrescenta a camada que faltava: uma **proposta de governança para toda a plataforma**, que nomeia quem decide o quê sobre os dados, as ferramentas e a própria arquitetura.
+
+A **versão 3.12** não muda o desenho técnico: muda **como a arquitetura evolui**. A camada de arquitetura da governança começa a operar em **reuniões de governança da arquitetura**, e toda questão aberta que depende de uma pessoa — do Ponto-Focal de uma iniciativa parceira, das comunidades, de quem responde por um tipo de fonte — passa a ser uma *Issue* pública, com número fixo, escrita para quem conhece o conhecimento tradicional e não é da área de sistemas. Todo pedido feito à IA sobre esta arquitetura passa a ser registrado literalmente.
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
@@ -15,8 +19,56 @@ Este repositório contém a proposta de arquitetura para um sistema de informaç
 > [!NOTE]
 > **Esta arquitetura é o objeto de um projeto de pesquisa.** Problema, justificativa, objetivos, fundamentação teórica, metodologia (*design science*), estudos de caso por unidade federada, cronograma e resultados esperados estão formalizados em **[docs/projetoPesquisa.md](docs/projetoPesquisa.md)**. Este `README.md` descreve *o que* a arquitetura é; o projeto de pesquisa descreve *por que* ela é assim e *como* ela é validada.
 
+## 🗳️ Novidade da v3.12 — A governança da arquitetura em operação
 
-## 🏛️ Novidade da v3.4 — Proposta de Governança
+A Proposta de Governança (v3.4) descreveu três camadas. Desde setembro de 2026, **a camada de arquitetura começou a funcionar**: primeiro com o Ponto-Focal do UseFlora (Sofia Zank), e em breve com pessoas de outras iniciativas e de outros tipos de fonte. A v3.12 dá a essa camada uma forma de trabalho que aguenta crescer sem perder nada pelo caminho.
+
+> **Uma questão, um número, um lugar.** Antes, cada pendência aparecia em até cinco documentos, com um nome diferente em cada um, e a pauta de cada reunião crescia (1.117 → 2.121 → 3.212 palavras em duas reuniões). Agora cada questão é uma *Issue*; a pauta só aponta para ela.
+
+**O que mudou:**
+
+| Antes | Agora (v3.12) |
+|---|---|
+| Pendências espalhadas em pautas, resumos, impactos e `proximosPassos.md` | **Uma *Issue* por questão**, com o que está em jogo, o que a arquitetura faz hoje, as opções, a pergunta e **o que é preciso para fechá-la** |
+| Pauta longa, com tabelas de rastreio e códigos | **Pauta curta** (até 3 decisões, sem códigos), gerada das questões da *milestone* da reunião |
+| Documentos derivados nasciam antes da revisão do resumo | **Primeiro validar, depois derivar**: as questões e a pauta só mudam depois que o Ponto-Focal revisa o resumo |
+| Nenhuma conferência sistemática do que estava aberto | **Revisão das Issues obrigatória** em todo ciclo, registrada no documento de impactos da reunião |
+| Uso de IA descrito por episódio de reunião | Mais o **registro literal de todo prompt**, em ordem cronológica |
+| Mudanças de método dispersas no histórico de versões | **Histórico das mudanças de método**, em documento próprio |
+
+**As questões chegam à pessoa certa.** Toda *Issue* diz quem responde e, quando for o caso, a que **tipo de fonte** se refere — e é por tipo de fonte que novos participantes entram na governança:
+
+| Etiqueta | Tipo de fonte | Ferramenta |
+|---|---|---|
+| `fonte-primaria` | Registro feito diretamente com a comunidade | BioCultRelatos |
+| `fonte-secundaria` | Artigos científicos publicados | BioCultDB |
+| `fonte-acervos` | Acervos históricos e museológicos | BioCultAcervos |
+| `fonte-naturalistas` | Obras de naturalistas, séculos XVII–XIX | BioCultNaturalistas |
+
+```mermaid
+flowchart LR
+  Q[("Issues<br/>uma por questão")] --> M["Milestone<br/>até 3 decisões"]
+  M --> P["Pauta curta"]
+  P --> R(("Reunião de governança<br/>da arquitetura"))
+  R --> S["Resumo<br/>revisado pelo Ponto-Focal"]
+  S --> RI["Revisão das Issues"]
+  RI --> Q
+  RI --> I["Impactos na arquitetura"]
+  I -. ato próprio .-> A["ADRs · UDM · contrato de harvest"]
+```
+
+**Para participar ou acompanhar:**
+
+- 📌 **[Painel das questões da governança da arquitetura](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)** e **[pauta da próxima reunião](docs/reunioes/proxima-pauta-reuniao-sofia.md)**
+- 🧭 **[Método de construção e evolução](docs/metodo-de-evolucao.md)** — instrumentos, governança em operação e histórico das mudanças de método
+- 🔁 **[O ciclo de cada reunião](docs/reunioes/README.md)** — do registro da reunião aos documentos, com a revisão das *Issues*
+- ✍️ **[Guia para participar](docs/reunioes/guiaContrib/README.md)** — comentar uma questão, corrigir um resumo, abrir uma dúvida
+- 🤖 **[Registro de prompts](docs/ia/registro-de-prompts.md)** e **[uso de IA](docs/ia/uso-de-ia.md)** — o que foi pedido à IA, literalmente, e o que ela produziu
+
+A fronteira não muda: a governança da arquitetura decide o **desenho**; o consentimento sobre um registro concreto é sempre da comunidade detentora, registro a registro.
+
+
+## 🏛️ Proposta de Governança (v3.4)
 
 A arquitetura sempre prometeu soberania. A **[Proposta de Governança](docs/governanca/propostaGovernanca.md)** é o documento que diz **como essa promessa é cumprida na prática** — e onde ela ainda não é.
 
@@ -111,6 +163,9 @@ Esta arquitetura não é a primeira a buscar sistematizar conhecimento tradicion
 
 A versão 3.5 mantém o sistema organizado como uma **federação de entidades soberanas**, conectadas pelo **Pluriverso**, acolhendo quatro tipos de fonte de evidência. Cada membro da federação mantém sua própria infraestrutura de dados — um único arquivo SQLite compartilhado entre suas ferramentas — e vocabulários. O Pluriverso coleta periodicamente os registros públicos de cada membro e os disponibiliza via API unificada. A v3.4 acrescentou a [camada de governança](docs/governanca/propostaGovernanca.md) que define quem decide sobre cada uma dessas peças; a v3.5 absorve o **BioCultPapers** pelo **BioCultDB** ([ADR-011](docs/architecture-decisions/ADR-011-absorcao-biocultpapers.md)) — a extração de dados por IA deixa de ser aplicativo desktop separado e passa a ser a funcionalidade **Extração por IA**, nativa do contexto de Aquisição.
 
+> [!NOTE]
+> O desenho técnico descrito nesta seção é o da v3.5 e segue vigente. As versões seguintes (até a 3.12) acrescentam decisões registradas em ADR, o modelo de dados unificado, o contrato de harvest e o método de evolução — ver o [CHANGELOG](CHANGELOG.md).
+
 ![Arquitetura BioCultural — versão 3.5, visão geral federada](docs/images/arquitetura-biocultural.png)
 
 > **Leitura recomendada:** o artigo do blog [*Arquitetando — Biodiversidade, Dados e Metadados*](https://eduardo.dalc.in/arquitetando/) explica, de forma didática e ilustrada, toda esta arquitetura federada — as quatro fontes de evidência, a soberania via SQLite+JSON, o papel do Pluriverso e a aposta na repartição de benefícios rastreável.
@@ -121,7 +176,7 @@ A versão 3.5 mantém o sistema organizado como uma **federação de entidades s
 - **Harvest periódico**: Pluriverso coleta registros `visibility: public` via endpoint REST de cada membro — dado nunca é acessado sem publicação explícita
 - **Harmonização semântica**: Pluriverso mantém mapeamentos SKOS-XL (`skos:exactMatch`, `skos:closeMatch`) entre os vocabulários de diferentes membros
 - **Saída reversível**: membro que deixa a federação tem seus dados removidos imediatamente do índice central (purge by member)
-- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos — detalhada na [Proposta de Governança](docs/governanca/propostaGovernanca.md)
+- **Governança comunitária**: comitê com representantes de cada membro toma decisões sobre admissão, contrato de publicação e mapeamentos — detalhada na [Proposta de Governança](docs/governanca/propostaGovernanca.md). Enquanto o Comitê Federado não existe, a camada de arquitetura opera em [reuniões de governança da arquitetura](docs/reunioes/README.md), com as questões abertas como [*Issues*](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)
 
 ### Tipos de Membros da Federação
 
@@ -362,9 +417,13 @@ O fluxo federado funciona assim:
 
 ---
 
-## Metodologia e Tecnologias
+## Metodologia — como a arquitetura é construída e evolui
 
-A documentação arquitetural segue o **[C4 Model](https://c4model.com/)** (Context, Container, Component, Code), e a camada de persistência adota bancos orientados a documentos (SQLite+JSON). Detalhes completos — níveis do C4 Model, contextos de Aquisição/Curadoria/Apresentação, comparação de abordagens de banco de dados e integrações externas potenciais — estão em **[docs/metodologia-e-tecnologias.md](docs/metodologia-e-tecnologias.md)**.
+A arquitetura é construída por **decisão registrada** (ADRs), documentada em **[C4 Model](https://c4model.com/)**, com **linguagem ubíqua** ([`CONTEXT.md`](CONTEXT.md)) e **contrato antes de código** ([UDM](docs/modelo-de-dados-unificado.md), [contrato de harvest](docs/contrato-harvest.md)). Ela **evolui** pelas reuniões de governança da arquitetura: cada questão que depende de uma pessoa é uma *Issue*; cada reunião gera pauta, resumo e documento de impactos; e o que muda na arquitetura é consolidado em [`impactos-na-arquitetura.md`](docs/reunioes/impactos-na-arquitetura.md) antes de alterar qualquer ADR. Todas as etapas são conduzidas com assistência de IA, registrada como método e objeto de pesquisa: cada reunião gera um [episódio de uso de IA](docs/ia/uso-de-ia.md), e cada pedido feito à IA fica no [registro de prompts](docs/ia/registro-de-prompts.md).
+
+- **[Método de construção e evolução](docs/metodo-de-evolucao.md)** — os instrumentos do método, a governança em operação e o histórico das mudanças de método (M-01 a M-10)
+- **[Projeto de Pesquisa, §7](docs/projetoPesquisa.md)** — a metodologia como procedimento de pesquisa (*design science*)
+- **[Metodologia e Tecnologias](docs/metodologia-e-tecnologias.md)** — níveis do C4 Model, contextos de Aquisição/Curadoria/Apresentação, comparação de abordagens de banco de dados e integrações externas potenciais
 
 ## Princípios Orientadores
 
@@ -393,6 +452,7 @@ Arquitetura-BioCultural/
 ├── CONTEXT.md                          ← glossário da federação
 └── docs/
     ├── projetoPesquisa.md          ← projeto de pesquisa formalizado
+    ├── metodo-de-evolucao.md       ← método de construção e evolução + histórico das mudanças de método
     ├── proximosPassos.md           ← estado do projeto e pendências (referência de continuidade)
     ├── anthropicProposal.md        ← proposta ao Anthropic AI for Science Program
     ├── metodologia-e-tecnologias.md
@@ -413,16 +473,23 @@ Arquitetura-BioCultural/
     ├── pautaComunidades/           ← Pauta com as comunidades, preparação e encaminhamentos
     │   ├── pauta-comunidades.md    ← o que precisa ser encaminhado com as comunidades
     │   └── preparacao-reuniao-2026-09-16.md
-    ├── reunioes/                   ← memórias de reuniões com iniciativas parceiras
-    │   ├── 2026-08-18-reuniao-useflora.md
-    │   └── 2026-09-16-reuniao-sofia.md
+    ├── reunioes/                   ← reuniões de governança da arquitetura: ciclo, pautas, resumos, impactos
+    │   ├── README.md               ← o ciclo, com diagrama e a revisão das Issues
+    │   ├── proxima-pauta-reuniao-sofia.md
+    │   ├── impactos-na-arquitetura.md ← estado consolidado dos impactos
+    │   ├── AAAA-MM-DD-*.md         ← pauta, resumo e impactos de cada reunião
+    │   └── guiaContrib/            ← guia para participar (pull request e Issues)
+    ├── ia/
+    │   ├── uso-de-ia.md            ← método e episódios de uso de IA
+    │   └── registro-de-prompts.md  ← todo pedido feito à IA, literal
     ├── architecture-decisions/     ← ADR-001 … ADR-017
     ├── c4-model/                   ← diagramas C4: contexto, containers, componentes
     ├── diagrams/                   ← fontes .excalidraw + exports + notas de integração
     ├── images/                     ← diagramas da arquitetura (.png/.svg) + legacy/ + blog/ + etno/
-    ├── agents/                     ← convenções para agentes de codificação
+    ├── agents/                     ← convenções para agentes de codificação (inclui Issues)
     ├── apresentacoes/              ← slides
     └── iniciativas/                ← iniciativas governamentais/institucionais correlatas
+.github/ISSUE_TEMPLATE/             ← modelos de Issue: questão para a governança e dúvida
 ```
 
 ### Navegação da Documentação
@@ -441,7 +508,12 @@ Arquitetura-BioCultural/
 12. **[Modelo de Dados Unificado (UDM)](docs/modelo-de-dados-unificado.md)** — o contrato lógico de dados de toda a arquitetura num documento único: princípios, entidades, documento canônico JSON, obrigatoriedade de campos, interoperabilidade (Darwin Core/DwC-DP, SKOS-XL) e checklist de conformidade; **objeto do acordo de cooperação técnica entre o JBRJ e o USEFLORA**
 13. **[Projeto de Pesquisa](docs/projetoPesquisa.md)** — a formalização da arquitetura como projeto de pesquisa: problema, justificativa, objetivos, fundamentação, metodologia (*design science*), estudos de caso por unidade federada, cronograma por fases e resultados esperados
 14. **[Resumo Executivo](resumoExecutivo.md)** — a introdução objetiva e sintética à proposta: o problema, a arquitetura, os componentes e seu estado real, a governança e o que ainda não está resolvido. É o ponto de partida para quem chega ao projeto
-15. **[Pauta das comunidades](docs/pautaComunidades/pauta-comunidades.md)** — o que a arquitetura precisa ver encaminhado com as comunidades tradicionais, separado entre pautas de desenho (decidíveis com corpo de representação mista) e pautas de consentimento (só a comunidade detentora, registro a registro), com roteiro de perguntas em linguagem não-técnica
+15. **[Pauta das comunidades](docs/pautaComunidades/pauta-comunidades.md)** — o que a arquitetura precisa ver encaminhado com as comunidades tradicionais, separado entre pautas de desenho (decidíveis com corpo de representação mista) e pautas de consentimento (só a comunidade detentora, registro a registro), com roteiro de perguntas em linguagem não-técnica (congelada em 28/09/2026; o que ficou aberto virou *Issue*)
+16. **[Método de construção e evolução](docs/metodo-de-evolucao.md)** — **documento principal da v3.12**: os instrumentos do método, a governança da arquitetura em operação, a transparência no uso de IA e o histórico das mudanças de método
+17. **[Reuniões de governança da arquitetura](docs/reunioes/README.md)** — o ciclo de cada reunião, com diagrama, a revisão obrigatória das *Issues*, as regras de cada documento e o índice das reuniões
+18. **[Painel das questões abertas](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)** — as *Issues* da governança da arquitetura, por quem responde e por tipo de fonte
+19. **[Impactos na arquitetura — estado consolidado](docs/reunioes/impactos-na-arquitetura.md)** — o que cada reunião muda nos documentos de arquitetura, item a item
+20. **[Registro de prompts](docs/ia/registro-de-prompts.md)** e **[Uso de IA](docs/ia/uso-de-ia.md)** — o pedido literal feito à IA e os episódios de uso conferidos contra fonte primária
 
 
 
@@ -607,13 +679,13 @@ Zank, S., Julião, C. G., de Lima, A. S., da Silva, M. T., Levis, C., Hanazaki, 
 
 ## Histórico de Versões
 
-Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md) que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão 3.5.0 (absorção do BioCultPapers pelo BioCultDB, sobre a base federada com governança proposta, Pluriverso instanciável e persistência SQLite+JSON por unidade).
+Para acompanhar a evolução completa desta arquitetura, consulte o [CHANGELOG.md](CHANGELOG.md), que documenta todas as versões e mudanças significativas desde a versão 1.0.0 inicial até a versão **3.12.0** (governança da arquitetura por *Issues*, registro literal de prompts e histórico das mudanças de método). As mudanças na **forma de trabalhar** têm histórico próprio em [`docs/metodo-de-evolucao.md`](docs/metodo-de-evolucao.md) §5.
 
 ---
 
 ## Citação
 
-Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como:
+Se você usar esta proposta de arquitetura em seu trabalho, por favor cite como abaixo. O DOI corresponde à última versão depositada no Zenodo; a versão atual do repositório é a 3.12.0.
 
 **APA:**
 ```
@@ -639,7 +711,11 @@ Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimen
 
 ## Contribuindo
 
-Este é um projeto em fase de proposta. Contribuições e sugestões são bem-vindas através de issues e pull requests.
+Esta é uma construção coletiva: toda crítica, sugestão e contribuição é registrada e considerada.
+
+- **Questões da arquitetura:** comente na *Issue* da questão — o [painel](https://github.com/edalcin/Arquitetura-BioCultural/issues/6) reúne todas. Para uma dúvida ou uma pergunta nova, use os [modelos de Issue](https://github.com/edalcin/Arquitetura-BioCultural/issues/new/choose).
+- **Correção de um resumo de reunião:** *pull request*, pelo [guia de contribuição](docs/reunioes/guiaContrib/README.md).
+- **Tudo é público:** nunca escreva conhecimento tradicional de uma comunidade, nome de detentor, local sensível ou dado pessoal. Fale do desenho, nunca do valor de um registro concreto.
 
 ## Licença
 

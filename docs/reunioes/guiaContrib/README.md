@@ -73,55 +73,76 @@ original, sem *fork*. Um *fork* que não é mais necessário pode ser apagado; E
 
 ---
 
-## Issues: conversar sobre a arquitetura entre as reuniões
+## Issues: as questões da governança da arquitetura
 
-Uma *Issue* é uma conversa com título, aberta no próprio repositório. Funciona como um fórum: uma
-pessoa abre o assunto, as outras respondem embaixo, e tudo fica guardado e ligado aos documentos.
-Não é preciso editar nenhum documento para usar.
+Uma *Issue* é uma página com título e conversa, dentro do próprio repositório. Aqui, **cada questão
+aberta da arquitetura é uma *Issue***, com um número que não muda (por exemplo, `#9`). As pautas
+levam direto a elas. Não é preciso editar nenhum documento para participar.
 
-### Quando abrir uma Issue
+- **Painel de todas as questões:** <https://github.com/edalcin/Arquitetura-BioCultural/issues/6>
+  (fixado no alto da lista).
+- **Questões da próxima reunião:** <https://github.com/edalcin/Arquitetura-BioCultural/milestone/1>.
 
-| Situação | Exemplo de título |
+### Como participar
+
+Eduardo cria as questões, com a ajuda da IA, depois que o resumo de uma reunião foi revisado por
+você. Você **comenta**: é só escrever na caixa de texto no fim da página e clicar em **Comment**.
+
+Cada questão diz, numa seção própria, **o que fecha a questão**: que resposta, de quem e onde. Você
+pode responder por escrito ali mesmo. Uma resposta escrita vale como decisão, a não ser que você
+escolha outra regra na questão [#8](https://github.com/edalcin/Arquitetura-BioCultural/issues/8).
+
+Quando a questão é respondida, Eduardo a **fecha** com um comentário curto de três linhas:
+
+```text
+Decisão: a resposta, em uma ou duas frases
+Onde: reunião de DD/MM, decisão N do resumo  |  nesta Issue, por @conta, em DD/MM
+Efeito na arquitetura: o item de impacto (I-xx), ou "nenhum"
+```
+
+Nada se apaga: questões fechadas continuam visíveis e podem ser **reabertas**, porque uma decisão
+pode mudar.
+
+### O que querem dizer as etiquetas
+
+| Etiqueta | Quer dizer |
 |---|---|
-| Não entendi um trecho de um documento | `Dúvida: proxima-pauta-reuniao-sofia.md — item 2.1` |
-| Quero propor ou questionar uma ideia da arquitetura | `Proposta: rótulo para uso comercial proibido` |
-| Lembrei de algo que não foi dito na reunião | `Complemento à reunião de 29/09 — conflito entre coletivos` |
-| Achei um erro, mas não sei como corrigir | `Erro: nome do decreto no resumo de 18/09` |
-| Quero trazer um caso de campo ou uma referência | `Caso: sigilo sobre modo de preparo no Rio Negro` |
+| `para-ponto-focal` | O Ponto-Focal responde ou opina |
+| `para-comunidades` | Só as comunidades respondem; o Ponto-Focal leva a pergunta, sem prazo |
+| `para-gestao` | Tarefa de Eduardo. Não entra na pauta |
+| `decisao` | Pede uma escolha entre opções |
+| `informe` | Pede uma notícia, não uma escolha |
+| `duvida` | Dúvida sobre um documento ou uma questão |
+| `aguarda-terceiros` | Depende de alguém de fora da reunião |
+| `fonte-primaria` | Registro feito diretamente com a comunidade (BioCultRelatos) |
+| `fonte-secundaria` | Artigos científicos publicados (BioCultDB) |
+| `fonte-acervos` | Acervos históricos e de museus (BioCultAcervos) |
+| `fonte-naturalistas` | Obras de naturalistas dos séculos XVII a XIX (BioCultNaturalistas) |
 
-Correção simples de texto num resumo? Use os 4 passos acima (*pull request*). Assunto que precisa de
-conversa? Abra uma *Issue*.
+As etiquetas `fonte-…` dizem a que **tipo de fonte** a questão se refere. Servem para chamar a pessoa
+certa da governança quando ela participar. Uma questão sem etiqueta de fonte vale para todas.
 
-### Como abrir
+### Abrir uma questão sua
 
-1. Abra <https://github.com/edalcin/Arquitetura-BioCultural/issues>.
-2. Clique no botão verde **New issue**.
-3. **Título:** uma frase curta. Comece com o tipo (Dúvida, Proposta, Complemento, Erro, Caso) e cite
-   o arquivo e o item quando houver.
-4. **Texto:** diga o que você pensa e por quê. Se falar de um documento, cole o link dele. A barra de
-   formatação ajuda a fazer listas e negrito.
-5. Clique em **Create**.
+1. Abra <https://github.com/edalcin/Arquitetura-BioCultural/issues/new/choose>.
+2. Escolha **Dúvida** (não entendi um documento ou uma questão) ou **Questão para a governança da
+   arquitetura** (uma pergunta nova). O formulário mostra o que escrever em cada campo.
+3. Clique em **Create**.
 
-### Depois de abrir
-
-- Eduardo recebe um aviso por e-mail e responde na própria *Issue*. Outras pessoas também podem
-  responder.
-- Para chamar alguém para a conversa, escreva `@` e o nome da conta (ex.: `@edalcin`). A pessoa
-  recebe um aviso.
-- Quando o assunto muda um documento, a *Issue* ganha o link da alteração. Quando o assunto termina,
-  ela é **fechada** (*Close*). Nada se apaga: *Issues* fechadas continuam visíveis e podem ser
-  reabertas.
-- Assuntos que precisam de decisão vão para a pauta da próxima reunião, com o número da *Issue*
-  (ex.: `#7`).
+Para chamar alguém para a conversa, escreva `@` e o nome da conta (ex.: `@edalcin`). A pessoa recebe
+um aviso.
 
 ### Cuidados
 
 - **Tudo é público.** O repositório é aberto. Nunca escreva numa *Issue* conhecimento tradicional de
   uma comunidade, nome de detentor, local sensível ou dado pessoal. Fale do **desenho** (que campo,
-  que regra, que opção), nunca do **valor** de um registro concreto.
+  que regra, que opção), nunca do **valor** de um registro concreto. Eduardo pode editar ou apagar um
+  comentário que exponha conhecimento tradicional.
 - Um assunto por *Issue*. Dois assuntos? Duas *Issues*.
 - Não há pergunta boba. Dúvida de quem não é da área técnica mostra onde a documentação precisa
   melhorar.
+- Prefere responder por e-mail ou mensagem? Pode. Eduardo copia a resposta para a questão, com a
+  data.
 
 ---
 
@@ -131,7 +152,11 @@ conversa? Abra uma *Issue*.
 flowchart LR
   S["Contribuidor envia<br/>pull request"] --> E["Eduardo confere<br/>e faz o merge"]
   E --> L["Eduardo reavalia os impactos<br/>daquela reunião"]
+  E --> Q["As questões (Issues)<br/>são atualizadas"]
+  Q --> P["Próxima pauta"]
 ```
 
 Uma correção numa memória pode mudar a leitura que a arquitetura faz da reunião. Por isso cada
-pedido passa pela conferência de Eduardo antes de entrar.
+pedido passa pela conferência de Eduardo antes de entrar, e as questões e a próxima pauta só são
+atualizadas **depois** da sua revisão do resumo: elas nunca carregam uma leitura que você ainda vai
+corrigir.

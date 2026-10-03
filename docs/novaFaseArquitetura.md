@@ -56,3 +56,5 @@ Assim, gostaria de considerar uma nova abordagem workflow, documentos, estrutura
 Em um primeiro momento, gostaria de uma análise e um relatório exaustivo sobre possíveis ajustes metodológicos e documentais necessários, para análise e posterior implementação. Apresente alternativas e recomendações de forma didática.
 
 **Relatório de análise (2026-09-30):** [`novaFaseArquitetura-analise.md`](novaFaseArquitetura-analise.md) — diagnóstico, três alternativas, recomendação (*Issues* como fila única de questões) e decisões pendentes. Nada implementado.
+
+**Implementação (2026-10-03):** Cenário B adotado — questões como *Issues*, pauta curta, revisão das *Issues* em todo ciclo, registro literal de prompts. Método e histórico das mudanças em [`metodo-de-evolucao.md`](metodo-de-evolucao.md); ciclo em [`reunioes/README.md`](reunioes/README.md).

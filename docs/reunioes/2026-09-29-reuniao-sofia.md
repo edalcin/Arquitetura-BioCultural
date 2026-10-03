@@ -4,7 +4,7 @@
 - **Participantes:** Sofia Zank (UseFlora, Ponto-Focal), Eduardo Couto Dalcin (gestão da arquitetura), Viviane Stern da Fonseca-Kruel (JBRJ, convidada; saiu aos 93 min)
 - **Fonte:** transcrição automática pelo Tactiq (não versionada)
 - **Pauta base:** [`2026-09-29-pauta-reuniao-sofia.md`](2026-09-29-pauta-reuniao-sofia.md)
-- **Documentos do ciclo:** impactos em [`2026-09-29-impactos-reuniao-sofia.md`](2026-09-29-impactos-reuniao-sofia.md) · próxima pauta em [`proxima-pauta-reuniao-sofia.md`](proxima-pauta-reuniao-sofia.md)
+- **Documentos do ciclo:** impactos em [`2026-09-29-impactos-reuniao-sofia.md`](2026-09-29-impactos-reuniao-sofia.md) · próxima pauta, congelada sem uso em 03/10, em [`2026-10-03-retrato-pauta-formato-antigo.md`](2026-10-03-retrato-pauta-formato-antigo.md)
 
 ## Overview
 

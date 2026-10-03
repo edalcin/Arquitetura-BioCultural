@@ -6,6 +6,29 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [3.12.0] - 2026-10-03
+
+Mudança de **método**, não de modelo: nenhuma ADR, o UDM ou o contrato de harvest muda. Histórico das mudanças de método em `docs/metodo-de-evolucao.md` §5 (M-10).
+
+### Adicionado
+
+- **Governança da arquitetura por *Issues* (Cenário B de `docs/novaFaseArquitetura-analise.md`)** — cada questão aberta que depende de uma pessoa é uma *Issue* com número fixo, escrita para quem conhece o conhecimento tradicional e não é da área de sistemas, com a seção obrigatória "Para fechar esta questão". No GitHub: 11 etiquetas (quem responde: `para-ponto-focal`, `para-comunidades`, `para-gestao`; tipo: `decisao`, `informe`, `duvida`; situação: `aguarda-terceiros`; **tipo de fonte**: `fonte-primaria`, `fonte-secundaria`, `fonte-acervos`, `fonte-naturalistas`), mais `wayfinder:map`; *milestone* "Próxima reunião"; modelos `.github/ISSUE_TEMPLATE/questao.yml` e `duvida.yml`; painel fixado #6 (mapa das questões de desenho até o fechamento normativo, com sub-*issues* e bloqueios); questões #7 a #34
+- **`docs/metodo-de-evolucao.md`** — porta de entrada do método: instrumentos, governança da arquitetura em operação, transparência no uso de IA e **histórico das mudanças de método** (M-01 a M-10)
+- **`docs/ia/registro-de-prompts.md`** — registro literal, em ordem cronológica, de todo prompt executado sobre a arquitetura (P-0001 e P-0002); regra para agentes em `CLAUDE.md`
+- **`docs/reunioes/2026-10-03-retrato-pauta-formato-antigo.md`** — a pauta antiga congelada sem uso, com a correspondência item a item para as *Issues*
+- **`CONTEXT.md`** — verbetes **Reunião de Governança da Arquitetura**, **Questão** e **Tipo de Fonte**
+
+### Modificado
+
+- **`README.md`** — versão 3.12: seção "Novidade da v3.12 — A governança da arquitetura em operação", metodologia reescrita, estrutura e navegação da documentação, contribuição por *Issues*
+- **`docs/reunioes/proxima-pauta-reuniao-sofia.md`** — refeita no formato curto: até três decisões (conteúdo sagrado de artigo, sagrado e sigilo, composição da governança), informes em uma linha, perguntas às comunidades, sem códigos (cerca de 930 palavras, contra 3.212)
+- **`docs/reunioes/README.md`** — ciclo novo, com diagrama do registro da reunião aos documentos, regra "primeiro validar, depois derivar" e **Revisão das Issues** obrigatória em toda geração de impactos e de pauta
+- **`docs/reunioes/impactos-na-arquitetura.md`** — índice e um bloco de campos fixos por item; *Situação* em vocabulário fechado; destino por seção, não por linha; *Questão aberta* ligada às *Issues*
+- **`docs/reunioes/guiaContrib/README.md`** e **`docs/agents/issue-tracker.md`** — como participar pelas *Issues*; convenções de escrita, etiquetas, fechamento e mapa
+- **`docs/projetoPesquisa.md`** §7.2 (itens 7 a 9), §7.5, §8, §10, §11; **`docs/ia/uso-de-ia.md`**; **`resumoExecutivo.md`** §5 e §8; **`docs/proximosPassos.md`** (§10-quinquies; pendências de pessoas → *Issues*); **`docs/novaFaseArquitetura-analise.md`** (estado: implementado)
+
+---
+
 ## [3.11.4] - 2026-09-29
 
 ### Adicionado

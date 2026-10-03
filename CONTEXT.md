@@ -34,13 +34,23 @@ decide dentro da iniciativa. É **canal**, nunca **titular** — a resposta de u
 posição da iniciativa que o designou, e nunca substitui o consentimento da Comunidade Tradicional
 detentora sobre um registro concreto, que é coletivo e se dá registro a registro. Quem indica o
 Ponto-Focal é a iniciativa, nunca a arquitetura.
-A interlocução com o Ponto-Focal é conduzida como ciclo, e o ciclo é método de projeto: cada
-reunião gera três documentos em `docs/reunioes/` — resumo, impactos sobre os documentos de
-arquitetura e próxima pauta —, os itens de impacto são consolidados em
-`docs/reunioes/impactos-na-arquitetura.md`, e o documento de destino muda por ato próprio. É
-por esse canal que a visão de uso, impacto e benefício da arquitetura em campo chega ao desenho
-(`docs/projetoPesquisa.md` §7.2, item 7).
+A interlocução com o Ponto-Focal acontece nas Reuniões de Governança da Arquitetura; é por ela
+que a visão de uso, impacto e benefício da arquitetura em campo chega ao desenho.
 _Avoid_: Representante, Interlocutor, Mediador, Contato
+
+**Reunião de Governança da Arquitetura**:
+A forma em que a camada de arquitetura da governança opera enquanto o Comitê Federado não
+existe: a gestão da arquitetura, os Pontos-Focais e as pessoas convidadas a responder por um
+Tipo de Fonte respondem às Questões de desenho. Decide desenho, nunca o consentimento sobre um
+registro concreto. Não é o Comitê Federado: não admite membros.
+_Avoid_: Reunião com a Sofia, Reunião do Ponto-Focal, Comitê
+
+**Questão**:
+Tudo o que espera a resposta de uma pessoa da governança da arquitetura — uma decisão, um
+informe, uma pergunta às comunidades, um ato de gestão. Tem um número fixo do nascimento ao
+fechamento, e um só lugar para o seu estado. Distinta do **item de impacto**, que é o que uma
+resposta muda na arquitetura.
+_Avoid_: Pendência (para esta acepção), Item da pauta, Ticket
 
 ### Código compartilhado
 
@@ -122,6 +132,15 @@ semanticamente carregado: `comunidade_tradicional` invoca CLPI, CARE e repartiç
 benefícios; `naturalista` e `colecao` são procedência histórica e não invocam nenhum dos três.
 A estrutura é única em toda a federação; o tipo nunca é achatado.
 _Avoid_: Origem, Comunidade (só um dos tipos), Provenance, Fornecedor
+
+**Tipo de Fonte**:
+A procedência de um registro, que define o seu processo de aquisição: **fonte primária**
+(registro feito diretamente com a comunidade), **fonte secundária** (artigo científico
+publicado), **acervo** (coleção histórica ou museológica) e **obra de naturalista** (séculos XVII a
+XIX). Cada tipo tem uma Unidade Federada de referência — BioCultRelatos, BioCultDB,
+BioCultAcervos e BioCultNaturalistas — e é ortogonal ao Regime Enunciativo.
+_Avoid_: Fonte do conhecimento (Evidência não é Conhecimento), Relatos (para obras de
+naturalistas: Relato é a unidade de Conhecimento)
 
 **Comunidade Tradicional**:
 Grupo humano culturalmente diferenciado que se reconhece como tal e mantém relação própria

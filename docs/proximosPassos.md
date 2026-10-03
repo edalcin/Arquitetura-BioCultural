@@ -10,12 +10,14 @@
 > Pendência que atravessa as duas (ex.: uma decisão de arquitetura que muda um texto do projeto de pesquisa) fica registrada na parte de onde nasce, com o vínculo explícito para a outra. Nenhuma pendência mora nas duas ao mesmo tempo.
 
 > **Regras de manutenção:** ao final de cada sessão, atualizar (i) a data do estado, (ii) o estado do repositório, (iii) a seção da sessão, na parte correspondente, com o que foi feito e (iv) a §11, na sub-seção da frente correspondente, com a próxima ação. Pendência resolvida não é apagada: é marcada como decidida, com o `onde`. Caminhos citados são relativos à raiz do repositório.
+>
+> **Pendência que depende de uma pessoa vive como *Issue*** (desde 2026-10-03): uma por questão, com número fixo, no [painel #6](https://github.com/edalcin/Arquitetura-BioCultural/issues/6). Aqui fica só o link. Pendência técnica continua aqui.
 
-**Estado em:** 2026-09-19 (o ciclo de reuniões com o Ponto-Focal passa a ser procedimento declarado de pesquisa — §7.2, item 7, do `projetoPesquisa.md`; registro aqui na §10-ter)
+**Estado em:** 2026-10-03 (Cenário B implantado: governança da arquitetura por *Issues*, pauta curta, registro literal de prompts, histórico de método — registro aqui na §10-quinquies)
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras) e a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa). O que depende das comunidades tradicionais está em `docs/pautaComunidades/pauta-comunidades.md` — documento próprio, feito para sair do computador; este arquivo continua sendo o único de pendências. Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras), a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa) e a **§10-quinquies** (a sessão de 2026-10-03, que levou as questões abertas para *Issues*). O método e o histórico das suas mudanças estão em `docs/metodo-de-evolucao.md`; as questões que dependem de pessoas, no painel das *Issues* (#6). Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
-**Estado do repositório:** `main`, sincronizado com o remoto. Últimos commits: `4f29518` (log de impactos das reuniões com o Ponto-Focal), `d2db0dc` e `6d49950` (resumos de reunião). Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector).
+**Estado do repositório:** `main`, sincronizado com o remoto. Último marco: **v3.12.0** (Cenário B, 2026-10-03). Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector), **v3.11.4** (três documentos por reunião).
 
 ---
 
@@ -288,7 +290,7 @@ Consolida tudo o que a discussão abriu, em um só lugar. Itens riscados foram d
 | ① | Formato do detentor individual | Pseudônimo escolhido pela pessoa (§4). **Vai à reunião** | Esquema do Relato (Passo 4) |
 | ② | Rótulos culturais: API do Hub ou cópia local | Guardar identificador + cache do texto canônico (§4). Decisão técnica, **não vai à reunião** — mas quem tem legitimidade para aplicar rótulo em nome de todos, sim (Pauta 2) | Nada no contrato; trava só a interface |
 | ~~③~~ | ~~Extrair **K6** para ADR próprio~~ | **Decidido na v3.10.0: extraído para a ADR-016** | — |
-| ④ | `sacred` equivale a `private`? | **Reclassificada na v3.10.0: não é decisão técnica.** Virou H-Q1 da ADR-016 e **vai à reunião** (Pauta 6). Regra interina: equivale a `private` | Promoção da ADR-016 a *Aceito* |
+| ④ | `sacred` equivale a `private`? | **Reclassificada na v3.10.0: não é decisão técnica.** Virou H-Q1 da ADR-016. Respondida em parte (29/09: a existência do sagrado é publicável); o resto é a questão [#10](https://github.com/edalcin/Arquitetura-BioCultural/issues/10). Regra interina: equivale a `private` | Promoção da ADR-016 a *Aceito* |
 | ~~⑤~~ | ~~Vocabulário de `relationshipType`~~ | **Decidido na v3.10.0:** `refers to`, `same as`, `derived from`. `same as` entre Relato e exsicata estava errado e foi corrigido | — |
 | ⑥ | Vocabulário controlado de `assertionType` | Q5 da ADR-015: matéria do BioCultTermos e do Comitê, fora do escopo | Esquema do Relato |
 | ⑦ | Promoção da ADR-015 a *Aceito* | Depende de Q3–Q5 e da validação com comunidades | Tudo o que depende de ADR aceita |
@@ -300,9 +302,9 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 
 | # | Aberto | Por quê |
 |---|---|---|
-| ⑧ | **Quem autoriza a gravação de uma prática coletiva** — cada participante, ou o grupo? | Pauta 5. **Vai à reunião.** A regra adotada por ora é a mais conservadora: um pede reserva, sai tudo |
-| ⑨ | **Versão editada de gravação** após revogação de um participante | K8.3 diz que a plataforma não edita por conta própria e que a versão editada é derivado novo. Falta dizer **se** e **como** a comunidade pede isso, e quem confere o resultado. **Não foi para a pauta desta reunião** |
-| ⑩ | **Onde mora o vídeo** | K8.4 exige original em armazenamento soberano. Uma comunidade com dezenas de gravações de 60 MB tem problema real de custo e banda. **Vai à reunião** — a solução depende do que elas têm e aceitam |
+| ⑧ | **Quem autoriza a gravação de uma prática coletiva** — cada participante, ou o grupo? | Pauta 5, decidida em 16/09 (sai a pessoa, não o vídeo; I-05). Quem fala pelo grupo: questão [#29](https://github.com/edalcin/Arquitetura-BioCultural/issues/29) |
+| ⑨ | **Versão editada de gravação** após revogação de um participante | K8.3 diz que a plataforma não edita por conta própria e que a versão editada é derivado novo. Quem edita e quem confere: questão [#24](https://github.com/edalcin/Arquitetura-BioCultural/issues/24), à espera de quem responda pelas fontes primárias |
+| ⑩ | **Onde mora o vídeo** | K8.4 exige original em armazenamento soberano. Uma comunidade com dezenas de gravações de 60 MB tem problema real de custo e banda. Questão [#25](https://github.com/edalcin/Arquitetura-BioCultural/issues/25), à espera de quem responda pelas fontes primárias |
 | ⑪ | **`und` como estado transitório** | Precisa de um lugar na curadoria que liste os registros em `und` e cobre resolução; senão vira estado final por inércia. Puramente técnico, **não vai à reunião** |
 
 ### 10.4 Consistência a verificar quando houver fôlego
@@ -346,8 +348,8 @@ Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem 
 | # | Pendência | Estado | Onde se resolve |
 |---|---|---|---|
 | ⑬ | **Indicação do ponto-focal do USEFLORA** | **Resolvida** — solicitada em 18/08/2026 e atendida em 17/09/2026, por e-mail de Nivaldo, designando Sofia Zank (`docs/reunioes/2026-09-18-reuniao-sofia.md`). O canal das pautas está aberto e opera como ciclo (§10-ter) | USEFLORA (coordenação) — feito |
-| ⑭ | **Princípios mínimos que toda instância federada deve aceitar** (registro de logs, respeito a rótulos de sensibilidade, CLPI como ciclo) | Aberta. Encaminhada ao Comitê Gestor do USEFLORA, 4–6 semanas sugeridas. **Não é matéria nova:** o conteúdo tem casa em `ADR-004` D3 (admissão), `propostaGovernanca.md` §5.11 (contrato de adesão) e §8.1 item 13 (SDK de adesão) | Comitê Gestor + ponto-focal; consolidação em ADR quando houver texto |
-| ⑮ | **Proposta de governança operacional** enviada por Laura Madeira por e-mail | Aguardando recebimento; incorporar à `propostaGovernanca.md` quando chegar | Este repositório |
+| ⑭ | **Princípios mínimos que toda instância federada deve aceitar** (registro de logs, respeito a rótulos de sensibilidade, CLPI como ciclo) | Aberta, questão [#14](https://github.com/edalcin/Arquitetura-BioCultural/issues/14). Encaminhada ao Comitê Gestor do USEFLORA, 4–6 semanas sugeridas. **Não é matéria nova:** o conteúdo tem casa em `ADR-004` D3 (admissão), `propostaGovernanca.md` §5.11 (contrato de adesão) e §8.1 item 13 (SDK de adesão) | Comitê Gestor + ponto-focal; consolidação em ADR quando houver texto |
+| ⑮ | **Proposta de governança operacional** enviada por Laura Madeira por e-mail | Não esperada mais (29/09). A composição da governança da arquitetura é a questão [#11](https://github.com/edalcin/Arquitetura-BioCultural/issues/11) | Governança da arquitetura |
 | ⑯ | **Sincronização assíncrona para comunidades com baixa conectividade** (laptop/pen-drive "quando houver conexão") | Aberta, **requisito sem mecanismo**. Nota de retificação já lançada no `ADR-011`, que afirmava não haver demanda por offline. O `ADR-005` fixou um SQLite com WAL por unidade, que é *single-writer*; não se sabe se a resposta é replicação, exportação/importação por arquivo ou cópia física. ADR do mecanismo nasce quando houver alternativas a comparar | Arquitetura. Os diagramas C4 já traziam "offline-first para coleta" — a contradição era interna |
 | ⑰ | **Política de IA × dado sensível** — nenhum prompt faz trafegar por provedor externo de IA conteúdo de registro com nível efetivo diferente de `public` | **Política escrita:** `propostaGovernanca.md` §5.12, item 9. Torna verificável o item 3 daquela lista, que proíbe o treinamento mas não o envio | Auditoria dos prompts é pendência do BioCultDB (§6), que opera extração por IA em produção hoje |
 | ⑱ | **Capacitação das comunidades** para operar e curar a própria instância | Aberta. É o sub-princípio **R2** do C.A.R.E., já declarado como *gap* em `propostaGovernanca.md` §3.1, e é modalidade de repartição não monetária prevista na Lei 13.123/2015, art. 19 | Governança + agenda das iniciativas parceiras |
@@ -403,6 +405,26 @@ Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `d
 - **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os dezenove itens seguem *Não aplicado*, *Em aberto* ou *Em revisão*.
 - **A ADR-018 está liberada** (todos os itens que ela consome foram confirmados). **A ADR-019 continua bloqueada** pelas perguntas 2.1 e 2.2 da próxima pauta.
 - **A revisão humana do resumo de 29/09 está pendente** — conferência contra a transcrição e revisão de Sofia.
+
+## 10-quinquies. Sessão 2026-10-03 — Cenário B: governança da arquitetura por *Issues*
+
+Eduardo adotou o Cenário B de `docs/novaFaseArquitetura-analise.md`, antes da reunião, com as opções recomendadas da §8 e uma etiqueta por tipo de fonte. Pedido literal em `docs/ia/registro-de-prompts.md`, P-0001.
+
+### 10-quinquies.1 O que mudou, e onde
+
+| # | Onde | O que mudou |
+|---|---|---|
+| 1 | GitHub | 11 etiquetas (quem responde, tipo, situação, **tipo de fonte**) + `wayfinder:map`; *milestone* "Próxima reunião"; modelos `.github/ISSUE_TEMPLATE/questao.yml` e `duvida.yml`; mapa fixado **#6**; questões **#7 a #34** (21 delas no mapa, com bloqueios #10→#17, #12→#24 e #25, #11→#33); #5 fechada |
+| 2 | `docs/reunioes/` | Pauta antiga congelada como `2026-10-03-retrato-pauta-formato-antigo.md`, com tabela item → *Issue*; nova `proxima-pauta-reuniao-sofia.md`, curta (cerca de 930 palavras), gerada da *milestone*; `README.md` com o ciclo novo, diagrama e **Revisão das Issues** obrigatória; guia de contribuição com a seção de *Issues*; `impactos-na-arquitetura.md` em índice e blocos de campos fixos, com *Questão aberta* |
+| 3 | `docs/ia/registro-de-prompts.md` (novo); `CLAUDE.md` | Registro literal de todo prompt, como primeiro ato de cada sessão |
+| 4 | `docs/metodo-de-evolucao.md` (novo) | Mapa dos instrumentos do método e histórico das mudanças de método (M-01 a M-10) |
+| 5 | `docs/projetoPesquisa.md` §7.2 (itens 7 a 9), §7.5, §8, §10, §11; `docs/ia/uso-de-ia.md`; `CONTEXT.md` (Reunião de Governança da Arquitetura, Questão, Tipo de Fonte; Ponto-Focal); `resumoExecutivo.md` §5 e §8; `docs/agents/issue-tracker.md` | Ciclo, transparência e linguagem atualizados |
+
+### 10-quinquies.2 O que a sessão não faz
+
+- **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Mudança de método, não de modelo.
+- **Não renomeia os arquivos `-sofia`.** Espera a decisão sobre a composição da governança (#11, #12).
+- **Não responde nenhuma questão.** As questões de desenho só fecham pela resposta da governança.
 ---
 
 # §11 — Próximas ações, por frente
@@ -413,20 +435,21 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 - **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Referencias.md`.
 - **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
-- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**; o ciclo só fecha com ele. E-04 (29/09) registrado, com a anuência de Sofia; a revisão humana daquele resumo está pendente, e a anuência retroativa (16/09 e 18/09) vai à próxima pauta.
-- **Nova fase do ciclo do Ponto-Focal** — análise dos ajustes de método e de documentos em `docs/novaFaseArquitetura-analise.md` (2026-09-30): pauta curta gerada de *Issues*, validação do resumo antes dos documentos derivados, impactos em blocos de formato fixo. **Decisão na próxima reunião com Sofia** (Bloco 0 da próxima pauta); leitura pedida a Eduardo e Sofia na [Issue #5](https://github.com/edalcin/Arquitetura-BioCultural/issues/5). Se B for aprovada, seguir a §7, Fase 3, daquele relatório. Nada implementado.
+- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**, agora com o campo *Issues*; o ciclo só fecha com ele. E-04 (29/09) registrado; a revisão de Sofia foi feita (PR #4); a anuência retroativa (16/09 e 18/09) é a questão #7.
+- **Nova fase: governança da arquitetura por *Issues*** ✔ — Cenário B implantado em 2026-10-03 (§10-quinquies). Próximo: na reunião, 5 minutos de demonstração e a pergunta "funciona para você?"; depois dela, o primeiro ciclo completo no formato novo (`docs/reunioes/README.md`); depois de duas reuniões, comparar as medidas de `docs/metodo-de-evolucao.md` §5 (M-10).
+- **Registro de prompts** — todo prompt entra em `docs/ia/registro-de-prompts.md` antes do trabalho (regra em `CLAUDE.md`).
 
 ### 11.2 Parte II — Arquitetura e componentes
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
 - **Indicação do ponto-focal do USEFLORA (⑬)** ✔ — atendida em 17/09/2026 (Sofia Zank, UseFlora). O canal das sete pautas de `docs/pautaComunidades/pauta-comunidades.md` está aberto, e a interlocução já roda como ciclo (§10-ter).
-- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — dezenove itens, nenhum aplicado. Das duas ADRs propostas na §3 daquele documento, a **ADR-018** (identificação do detentor, agora com o grupo legal da Lei nº 13.123) pode ser escrita; a **ADR-019** (sagrado como dimensão) espera as perguntas 2.1 e 2.2 de `docs/reunioes/proxima-pauta-reuniao-sofia.md`. A ADR-018 destrava a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
+- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — dezenove itens, nenhum aplicado. Das duas ADRs propostas na §3 daquele documento, a **ADR-018** (identificação do detentor, agora com o grupo legal da Lei nº 13.123) pode ser escrita; a **ADR-019** (sagrado como dimensão) espera as questões #9 (conteúdo sagrado de artigo) e #10 (sagrado e sigilo). A ADR-018 destrava a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
 - **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
-- **Depois da reunião:** ① (nomeação), ④ (sagrado → fecha a ADR-016), ⑧ (autorização de gravação coletiva) e ⑩ (onde mora o vídeo).
+- **Questões com as pessoas:** no painel #6 — inclusive ④ (#10), ⑧ (#29), ⑨ (#24) e ⑩ (#25).
 - **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto ponta a ponta)** continua travado pelo esquema do Relato e pela agenda do estudo de caso do BioCultRelatos.
-- **Encaminhar as pendências novas da §10-bis.3:** ⑭ princípios mínimos da federação (ao Comitê Gestor, com o conteúdo que já existe em `ADR-004` D3 e `propostaGovernanca.md` §5.11/§8.1-13), ⑮ receber e incorporar a proposta de governança de Laura Madeira, ⑯ requisito de sincronização assíncrona (sem mecanismo definido), ⑰ auditoria dos prompts no BioCultDB contra a política nova de `propostaGovernanca.md` §5.12-9, ⑱ capacitação como repartição não monetária.
+- **Encaminhar as pendências novas da §10-bis.3:** ⑭ princípios mínimos da federação (questão #14), ⑮ composição da governança (questão #11), ⑯ requisito de sincronização assíncrona (sem mecanismo definido), ⑰ auditoria dos prompts no BioCultDB contra a política nova de `propostaGovernanca.md` §5.12-9, ⑱ capacitação como repartição não monetária.
 - **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
 - **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.
 - **Grafo de atores nacionais concluído** — `docs/iniciativas/atoresNacionais.md` mapeia beneficiários e provedores de dados (diretos e indiretos) ligados à arquitetura, a partir das quatro iniciativas documentadas e de pesquisa externa sobre o panorama nacional de dados de CTA (CGEN, FUNAI/SII, MPF/Territórios Tradicionais, ISA). Sem pendência aberta.

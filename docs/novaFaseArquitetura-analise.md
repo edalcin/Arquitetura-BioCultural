@@ -8,8 +8,12 @@
   29/09; `README.md`; guia de contribuição); [`ia/uso-de-ia.md`](ia/uso-de-ia.md);
   [`projetoPesquisa.md`](projetoPesquisa.md) §7.2; [`proximosPassos.md`](proximosPassos.md); o estado do
   repositório no GitHub (Issue #3; *pull requests* #1, #2 e #4 — este incorporado em 30/09, `c2d7884`).
-- **Estado:** proposta para análise. **Nada foi implementado.** Nenhum documento de reunião, *label*,
-  *template*, *milestone* ou *Issue* foi criado ou alterado.
+- **Estado:** **implementado (Cenário B) em 2026-10-03**, por decisão de Eduardo, antes da reunião,
+  com as opções recomendadas da §8 e uma etiqueta por tipo de fonte. Os desvios em relação a este
+  relatório estão em [`metodo-de-evolucao.md`](metodo-de-evolucao.md) §5 (M-10). O texto abaixo é o
+  relatório como foi escrito em 30/09; só os *links* para a pauta antiga e o plano da §7 foram
+  atualizados. A pauta antiga ficou como
+  [retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md).
 
 > **Como ler.** A §1 dá a resposta curta. A §2 mostra o que os documentos provam, com números. A §3
 > fixa os princípios. A §4 compara três alternativas. A §5 detalha a recomendada, documento por
@@ -55,7 +59,7 @@ traz mitigação explícita.
 |---|---|---|---|
 | [Preparação da reunião de 16/09](pautaComunidades/preparacao-reuniao-2026-09-16.md) | 99 | 1.117 | 5 / 3 |
 | [Pauta de 29/09](reunioes/2026-09-29-pauta-reuniao-sofia.md) | 190 | 2.121 | 67 / 43 |
-| [Próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md) | 286 | 3.212 | 91 / 50 |
+| [Próxima pauta, hoje retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md) | 286 | 3.212 | 91 / 50 |
 
 *Códigos contados:* `I-xx`, `ADR-0xx`, `Kn`, `①`…`⑳`, `Pn qn`, `d. n`, `§n`. *Método:* expressão
 regular sobre os três arquivos, em 2026-09-30.
@@ -92,7 +96,7 @@ identificador diferente em cada documento:
 | [Estado consolidado dos impactos](reunioes/impactos-na-arquitetura.md) | `I-04` |
 | [Pauta de 29/09](reunioes/2026-09-29-pauta-reuniao-sofia.md) | pergunta 3.2 |
 | [Resumo de 29/09](reunioes/2026-09-29-reuniao-sofia.md) | decisão 4 |
-| [Próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md) | item 2.1 |
+| [Próxima pauta, hoje retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md) | item 2.1 |
 
 A pergunta vizinha (*sagrado equivale a privado?*) tem mais três: `④` em `proximosPassos.md`,
 `H-Q1` na ADR-016 e `I-03` no estado consolidado.
@@ -559,8 +563,8 @@ pouco agora e mais depois. A decisão depende do nome do fórum (§8, item 4).
 
 ### Fase 1 — Antes da próxima reunião
 
-A proposta é decidida **na** reunião (Bloco 0 da [próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md)).
-Antes dela, nada se implementa.
+A proposta seria decidida **na** reunião (Bloco 0 da pauta antiga, hoje
+[retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md)). Eduardo decidiu antes, em 03/10.
 
 - [x] Mandar a Sofia o *link* deste documento, com a indicação das seções mais úteis para ela: §1,
       §2.3, Apêndice C — feito pela [Issue #5](https://github.com/edalcin/Arquitetura-BioCultural/issues/5)
@@ -568,36 +572,45 @@ Antes dela, nada se implementa.
 
 ### Fase 2 — Na próxima reunião
 
-- [ ] Escolher A, B ou C, ou validar B com ajustes, e as decisões da §8 que Sofia quiser opinar.
+- [x] Escolher A, B ou C — **B**, escolhido por Eduardo em 03/10/2026, com as opções recomendadas da
+      §8. A opinião de Sofia entra na abertura da próxima reunião; a §8, item 2, virou a
+      [questão #8](https://github.com/edalcin/Arquitetura-BioCultural/issues/8).
 
 ### Fase 3 — Logo depois da aprovação (uma sessão de trabalho)
 
 Se B for aprovado, a pauta atual é a **última no formato antigo** e muda de papel: deixa de ser a
 lista de pendências e fica como retrato congelado.
 
-- [ ] Criar os sete *labels* (§5.2).
-- [ ] Criar dois *templates*: `.github/ISSUE_TEMPLATE/questao.yml` (Apêndice B) e `duvida.yml`.
-- [ ] Converter em *Issues* tudo o que a pauta atual não resolveu: a lista do Apêndice A, menos o
-      que a reunião fechar, mais o que ela abrir. As tabelas de rastreio (Estado de partida,
-      Retrospecto, Rastreio da pauta das comunidades) não são copiadas para nenhum lugar: cada linha
-      aberta vira uma *Issue*, e as fechadas ficam no retrato.
-- [ ] Criar a *milestone* da reunião seguinte e fechar a *Issue* #3, com *link* para as novas.
-- [ ] Gerar a primeira pauta curta a partir da *milestone*.
-- [ ] Atualizar [`reunioes/README.md`](reunioes/README.md), o
+- [x] Criar os sete *labels* (§5.2) — mais quatro de **tipo de fonte** (`fonte-primaria`,
+      `fonte-secundaria`, `fonte-acervos`, `fonte-naturalistas`) e `wayfinder:map`.
+- [x] Criar dois *templates*: `.github/ISSUE_TEMPLATE/questao.yml` (Apêndice B, com o campo
+      "Para fechar esta questão") e `duvida.yml`.
+- [x] Converter em *Issues* tudo o que a pauta atual não resolveu: questões
+      [#7 a #34](https://github.com/edalcin/Arquitetura-BioCultural/issues); correspondência item a
+      item no [retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md). Painel:
+      [#6](https://github.com/edalcin/Arquitetura-BioCultural/issues/6).
+- [x] Criar a *milestone* da reunião seguinte
+      ([Próxima reunião](https://github.com/edalcin/Arquitetura-BioCultural/milestone/1)). A *Issue*
+      #3 já estava fechada (teste); a #5 foi fechada com a decisão.
+- [x] Gerar a primeira pauta curta a partir da *milestone*
+      ([`reunioes/proxima-pauta-reuniao-sofia.md`](reunioes/proxima-pauta-reuniao-sofia.md)).
+- [x] Atualizar [`reunioes/README.md`](reunioes/README.md), o
       [guia de contribuição](reunioes/guiaContrib/README.md) (seção de *Issues*) e
       [`agents/issue-tracker.md`](agents/issue-tracker.md).
-- [ ] Mandar a Sofia uma mensagem curta com três *links*: a pauta, a *milestone* e uma *Issue*.
+- [ ] Mandar a Sofia uma mensagem curta com três *links*: a pauta, a *milestone* e uma *Issue*. O mapa
+      (#6) menciona `@sofiazank`, e o GitHub a avisa; a mensagem pessoal fica com Eduardo.
 
 ### Fase 4 — Na reunião seguinte e depois dela
 
 - [ ] Dez minutos: mostrar a *milestone* e uma *Issue*. Perguntar: "O novo formato funciona para
       você?"
 - [ ] Primeiro resumo com a seção "Da pauta" e as decisões ligadas às *Issues*.
-- [ ] Reestruturar [`reunioes/impactos-na-arquitetura.md`](reunioes/impactos-na-arquitetura.md) em
-      índice e blocos (§5.5).
-- [ ] Atualizar os documentos que descrevem o ciclo: `projetoPesquisa.md` §7.2, itens 7 e 8;
-      `CONTEXT.md`, verbete **Ponto-Focal**; `resumoExecutivo.md` §5; `ia/uso-de-ia.md` §1 (diagrama e
-      campos do episódio); `proximosPassos.md` (pendências de pessoas → *Issues*).
+- [x] Reestruturar [`reunioes/impactos-na-arquitetura.md`](reunioes/impactos-na-arquitetura.md) em
+      índice e blocos (§5.5) — feito em 03/10, antes da reunião.
+- [x] Atualizar os documentos que descrevem o ciclo: `projetoPesquisa.md` §7.2, itens 7 a 9;
+      `CONTEXT.md` (Ponto-Focal, Reunião de Governança da Arquitetura, Questão, Tipo de Fonte);
+      `resumoExecutivo.md` §5; `ia/uso-de-ia.md` §1 (diagrama e campos do episódio);
+      `proximosPassos.md` (pendências de pessoas → *Issues*) — feito em 03/10.
 
 ### Fase 5 — Depois de duas reuniões no formato novo
 
@@ -657,7 +670,7 @@ arquitetura, e não está constituído (`propostaGovernanca.md` §2).
 
 ## Apêndice A — *Issues* iniciais (propostas, não criadas)
 
-Tiradas da [próxima pauta](reunioes/proxima-pauta-reuniao-sofia.md), do
+Tiradas da pauta antiga (hoje [retrato](reunioes/2026-10-03-retrato-pauta-formato-antigo.md)), do
 [resumo de 29/09](reunioes/2026-09-29-reuniao-sofia.md) e de [`proximosPassos.md`](proximosPassos.md). A
 coluna "Liga-se a" usa códigos porque é para a IA e para Eduardo; o título, que Sofia lê, não usa.
 

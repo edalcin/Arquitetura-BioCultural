@@ -1,0 +1,66 @@
+name: Questão para a governança da arquitetura
+description: Uma pergunta que espera a resposta de uma pessoa — decisão, informe ou pergunta às comunidades.
+title: "Pergunta em português simples, sem códigos"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Repositório público.** Fale do desenho (que campo, que regra, que opção), nunca de um
+        > registro concreto de uma comunidade: nada de conhecimento tradicional, nome de detentor,
+        > local sensível ou dado pessoal.
+
+        Escreva para quem conhece profundamente o conhecimento tradicional, mas não é da área de
+        sistemas. Uma questão por *Issue*.
+  - type: textarea
+    id: em-jogo
+    attributes:
+      label: O que está em jogo
+      description: Duas a quatro frases, em palavras simples. Por que esta pergunta importa?
+    validations:
+      required: true
+  - type: textarea
+    id: hoje
+    attributes:
+      label: O que a arquitetura faz hoje
+      description: A regra de hoje, dita em palavras (sem códigos).
+    validations:
+      required: true
+  - type: textarea
+    id: opcoes
+    attributes:
+      label: Opções
+      description: O que acontece em cada opção, a favor e contra. Para um informe, escreva "não se aplica".
+      value: |
+        | | Opção A | Opção B |
+        |---|---|---|
+        | O que acontece | | |
+        | A favor | | |
+        | Contra | | |
+    validations:
+      required: true
+  - type: textarea
+    id: pergunta
+    attributes:
+      label: Pergunta
+      description: Uma frase.
+    validations:
+      required: true
+  - type: textarea
+    id: fechar
+    attributes:
+      label: Para fechar esta questão
+      description: O que precisa acontecer para a questão fechar — que resposta, de quem, e onde ela entra (reunião ou comentário aqui).
+    validations:
+      required: true
+  - type: textarea
+    id: origem
+    attributes:
+      label: Origem
+      description: De onde veio esta questão, com link (resumo e decisão, pauta e item, ou comentário).
+    validations:
+      required: true
+  - type: textarea
+    id: liga-se
+    attributes:
+      label: Liga-se a (para a equipe técnica)
+      description: Itens de impacto e documentos técnicos. É o único lugar da Issue com códigos.

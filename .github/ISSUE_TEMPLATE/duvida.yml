@@ -1,0 +1,23 @@
+name: Dúvida
+description: Não entendi um documento, uma questão ou uma pauta.
+title: "Dúvida: "
+labels: ["duvida"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Repositório público.** Nunca escreva conhecimento tradicional de uma comunidade, nome de
+        > detentor, local sensível ou dado pessoal. Não há pergunta boba.
+  - type: textarea
+    id: sobre
+    attributes:
+      label: Sobre qual documento ou questão?
+      description: Cole o link do documento ou o número da questão (ex. #12).
+    validations:
+      required: true
+  - type: textarea
+    id: duvida
+    attributes:
+      label: Qual é a dúvida?
+    validations:
+      required: true
