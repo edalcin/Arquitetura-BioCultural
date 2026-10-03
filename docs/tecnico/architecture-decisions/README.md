@@ -1,0 +1,388 @@
+# Architecture Decision Records (ADRs)
+
+## Sobre ADRs
+
+Architecture Decision Records (ADRs) são documentos que capturam decisões arquiteturais importantes tomadas durante o desenvolvimento do sistema, incluindo o contexto, alternativas consideradas, decisão tomada e consequências.
+
+## Por que documentar decisões?
+
+1. **Transparência**: Entender o "porquê" por trás das escolhas técnicas
+2. **Onboarding**: Novos membros do time podem entender rapidamente o contexto
+3. **Revisão**: Facilita revisitar decisões quando o contexto muda
+4. **Aprendizado**: Documentar o que funcionou e o que não funcionou
+
+## Status dos ADRs
+
+- **Proposto**: Decisão ainda em discussão
+- **Aceito**: Decisão aprovada e sendo implementada
+- **Implementado**: Decisão já em produção
+- **Depreciado**: Decisão substituída por outra
+- **Rejeitado**: Proposta não aceita
+
+## Lista de ADRs
+
+### ADR-001: Abordagem de Armazenamento de Dados
+**Status:** Depreciado — substituído por ADR-005
+**Data:** Janeiro 2025
+
+Decisão sobre qual abordagem de armazenamento utilizar para dados de conhecimento tradicional. Avalia bancos SQL, orientados a documentos (JSON) e multi-modais, considerando flexibilidade de schema, escalabilidade e complexidade dos dados.
+
+**Decisão:** Arquitetura orientada a documentos (JSON) como solução principal, com avaliação futura de abordagens multi-modais.
+
+**[Leia o documento completo →](ADR-001-database-selection.md)**
+
+---
+
+### ADR-002: Padrões de API e Integração
+**Status:** Proposto
+**Data:** Janeiro 2025
+
+Define os padrões de APIs para os três contextos do sistema (Aquisição, Curadoria, Apresentação). Avalia REST vs GraphQL, estratégias de autenticação, versionamento e documentação.
+
+**Decisão:** Abordagem híbrida - REST para contextos internos, GraphQL para API pública.
+
+**[Leia o documento completo →](ADR-002-api-standards.md)**
+
+---
+
+### ADR-003: Modelo de Dados para Conhecimento Tradicional
+**Status:** Proposto
+**Data:** Janeiro 2025
+
+Especifica a estrutura de dados para armazenar conhecimento tradicional associado à biodiversidade. Considera diversidade cultural, flexibilidade, interoperabilidade com Darwin Core e proteção de dados sensíveis.
+
+**Decisão:** Modelo híbrido com estrutura core padronizada e extensões flexíveis.
+
+### ADR-004: Arquitetura Federada v3.0
+**Status:** Aceito
+**Data:** Junho 2026
+
+Redefine a arquitetura como explicitamente federada. Cada entidade (iniciativa de fontes secundárias ou comunidade tradicional) é soberana na gestão de seus próprios dados. Documenta 7 decisões: modelo de acesso por harvest REST, BioCultTermos por membro com mapeamento SKOS no Pluriverso, governança por comitê federado, remoção imediata ao sair, MongoDB pertence à Iniciativa #1, protocolo de publicação REST paginado, BioCultPapers exclusivo de fontes secundárias.
+
+**Decisão:** Arquitetura federada com Pluriverso como middleware de federação.
+
+**[Leia o documento completo →](ADR-004-federated-architecture.md)**
+
+
+### ADR-005: Persistência SQLite com JSON por Unidade Federada (v3.1)
+**Status:** Aceito
+**Data:** Julho 2026
+
+Substitui a persistência MongoDB por membro (ADR-001, D5 do ADR-004) por SQLite com JSON (JSON1) — um arquivo por unidade federada, compartilhado pelas ferramentas da unidade em tabelas distintas, um container por unidade, WAL, FTS5 para busca textual, BioCultPapers entregando por arquivo (export/import).
+
+**Decisão:** SQLite com JSON como persistência embutida de cada unidade federada, superando ADR-001 e a decisão D5 do ADR-004.
+
+**[Leia o documento completo →](ADR-005-sqlite-json-persistence.md)**
+
+---
+
+### ADR-006: Protocolo de Inscrição na Federação
+**Status:** Aceito
+**Data:** Julho 2026
+
+Complementa D3/D6 do ADR-004: define o protocolo self-service com fila de aprovação do Comitê Federado pelo qual uma instância nova (qualquer um dos quatro tipos de membro da v3.2) solicita entrada na federação — cadastro via URL-BASE, verificação técnica automática (anti-SSRF) como sinal não-bloqueante, e decisão humana obrigatória do Comitê.
+
+**Decisão:** Inscrição self-service com fila de aprovação do Comitê Federado; nenhuma admissão automática.
+
+**[Leia o documento completo →](ADR-006-federation-membership-protocol.md)**
+
+---
+
+### ADR-007: Distribuição do Módulo BioCultTermos via Git Submodule Compartilhado
+**Status:** Aceito
+**Data:** Julho 2026
+
+Formaliza, ao nível arquitetural, o padrão já implementado (BioCultDB) e planejado (BioCultRelatos) de distribuir o código do BioCultTermos como git submodule compartilhado pelas quatro unidades federadas — um único repositório, consumido independentemente por cada unidade, "congelado como produto" standalone. Esclarece que soberania (D2 do ADR-004) é sobre dados, nunca sobre código: o módulo é intencionalmente compartilhado, cada unidade mantém seu próprio arquivo SQLite/ConceptScheme.
+
+**Decisão:** Repositório único consumido via git submodule por todas as unidades; propagação de mudanças via bump do ponteiro do submodule, não automática nem hierárquica.
+
+**[Leia o documento completo →](ADR-007-shared-bioculttermos-module.md)**
+
+### ADR-008: Engine de Banco de Dados do Pluriverso
+**Status:** Aceito
+**Data:** Julho 2026
+
+Consolida e detalha a engine SQLite (JSON1 + FTS5, WAL, `better-sqlite3`) embutida no container do
+Pluriverso, com arquivo único externo via `SQLITE_DB_PATH`. Especializa o ADR-005 (DA7) com análise dedicada
+ao workload de agregador do Pluriverso e é pré-requisito de infraestrutura do ADR-009.
+
+**Decisão:** SQLite embutida (JSON1 + FTS5, WAL) via `better-sqlite3`, arquivo único portável em volume
+externo (`SQLITE_DB_PATH`).
+
+**[Leia o documento completo →](ADR-008-pluriverso-database-engine.md)**
+
+---
+
+### ADR-009: Topologia Multi-Instância do Pluriverso
+**Status:** Aceito
+**Data:** Julho 2026
+
+O Pluriverso passa a ser componente instanciável (múltiplas instâncias soberanas: global +
+privadas/escopadas), cada uma com seu próprio container + arquivo SQLite; membership e `member_id`
+escopados por instância; harvest público agora e `restricted` autenticado como extensão futura.
+
+**Decisão:** Pluriverso instanciável em múltiplos escopos, sem hierarquia entre instâncias; cada instância
+autocontida e soberana sobre sua própria federação.
+
+**[Leia o documento completo →](ADR-009-pluriverso-multi-instance-topology.md)**
+
+---
+
+### ADR-010: Documentação Central e Verificação de Build para Mudanças no BioCultTermos
+**Status:** Aceito
+**Data:** Julho 2026
+
+Fecha duas lacunas do ADR-007 expostas na primeira operação real em produção: (1) nenhum lugar central
+registrava mudanças de código do BioCultTermos por unidade de origem, (2) nada garantia que a própria
+unidade que originou uma mudança a refletisse no seu build (bug real: submodule desatualizado copiado
+silenciosamente para a imagem do BioCultDB, container em crash-loop mascarado por `restart:
+unless-stopped`). Não altera a propagação opcional/não-automática entre unidades do ADR-007 F3.
+
+**Decisão:** Push ao remoto + `BioCultTermos/CHANGELOG.md` obrigatórios; bump entre unidades continua
+opcional; cada unidade hospedeira valida o SHA do submodule e carimba `BUILD_INFO` antes de buildar
+(referência: `BioCultDB/docker/build-unidade.sh`); `CLAUDE.md` de cada unidade aponta para o fluxo.
+
+**[Leia o documento completo →](ADR-010-central-documentation-and-build-verification.md)**
+
+---
+
+### ADR-011: Absorção do BioCultPapers pelo BioCultDB
+**Status:** Aceito
+**Data:** Agosto 2026
+
+O BioCultPapers deixa de ser componente do ecossistema arquitetural: sua funcionalidade de extração de
+dados por IA a partir de artigos científicos passa a ser **Extração por IA**, funcionalidade nativa do
+BioCultDB no contexto de Aquisição, acessível pelo navegador — o PDF nunca sai do navegador do usuário, o
+texto extraído vai ao provedor de IA, e o resultado vira uma Evidência pendente que entra na Curadoria
+como qualquer outra. Supersede o D7 do ADR-004 e os pontos DA1 e DA6 do ADR-005; registra a premissa
+corrigida de que o BioCultPapers já não usava MongoDB no momento da absorção (havia migrado para SQLite
+pelo próprio ADR-005) — o ganho real foi eliminar a entrega por arquivo entre as duas aplicações, não
+trocar de banco de dados.
+
+**Decisão:** BioCultPapers deixa de existir como componente separado da arquitetura; repositório
+congelado; Extração por IA passa a ser funcionalidade do BioCultDB.
+
+**[Leia o documento completo →](ADR-011-absorcao-biocultpapers.md)**
+
+---
+
+### ADR-012: Manutenção do Código do BioCultTermos — Cópia de Trabalho Única por Unidade e Propagação Obrigatória
+**Status:** Aceito
+**Data:** Agosto 2026
+
+Fecha três lacunas do ADR-007/ADR-010 expostas por um sintoma medido: um clone standalone do
+BioCultTermos sobrevivendo fora de qualquer Unidade Hospedeira, sete commits atrás do remoto e com
+trabalho não publicado preso dentro dele. As lacunas: (1) nada dizia onde se edita — o clone não violava
+regra alguma porque não havia regra; (2) a rede de proteção nativa do git (`push.recurseSubmodules`,
+`submodule.recurse`, `status.submoduleSummary`, `branch` no `.gitmodules`) estava inteiramente desligada;
+(3) o bump entre unidades era declarado *opcional* pelo ADR-007 F3 e pelo ADR-010, contradizendo o
+princípio de que toda correção deve propagar, e sem nenhuma forma de medir o atraso. Define ainda a
+**Fonte de Atribuição** `{tipo, nome}` como a generalização correta do `AcquisitionService` — estrutura
+única, com a distinção entre Comunidade Tradicional e procedência histórica preservada no dado em vez de
+achatada.
+
+**Decisão:** uma Cópia de Trabalho por Unidade Hospedeira e nenhuma fora delas; edição na unidade que
+motivou a mudança; rede de proteção nativa do git obrigatória; adoção de novas versões **obrigatória e
+assíncrona** com Atraso de Módulo visível (`docs/tecnico/bin/termos-status.ps1`). Supersede parcialmente o ADR-007 F3
+e o ADR-010 na cláusula de bump opcional; ratifica ADR-007 F1, F2, F4 e F6.
+
+**[Leia o documento completo →](ADR-012-manutencao-codigo-bioculttermos.md)**
+
+---
+
+### ADR-013: Identidade Visual Compartilhada via Preset Tailwind no Módulo Compartilhado
+**Status:** Aceito
+**Data:** Agosto 2026
+
+A identidade visual é exigida como idêntica em todas as unidades federadas (`CLAUDE.md` de cada uma,
+`constitution.md` §III) e não era garantida por nada — com apenas duas ferramentas implementadas já
+havia divergido em três pontos: paleta `forest` 50–900 no BioCultDB contra 50–950 no BioCultTermos,
+`.btn` `px-4 py-2` contra `px-6 py-3`, e layout EJS centralizado contra replicado por contexto. Criar
+a home page das três unidades novas por cópia produziria cinco `tailwind.config.js` e cinco blocos
+`@layer components`: o problema do ADR-012 deslocado para a camada de apresentação. A decisão usa
+`presets`, recurso nativo do Tailwind, com os tokens dentro do Módulo Compartilhado que as quatro
+unidades já carregam — sem repositório novo, sem registry, propagando pelo mecanismo do ADR-012.
+Escopo deliberado: token sim, markup não; o layout EJS continua por unidade.
+
+**Decisão:** `tailwind.preset.cjs` e `frontend/src/styles/biocult-base.css` no repositório
+BioCultTermos como fonte única dos tokens; toda unidade consome via `presets` e `@import`, nenhuma
+redefine. Migração do BioCultDB e do próprio BioCultTermos é trabalho separado — os arquivos são
+aditivos e não mudam nada do que está em produção.
+
+**[Leia o documento completo →](ADR-013-identidade-visual-compartilhada.md)**
+
+
+### ADR-014: Nomenclatura Científica Fora do Escopo do Vocabulário Controlado
+**Status:** Aceito
+**Data:** Agosto 2026
+
+Nomenclatura biológica científica sai do escopo do vocabulário controlado do BioCultTermos em todas
+as unidades: sua autoridade é externa e já constituída (ICN, ICZN, WFO, IPNI, POWO, GBIF), e não há
+decisão de curadoria legítima a tomar sobre ela. O nome científico permanece dado de primeira classe
+de cada Unidade Hospedeira; a ponte com o nome tradicional passa a ser associação no dado, nunca
+conceito espelho. Retifica o ADR-012 G5 e especializa o ADR-007 F5.
+
+**Decisão:** nenhuma Unidade Hospedeira declara caminho de nome científico como campo monitorado do
+`AcquisitionService`; os conceitos SKOS-XL de nome científico são removidos do `etnotermos` (rótulos,
+relações e a opção "Nomes Científicos de Plantas" saem do pulldown Admin) — o `biocultdb_records`
+(dado de origem) permanece intocado.
+
+**[Leia o documento completo →](ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md)**
+
+---
+
+### ADR-015: Regime Enunciativo e os Três Níveis de Rotulagem de Acesso
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Responde à pendência de vocabulário de arquitetura registrada no `docs/tecnico/CHANGELOG.md` (v3.5.0, "Contexto da
+Versão") e descobre que ela
+não era de vocabulário: BioCultDB e BioCultRelatos não usam termos diferentes para o mesmo conceito,
+guardam conceitos diferentes com o mesmo termo. Acrescenta à arquitetura um segundo eixo, ortogonal ao
+da procedência: o **Regime Enunciativo** — `conhecimento` (a relação com a biodiversidade enunciada por
+quem a detém, em primeira pessoa, presa a um ato de enunciação) ou `evidencia` (a atestação por um
+terceiro de que essa relação existe, em terceira pessoa, presa a um artefato). A distinção é deôntica,
+não epistêmica: ela decide **quem pode classificar o acesso**, e portanto se cabe um TK/BC Label
+(comunidade) ou apenas um Notice (instituição). Sintoma que a originou: o registro em primeira pessoa —
+enunciado por quem detém o conhecimento, em língua originária, junto ao referente físico — não tem onde
+existir no modelo de dados (`ADR-003:337-338` — `media: []`, "(futuro)").
+
+**Decisão:** K1 regime é campo do registro, nunca propriedade do provedor, decidido por um teste de
+quatro perguntas; K2 a unidade de Conhecimento é o **Relato** (detentor + ato de enunciação +
+mídia-fonte + classificação), mapeado para `dwc:Assertion`, e vivendo sempre na unidade da comunidade
+detentora — nunca na de quem custodia o objeto de que ele fala; K3 três níveis de rotulagem — Termo,
+Relato, Registro — com **nível efetivo pelo mais restritivo** e sem herança descendente; K4 Label
+sobre Conhecimento, Notice sobre Evidência; K5 língua em ISO 639-3 obrigatória, tradução como entidade
+derivada; K6 o harvest passa a carregar nível efetivo e supressão declarada
+(`dwc:informationWithheld`, `dwc:dataGeneralizations`) — **supersede o contrato de payload do
+ADR-004 D6**; K7 Relato nasce `restricted`, Termo herda o padrão do vocabulário. Três questões
+permanecem explicitamente abertas antes da promoção a *Aceito*.
+
+**[Leia o documento completo →](ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)**
+
+---
+
+### ADR-016: Contrato de Harvest da Federação
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Extraído do ponto K6 da ADR-015 para poder ser aceito sozinho. O payload do harvest passa a carregar
+`regime`, nível efetivo de acesso, supressão declarada (`dwc:informationWithheld`,
+`dwc:dataGeneralizations`), rótulos culturais por identificador e vínculos entre registros de membros
+distintos (`relatedResources`). A redação acontece na fronteira da API — o campo restrito é gravado
+normalmente e filtrado na saída. Supersede o contrato de payload do ADR-004 D6.
+
+**Decisão:** payload com nível efetivo e supressão declarada; especificação normativa campo a campo em
+[`docs/tecnico/contrato-harvest.md`](../contrato-harvest.md).
+
+**[Leia o documento completo →](ADR-016-contrato-de-harvest.md)**
+
+---
+
+### ADR-017: Composição Multi-Espécie de Usos, Preparos e Artefatos
+**Status:** Proposto
+**Data:** Agosto 2026
+
+Registra a demanda de que toda unidade federada e o Pluriverso suportem usos, preparos e artefatos
+compostos por **mais de uma planta** — o caso do Daime (Santo Daime): *Banisteriopsis caapi*
+(jagube/cipó/mariri) + *Psychotria viridis* (rainha/chacrona/folha), em que o uso, o nome e o próprio
+efeito só existem na combinação. O padrão recorre em garrafadas, defumações, curares e artefatos
+multi-material. Define os requisitos R1–R7: composição como entidade referenciando 1..n plantas, papel
+de cada componente (vocabulário SKOS-XL), nome próprio do composto, classificação de acesso sobre a
+composição (a receita pode ser `sacred` com componentes `public`), compatibilidade retroativa,
+travessia no harvest e Relato multi-planta (generaliza o K2 do ADR-015).
+
+**Decisão:** extensão aditiva — entidade de composição referenciando plantas por identificador estável;
+unidades ainda sem código absorvem como restrição de projeto.
+
+**[Leia o documento completo →](ADR-017-composicao-multiespecie.md)**
+
+---
+
+
+## Template para Novos ADRs
+
+Ao criar um novo ADR, utilize o seguinte template:
+
+```markdown
+# ADR-XXX: [Título da Decisão]
+
+## Status
+[Proposto | Aceito | Implementado | Depreciado | Rejeitado]
+
+## Contexto
+[Descrever o problema ou situação que requer uma decisão]
+
+## Requisitos
+### Funcionais
+- [Requisito 1]
+- [Requisito 2]
+
+### Não-Funcionais
+- [Requisito 1]
+- [Requisito 2]
+
+## Opções Consideradas
+### Opção 1: [Nome]
+**Prós:**
+- [Pro 1]
+
+**Contras:**
+- [Contra 1]
+
+### Opção 2: [Nome]
+...
+
+## Decisão
+[Descrever a decisão tomada e justificativa]
+
+## Consequências
+### Positivas
+- [Consequência positiva 1]
+
+### Negativas
+- [Consequência negativa 1]
+
+### Mitigações
+- [Como mitigar negativos]
+
+## Referências
+- [Referência 1]
+
+## Data de Revisão
+[Quando revisitar esta decisão]
+```
+
+## Como Contribuir
+
+1. **Propor novo ADR**: Crie um arquivo `ADR-XXX-titulo.md` com status "Proposto"
+2. **Discussão**: Abra uma issue no GitHub para discussão
+3. **Aprovação**: Após consenso, mude status para "Aceito"
+4. **Implementação**: Atualize para "Implementado" quando em produção
+5. **Revisão**: Revisite periodicamente conforme definido no ADR
+
+## Convenções
+
+- **Numeração**: Sequencial (ADR-001, ADR-002, ...)
+- **Nome do arquivo**: `ADR-XXX-titulo-kebab-case.md`
+- **Imutabilidade**: ADRs não devem ser editados após aceitos (criar novo ADR se mudança necessária)
+- **Links**: Referenciar outros ADRs quando relevante
+
+## Histórico de Mudanças
+
+| 2026-06-23 | ADR-004 | Arquitetura federada v3.0 |
+| 2026-07-11 | ADR-005 | Persistência SQLite com JSON (v3.1) |
+| 2026-07-19 | ADR-006 | Protocolo de inscrição na federação (v3.2) |
+| 2026-07-19 | ADR-007 | Distribuição do módulo BioCultTermos via submodule compartilhado |
+| 2026-07-20 | ADR-008 | Engine de banco de dados do Pluriverso (SQLite embutida) |
+| 2026-07-20 | ADR-009 | Topologia multi-instância do Pluriverso |
+| 2026-07-22 | ADR-010 | Documentação central e verificação de build para mudanças no BioCultTermos |
+| 2026-08-02 | ADR-011 | Absorção do BioCultPapers pelo BioCultDB (Extração por IA no contexto de Aquisição) |
+| 2026-08-09 | ADR-012 | Manutenção do código do BioCultTermos: Cópia de Trabalho única por unidade, rede de proteção nativa do git e propagação obrigatória |
+| 2026-08-09 | ADR-013 | Identidade visual compartilhada via preset Tailwind no Módulo Compartilhado |
+| 2026-08-10 | ADR-014 | Nomenclatura científica fora do escopo do vocabulário controlado |
+| 2026-08-13 | ADR-015 | Regime enunciativo (Conhecimento × Evidência) e os três níveis de rotulagem de acesso |
+
+---
+
+**Última atualização:** Agosto 2026

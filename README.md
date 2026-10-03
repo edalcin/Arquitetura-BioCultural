@@ -4,8 +4,8 @@
 biodiversidade, com a comunidade no controle.**
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21738427-blue)](https://doi.org/10.5281/zenodo.21738427)
-[![Versão](https://img.shields.io/badge/Versão-4.0.0-green)](docs/CHANGELOG.md)
-[![Governança da arquitetura](https://img.shields.io/badge/Governança%20da%20arquitetura-em%20operação-2E7D32)](Governanca/README.md)
+[![Versão](https://img.shields.io/badge/Versão-4.0.0-green)](docs/tecnico/CHANGELOG.md)
+[![Governança da arquitetura](https://img.shields.io/badge/Governança%20da%20arquitetura-em%20operação-2E7D32)](docs/Governanca/README.md)
 [![Questões abertas](https://img.shields.io/github/issues/edalcin/Arquitetura-BioCultural?label=Quest%C3%B5es%20abertas)](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)
 
 O conhecimento das comunidades tradicionais sobre plantas, animais e territórios está espalhado em
@@ -32,30 +32,31 @@ repositório para quem vai participar dela.
 - **Transparência no uso de IA.** Todo pedido feito à IA sobre esta arquitetura é registrado
   literalmente.
 - **Pastas novas, por público.** Quem participa encontra o seu caminho em português; a
-  documentação técnica fica separada, em `docs/`.
+  documentação técnica fica separada, em `docs/tecnico/`.
 
 📌 **[Painel das questões abertas](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)** ·
-**[Pauta da próxima reunião](Governanca/Arquitetura/Reunioes/proxima-pauta-reuniao-sofia.md)**
+**[Pauta da próxima reunião](docs/Governanca/Arquitetura/Reunioes/proxima-pauta-reuniao-sofia.md)**
 
 ## Como este repositório está organizado
 
 ```
 /
-├── ComecePorAqui/   → para quem chega: resumo executivo, glossário e guias de participação
-├── Governanca/      → quem decide o quê: proposta, camadas (dados, ferramentas, arquitetura) e reuniões
-├── Pesquisa/        → o projeto de pesquisa, referências, estudos e a transparência no uso de IA
-├── docs/            → documentação técnica, para a equipe técnica e agentes de IA
-├── README.md        → este arquivo
-├── LICENSE          → licença (precisa ficar na raiz)
-└── CLAUDE.md        → regras para agentes de IA (precisa ficar na raiz)
+├── ComecePorAqui/      → para quem chega: resumo executivo, glossário e guias de participação
+├── docs/               → toda a documentação, em três partes:
+│   ├── Governanca/     → quem decide o quê: proposta, camadas (dados, ferramentas, arquitetura) e reuniões
+│   ├── Pesquisa/       → o projeto de pesquisa, referências, estudos e a transparência no uso de IA
+│   └── tecnico/        → documentação técnica, para a equipe técnica e agentes de IA
+├── README.md           → este arquivo
+├── LICENSE             → licença (precisa ficar na raiz)
+└── CLAUDE.md           → regras para agentes de IA (precisa ficar na raiz)
 ```
 
 | Pasta | Para quem | O que você encontra |
 |---|---|---|
 | **[ComecePorAqui/](ComecePorAqui/README.md)** | Todos os que chegam | Resumo executivo de uma página; [glossário](ComecePorAqui/glossario.md) em linguagem simples; guias para cada perfil; [como usar o GitHub](ComecePorAqui/guia-github.md) |
-| **[Governanca/](Governanca/README.md)** | Participantes da governança e interessados | A [Proposta de Governança](Governanca/Proposta/propostaGovernanca.md) em três camadas; uma pasta por camada — [Dados](Governanca/Dados/README.md), [Ferramentas](Governanca/Ferramentas/README.md), [Arquitetura](Governanca/Arquitetura/README.md); as reuniões, com pautas, resumos e impactos; a [pauta das comunidades](Governanca/pautaComunidades/pauta-comunidades.md) |
-| **[Pesquisa/](Pesquisa/README.md)** | Pesquisadores e avaliadores | O [projeto de pesquisa](Pesquisa/projetoPesquisa.md); o [resumo executivo completo](Pesquisa/resumoExecutivo-completo.md); [referências](Pesquisa/Referencias.md); Conhecimento × Evidência; iniciativas correlatas; [uso de IA](Pesquisa/IA/uso-de-ia.md) e [registro de prompts](Pesquisa/IA/registro-de-prompts.md) |
-| **[docs/](docs/README.md)** | Equipe técnica e agentes de IA | Descrição completa da arquitetura; decisões registradas (ADRs); diagramas C4; modelo de dados; contrato de coleta; [glossário oficial](docs/CONTEXT.md); [estado do projeto](docs/proximosPassos.md); [histórico de versões](docs/CHANGELOG.md) |
+| **[docs/Governanca/](docs/Governanca/README.md)** | Participantes da governança e interessados | A [Proposta de Governança](docs/Governanca/Proposta/propostaGovernanca.md) em três camadas; uma pasta por camada — [Dados](docs/Governanca/Dados/README.md), [Ferramentas](docs/Governanca/Ferramentas/README.md), [Arquitetura](docs/Governanca/Arquitetura/README.md); as reuniões, com pautas, resumos e impactos; a [pauta das comunidades](docs/Governanca/pautaComunidades/pauta-comunidades.md) |
+| **[docs/Pesquisa/](docs/Pesquisa/README.md)** | Pesquisadores e avaliadores | O [projeto de pesquisa](docs/Pesquisa/projetoPesquisa.md); o [resumo executivo completo](docs/Pesquisa/resumoExecutivo-completo.md); [referências](docs/Pesquisa/Referencias.md); Conhecimento × Evidência; iniciativas correlatas; [uso de IA](docs/Pesquisa/IA/uso-de-ia.md) e [registro de prompts](docs/Pesquisa/IA/registro-de-prompts.md) |
+| **[docs/tecnico/](docs/tecnico/README.md)** | Equipe técnica e agentes de IA | Descrição completa da arquitetura; decisões registradas (ADRs); diagramas C4; modelo de dados; contrato de coleta; [glossário oficial](docs/tecnico/CONTEXT.md); [estado do projeto](docs/tecnico/proximosPassos.md); [histórico de versões](docs/tecnico/CHANGELOG.md) |
 
 ## Quem decide o quê
 
@@ -98,8 +99,8 @@ O DOI abaixo corresponde à última versão depositada no Zenodo; a versão atua
 Dalcin, E. (2026). Arquitetura para um Sistema de Informações sobre Conhecimento Tradicional Associado à Biodiversidade [Software documentation]. Zenodo. https://doi.org/10.5281/zenodo.21738427
 ```
 
-Histórico completo em [`docs/CHANGELOG.md`](docs/CHANGELOG.md); mudanças na forma de trabalhar em
-[`Governanca/Arquitetura/metodo-de-evolucao.md`](Governanca/Arquitetura/metodo-de-evolucao.md).
+Histórico completo em [`docs/tecnico/CHANGELOG.md`](docs/tecnico/CHANGELOG.md); mudanças na forma de trabalhar em
+[`docs/Governanca/Arquitetura/metodo-de-evolucao.md`](docs/Governanca/Arquitetura/metodo-de-evolucao.md).
 
 ## Licença
 
@@ -109,10 +110,10 @@ traduzir e adaptar, desde que cite a fonte. Exceções:
 
 - **Dados de conhecimento tradicional nunca estão sob licença aberta.** Eles dependem do
   consentimento da comunidade, que pode ser retirado. Este repositório não guarda esses dados
-  ([Proposta de Governança, §6.4](Governanca/Proposta/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo)).
-- **Documentos de terceiros** em [`Pesquisa/iniciativas/`](Pesquisa/iniciativas/README.md) (PDFs de
+  ([Proposta de Governança, §6.4](docs/Governanca/Proposta/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo)).
+- **Documentos de terceiros** em [`docs/Pesquisa/iniciativas/`](docs/Pesquisa/iniciativas/README.md) (PDFs de
   relatórios, trabalhos acadêmicos e artigos) mantêm os direitos dos seus autores.
-- **Código:** o script `docs/bin/termos-status.ps1` está sob MIT. As ferramentas da federação têm,
+- **Código:** o script `docs/tecnico/bin/termos-status.ps1` está sob MIT. As ferramentas da federação têm,
   cada uma, a licença do próprio repositório.
 
 Até 03/10/2026 o arquivo de licença era a GPL-3.0. A concordância dos colaboradores com a mudança é

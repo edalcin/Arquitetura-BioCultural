@@ -19,10 +19,10 @@ O Comitê Federado ainda não existe. Estas reuniões funcionam no lugar dele, m
 ## O que ler primeiro
 
 1. [Resumo da página](README.md)
-2. [Como funciona o ciclo das reuniões](../Governanca/Arquitetura/README.md)
-3. [Proposta de governança](../Governanca/Proposta/propostaGovernanca.md)
+2. [Como funciona o ciclo das reuniões](../docs/Governanca/Arquitetura/README.md)
+3. [Proposta de governança](../docs/Governanca/Proposta/propostaGovernanca.md)
 4. [Painel das questões abertas](https://github.com/edalcin/Arquitetura-BioCultural/issues/6)
-5. [Próxima pauta](../Governanca/Arquitetura/Reunioes/proxima-pauta-reuniao-sofia.md)
+5. [Próxima pauta](../docs/Governanca/Arquitetura/Reunioes/proxima-pauta-reuniao-sofia.md)
 
 ## Como participar, passo a passo
 
@@ -40,4 +40,4 @@ O Comitê Federado ainda não existe. Estas reuniões funcionam no lugar dele, m
 - Nada que você escrever apaga a versão anterior.
 - **O repositório é público.** Fale do desenho, nunca do conteúdo de um registro. Não escreva conhecimento tradicional, nomes de detentores nem lugares sensíveis.
 
-*Para a equipe técnica: [`docs/`](../docs/README.md) e o [método de evolução](../Governanca/Arquitetura/metodo-de-evolucao.md).*
+*Para a equipe técnica: [`docs/tecnico/`](../docs/tecnico/README.md) e o [método de evolução](../docs/Governanca/Arquitetura/metodo-de-evolucao.md).*

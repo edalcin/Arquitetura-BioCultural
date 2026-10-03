@@ -22,9 +22,9 @@ Um Ponto-Focal fala pela iniciativa que o indicou. Ele **não** dá o consentime
 ## O que ler primeiro
 
 1. [Resumo da página](README.md)
-2. [Pauta com as comunidades](../Governanca/pautaComunidades/pauta-comunidades.md): o que depende de vocês
-3. [C.A.R.E. na prática](../Governanca/PrincipiosCAREnaPratica.md)
-4. [Governança dos dados](../Governanca/Dados/README.md)
+2. [Pauta com as comunidades](../docs/Governanca/pautaComunidades/pauta-comunidades.md): o que depende de vocês
+3. [C.A.R.E. na prática](../docs/Governanca/PrincipiosCAREnaPratica.md)
+4. [Governança dos dados](../docs/Governanca/Dados/README.md)
 5. [Entendendo os rótulos](Entendendo-os-Rotulos-no-SKOS-XL.md)
 
 ## Como participar, passo a passo
@@ -44,4 +44,4 @@ Você não precisa usar o GitHub. Pode falar com o Ponto-Focal da sua iniciativa
 - **O repositório é público.** Nunca escreva ali conhecimento tradicional, nomes de detentores, lugares sensíveis ou dados pessoais. Fale do desenho, nunca do valor de um registro. Se algo assim for escrito, Eduardo pode editar ou apagar o comentário.
 - A plataforma nunca vende dados e nunca publica sem consentimento válido.
 
-*Para a equipe técnica: [`docs/`](../docs/README.md).*
+*Para a equipe técnica: [`docs/tecnico/`](../docs/tecnico/README.md).*

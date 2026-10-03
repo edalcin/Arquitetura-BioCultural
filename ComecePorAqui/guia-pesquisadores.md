@@ -12,10 +12,10 @@ Para quem pesquisa conhecimento tradicional associado à biodiversidade, ou estu
 
 ## O que ler primeiro
 
-1. [Resumo da página](README.md) e o [resumo completo](../Pesquisa/resumoExecutivo-completo.md)
-2. [Projeto de pesquisa](../Pesquisa/projetoPesquisa.md)
-3. [Referências](../Pesquisa/Referencias.md)
-4. [Uso de IA no projeto](../Pesquisa/IA/uso-de-ia.md)
+1. [Resumo da página](README.md) e o [resumo completo](../docs/Pesquisa/resumoExecutivo-completo.md)
+2. [Projeto de pesquisa](../docs/Pesquisa/projetoPesquisa.md)
+3. [Referências](../docs/Pesquisa/Referencias.md)
+4. [Uso de IA no projeto](../docs/Pesquisa/IA/uso-de-ia.md)
 5. [Glossário](glossario.md)
 
 ## Como citar
@@ -24,7 +24,7 @@ A arquitetura tem versão citável (4.0), com DOI: [10.5281/zenodo.21738427](htt
 
 ## Transparência no uso de IA
 
-O projeto usa IA e registra isso. Cada episódio está em [uso-de-ia.md](../Pesquisa/IA/uso-de-ia.md). Os pedidos feitos à IA estão, literalmente, em [registro-de-prompts.md](../Pesquisa/IA/registro-de-prompts.md). Os textos gerados são conferidos por uma pessoa antes de valer.
+O projeto usa IA e registra isso. Cada episódio está em [uso-de-ia.md](../docs/Pesquisa/IA/uso-de-ia.md). Os pedidos feitos à IA estão, literalmente, em [registro-de-prompts.md](../docs/Pesquisa/IA/registro-de-prompts.md). Os textos gerados são conferidos por uma pessoa antes de valer.
 
 ## Como participar, passo a passo
 

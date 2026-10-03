@@ -15,7 +15,7 @@ guarda todo o histórico.
 - Se você participa com frequência, peça a Eduardo acesso de colaborador ao repositório. Sem esse
   acesso o guia também funciona (ver "Perguntas comuns").
 - As memórias ficam em:
-  <https://github.com/edalcin/Arquitetura-BioCultural/tree/main/Governanca/Arquitetura/Reunioes>
+  <https://github.com/edalcin/Arquitetura-BioCultural/tree/main/docs/Governanca/Arquitetura/Reunioes>
 
 ---
 

@@ -26,8 +26,8 @@ Hoje só o BioCultDB está em produção.
 ## O que ler primeiro
 
 1. [Resumo da página](README.md)
-2. [Governança das ferramentas](../Governanca/Ferramentas/README.md)
-3. [Documentação técnica](../docs/README.md)
+2. [Governança das ferramentas](../docs/Governanca/Ferramentas/README.md)
+3. [Documentação técnica](../docs/tecnico/README.md)
 4. [Glossário](glossario.md)
 5. O README do repositório da ferramenta que você vai usar.
 

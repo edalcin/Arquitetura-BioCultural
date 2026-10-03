@@ -4,11 +4,11 @@ graphify-out/
 # Documentos de terceiros com circulação não verificada — ficam apenas no local.
 # A pasta inteira fica fora do rastreamento, exceto os resumos em Markdown, que
 # são texto próprio do projeto.
-Pesquisa/iniciativas/redeConhecimento/*
-!Pesquisa/iniciativas/redeConhecimento/*.md
+docs/Pesquisa/iniciativas/redeConhecimento/*
+!docs/Pesquisa/iniciativas/redeConhecimento/*.md
 
 # Transcrições brutas de reunião (fala atribuída a terceiros, não revisada)
-Governanca/Arquitetura/Reunioes/*.txt
+docs/Governanca/Arquitetura/Reunioes/*.txt
 
 # Planilha movida para o repositório projeto-gef-mcti-entre-ciencias (2026-10-03)
 docs/SiBBr_SISGEN_CTA_Todas_fontes.xlsx

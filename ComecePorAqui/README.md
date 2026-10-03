@@ -45,7 +45,7 @@ Mostrar que é possível reunir esse conhecimento com a soberania garantida **pe
 
 Só o BioCultDB está em produção. As outras ferramentas estão em documentação ou em construção. Nenhuma comunidade tradicional participa diretamente ainda: a interlocução é feita por um Ponto-Focal, indicado pelo USEFLORA. A governança da arquitetura funciona em reuniões, com perguntas abertas no GitHub. O Comitê Federado ainda não existe.
 
-Versão longa: [resumo executivo completo](../Pesquisa/resumoExecutivo-completo.md).
+Versão longa: [resumo executivo completo](../docs/Pesquisa/resumoExecutivo-completo.md).
 
 ## Por onde seguir
 
@@ -58,4 +58,4 @@ Versão longa: [resumo executivo completo](../Pesquisa/resumoExecutivo-completo.
 | Curioso com algum termo | [Glossário](glossario.md) |
 | Novo no GitHub | [Como usar o GitHub](guia-github.md) |
 
-*Para a equipe técnica: visão completa em [`../docs/README.md`](../docs/README.md).*
+*Para a equipe técnica: visão completa em [`../docs/README.md`](../docs/tecnico/README.md).*

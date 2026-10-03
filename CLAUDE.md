@@ -1,10 +1,10 @@
 ## Registro de prompts — primeiro ato de toda sessão
 
-Antes de qualquer outro trabalho, acrescente o prompt do usuário, **literal**, ao fim de `Pesquisa/IA/registro-de-prompts.md` (formato e regras de omissão no cabeçalho do arquivo). Repita para cada prompt seguinte da sessão, inclusive os curtos. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `Pesquisa/projetoPesquisa.md` §7.2, item 9.
+Antes de qualquer outro trabalho, acrescente o prompt do usuário, **literal**, ao fim de `docs/Pesquisa/IA/registro-de-prompts.md` (formato e regras de omissão no cabeçalho do arquivo). Repita para cada prompt seguinte da sessão, inclusive os curtos. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
 
 ## Reuniões de governança e Issues
 
-Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `Governanca/Arquitetura/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `Governanca/Arquitetura/metodo-de-evolucao.md` §5.
+Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `docs/Governanca/Arquitetura/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/tecnico/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5.
 
 ## graphify
 
@@ -18,18 +18,24 @@ Rules:
 
 ## Arquitetura v3.1 — Persistência
 Persistência = SQLite com JSON (JSON1), **um arquivo por unidade federada** compartilhado pelas ferramentas (tabelas distintas), WAL, `SQLITE_DB_PATH`. Um container por unidade. Sem MongoDB.
-Ref.: Arquitetura-BioCultural/docs/architecture-decisions/ADR-005.
+Ref.: `docs/tecnico/architecture-decisions/ADR-005-sqlite-json-persistence.md`.
 
 ## Agent skills
 
 ### Issue tracker
 
-Issues live as GitHub issues, managed via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+Issues live as GitHub issues, managed via the `gh` CLI. See `docs/tecnico/agents/issue-tracker.md`.
 
 ### Domain docs
 
-Single-context layout: glossário em `docs/CONTEXT.md`, ADRs em `docs/architecture-decisions/`. See `docs/agents/domain.md`.
+Single-context layout: glossário em `docs/tecnico/CONTEXT.md`, ADRs em `docs/tecnico/architecture-decisions/`. See `docs/tecnico/agents/domain.md`.
 
-### Estrutura do repositório
+### Estrutura do repositório — onde está a documentação técnica
 
-Raiz só com `README.md`, `LICENSE`, `CLAUDE.md`. Humanos: `ComecePorAqui/`, `Governanca/` (camadas e reuniões em `Governanca/Arquitetura/Reunioes/`), `Pesquisa/` (projeto de pesquisa, `IA/`). Técnico: `docs/` — caminhos estáveis, outros repositórios apontam para eles; não mova arquivos de `docs/`.
+Raiz só com `README.md`, `LICENSE`, `CLAUDE.md`, `ComecePorAqui/` (entrada para humanos) e `docs/`. Toda a documentação está em `docs/`:
+
+- **`docs/tecnico/`** — tudo o que um agente precisa para trabalhar na arquitetura. Comece por `docs/tecnico/README.md` (índice técnico + descrição completa). Glossário `docs/tecnico/CONTEXT.md`; ADRs `docs/tecnico/architecture-decisions/`; C4 `docs/tecnico/c4-model/`; modelo de dados `docs/tecnico/modelo-de-dados-unificado.md`; contrato de coleta `docs/tecnico/contrato-harvest.md`; rótulos `docs/tecnico/rotulos-skos-xl.md`; impactos consolidados `docs/tecnico/impactos-na-arquitetura.md`; estado e pendências `docs/tecnico/proximosPassos.md`; versões `docs/tecnico/CHANGELOG.md`; convenções de agentes `docs/tecnico/agents/`.
+- **`docs/Governanca/`** — governança (proposta, camadas, reuniões em `docs/Governanca/Arquitetura/Reunioes/`, método em `docs/Governanca/Arquitetura/metodo-de-evolucao.md`).
+- **`docs/Pesquisa/`** — projeto de pesquisa, referências, `IA/` (uso de IA, registro de prompts).
+
+Mover um arquivo exige corrigir os links nos outros repositórios da federação (BioCultDB, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, BioCultTermos, pluriverso), que apontam para `docs/tecnico/`.
