@@ -263,3 +263,12 @@ quero a opção "b" com a correção de todos os links. Quero ainda mover a past
 Arquivos técnicos em @docs/ como por exemplo @docs/contrato-harvest.md , @docs/rotulos-skos-xl.md  devem ir para docs/tecnico
 Garanta que apos esta mudança todos os links em todos os documentos estarão corrigidos e que os agentes de IA irão encontrar com facilidade toda a documentação técnica de que necessitam.
 ````
+
+### P-0025 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: *commit* "docs(ia): registra P-0025"
+
+````text
+As pastas vazias em @docs/ devem ser deletadas, com segurança.
+````
