@@ -15,6 +15,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 - **Estrutura de pastas.** Raiz só com `README.md`, `LICENSE` e `CLAUDE.md`. Para humanos: `ComecePorAqui/` (resumo executivo, glossário, guias por perfil, como usar o GitHub), `Governanca/` (proposta, uma pasta por camada — `Dados/`, `Ferramentas/`, `Arquitetura/` — reuniões em `Governanca/Arquitetura/Reunioes/`, pauta das comunidades, C.A.R.E. na prática) e `Pesquisa/` (projeto de pesquisa inteiro, resumo executivo completo, referências, conhecimento, iniciativas, apresentações, `IA/`). Técnico: `docs/`, com os caminhos estáveis (ADRs, C4, UDM, contrato, rótulos), mais `CONTEXT.md`, `CHANGELOG.md`, `impactos-na-arquitetura.md` e `bin/` vindos de outras pastas
 - **`README.md`** reescrito como porta de entrada: o que é, o que mudou na 4.0, mapa das pastas, camadas, ferramentas, como participar, citação. A descrição técnica completa anterior passa a `docs/README.md`, com índice técnico
 - **Links** internos reescritos; textos das *Issues* #6 a #34 e um comentário da #5 atualizados; um link em BioCultDB, hermes e projeto-gef-mcti-entre-ciencias atualizados
+- **Licença:** `LICENSE` passa de GPL-3.0 a **CC BY 4.0** (documentação, como prevê `Governanca/Proposta/propostaGovernanca.md` §6.4); script `docs/bin/termos-status.ps1` sob MIT (cabeçalho SPDX); PDFs de terceiros excluídos; dados de CTA nunca sob licença aberta. Concordância de Sofia Zank para as contribuições dela pedida na questão #35
 
 ### Adicionado
 

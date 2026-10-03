@@ -194,3 +194,21 @@ confirmo. execute.
 ````text
 Na atrualização do @README.md quero definir que esta é a versão 4.0 da arquitetura!
 ````
+
+### P-0018 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: (a preencher no *commit* da sessão)
+
+````text
+ME ajude a decidir a melhor licença para este repositório. Que tal usar o judge()?
+````
+
+### P-0019 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: *commit* "docs: licença CC BY 4.0" (inclui P-0018)
+
+````text
+Sim. Aplique e crie uma Issue para Sofia.
+````

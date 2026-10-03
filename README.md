@@ -103,10 +103,20 @@ Histórico completo em [`docs/CHANGELOG.md`](docs/CHANGELOG.md); mudanças na fo
 
 ## Licença
 
-O repositório está sob a [GPL-3.0](LICENSE). A licença de documentação e de dados ainda está em
-discussão: a [Proposta de Governança, §6.4](Governanca/Proposta/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo)
-propõe código em licença permissiva, documentação em CC BY 4.0 e **dados de conhecimento tradicional
-fora de licença aberta**, regidos por consentimento revogável.
+Os textos, diagramas e imagens deste repositório estão sob a licença
+**[Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)](LICENSE)**: qualquer pessoa pode copiar,
+traduzir e adaptar, desde que cite a fonte. Exceções:
+
+- **Dados de conhecimento tradicional nunca estão sob licença aberta.** Eles dependem do
+  consentimento da comunidade, que pode ser retirado. Este repositório não guarda esses dados
+  ([Proposta de Governança, §6.4](Governanca/Proposta/propostaGovernanca.md#64-licenciamento-de-código-dados-e-conteúdo)).
+- **Documentos de terceiros** em [`Pesquisa/iniciativas/`](Pesquisa/iniciativas/README.md) (PDFs de
+  relatórios, trabalhos acadêmicos e artigos) mantêm os direitos dos seus autores.
+- **Código:** o script `docs/bin/termos-status.ps1` está sob MIT. As ferramentas da federação têm,
+  cada uma, a licença do próprio repositório.
+
+Até 03/10/2026 o arquivo de licença era a GPL-3.0. A concordância dos colaboradores com a mudança é
+registrada na [questão #35](https://github.com/edalcin/Arquitetura-BioCultural/issues/35).
 
 ## Agradecimentos
 

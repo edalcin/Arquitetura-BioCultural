@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 <#
 .SYNOPSIS
     Reporta o Atraso de Modulo do BioCultTermos nas quatro Unidades Hospedeiras.
