@@ -9,3 +9,6 @@ docs/iniciativas/redeConhecimento/*
 
 # Transcrições brutas de reunião (fala atribuída a terceiros, não revisada)
 docs/reunioes/*.txt
+
+# Planilha movida para o repositório projeto-gef-mcti-entre-ciencias (2026-10-03)
+docs/SiBBr_SISGEN_CTA_Todas_fontes.xlsx

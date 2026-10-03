@@ -221,3 +221,14 @@ Sim. Aplique e crie uma Issue para Sofia.
 ````text
 O que falta eu fazer antes de criar o novo release?
 ````
+
+### P-0021 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: *commit* "chore: planilha SiBBr/SISGEN movida para projeto-gef-mcti-entre-ciencias"
+
+````text
+Sobre o 1 - vou aguardar Sofia responder o ISSUE
+Sobre docs/SiBBr_SISGEN_CTA_Todas_fontes.xlsx, quero mover esta planilha para o projeto @../projeto-gef-mcti-entre-ciencias/docs/ e manter neste projeto no .gitignore
+Sobre o 2, vou ler os documentos, oportunamente. Entretanto, já podemos commit to main and sync para encerrar por hoje.
+````
