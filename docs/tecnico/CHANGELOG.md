@@ -17,6 +17,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 - **Links** internos reescritos; textos das *Issues* #6 a #34 e um comentário da #5 atualizados; um link em BioCultDB, hermes e projeto-gef-mcti-entre-ciencias atualizados
 - **Licença:** `LICENSE` passa de GPL-3.0 a **CC BY 4.0** (documentação, como prevê `docs/Governanca/Proposta/propostaGovernanca.md` §6.4); script `docs/tecnico/bin/termos-status.ps1` sob MIT (cabeçalho SPDX); PDFs de terceiros excluídos; dados de CTA nunca sob licença aberta. Concordância de Sofia Zank para as contribuições dela pedida na questão #35
 - **`docs/` em três partes:** `docs/tecnico/` (toda a documentação técnica: ADRs, C4, diagramas, UDM, contrato de harvest, rótulos, `CONTEXT.md`, `CHANGELOG.md`, `proximosPassos.md`, impactos, `agents/`, `bin/`, imagens), `docs/Governanca/` e `docs/Pesquisa/`; `docs/README.md` passa a índice das três. Links atualizados neste repositório, nas *Issues* e em BioCultTermos, BioCultDB, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, pluriverso, hermes e projeto-gef-mcti-entre-ciencias (BioCultPapers está arquivado e não foi alterado)
+- **`docs/tecnico/proximosPassos.md` só olha para frente:** sem seções de sessão nem itens concluídos; próximas ações em ordem, pendências numeradas abertas, mapa de dependências, pendências das ferramentas. A verificação da lacuna de pesquisa (antiga §0.2) passou a `docs/Pesquisa/verificacao-da-lacuna.md`
+- **Registro de prompts por dia:** `docs/Pesquisa/IA/registro-de-prompts.md` vira índice e regras; os prompts ficam em `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, agrupados por sessão, com numeração `P-NNNN` contínua
 
 ### Adicionado
 

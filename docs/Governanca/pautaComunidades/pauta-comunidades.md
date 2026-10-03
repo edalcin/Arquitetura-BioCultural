@@ -97,7 +97,7 @@ Respondem a **"como a arquitetura deve se comportar"**. São decidíveis com um 
 
 **O que a decisão (i) resolve, e o que ela deixa em aberto.** Publicar como Evidência do autor resolve a autoridade sobre a classificação de acesso — é exatamente o que o regime enunciativo (K1) foi desenhado para decidir. O que ela **não** resolve é o fato de que o conhecimento **teve** um detentor, e esse detentor foi apagado pela prática científica que produziu a fonte. Essa segunda parte não se resolve por teste de quatro perguntas nem por classificação de regime: é uma pergunta sobre o que a arquitetura deve **fazer** diante de um apagamento que ela não causou, mas que herda ao publicar. Essa é, precisamente, decisão de um corpo com representação comunitária — a arquitetura sozinha não tem legitimidade para decidir se a solução técnica basta.
 
-**O que isso bloqueia, hoje.** Não é hipotético: `docs/tecnico/proximosPassos.md` §6 registra **29 registros sem `regime`** já em produção no BioCultDB. Esta pauta decide o critério que resolve esses 29 registros — e os que vierem depois.
+**O que isso bloqueia, hoje.** Não é hipotético: `docs/tecnico/proximosPassos.md` §4 registra **29 registros sem `regime`** já em produção no BioCultDB. Esta pauta decide o critério que resolve esses 29 registros — e os que vierem depois.
 
 **Estado**
 
@@ -116,7 +116,7 @@ O ponto fica mais claro mostrado do que dito. Nenhuma linha abaixo foi preenchid
 | Iniciativa / unidade | Com quem (comunidade detentora) | Situação |
 |---|---|---|
 | BioCultRelatos — mestrado de Luisa Ridolph Tostes Braga, Silveiras (SP) | *(vazio)* | A comunidade de Silveiras entra pelo mestrado, sob aprovação da CONEP (Resolução CNS 466/2012) e submissão ao SisGen (`docs/Pesquisa/projetoPesquisa.md` §7.3) — não há, hoje, um ponto-focal comunitário indicado para responder por ela nestas pautas |
-| Pluriverso | *(vazio)* | Nenhum membro real existe na federação ainda (`docs/tecnico/proximosPassos.md` §6); não há comunidade a quem perguntar |
+| Pluriverso | *(vazio)* | Nenhum membro real existe na federação ainda (`docs/tecnico/proximosPassos.md` §4); não há comunidade a quem perguntar |
 | USEFLORA | *(vazio — não preencher)* | O Comitê Gestor do USEFLORA não é a comunidade detentora de nenhum registro concreto tratado aqui; serve apenas como interlocução provisória e por procuração (ver **Iniciativas parceiras**) |
 
 ### Pauta 1 — Como quem fala quer ser nomeado

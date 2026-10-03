@@ -14,7 +14,7 @@ Javari). As outras dez estão no Equador, Guiana, Suriname, Quênia, Ilhas Salom
 O Guardian Connector é a iniciativa mais próxima da Arquitetura BioCultural que este repositório
 documenta até agora — e a única que **já implementou em produção** um mecanismo que aqui está
 registrado como pendência aberta: a integração com o Local Contexts Hub para rótulos culturais
-(pendência ② de `docs/tecnico/proximosPassos.md` §4, Q4 do [ADR-015](../../tecnico/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)).
+(pendência ② de `docs/tecnico/proximosPassos.md` §2, Q4 do [ADR-015](../../tecnico/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)).
 
 A relação não é de concorrência. O Guardian Connector e a Arquitetura BioCultural resolvem problemas
 **adjacentes** e quase disjuntos:

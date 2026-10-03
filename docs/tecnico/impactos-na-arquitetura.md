@@ -105,7 +105,7 @@ flowchart LR
 
 - **Situação:** confirmado
 - **Tipo:** fecha (Q3 da ADR-015)
-- **Destino:** ADR-015, "O que esta ADR não decide", Q3 ("Como identificar o detentor sem expor a pessoa?"); `proximosPassos.md` §4 ① ("Como identificar o detentor sem expor a pessoa"); `contrato-harvest.md` §8, pendência ① (`ADR-016`, H-Q2); linha 418 da ADR-015 como dica
+- **Destino:** ADR-015, "O que esta ADR não decide", Q3 ("Como identificar o detentor sem expor a pessoa?"); `proximosPassos.md` §2 ① ("Como identificar o detentor sem expor a pessoa"); `contrato-harvest.md` §8, pendência ① (`ADR-016`, H-Q2); linha 418 da ADR-015 como dica
 - **Origem:** decisões 2 e 3 de 18/09 ([resumo](../Governanca/Arquitetura/Reunioes/2026-09-18-reuniao-sofia.md)); variação por assunto fechada pela decisão 10 de 29/09 ([resumo](../Governanca/Arquitetura/Reunioes/2026-09-29-reuniao-sofia.md)); análise em [impactos de 18/09](../Governanca/Arquitetura/Reunioes/2026-09-18-impactos-reuniao-sofia.md) e [impactos de 29/09](../Governanca/Arquitetura/Reunioes/2026-09-29-impactos-reuniao-sofia.md)
 - **Questão aberta:** — (relacionada: [#22](https://github.com/edalcin/Arquitetura-BioCultural/issues/22))
 - **Alimenta:** ADR-018

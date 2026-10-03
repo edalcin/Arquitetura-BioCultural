@@ -25,6 +25,7 @@ O texto completo está em [`projetoPesquisa.md`](projetoPesquisa.md). As seçõe
 | [`resumoExecutivo-completo.md`](resumoExecutivo-completo.md) | Resumo executivo longo da arquitetura. O resumo de uma página está em [`../ComecePorAqui/`](../../ComecePorAqui/README.md) |
 | [`Referencias.md`](Referencias.md) | Referências bibliográficas (ABNT) |
 | [`conhecimento/`](conhecimento/caracterizacao-do-conhecimento-tradicional.md) | Como caracterizar o conhecimento tradicional: o que é Conhecimento e o que é Evidência |
+| [`verificacao-da-lacuna.md`](verificacao-da-lacuna.md) | Varredura em fontes primárias (2026-09-11) que sustenta a lacuna de pesquisa: nenhuma estrutura de dados aberta, intercultural e validada para o conhecimento tradicional |
 | [`iniciativas/`](iniciativas/README.md) | Resumos das iniciativas parceiras e relacionadas |
 | [`apresentacoes/`](apresentacoes/) | Apresentações da arquitetura |
 | [`IA/`](IA/uso-de-ia.md) | Transparência sobre o uso de IA (veja abaixo) |
@@ -34,7 +35,7 @@ O texto completo está em [`projetoPesquisa.md`](projetoPesquisa.md). As seçõe
 A IA ajudou em todas as etapas deste projeto. Por isso o uso dela é parte da pesquisa e fica aberto:
 
 - [`IA/uso-de-ia.md`](IA/uso-de-ia.md): como a IA foi usada, reunião a reunião, e as falhas observadas.
-- [`IA/registro-de-prompts.md`](IA/registro-de-prompts.md): cada pedido feito à IA, copiado literalmente, em ordem.
+- [`IA/registro-de-prompts.md`](IA/registro-de-prompts.md): cada pedido feito à IA, copiado literalmente — um arquivo por dia em [`IA/prompts/`](IA/prompts/), agrupado por sessão.
 - [`IA/promptInicial.txt`](IA/promptInicial.txt): o pedido que deu origem ao projeto.
 
 A IA propõe e uma pessoa decide. Nenhuma questão de desenho é respondida por uma IA.

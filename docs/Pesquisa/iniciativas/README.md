@@ -120,11 +120,11 @@ As iniciativas documentadas compartilham objetivos comuns:
 - Guias de soberania de dados, CLPI e decisão de publicar (ou não) no GBIF
 
 **Relevância Arquitetural**:
-- Precedente implementado para a pendência ② (`docs/tecnico/proximosPassos.md` §4) e a Q4 do ADR-015 — coincide com a opção recomendada: guardar identificador, exibir texto em cache, nunca editar
+- Precedente implementado para a pendência ② (`docs/tecnico/proximosPassos.md` §2) e a Q4 do ADR-015 — coincide com a opção recomendada: guardar identificador, exibir texto em cache, nunca editar
 - Granularidade dos rótulos é de **dataset**, não de registro: a regra reaproveitável é a separação (rótulo fora da linha de dado), não o esquema
 - Legitimidade do Label vem de quem opera a instalação ser a própria comunidade — na nossa federação, isso é mecanismo de código (ADR-015 K1), não consequência da posse do servidor
 - Contraponto de stack: SaaS externo (Auth0, Mapbox, Twilio) numa plataforma cuja tese é soberania de infraestrutura
-- Não modela conhecimento, não tem vocabulário controlado, não federa e não trata fonte secundária — reforça o veredito **QUALIFICA** da linha "Plataformas" em `docs/tecnico/proximosPassos.md` §0.2
+- Não modela conhecimento, não tem vocabulário controlado, não federa e não trata fonte secundária — reforça o veredito **QUALIFICA** da linha "Plataformas" em [`../verificacao-da-lacuna.md`](../verificacao-da-lacuna.md)
 
 ## Temas Transversais
 
