@@ -53,7 +53,7 @@ Associado. As regras da ADR-015 sobre gravação e armazenamento soberano tratam
 em campo (BioCultRelatos) e não se aplicam a estas reuniões.
 
 **Transcrições não versionadas.** A transcrição bruta é fala atribuída a terceiros, sem revisão.
-Ela fica fora do repositório (`.gitignore`, regra `docs/reunioes/*.txt`). Só o resumo revisado é
+Ela fica fora do repositório (`.gitignore`, regra `Governanca/Arquitetura/Reunioes/*.txt`). Só o resumo revisado é
 publicado.
 
 **Anuência.** O Ponto-Focal deu anuência para a transcrição e o processamento por IA na reunião de

@@ -232,3 +232,23 @@ Sobre o 1 - vou aguardar Sofia responder o ISSUE
 Sobre docs/SiBBr_SISGEN_CTA_Todas_fontes.xlsx, quero mover esta planilha para o projeto @../projeto-gef-mcti-entre-ciencias/docs/ e manter neste projeto no .gitignore
 Sobre o 2, vou ler os documentos, oportunamente. Entretanto, já podemos commit to main and sync para encerrar por hoje.
 ````
+
+### P-0022 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: (a preencher no *commit* da sessão)
+
+````text
+Quero ajustar a pasta @docs/
+quero separar as pastas em @docs/ em pastas de documentos técnicos e documentos de governança e para "humanos". Isso, sem prejuízo do entendimento dos agentes de IA. Quero uma visão da estrutura mais simples para os participantes e interessados, que não estão interessados em documentação técnica, como, por exemplo, @docs/c4-model/ , @docs/diagrams/ , @docs/bin/ e @docs/architecture-decisions/ 
+Faça este ajuste na estrutura de pastas para mim!
+````
+
+### P-0023 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: (a preencher no *commit* da sessão)
+
+````text
+Considere todas as pastas que possuem documentação técnica, não apenas os exemplos que dei
+````
