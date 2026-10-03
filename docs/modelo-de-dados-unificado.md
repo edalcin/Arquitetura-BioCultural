@@ -38,7 +38,7 @@
 - Uma centralização de dados — o UDM define a **forma** do registro; os dados permanecem no
   arquivo soberano de cada unidade (ADR-004, ADR-005). Adotar o UDM não transfere dado algum.
 - Um substituto do CLPI ou da governança — nenhum campo deste modelo autoriza publicar o que a
-  comunidade não consentiu ([Proposta de Governança](governanca/propostaGovernanca.md)).
+  comunidade não consentiu ([Proposta de Governança](../Governanca/Proposta/propostaGovernanca.md)).
 
 ## 2. Princípios do modelo
 
@@ -46,12 +46,12 @@
 |---|---|---|
 | **P1** | **Documento JSON como contrato.** O registro é um documento autocontido; a engine é detalhe de implementação | ADR-003, ADR-005 |
 | **P2** | **Regime Enunciativo em todo registro.** `regime: conhecimento \| evidencia` é campo do registro, nunca derivado de quem o guarda. Decide *quem pode classificar o acesso* | ADR-015 K1 |
-| **P3** | **Relato como unidade de Conhecimento.** Detentor + ato de enunciação (data, lugar, língua, protocolo) + mídia-fonte + classificação de acesso. Vive sempre na unidade da comunidade detentora | ADR-015 K2, `CONTEXT.md` |
+| **P3** | **Relato como unidade de Conhecimento.** Detentor + ato de enunciação (data, lugar, língua, protocolo) + mídia-fonte + classificação de acesso. Vive sempre na unidade da comunidade detentora | ADR-015 K2, `docs/CONTEXT.md` |
 | **P4** | **Nível efetivo = o mais restritivo.** Termo, Relato e Registro/Mídia são rotuláveis independentemente; herança descendente proibida; toda classificação tem data de revisão | ADR-015 K3 |
 | **P5** | **Vocabulário controlado em SKOS-XL; nomenclatura científica fora dele.** Termos de uso, nomes vernaculares e papéis vêm do BioCultTermos; o binômio latino é dado de primeira classe validado em autoridade externa (Flora e Funga / GBIF) | [rotulos-skos-xl.md](rotulos-skos-xl.md), ADR-014 |
 | **P6** | **Composição multi-espécie.** Usos, preparos e artefatos referenciam 1..n plantas, com papel por componente e nome próprio do composto; o caso mono-espécie é o caso n=1 | ADR-017 R1–R7 |
 | **P7** | **Língua em ISO 639-3, sempre.** `por`, `eng`, `tup`… — nunca ISO 639-1; `zxx` para conteúdo sem fala, `und` para língua não identificada; glotônimo por extenso onde não houver código | ADR-015 K5/K8.2 |
-| **P8** | **Proveniência estruturada.** Todo dado atribuído tem Fonte de Atribuição `{tipo, nome}`; o tipo `comunidade_tradicional` invoca CLPI, CARE e repartição de benefícios — os demais, não | ADR-012, `CONTEXT.md` |
+| **P8** | **Proveniência estruturada.** Todo dado atribuído tem Fonte de Atribuição `{tipo, nome}`; o tipo `comunidade_tradicional` invoca CLPI, CARE e repartição de benefícios — os demais, não | ADR-012, `docs/CONTEXT.md` |
 
 ## 3. Entidades
 
@@ -233,5 +233,5 @@ forma divergente.
 | Composição multi-espécie | [ADR-017](architecture-decisions/ADR-017-composicao-multiespecie.md) |
 | Persistência SQLite+JSON1 | [ADR-005](architecture-decisions/ADR-005-sqlite-json-persistence.md) · [ADR-008](architecture-decisions/ADR-008-pluriverso-database-engine.md) |
 | Vocabulário e rótulos | [rotulos-skos-xl.md](rotulos-skos-xl.md) · [ADR-014](architecture-decisions/ADR-014-nomenclatura-cientifica-fora-do-vocabulario.md) |
-| Fonte de Atribuição | [ADR-012](architecture-decisions/ADR-012-manutencao-codigo-bioculttermos.md) · [`CONTEXT.md`](../CONTEXT.md) |
-| Governança, CLPI, salvaguardas | [Proposta de Governança](governanca/propostaGovernanca.md) |
+| Fonte de Atribuição | [ADR-012](architecture-decisions/ADR-012-manutencao-codigo-bioculttermos.md) · [`docs/CONTEXT.md`](CONTEXT.md) |
+| Governança, CLPI, salvaguardas | [Proposta de Governança](../Governanca/Proposta/propostaGovernanca.md) |

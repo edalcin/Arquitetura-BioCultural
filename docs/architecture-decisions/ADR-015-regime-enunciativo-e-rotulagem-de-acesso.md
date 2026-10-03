@@ -9,7 +9,7 @@
 O CHANGELOG da v3.5.0 registrou, sem resolver, uma pendência de vocabulário de arquitetura:
 
 > "Fica registrada, sem resolver, uma pendência de vocabulário: o termo 'Evidência' foi adotado pelo BioCultDB para o resultado da extração; se o BioCultRelatos usa outro termo para o mesmo conceito, é decisão de vocabulário de arquitetura a cargo do Comitê."
-> — `CHANGELOG.md`, v3.5.0, "Contexto da Versão"
+> — `docs/CHANGELOG.md`, v3.5.0, "Contexto da Versão"
 
 Esta ADR responde a essa pendência, e descobre no caminho que ela não era de vocabulário: **os dois provedores não usam termos diferentes para o mesmo conceito; eles guardam conceitos diferentes com o mesmo termo.**
 
@@ -33,14 +33,14 @@ A arquitetura organiza tudo em **um eixo** — a procedência do registro — e 
 
 - `README.md:58` — **"Quatro Fontes de Evidência"**, com o BioCultRelatos entre elas.
 - `README.md:52` — "um vasto conjunto de evidências: conhecimentos, práticas e usos documentados…". *Conhecimento* aparece subordinado a *evidência*.
-- `CONTEXT.md` (raiz), glossário da federação, 11 termos — **não define nem "Conhecimento" nem "Evidência"**.
+- `docs/CONTEXT.md` (raiz), glossário da federação, 11 termos — **não define nem "Conhecimento" nem "Evidência"**.
 - `BioCultDB/CONTEXT.md:12-16` — define Evidência corretamente **e localmente**: "o conteúdo etnobotânico que um artigo científico documentou… Um artigo, uma Evidência". A definição amarra Evidência ao artefato bibliográfico e não se estende a acervo, a obra de naturalista nem a uma fala.
 
 O sentido pretendido de Evidência na arquitetura é mais amplo que o do BioCultDB: **evidência da relação de uma comunidade com a biodiversidade que a cerca**. Mesmo nesse sentido amplo, ele não cobre um registro em primeira pessoa — porque esse registro não *atesta* a relação, ele **é** a relação sendo enunciada.
 
 ### A distinção que falta, e por que não é epistemológica
 
-A tentação é definir a diferença como *fato objetivo* × *afirmação subjetiva*. Essa leitura é rejeitada por esta ADR: ela reintroduziria por via técnica a hierarquia epistêmica que os princípios C.A.R.E. existem para desfazer — precisamente o que `docs/governanca/propostaGovernanca.md:415` já proíbe ao estabelecer que a validação comunitária pode reverter a curadoria científica.
+A tentação é definir a diferença como *fato objetivo* × *afirmação subjetiva*. Essa leitura é rejeitada por esta ADR: ela reintroduziria por via técnica a hierarquia epistêmica que os princípios C.A.R.E. existem para desfazer — precisamente o que `Governanca/Proposta/propostaGovernanca.md:415` já proíbe ao estabelecer que a validação comunitária pode reverter a curadoria científica.
 
 A diferença é **enunciativa e deôntica** — quem fala, e quem tem autoridade sobre o que foi dito:
 
@@ -61,7 +61,7 @@ A aproximação natural — "Relatos é Conhecimento, os outros três são Evid�
 
 `propostaGovernanca.md:419` adota a lição dos *Community Records* do Mukurtu: a narrativa da comunidade e a ficha catalográfica do museu coexistem sobre o mesmo item, sem que a institucional sobrescreva a comunitária. O texto diz que "as duas descrições coexistem **no registro**", e essa formulação admite uma leitura que esta ADR **rejeita expressamente**.
 
-A leitura rejeitada é a de que a narrativa da comunidade seria gravada dentro do BioCultAcervos. Ela viola o `Conteúdo Soberano` do `CONTEXT.md` — conteúdo curado por uma unidade "vive no arquivo SQLite daquela unidade, pertence a ela, e **nunca** atravessa para outra". Guardar o Relato da comunidade no SQLite do museu põe o conhecimento dela sob custódia dele: é a soberania invertida, e seria a arquitetura contradizendo em implementação exatamente o que promete em princípio.
+A leitura rejeitada é a de que a narrativa da comunidade seria gravada dentro do BioCultAcervos. Ela viola o `Conteúdo Soberano` do `docs/CONTEXT.md` — conteúdo curado por uma unidade "vive no arquivo SQLite daquela unidade, pertence a ela, e **nunca** atravessa para outra". Guardar o Relato da comunidade no SQLite do museu põe o conhecimento dela sob custódia dele: é a soberania invertida, e seria a arquitetura contradizendo em implementação exatamente o que promete em princípio.
 
 A leitura correta:
 
@@ -381,7 +381,7 @@ protocolo dela, e que o sistema obedece ao mais restritivo enquanto não houver 
 - **Coerente com o ADR-014** — mesma lógica de escopo: a federação decide o que só ela pode decidir. O regime enunciativo é decisão que nenhuma autoridade externa toma por ela; a nomenclatura científica é o oposto.
 - **Coerente com o ADR-005** — nenhuma pilha RDF é introduzida. PROV-O e Darwin Core entram como vocabulário e como forma de campo JSON, não como *triple store*.
 - **Não altera o ADR-007, ADR-012 nem ADR-013** — nada aqui muda distribuição, manutenção ou identidade visual do Módulo Compartilhado.
-- **Responde à pendência registrada em `CHANGELOG.md`, v3.5.0, "Contexto da Versão"** — "Evidência" no BioCultDB e o registro do BioCultRelatos não são o mesmo conceito com nomes diferentes; são conceitos diferentes, e agora nomeados.
+- **Responde à pendência registrada em `docs/CHANGELOG.md`, v3.5.0, "Contexto da Versão"** — "Evidência" no BioCultDB e o registro do BioCultRelatos não são o mesmo conceito com nomes diferentes; são conceitos diferentes, e agora nomeados.
 
 ## Consequências
 
@@ -413,7 +413,7 @@ Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nív
 
 | # | Questão | Recomendação |
 |---|---|---|
-| **Q1** | ~~O regime entra no glossário da federação?~~ | **Decidido na v3.7.0: entra.** Quatro termos acrescentados ao `CONTEXT.md` raiz. Se determina o que trafega no harvest, é linguagem da federação por definição |
+| **Q1** | ~~O regime entra no glossário da federação?~~ | **Decidido na v3.7.0: entra.** Quatro termos acrescentados ao `docs/CONTEXT.md` raiz. Se determina o que trafega no harvest, é linguagem da federação por definição |
 | **Q2** | ~~"Enunciado" é o nome certo?~~ | **Decidido em 2026-08-13: o termo é `Relato`**, já usado pelo projeto. Descartados *Enunciado* (pouco usual), *Asserção* (jargão de padrão dentro do domínio), *Depoimento* (carga jurídico-policial) |
 | **Q3** | Como identificar o detentor sem expor a pessoa? | Tensão real entre `assertionByID` (quer identificador estável) e LGPD. Opções: (a) identificador interno + `anonymized: true`, exposto só como papel; (b) atribuição exclusivamente coletiva no que for público; (c) **pseudônimo escolhido pelo próprio detentor** — a única que respeita simultaneamente CARE A1 e o direito ao reconhecimento, e a única que exige perguntar à pessoa |
 | **Q4** | Adotar a API do Local Contexts Hub ou espelhar os rótulos localmente? | Adotar mantém a autoridade com a comunidade e cria dependência externa; espelhar inverte. **Meio-termo:** armazenar o identificador do rótulo e do projeto, exibir o texto canônico com cache, nunca editar o texto |
@@ -421,17 +421,17 @@ Fora desta lista, a equivalência entre `sacred` e `private` no cálculo do nív
 
 ## Referências
 
-- `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` — estudo que originou esta ADR, com a pesquisa completa e as fontes
-- `docs/pautaComunidades/pauta-comunidades.md` — as pautas que dependem das comunidades, com roteiro de perguntas; é onde as questões abertas desta ADR que não são técnicas foram levadas
+- `Pesquisa/conhecimento/caracterizacao-do-conhecimento-tradicional.md` — estudo que originou esta ADR, com a pesquisa completa e as fontes
+- `Governanca/pautaComunidades/pauta-comunidades.md` — as pautas que dependem das comunidades, com roteiro de perguntas; é onde as questões abertas desta ADR que não são técnicas foram levadas
 - [ADR-016](ADR-016-contrato-de-harvest.md) e `docs/contrato-harvest.md` — contrato de payload do harvest, campo a campo, extraído de K6
-- `docs/governanca/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
+- `Governanca/Proposta/propostaGovernanca.md` §5.1–§5.10 — titularidade, camadas de acesso, CLPI como ciclo, rotulagem cultural, proveniência, vocabulários sensíveis
 - `BioCultDB/bioculttermos/manual/03-rotulos.md` — `accessLevel`, `sourcePeople`, `holderPeople`, ISO 639-3
 - Darwin Core Data Package guide, TDWG, 2026-04-17 — <https://dwc.tdwg.org/dp/>; tabelas `*-assertion` e `usage-policy` em <https://github.com/gbif/dwc-dp/tree/master/dwc-dp/table-schemas>
 - Darwin Core, `informationWithheld` e `dataGeneralizations` — <https://dwc.tdwg.org/terms/>
 - W3C PROV-O — <https://www.w3.org/TR/prov-o/>
 - W3C SKOS Reference §5 (SKOS-XL) — <https://www.w3.org/TR/skos-reference/#xl>
 - Local Contexts — TK Labels <https://localcontexts.org/labels/traditional-knowledge-labels/>; BC Labels <https://localcontexts.org/labels/biocultural-labels/>; Hub <https://localcontextshub.org/>
-- `docs/iniciativas/guardianConnector.md` — Guardian Connector: implementação em produção do fluxo do Local Contexts Hub (identificador + cache, rotulagem por dataset). Precedente para a Q4; não a decide
+- `Pesquisa/iniciativas/guardianConnector.md` — Guardian Connector: implementação em produção do fluxo do Local Contexts Hub (identificador + cache, rotulagem por dataset). Precedente para a Q4; não a decide
 - CARE Principles for Indigenous Data Governance, GIDA — <https://www.gida-global.org/careprinciples>
 
 ## Data de Revisão

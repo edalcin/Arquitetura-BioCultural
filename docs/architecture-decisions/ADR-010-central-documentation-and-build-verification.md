@@ -56,7 +56,7 @@ do ADR-007 F3:
 
 O repositório `BioCultTermos`, já "congelado como produto" pelo ADR-007 F2, passa a ter um papel ativo
 adicional: **documentação central de toda mudança de código feita através de qualquer unidade
-hospedeira**. Mecanismo: um `CHANGELOG.md` na raiz do repositório, formato
+hospedeira**. Mecanismo: um `docs/CHANGELOG.md` na raiz do repositório, formato
 [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/), uma entrada por mudança relevante, contendo
 no mínimo: data, unidade hospedeira de origem, resumo, SHA do commit no remoto compartilhado. Não é
 changelog de *release* (o repositório não tem versão própria implantável) — é changelog de *módulo
@@ -109,7 +109,7 @@ automaticamente (sem precisar já conhecer esta ADR), cada `CLAUDE.md` de unidad
   recebe.
 
 ### Negativas
-- Mais um passo manual (G1.2, atualizar `CHANGELOG.md`) no fluxo de qualquer mudança no submodule —
+- Mais um passo manual (G1.2, atualizar `docs/CHANGELOG.md`) no fluxo de qualquer mudança no submodule —
   quem esquecer, o histórico central fica incompleto.
   - *Mitigação*: aceitável dado o estágio atual (poucas unidades, um mantenedor); revisitar automação
     (ex.: gerar a entrada a partir da mensagem de commit) se o volume de mudanças justificar.
@@ -142,7 +142,7 @@ automaticamente (sem precisar já conhecer esta ADR), cada `CLAUDE.md` de unidad
 
 Revisar quando a primeira unidade além do BioCultDB (BioCultAcervos, BioCultNaturalistas ou
 BioCultRelatos) implementar seu próprio `Dockerfile.unidade` — confirmar que o padrão de G3 foi copiado
-corretamente, e que o `CHANGELOG.md` central (G2) está sendo mantido em uso real por mais de uma unidade.
+corretamente, e que o `docs/CHANGELOG.md` central (G2) está sendo mantido em uso real por mais de uma unidade.
 
 ## Atualização — 2026-08-09: cláusula de bump opcional supersedida pelo ADR-012
 
@@ -152,5 +152,5 @@ e assíncrona (ADR-012 G4), com o Atraso de Módulo de cada unidade medido por
 `Arquitetura-BioCultural/bin/termos-status.ps1`.
 
 As demais obrigações deste ADR permanecem inalteradas e são justamente o mecanismo que torna o G4
-verificável: push ao remoto compartilhado (G1), registro no `CHANGELOG.md` central do módulo (G2), e
+verificável: push ao remoto compartilhado (G1), registro no `docs/CHANGELOG.md` central do módulo (G2), e
 validação do SHA do submodule com carimbo de `BUILD_INFO` antes de buildar (G3).

@@ -154,7 +154,7 @@ variante maior do BioCultTermos vira `.btn-lg`, já definida no arquivo comparti
 ## Relações
 
 - **Depende do ADR-012** — a propagação dos tokens é a propagação do Módulo Compartilhado: adoção
-  obrigatória e assíncrona (G4), Atraso de Módulo medido por `bin/termos-status.ps1`.
+  obrigatória e assíncrona (G4), Atraso de Módulo medido por `docs/bin/termos-status.ps1`.
 - **Especializa o ADR-007 F4** — "soberania é de dados, nunca de código". A identidade visual é
   código: é intencionalmente a mesma em todas as unidades, e isso não toca a soberania sobre o
   vocabulário de cada uma.

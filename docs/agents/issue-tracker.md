@@ -15,11 +15,11 @@ Infer the repo from `git remote -v` — `gh` does this automatically when run in
 
 ## Governance questions (this repo's main use of Issues)
 
-Since 2026-10-03 every open question that needs a person's answer is one Issue: the single place of its state. Readers are non-technical experts in traditional knowledge (Ponto-Focal, communities via the Ponto-Focal). The meeting cycle and the mandatory **Revisão das Issues** live in `docs/reunioes/README.md`; read it before generating any pauta or impact document.
+Since 2026-10-03 every open question that needs a person's answer is one Issue: the single place of its state. Readers are non-technical experts in traditional knowledge (Ponto-Focal, communities via the Ponto-Focal). The meeting cycle and the mandatory **Revisão das Issues** live in `Governanca/Arquitetura/README.md`; read it before generating any pauta or impact document.
 
-- **Writing.** Portuguese, plain words, `CONTEXT.md` vocabulary. Title = the question, no codes. Body follows `.github/ISSUE_TEMPLATE/questao.yml`: O que está em jogo · O que a arquitetura faz hoje · Opções (table with consequences) · Pergunta · **Para fechar esta questão** (what answer, from whom, where) · Origem (full links) · Liga-se a (the only place for `I-xx`, ADR, `⑭` codes). Informes use O que queremos saber · Por que importa · Para fechar · Origem · Liga-se a.
+- **Writing.** Portuguese, plain words, `docs/CONTEXT.md` vocabulary. Title = the question, no codes. Body follows `.github/ISSUE_TEMPLATE/questao.yml`: O que está em jogo · O que a arquitetura faz hoje · Opções (table with consequences) · Pergunta · **Para fechar esta questão** (what answer, from whom, where) · Origem (full links) · Liga-se a (the only place for `I-xx`, ADR, `⑭` codes). Informes use O que queremos saber · Por que importa · Para fechar · Origem · Liga-se a.
 - **Privacy.** Public repo: design, never values — no traditional knowledge, holder names, sensitive places or personal data. Moderate comments that expose them.
-- **Labels** (create nothing new without a reason recorded in `docs/metodo-de-evolucao.md`):
+- **Labels** (create nothing new without a reason recorded in `Governanca/Arquitetura/metodo-de-evolucao.md`):
   - who answers: `para-ponto-focal`, `para-comunidades`, `para-gestao` (Eduardo; never on a pauta);
   - type: `decisao`, `informe`, `duvida`;
   - status: `aguarda-terceiros`;

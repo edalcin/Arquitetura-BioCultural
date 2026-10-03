@@ -4,7 +4,7 @@
 >
 > **Duas frentes, sempre separadas.** O documento é dividido em duas partes, e toda atualização futura deve respeitar essa divisão:
 >
-> - **Parte I — Projeto de pesquisa** (`docs/projetoPesquisa.md`): o documento de pesquisa em si — problema, objetivos, metodologia, fundamentação, referências, publicação.
+> - **Parte I — Projeto de pesquisa** (`Pesquisa/projetoPesquisa.md`): o documento de pesquisa em si — problema, objetivos, metodologia, fundamentação, referências, publicação.
 > - **Parte II — Arquitetura BioCultural e seus componentes**: a arquitetura, as ADRs, o UDM, o contrato de harvest, a governança e as unidades (BioCultDB, BioCultTermos, BioCultRelatos, BioCultAcervos, BioCultNaturalistas, Pluriverso).
 >
 > Pendência que atravessa as duas (ex.: uma decisão de arquitetura que muda um texto do projeto de pesquisa) fica registrada na parte de onde nasce, com o vínculo explícito para a outra. Nenhuma pendência mora nas duas ao mesmo tempo.
@@ -13,15 +13,15 @@
 >
 > **Pendência que depende de uma pessoa vive como *Issue*** (desde 2026-10-03): uma por questão, com número fixo, no [painel #6](https://github.com/edalcin/Arquitetura-BioCultural/issues/6). Aqui fica só o link. Pendência técnica continua aqui.
 
-**Estado em:** 2026-10-03 (Cenário B implantado: governança da arquitetura por *Issues*, pauta curta, registro literal de prompts, histórico de método — registro aqui na §10-quinquies)
+**Estado em:** 2026-10-03 — **versão 4.0**: repositório reorganizado por público (raiz só com README, LICENSE e CLAUDE.md; `ComecePorAqui/`, `Governanca/`, `Pesquisa/`; `docs/` técnico, caminhos estáveis). Antes, no mesmo dia, o Cenário B (§10-quinquies). Próxima ação da versão: release no Zenodo, por Eduardo.
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras), a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa) e a **§10-quinquies** (a sessão de 2026-10-03, que levou as questões abertas para *Issues*). O método e o histórico das suas mudanças estão em `docs/metodo-de-evolucao.md`; as questões que dependem de pessoas, no painel das *Issues* (#6). Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras), a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa) e a **§10-quinquies** (a sessão de 2026-10-03, que levou as questões abertas para *Issues*). O método e o histórico das suas mudanças estão em `Governanca/Arquitetura/metodo-de-evolucao.md`; as questões que dependem de pessoas, no painel das *Issues* (#6). Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
-**Estado do repositório:** `main`, sincronizado com o remoto. Último marco: **v3.12.0** (Cenário B, 2026-10-03). Marcos anteriores: **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector), **v3.11.4** (três documentos por reunião).
+**Estado do repositório:** `main`, sincronizado com o remoto. Último marco: **v4.0.0** (reorganização por público, 2026-10-03; detalhe em `docs/CHANGELOG.md`). Marcos anteriores: **v3.12.0** (Cenário B), **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector), **v3.11.4** (três documentos por reunião).
 
 ---
 
-# Parte I — Projeto de pesquisa (`docs/projetoPesquisa.md`)
+# Parte I — Projeto de pesquisa (`Pesquisa/projetoPesquisa.md`)
 
 ## 0. Sessão 2026-08-19 — `projetoPesquisa.md` e uma afirmativa a verificar
 
@@ -56,8 +56,8 @@ A afirmativa do item 1 de §2 foi submetida a varredura primária exaustiva nas 
 1. **Contraexemplos mais perigosos:** O TKDL da Índia (fechado/estatal) e o TCMLS da China (monocultural/doutrinário) provam que existem estruturas de dados formais em larga escala para conhecimentos tradicionais, mas nenhuma delas é **aberta, intercultural ou orientada à soberania e consentimento de povos tradicionais**.
 2. **Decisão:** A afirmativa do item 1 da §2 do `projetoPesquisa.md` foi **QUALIFICADA** (passando a *"Ausência de proposta aberta, intercultural e validada"* e citando nominalmente as implementações parciais).
 3. **Consequência nos arquivos:**
-   - `Referencias.md`: Nova seção "13. Estruturas de Dados para Conhecimento Tradicional e Lacunas na Literatura" adicionada com 23 referências completas em ABNT NBR 6023:2018; rodapé atualizado para Setembro 2026.
-   - `docs/projetoPesquisa.md`: Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados nas fontes primárias.
+   - `Pesquisa/Referencias.md`: Nova seção "13. Estruturas de Dados para Conhecimento Tradicional e Lacunas na Literatura" adicionada com 23 referências completas em ABNT NBR 6023:2018; rodapé atualizado para Setembro 2026.
+   - `Pesquisa/projetoPesquisa.md`: Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados nas fontes primárias.
    - `docs/proximosPassos.md`: §0.2 e §11.1 atualizados.
 
 ---
@@ -87,7 +87,7 @@ Uma versão anterior dizia que a narrativa de uma comunidade sobre uma peça de 
 
 - **BioCultAcervos** guarda evidência física custodiada por instituições: material de Spruce em Kew, exsicatas do JBRJ, peças de coleções etnológicas.
 - A narrativa da comunidade sobre esse item é um **Relato no BioCultRelatos da própria comunidade**, que *referencia* o item.
-- Gravá-la no SQLite do museu violaria `Conteúdo Soberano` (`CONTEXT.md`) — soberania invertida.
+- Gravá-la no SQLite do museu violaria `Conteúdo Soberano` (`docs/CONTEXT.md`) — soberania invertida.
 - A coexistência das duas narrativas (lição do Mukurtu, `propostaGovernanca.md:419`) acontece **na federação**: dois registros de dois membros, vinculados.
 
 **Consequência prática:** BioCultDB, BioCultAcervos e BioCultNaturalistas são `evidencia` **sempre**. O único provedor com os dois regimes é o **BioCultRelatos** — onde a nota de campo do pesquisador é Evidência, por falhar Q2 do teste de K1.
@@ -163,13 +163,13 @@ Partner* certificada do Local Contexts) opera exatamente a terceira linha desta 
 puxa os rótulos do Hub por API, o identificador fica em tabela companheira ao dataset — nunca dentro da
 linha de dado —, o texto e o ícone ficam em cache local e não são editados, e a exibição resolve por
 junção. A diferença que resta é de granularidade: lá o rótulo vale para a tabela inteira, aqui precisa
-valer por registro. Análise em [`docs/iniciativas/guardianConnector.md`](iniciativas/guardianConnector.md) §3.
+valer por registro. Análise em [`Pesquisa/iniciativas/guardianConnector.md`](../Pesquisa/iniciativas/guardianConnector.md) §3.
 
 ---
 
 ## 5. Bloqueado: precisa da comunidade
 
-Detalhado com roteiro de perguntas em **`docs/pautaComunidades/pauta-comunidades.md`** — documento próprio, feito para sair do computador, com as pautas separadas em duas seções: **pautas de desenho** (decidíveis com um corpo de representação mista, e para as quais o ponto-focal de uma iniciativa parceira responde) e **pautas de consentimento** (só a comunidade detentora, registro a registro, e que nenhum interlocutor fecha por atacado). Resumo das **sete** pautas — a quinta veio de K8, a sexta da triagem da v3.10.0 e a sétima da sessão de 2026-09-03:
+Detalhado com roteiro de perguntas em **`Governanca/pautaComunidades/pauta-comunidades.md`** — documento próprio, feito para sair do computador, com as pautas separadas em duas seções: **pautas de desenho** (decidíveis com um corpo de representação mista, e para as quais o ponto-focal de uma iniciativa parceira responde) e **pautas de consentimento** (só a comunidade detentora, registro a registro, e que nenhum interlocutor fecha por atacado). Resumo das **sete** pautas — a quinta veio de K8, a sexta da triagem da v3.10.0 e a sétima da sessão de 2026-09-03:
 
 1. **Como quem fala quer ser nomeado** — resolve ① acima.
 2. **Quais rótulos culturais se aplicam** — sazonalidade, restrição por gênero ou família, uso comercial, e quem tem legitimidade para dizer em nome de todos.
@@ -191,7 +191,7 @@ Cada componente mantém o seu próprio `docs/proximosPassos.md`, que é a fonte 
 
 | Componente | Estado | Pendências principais | Documento |
 |---|---|---|---|
-| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; **auditoria dos prompts contra vazamento de dado sensível a provedor externo de IA** (⑰, política em `docs/governanca/propostaGovernanca.md` §5.12-9 — distinta da qualidade: aquela é acurácia, esta é vazamento); generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
+| **BioCultDB** (fontes secundárias) | Em produção, três interfaces + extração por IA + agregação SKOS-XL | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime`; endpoint de harvest; qualidade da extração por IA não medida; **auditoria dos prompts contra vazamento de dado sensível a provedor externo de IA** (⑰, política em `Governanca/Proposta/propostaGovernanca.md` §5.12-9 — distinta da qualidade: aquela é acurácia, esta é vazamento); generalizar o `AcquisitionService` (bloqueia as outras unidades) | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
 | **BioCultRelatos** (registro primário, CLPI) | Documentação + scaffold; sem código de produção | Esquema do Relato travado pela decisão ①; protocolo CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva como função da ferramenta | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
 | **BioCultAcervos** (acervos museológicos) | Repositório, documentação e home page (Express na 3003) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources` para o vínculo com Relatos; harvest; scaffold Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
 | **BioCultNaturalistas** (obras séc. XVII–XIX) | Só documentação de fundação (F0); roadmap de 7 fases | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; ADR-003 V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
@@ -236,18 +236,18 @@ flowchart TD
 
 | Artefato | Caminho |
 |---|---|
-| Introdução objetiva e sintética à proposta | `resumoExecutivo.md` |
-| Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `docs/conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
-| **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `docs/pautaComunidades/pauta-comunidades.md` |
-| Memórias de reunião com iniciativas parceiras | `docs/reunioes/` |
-| Papel do Ponto-Focal (verbete) e estado real da governança | `CONTEXT.md` → "Federação"; `docs/governanca/propostaGovernanca.md` §2, nota de estado |
-| **Ciclo de reuniões com o Ponto-Focal: resumo, impactos e pauta por reunião; estado consolidado dos itens de impacto** | `docs/reunioes/README.md` (convenção e índice); `docs/reunioes/impactos-na-arquitetura.md` (estado consolidado); procedimento em `docs/projetoPesquisa.md` §7.2, item 7 |
-| **Uso de IA como resultado de pesquisa — método e log de episódios** | `docs/ia/uso-de-ia.md`; procedimento em `docs/projetoPesquisa.md` §7.2, item 8, e §7.5 |
+| Introdução objetiva e sintética à proposta | `Pesquisa/resumoExecutivo-completo.md` |
+| Estudo completo, fontes verificadas, Relato modelado ponta a ponta | `Pesquisa/conhecimento/caracterizacao-do-conhecimento-tradicional.md` |
+| **Pauta das comunidades** — o que precisa ser encaminhado com elas, com roteiro | `Governanca/pautaComunidades/pauta-comunidades.md` |
+| Memórias de reunião com iniciativas parceiras | `Governanca/Arquitetura/Reunioes/` |
+| Papel do Ponto-Focal (verbete) e estado real da governança | `docs/CONTEXT.md` → "Federação"; `Governanca/Proposta/propostaGovernanca.md` §2, nota de estado |
+| **Ciclo de reuniões com o Ponto-Focal: resumo, impactos e pauta por reunião; estado consolidado dos itens de impacto** | `Governanca/Arquitetura/README.md` (convenção e índice); `docs/impactos-na-arquitetura.md` (estado consolidado); procedimento em `Pesquisa/projetoPesquisa.md` §7.2, item 7 |
+| **Uso de IA como resultado de pesquisa — método e log de episódios** | `Pesquisa/IA/uso-de-ia.md`; procedimento em `Pesquisa/projetoPesquisa.md` §7.2, item 8, e §7.5 |
 | Decisão de arquitetura | `docs/architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md` |
 | Contrato de payload do harvest, campo a campo | `docs/contrato-harvest.md` |
 | Contrato de harvest como ADR (H1–H4) | `docs/architecture-decisions/ADR-016-contrato-de-harvest.md` |
-| Glossário da federação | `CONTEXT.md` → seção "Conhecimento e evidência" |
-| Governança de acesso, CLPI, rotulagem | `docs/governanca/propostaGovernanca.md` §5.1–§5.10 |
+| Glossário da federação | `docs/CONTEXT.md` → seção "Conhecimento e evidência" |
+| Governança de acesso, CLPI, rotulagem | `Governanca/Proposta/propostaGovernanca.md` §5.1–§5.10 |
 | Rótulos SKOS-XL e `accessLevel` | `BioCultDB/bioculttermos/manual/03-rotulos.md` |
 
 ---
@@ -277,7 +277,7 @@ Consolida tudo o que a discussão abriu, em um só lugar. Itens riscados foram d
 | Nome da unidade de Conhecimento | **`Relato`**. Descartados *Enunciado*, *Asserção*, *Depoimento* | ADR-015 K2, Q2 |
 | Regime é campo do registro ou propriedade do provedor? | **Campo do registro**, com padrão por unidade sobreponível | ADR-015 K1 |
 | Onde vive a narrativa da comunidade sobre peça de acervo | **No BioCultRelatos dela**, referenciando o item; nunca no banco do museu | ADR-015 §Contexto, §2 acima |
-| O regime entra no glossário da federação? | **Sim.** Quatro termos acrescentados ao `CONTEXT.md` na v3.7.0. A Q1 da ADR-015 foi fechada na v3.10.0 | `CONTEXT.md`, "Conhecimento e evidência" |
+| O regime entra no glossário da federação? | **Sim.** Quatro termos acrescentados ao `docs/CONTEXT.md` na v3.7.0. A Q1 da ADR-015 foi fechada na v3.10.0 | `docs/CONTEXT.md`, "Conhecimento e evidência" |
 | Mídia é anexo ou é o registro? | Em Relato de prática, **a mídia é o Relato**; a descrição é derivada | ADR-015 K8.1 |
 | Língua sem fala | `zxx`; não identificada, `und` | ADR-015 K8.2 |
 | Onde vive o contrato de harvest | **ADR própria, a ADR-016**, para poder ser aceita sem esperar a validação com comunidades | ADR-016, §3-bis |
@@ -312,8 +312,8 @@ O ponto K8 nasceu de uma observação de campo — vídeo registra prática, nã
 - **README, "Quatro Fontes"** — a coluna de regime foi acrescentada na v3.7.0, mas o corpo do texto ainda fala em "evidências" como termo guarda-chuva em vários pontos. Não é erro; é vocabulário anterior à distinção.
 - **`propostaGovernanca.md`** — descreve Label/Notice (§5.5) sem citar o regime, que é a propriedade que decide qual dos dois se aplica. Vale uma nota de vínculo quando o documento for revisado.
 - **Diagramas C4** (`docs/c4-model/`) — falam em coleta de registros `visibility: public`. Prosa conceitual, ainda correta em espírito, desatualizada na letra desde a ADR-016.
-- **`docs/pautaComunidades/pauta-comunidades.md`** — recebeu na sessão de 2026-09-03 o roteiro das pautas 5 (gravações e oficinas) e 6 (o sagrado), que faltavam, e a pauta 7. Resta verificar se o slide "Cinco perguntas que só vocês podem responder" (`docs/apresentacoes/`) continua coerente com sete pautas em duas seções.
-- **`CHANGELOG.md` v3.7.0** — as entradas daquela versão citam `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` e `conhecimento/caracterizacao-do-conhecimento-tradicional.md` nos caminhos antigos. São registro histórico e ficam como estão; o movimento para `docs/conhecimento/` e a renomeação para `pauta-comunidades.md` estão registrados na entrada da versão desta sessão.
+- **`Governanca/pautaComunidades/pauta-comunidades.md`** — recebeu na sessão de 2026-09-03 o roteiro das pautas 5 (gravações e oficinas) e 6 (o sagrado), que faltavam, e a pauta 7. Resta verificar se o slide "Cinco perguntas que só vocês podem responder" (`Pesquisa/apresentacoes/`) continua coerente com sete pautas em duas seções.
+- **`docs/CHANGELOG.md` v3.7.0** — as entradas daquela versão citam `conhecimento/sessao-2026-08-13-decisoes-e-pendencias.md` e `conhecimento/caracterizacao-do-conhecimento-tradicional.md` nos caminhos antigos. São registro histórico e ficam como estão; o movimento para `Pesquisa/conhecimento/` e a renomeação para `pauta-comunidades.md` estão registrados na entrada da versão desta sessão.
 
 
 ---
@@ -326,10 +326,10 @@ A sessão não produziu decisão de modelo de dados. Produziu o que faltava para
 
 | O que | Onde ficou |
 |---|---|
-| `conhecimento/` migrado para dentro de `docs/` | `docs/conhecimento/` |
-| `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | hoje em `docs/pautaComunidades/pauta-comunidades.md` (à época, `docs/conhecimento/pauta-comunidades.md`) — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
-| Memórias de reunião ganharam lugar próprio | `docs/reunioes/` |
-| Introdução objetiva à proposta | `resumoExecutivo.md`, na raiz |
+| `conhecimento/` migrado para dentro de `docs/` | `Pesquisa/conhecimento/` |
+| `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | hoje em `Governanca/pautaComunidades/pauta-comunidades.md` (à época, `docs/conhecimento/pauta-comunidades.md`) — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
+| Memórias de reunião ganharam lugar próprio | `Governanca/Arquitetura/Reunioes/` |
+| Introdução objetiva à proposta | `Pesquisa/resumoExecutivo-completo.md`, na raiz |
 
 **Este arquivo continua sendo o único documento de pendências.** A `pauta-comunidades.md` não é um segundo: é o recorte do que só se decide fora do computador, escrito para circular.
 
@@ -337,17 +337,17 @@ A sessão não produziu decisão de modelo de dados. Produziu o que faltava para
 
 Registrado como decisão de governança, sem ADR — não houve alternativa genuína descartada, é a prática que emergiu.
 
-- **Ponto-Focal** é a pessoa que uma **iniciativa parceira designa** para a interlocução com a arquitetura. Verbete em `CONTEXT.md`, com `_Avoid_: Representante` — `representante` já significa, no repositório, quem senta no Comitê Federado por um membro.
+- **Ponto-Focal** é a pessoa que uma **iniciativa parceira designa** para a interlocução com a arquitetura. Verbete em `docs/CONTEXT.md`, com `_Avoid_: Representante` — `representante` já significa, no repositório, quem senta no Comitê Federado por um membro.
 - **A resposta de um Ponto-Focal é a posição da iniciativa, nunca o consentimento da comunidade detentora** sobre um registro concreto (§5.1 da governança; Lei 13.123/2015, art. 10, §1º). Ele desenha o campo; nunca preenche o valor dele. É essa fronteira que virou **estrutura** nas duas seções da `pauta-comunidades.md`.
 - **Nota de estado na `propostaGovernanca.md` §2:** as três camadas são proposta em consulta, o Comitê Federado **não está constituído**, hoje o pesquisador acumula as três, e o único mecanismo em operação real é o ponto-focal por iniciativa parceira. A governança emergiu de baixo, pela necessidade de resolver pendências — e isso é achado do projeto (§7.2 do `projetoPesquisa.md`), não detalhe administrativo.
 
 ### 10-bis.3 Pendências novas, vindas da reunião de 18/08/2026 com o USEFLORA
 
-Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem atribuição nominal de falas; nomes só nos encaminhamentos com responsável).
+Fonte: `Governanca/Arquitetura/Reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem atribuição nominal de falas; nomes só nos encaminhamentos com responsável).
 
 | # | Pendência | Estado | Onde se resolve |
 |---|---|---|---|
-| ⑬ | **Indicação do ponto-focal do USEFLORA** | **Resolvida** — solicitada em 18/08/2026 e atendida em 17/09/2026, por e-mail de Nivaldo, designando Sofia Zank (`docs/reunioes/2026-09-18-reuniao-sofia.md`). O canal das pautas está aberto e opera como ciclo (§10-ter) | USEFLORA (coordenação) — feito |
+| ⑬ | **Indicação do ponto-focal do USEFLORA** | **Resolvida** — solicitada em 18/08/2026 e atendida em 17/09/2026, por e-mail de Nivaldo, designando Sofia Zank (`Governanca/Arquitetura/Reunioes/2026-09-18-reuniao-sofia.md`). O canal das pautas está aberto e opera como ciclo (§10-ter) | USEFLORA (coordenação) — feito |
 | ⑭ | **Princípios mínimos que toda instância federada deve aceitar** (registro de logs, respeito a rótulos de sensibilidade, CLPI como ciclo) | Aberta, questão [#14](https://github.com/edalcin/Arquitetura-BioCultural/issues/14). Encaminhada ao Comitê Gestor do USEFLORA, 4–6 semanas sugeridas. **Não é matéria nova:** o conteúdo tem casa em `ADR-004` D3 (admissão), `propostaGovernanca.md` §5.11 (contrato de adesão) e §8.1 item 13 (SDK de adesão) | Comitê Gestor + ponto-focal; consolidação em ADR quando houver texto |
 | ⑮ | **Proposta de governança operacional** enviada por Laura Madeira por e-mail | Não esperada mais (29/09). A composição da governança da arquitetura é a questão [#11](https://github.com/edalcin/Arquitetura-BioCultural/issues/11) | Governança da arquitetura |
 | ⑯ | **Sincronização assíncrona para comunidades com baixa conectividade** (laptop/pen-drive "quando houver conexão") | Aberta, **requisito sem mecanismo**. Nota de retificação já lançada no `ADR-011`, que afirmava não haver demanda por offline. O `ADR-005` fixou um SQLite com WAL por unidade, que é *single-writer*; não se sabe se a resposta é replicação, exportação/importação por arquivo ou cópia física. ADR do mecanismo nasce quando houver alternativas a comparar | Arquitetura. Os diagramas C4 já traziam "offline-first para coleta" — a contradição era interna |
@@ -358,7 +358,7 @@ Fonte: `docs/reunioes/2026-08-18-reuniao-useflora.md` (versão publicável, sem 
 
 - **Consulta por procuração.** O USEFLORA é a única iniciativa com representação de comunidades tradicionais ao alcance hoje, e seu Comitê Gestor é **misto** (academia + comunidades). Ele serve, informalmente, como interlocução para pendências que nascem também do **BioCultRelatos** e do **Pluriverso**. Isso é insumo de desenho legítimo — e **não** é consentimento.
 - **O vazio fica visível.** Na seção de pautas de consentimento da `pauta-comunidades.md`, o campo "com quem" está **vazio** para BioCultRelatos (a comunidade de Silveiras, SP entra pelo mestrado, sob CONEP e SisGen) e para Pluriverso (não existe membro real na federação). Preencher com "USEFLORA" seria o atalho que o projeto existe para não dar.
-- **O vídeo `conhecimentoPanara.mp4`** ficou em `docs/conhecimento/`, ignorado pelo git como antes, mas agora **documentado** (§15 da caracterização): o que é, povo indicado no nome, consentimento `[não verificado]`, e o registro de que o destino correto é armazenamento soberano fora da árvore de qualquer repositório — a pendência ⑩.
+- **O vídeo `conhecimentoPanara.mp4`** ficou em `Pesquisa/conhecimento/`, ignorado pelo git como antes, mas agora **documentado** (§15 da caracterização): o que é, povo indicado no nome, consentimento `[não verificado]`, e o registro de que o destino correto é armazenamento soberano fora da árvore de qualquer repositório — a pendência ⑩.
 
 ---
 
@@ -370,35 +370,35 @@ O papel do Ponto-Focal já tinha verbete (§10-bis.2). O que faltava era declara
 
 | # | Onde | O que mudou |
 |---|---|---|
-| 1 | `docs/projetoPesquisa.md` §7.2 | **Item 7 novo** — ciclo do Ponto-Focal: reunião → resumo em `docs/reunioes/` → log de impacto em `docs/reunioes/impactos-na-arquitetura.md` → alteração do documento de destino por ato próprio. Os itens passaram de sete para oito (a prática assistida por IA virou o item 8) |
-| 2 | `docs/projetoPesquisa.md` §7.2 | Parágrafo de evidência: das duas primeiras reuniões saíram quinze itens de impacto, **cinco contradizendo** texto normativo vigente e **dois abrindo** problema sem solução no texto — nenhum deles originado da especificação |
-| 3 | `docs/projetoPesquisa.md` §8 | Fase B renomeada para "Validação por estudos de caso **e ciclo do Ponto-Focal**", com o ciclo no escopo |
-| 4 | `docs/projetoPesquisa.md` §10 | Ponto-Focal por iniciativa parceira: Sofia Zank (UseFlora), formalizada em 17/09/2026, com a nota de que o papel é canal e não equipe de pesquisa |
-| 5 | `docs/projetoPesquisa.md` §11 | Linha nova na tabela de documentos: o log de impacto |
-| 6 | `CONTEXT.md`, verbete **Ponto-Focal** | Acrescentado o ciclo e o log; a fronteira canal × titular fica intacta |
-| 7 | `docs/governanca/propostaGovernanca.md` §2 | **Atualização de 2026-09-19** na nota de estado: a indicação, registrada como "ainda não ocorrida", foi atendida em 17/09/2026; o único mecanismo em operação real agora opera como ciclo, com log |
+| 1 | `Pesquisa/projetoPesquisa.md` §7.2 | **Item 7 novo** — ciclo do Ponto-Focal: reunião → resumo em `Governanca/Arquitetura/Reunioes/` → log de impacto em `docs/impactos-na-arquitetura.md` → alteração do documento de destino por ato próprio. Os itens passaram de sete para oito (a prática assistida por IA virou o item 8) |
+| 2 | `Pesquisa/projetoPesquisa.md` §7.2 | Parágrafo de evidência: das duas primeiras reuniões saíram quinze itens de impacto, **cinco contradizendo** texto normativo vigente e **dois abrindo** problema sem solução no texto — nenhum deles originado da especificação |
+| 3 | `Pesquisa/projetoPesquisa.md` §8 | Fase B renomeada para "Validação por estudos de caso **e ciclo do Ponto-Focal**", com o ciclo no escopo |
+| 4 | `Pesquisa/projetoPesquisa.md` §10 | Ponto-Focal por iniciativa parceira: Sofia Zank (UseFlora), formalizada em 17/09/2026, com a nota de que o papel é canal e não equipe de pesquisa |
+| 5 | `Pesquisa/projetoPesquisa.md` §11 | Linha nova na tabela de documentos: o log de impacto |
+| 6 | `docs/CONTEXT.md`, verbete **Ponto-Focal** | Acrescentado o ciclo e o log; a fronteira canal × titular fica intacta |
+| 7 | `Governanca/Proposta/propostaGovernanca.md` §2 | **Atualização de 2026-09-19** na nota de estado: a indicação, registrada como "ainda não ocorrida", foi atendida em 17/09/2026; o único mecanismo em operação real agora opera como ciclo, com log |
 | 8 | Este arquivo | §8 ganhou a linha do ciclo e do log; §11.2 atualizada |
 
 ### 10-ter.2 O que a sessão não faz
 
 - **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os quinze itens do `impactos-na-arquitetura.md` continuam com estado *Não aplicado*: a mudança é de método, não de modelo. O log aponta; o destino muda por ato próprio.
-- **Pendência ⑬ (indicação do ponto-focal do USEFLORA) — resolvida** em 17/09/2026, por e-mail de Nivaldo. Registro em `docs/reunioes/2026-09-18-reuniao-sofia.md`.
+- **Pendência ⑬ (indicação do ponto-focal do USEFLORA) — resolvida** em 17/09/2026, por e-mail de Nivaldo. Registro em `Governanca/Arquitetura/Reunioes/2026-09-18-reuniao-sofia.md`.
 - **Não constitui o Comitê Federado**, nem resolve o bloqueador E4. A camada de arquitetura continua sendo, de fato, uma reunião de duas pessoas — item **I-15** do log, em aberto.
 
 ## 10-quater. Sessão 2026-09-29 — terceira reunião com o Ponto-Focal e três documentos por reunião
 
-Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `docs/reunioes/2026-09-29-reuniao-sofia.md`.
+Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `Governanca/Arquitetura/Reunioes/2026-09-29-reuniao-sofia.md`.
 
 ### 10-quater.1 O que mudou, e onde
 
 | # | Onde | O que mudou |
 |---|---|---|
-| 1 | `docs/reunioes/` | Cada reunião do ciclo gera **três documentos**: resumo, impactos e próxima pauta. O log único de impactos foi separado: a análise de 16/09 e de 18/09 foi para `2026-09-16-impactos-reuniao-sofia.md` e `2026-09-18-impactos-reuniao-sofia.md`; `impactos-na-arquitetura.md` passou a ser só o **estado consolidado** (tabela de itens, buraco estrutural, plano de documentos, verificações). Convenção e índice em `docs/reunioes/README.md` |
-| 2 | `docs/projetoPesquisa.md` §7.2, itens 7 e 8; §11 | Os três documentos, o estado consolidado e a regra de pauta didática entram no procedimento |
-| 3 | `CONTEXT.md` (Ponto-Focal); `resumoExecutivo.md` §5 | Ciclo descrito com os três documentos |
-| 4 | `docs/reunioes/2026-09-29-impactos-reuniao-sofia.md` | Itens novos **I-16** (raiz legal com três grupos), **I-17** (conflito entre coletivos: o privado prevalece), **I-18** (incerteza declarada), **I-19** (evidência de domesticação e manejo). **I-04 em revisão**; I-05 fora do escopo do canal UseFlora |
-| 5 | `docs/ia/uso-de-ia.md` | Episódio **E-04**, com a anuência de Sofia; diagrama do método atualizado |
-| 6 | `docs/reunioes/guiaContrib/README.md` | Como registrar dúvida sobre a pauta por *Issue*; nota sobre o *fork* |
+| 1 | `Governanca/Arquitetura/Reunioes/` | Cada reunião do ciclo gera **três documentos**: resumo, impactos e próxima pauta. O log único de impactos foi separado: a análise de 16/09 e de 18/09 foi para `2026-09-16-impactos-reuniao-sofia.md` e `2026-09-18-impactos-reuniao-sofia.md`; `impactos-na-arquitetura.md` passou a ser só o **estado consolidado** (tabela de itens, buraco estrutural, plano de documentos, verificações). Convenção e índice em `Governanca/Arquitetura/README.md` |
+| 2 | `Pesquisa/projetoPesquisa.md` §7.2, itens 7 e 8; §11 | Os três documentos, o estado consolidado e a regra de pauta didática entram no procedimento |
+| 3 | `docs/CONTEXT.md` (Ponto-Focal); `Pesquisa/resumoExecutivo-completo.md` §5 | Ciclo descrito com os três documentos |
+| 4 | `Governanca/Arquitetura/Reunioes/2026-09-29-impactos-reuniao-sofia.md` | Itens novos **I-16** (raiz legal com três grupos), **I-17** (conflito entre coletivos: o privado prevalece), **I-18** (incerteza declarada), **I-19** (evidência de domesticação e manejo). **I-04 em revisão**; I-05 fora do escopo do canal UseFlora |
+| 5 | `Pesquisa/IA/uso-de-ia.md` | Episódio **E-04**, com a anuência de Sofia; diagrama do método atualizado |
+| 6 | `ComecePorAqui/guia-github.md` | Como registrar dúvida sobre a pauta por *Issue*; nota sobre o *fork* |
 
 ### 10-quater.2 O que a sessão não faz
 
@@ -408,17 +408,17 @@ Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `d
 
 ## 10-quinquies. Sessão 2026-10-03 — Cenário B: governança da arquitetura por *Issues*
 
-Eduardo adotou o Cenário B de `docs/novaFaseArquitetura-analise.md`, antes da reunião, com as opções recomendadas da §8 e uma etiqueta por tipo de fonte. Pedido literal em `docs/ia/registro-de-prompts.md`, P-0001.
+Eduardo adotou o Cenário B de `Governanca/Arquitetura/novaFaseArquitetura-analise.md`, antes da reunião, com as opções recomendadas da §8 e uma etiqueta por tipo de fonte. Pedido literal em `Pesquisa/IA/registro-de-prompts.md`, P-0001.
 
 ### 10-quinquies.1 O que mudou, e onde
 
 | # | Onde | O que mudou |
 |---|---|---|
 | 1 | GitHub | 11 etiquetas (quem responde, tipo, situação, **tipo de fonte**) + `wayfinder:map`; *milestone* "Próxima reunião"; modelos `.github/ISSUE_TEMPLATE/questao.yml` e `duvida.yml`; mapa fixado **#6**; questões **#7 a #34** (21 delas no mapa, com bloqueios #10→#17, #12→#24 e #25, #11→#33); #5 fechada |
-| 2 | `docs/reunioes/` | Pauta antiga congelada como `2026-10-03-retrato-pauta-formato-antigo.md`, com tabela item → *Issue*; nova `proxima-pauta-reuniao-sofia.md`, curta (cerca de 930 palavras), gerada da *milestone*; `README.md` com o ciclo novo, diagrama e **Revisão das Issues** obrigatória; guia de contribuição com a seção de *Issues*; `impactos-na-arquitetura.md` em índice e blocos de campos fixos, com *Questão aberta* |
-| 3 | `docs/ia/registro-de-prompts.md` (novo); `CLAUDE.md` | Registro literal de todo prompt, como primeiro ato de cada sessão |
-| 4 | `docs/metodo-de-evolucao.md` (novo) | Mapa dos instrumentos do método e histórico das mudanças de método (M-01 a M-10) |
-| 5 | `docs/projetoPesquisa.md` §7.2 (itens 7 a 9), §7.5, §8, §10, §11; `docs/ia/uso-de-ia.md`; `CONTEXT.md` (Reunião de Governança da Arquitetura, Questão, Tipo de Fonte; Ponto-Focal); `resumoExecutivo.md` §5 e §8; `docs/agents/issue-tracker.md` | Ciclo, transparência e linguagem atualizados |
+| 2 | `Governanca/Arquitetura/Reunioes/` | Pauta antiga congelada como `2026-10-03-retrato-pauta-formato-antigo.md`, com tabela item → *Issue*; nova `proxima-pauta-reuniao-sofia.md`, curta (cerca de 930 palavras), gerada da *milestone*; `README.md` com o ciclo novo, diagrama e **Revisão das Issues** obrigatória; guia de contribuição com a seção de *Issues*; `impactos-na-arquitetura.md` em índice e blocos de campos fixos, com *Questão aberta* |
+| 3 | `Pesquisa/IA/registro-de-prompts.md` (novo); `CLAUDE.md` | Registro literal de todo prompt, como primeiro ato de cada sessão |
+| 4 | `Governanca/Arquitetura/metodo-de-evolucao.md` (novo) | Mapa dos instrumentos do método e histórico das mudanças de método (M-01 a M-10) |
+| 5 | `Pesquisa/projetoPesquisa.md` §7.2 (itens 7 a 9), §7.5, §8, §10, §11; `Pesquisa/IA/uso-de-ia.md`; `docs/CONTEXT.md` (Reunião de Governança da Arquitetura, Questão, Tipo de Fonte; Ponto-Focal); `Pesquisa/resumoExecutivo-completo.md` §5 e §8; `docs/agents/issue-tracker.md` | Ciclo, transparência e linguagem atualizados |
 
 ### 10-quinquies.2 O que a sessão não faz
 
@@ -433,18 +433,18 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 
 ### 11.1 Parte I — Projeto de pesquisa
 
-- **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Referencias.md`.
-- **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
-- **Log de uso de IA** — criado em 2026-09-24 (`docs/ia/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**, agora com o campo *Issues*; o ciclo só fecha com ele. E-04 (29/09) registrado; a revisão de Sofia foi feita (PR #4); a anuência retroativa (16/09 e 18/09) é a questão #7.
-- **Nova fase: governança da arquitetura por *Issues*** ✔ — Cenário B implantado em 2026-10-03 (§10-quinquies). Próximo: na reunião, 5 minutos de demonstração e a pergunta "funciona para você?"; depois dela, o primeiro ciclo completo no formato novo (`docs/reunioes/README.md`); depois de duas reuniões, comparar as medidas de `docs/metodo-de-evolucao.md` §5 (M-10).
-- **Registro de prompts** — todo prompt entra em `docs/ia/registro-de-prompts.md` antes do trabalho (regra em `CLAUDE.md`).
+- **Refazer a pesquisa profunda da §0.2** ✔ — Realizada em 2026-09-11 nas cinco frentes metodológicas com fontes primárias. Resultou em 23 referências ABNT NBR 6023:2018 incorporadas à nova seção 13 do `Pesquisa/Referencias.md`.
+- **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `Pesquisa/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
+- **Log de uso de IA** — criado em 2026-09-24 (`Pesquisa/IA/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**, agora com o campo *Issues*; o ciclo só fecha com ele. E-04 (29/09) registrado; a revisão de Sofia foi feita (PR #4); a anuência retroativa (16/09 e 18/09) é a questão #7.
+- **Nova fase: governança da arquitetura por *Issues*** ✔ — Cenário B implantado em 2026-10-03 (§10-quinquies). Próximo: na reunião, 5 minutos de demonstração e a pergunta "funciona para você?"; depois dela, o primeiro ciclo completo no formato novo (`Governanca/Arquitetura/README.md`); depois de duas reuniões, comparar as medidas de `Governanca/Arquitetura/metodo-de-evolucao.md` §5 (M-10).
+- **Registro de prompts** — todo prompt entra em `Pesquisa/IA/registro-de-prompts.md` antes do trabalho (regra em `CLAUDE.md`).
 
 ### 11.2 Parte II — Arquitetura e componentes
 
 Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e levada à pauta. O que resta:
 
-- **Indicação do ponto-focal do USEFLORA (⑬)** ✔ — atendida em 17/09/2026 (Sofia Zank, UseFlora). O canal das sete pautas de `docs/pautaComunidades/pauta-comunidades.md` está aberto, e a interlocução já roda como ciclo (§10-ter).
-- **Aplicar os itens do `docs/reunioes/impactos-na-arquitetura.md`** — dezenove itens, nenhum aplicado. Das duas ADRs propostas na §3 daquele documento, a **ADR-018** (identificação do detentor, agora com o grupo legal da Lei nº 13.123) pode ser escrita; a **ADR-019** (sagrado como dimensão) espera as questões #9 (conteúdo sagrado de artigo) e #10 (sagrado e sigilo). A ADR-018 destrava a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
+- **Indicação do ponto-focal do USEFLORA (⑬)** ✔ — atendida em 17/09/2026 (Sofia Zank, UseFlora). O canal das sete pautas de `Governanca/pautaComunidades/pauta-comunidades.md` está aberto, e a interlocução já roda como ciclo (§10-ter).
+- **Aplicar os itens do `docs/impactos-na-arquitetura.md`** — dezenove itens, nenhum aplicado. Das duas ADRs propostas na §3 daquele documento, a **ADR-018** (identificação do detentor, agora com o grupo legal da Lei nº 13.123) pode ser escrita; a **ADR-019** (sagrado como dimensão) espera as questões #9 (conteúdo sagrado de artigo) e #10 (sagrado e sigilo). A ADR-018 destrava a Q3 da ADR-015, a pendência ① e a H-Q2 da ADR-016.
 - **Levar a pauta 7 (o detentor apagado pela publicação)** ao Comitê Gestor do USEFLORA: é a única que ele responde de imediato e bloqueia dado já em produção no BioCultDB.
 - **"Decida ② e ⑪"** — as duas técnicas que sobraram e não vão à reunião: cache do texto dos rótulos, e a fila de curadoria dos registros em `und`.
 - **Questões com as pessoas:** no painel #6 — inclusive ④ (#10), ⑧ (#29), ⑨ (#24) e ⑩ (#25).
@@ -452,4 +452,4 @@ Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e le
 - **Encaminhar as pendências novas da §10-bis.3:** ⑭ princípios mínimos da federação (questão #14), ⑮ composição da governança (questão #11), ⑯ requisito de sincronização assíncrona (sem mecanismo definido), ⑰ auditoria dos prompts no BioCultDB contra a política nova de `propostaGovernanca.md` §5.12-9, ⑱ capacitação como repartição não monetária.
 - **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
 - **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.
-- **Grafo de atores nacionais concluído** — `docs/iniciativas/atoresNacionais.md` mapeia beneficiários e provedores de dados (diretos e indiretos) ligados à arquitetura, a partir das quatro iniciativas documentadas e de pesquisa externa sobre o panorama nacional de dados de CTA (CGEN, FUNAI/SII, MPF/Territórios Tradicionais, ISA). Sem pendência aberta.
+- **Grafo de atores nacionais concluído** — `Pesquisa/iniciativas/atoresNacionais.md` mapeia beneficiários e provedores de dados (diretos e indiretos) ligados à arquitetura, a partir das quatro iniciativas documentadas e de pesquisa externa sobre o panorama nacional de dados de CTA (CGEN, FUNAI/SII, MPF/Territórios Tradicionais, ISA). Sem pendência aberta.

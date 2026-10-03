@@ -183,7 +183,7 @@ achatada.
 
 **Decisão:** uma Cópia de Trabalho por Unidade Hospedeira e nenhuma fora delas; edição na unidade que
 motivou a mudança; rede de proteção nativa do git obrigatória; adoção de novas versões **obrigatória e
-assíncrona** com Atraso de Módulo visível (`bin/termos-status.ps1`). Supersede parcialmente o ADR-007 F3
+assíncrona** com Atraso de Módulo visível (`docs/bin/termos-status.ps1`). Supersede parcialmente o ADR-007 F3
 e o ADR-010 na cláusula de bump opcional; ratifica ADR-007 F1, F2, F4 e F6.
 
 **[Leia o documento completo →](ADR-012-manutencao-codigo-bioculttermos.md)**
@@ -235,7 +235,7 @@ relações e a opção "Nomes Científicos de Plantas" saem do pulldown Admin) �
 **Status:** Proposto
 **Data:** Agosto 2026
 
-Responde à pendência de vocabulário de arquitetura registrada no `CHANGELOG.md` (v3.5.0, "Contexto da
+Responde à pendência de vocabulário de arquitetura registrada no `docs/CHANGELOG.md` (v3.5.0, "Contexto da
 Versão") e descobre que ela
 não era de vocabulário: BioCultDB e BioCultRelatos não usam termos diferentes para o mesmo conceito,
 guardam conceitos diferentes com o mesmo termo. Acrescenta à arquitetura um segundo eixo, ortogonal ao

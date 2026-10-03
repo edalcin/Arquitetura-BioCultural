@@ -2,7 +2,7 @@
 
 **Decisão de origem:** [ADR-012](../architecture-decisions/ADR-012-manutencao-codigo-bioculttermos.md)
 · **Runbook operacional:** [fluxo-de-trabalho.md](fluxo-de-trabalho.md)
-· **Vocabulário:** [CONTEXT.md](../../CONTEXT.md)
+· **Vocabulário:** [CONTEXT.md](../CONTEXT.md)
 
 ---
 
@@ -188,7 +188,7 @@ Registradas para revisão explícita — foram tomadas pela recomendação, sem 
 |---|---|---|
 | Fonte de Atribuição `{tipo, nome}` em vez de campo genérico | ADR-012 G5 | Refaz G5 e a configuração de travessia |
 | `referenceTerms.js` classificado como código | Este documento | Move para semente no SQLite de cada unidade |
-| Detecção de atraso por script local, não por CI cross-repo | ADR-012 G4 | Troca `bin/termos-status.ps1` por workflow |
+| Detecção de atraso por script local, não por CI cross-repo | ADR-012 G4 | Troca `docs/bin/termos-status.ps1` por workflow |
 | Visibilidade por referência, não por cópia do documento | ADR-012 G6 | — (copiar reproduz o problema resolvido) |
 
 ## O que mudou nas decisões anteriores
@@ -196,6 +196,6 @@ Registradas para revisão explícita — foram tomadas pela recomendação, sem 
 - **ADR-007 F3** — a cláusula "bump onde/quando fizer sentido... quando cada uma decidir" foi
   substituída pela adoção obrigatória e assíncrona (ADR-012 G4). O resto de F3 permanece.
 - **ADR-010** — a cláusula "bump entre unidades continua opcional" foi substituída pelo mesmo G4. As
-  demais obrigações (push ao remoto, `CHANGELOG.md` central, validação de SHA e `BUILD_INFO` no build)
+  demais obrigações (push ao remoto, `docs/CHANGELOG.md` central, validação de SHA e `BUILD_INFO` no build)
   permanecem e são o mecanismo que torna G4 verificável.
 - **ADR-007 F1, F2, F4, F6** — ratificados sem alteração.

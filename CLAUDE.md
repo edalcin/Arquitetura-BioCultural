@@ -1,10 +1,10 @@
 ## Registro de prompts — primeiro ato de toda sessão
 
-Antes de qualquer outro trabalho, acrescente o prompt do usuário, **literal**, ao fim de `docs/ia/registro-de-prompts.md` (formato e regras de omissão no cabeçalho do arquivo). Repita para cada prompt seguinte da sessão, inclusive os curtos. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/projetoPesquisa.md` §7.2, item 9.
+Antes de qualquer outro trabalho, acrescente o prompt do usuário, **literal**, ao fim de `Pesquisa/IA/registro-de-prompts.md` (formato e regras de omissão no cabeçalho do arquivo). Repita para cada prompt seguinte da sessão, inclusive os curtos. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `Pesquisa/projetoPesquisa.md` §7.2, item 9.
 
 ## Reuniões de governança e Issues
 
-Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `docs/reunioes/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `docs/metodo-de-evolucao.md` §5.
+Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `Governanca/Arquitetura/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `Governanca/Arquitetura/metodo-de-evolucao.md` §5.
 
 ## graphify
 
@@ -28,4 +28,8 @@ Issues live as GitHub issues, managed via the `gh` CLI. See `docs/agents/issue-t
 
 ### Domain docs
 
-Single-context layout (`CONTEXT.md` + `docs/adr/` at the repo root). See `docs/agents/domain.md`.
+Single-context layout: glossário em `docs/CONTEXT.md`, ADRs em `docs/architecture-decisions/`. See `docs/agents/domain.md`.
+
+### Estrutura do repositório
+
+Raiz só com `README.md`, `LICENSE`, `CLAUDE.md`. Humanos: `ComecePorAqui/`, `Governanca/` (camadas e reuniões em `Governanca/Arquitetura/Reunioes/`), `Pesquisa/` (projeto de pesquisa, `IA/`). Técnico: `docs/` — caminhos estáveis, outros repositórios apontam para eles; não mova arquivos de `docs/`.

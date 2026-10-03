@@ -9,7 +9,7 @@
 O ADR-007 estabeleceu que o BioCultTermos é um **Módulo Compartilhado**, distribuído via git submodule
 e consumido pelas quatro Unidades Hospedeiras (BioCultDB, BioCultRelatos, BioCultNaturalistas,
 BioCultAcervos). O ADR-010 fechou duas lacunas expostas na primeira operação real: push obrigatório ao
-remoto e registro no `CHANGELOG.md` central.
+remoto e registro no `docs/CHANGELOG.md` central.
 
 Um mês depois, com o BioCultDB em produção, uma terceira lacuna apareceu — e ela não é de mecanismo,
 é de **higiene de espaço de trabalho**.
@@ -205,7 +205,7 @@ BioCultNaturalistas não pode quebrar o BioCultDB em produção. Isso proíbe, n
 específico de unidade dentro do módulo — o que o ADR-007 F5 já exigia e o G5 abaixo torna executável.
 
 Para tornar o atraso visível sem CI cross-repo, esta ADR cria um leitor de estado somente-leitura,
-`bin/termos-status.ps1` neste repositório, que reporta para as quatro unidades: estado operacional,
+`docs/bin/termos-status.ps1` neste repositório, que reporta para as quatro unidades: estado operacional,
 Versão Adotada, Atraso de Módulo em número de commits, e se a Cópia de Trabalho tem alterações não
 publicadas. Ele não altera nada e não tem dependência além de `git`.
 
@@ -280,7 +280,7 @@ para ler markdown).
   F3 (mudança nasce dentro de uma unidade; sem propagação automática; sem unidade canônica) permanece
   e é ratificado por G1.
 - **Supersede parcialmente o ADR-010** — a cláusula "bump entre unidades continua opcional" é
-  substituída por G4. As demais obrigações do ADR-010 (push ao remoto, `CHANGELOG.md` central,
+  substituída por G4. As demais obrigações do ADR-010 (push ao remoto, `docs/CHANGELOG.md` central,
   validação de SHA e `BUILD_INFO` antes de buildar) permanecem inalteradas e continuam sendo o
   mecanismo pelo qual G4 é verificável no build.
 - **Especializa o ADR-007 F5** — G5 detalha o bloqueio do `AcquisitionService` e decide a forma da
@@ -306,7 +306,7 @@ para ler markdown).
 
 - Configuração de git é por máquina. Uma máquina de desenvolvimento nova nasce sem a rede de proteção.
   - *Mitigação*: o runbook em `docs/gestaoBioCultTermos/fluxo-de-trabalho.md` abre com o bloco de
-    configuração, e `bin/termos-status.ps1` reporta quando as chaves não estão definidas.
+    configuração, e `docs/bin/termos-status.ps1` reporta quando as chaves não estão definidas.
 - G4 aumenta a carga de manutenção: quatro bumps por ciclo em vez de um, e a responsabilidade de
   manter todo commit seguro para todas as unidades.
   - *Mitigação*: é o custo direto de um Módulo Compartilhado. A alternativa não é menos trabalho, é
@@ -323,7 +323,7 @@ para ler markdown).
 - [ADR-010: Documentação Central e Verificação de Build](ADR-010-central-documentation-and-build-verification.md) — cláusula de bump opcional superseded
 - `docs/gestaoBioCultTermos/BioCultTermosEstrategia.md` — a estratégia completa
 - `docs/gestaoBioCultTermos/fluxo-de-trabalho.md` — o runbook operacional
-- `CONTEXT.md` — Módulo Compartilhado, Cópia de Trabalho, Atraso de Módulo, Fonte de Atribuição
+- `docs/CONTEXT.md` — Módulo Compartilhado, Cópia de Trabalho, Atraso de Módulo, Fonte de Atribuição
 
 ## Data de Revisão
 
