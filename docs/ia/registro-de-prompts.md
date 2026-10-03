@@ -59,3 +59,12 @@ Por fim, penso que estas mudanças metodológicas mais significativas podem faze
 ````text
 Creio que esta nova fase merece uma atualização significativa no @README.md , incluindo uma nova versão.
 ````
+
+### P-0003 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: *commit* "docs(ia): registra P-0003"
+
+````text
+commit to main and sync
+````
