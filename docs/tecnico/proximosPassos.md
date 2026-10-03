@@ -13,11 +13,11 @@
 >
 > **Pendência que depende de uma pessoa vive como *Issue*** (desde 2026-10-03): uma por questão, com número fixo, no [painel #6](https://github.com/edalcin/Arquitetura-BioCultural/issues/6). Aqui fica só o link. Pendência técnica continua aqui.
 
-**Estado em:** 2026-10-03 — **versão 4.0**: repositório reorganizado por público (raiz só com README, LICENSE e CLAUDE.md; `ComecePorAqui/`, `docs/Governanca/`, `docs/Pesquisa/`; `docs/tecnico/` técnico, caminhos estáveis). Antes, no mesmo dia, o Cenário B (§10-quinquies). Próxima ação da versão: release no Zenodo, por Eduardo.
+**Estado em:** 2026-10-03, fim do dia — **versão 4.0 pronta para release, à espera da concordância de Sofia com a licença (#35).** No mesmo dia: Cenário B (§10-quinquies) e versão 4.0 — repositório organizado por público, `docs/` em três partes, licença CC BY 4.0 (§10-sexies).
 
-**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras), a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa) e a **§10-quinquies** (a sessão de 2026-10-03, que levou as questões abertas para *Issues*). O método e o histórico das suas mudanças estão em `docs/Governanca/Arquitetura/metodo-de-evolucao.md`; as questões que dependem de pessoas, no painel das *Issues* (#6). Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
+**Para quem retoma:** comece pela **§11**, que lista a próxima ação de cada frente. Para o contexto da Parte I, leia a **§0**; para o da Parte II, a **§1**, a **§10**, a **§10-bis** (a sessão de 2026-09-03, que deu registro à interlocução com iniciativas parceiras), a **§10-ter** (a sessão de 2026-09-19, que fez do ciclo de reuniões com o Ponto-Focal um procedimento declarado de pesquisa), a **§10-quinquies** (2026-10-03, questões abertas como *Issues*) e a **§10-sexies** (2026-10-03, versão 4.0: nova estrutura de pastas e licença). Onde está cada documento: `CLAUDE.md`, seção "Estrutura do repositório", e `docs/README.md`. O método e o histórico das suas mudanças estão em `docs/Governanca/Arquitetura/metodo-de-evolucao.md`; as questões que dependem de pessoas, no painel das *Issues* (#6). Da §1 em diante, o conteúdo é o estado de 2026-08-14 e continua válido.
 
-**Estado do repositório:** `main`, sincronizado com o remoto. Último marco: **v4.0.0** (reorganização por público, 2026-10-03; detalhe em `docs/tecnico/CHANGELOG.md`). Marcos anteriores: **v3.12.0** (Cenário B), **v3.8.0** (`5e1d575`), **v3.9.0** (`c6a8357`), **v3.10.0** (ADR-016), **v3.11.2** (Guardian Connector), **v3.11.4** (três documentos por reunião).
+**Estado do repositório:** `main`, sincronizado com o remoto. Último marco: **v4.0.0** (não publicada no Zenodo; detalhe em `docs/tecnico/CHANGELOG.md`). Commits da v4.0: `9f5ba4d` (reorganização), `3745728` (licença), `6f87dea` (`docs/` em três partes). Último release publicado: **v3.4** (DOI 10.5281/zenodo.21738427, GPL-3.0); DOI conceitual, que sempre leva à versão mais recente: 10.5281/zenodo.17710619. Marcos anteriores: **v3.12.0** (Cenário B), **v3.11.4** (três documentos por reunião), **v3.11.2** (Guardian Connector), **v3.10.0** (ADR-016), **v3.9.0** (`c6a8357`), **v3.8.0** (`5e1d575`).
 
 ---
 
@@ -179,7 +179,7 @@ Detalhado com roteiro de perguntas em **`docs/Governanca/pautaComunidades/pauta-
 6. **O que é sagrado — e o que acontece com ele** (novo, v3.10.0, ④/H-Q1) — quando um saber é sagrado, o registro dele deve sumir por inteiro, ou pode ficar visível que ele existe sem mostrar o conteúdo? E quem diz, por todos, que um saber é sagrado? Tecnicamente a pergunta é se `sacred` equivale a `private` ou merece nível próprio; a decisão, porém, não é técnica. Regra interina: equivale a `private`, nunca atravessa.
 7. **O detentor apagado pela publicação** (novo, 2026-09-03) — em fonte secundária, o detentor do conhecimento frequentemente foi registrado pelo autor do artigo como "informante, 62 anos" e não há caminho de volta até a pessoa. O que a arquitetura faz com um registro de Conhecimento cujo detentor é inalcançável: publicar como Evidência do autor (é o que o teste de K1 da ADR-015 já implica), manter restrito por não haver quem consinta, ou tratar como caso próprio com rótulo de "detentor não identificável na fonte"? A Lei 13.123/2015, art. 2º, III distingue CTA de **origem não identificável**, e `propostaGovernanca.md` §5.1 registra que o BioCultDB lida frequentemente com esse caso. Classificar como Evidência resolve *quem manda no registro*; não resolve que o conhecimento tem dono e o dono foi apagado. **É a única pauta que o USEFLORA pode responder de imediato, e bloqueia dado já em produção** (§6: 29 registros sem `regime`).
 
-As pautas 1, 4, 5 e 6 estão no slide "Cinco perguntas que só vocês podem responder" de `docs/apresentacoes/Arquitetura BioCultural v2.pptx`, junto com a pauta 2.
+As pautas 1, 4, 5 e 6 estão no slide "Cinco perguntas que só vocês podem responder" de `docs/Pesquisa/apresentacoes/Arquitetura BioCultural v2.pptx`, junto com a pauta 2.
 
 A regra de `.gitignore` para `*.mp4` permanece: nenhuma unidade mantém o único original de gravação de CLPI em plataforma de terceiros, e um remoto público é plataforma de terceiros (`propostaGovernanca.md` §5.10).
 
@@ -187,7 +187,7 @@ A regra de `.gitignore` para `*.mp4` permanece: nenhuma unidade mantém o único
 
 ## 6. Pendências dos componentes (fora deste repositório)
 
-Cada componente mantém o seu próprio `docs/tecnico/proximosPassos.md`, que é a fonte de verdade das suas pendências. Aqui fica só o resumo e o link. **Regra:** pendência de implementação de uma unidade mora no repositório dela; pendência de arquitetura, contrato ou governança mora aqui.
+Cada componente mantém o seu próprio `docs/proximosPassos.md`, no repositório dele, que é a fonte de verdade das suas pendências. Aqui fica só o resumo e o link. **Regra:** pendência de implementação de uma unidade mora no repositório dela; pendência de arquitetura, contrato ou governança mora aqui.
 
 | Componente | Estado | Pendências principais | Documento |
 |---|---|---|---|
@@ -196,7 +196,7 @@ Cada componente mantém o seu próprio `docs/tecnico/proximosPassos.md`, que é 
 | **BioCultAcervos** (acervos museológicos) | Repositório, documentação e home page (Express na 3003) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources` para o vínculo com Relatos; harvest; scaffold Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
 | **BioCultNaturalistas** (obras séc. XVII–XIX) | Só documentação de fundação (F0); roadmap de 7 fases | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; ADR-003 V2 ainda precisa remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
 | **Pluriverso** (middleware) | Só documentação; arquitetura, contrato e stack fixados | Fase 0 esqueleto + CI; Fase 1 membership e probe anti-SSRF; Fase 2 harvest + índice FTS5; Fases 3–6 API pública, SKOS, purge, detecção de remoção. Nenhum provedor real existe: Fase 2 termina em membro simulado | [`pluriverso/docs/proximosPassos.md`](https://github.com/edalcin/pluriverso/blob/main/docs/proximosPassos.md) |
-| **BioCultTermos** (módulo SKOS-XL) | Implementado; em produção só como módulo hospedado no BioCultDB | Generalizar o `AcquisitionService` para lista de pares `{tabela, campos[]}` — **bloqueia Relatos, Acervos e Naturalistas**; hospedagem nas outras três unidades | Vive como submodule; pendência registrada no `docs/tecnico/proximosPassos.md` do BioCultDB |
+| **BioCultTermos** (módulo SKOS-XL) | Implementado; em produção só como módulo hospedado no BioCultDB | Generalizar o `AcquisitionService` para lista de pares `{tabela, campos[]}` — **bloqueia Relatos, Acervos e Naturalistas**; hospedagem nas outras três unidades | Vive como submodule; pendência registrada no `docs/proximosPassos.md` do BioCultDB |
 
 ---
 
@@ -326,10 +326,10 @@ A sessão não produziu decisão de modelo de dados. Produziu o que faltava para
 
 | O que | Onde ficou |
 |---|---|
-| `conhecimento/` migrado para dentro de `docs/tecnico/` | `docs/Pesquisa/conhecimento/` |
+| `conhecimento/` migrado para dentro de `docs/` (à época) | hoje `docs/Pesquisa/conhecimento/` |
 | `sessao-2026-08-13-decisoes-e-pendencias.md` renomeado e reescrito | hoje em `docs/Governanca/pautaComunidades/pauta-comunidades.md` (à época, `docs/conhecimento/pauta-comunidades.md`) — deixou de ser registro de sessão e passou a ser **o documento do ponto-focal**; as camadas duplicadas neste arquivo (§1, §2, §10.1, §3, §11.2) foram descartadas, e a §5 sobreviveu reorganizada |
 | Memórias de reunião ganharam lugar próprio | `docs/Governanca/Arquitetura/Reunioes/` |
-| Introdução objetiva à proposta | `docs/Pesquisa/resumoExecutivo-completo.md`, na raiz |
+| Introdução objetiva à proposta | `resumoExecutivo.md` na raiz (à época); hoje `docs/Pesquisa/resumoExecutivo-completo.md`, com a versão de uma página em `ComecePorAqui/README.md` |
 
 **Este arquivo continua sendo o único documento de pendências.** A `pauta-comunidades.md` não é um segundo: é o recorte do que só se decide fora do computador, escrito para circular.
 
@@ -403,8 +403,8 @@ Reunião com Sofia Zank (e Viviane Kruel, convidada) em 29/09/2026. Resumo em `d
 ### 10-quater.2 O que a sessão não faz
 
 - **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Os dezenove itens seguem *Não aplicado*, *Em aberto* ou *Em revisão*.
-- **A ADR-018 está liberada** (todos os itens que ela consome foram confirmados). **A ADR-019 continua bloqueada** pelas perguntas 2.1 e 2.2 da próxima pauta.
-- **A revisão humana do resumo de 29/09 está pendente** — conferência contra a transcrição e revisão de Sofia.
+- **A ADR-018 está liberada** (todos os itens que ela consome foram confirmados). **A ADR-019 continua bloqueada** pelas questões #9 e #10 (à época, perguntas 2.1 e 2.2 da próxima pauta).
+- **A revisão humana do resumo de 29/09** — feita por Sofia (PR #4, 30/09).
 
 ## 10-quinquies. Sessão 2026-10-03 — Cenário B: governança da arquitetura por *Issues*
 
@@ -425,6 +425,31 @@ Eduardo adotou o Cenário B de `docs/Governanca/Arquitetura/novaFaseArquitetura-
 - **Não altera nenhuma ADR, o UDM ou o contrato de harvest.** Mudança de método, não de modelo.
 - **Não renomeia os arquivos `-sofia`.** Espera a decisão sobre a composição da governança (#11, #12).
 - **Não responde nenhuma questão.** As questões de desenho só fecham pela resposta da governança.
+
+## 10-sexies. Sessão 2026-10-03 — versão 4.0: repositório organizado por público
+
+Decisões tomadas com Eduardo, uma pergunta por vez (prompts P-0004 a P-0027 em `docs/Pesquisa/IA/registro-de-prompts.md`). Mudança de método M-11 em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5. Nenhuma ADR, o UDM ou o contrato de harvest muda.
+
+### 10-sexies.1 O que mudou, e onde
+
+| # | Onde | O que mudou |
+|---|---|---|
+| 1 | Raiz | Só `README.md` (reescrito, versão 4.0), `LICENSE`, `CLAUDE.md`, `ComecePorAqui/` e `docs/` (mais `.github/`, `.claude/`, `.gitignore`) |
+| 2 | `ComecePorAqui/` (novo) | Resumo executivo de uma página, glossário em linguagem simples (remete a `docs/tecnico/CONTEXT.md`), guias por perfil (governança da arquitetura, comunidades e dados, ferramentas, pesquisadores), como usar o GitHub, texto didático sobre rótulos SKOS-XL. Escritos por subagentes; **leitura humana pendente** |
+| 3 | `docs/` | Três partes: `docs/Governanca/` (proposta; `Dados/`, `Ferramentas/`, `Arquitetura/` com o ciclo, o método e `Reunioes/`; pauta das comunidades; C.A.R.E. na prática), `docs/Pesquisa/` (projeto de pesquisa, resumo executivo completo, referências, conhecimento, iniciativas, apresentações, `IA/`) e `docs/tecnico/` (toda a documentação técnica). `docs/README.md` é o índice das três |
+| 4 | Links | Corrigidos em todo o repositório (checagem completa; restam 6 links quebrados anteriores à reorganização), nos textos e comentários das *Issues* #5 a #35 e nos repositórios BioCultTermos (`ace35d5`), BioCultDB (`e890d2a`), BioCultRelatos (`dcc8996`), BioCultAcervos (`44f52d6`), BioCultNaturalistas (`b156ff5`), pluriverso (`be1eb67`), hermes (`0ee6c17`) e projeto-gef-mcti-entre-ciencias (`9af76d8`). Os quatro hospedeiros passaram juntos à mesma versão nova do BioCultTermos |
+| 5 | `LICENSE` | GPL-3.0 → **CC BY 4.0** (decisão apoiada por `judge()`; segue `propostaGovernanca.md` §6.4). Script `docs/tecnico/bin/termos-status.ps1` sob MIT; PDFs de terceiros excluídos; dados de CTA nunca sob licença aberta. GitHub já detecta `CC-BY-4.0` |
+| 6 | *Issue* #35 | Pede a Sofia a concordância com a CC BY 4.0 para as contribuições dela (PRs #1, #2, #4) |
+| 7 | `.gitignore` | Regras das transcrições (`docs/Governanca/Arquitetura/Reunioes/*.txt`) e dos documentos de terceiros (`docs/Pesquisa/iniciativas/redeConhecimento/*`) seguem os caminhos novos; planilha SiBBr/SISGEN movida para `projeto-gef-mcti-entre-ciencias/docs/` e ignorada aqui |
+| 8 | `CLAUDE.md`; `docs/tecnico/agents/` | Seção "Estrutura do repositório" com o caminho de cada documento técnico e a regra: mover arquivo exige corrigir links nos repositórios irmãos |
+
+### 10-sexies.2 O que a sessão não faz
+
+- **Não publica o release no Zenodo.** Espera #35.
+- **Não altera o BioCultPapers.** Repositório arquivado: 1 link no `README.md` e 1 no `CLAUDE.md` apontam para caminhos antigos.
+- **Não corrige links externos** (blog, depósitos antigos no Zenodo).
+- **Lição operacional:** neste Windows, `sed -i` sobre arquivos do repositório falhou duas vezes e apagou o arquivo (`docs/tecnico/CHANGELOG.md`, `.gitignore`); ambos restaurados do git. Editar com o editor ou com Python.
+
 ---
 
 # §11 — Próximas ações, por frente
@@ -437,7 +462,8 @@ Fora das duas partes, porque fecha as duas: a próxima ação de cada frente.
 - **Registrar o resultado da §0.2** ✔ — Item 1 de §2 e parágrafo "Científica" de §3 retificados e fundamentados no `docs/Pesquisa/projetoPesquisa.md`, qualificando a afirmativa diante dos contraexemplos identificados (TKDL/Índia e TCMLS/China). **Frente concluída.**
 - **Log de uso de IA** — criado em 2026-09-24 (`docs/Pesquisa/IA/uso-de-ia.md`), com os episódios retroativos E-01 a E-03 (reuniões de 18/08, 16/09 e 18/09). **Cada nova reunião do ciclo precisa do seu episódio**, agora com o campo *Issues*; o ciclo só fecha com ele. E-04 (29/09) registrado; a revisão de Sofia foi feita (PR #4); a anuência retroativa (16/09 e 18/09) é a questão #7.
 - **Nova fase: governança da arquitetura por *Issues*** ✔ — Cenário B implantado em 2026-10-03 (§10-quinquies). Próximo: na reunião, 5 minutos de demonstração e a pergunta "funciona para você?"; depois dela, o primeiro ciclo completo no formato novo (`docs/Governanca/Arquitetura/README.md`); depois de duas reuniões, comparar as medidas de `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5 (M-10).
-- **Registro de prompts** — todo prompt entra em `docs/Pesquisa/IA/registro-de-prompts.md` antes do trabalho (regra em `CLAUDE.md`).
+- **Registro de prompts** — todo prompt entra em `docs/Pesquisa/IA/registro-de-prompts.md` antes do trabalho (regra em `CLAUDE.md`). P-0001 a P-0027 registrados.
+- **Release v4.0.0 no Zenodo** — na ordem: (1) concordância de Sofia em [#35](https://github.com/edalcin/Arquitetura-BioCultural/issues/35); (2) leitura humana de `ComecePorAqui/`, `docs/Governanca/` e `docs/Pesquisa/` (textos novos escritos por subagentes); (3) citar o DOI conceitual 10.5281/zenodo.17710619 no `README.md` e em `docs/Pesquisa/projetoPesquisa.md`; corrigir no cabeçalho do projeto de pesquisa a afirmação "v3.5 publicada e citável" (o último release é v3.4); criar `.zenodo.json` (título "Arquitetura BioCultural — Versão 4.0", licença `cc-by-4.0`, ORCID de Eduardo, se houver); (4) `gh release create v4.0.0`; a integração GitHub→Zenodo está ativa e deposita sozinha; conferir a licença no registro.
 
 ### 11.2 Parte II — Arquitetura e componentes
 
@@ -451,5 +477,5 @@ Passos 1–3 feitos, K8 registrado, ③ e ⑤ decididos, ④ reclassificada e le
 - **Passo 4 (esquema do Relato)** continua travado por ①. **Passo 5 (piloto ponta a ponta)** continua travado pelo esquema do Relato e pela agenda do estudo de caso do BioCultRelatos.
 - **Encaminhar as pendências novas da §10-bis.3:** ⑭ princípios mínimos da federação (questão #14), ⑮ composição da governança (questão #11), ⑯ requisito de sincronização assíncrona (sem mecanismo definido), ⑰ auditoria dos prompts no BioCultDB contra a política nova de `propostaGovernanca.md` §5.12-9, ⑱ capacitação como repartição não monetária.
 - **Generalizar o `AcquisitionService` do BioCultTermos** — é o único bloqueio puramente técnico que trava três unidades ao mesmo tempo (Relatos, Acervos, Naturalistas) e não depende de ninguém. Detalhe na §6.
-- **Pendências de implementação de cada unidade:** ver §6 e o `docs/tecnico/proximosPassos.md` do repositório correspondente.
+- **Pendências de implementação de cada unidade:** ver §6 e o `docs/proximosPassos.md` do repositório correspondente.
 - **Grafo de atores nacionais concluído** — `docs/Pesquisa/iniciativas/atoresNacionais.md` mapeia beneficiários e provedores de dados (diretos e indiretos) ligados à arquitetura, a partir das quatro iniciativas documentadas e de pesquisa externa sobre o panorama nacional de dados de CTA (CGEN, FUNAI/SII, MPF/Territórios Tradicionais, ISA). Sem pendência aberta.

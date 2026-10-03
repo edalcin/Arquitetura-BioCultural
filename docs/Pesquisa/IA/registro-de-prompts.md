@@ -281,3 +281,12 @@ As pastas vazias em @docs/ devem ser deletadas, com segurança.
 ````text
 Vou encerrar por aqui. Commit to main and sync
 ````
+
+### P-0027 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: *commit* "docs(tecnico): proximosPassos atualizado — sessão v4.0"
+
+````text
+Atualize os @docs/tecnico/proximosPassos.md
+````
