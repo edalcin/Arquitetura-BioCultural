@@ -212,3 +212,12 @@ ME ajude a decidir a melhor licença para este repositório. Que tal usar o judg
 ````text
 Sim. Aplique e crie uma Issue para Sofia.
 ````
+
+### P-0020 — 2026-10-03
+
+- Ferramenta: oh-my-pi · Modelo: anthropic/claude-opus-5-5 (high) · Skills invocadas: nenhuma
+- Resultado: (a preencher no *commit* da sessão)
+
+````text
+O que falta eu fazer antes de criar o novo release?
+````
