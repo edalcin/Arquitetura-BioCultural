@@ -60,6 +60,33 @@ camada de arquitetura **começou a operar** na forma de **reuniões de governan�
 O ciclo de cada reunião — da transcrição ao resumo, à revisão das *Issues*, aos impactos e à pauta
 seguinte — está descrito, com diagrama, em [`README.md`](README.md).
 
+### A IA traduz, nos dois sentidos
+
+A governança da arquitetura reúne pessoas de formações diferentes. A maioria não usa a linguagem de
+sistemas nem de gestão de projetos, e não precisa usar. O papel da IA é **traduzir**:
+
+- **Da pessoa para a arquitetura.** Cada pessoa fala e escreve do seu jeito — na reunião, num
+  comentário, num e-mail. A IA lê como está, entende o que a pessoa quis dizer e leva isso à
+  linguagem técnica dos documentos de especificação (ADR, modelo de dados, contrato de coleta,
+  glossário). Ninguém precisa reescrever o que disse num formato, nem usar termo técnico.
+- **Da arquitetura para a pessoa.** O que a IA escreve para quem participa — questão, pauta,
+  resumo, folha para as comunidades — usa palavras simples. Termo técnico só quando for preciso, e
+  então explicado na mesma frase.
+
+Quatro cuidados garantem que a tradução não muda o sentido:
+
+1. **As palavras da pessoa ficam junto da tradução.** Onde o sentido importa, o documento técnico
+   cita a frase original, com o *link* para onde ela foi dita (resumo, comentário). Quem ler depois
+   pode comparar.
+2. **Na dúvida, a IA pergunta — em palavras simples.** Uma fala que admite duas leituras não vira
+   regra: vira uma pergunta de volta à pessoa, num comentário ou na pauta, mostrando as duas
+   leituras e o que muda em cada uma.
+3. **A pessoa confere a tradução.** O resumo é revisado por quem falou; a *Issue* mostra, em
+   palavras simples, o que a arquitetura fará com a resposta. Uma leitura que a pessoa não
+   reconhece como sua é corrigida, e a falha entra no episódio de uso de IA.
+4. **A tradução não decide.** Traduzir é levar o sentido de uma linguagem a outra, nunca escolher
+   pela pessoa. O que a fala não disse fica como questão aberta.
+
 ## 4. Transparência no uso de IA
 
 A IA participa de todas as etapas (`projetoPesquisa.md` §7.5). Três regras tornam esse uso conferível
@@ -95,6 +122,7 @@ evidência.
 | M-12 | 2026-10-04 | **Roteiro de prompts do ciclo:** um pedido curto por momento (consolidação C1–C3, preparação P1–P3, entre reuniões E1–E2, impactos → ADR A1); cada pedido aponta para os passos do ciclo e para no portão humano; o prompt usado entra literal no registro, com o código do roteiro | Os passos do ciclo existiam, mas o pedido à IA era escrito de novo a cada vez, e um pedido podia atravessar a revisão do Ponto-Focal | [`roteiro-de-prompts.md`](roteiro-de-prompts.md); `docs/Governanca/Arquitetura/README.md`; `registro-de-prompts.md`; prompt P-0014 |
 | M-13 | 2026-10-04 | **Registro só do que é significativo; decisões de abertura; *milestone* explicada:** o registro de prompts guarda o prompt que abre a sessão e os que trazem demanda nova ou mudam a arquitetura ou o método, e não as confirmações e os pedidos de *commit* (entradas antigas retiradas e o registro renumerado, com as citações corrigidas); a pauta tem até três decisões **mais as decisões de abertura**, sobre o funcionamento da própria governança; o papel da *milestone* passa a ser explicado no guia do GitHub | Confirmações, pedidos de *commit* e pedidos de forma eram 26 das 40 entradas e não diziam nada sobre o uso de IA; a primeira *milestone* tinha seis decisões, três delas de resposta curta sobre a própria governança; o papel da *milestone* não estava claro para quem participa | `registro-de-prompts.md`, regra 2; `docs/Governanca/Arquitetura/README.md`, passo 9; [guia do GitHub](../../../ComecePorAqui/guia-github.md#milestone-as-questões-da-próxima-reunião); prompts P-0015 e P-0016 |
 | M-14 | 2026-10-04 | **Comentários livres nas *Issues*:** sem formato fixo para comentar, responder ou fechar; quem fecha deixa uma ou duas frases simples (o que foi decidido e onde); a ligação com os itens de impacto fica no documento de impactos, não na *Issue*; a IA lê os comentários como estão | O comentário de fechamento em três linhas fixas, com códigos, tornava o uso das *Issues* pesado e pouco natural para quem participa | `docs/tecnico/agents/issue-tracker.md`; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues; [guia do GitHub](../../../ComecePorAqui/guia-github.md); prompt P-0017 |
+| M-15 | 2026-10-04 | **A IA traduz, nos dois sentidos:** quem participa fala e escreve do seu jeito; a IA leva o sentido à linguagem técnica da especificação e escreve de volta em palavras simples; a frase original fica junto da tradução, a dúvida volta como pergunta, a pessoa confere a leitura e a tradução nunca decide | A governança reúne pessoas de formações diferentes, a maioria sem linguagem técnica nem de gestão de projetos; o propósito do uso de IA é a comunicação efetiva entre todas elas sem perder a robustez dos documentos técnicos | §3 deste documento; `CLAUDE.md`; `docs/tecnico/agents/issue-tracker.md`; [`roteiro-de-prompts.md`](roteiro-de-prompts.md), regra 6; [guia da governança](../../../ComecePorAqui/guia-governanca-arquitetura.md); `projetoPesquisa.md` §7.5; prompt P-0018 |
 
 **Como M-10 se afasta da análise**, por decisão de 03/10/2026: (1) adotado antes da reunião, por
 Eduardo; a opinião de Sofia sobre o formato entra na abertura da próxima reunião; (2) a pauta em
@@ -107,3 +135,4 @@ painel das questões de desenho até o fechamento das regras da arquitetura.
 **Medidas para avaliar M-10**, a comparar depois de duas reuniões no formato novo: palavras por pauta
 (1.117 → 2.121 → 3.212; primeira pauta curta: cerca de 930); fração das questões da pauta tratadas na
 reunião; questões respondidas entre reuniões; dias entre a reunião e o resumo validado.
+

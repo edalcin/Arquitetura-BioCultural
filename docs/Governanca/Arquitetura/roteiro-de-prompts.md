@@ -25,6 +25,10 @@
    visível na comparação com este documento.
 5. **A IA propõe; uma pessoa decide.** Nenhum prompt pede ao agente que responda a uma questão de
    desenho ou fale pelas comunidades.
+6. **A IA traduz, nos dois sentidos.** Todo prompt pressupõe a regra de
+   [`metodo-de-evolucao.md`](metodo-de-evolucao.md#a-ia-traduz-nos-dois-sentidos) §3: ler as
+   pessoas como elas falam, levar o sentido à linguagem técnica, escrever de volta em palavras
+   simples e perguntar quando houver dúvida.
 
 ## Visão geral
 

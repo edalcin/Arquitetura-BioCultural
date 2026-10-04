@@ -2,6 +2,10 @@
 
 Antes de qualquer outro trabalho, registre o prompt do usuário, **literal**, no arquivo do dia `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, na seção da sessão atual (crie o arquivo, a seção `## Sessão N` e a linha na tabela de `docs/Pesquisa/IA/registro-de-prompts.md` quando forem novos) — **só se ele for significativo**: o prompt que abre a sessão, ou um que traz demanda nova ou muda a arquitetura ou o método. Não registre confirmações ("sigo com a recomendação", "confirmo. execute."), escolhas entre opções já propostas, pedidos de commit/sync nem pedidos de forma ("uma pergunta por vez"). Critério completo: regra 2 do índice. Numeração `P-NNNN` contínua entre dias. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
 
+## A IA traduz, nos dois sentidos
+
+Quem participa da governança fala e escreve do seu jeito, sem linguagem técnica nem de gestão de projetos. Leia as falas, comentários e e-mails como estão e traduza o sentido para a linguagem técnica dos documentos de especificação; nunca peça que alguém reescreva num formato. Ao escrever para quem participa, use palavras simples e explique o termo técnico na mesma frase. Onde o sentido importa, cite a frase original com link. Fala com duas leituras não vira regra: vira pergunta de volta, em palavras simples. A tradução nunca decide pela pessoa. Regras completas: `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §3, "A IA traduz, nos dois sentidos".
+
 ## Reuniões de governança e Issues
 
 Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `docs/Governanca/Arquitetura/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/tecnico/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5.
