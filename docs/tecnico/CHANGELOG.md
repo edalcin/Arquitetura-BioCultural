@@ -8,7 +8,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ## [4.0.0] - 2026-10-03
 
-**Versão 4.0 da arquitetura:** a governança da arquitetura em operação (v3.12) e o repositório reorganizado por público. Nenhuma ADR, o UDM ou o contrato de harvest muda. Mudança de método M-11 em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5. Decisões tomadas em sessão de perguntas com Eduardo (prompts P-0004 a P-0017 em `docs/Pesquisa/IA/registro-de-prompts.md`).
+**Versão 4.0 da arquitetura:** a governança da arquitetura em operação (v3.12) e o repositório reorganizado por público. Nenhuma ADR, o UDM ou o contrato de harvest muda. Mudança de método M-11 em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5. Decisões tomadas em sessão de perguntas com Eduardo (prompts P-0003 a P-0006 em `docs/Pesquisa/IA/registro-de-prompts.md`).
 
 ### Alterado
 

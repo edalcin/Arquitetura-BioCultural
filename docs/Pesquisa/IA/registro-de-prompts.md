@@ -18,8 +18,8 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 
 | Dia | Sessões | Prompts | Arquivo |
 |---|---|---|---|
-| 2026-10-03 | 1 | 13, de P-0001 a P-0029 | [`prompts/2026/2026-10-03.md`](prompts/2026/2026-10-03.md) |
-| 2026-10-04 | 1 | P-0031, P-0041 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
+| 2026-10-03 | 1 | P-0001 a P-0013 | [`prompts/2026/2026-10-03.md`](prompts/2026/2026-10-03.md) |
+| 2026-10-04 | 1 | P-0014 a P-0016 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
 
 ## Regras
 
@@ -36,8 +36,8 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 4. **Antes do trabalho.** O agente registra o prompt como primeiro ato e o *commit* do trabalho
    inclui o registro. Regra para agentes no [`CLAUDE.md`](../../../CLAUDE.md).
 5. **Numeração contínua.** `P-NNNN` segue de um dia para o outro e nunca recomeça: é o
-   identificador citado em outros documentos. Os números das entradas retiradas na limpeza de
-   04/10/2026 não são reusados; a falha na sequência é esperada.
+   identificador citado em outros documentos. Na limpeza de 04/10/2026, as entradas retiradas saíram e as
+   restantes foram renumeradas, com as citações corrigidas.
 6. **Uma única exceção: o que não pode ser público.** O repositório é público. Conhecimento
    Tradicional, nome de detentor, local sensível ou dado pessoal de terceiro dentro de um prompt é
    trocado por `[omitido: motivo]`. A omissão fica visível; o resto do texto continua literal.
