@@ -3,7 +3,7 @@
 - **Participantes:** Sofia Zank (UseFlora, Ponto-Focal), Eduardo Dalcin (gestão da arquitetura); Viviane Kruel, se aceitar o convite ([#12][i12])
 - **Duração:** 60 min · **Data:** Sofia agenda (pelo menos 15 dias depois de 29/09)
 - **Questões desta reunião:** [milestone "Próxima reunião"][ms] · **Painel de todas as questões:** [#6][i6]
-- **Situação:** proposta, gerada em 03/10/2026 a partir das questões da milestone. Congela no dia da reunião, com a data no nome do arquivo.
+- **Situação:** proposta, gerada em 03/10/2026 a partir das questões da milestone; resumo das mudanças de método acrescentado em 04/10. Congela no dia da reunião, com a data no nome do arquivo.
 
 > **Como usar.** Cada item leva à sua questão, uma *Issue* com número fixo. Dúvida, opinião ou
 > correção: comente na própria questão. Se algo mudar, a pauta é gerada de novo. Nenhum item pede
@@ -14,8 +14,21 @@
 ## Abertura (10 min)
 
 1. **O novo jeito de trabalhar** (5 min). Desde 03/10, cada questão aberta é uma *Issue* com número
-   fixo, e a pauta é curta e nasce delas. Eduardo mostra o painel e uma questão. Para você: funciona?
-   O que mudaria? ([como funciona](../README.md))
+   fixo, e a pauta é curta e nasce delas. Eduardo mostra o painel e uma questão. O que mudou desde
+   então, em resumo:
+   - **Comente do seu jeito,** como num e-mail. Não há formato para comentar, responder ou fechar.
+   - **A IA traduz.** Ela leva o que você diz para a linguagem técnica dos documentos e escreve de
+     volta em palavras simples. Você confere; na dúvida, a pergunta volta para você.
+   - **Canal aberto.** Qualquer pessoa pode comentar ou abrir uma questão, e toda contribuição
+     recebe resposta. Quem decide continua sendo a governança.
+   - **O seu papel conta.** Como Ponto-Focal, a sua resposta fecha as questões que são suas. As das
+     comunidades só fecham com a resposta delas, trazida por você.
+   - **Pauta:** até três decisões, mais as rápidas da abertura. A *milestone* é a lista do que vem
+     para a reunião ([explicação](../../../../ComecePorAqui/guia-github.md#milestone-as-questões-da-próxima-reunião)).
+   - **Pedidos à IA:** um roteiro fixo para cada momento do ciclo; o registro guarda só os pedidos
+     que mudam algo.
+
+   Para você: funciona? O que mudaria? ([histórico das mudanças](../metodo-de-evolucao.md#5-histórico-das-mudanças-de-método))
 2. [#7][i7] **A anuência para transcrever e usar IA vale também para as reuniões de 16/09 e 18/09?**
    Sim ou não.
 3. [#8][i8] **Uma questão pode ser decidida na própria Issue, sem esperar a reunião?** Decisão só na
