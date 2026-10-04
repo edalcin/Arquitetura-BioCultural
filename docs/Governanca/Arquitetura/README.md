@@ -123,7 +123,8 @@ gh issue view <N> --comments
 
 Para cada *Issue*, cinco perguntas:
 
-1. **A reunião, ou um comentário, respondeu?** Fecha com uma ou duas frases simples: o que foi
+1. **A reunião, ou um comentário, respondeu?** Só conta como resposta o que vem de quem tem o papel
+   que a questão pede (tabela de papéis em [`metodo-de-evolucao.md`](metodo-de-evolucao.md) §3). Fecha com uma ou duas frases simples: o que foi
    decidido e onde (reunião de DD/MM, ou nesta *Issue*). Sem modelo e sem códigos: os comentários
    são escritos como se escreve um e-mail, e a IA lê como estão. Resposta dada na própria *Issue*
    entre reuniões entra no resumo seguinte, na seção "Decisões entre reuniões".

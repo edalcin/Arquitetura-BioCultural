@@ -57,6 +57,22 @@ camada de arquitetura **começou a operar** na forma de **reuniões de governan�
   regra). O **valor** — o consentimento sobre um registro concreto — é sempre da comunidade
   detentora, registro a registro.
 
+**Papéis formais e contas no GitHub.** Um comentário vale pelo papel de quem o escreve. A IA lê
+todo comentário, mas só trata como **resposta** a uma questão o que vem de quem tem o papel que a
+questão pede (a etiqueta `para-…`). O que vem de outras pessoas é contribuição: é ouvida e recebe
+destino, mas não fecha a questão.
+
+| Conta | Pessoa | Papel formal | Desde | Responde por |
+|---|---|---|---|---|
+| [`edalcin`](https://github.com/edalcin) | Eduardo Dalcin | Gestão da arquitetura | início do projeto | `para-gestao`; propõe a *milestone* e modera |
+| [`sofiazank`](https://github.com/sofiazank) | Sofia Zank | Ponto-Focal do UseFlora | 17/09/2026 (e-mail de Nivaldo Peroni) | `para-ponto-focal`; leva e traz as `para-comunidades` |
+
+Um papel novo só entra nesta tabela com o ato que o atribui (a designação de um Ponto-Focal, a
+decisão sobre a composição da governança na
+[#11](https://github.com/edalcin/Arquitetura-BioCultural/issues/11)). A resposta de um Ponto-Focal
+é a da sua iniciativa, nunca a das comunidades: o que é `para-comunidades` só fecha com a resposta
+das comunidades, trazida pelo Ponto-Focal.
+
 O ciclo de cada reunião — da transcrição ao resumo, à revisão das *Issues*, aos impactos e à pauta
 seguinte — está descrito, com diagrama, em [`README.md`](README.md).
 
@@ -138,6 +154,7 @@ evidência.
 | M-14 | 2026-10-04 | **Comentários livres nas *Issues*:** sem formato fixo para comentar, responder ou fechar; quem fecha deixa uma ou duas frases simples (o que foi decidido e onde); a ligação com os itens de impacto fica no documento de impactos, não na *Issue*; a IA lê os comentários como estão | O comentário de fechamento em três linhas fixas, com códigos, tornava o uso das *Issues* pesado e pouco natural para quem participa | `docs/tecnico/agents/issue-tracker.md`; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues; [guia do GitHub](../../../ComecePorAqui/guia-github.md); prompt P-0017 |
 | M-15 | 2026-10-04 | **A IA traduz, nos dois sentidos:** quem participa fala e escreve do seu jeito; a IA leva o sentido à linguagem técnica da especificação e escreve de volta em palavras simples; a frase original fica junto da tradução, a dúvida volta como pergunta, a pessoa confere a leitura e a tradução nunca decide | A governança reúne pessoas de formações diferentes, a maioria sem linguagem técnica nem de gestão de projetos; o propósito do uso de IA é a comunicação efetiva entre todas elas sem perder a robustez dos documentos técnicos | §3 deste documento; `CLAUDE.md`; `docs/tecnico/agents/issue-tracker.md`; [`roteiro-de-prompts.md`](roteiro-de-prompts.md), regra 6; [guia da governança](../../../ComecePorAqui/guia-governanca-arquitetura.md); `projetoPesquisa.md` §7.5; prompt P-0018 |
 | M-16 | 2026-10-04 | **As *Issues* como canal aberto:** qualquer pessoa com conta no GitHub pode comentar ou abrir uma questão, não só quem participa das reuniões; a Revisão das Issues dá destino a toda contribuição (pergunta 8); a contribuição informa a decisão, sem substituir a governança nem o consentimento da comunidade | O uso das *Issues* é o que permite, no método, que todos que querem e podem contribuir sejam ouvidos e causem impacto direto na arquitetura | §3 deste documento; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues; `docs/tecnico/agents/issue-tracker.md`; [guia do GitHub](../../../ComecePorAqui/guia-github.md); prompt P-0019 |
+| M-17 | 2026-10-04 | **Papéis formais nas *Issues*:** tabela de contas e papéis (`edalcin`, gestão da arquitetura; `sofiazank`, Ponto-Focal do UseFlora); só é resposta o comentário de quem tem o papel que a questão pede, o resto é contribuição; o Ponto-Focal responde pela iniciativa, não pelas comunidades; papel novo só com o ato que o atribui | Com o canal aberto (M-16), a IA precisa distinguir a resposta de quem tem papel formal da contribuição de quem chega de fora | §3 deste documento; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues, pergunta 1; `docs/tecnico/agents/issue-tracker.md`; `CLAUDE.md`; prompt P-0020 |
 
 **Como M-10 se afasta da análise**, por decisão de 03/10/2026: (1) adotado antes da reunião, por
 Eduardo; a opinião de Sofia sobre o formato entra na abertura da próxima reunião; (2) a pauta em

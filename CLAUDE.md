@@ -6,6 +6,8 @@ Antes de qualquer outro trabalho, registre o prompt do usuário, **literal**, no
 
 Quem participa da governança fala e escreve do seu jeito, sem linguagem técnica nem de gestão de projetos. Leia as falas, comentários e e-mails como estão e traduza o sentido para a linguagem técnica dos documentos de especificação; nunca peça que alguém reescreva num formato. Ao escrever para quem participa, use palavras simples e explique o termo técnico na mesma frase. Onde o sentido importa, cite a frase original com link. Fala com duas leituras não vira regra: vira pergunta de volta, em palavras simples. A tradução nunca decide pela pessoa. Regras completas: `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §3, "A IA traduz, nos dois sentidos".
 
+Ao ler comentários de *Issues*, considere o papel formal do autor (tabela "Papéis formais e contas no GitHub" em `metodo-de-evolucao.md` §3; hoje `edalcin` = gestão da arquitetura, `sofiazank` = Ponto-Focal do UseFlora). Só é resposta o que vem do papel que a questão pede; o resto é contribuição.
+
 ## Reuniões de governança e Issues
 
 Ao absorver o resumo de uma reunião, gerar impactos ou gerar pauta: siga o ciclo e a **Revisão das Issues** de `docs/Governanca/Arquitetura/README.md` (todas as abertas e as fechadas desde a última reunião, uma a uma, com comentários). Issues e pauta só mudam depois que o Ponto-Focal valida o resumo. Escrita e etiquetas das Issues: `docs/tecnico/agents/issue-tracker.md`. Mudança na forma de trabalhar: nova entrada em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5.
