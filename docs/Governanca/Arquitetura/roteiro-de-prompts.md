@@ -115,8 +115,8 @@ Roteiro C3. Reunião de <AAAA-MM-DD>; resumo validado pelo Ponto-Focal em <PR #N
 Execute os passos 7, 8 e 11 do ciclo de docs/Governanca/Arquitetura/README.md:
 1. Refaça a Revisão das Issues — leitura com o resumo validado; mostre o que mudou em relação à
    tabela do rascunho.
-2. Aplique a tabela, em lote: feche (comentário de formato fixo de
-   docs/tecnico/agents/issue-tracker.md), crie pelo modelo .github/ISSUE_TEMPLATE/questao.yml,
+2. Aplique a tabela, em lote: feche (uma ou duas frases simples: o que foi decidido e onde),
+   crie pelo modelo .github/ISSUE_TEMPLATE/questao.yml,
    comente, troque etiquetas e milestone; atualize "Decisões até agora" no mapa (Issue #6).
 3. Tire a marca de rascunho do documento de impactos, ajuste às correções e atualize
    docs/tecnico/impactos-na-arquitetura.md (Situação, Questão aberta, Histórico).
@@ -208,9 +208,8 @@ comentário pelo aviso do GitHub.
 ```text
 Roteiro E2. Resposta à Issue #<N>, dada por <pessoa> em <DD/MM>, por <e-mail | mensagem | conversa>:
 "<texto da resposta, sem conhecimento tradicional nem dado pessoal>"
-Comente na Issue com "Resposta trazida por <pessoa> em <DD/MM>, por <meio>:" e o texto.
-Se a resposta fecha a questão, proponha o comentário de fechamento de formato fixo
-(docs/tecnico/agents/issue-tracker.md) e espere a minha confirmação antes de fechar.
+Comente na Issue, em palavras simples, dizendo quem respondeu, quando e por qual meio, com o
+texto. Se a resposta fecha a questão, me diga e espere a minha confirmação antes de fechar.
 ```
 
 ---

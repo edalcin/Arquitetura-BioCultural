@@ -123,10 +123,10 @@ gh issue view <N> --comments
 
 Para cada *Issue*, cinco perguntas:
 
-1. **A reunião, ou um comentário, respondeu?** Fecha com o comentário de formato fixo
-([`issue-tracker.md`](../../tecnico/agents/issue-tracker.md)), citando a decisão do resumo ou o
-   comentário. Resposta dada na própria *Issue* entre reuniões entra no resumo seguinte, na seção
-   "Decisões entre reuniões".
+1. **A reunião, ou um comentário, respondeu?** Fecha com uma ou duas frases simples: o que foi
+   decidido e onde (reunião de DD/MM, ou nesta *Issue*). Sem modelo e sem códigos: os comentários
+   são escritos como se escreve um e-mail, e a IA lê como estão. Resposta dada na própria *Issue*
+   entre reuniões entra no resumo seguinte, na seção "Decisões entre reuniões".
 2. **O estado mudou?** Resposta parcial, notícia de terceiros, pedido de troca na pauta: comentário
    curto que diz o que mudou.
 3. **As etiquetas estão certas?** Quem responde, tipo, situação e tipo de fonte.

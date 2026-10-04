@@ -25,12 +25,7 @@ Since 2026-10-03 every open question that needs a person's answer is one Issue: 
   - status: `aguarda-terceiros`;
   - tipo de fonte: `fonte-primaria` (BioCultRelatos), `fonte-secundaria` (BioCultDB), `fonte-acervos` (BioCultAcervos), `fonte-naturalistas` (BioCultNaturalistas). No fonte label = all sources. Use them to route a question to the governance participant for that source.
 - **Milestones.** "Próxima reunião" (renamed "Reunião AAAA-MM-DD" with due date on the meeting day) = pauta candidates: at most 3 `decisao` (four-part structure) plus the **decisões de abertura** (short decisions about how the governance itself works — consent, licence, way of working — one line each in the Abertura) plus informes. No milestone = waiting in the queue (normal for `para-comunidades`).
-- **Closing comment** (fixed format, then close as *completed*; out of scope = *not planned* with the reason; reopening is normal):
-  ```text
-  Decisão: <answer in one or two sentences>
-  Onde: reunião de DD/MM, decisão N do resumo  |  nesta Issue, por @conta, em DD/MM
-  Efeito na arquitetura: I-xx (ou "nenhum")
-  ```
+- **Comments and closing: plain words, no fixed format.** People comment and answer as they would in an e-mail. Whoever closes writes one or two plain sentences: what was decided, and where (meeting of DD/MM, or "here, in this Issue"). No template, no codes in the comment — the link to `I-xx` lives in the meeting's impact document, not in the Issue. Close as *completed*; out of scope = *not planned*, with the reason in a sentence; reopening is normal. Agents read every comment as it is and never ask anyone to rewrite in a format.
 - **When Issues change.** Create, close or comment only after the meeting summary is validated by the Ponto-Focal (merged PR or explicit "sem correções"). Batch the changes; one Issue per question. An answer given in an Issue between meetings counts as a decision (pending #8) and goes into the next summary's "Decisões entre reuniões".
 - **Links in repo files.** GitHub does not autolink `#N` inside `.md` files: write `https://github.com/edalcin/Arquitetura-BioCultural/issues/N`.
 
@@ -64,4 +59,4 @@ Used by `/wayfinder`. The **map** is a single issue with **child** issues as tic
 - **Blocking**: GitHub's **native issue dependencies** — the canonical, UI-visible representation. Add an edge with `gh api --method POST repos/<owner>/<repo>/issues/<child>/dependencies/blocked_by -F issue_id=<blocker-db-id>`, where `<blocker-db-id>` is the blocker's numeric **database id** (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`, _not_ the `#number` or `node_id`). GitHub reports `issue_dependencies_summary.blocked_by` (open blockers only — the live gate). Where dependencies aren't available, fall back to a `Blocked by: #<n>, #<n>` line at the top of the child body. A ticket is unblocked when every blocker is closed.
 - **Frontier query**: list the map's open children (`gh issue list --state open`, scoped to the map's sub-issues / task list), drop any with an open blocker (`issue_dependencies_summary.blocked_by > 0`, or an open issue in the `Blocked by` line) or an assignee; first in map order wins.
 - **Claim**: `gh issue edit <n> --add-assignee @me` — the session's first write.
-- **Resolve**: closing comment in the fixed format above, then `gh issue close <n>`, then append a context pointer (gist + link) to the map's "Decisões até agora".
+- **Resolve**: a plain-words closing comment (see above), then `gh issue close <n>`, then append a context pointer (gist + link) to the map's "Decisões até agora".

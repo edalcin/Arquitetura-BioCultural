@@ -87,18 +87,14 @@ levam direto a elas. Não é preciso editar nenhum documento para participar.
 
 Eduardo cria as questões, com a ajuda da IA, depois que o resumo de uma reunião foi revisado por
 você. Você **comenta**: é só escrever na caixa de texto no fim da página e clicar em **Comment**.
+Escreva como num e-mail, do seu jeito. Não há modelo nem formato para seguir.
 
 Cada questão diz, numa seção própria, **o que fecha a questão**: que resposta, de quem e onde. Você
 pode responder por escrito ali mesmo. Uma resposta escrita vale como decisão, a não ser que você
 escolha outra regra na questão [#8](https://github.com/edalcin/Arquitetura-BioCultural/issues/8).
 
-Quando a questão é respondida, Eduardo a **fecha** com um comentário curto de três linhas:
-
-```text
-Decisão: a resposta, em uma ou duas frases
-Onde: reunião de DD/MM, decisão N do resumo  |  nesta Issue, por @conta, em DD/MM
-Efeito na arquitetura: o item de impacto (I-xx), ou "nenhum"
-```
+Quando a questão é respondida, quem a fecha deixa uma ou duas frases simples: o que foi decidido e
+onde (na reunião de tal dia, ou ali mesmo na questão).
 
 Nada se apaga: questões fechadas continuam visíveis e podem ser **reabertas**, porque uma decisão
 pode mudar.
