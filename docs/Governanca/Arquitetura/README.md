@@ -10,7 +10,8 @@ demais reuniões (apresentação, comitê, articulação) têm só resumo.
 
 **Onde ficam os arquivos:** pautas, resumos e impactos de cada reunião estão na subpasta
 [`Reunioes/`](Reunioes/). Nesta pasta ficam este ciclo, o [método de evolução](metodo-de-evolucao.md)
-e os documentos da nova fase da arquitetura.
+e os documentos da nova fase da arquitetura. Os pedidos à IA de cada momento do ciclo estão no
+[roteiro de prompts](roteiro-de-prompts.md).
 
 Desde 03/10/2026 o ciclo segue o Cenário B de
 [`novaFaseArquitetura-analise.md`](novaFaseArquitetura-analise.md): **cada questão aberta é uma
@@ -67,37 +68,38 @@ flowchart TD
 *Issues* e a pauta — muda antes de o resumo estar validado por ele. Só o rascunho dos impactos, que é
 técnico, pode nascer antes, marcado "sujeito à revisão do Ponto-Focal".
 
-Os passos, cada um com o que o encerra:
+Os passos, cada um com o que o encerra. O pedido à IA de cada passo está no
+[roteiro de prompts](roteiro-de-prompts.md), entre colchetes:
 
 1. **Reunião e transcrição.** O Tactiq transcreve tudo, com anuência dos participantes. A
    transcrição não entra no repositório. *Encerra:* arquivo de transcrição salvo fora do repositório.
-2. **Resumo.** A IA gera o resumo a partir da transcrição e da pauta congelada. *Encerra:* resumo no
+2. **Resumo** [C1]. A IA gera o resumo a partir da transcrição e da pauta congelada. *Encerra:* resumo no
    repositório, com "Revisão: pendente" no cabeçalho.
 3. **Conferência de Eduardo.** O resumo é conferido contra a transcrição. *Encerra:* toda decisão
    conferida; toda leitura incerta registrada nas "Notas de leitura da transcrição".
-4. **Revisão das Issues — leitura** (seção abaixo). *Encerra:* tabela de ações propostas, uma linha
+4. **Revisão das Issues — leitura** (seção abaixo) [C2]. *Encerra:* tabela de ações propostas, uma linha
    por *Issue* revista.
-5. **Impactos da reunião, rascunho.** Confronta cada decisão com os documentos de arquitetura e traz
+5. **Impactos da reunião, rascunho** [C2]. Confronta cada decisão com os documentos de arquitetura e traz
    a tabela da revisão. Marcado "sujeito à revisão do Ponto-Focal". *Encerra:* documento no
    repositório com a marca.
 6. **Revisão do Ponto-Focal**, por *pull request* ([guia do GitHub](../../../ComecePorAqui/guia-github.md)).
    Sem prazo fixo; se passar uma semana, Eduardo pergunta. *Encerra:* *pull request* incorporado, ou
    o Ponto-Focal diz que não há correção.
-7. **Revisão das Issues — aplicação.** Refaz a leitura com o resumo validado (as correções do
+7. **Revisão das Issues — aplicação** [C3]. Refaz a leitura com o resumo validado (as correções do
    Ponto-Focal podem mudar a ação) e executa: fecha, cria, comenta, troca etiquetas e *milestone*,
    atualiza "Decisões até agora" no mapa (#6). *Encerra:* toda linha da tabela com a ação feita.
-8. **Impactos finais e estado consolidado.** Tira a marca de rascunho, ajusta às correções do
+8. **Impactos finais e estado consolidado** [C3]. Tira a marca de rascunho, ajusta às correções do
    Ponto-Focal e atualiza [`impactos-na-arquitetura.md`](../../tecnico/impactos-na-arquitetura.md). *Encerra:* todo
    item revisto com *Situação*, *Questão aberta* e *Histórico* atualizados.
-9. **Milestone da próxima reunião.** Eduardo escolhe **no máximo três decisões**, pelo critério "o
+9. **Milestone da próxima reunião** [P1]. Eduardo escolhe **no máximo três decisões**, pelo critério "o
    que destrava mais", mais os informes. O Ponto-Focal pode trocar uma questão por outra, comentando
    na *Issue*. *Encerra:* *milestone* montada, 5 a 7 dias antes da reunião.
-10. **Pauta.** A IA gera a pauta a partir da *milestone*, logo depois de uma Revisão das Issues —
+10. **Pauta** [P2]. A IA gera a pauta a partir da *milestone*, logo depois de uma Revisão das Issues —
     leitura feita no mesmo dia (o estado pode ter mudado entre reuniões). Se uma questão muda, a pauta
     é gerada de novo. *Encerra:* pauta no repositório, com até 1.000 palavras.
-11. **Episódio.** Entrada da reunião em [`uso-de-ia.md`](../../Pesquisa/IA/uso-de-ia.md), com as *Issues*
+11. **Episódio** [C3]. Entrada da reunião em [`uso-de-ia.md`](../../Pesquisa/IA/uso-de-ia.md), com as *Issues*
     criadas, fechadas e comentadas pela IA. *Encerra:* os campos obrigatórios preenchidos.
-12. **No dia da reunião.** A pauta congela: `git mv` para o nome com a data. A *milestone* passa a
+12. **No dia da reunião** [P3]. A pauta congela: `git mv` para o nome com a data. A *milestone* passa a
     se chamar "Reunião AAAA-MM-DD", com a data como prazo. *Encerra:* pauta renomeada e *milestone*
     datada.
 

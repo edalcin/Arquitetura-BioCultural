@@ -15,7 +15,7 @@ Infer the repo from `git remote -v` — `gh` does this automatically when run in
 
 ## Governance questions (this repo's main use of Issues)
 
-Since 2026-10-03 every open question that needs a person's answer is one Issue: the single place of its state. Readers are non-technical experts in traditional knowledge (Ponto-Focal, communities via the Ponto-Focal). The meeting cycle and the mandatory **Revisão das Issues** live in `docs/Governanca/Arquitetura/README.md`; read it before generating any pauta or impact document.
+Since 2026-10-03 every open question that needs a person's answer is one Issue: the single place of its state. Readers are non-technical experts in traditional knowledge (Ponto-Focal, communities via the Ponto-Focal). The meeting cycle and the mandatory **Revisão das Issues** live in `docs/Governanca/Arquitetura/README.md`; read it before generating any pauta or impact document. The prompt for each cycle moment (C1–C3, P1–P3, E1–E2, A1) is in `docs/Governanca/Arquitetura/roteiro-de-prompts.md`: never cross the human gate the prompt stops at.
 
 - **Writing.** Portuguese, plain words, `docs/tecnico/CONTEXT.md` vocabulary. Title = the question, no codes. Body follows `.github/ISSUE_TEMPLATE/questao.yml`: O que está em jogo · O que a arquitetura faz hoje · Opções (table with consequences) · Pergunta · **Para fechar esta questão** (what answer, from whom, where) · Origem (full links) · Liga-se a (the only place for `I-xx`, ADR, `⑭` codes). Informes use O que queremos saber · Por que importa · Para fechar · Origem · Liga-se a.
 - **Privacy.** Public repo: design, never values — no traditional knowledge, holder names, sensitive places or personal data. Moderate comments that expose them.

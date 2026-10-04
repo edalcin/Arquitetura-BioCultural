@@ -18,6 +18,7 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 | Dia | Sessões | Prompts | Arquivo |
 |---|---|---|---|
 | 2026-10-03 | 1 | P-0001 a P-0030 | [`prompts/2026/2026-10-03.md`](prompts/2026/2026-10-03.md) |
+| 2026-10-04 | 1 | P-0031 a P-0039 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
 
 ## Regras
 
@@ -35,6 +36,9 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
    trocado por `[omitido: motivo]`. A omissão fica visível; o resto do texto continua literal.
 7. **Quem conta.** Prompts escritos por pessoas. As instruções que um agente gera para outro agente
    (subagentes) não entram: são derivadas do prompt humano registrado.
+8. **Prompts do roteiro.** Um prompt do [roteiro de prompts](../../Governanca/Arquitetura/roteiro-de-prompts.md)
+   entra literal e completo, com os campos `<…>` já trocados; o código (`roteiro C2`) vai no campo
+   "Skills invocadas".
 
 ## Como registrar
 
