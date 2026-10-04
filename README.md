@@ -29,8 +29,8 @@ repositório para quem vai participar dela.
   conhecimento tradicional e não é da área de sistemas, e com o que é preciso para fechá-la.
 - **Reuniões de governança da arquitetura** com pauta curta, resumo revisado pelo Ponto-Focal e
   registro do que cada decisão muda na arquitetura.
-- **Transparência no uso de IA.** Todo pedido feito à IA sobre esta arquitetura é registrado
-  literalmente.
+- **Transparência no uso de IA.** Todo pedido significativo feito à IA sobre esta arquitetura é
+  registrado literalmente.
 - **Pastas novas, por público.** Quem participa encontra o seu caminho em português; a
   documentação técnica fica separada, em `docs/tecnico/`.
 

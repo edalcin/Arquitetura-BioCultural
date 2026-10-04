@@ -66,7 +66,7 @@ abertura da [próxima pauta](../../Governanca/Arquitetura/Reunioes/proxima-pauta
 Um episódio é **passo obrigatório** do ciclo de reuniões: uma reunião, um episódio. Só as reuniões
 têm uma fonte primária externa (a transcrição) contra a qual se pode conferir o que a IA produziu.
 Outros usos de IA (ADRs, UDM, código) ficam descritos em prosa na §7.5 do projeto de pesquisa até
-existir um critério de conferência equivalente para eles. Desde 2026-10-03, todo pedido feito à IA
+existir um critério de conferência equivalente para eles. Desde 2026-10-03, todo pedido significativo feito à IA
 fica registrado literalmente em [`registro-de-prompts.md`](registro-de-prompts.md): é a entrada
 conferível desses outros usos, e o *commit* citado em cada entrada é a saída.
 

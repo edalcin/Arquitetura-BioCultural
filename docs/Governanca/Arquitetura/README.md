@@ -57,7 +57,7 @@ flowchart TD
   A --> IMP["Impactos da reunião<br/>final, com a tabela da revisão"]
   IMP --> EC["impactos-na-arquitetura.md<br/>estado consolidado"]
   IMP --> EP["Episódio em<br/>uso-de-ia.md"]
-  ISS --> MS["Milestone da próxima reunião<br/>até 3 decisões"]
+  ISS --> MS["Milestone da próxima reunião<br/>até 3 decisões + as de abertura"]
   MS --> P["Pauta curta<br/>gerada da milestone"]
   P -- "congela no dia" --> R2(("Próxima reunião"))
   ISS -. "entre reuniões: comentários e respostas" .-> ISS
@@ -92,8 +92,11 @@ Os passos, cada um com o que o encerra. O pedido à IA de cada passo está no
    Ponto-Focal e atualiza [`impactos-na-arquitetura.md`](../../tecnico/impactos-na-arquitetura.md). *Encerra:* todo
    item revisto com *Situação*, *Questão aberta* e *Histórico* atualizados.
 9. **Milestone da próxima reunião** [P1]. Eduardo escolhe **no máximo três decisões**, pelo critério "o
-   que destrava mais", mais os informes. O Ponto-Focal pode trocar uma questão por outra, comentando
-   na *Issue*. *Encerra:* *milestone* montada, 5 a 7 dias antes da reunião.
+   que destrava mais", **mais as decisões de abertura** e os informes. *Decisão de abertura* é uma
+   decisão sobre o funcionamento da própria governança (anuência, licença, forma de trabalhar), de
+   resposta curta, tratada nos 5 minutos da Abertura sem a estrutura em quatro partes. O Ponto-Focal
+   pode trocar uma questão por outra, comentando na *Issue*. *Encerra:* *milestone* montada, 5 a 7
+   dias antes da reunião.
 10. **Pauta** [P2]. A IA gera a pauta a partir da *milestone*, logo depois de uma Revisão das Issues —
     leitura feita no mesmo dia (o estado pode ter mudado entre reuniões). Se uma questão muda, a pauta
     é gerada de novo. *Encerra:* pauta no repositório, com até 1.000 palavras.
@@ -152,7 +155,7 @@ códigos. Convenções completas: [`issue-tracker.md`](../../tecnico/agents/issu
 
 **Pauta.** Gerada da *milestone*, para ser lida em poucos minutos:
 
-- Abertura; **até três decisões**, cada uma com o que está em jogo, o que a arquitetura faz hoje, as
+- Abertura, com as decisões de abertura em uma linha cada; **até três decisões**, cada uma com o que está em jogo, o que a arquitetura faz hoje, as
   opções e a pergunta; informes em uma linha; "Para levar às comunidades"; "Andando fora da pauta",
   que mostra que nada se perdeu;
 - cada item é um *link* para a *Issue*, com o título por extenso. Nenhum outro código. Num arquivo do

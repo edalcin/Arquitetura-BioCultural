@@ -122,6 +122,49 @@ pode mudar.
 As etiquetas `fonte-…` dizem a que **tipo de fonte** a questão se refere. Servem para chamar a pessoa
 certa da governança quando ela participar. Uma questão sem etiqueta de fonte vale para todas.
 
+### *Milestone*: as questões da próxima reunião
+
+Uma *milestone* é uma **lista de questões com nome e data**. Aqui ela tem um papel só: dizer quais
+questões vão para a próxima reunião. Hoje existe uma, **Próxima reunião**:
+<https://github.com/edalcin/Arquitetura-BioCultural/milestone/1>.
+
+**Uma comparação.** Pense nas *Issues* como **fichas de perguntas numa gaveta**: todas as questões
+abertas, cada uma com o seu número. A *milestone* é a **bandeja na mesa**: Eduardo tira da gaveta as
+fichas da próxima reunião e põe na bandeja. A **pauta** é o texto que se escreve a partir das fichas
+da bandeja.
+
+| Onde a questão está | O que quer dizer |
+|---|---|
+| Aberta, sem *milestone* (na gaveta) | A questão espera, sem prazo. É o lugar normal de uma pergunta que espera as comunidades, que pode levar meses |
+| Aberta, na *milestone* (na bandeja) | A questão vai para a próxima reunião |
+| Fechada | Foi respondida. Continua visível e pode ser reaberta |
+
+**Por que existe.** Antes, a pauta guardava tudo o que estava aberto e crescia a cada reunião. Agora
+cada coisa tem o seu lugar: o que está aberto fica nas *Issues*; o que vai para esta reunião, na
+*milestone*; o texto para ler antes, na pauta. A pauta fica curta, e nada se perde.
+
+**O caminho de uma *milestone*.**
+
+```mermaid
+flowchart TD
+  G["Questões abertas<br/>(a gaveta)"] -- "5 a 7 dias antes:<br/>Eduardo escolhe" --> M["Milestone 'Próxima reunião'<br/>(a bandeja)"]
+  M -- "a IA escreve" --> P["Pauta"]
+  M -- "no dia: ganha a data" --> D["Milestone 'Reunião AAAA-MM-DD'"]
+  D -- "depois da reunião" --> F["respondida: fecha<br/>não tratada: volta para a nova bandeja<br/>depende de outra pessoa: volta para a gaveta"]
+```
+
+1. **Monta-se.** De 5 a 7 dias antes da reunião, Eduardo põe na bandeja **até três decisões**, mais
+   as **decisões de abertura** (perguntas rápidas sobre o funcionamento da própria governança, como
+   a anuência ou a licença) e os informes.
+2. **Ganha data.** No dia da reunião, ela passa a se chamar "Reunião AAAA-MM-DD", com a data. Uma
+   bandeja nova, vazia, "Próxima reunião", fica pronta.
+3. **Esvazia-se.** Depois da reunião, a questão respondida fecha; a não tratada volta para a nova
+   bandeja; a que passou a depender de outra pessoa volta para a gaveta. A *milestone* com a data
+   fica como registro do que foi levado àquela reunião.
+
+**O que você faz.** Abra a *milestone* para ver de uma vez o que vem na próxima reunião. Não é
+preciso mexer nela. Se quiser trocar uma questão por outra, diga num comentário na *Issue*.
+
 ### Abrir uma questão sua
 
 1. Abra <https://github.com/edalcin/Arquitetura-BioCultural/issues/new/choose>.

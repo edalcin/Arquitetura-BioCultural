@@ -1,6 +1,6 @@
 ## Registro de prompts — primeiro ato de toda sessão
 
-Antes de qualquer outro trabalho, acrescente o prompt do usuário, **literal**, ao arquivo do dia `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, na seção da sessão atual (crie o arquivo, a seção `## Sessão N` e a linha na tabela de `docs/Pesquisa/IA/registro-de-prompts.md` quando forem novos). Numeração `P-NNNN` contínua entre dias; regras de formato e de omissão no índice. Repita para cada prompt seguinte, inclusive os curtos. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
+Antes de qualquer outro trabalho, registre o prompt do usuário, **literal**, no arquivo do dia `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, na seção da sessão atual (crie o arquivo, a seção `## Sessão N` e a linha na tabela de `docs/Pesquisa/IA/registro-de-prompts.md` quando forem novos) — **só se ele for significativo**: o prompt que abre a sessão, ou um que traz demanda nova ou muda a arquitetura ou o método. Não registre confirmações ("sigo com a recomendação", "confirmo. execute."), escolhas entre opções já propostas, pedidos de commit/sync nem pedidos de forma ("uma pergunta por vez"). Critério completo: regra 2 do índice. Numeração `P-NNNN` contínua entre dias. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
 
 ## Reuniões de governança e Issues
 

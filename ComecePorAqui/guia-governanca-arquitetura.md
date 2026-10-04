@@ -35,7 +35,7 @@ O Comitê Federado ainda não existe. Estas reuniões funcionam no lugar dele, m
 
 ## O que esperar
 
-- Uma reunião por vez, sem calendário fixo. A pauta tem no máximo três decisões e sai de 5 a 7 dias antes.
+- Uma reunião por vez, sem calendário fixo. A pauta tem no máximo três decisões, mais as decisões rápidas da abertura (sobre o funcionamento da própria governança), e sai de 5 a 7 dias antes. O que é a *milestone* e como uma questão chega à pauta: [guia do GitHub](guia-github.md#milestone-as-questões-da-próxima-reunião).
 - Sem prazo para revisar o resumo. Se passar uma semana, Eduardo pergunta.
 - Nada que você escrever apaga a versão anterior.
 - **O repositório é público.** Fale do desenho, nunca do conteúdo de um registro. Não escreva conhecimento tradicional, nomes de detentores nem lugares sensíveis.

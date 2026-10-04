@@ -37,7 +37,7 @@ flowchart TD
     G2 --> C3["C3 · Aplicação nas Issues<br/>+ impactos finais + episódio"]
   end
   subgraph Preparação
-    P1["P1 · Proposta de milestone"] --> G3{{"Eduardo escolhe<br/>até 3 decisões"}}
+    P1["P1 · Proposta de milestone"] --> G3{{"Eduardo escolhe até 3 decisões<br/>mais as de abertura"}}
     G3 --> P2["P2 · Pauta"]
     P2 --> G4{{"Ponto-Focal lê<br/>e comenta"}}
     G4 --> P3["P3 · Congelar no dia"]
@@ -141,7 +141,8 @@ Roteiro P1. Próxima reunião de governança da arquitetura: <AAAA-MM-DD | sem d
 Faça a Revisão das Issues — leitura de docs/Governanca/Arquitetura/README.md (abertas e
 fechadas desde <AAAA-MM-DD da última reunião>, com os comentários). Depois, para o passo 9,
 proponha a milestone: no máximo três questões "decisao" pelo critério "o que destrava mais",
-com uma linha de justificativa cada, mais os informes e as "para-comunidades" ainda não levadas.
+com uma linha de justificativa cada, mais as decisões de abertura (sobre o funcionamento da
+própria governança, de resposta curta), os informes e as "para-comunidades" ainda não levadas.
 Mostre também as questões que ficam de fora e por quê.
 Não altere nenhuma Issue nem a milestone. Pare e espere a minha escolha.
 ```
@@ -158,7 +159,7 @@ Roteiro P2. Escolhi para a milestone <nome da milestone>: <#N, #N, #N> (decisõe
 1. Ponha estas Issues na milestone e tire as que não escolhi.
 2. Execute o passo 10 do ciclo de docs/Governanca/Arquitetura/README.md: refaça a Revisão das
    Issues — leitura de hoje e gere Reunioes/proxima-pauta-reuniao-<fórum>.md pelas regras da
-   Pauta (até 3 decisões com as quatro partes, informes em uma linha, "Para levar às
+   Pauta (até 3 decisões com as quatro partes, mais as decisões de abertura, informes em uma linha, "Para levar às
    comunidades", "Andando fora da pauta", links completos, nenhum outro código, até 1.000
    palavras). Informe a contagem de palavras.
 Não feche nem comente Issues. Pare e me mostre a pauta.

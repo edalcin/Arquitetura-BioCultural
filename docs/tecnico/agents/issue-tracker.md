@@ -24,7 +24,7 @@ Since 2026-10-03 every open question that needs a person's answer is one Issue: 
   - type: `decisao`, `informe`, `duvida`;
   - status: `aguarda-terceiros`;
   - tipo de fonte: `fonte-primaria` (BioCultRelatos), `fonte-secundaria` (BioCultDB), `fonte-acervos` (BioCultAcervos), `fonte-naturalistas` (BioCultNaturalistas). No fonte label = all sources. Use them to route a question to the governance participant for that source.
-- **Milestones.** "Próxima reunião" (renamed "Reunião AAAA-MM-DD" with due date on the meeting day) = pauta candidates: at most 3 `decisao` plus informes. No milestone = waiting in the queue (normal for `para-comunidades`).
+- **Milestones.** "Próxima reunião" (renamed "Reunião AAAA-MM-DD" with due date on the meeting day) = pauta candidates: at most 3 `decisao` (four-part structure) plus the **decisões de abertura** (short decisions about how the governance itself works — consent, licence, way of working — one line each in the Abertura) plus informes. No milestone = waiting in the queue (normal for `para-comunidades`).
 - **Closing comment** (fixed format, then close as *completed*; out of scope = *not planned* with the reason; reopening is normal):
   ```text
   Decisão: <answer in one or two sentences>

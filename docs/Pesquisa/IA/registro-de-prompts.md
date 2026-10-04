@@ -1,7 +1,8 @@
 # Registro de prompts — o que foi pedido à IA, literalmente
 
-> **O que é.** O registro literal, em ordem cronológica, de todo *prompt* escrito por uma pessoa e
-> executado por um agente de IA sobre esta arquitetura, a partir de 2026-10-03. É a parte de
+> **O que é.** O registro literal, em ordem cronológica, dos *prompts* significativos escritos por
+> uma pessoa e executados por um agente de IA sobre esta arquitetura, a partir de 2026-10-03 (o que
+> conta como significativo: regra 2). É a parte de
 > transparência do uso de IA no projeto de pesquisa ([`../projetoPesquisa.md`](../projetoPesquisa.md)
 > §7.2, item 9, e §7.5): qualquer pessoa da governança da arquitetura pode ler o que foi pedido e
 > comparar com o que a IA entregou (o *commit* de cada entrada).
@@ -17,20 +18,26 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 
 | Dia | Sessões | Prompts | Arquivo |
 |---|---|---|---|
-| 2026-10-03 | 1 | P-0001 a P-0030 | [`prompts/2026/2026-10-03.md`](prompts/2026/2026-10-03.md) |
-| 2026-10-04 | 1 | P-0031 a P-0040 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
+| 2026-10-03 | 1 | 13, de P-0001 a P-0029 | [`prompts/2026/2026-10-03.md`](prompts/2026/2026-10-03.md) |
+| 2026-10-04 | 1 | P-0031, P-0041 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
 
 ## Regras
 
 1. **Literal.** O texto entra como foi escrito: erros de digitação, menções a arquivos (`@arquivo`)
    e quebras de linha incluídos. O conteúdo de arquivos anexados não é copiado; fica a menção.
-2. **Todo prompt.** Os curtos também ("continue", "faça o commit"). Uma entrada por prompt.
+2. **Só o que é significativo.** Entram o **prompt que abre a sessão** e todo prompt que **traz uma
+   demanda nova** ou **muda o conteúdo da arquitetura ou do método**. Não entram confirmações e
+   escolhas entre opções que a IA já propôs ("sigo com a recomendação", "confirmo. execute."),
+   pedidos de *commit* ou de sincronização, pedidos de forma ("uma pergunta por vez") e perguntas
+   que não mudam nenhum documento. Se uma escolha também acrescenta algo ("sigo com a recomendação
+   mas quero também o glossário"), ela entra. Na dúvida, entra. Uma entrada por prompt.
 3. **Ordem cronológica, só acréscimo.** Entrada nova vai para o fim do arquivo do dia. Entrada
    antiga não muda, exceto para preencher o *commit* do resultado.
 4. **Antes do trabalho.** O agente registra o prompt como primeiro ato e o *commit* do trabalho
    inclui o registro. Regra para agentes no [`CLAUDE.md`](../../../CLAUDE.md).
 5. **Numeração contínua.** `P-NNNN` segue de um dia para o outro e nunca recomeça: é o
-   identificador citado em outros documentos.
+   identificador citado em outros documentos. Os números das entradas retiradas na limpeza de
+   04/10/2026 não são reusados; a falha na sequência é esperada.
 6. **Uma única exceção: o que não pode ser público.** O repositório é público. Conhecimento
    Tradicional, nome de detentor, local sensível ou dado pessoal de terceiro dentro de um prompt é
    trocado por `[omitido: motivo]`. A omissão fica visível; o resto do texto continua literal.

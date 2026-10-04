@@ -35,7 +35,7 @@ O texto completo está em [`projetoPesquisa.md`](projetoPesquisa.md). As seçõe
 A IA ajudou em todas as etapas deste projeto. Por isso o uso dela é parte da pesquisa e fica aberto:
 
 - [`IA/uso-de-ia.md`](IA/uso-de-ia.md): como a IA foi usada, reunião a reunião, e as falhas observadas.
-- [`IA/registro-de-prompts.md`](IA/registro-de-prompts.md): cada pedido feito à IA, copiado literalmente — um arquivo por dia em [`IA/prompts/`](IA/prompts/), agrupado por sessão.
+- [`IA/registro-de-prompts.md`](IA/registro-de-prompts.md): cada pedido significativo feito à IA, copiado literalmente — um arquivo por dia em [`IA/prompts/`](IA/prompts/), agrupado por sessão.
 - [`IA/promptInicial.txt`](IA/promptInicial.txt): o pedido que deu origem ao projeto.
 
 A IA propõe e uma pessoa decide. Nenhuma questão de desenho é respondida por uma IA.
