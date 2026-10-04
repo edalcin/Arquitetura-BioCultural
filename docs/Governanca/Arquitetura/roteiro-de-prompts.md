@@ -29,7 +29,7 @@
 ## Visão geral
 
 ```mermaid
-flowchart LR
+flowchart TD
   subgraph Consolidação
     C1["C1 · Resumo"] --> G1{{"Eduardo confere"}}
     G1 --> C2["C2 · Leitura das Issues<br/>+ impactos rascunho"]
