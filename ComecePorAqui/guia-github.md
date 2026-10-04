@@ -79,6 +79,12 @@ Uma *Issue* é uma página com título e conversa, dentro do próprio repositór
 aberta da arquitetura é uma *Issue***, com um número que não muda (por exemplo, `#9`). As pautas
 levam direto a elas. Não é preciso editar nenhum documento para participar.
 
+**Qualquer pessoa pode participar.** Não é preciso fazer parte das reuniões: com uma conta no
+GitHub, você pode comentar uma questão ou abrir uma nova. Toda contribuição é lida, recebe resposta
+e pode mudar a arquitetura. Escreva do seu jeito: a IA ajuda a levar o que você disse para a
+linguagem técnica dos documentos, e a decisão continua com a governança da arquitetura e, sobre os
+registros, com as comunidades.
+
 - **Painel de todas as questões:** <https://github.com/edalcin/Arquitetura-BioCultural/issues/6>
   (fixado no alto da lista).
 - **Questões da próxima reunião:** <https://github.com/edalcin/Arquitetura-BioCultural/milestone/1>.

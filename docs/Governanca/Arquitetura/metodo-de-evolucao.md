@@ -87,6 +87,20 @@ Quatro cuidados garantem que a tradução não muda o sentido:
 4. **A tradução não decide.** Traduzir é levar o sentido de uma linguagem a outra, nunca escolher
    pela pessoa. O que a fala não disse fica como questão aberta.
 
+**As *Issues* são o canal aberto.** O repositório é público, e qualquer pessoa com conta no GitHub
+pode comentar uma questão ou abrir uma nova — não só quem participa das reuniões. É isso que torna a
+construção coletiva de fato: todos que querem e podem contribuir são ouvidos, e a sua contribuição
+pode mudar a arquitetura. Por isso:
+
+- **Nenhuma contribuição fica sem resposta.** A Revisão das Issues lê todo comentário e toda
+  *Issue* nova, de quem quer que seja, e cada um recebe destino: vira questão, entra numa questão
+  que existe, muda um documento, ou recebe, em palavras simples, o motivo de não mudar.
+- **A mesma tradução vale para todos.** A contribuição de quem chega de fora é lida e traduzida
+  com os mesmos quatro cuidados acima.
+- **Ser ouvido não é decidir no lugar de quem decide.** A contribuição informa a decisão; quem
+  decide o desenho continua sendo a governança da arquitetura, e o consentimento sobre um registro
+  concreto continua sendo da comunidade detentora.
+
 ## 4. Transparência no uso de IA
 
 A IA participa de todas as etapas (`projetoPesquisa.md` §7.5). Três regras tornam esse uso conferível
@@ -123,6 +137,7 @@ evidência.
 | M-13 | 2026-10-04 | **Registro só do que é significativo; decisões de abertura; *milestone* explicada:** o registro de prompts guarda o prompt que abre a sessão e os que trazem demanda nova ou mudam a arquitetura ou o método, e não as confirmações e os pedidos de *commit* (entradas antigas retiradas e o registro renumerado, com as citações corrigidas); a pauta tem até três decisões **mais as decisões de abertura**, sobre o funcionamento da própria governança; o papel da *milestone* passa a ser explicado no guia do GitHub | Confirmações, pedidos de *commit* e pedidos de forma eram 26 das 40 entradas e não diziam nada sobre o uso de IA; a primeira *milestone* tinha seis decisões, três delas de resposta curta sobre a própria governança; o papel da *milestone* não estava claro para quem participa | `registro-de-prompts.md`, regra 2; `docs/Governanca/Arquitetura/README.md`, passo 9; [guia do GitHub](../../../ComecePorAqui/guia-github.md#milestone-as-questões-da-próxima-reunião); prompts P-0015 e P-0016 |
 | M-14 | 2026-10-04 | **Comentários livres nas *Issues*:** sem formato fixo para comentar, responder ou fechar; quem fecha deixa uma ou duas frases simples (o que foi decidido e onde); a ligação com os itens de impacto fica no documento de impactos, não na *Issue*; a IA lê os comentários como estão | O comentário de fechamento em três linhas fixas, com códigos, tornava o uso das *Issues* pesado e pouco natural para quem participa | `docs/tecnico/agents/issue-tracker.md`; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues; [guia do GitHub](../../../ComecePorAqui/guia-github.md); prompt P-0017 |
 | M-15 | 2026-10-04 | **A IA traduz, nos dois sentidos:** quem participa fala e escreve do seu jeito; a IA leva o sentido à linguagem técnica da especificação e escreve de volta em palavras simples; a frase original fica junto da tradução, a dúvida volta como pergunta, a pessoa confere a leitura e a tradução nunca decide | A governança reúne pessoas de formações diferentes, a maioria sem linguagem técnica nem de gestão de projetos; o propósito do uso de IA é a comunicação efetiva entre todas elas sem perder a robustez dos documentos técnicos | §3 deste documento; `CLAUDE.md`; `docs/tecnico/agents/issue-tracker.md`; [`roteiro-de-prompts.md`](roteiro-de-prompts.md), regra 6; [guia da governança](../../../ComecePorAqui/guia-governanca-arquitetura.md); `projetoPesquisa.md` §7.5; prompt P-0018 |
+| M-16 | 2026-10-04 | **As *Issues* como canal aberto:** qualquer pessoa com conta no GitHub pode comentar ou abrir uma questão, não só quem participa das reuniões; a Revisão das Issues dá destino a toda contribuição (pergunta 8); a contribuição informa a decisão, sem substituir a governança nem o consentimento da comunidade | O uso das *Issues* é o que permite, no método, que todos que querem e podem contribuir sejam ouvidos e causem impacto direto na arquitetura | §3 deste documento; `docs/Governanca/Arquitetura/README.md`, Revisão das Issues; `docs/tecnico/agents/issue-tracker.md`; [guia do GitHub](../../../ComecePorAqui/guia-github.md); prompt P-0019 |
 
 **Como M-10 se afasta da análise**, por decisão de 03/10/2026: (1) adotado antes da reunião, por
 Eduardo; a opinião de Sofia sobre o formato entra na abertura da próxima reunião; (2) a pauta em
@@ -135,4 +150,3 @@ painel das questões de desenho até o fechamento das regras da arquitetura.
 **Medidas para avaliar M-10**, a comparar depois de duas reuniões no formato novo: palavras por pauta
 (1.117 → 2.121 → 3.212; primeira pauta curta: cerca de 930); fração das questões da pauta tratadas na
 reunião; questões respondidas entre reuniões; dias entre a reunião e o resumo validado.
-

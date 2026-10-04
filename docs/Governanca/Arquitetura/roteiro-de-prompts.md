@@ -100,7 +100,7 @@ resumo está pronto para a revisão dela. Sofia revisa o resumo por *pull reques
 Roteiro C2. Reunião de <AAAA-MM-DD>; resumo conferido por mim.
 Execute os passos 4 e 5 do ciclo de docs/Governanca/Arquitetura/README.md:
 1. Revisão das Issues — leitura: todas as abertas e as fechadas desde <AAAA-MM-DD da reunião
-   anterior>, uma por uma, com os comentários; as sete perguntas da seção "Revisão das Issues".
+   anterior>, uma por uma, com os comentários; as oito perguntas da seção "Revisão das Issues".
 2. Gere Reunioes/<AAAA-MM-DD>-impactos-reuniao-<fórum>.md marcado "sujeito à revisão do
    Ponto-Focal", com a tabela | Issue | Antes | Ação | Depois | Por quê |.
 Só leia as Issues: não crie, feche, comente nem troque etiquetas. Não mexa no estado consolidado

@@ -133,12 +133,16 @@ Para cada *Issue*, cinco perguntas:
 4. **E a *milestone*?** Tratada e fechada; não tratada e volta; sai da *milestone* para a fila.
 5. **Algum bloqueio caiu?** Quem a bloqueava fechou: ela pode entrar numa próxima *milestone*.
 
-E duas perguntas sobre o que falta:
+E três perguntas sobre o que falta:
 
 6. **O resumo abriu questões novas?** Decisões que abrem, pendências, perguntas às comunidades: cada
    uma vira uma *Issue* nova, pelo modelo de questão.
 7. **Uma fechada precisa reabrir?** A classificação de um conhecimento muda nos dois sentidos (decisão
    8 de 29/09); as decisões de governança também podem mudar.
+8. **Alguém de fora contribuiu?** Comentário ou *Issue* nova de quem não participa das reuniões:
+   cada contribuição recebe destino — vira questão, entra numa que existe, muda um documento ou
+   recebe, em palavras simples, o motivo de não mudar. Nenhuma fica sem resposta
+   ([`metodo-de-evolucao.md`](metodo-de-evolucao.md) §3, "As *Issues* são o canal aberto").
 
 **O registro da revisão** fica no documento de impactos da reunião, numa seção própria: uma linha por
 *Issue*, com `| Issue | Antes | Ação | Depois | Por quê |`. Como as *Issues* não ficam no histórico do
