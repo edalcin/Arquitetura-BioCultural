@@ -1,5 +1,6 @@
 graphify-out/
 *.mp4
+!docs/divulgacao/*.mp4
 
 # Documentos de terceiros com circulação não verificada — ficam apenas no local.
 # A pasta inteira fica fora do rastreamento, exceto os resumos em Markdown, que
