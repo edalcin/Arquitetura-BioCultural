@@ -1,5 +1,9 @@
 # Arquitetura BioCultural — Versão 4.0
 
+https://github.com/user-attachments/assets/c4a06f9f-b7c8-481e-9a7b-1b59c91c7998
+
+<sub>Vídeo de apresentação (53 s). Cópia no repositório: [`docs/divulgacao/arquitetura-biocultural.mp4`](docs/divulgacao/arquitetura-biocultural.mp4).</sub>
+
 **Uma arquitetura federada para registrar e compartilhar o conhecimento tradicional associado à
 biodiversidade, com a comunidade no controle.**
 
