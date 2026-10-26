@@ -17,7 +17,8 @@
 
 **Agora:** versão 4.0.0 pronta, ainda não publicada. Próximo marco: release no Zenodo (§1.1).
 Último release publicado: v3.4 (DOI 10.5281/zenodo.21738427). DOI conceitual, que sempre leva à
-versão mais recente: 10.5281/zenodo.17710619.
+versão mais recente: 10.5281/zenodo.17710619. **Em andamento (26/10/2026):** documentação da visão
+Custódia Local e Envio ao pluriverso, parada após a pesquisa — retomar pelo §1.5.
 
 ---
 
@@ -95,6 +96,32 @@ Fonte: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) §3 (plano mí
 - **Marcar como Evidência os 29 registros do BioCultDB sem `regime`** —
   [#30](https://github.com/edalcin/Arquitetura-BioCultural/issues/30).
 
+### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
+
+Visão decidida em 26/10/2026 (prompts P-0023 a P-0025): **BioCultRelatos** vira app Android e app
+Windows que roda de pen-drive; **BioCultNaturalistas** vira app desktop; os dois guardam o dado no
+aparelho (Custódia Local) e fazem **Envio** de só `public` a um ou mais pluriversos registrados.
+BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem código.
+
+- **Mapa:** [#36](https://github.com/edalcin/Arquitetura-BioCultural/issues/36). As 12 decisões estão
+  no comentário de [#37](https://github.com/edalcin/Arquitetura-BioCultural/issues/37); a pesquisa
+  ([#38](https://github.com/edalcin/Arquitetura-BioCultural/issues/38)) está em
+  [`pesquisa/envio-apps-offline.md`](pesquisa/envio-apps-offline.md) e propõe ajustes que a ADR deve
+  incorporar (tombstone `{id, rev, deleted}`, idempotência por `(id, rev)`, recibo por item, credencial
+  separada do `member_id`, link de mídia em `data` e não em `relatedResources`).
+- **Como continuar:** numa sessão nova, digitar `/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/36`.
+  A sessão pega o próximo ticket livre, um por sessão, nesta ordem:
+  1. [#39 ADR central](https://github.com/edalcin/Arquitetura-BioCultural/issues/39) (livre agora);
+  2. [#40 Glossário e C4](https://github.com/edalcin/Arquitetura-BioCultural/issues/40) (livre agora; pode rodar em paralelo);
+  3. depois da ADR: [#41 marcar ADRs em revisão](https://github.com/edalcin/Arquitetura-BioCultural/issues/41),
+     [#42 BioCultRelatos](https://github.com/edalcin/Arquitetura-BioCultural/issues/42),
+     [#43 BioCultNaturalistas](https://github.com/edalcin/Arquitetura-BioCultural/issues/43),
+     [#44 pluriverso](https://github.com/edalcin/Arquitetura-BioCultural/issues/44);
+  4. depois do glossário: [#45 nota no BioCultDB e no BioCultAcervos](https://github.com/edalcin/Arquitetura-BioCultural/issues/45).
+- **Depois da próxima reunião validada:** abrir a Issue `para-ponto-focal` + `fonte-primaria`
+  (custódia no aparelho, responsável pela senha, aparelhos disponíveis, recuperação de senha, quem
+  pede a retirada total). Até a resposta, a ADR fica *Proposta*.
+
 ---
 
 ## 2. Pendências numeradas em aberto
@@ -116,7 +143,7 @@ fecha sai desta tabela.
 | ⑫ | ADR-016 → *Aceito* | ④ e o Comitê | Endpoint de harvest |
 | ⑭ | Princípios mínimos que toda instância aceita | [#14](https://github.com/edalcin/Arquitetura-BioCultural/issues/14); conteúdo já tem casa em ADR-004 D3 e `propostaGovernanca.md` §5.11 | Admissão de membros |
 | ⑮ | Composição da governança da arquitetura | [#11](https://github.com/edalcin/Arquitetura-BioCultural/issues/11); convites em [#33](https://github.com/edalcin/Arquitetura-BioCultural/issues/33) | Entrada de novos participantes |
-| ⑯ | Sincronização assíncrona para baixa conectividade | Requisito sem mecanismo: replicação, exportação por arquivo ou cópia física. ADR quando houver alternativas a comparar | Uso em campo |
+| ⑯ | Sincronização assíncrona para baixa conectividade | Respondida pela visão Custódia Local e Envio (§1.5): sai daqui quando a ADR central for escrita | Uso em campo |
 | ⑰ | Auditoria dos prompts do BioCultDB contra envio de dado sensível a provedor externo de IA | Política escrita (`propostaGovernanca.md` §5.12, item 9); auditoria pendente no BioCultDB | Conformidade da extração por IA |
 | ⑱ | Capacitação das comunidades para operar a própria instância | C.A.R.E. R2; repartição não monetária (Lei 13.123/2015, art. 19) | Adoção pelas comunidades |
 | Passo 4 | Esquema do Relato como tabela | ADR-018 (①) | BioCultRelatos |
