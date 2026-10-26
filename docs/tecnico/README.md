@@ -16,6 +16,7 @@
 | [`c4-model/`](c4-model/) | Diagramas C4: contexto, contêiner, componente |
 | [`modelo-de-dados-unificado.md`](modelo-de-dados-unificado.md) | UDM — contrato lógico de dados, checklist C1–C10 |
 | [`contrato-harvest.md`](contrato-harvest.md) | Contrato de coleta federada, campo a campo |
+| [`pesquisa/envio-apps-offline.md`](pesquisa/envio-apps-offline.md) | Pesquisa: como apps offline (CoMapeo, ODK/Kobo, GBIF IPT, Mukurtu) enviam dados a um agregador, confrontada com as decisões de Envio de #37 |
 | [`rotulos-skos-xl.md`](rotulos-skos-xl.md) | Referência central dos rótulos SKOS-XL |
 | [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) | Estado consolidado do que as reuniões de governança mudam na arquitetura |
 | [`proximosPassos.md`](proximosPassos.md) | Estado do projeto e pendências técnicas — entrada de toda sessão |
