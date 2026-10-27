@@ -8,6 +8,8 @@ O Diagrama de Contexto apresenta a visão de mais alto nível do Sistema de Info
 
 > **Nota (v3.10):** desde a v3.5, as evoluções da arquitetura foram no **contrato de dados**, não na topologia deste diagrama: Regime Enunciativo, Relato e três níveis de rotulagem de acesso ([ADR-015](../architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)); contrato de harvest com nível efetivo e supressão declarada — `visibility` deixou de existir no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md)); composição multi-espécie ([ADR-017](../architecture-decisions/ADR-017-composicao-multiespecie.md)); e a consolidação de tudo no [Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md), que é a referência de dados para todos os níveis do C4.
 
+> **Nota (v4.1):** [ADR-018](../architecture-decisions/ADR-018-custodia-local-e-envio.md) (*Proposto*) muda a topologia das ferramentas de coleta. **BioCultRelatos** passa a ser app Windows que roda de **pen-drive**, sem instalar (sem app de celular por ora); **BioCultNaturalistas** passa a ser app desktop. Os dois fazem **Custódia Local** e chegam ao pluriverso por **Envio**; BioCultDB e BioCultAcervos continuam web, com **Harvest**. Diagrama atualizado em [Federação via Pluriverso](#fluxo-6-federação-via-pluriverso) e no [nível 2](02-container-diagram.md#containers-da-federação-versão-41).
+
 ## Diagrama
 
 ```mermaid
@@ -24,7 +26,7 @@ graph TB
     subgraph "Sistema de Conhecimento Tradicional"
         SYS[Sistema de Informações<br/>sobre Conhecimento<br/>Tradicional]
         BIOCULTTERMOS[BioCultTermos<br/>Infraestrutura Terminológica<br/>SKOS-XL · ✓ IMPLEMENTADO]
-        BIOCULTRELATOS[BioCultRelatos<br/>Aquisição Primária<br/>Em Desenvolvimento]
+        BIOCULTRELATOS[BioCultRelatos<br/>Aquisição Primária<br/>App Windows em pen-drive · ADR-018]
         ETNOCHAT[etnoChat<br/>Interface Conversacional<br/>✓ IMPLEMENTADO]
         PAINEL[Painel Analítico<br/>Dashboard Interativo<br/>✓ IMPLEMENTADO]
     end
@@ -409,29 +411,30 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 
 **Propósito:** Aquisição, registro e gestão de conhecimento tradicional associado à biodiversidade proveniente de **fontes primárias** — registrado diretamente junto às comunidades tradicionais
 
-**Status:** Em desenvolvimento (v2.0)
+**Status:** Em revisão pela [ADR-018](../architecture-decisions/ADR-018-custodia-local-e-envio.md) (*Proposto*): app Windows que roda de pen-drive, sem instalar
 
 **Diferença em relação ao BioCultDB:**
 - **BioCultDB**: fontes secundárias (artigos científicos, livros) — sem necessidade de CLPI
 - **BioCultRelatos**: fontes primárias (comunidades, campo) — CLPI obrigatório, validação comunitária
 
-**Integração na Arquitetura:**
-- Atua no Contexto de Aquisição, gravando no mesmo SQLite da unidade (tabela própria)
-- Suporte terminológico do BioCultTermos (SKOS-XL)
-- Os dados registrados seguem o mesmo workflow de curadoria do BioCultDB, com validação comunitária adicional
+**Integração na Arquitetura (ADR-018):**
+- **Custódia Local:** cada pen-drive é uma Unidade Federada da comunidade, com SQLite cifrado próprio; fica com a liderança e passa a quem registra e faz curadoria
+- Recebe o **Pacote de Vocabulário** (SKOS-XL como dado versionado), não o Módulo Compartilhado
+- Chega ao pluriverso por **Envio** de só `public`, quando a pessoa aperta "Enviar"
 
 > **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
 
 ### Pluriverso - Middleware de Federação
 **GitHub:** [https://github.com/edalcin/pluriverso](https://github.com/edalcin/pluriverso)
 
-**Propósito:** Middleware de federação que coleta (harvest periódico REST) registros públicos dos membros, mantém índice central SQLite+FTS5, mapeamentos SKOS entre `ConceptScheme` de membros distintos, e serve uma API pública unificada de busca federada
+**Propósito:** Middleware de federação que recebe os registros públicos dos membros por duas entradas — **Harvest** (busca periódica nas unidades web) e **Envio** (os apps mandam) —, mantém índice central SQLite+FTS5, mapeamentos SKOS entre `ConceptScheme` de membros distintos, e serve uma API pública unificada de busca federada
 
 **Status:** Novo componente, especificado (não implementado)
 
 **Integração na Arquitetura:**
 - Instanciável em múltiplos escopos ([ADR-009](../architecture-decisions/ADR-009-pluriverso-multi-instance-topology.md)) — pode haver uma instância pública/global e instâncias privadas de associações, cada uma soberana e autocontida
-- Coleta via harvest periódico REST paginado dos registros com **nível efetivo `public`** de cada membro ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md), que supersede o payload do ADR-004/D6) — o payload carrega `regime`, `accessLevel` e supressão declarada (`informationWithheld`/`dataGeneralizations`); nunca por push do membro
+- **Harvest** periódico REST paginado dos registros com **nível efetivo `public`** de cada unidade web ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md), que supersede o payload do ADR-004/D6) — o payload carrega `regime`, `accessLevel` e supressão declarada (`informationWithheld`/`dataGeneralizations`)
+- **Envio** dos apps de Custódia Local (BioCultRelatos, BioCultNaturalistas), no mesmo formato de registro, com credencial por aparelho, idempotência por `(id, rev)`, tombstones e recibo por item ([ADR-018](../architecture-decisions/ADR-018-custodia-local-e-envio.md))
 - Não se conecta à topologia centralizada pré-v3.0 descrita nos diagramas deste documento — arquitetura, contêiner e componentes próprios em [`pluriverso/docs/arquitetura.md`](https://github.com/edalcin/pluriverso/blob/main/docs/arquitetura.md)
 
 ## Fluxos Principais
@@ -480,12 +483,30 @@ O BioCultTermos funciona como infraestrutura terminológica totalmente integrada
 > **Nota (v3.3):** os diagramas anteriores deste documento descrevem a topologia centralizada pré-v3.0. O Pluriverso pertence à arquitetura federada ([ADR-004](../architecture-decisions/ADR-004-federated-architecture.md)) e não se conecta a API Gateway, fila de mensagens ou cache compartilhado — por isso é apresentado em diagrama próprio.
 
 ### Fluxo 6: Federação via Pluriverso
-1. Instância de membro (BioCultDB, BioCultRelatos, BioCultAcervos ou BioCultNaturalistas) solicita adesão à federação via cadastro self-service
-2. Probe técnico anti-SSRF anexa sinal (não decisão) ao pedido
-3. Comitê Federado aprova e um `member_id` é gerado, nunca reciclado
-4. Harvest periódico coleta os registros com nível efetivo `public` do membro via endpoint REST paginado, com supressões declaradas no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md))
-5. Pesquisador ou aplicação consulta a API unificada do Pluriverso, com expansão semântica SKOS entre vocabulários de membros diferentes
-6. Membro sai da federação → `purge_by_member` remove imediatamente seus registros e mapeamentos do índice, de forma auditável
+1. Unidade web (BioCultDB, BioCultAcervos) solicita adesão à federação via cadastro self-service; probe técnico anti-SSRF anexa sinal (não decisão) ao pedido
+2. App de Custódia Local (BioCultRelatos, BioCultNaturalistas) pede inscrição pelo próprio app, sem URL-BASE e sem probe ([ADR-018](../architecture-decisions/ADR-018-custodia-local-e-envio.md) L7)
+3. Comitê Federado aprova e um `member_id` é gerado, nunca reciclado; o app recebe a credencial uma só vez
+4. **Harvest** periódico coleta os registros com nível efetivo `public` de cada unidade web via endpoint REST paginado, com supressões declaradas no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md))
+5. **Envio**: a pessoa aperta "Enviar" no app; o app manda só `public`, em lotes, com tombstones do que já enviou e deixou de ser `public`; o pluriverso devolve recibo por item
+6. Pesquisador ou aplicação consulta a API unificada do Pluriverso, com expansão semântica SKOS entre vocabulários de membros diferentes
+7. Membro sai da federação, ou a pessoa aperta "retirar tudo" → `purge_by_member` remove seus registros e mapeamentos do índice, de forma auditável
+
+```mermaid
+graph LR
+    subgraph Web["Unidades web (Docker)"]
+        DB[BioCultDB]
+        AC[BioCultAcervos]
+    end
+    subgraph Apps["Apps de Custódia Local"]
+        RE[BioCultRelatos<br/>pen-drive Windows]
+        NA[BioCultNaturalistas<br/>desktop]
+    end
+    PL[Pluriverso]
+    PL -->|Harvest: busca public| DB
+    PL -->|Harvest: busca public| AC
+    RE -->|Envio: manda public| PL
+    NA -->|Envio: manda public| PL
+```
 
 ## Requisitos Não-Funcionais
 

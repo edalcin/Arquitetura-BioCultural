@@ -12,16 +12,35 @@ Este arquivo é **apenas glossário**. Decisões e mecanismos ficam em
 ### Federação
 
 **Unidade Federada**:
-Uma instalação soberana da Arquitetura BioCultural — um container, um arquivo SQLite, as
-ferramentas que aquela unidade opera. Soberana sobre seus dados; nunca sobre seu código.
-_Avoid_: Instância, Nó, Deployment
+Uma instalação soberana da Arquitetura BioCultural, com um arquivo SQLite próprio e as
+ferramentas que aquela unidade opera. Pode ser um container web, um pen-drive (BioCultRelatos) ou
+um computador (BioCultNaturalistas). Cada pen-drive é uma unidade, da comunidade e não de uma
+pessoa. Soberana sobre seus dados; nunca sobre seu código.
+_Avoid_: Instância, Nó, Deployment, Aparelho (é onde a unidade roda, não a unidade)
 
 **Unidade Hospedeira**:
 A Unidade Federada considerada do ponto de vista de um Módulo Compartilhado que ela embarca.
-BioCultDB, BioCultRelatos, BioCultNaturalistas e BioCultAcervos são as quatro unidades
-hospedeiras do BioCultTermos. Todo hospedeiro é uma Unidade Federada; o termo só se usa
-quando o assunto é o módulo que ela carrega.
+Só unidades web hospedam: BioCultDB e BioCultAcervos são as unidades hospedeiras do
+BioCultTermos. Os apps (BioCultRelatos, BioCultNaturalistas) não hospedam; recebem o Pacote de
+Vocabulário. O termo só se usa quando o assunto é o módulo que a unidade carrega.
 _Avoid_: Consumidor, Host, Container pai, Repositório pai
+
+**Custódia Local**:
+O dado nasce e fica no aparelho de quem o provê (pen-drive, computador), funciona sem internet
+e só sai por ato dessa pessoa. O aparelho é a fonte da verdade; o pluriverso guarda um índice
+derivado.
+_Avoid_: Offline-first, Armazenamento local, Cache
+
+**Harvest**:
+A entrada em que o pluriverso **busca**, periodicamente, os registros `public` de uma unidade
+web. A iniciativa é do pluriverso.
+_Avoid_: Coleta (ambíguo com a coleta de campo), Sincronização, Importação
+
+**Envio**:
+A entrada em que a pessoa, num app de Custódia Local, **manda** os registros `public` a um
+pluriverso em que o app está inscrito. É o par do Harvest, com a iniciativa do lado de quem
+provê. É de uma via só: o pluriverso devolve recibo, nunca dado.
+_Avoid_: Sincronizar (promete duas vias), Upload, Push, Publicação
 
 **Comitê Federado**:
 O corpo que decide admissão de membros, mapeamentos entre vocabulários e vocabulário de
@@ -58,7 +77,7 @@ _Avoid_: Pendência (para esta acepção), Item da pauta, Ticket
 Corpo de código que existe uma única vez na federação e é embarcado, idêntico, por várias
 Unidades Hospedeiras. O BioCultTermos é o único da arquitetura. Um Módulo Compartilhado não
 tem existência autônoma: ele não é instalado, publicado nem executado fora de uma Unidade
-Hospedeira.
+Hospedeira. Só circula entre unidades web; aos apps chega o Pacote de Vocabulário.
 _Avoid_: Biblioteca, Pacote, Dependência, Sub-repositório, Submódulo (mecanismo, não conceito)
 
 **Cópia de Trabalho**:
@@ -118,6 +137,12 @@ _Avoid_: Tipo de registro, Categoria, Natureza
 O conjunto de termos aceitos para os campos que o BioCultTermos governa, modelado em SKOS-XL.
 _Avoid_: Taxonomia, Dicionário, Lista de valores
 
+**Pacote de Vocabulário**:
+O Vocabulário Controlado entregue a um app de Custódia Local como **dado versionado**, nunca
+como código. Tem identificador e versão; cada Envio diz com que versão os termos foram
+registrados. É o que torna desnecessário embarcar o Módulo Compartilhado num app.
+_Avoid_: Módulo, Biblioteca de termos, Dicionário
+
 **Conteúdo Soberano**:
 Os termos, rótulos, definições e relações curados por uma Unidade Federada. Vivem no arquivo
 SQLite daquela unidade, pertencem a ela, e **nunca** atravessam para outra unidade —
@@ -155,4 +180,5 @@ _Avoid_: População, Grupo, Etnia
 - `docs/architecture-decisions/ADR-012` — manutenção do código do BioCultTermos
 - `docs/architecture-decisions/ADR-015` — Regime Enunciativo e os três níveis de rotulagem de acesso
 - `docs/tecnico/contrato-harvest.md` — contrato de payload do harvest da federação (K6 do ADR-015)
+- `docs/architecture-decisions/ADR-018` — Custódia Local, Envio e Pacote de Vocabulário
 - `BioCultDB/CONTEXT.md` — linguagem interna da Unidade de Fontes Secundárias
