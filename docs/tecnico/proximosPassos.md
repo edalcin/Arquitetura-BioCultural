@@ -114,12 +114,13 @@ BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem c
 - **Como continuar:** numa sessão nova, digitar `/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/36`.
   A sessão pega o próximo ticket livre, um por sessão, nesta ordem:
   1. ~~#39 ADR central~~ — feita: [ADR-018](architecture-decisions/ADR-018-custodia-local-e-envio.md) (*Proposto*);
-  2. [#40 Glossário e C4](https://github.com/edalcin/Arquitetura-BioCultural/issues/40) (livre agora);
-  3. livres agora: [#41 marcar ADRs em revisão e emendar o contrato de Harvest](https://github.com/edalcin/Arquitetura-BioCultural/issues/41),
-     [#42 BioCultRelatos](https://github.com/edalcin/Arquitetura-BioCultural/issues/42),
-     [#43 BioCultNaturalistas](https://github.com/edalcin/Arquitetura-BioCultural/issues/43),
-     [#44 pluriverso](https://github.com/edalcin/Arquitetura-BioCultural/issues/44);
-  4. depois do glossário: [#45 nota no BioCultDB e no BioCultAcervos](https://github.com/edalcin/Arquitetura-BioCultural/issues/45).
+  2. ~~#40 Glossário e C4~~ — feito (`CONTEXT.md`, C4 níveis 1 e 2);
+  3. livres agora: [#46 de onde o app recebe o Pacote de Vocabulário](https://github.com/edalcin/Arquitetura-BioCultural/issues/46) (conversa com a gestão),
+     [#41 marcar ADRs em revisão e emendar o contrato de Harvest](https://github.com/edalcin/Arquitetura-BioCultural/issues/41),
+     [#44 pluriverso](https://github.com/edalcin/Arquitetura-BioCultural/issues/44),
+     [#45 nota no BioCultDB e no BioCultAcervos](https://github.com/edalcin/Arquitetura-BioCultural/issues/45);
+  4. depois de #46: [#42 BioCultRelatos](https://github.com/edalcin/Arquitetura-BioCultural/issues/42),
+     [#43 BioCultNaturalistas](https://github.com/edalcin/Arquitetura-BioCultural/issues/43).
 - **Depois da próxima reunião validada:** abrir a Issue `para-ponto-focal` + `fonte-primaria`
   (custódia no aparelho, responsável pela senha, aparelhos disponíveis, recuperação de senha, quem
   pede a retirada total). Até a resposta, a ADR fica *Proposta*.
