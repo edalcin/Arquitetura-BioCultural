@@ -5,6 +5,10 @@
 > [#37](https://github.com/edalcin/Arquitetura-BioCultural/issues/37) (26/10/2026) contra o que
 > CoMapeo, ODK Central/Collect, KoboToolbox, GBIF IPT e Mukurtu Mobile fazem de fato.
 > Pesquisa de 26/10/2026; nenhum código foi escrito nem executado.
+>
+> **Ajuste de 27/10/2026 (P-0026):** o app Android do BioCultRelatos saiu do escopo por ora; fica só o
+> app Windows em pen-drive. As partes sobre Android (Keystore, *Auto Backup*, `device-transfer`) ficam
+> como registro da pesquisa e não valem para a ADR.
 
 ## 0. Como ler
 

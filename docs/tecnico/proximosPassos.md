@@ -98,8 +98,10 @@ Fonte: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) §3 (plano mí
 
 ### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
 
-Visão decidida em 26/10/2026 (prompts P-0023 a P-0025): **BioCultRelatos** vira app Android e app
-Windows que roda de pen-drive; **BioCultNaturalistas** vira app desktop; os dois guardam o dado no
+Visão decidida em 26/10/2026 (prompts P-0023 a P-0025) e ajustada em 27/10 (P-0026): **BioCultRelatos**
+vira app Windows que roda de pen-drive, sem instalar; cada pen-drive é uma Unidade Federada soberana,
+guardada pela liderança da comunidade e repassada a quem registra relatos e faz curadoria. Sem app de
+celular por ora. **BioCultNaturalistas** vira app desktop; os dois guardam o dado no
 aparelho (Custódia Local) e fazem **Envio** de só `public` a um ou mais pluriversos registrados.
 BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem código.
 

@@ -22,6 +22,7 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 | 2026-10-04 | 1 | P-0014 a P-0021 | [`prompts/2026/2026-10-04.md`](prompts/2026/2026-10-04.md) |
 | 2026-10-23 | 1 | P-0022 | [`prompts/2026/2026-10-23.md`](prompts/2026/2026-10-23.md) |
 | 2026-10-26 | 1 | P-0023 a P-0025 | [`prompts/2026/2026-10-26.md`](prompts/2026/2026-10-26.md) |
+| 2026-10-27 | 1 | P-0026 | [`prompts/2026/2026-10-27.md`](prompts/2026/2026-10-27.md) |
 
 ## Regras
 
