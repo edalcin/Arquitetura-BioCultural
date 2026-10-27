@@ -299,6 +299,24 @@ unidades ainda sem código absorvem como restrição de projeto.
 
 ---
 
+### ADR-018: Custódia Local e Envio ao pluriverso
+**Status:** Proposto
+**Data:** Outubro 2026
+
+BioCultRelatos vira app Windows que roda de pen-drive, sem instalar (sem app de celular por ora);
+BioCultNaturalistas vira app desktop. Os dois guardam o dado no aparelho (**Custódia Local**) e fazem
+**Envio** de só `public` a um ou mais pluriversos; BioCultDB e BioCultAcervos seguem web com Harvest.
+Cada pen-drive é uma Unidade Federada da comunidade. Define tombstone uniforme, "retirar tudo",
+idempotência por `(id, rev)`, recibo por item, inscrição de apps sem URL-BASE, cifra por senha da
+comunidade, Pacote de Vocabulário e mídia só como referência.
+
+**Decisão:** L1–L13; muda pontos de ADR-004, 005, 006, 007, 009 e 016, e pede emendas ao contrato de
+Harvest (§3, §4.2, §6).
+
+**[Leia o documento completo →](ADR-018-custodia-local-e-envio.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -382,7 +400,8 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-08-09 | ADR-013 | Identidade visual compartilhada via preset Tailwind no Módulo Compartilhado |
 | 2026-08-10 | ADR-014 | Nomenclatura científica fora do escopo do vocabulário controlado |
 | 2026-08-13 | ADR-015 | Regime enunciativo (Conhecimento × Evidência) e os três níveis de rotulagem de acesso |
+| 2026-10-27 | ADR-018 | Custódia Local e Envio ao pluriverso (Proposto) |
 
 ---
 
-**Última atualização:** Agosto 2026
+**Última atualização:** Outubro 2026

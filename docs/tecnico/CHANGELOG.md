@@ -6,6 +6,21 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [4.1.0] - 2026-10-27
+
+**Custódia Local e Envio (Proposto).** Nova [ADR-018](architecture-decisions/ADR-018-custodia-local-e-envio.md): BioCultRelatos vira app Windows em pen-drive (sem app de celular por ora) e BioCultNaturalistas vira app desktop; os dois guardam o dado no aparelho e fazem **Envio** de só `public` ao pluriverso. BioCultDB e BioCultAcervos continuam web, com Harvest. Decisões em conversa com a gestão (prompts P-0023 a P-0026); pesquisa em `docs/tecnico/pesquisa/envio-apps-offline.md`. Mapa: *Issue* #36.
+
+### Adicionado
+
+- **ADR-018** (*Proposto*) — L1 a L13: forma de cada ferramenta, Custódia Local e Envio, Unidade Federada = uma instalação (`member_id` separado da credencial do aparelho), só `public` com tombstone uniforme e "retirar tudo", cifra por senha da comunidade, Pacote de Vocabulário, inscrição de apps, Envio idempotente por `(id, rev)` com recibo por item, mídia só como referência, Kotlin + Compose Desktop, quem está usando o pen-drive, critérios de aceitação técnicos, pergunta à comunidade
+- `docs/tecnico/pesquisa/envio-apps-offline.md` — como CoMapeo, ODK/Kobo, GBIF IPT e Mukurtu enviam dados a um agregador
+
+### Pendente
+
+- Notas "em revisão" em ADR-004, 005, 006, 007, 009 e 016; emendas ao contrato de Harvest (§3, §4.2, §6); glossário e C4
+
+---
+
 ## [4.0.0] - 2026-10-03
 
 **Versão 4.0 da arquitetura:** a governança da arquitetura em operação (v3.12) e o repositório reorganizado por público. Nenhuma ADR, o UDM ou o contrato de harvest muda. Mudança de método M-11 em `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5. Decisões tomadas em sessão de perguntas com Eduardo (prompts P-0003 a P-0006 em `docs/Pesquisa/IA/registro-de-prompts.md`).

@@ -113,9 +113,9 @@ BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem c
   separada do `member_id`, link de mídia em `data` e não em `relatedResources`).
 - **Como continuar:** numa sessão nova, digitar `/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/36`.
   A sessão pega o próximo ticket livre, um por sessão, nesta ordem:
-  1. [#39 ADR central](https://github.com/edalcin/Arquitetura-BioCultural/issues/39) (livre agora);
-  2. [#40 Glossário e C4](https://github.com/edalcin/Arquitetura-BioCultural/issues/40) (livre agora; pode rodar em paralelo);
-  3. depois da ADR: [#41 marcar ADRs em revisão](https://github.com/edalcin/Arquitetura-BioCultural/issues/41),
+  1. ~~#39 ADR central~~ — feita: [ADR-018](architecture-decisions/ADR-018-custodia-local-e-envio.md) (*Proposto*);
+  2. [#40 Glossário e C4](https://github.com/edalcin/Arquitetura-BioCultural/issues/40) (livre agora);
+  3. livres agora: [#41 marcar ADRs em revisão e emendar o contrato de Harvest](https://github.com/edalcin/Arquitetura-BioCultural/issues/41),
      [#42 BioCultRelatos](https://github.com/edalcin/Arquitetura-BioCultural/issues/42),
      [#43 BioCultNaturalistas](https://github.com/edalcin/Arquitetura-BioCultural/issues/43),
      [#44 pluriverso](https://github.com/edalcin/Arquitetura-BioCultural/issues/44);
