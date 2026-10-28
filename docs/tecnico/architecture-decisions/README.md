@@ -317,6 +317,23 @@ Harvest (§3, §4.2, §6).
 
 ---
 
+### ADR-020: Adoção do Open Knowledge Format (OKF) v0.2 na documentação
+**Status:** Aceito
+**Data:** Outubro 2026
+
+O repositório inteiro vira um bundle OKF v0.2: todo `.md` (menos `CLAUDE.md`) começa com uma ficha YAML
+que diz o gênero do documento e o resume numa frase. Sem `index.md` nem `log.md`; nenhum arquivo muda de
+nome. Lista fechada de `type` só no manifesto `docs/tecnico/okf-base.yaml`; `status` das ADRs mapeado
+para `draft`/`stable`/`deprecated`; `generated` e `verified` não usados. Validação pelo `okflint` 0.5.1
+no CI. (O número 019 está reservado para "Sagrado como dimensão".)
+
+**Decisão:** O1–O8; ficha mínima (`type`, `description`, `status` só onde a regra pede); regra para
+agentes em `docs/tecnico/agents/okf.md`.
+
+**[Leia o documento completo →](ADR-020-adocao-do-okf.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -401,6 +418,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-08-10 | ADR-014 | Nomenclatura científica fora do escopo do vocabulário controlado |
 | 2026-08-13 | ADR-015 | Regime enunciativo (Conhecimento × Evidência) e os três níveis de rotulagem de acesso |
 | 2026-10-27 | ADR-018 | Custódia Local e Envio ao pluriverso (Proposto) |
+| 2026-10-28 | ADR-020 | Adoção do Open Knowledge Format (OKF) v0.2 na documentação |
 
 ---
 

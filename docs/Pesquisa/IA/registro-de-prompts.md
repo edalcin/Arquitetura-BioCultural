@@ -23,7 +23,7 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 | 2026-10-23 | 1 | P-0022 | [`prompts/2026/2026-10-23.md`](prompts/2026/2026-10-23.md) |
 | 2026-10-26 | 1 | P-0023 a P-0025 | [`prompts/2026/2026-10-26.md`](prompts/2026/2026-10-26.md) |
 | 2026-10-27 | 1 | P-0026 | [`prompts/2026/2026-10-27.md`](prompts/2026/2026-10-27.md) |
-| 2026-10-28 | 6 | P-0027 a P-0032 | [`prompts/2026/2026-10-28.md`](prompts/2026/2026-10-28.md) |
+| 2026-10-28 | 7 | P-0027 a P-0033 | [`prompts/2026/2026-10-28.md`](prompts/2026/2026-10-28.md) |
 
 ## Regras
 
@@ -54,7 +54,17 @@ Este arquivo é só o índice e as regras; ele cresce uma linha por dia.
 ## Como registrar
 
 - **Primeiro prompt do dia:** criar `prompts/AAAA/AAAA-MM-DD.md` (e a pasta do ano, se for o
-  primeiro do ano) e acrescentar a linha do dia na tabela acima.
+  primeiro do ano), começando pela ficha OKF abaixo
+  ([ADR-020](../../tecnico/architecture-decisions/ADR-020-adocao-do-okf.md)), e acrescentar a linha
+  do dia na tabela acima.
+
+  ```yaml
+  ---
+  type: Prompts do dia
+  description: "Prompts escritos à IA em AAAA-MM-DD, literais, agrupados por sessão."
+  ---
+  ```
+
 - **Sessão nova no mesmo dia:** nova seção `## Sessão N — <ferramenta> · <modelo>` no arquivo do dia;
   atualizar a coluna "Sessões" da tabela.
 - **Cada prompt:** acrescentar ao fim da sessão e atualizar a coluna "Prompts".

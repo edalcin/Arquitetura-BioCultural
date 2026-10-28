@@ -6,6 +6,27 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [4.2.0] - 2026-10-28
+
+**Open Knowledge Format (OKF) v0.2 (Aceito).** Nova [ADR-020](architecture-decisions/ADR-020-adocao-do-okf.md): o repositório inteiro é um bundle OKF v0.2; todo `.md` (menos `CLAUDE.md`) começa com uma ficha YAML (`type` de lista fechada, `description`; `status` nas ADRs e onde não for `stable`). Mudança de método M-19. Decisões em conversa com a gestão (prompts P-0027 a P-0033). Mapa: *Issue* #47.
+
+### Adicionado
+
+- **ADR-020** (*Aceito*) — O1 a O8: bundle = repositório inteiro; nenhum `index.md` nem `log.md`, `README.md` e `CHANGELOG.md` com ficha; ficha mínima; `type` = gênero do documento, lista só no manifesto `docs/tecnico/okf-base.yaml`; `status` das ADRs (Proposto → `draft`, Aceito/Implementado → `stable`, Depreciado/Substituído/Rejeitado → `deprecated`); `generated` e `verified` não usados; `okflint` 0.5.1 no CI; regra para agentes
+- `docs/tecnico/agents/okf.md` — regra de escrita da ficha para agentes de IA
+
+### Modificado
+
+- `CLAUDE.md` — seção "Ficha OKF em todo `.md`"; o arquivo de prompts do dia nasce com a ficha
+- `docs/Pesquisa/IA/registro-de-prompts.md` — "Como registrar" mostra a ficha do arquivo do dia
+- `docs/Governanca/Arquitetura/metodo-de-evolucao.md` §5 — M-19
+
+### Pendente
+
+- Manifesto `docs/tecnico/okf-base.yaml`, ficha nos arquivos existentes, *workflow* do CI e avisos nos guias: *Issue* #56
+
+---
+
 ## [4.1.0] - 2026-10-27
 
 **Custódia Local e Envio (Proposto).** Nova [ADR-018](architecture-decisions/ADR-018-custodia-local-e-envio.md): BioCultRelatos vira app Windows em pen-drive (sem app de celular por ora) e BioCultNaturalistas vira app desktop; os dois guardam o dado no aparelho e fazem **Envio** de só `public` ao pluriverso. BioCultDB e BioCultAcervos continuam web, com Harvest. Decisões em conversa com a gestão (prompts P-0023 a P-0026); pesquisa em `docs/tecnico/pesquisa/envio-apps-offline.md`. Mapa: *Issue* #36.

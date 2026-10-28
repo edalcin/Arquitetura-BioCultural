@@ -1,6 +1,10 @@
 ## Registro de prompts — primeiro ato de toda sessão
 
-Antes de qualquer outro trabalho, registre o prompt do usuário, **literal**, no arquivo do dia `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, na seção da sessão atual (crie o arquivo, a seção `## Sessão N` e a linha na tabela de `docs/Pesquisa/IA/registro-de-prompts.md` quando forem novos) — **só se ele for significativo**: o prompt que abre a sessão, ou um que traz demanda nova ou muda a arquitetura ou o método. Não registre confirmações ("sigo com a recomendação", "confirmo. execute."), escolhas entre opções já propostas, pedidos de commit/sync nem pedidos de forma ("uma pergunta por vez"). Critério completo: regra 2 do índice. Numeração `P-NNNN` contínua entre dias. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
+Antes de qualquer outro trabalho, registre o prompt do usuário, **literal**, no arquivo do dia `docs/Pesquisa/IA/prompts/AAAA/AAAA-MM-DD.md`, na seção da sessão atual (crie o arquivo, já com a ficha OKF `type: Prompts do dia`, a seção `## Sessão N` e a linha na tabela de `docs/Pesquisa/IA/registro-de-prompts.md` quando forem novos) — **só se ele for significativo**: o prompt que abre a sessão, ou um que traz demanda nova ou muda a arquitetura ou o método. Não registre confirmações ("sigo com a recomendação", "confirmo. execute."), escolhas entre opções já propostas, pedidos de commit/sync nem pedidos de forma ("uma pergunta por vez"). Critério completo: regra 2 do índice. Numeração `P-NNNN` contínua entre dias. O commit do trabalho inclui o registro e a entrada cita o commit. Transparência do uso de IA: `docs/Pesquisa/projetoPesquisa.md` §7.2, item 9.
+
+## Ficha OKF em todo `.md`
+
+O repositório é um bundle do Open Knowledge Format (OKF) v0.2 (ADR-020). Todo `.md`, menos este `CLAUDE.md`, começa na linha 1 com a ficha YAML: `type` (só valores do manifesto `docs/tecnico/okf-base.yaml`, pelo gênero do documento, nunca pela pasta) e `description`; `status` só nas ADRs e onde não for `stable`; nada além disso. Regra completa: `docs/tecnico/agents/okf.md`.
 
 ## A IA traduz, nos dois sentidos
 

@@ -22,7 +22,7 @@
 | [`proximosPassos.md`](proximosPassos.md) | Estado do projeto e pendências técnicas — entrada de toda sessão |
 | [`CHANGELOG.md`](CHANGELOG.md) | Histórico de versões |
 | [`metodologia-e-tecnologias.md`](metodologia-e-tecnologias.md) | C4, contextos Aquisição/Curadoria/Apresentação, tecnologias avaliadas |
-| [`agents/`](agents/) | Convenções para agentes de IA (Issues, domínio) |
+| [`agents/`](agents/) | Convenções para agentes de IA (Issues, domínio, ficha OKF) |
 | [`gestaoBioCultTermos/`](gestaoBioCultTermos/), [`bin/`](bin/) | Gestão e utilitários do módulo BioCultTermos |
 | [`diagrams/`](diagrams/), [`images/`](images/) | Fontes e imagens dos diagramas |
 
