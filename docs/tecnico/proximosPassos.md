@@ -96,6 +96,13 @@ Fonte: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) §3 (plano mí
 - **Marcar como Evidência os 29 registros do BioCultDB sem `regime`** —
   [#30](https://github.com/edalcin/Arquitetura-BioCultural/issues/30).
 
+### 1.6 Adotar o Open Knowledge Format (OKF) v0.2 (em andamento, antes do §1.5)
+
+Pedido P-0027 (28/10/2026): toda a documentação conforme ao OKF v0.2, com ADR-020, regra de escrita
+e validação no CI. O mapa também faz a conversão. Mapa:
+[#47](https://github.com/edalcin/Arquitetura-BioCultural/issues/47). Continuar com
+`/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/47`; o §1.5 retoma depois.
+
 ### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
 
 Visão decidida em 26/10/2026 (prompts P-0023 a P-0025) e ajustada em 27/10 (P-0026): **BioCultRelatos**
