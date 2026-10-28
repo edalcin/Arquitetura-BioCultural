@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Diz quem decide sobre os dados: a comunidade que detém o conhecimento, que escolhe o que se registra, o que se publica e o que se retira."
+---
+
 # Governança dos dados
 
 ## Quem decide

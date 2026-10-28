@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Índice das decisões de arquitetura (ADRs) do repositório, explicando o que são e por que são registradas."
+---
+
 # Architecture Decision Records (ADRs)
 
 ## Sobre ADRs

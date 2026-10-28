@@ -1,3 +1,8 @@
+---
+type: Proposta
+description: "Proposta, ainda em consulta, de quem decide o quê nos dados, nas ferramentas e na arquitetura, com o processo de decisão e o que acontece quando algo muda."
+---
+
 # Proposta de Governança — Arquitetura BioCultural
 
 > **Status: Proposta para consulta** — submetida à validação das comunidades tradicionais federadas e do Comitê Federado. Não é norma vigente: nenhuma seção desta proposta afirma que a plataforma já cumpre o que ainda não existe — mecanismos pendentes são marcados `[a implementar]`, com o repositório responsável.

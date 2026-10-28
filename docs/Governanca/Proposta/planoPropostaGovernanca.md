@@ -1,3 +1,8 @@
+---
+type: Plano de trabalho
+description: "Plano de trabalho que organizou a escrita da proposta de governança em três camadas: dados, ferramentas e arquitetura."
+---
+
 # Plano de Elaboração — Proposta de Governança
 
 ## Context

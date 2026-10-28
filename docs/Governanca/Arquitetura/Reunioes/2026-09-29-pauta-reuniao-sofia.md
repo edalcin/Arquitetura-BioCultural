@@ -1,3 +1,8 @@
+---
+type: Pauta
+description: "Sugestão de pauta para a reunião de 29 de setembro de 2026 com a Ponto-Focal do UseFlora, com os assuntos a conversar e a ordem proposta."
+---
+
 # Sugestão de pauta — reunião com Sofia Zank, 2026-09-29
 
 - **Participantes previstos:** Sofia Zank (UseFlora, Ponto-Focal), Eduardo Couto Dalcin (gestão da arquitetura)

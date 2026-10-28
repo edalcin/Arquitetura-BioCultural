@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta de modelo de dados para o conhecimento tradicional associado à biodiversidade, respeitando a diversidade de comunidades e pesquisadores."
+status: draft
+---
+
 # ADR-003: Modelo de Dados para Conhecimento Tradicional
 
 ## Status

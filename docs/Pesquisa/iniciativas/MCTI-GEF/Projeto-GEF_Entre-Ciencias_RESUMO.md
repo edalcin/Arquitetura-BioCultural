@@ -1,3 +1,8 @@
+---
+type: Resumo executivo
+description: "Resumo executivo do projeto GEF 'Entre-Ciências' (MCTI/PNUMA/IEB), que fortalece povos indígenas e comunidades locais na gestão de dados de sociobiodiversidade."
+---
+
 # Projeto GEF 'Entre-Ciências' - Resumo Executivo
 
 ## Informações Gerais

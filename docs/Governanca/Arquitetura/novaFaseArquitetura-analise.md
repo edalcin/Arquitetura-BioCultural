@@ -1,3 +1,8 @@
+---
+type: Proposta
+description: "Análise, com alternativas e recomendações explicadas passo a passo, sobre os ajustes de método e de documentação que a nova fase da arquitetura pede."
+---
+
 # Nova fase da Arquitetura Biocultural — análise e recomendações
 
 - **Data:** 2026-09-30

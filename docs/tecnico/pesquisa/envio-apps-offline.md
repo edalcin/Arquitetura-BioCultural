@@ -1,3 +1,8 @@
+---
+type: Pesquisa
+description: "Pesquisa sobre como apps offline (CoMapeo, ODK, Kobo, GBIF IPT, Mukurtu) enviam dados a um agregador web, confrontada com as decisões de Envio da arquitetura."
+---
+
 # Pesquisa — como apps offline enviam dados a um agregador web
 
 > Resolve o ticket [#38](https://github.com/edalcin/Arquitetura-BioCultural/issues/38) do mapa

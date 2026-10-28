@@ -1,3 +1,8 @@
+---
+type: Pauta
+description: "Roteiro de preparação da reunião de 16 de setembro de 2026 entre a gestão da arquitetura e a Ponto-Focal do UseFlora, sobre quem fala pelo UseFlora e as fontes secundárias."
+---
+
 # Preparação para Reunião: Pauta com as Comunidades — 16/09/2026
 
 > **Contexto:** Reunião bilateral de alinhamento entre **Eduardo Couto Dalcin** (JBRJ) e **Sofia Zank** (USEFLORA / Comitê Gestor) agendada para 16/09/2026, 09:00–10:00.  

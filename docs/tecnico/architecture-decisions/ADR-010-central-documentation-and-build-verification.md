@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão sobre a documentação central e a verificação de build exigidas nas mudanças do módulo BioCultTermos."
+status: stable
+---
+
 # ADR-010: Documentação Central e Verificação de Build para Mudanças no BioCultTermos
 
 ## Status

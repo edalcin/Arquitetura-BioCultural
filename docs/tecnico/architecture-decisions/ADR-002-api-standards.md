@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta de padrões de API e integração para os contextos de aquisição, curadoria e acesso do sistema."
+status: draft
+---
+
 # ADR-002: Padrões de API e Integração
 
 ## Status

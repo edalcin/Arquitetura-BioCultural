@@ -1,3 +1,8 @@
+---
+type: Proposta
+description: "Pedido que abre a nova fase da arquitetura: conta o que foi combinado com o Comitê Gestor do UseFlora e pede ajustes no método de trabalho e nos documentos."
+---
+
 # Nova fase da Arquitetura Biocultural
 
 A proposta da Arquitetura Biocultural (AB) entra em uma nova fase onde ajustes metodológicos e documentais precisam ser feitos.

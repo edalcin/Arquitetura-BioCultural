@@ -1,3 +1,8 @@
+---
+type: Glossário
+description: "Lista dos termos usados no projeto explicados em linguagem simples, para quem não é da área técnica."
+---
+
 # Glossário
 
 Termos do projeto em linguagem simples. As **definições oficiais** estão em [`docs/tecnico/CONTEXT.md`](../docs/tecnico/CONTEXT.md). Se houver diferença, vale a oficial.

@@ -1,3 +1,8 @@
+---
+type: Pesquisa
+description: "Estudo de discussão (não decisão) que distingue Conhecimento de Evidência e suas consequências para os rótulos de nível de acesso, usando o BioCultRelatos como caso-teste."
+---
+
 # Caracterização do "Conhecimento Tradicional" na Arquitetura BioCultural
 
 **Data:** 2026-08-13

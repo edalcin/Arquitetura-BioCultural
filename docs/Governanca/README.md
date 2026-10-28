@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Porta de entrada da governança: explica as três camadas (dados, ferramentas e arquitetura), quem decide em cada uma e o que já funciona hoje."
+---
+
 # Governança da Arquitetura BioCultural
 
 Esta pasta explica **quem decide o quê** na Arquitetura BioCultural. A governança tem três camadas. Cada uma tem seus donos e seus limites.

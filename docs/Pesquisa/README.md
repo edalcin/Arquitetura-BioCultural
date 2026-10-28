@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Porta de entrada da pasta de pesquisa: projeto de pesquisa, resumos, referências, estudos sobre conhecimento tradicional, iniciativas parceiras e registro do uso de IA."
+---
+
 # Pesquisa
 
 Esta pasta reúne o **projeto de pesquisa** por trás da Arquitetura BioCultural e os documentos que o sustentam: resumos, referências, estudos sobre o conhecimento tradicional, iniciativas parceiras e o registro do uso de inteligência artificial.

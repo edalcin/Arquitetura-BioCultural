@@ -1,0 +1,18 @@
+# Valida a ficha OKF de todo .md (ADR-020, O7). Erro falha o job; link quebrado só avisa.
+name: OKF
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  okf:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install okflint==0.5.1
+      - run: okflint validate --manifest docs/tecnico/okf-base.yaml

@@ -1,6 +1,11 @@
+---
+type: Guia
+description: "Passo a passo para participar do projeto pelo site do GitHub, sem instalar nada: corrigir um resumo de reunião, responder a uma questão ou abrir uma nova."
+---
+
 # Como usar o GitHub
 
-Guia desta pasta para participar do projeto pelo site do GitHub: corrigir uma memória de reunião, responder
+Guia desta pasta para participar do projeto pelo site do GitHub: corrigir um resumo de reunião, responder
 a uma questão ou abrir uma questão nova. Não é preciso instalar nada nem conhecer git.
 
 Cada correção vira um **pedido de alteração** (*pull request*). Eduardo recebe um aviso, confere
@@ -14,7 +19,7 @@ guarda todo o histórico.
 - Entre no GitHub com a sua conta. Se ainda não tem, crie uma em <https://github.com/signup>.
 - Se você participa com frequência, peça a Eduardo acesso de colaborador ao repositório. Sem esse
   acesso o guia também funciona (ver "Perguntas comuns").
-- As memórias ficam em:
+- Os resumos das reuniões ficam em:
   <https://github.com/edalcin/Arquitetura-BioCultural/tree/main/docs/Governanca/Arquitetura/Reunioes>
 
 ---
@@ -23,13 +28,14 @@ guarda todo o histórico.
 
 ### 1. Abrir o arquivo e clicar no lápis
 
-Clique no nome da memória (por exemplo, `2026-09-18-reuniao-sofia.md`). No canto superior direito
+Clique no nome do resumo (por exemplo, `2026-09-18-reuniao-sofia.md`). No canto superior direito
 do texto, clique no **lápis** (✏️, *Edit this file*).
 
 ### 2. Editar o texto
 
 Corrija o que for preciso, direto na caixa de texto.
 
+- Não mexa nas linhas entre os dois `---` do topo: elas são a ficha do documento.
 - Os asteriscos (`**assim**`) deixam o texto em **negrito**. Mantenha os pares de asteriscos.
 - Uma linha que começa com `-` ou `1.` é item de lista. Mantenha o sinal no início da linha.
 - A aba **Preview** mostra como o texto vai ficar.
@@ -55,7 +61,7 @@ Pronto. Eduardo recebe o aviso e faz o resto.
 
 ## Perguntas comuns
 
-**Quero corrigir mais de uma memória.** Repita os 4 passos para cada arquivo. Um pedido por
+**Quero corrigir mais de um resumo.** Repita os 4 passos para cada arquivo. Um pedido por
 correção é o normal.
 
 **Esqueci uma coisa depois de enviar.** Envie um novo pedido com os mesmos 4 passos.
@@ -201,7 +207,7 @@ flowchart LR
   Q --> P["Próxima pauta"]
 ```
 
-Uma correção numa memória pode mudar a leitura que a arquitetura faz da reunião. Por isso cada
+Uma correção num resumo pode mudar a leitura que a arquitetura faz da reunião. Por isso cada
 pedido passa pela conferência de Eduardo antes de entrar, e as questões e a próxima pauta só são
 atualizadas **depois** da sua revisão do resumo: elas nunca carregam uma leitura que você ainda vai
 corrigir.

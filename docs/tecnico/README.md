@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Porta de entrada da documentação técnica: índice dos documentos e descrição completa da arquitetura BioCultural federada, para equipe técnica e agentes de IA."
+---
+
 # Documentação técnica — descrição completa da Arquitetura BioCultural
 
 > **Para quem é esta pasta.** Equipe técnica e agentes de IA. Aqui ficam a descrição completa da
@@ -23,6 +28,7 @@
 | [`CHANGELOG.md`](CHANGELOG.md) | Histórico de versões |
 | [`metodologia-e-tecnologias.md`](metodologia-e-tecnologias.md) | C4, contextos Aquisição/Curadoria/Apresentação, tecnologias avaliadas |
 | [`agents/`](agents/) | Convenções para agentes de IA (Issues, domínio, ficha OKF) |
+| [`okf-base.yaml`](okf-base.yaml) | Manifesto OKF: valores de `type` da ficha, validado no CI ([ADR-020](architecture-decisions/ADR-020-adocao-do-okf.md)) |
 | [`gestaoBioCultTermos/`](gestaoBioCultTermos/), [`bin/`](bin/) | Gestão e utilitários do módulo BioCultTermos |
 | [`diagrams/`](diagrams/), [`images/`](images/) | Fontes e imagens dos diagramas |
 

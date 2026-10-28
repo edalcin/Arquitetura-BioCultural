@@ -1,3 +1,8 @@
+---
+type: Especificação
+description: "Padrões de integração com sistemas externos (GBIF e outros) e estratégias para consumir e fornecer dados por APIs."
+---
+
 # Padrões de Integração e APIs Externas
 
 ## Visão Geral

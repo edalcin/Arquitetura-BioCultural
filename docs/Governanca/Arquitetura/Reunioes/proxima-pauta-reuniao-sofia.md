@@ -1,3 +1,8 @@
+---
+type: Pauta
+description: "Pauta curta e proposta para a próxima reunião de governança da arquitetura, com a lista das questões abertas que serão conversadas, cada uma ligada à sua página."
+---
+
 # Pauta — reunião de governança da arquitetura (data a definir)
 
 - **Participantes:** Sofia Zank (UseFlora, Ponto-Focal), Eduardo Dalcin (gestão da arquitetura); Viviane Kruel, se aceitar o convite ([#12][i12])

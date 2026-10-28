@@ -1,3 +1,8 @@
+---
+type: Registro
+description: "Índice cronológico dos prompts significativos dados à IA sobre a arquitetura, com regras de registro e o commit de cada entrada, como transparência do uso de IA."
+---
+
 # Registro de prompts — o que foi pedido à IA, literalmente
 
 > **O que é.** O registro literal, em ordem cronológica, dos *prompts* significativos escritos por

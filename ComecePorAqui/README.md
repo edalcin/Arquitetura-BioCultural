@@ -1,6 +1,13 @@
+---
+type: Porta de entrada
+description: "Resumo do projeto em uma página: o que é a Arquitetura BioCultural, que problema resolve, qual a proposta e por onde continuar a leitura."
+---
+
 # Arquitetura BioCultural — resumo em uma página
 
 Versão 4.0. Citável: [10.5281/zenodo.21738427](https://doi.org/10.5281/zenodo.21738427).
+
+A tabela no topo de cada documento é a ficha dele: diz que tipo de texto é e para que serve. Você não precisa ler.
 
 ## O que é
 

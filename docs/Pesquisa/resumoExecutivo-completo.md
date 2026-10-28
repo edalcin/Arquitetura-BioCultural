@@ -1,3 +1,8 @@
+---
+type: Resumo executivo
+description: "Resumo executivo geral da Arquitetura BioCultural: problema, proposta técnica, estado de cada peça e o que depende de decisão externa."
+---
+
 # Resumo Executivo — Arquitetura BioCultural
 
 Este documento apresenta, de forma objetiva e sem pressupor leitura prévia, o que é a Arquitetura BioCultural: o problema que ela ataca, a proposta técnica, o estado real de cada peça e o que ainda depende de decisão alheia ao projeto. É a porta de entrada; para o detalhamento completo, ver [`README.md`](../../README.md) e os documentos listados na última seção.

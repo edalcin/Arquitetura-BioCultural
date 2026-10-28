@@ -1,3 +1,8 @@
+---
+type: Registro
+description: "Estado consolidado de todos os itens de impacto que as reuniões com o Ponto-Focal produziram nos documentos de arquitetura, um bloco de formato fixo por item."
+---
+
 # Impactos das reuniões com o Ponto-Focal na arquitetura — estado consolidado
 
 > **O que este documento é.** A visão única e atual de **todos os itens de impacto** (`I-01`, `I-02`…)

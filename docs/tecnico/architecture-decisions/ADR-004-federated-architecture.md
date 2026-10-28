@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão que adota a arquitetura federada v3.0, em que cada unidade é soberana sobre seus próprios dados, e define a governança do pluriverso."
+status: stable
+---
+
 # ADR-004: Arquitetura Federada v3.0
 
 ## Status

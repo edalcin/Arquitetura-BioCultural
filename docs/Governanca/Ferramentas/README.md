@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Diz quem decide sobre as ferramentas: quem as instala e cuida de cada uma, sem poder sobre o que a comunidade registra ou publica."
+---
+
 # Governança das ferramentas
 
 ## Quem decide

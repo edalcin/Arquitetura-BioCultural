@@ -1,3 +1,8 @@
+---
+type: Procedimento
+description: "Convenção para agentes de IA: quais documentos de domínio ler antes de explorar o repositório e como usar o vocabulário do glossário e apontar conflitos com ADRs."
+---
+
 # Domain Docs
 
 How the engineering skills should consume this repo's domain documentation when exploring the codebase.

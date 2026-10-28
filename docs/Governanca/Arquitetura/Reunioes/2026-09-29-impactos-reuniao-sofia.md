@@ -1,3 +1,8 @@
+---
+type: Impactos da reunião
+description: "Registra o que mudou no trabalho da arquitetura depois da reunião de 29 de setembro de 2026: o que ficou decidido, o que foi confirmado e o que voltou para revisão."
+---
+
 # Impactos na arquitetura — reunião de 2026-09-29 (Sofia Zank)
 
 - **Resumo:** [`2026-09-29-reuniao-sofia.md`](2026-09-29-reuniao-sofia.md) — terceira reunião de trabalho com o Ponto-Focal. Doze decisões.

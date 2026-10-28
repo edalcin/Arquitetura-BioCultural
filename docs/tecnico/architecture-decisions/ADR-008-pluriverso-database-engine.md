@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão sobre o motor de banco de dados do pluriverso, componente novo de middleware da federação."
+status: stable
+---
+
 # ADR-008: Engine de Banco de Dados do Pluriverso
 
 ## Status

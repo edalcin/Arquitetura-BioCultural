@@ -1,3 +1,8 @@
+---
+type: Glossário
+description: "Glossário oficial dos termos que atravessam todos os repositórios da federação (unidade federada, Harvest, Envio, Relato, Ponto-Focal e outros), com os sinônimos a evitar."
+---
+
 # Arquitetura BioCultural — Linguagem da Federação
 
 Glossário dos termos que atravessam **todos** os repositórios da Arquitetura BioCultural.

@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão sobre o protocolo de inscrição de novos membros na federação e sua admissão pelo comitê federado."
+status: stable
+---
+
 # ADR-006: Protocolo de Inscrição na Federação
 
 ## Status

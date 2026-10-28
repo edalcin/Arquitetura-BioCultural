@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Apresentação do repositório da Arquitetura BioCultural, uma arquitetura federada para registrar e compartilhar conhecimento tradicional associado à biodiversidade, com links para a documentação."
+---
+
 # Arquitetura BioCultural — Versão 4.0
 
 https://github.com/user-attachments/assets/c4a06f9f-b7c8-481e-9a7b-1b59c91c7998

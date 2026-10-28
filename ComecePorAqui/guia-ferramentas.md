@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Guia para quem instala ou cuida das ferramentas do projeto, explicando o que cada uma faz e o que cabe a quem as mantém."
+---
+
 # Guia — ferramentas
 
 ## Para quem é

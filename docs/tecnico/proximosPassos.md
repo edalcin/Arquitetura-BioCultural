@@ -1,3 +1,8 @@
+---
+type: Plano de trabalho
+description: "Lista do que falta fazer no projeto, com o que bloqueia cada item; só olha para frente e é a entrada de toda sessão de trabalho."
+---
+
 # Próximos Passos — o que falta fazer
 
 > **Só olha para frente.** Este arquivo lista o que precisa ser feito para o projeto avançar, com o
@@ -95,17 +100,6 @@ Fonte: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) §3 (plano mí
   (Relatos, Acervos, Naturalistas).
 - **Marcar como Evidência os 29 registros do BioCultDB sem `regime`** —
   [#30](https://github.com/edalcin/Arquitetura-BioCultural/issues/30).
-
-### 1.6 Adotar o Open Knowledge Format (OKF) v0.2 (em andamento, antes do §1.5)
-
-Pedido P-0027 (28/10/2026): toda a documentação conforme ao OKF v0.2, com ADR-020, regra de escrita
-e validação no CI. O mapa também faz a conversão. Mapa:
-[#47](https://github.com/edalcin/Arquitetura-BioCultural/issues/47). Continuar com
-`/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/47`; o §1.5 retoma depois.
-Feito em 28/10: decisões de #48 a #54 e [ADR-020](architecture-decisions/ADR-020-adocao-do-okf.md)
-(*Aceito*), regra para agentes em [`agents/okf.md`](agents/okf.md), M-19. Falta só
-[#56](https://github.com/edalcin/Arquitetura-BioCultural/issues/56): manifesto
-`docs/tecnico/okf-base.yaml`, ficha nos arquivos, *workflow* do CI e avisos nos guias.
 
 ### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
 

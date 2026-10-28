@@ -1,3 +1,8 @@
+---
+type: Diagrama C4
+description: "Diagrama C4 nível 1 (contexto): o sistema, seus atores internos e externos e os sistemas externos com que se relaciona."
+---
+
 # C4 Model - Level 1: Diagrama de Contexto
 
 ## Visão Geral

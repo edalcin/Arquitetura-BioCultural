@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Guia para quem pesquisa conhecimento tradicional ou estuda a arquitetura e quer usar, citar ou contribuir com o projeto, com o que ler primeiro."
+---
+
 # Guia — pesquisadores
 
 ## Para quem é

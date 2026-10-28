@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão de distribuir o módulo BioCultTermos às unidades federadas como git submodule compartilhado."
+status: stable
+---
+
 # ADR-007: Distribuição do Módulo BioCultTermos via Git Submodule Compartilhado
 
 ## Status

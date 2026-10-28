@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Guia de maneiras práticas de aplicar os princípios CARE (coletividade, autonomia, responsabilidade e equidade) na governança de dados dos povos indígenas."
+---
+
 O princípio CARE para Governança de Dados Indígenas é uma estrutura que significa Coletividade, Autonomia, Capacidade de Resposta e Equidade. É uma abordagem à governança de dados centrada nos direitos e interesses dos povos indígenas. Aqui estão algumas maneiras práticas de adotar o princípio CARE:
 
 ### Coletividade

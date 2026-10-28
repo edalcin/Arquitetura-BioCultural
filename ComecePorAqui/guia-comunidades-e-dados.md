@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Guia para pessoas de comunidades tradicionais e de iniciativas que as apoiam, explicando o que a comunidade decide sobre os seus dados e como eles são tratados."
+---
+
 # Guia — comunidades e dados
 
 ## Para quem é

@@ -1,8 +1,30 @@
+---
+type: Histórico de versões
+description: "Histórico de todas as versões da arquitetura BioCultural, da 1.0.0 à atual, com o que foi adicionado, alterado e pendente em cada uma."
+---
+
 # Histórico de Versões - Arquitetura do Sistema de Conhecimento Tradicional
 
 Todas as mudanças significativas nesta proposta de arquitetura serão documentadas neste arquivo.
 
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/), e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
+
+---
+
+## [4.2.1] - 2026-10-28
+
+**OKF v0.2 em vigor.** Todos os `.md` (menos `CLAUDE.md`) têm a ficha, e o CI valida a cada *push* ao `main` e a cada PR ([ADR-020](architecture-decisions/ADR-020-adocao-do-okf.md), O7). Prompt P-0034. *Issue* #56.
+
+### Adicionado
+
+- `docs/tecnico/okf-base.yaml` — manifesto do `okflint`: 19 valores de `type`, `type` e `description` obrigatórios, `status` em `draft | stable | deprecated`, campo desconhecido = erro, link quebrado = aviso
+- `.github/workflows/okf.yml` — `okflint==0.5.1 validate` em todo *push* ao `main` e todo PR
+
+### Modificado
+
+- Ficha OKF em 93 arquivos `.md`; `status: draft` nas ADRs propostas, em `contrato-harvest.md` e em `modelo-de-dados-unificado.md`; `status: deprecated` na ADR-001
+- `ComecePorAqui/README.md` — a tabela no topo é a ficha do documento
+- `ComecePorAqui/guia-github.md` — não mexer nas linhas entre os dois `---`; "memória de reunião" → "resumo de reunião"
 
 ---
 

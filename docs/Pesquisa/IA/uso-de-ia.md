@@ -1,3 +1,8 @@
+---
+type: Registro
+description: "Método do uso de IA na arquitetura (da reunião ao impacto) e log datado de episódios de uso, com fonte primária conferível, como resultado de pesquisa."
+---
+
 # Uso de IA na arquitetura BioCultural — método e log de episódios
 
 > **O que este documento é.** O registro formal, como resultado de pesquisa, do uso de Inteligência

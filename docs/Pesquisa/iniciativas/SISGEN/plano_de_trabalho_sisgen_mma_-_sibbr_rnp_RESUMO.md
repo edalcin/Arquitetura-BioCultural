@@ -1,3 +1,8 @@
+---
+type: Resumo executivo
+description: "Resumo executivo do plano de trabalho RNP–MMA–SiBBr para modernizar o SISGEN e torná-lo interoperável."
+---
+
 # Plano de Trabalho: Modernização e Interoperabilidade do SISGEN - Resumo Executivo
 
 ## Informações Gerais

@@ -1,3 +1,8 @@
+---
+type: Pesquisa
+description: "Estudo da plataforma internacional Guardian Connector de guardianança indígena, com parceiras brasileiras, e do mecanismo já em produção que aqui é pendência aberta."
+---
+
 # Guardian Connector — plataforma de guardianança indígena (Conservation Metrics / Nia Tero)
 
 **Tipo**: iniciativa internacional, software livre em produção

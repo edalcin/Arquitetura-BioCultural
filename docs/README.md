@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Índice da pasta docs, que reúne a documentação em governança, pesquisa e técnico, com para quem serve cada parte."
+---
+
 # Documentação da Arquitetura BioCultural
 
 Toda a documentação fica nesta pasta, em três partes. Quem chega agora deve começar por

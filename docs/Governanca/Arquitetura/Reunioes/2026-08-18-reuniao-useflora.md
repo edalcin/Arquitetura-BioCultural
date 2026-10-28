@@ -1,3 +1,8 @@
+---
+type: Resumo de reunião
+description: "Resumo, ainda não revisado pelos participantes, da reunião de 18 de agosto de 2026 com o Comitê Gestor do UseFlora, em que a proposta da arquitetura foi apresentada e discutida."
+---
+
 # Reunião com o Comitê Gestor do USEFLORA — 18/08/2026
 
 > **Nota de proveniência.** Este documento é um **sumário de reunião**, não uma ata aprovada. As contribuições abaixo estão **parafraseadas** a partir de um resumo automático da gravação e **não foram revisadas pelos participantes**. A reunião ocorreu em 18 de agosto de 2026 e atendeu a uma demanda do Comitê Gestor do USEFLORA, que quis entender melhor e acompanhar o progresso da proposta de arquitetura.

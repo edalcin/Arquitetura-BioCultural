@@ -1,3 +1,8 @@
+---
+type: Pauta
+description: "Guarda, sem mudanças, a última pauta feita no formato antigo, preparada para a quarta reunião e nunca usada, para que se saiba onde cada assunto foi parar."
+---
+
 # Retrato congelado — a última pauta no formato antigo (2026-10-03)
 
 > **O que este documento é.** A pauta que tinha sido preparada para a quarta reunião com Sofia Zank,

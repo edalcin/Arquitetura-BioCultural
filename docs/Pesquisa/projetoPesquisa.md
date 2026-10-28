@@ -1,3 +1,8 @@
+---
+type: Projeto de pesquisa
+description: "Projeto de pesquisa formal da arquitetura federada para registro e compartilhamento de conhecimento tradicional associado à biodiversidade sob os princípios C.A.R.E."
+---
+
 # Arquitetura BioCultural — Projeto de Pesquisa
 
 **Título:** Arquitetura federada para registro, documentação e compartilhamento de conhecimento tradicional associado à biodiversidade sob os princípios C.A.R.E.

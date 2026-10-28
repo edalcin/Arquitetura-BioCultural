@@ -1,3 +1,8 @@
+---
+type: Procedimento
+description: "Roteiro operacional para editar e propagar o código do BioCultTermos a partir das unidades hospedeiras, sem clone isolado."
+---
+
 # Fluxo de Trabalho — Código do BioCultTermos
 
 Runbook operacional. O *porquê* de cada regra está em

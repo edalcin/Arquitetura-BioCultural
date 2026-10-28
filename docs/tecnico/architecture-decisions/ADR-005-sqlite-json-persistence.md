@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão de persistir os dados em SQLite com JSON, um arquivo por unidade federada, substituindo o banco centralizado."
+status: stable
+---
+
 # ADR-005: Persistência SQLite com JSON por Unidade Federada (v3.1)
 
 ## Status

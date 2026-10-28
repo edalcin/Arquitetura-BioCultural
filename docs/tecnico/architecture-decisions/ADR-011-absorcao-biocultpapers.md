@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão de absorver a extração de dados de artigos científicos por IA, antes feita pelo BioCultPapers, dentro do BioCultDB."
+status: stable
+---
+
 # ADR-011: Absorção do BioCultPapers pelo BioCultDB
 
 ## Status

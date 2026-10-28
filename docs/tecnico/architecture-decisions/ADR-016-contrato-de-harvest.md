@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta do contrato de harvest da federação, extraído da ADR-015 para poder ser aceito separadamente."
+status: draft
+---
+
 # ADR-016: Contrato de Harvest da Federação
 
 ## Status

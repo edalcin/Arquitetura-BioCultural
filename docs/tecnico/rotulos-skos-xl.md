@@ -1,3 +1,8 @@
+---
+type: Especificação
+description: "Referência central dos rótulos SKOS-XL da arquitetura: tipos, metadados, regras e relações, com exemplos de estudos de caso reais."
+---
+
 # Rótulos SKOS-XL da Arquitetura BioCultural — Referência Central
 
 > **Documento normativo da arquitetura.** Consolida, num só lugar, todos os rótulos SKOS-XL que a

@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Apresenta a proposta de governança em consulta, com as três camadas, os princípios CARE e o ciclo do consentimento, e aponta para os textos e imagens."
+---
+
 # Proposta de governança
 
 Aqui está a proposta completa de governança da Arquitetura BioCultural. Ela explica as três camadas (dados, ferramentas, arquitetura), os princípios CARE, a base legal e o ciclo do consentimento.

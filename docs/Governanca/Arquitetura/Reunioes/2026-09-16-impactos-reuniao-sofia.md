@@ -1,3 +1,8 @@
+---
+type: Impactos da reunião
+description: "Registra o que mudou no trabalho da arquitetura depois da reunião de 16 de setembro de 2026 com a Ponto-Focal do UseFlora: o que ficou decidido e o que continua em aberto."
+---
+
 # Impactos na arquitetura — reunião de 2026-09-16 (Sofia Zank)
 
 - **Resumo:** [`2026-09-16-reuniao-sofia.md`](2026-09-16-reuniao-sofia.md) — primeira reunião de trabalho com o Ponto-Focal. Doze decisões.

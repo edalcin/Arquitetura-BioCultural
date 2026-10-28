@@ -1,3 +1,8 @@
+---
+type: Plano de trabalho
+description: "Estratégia para manter o código do BioCultTermos dentro da unidade hospedeira que motivou a mudança, com o porquê das regras que o fluxo de trabalho aplica."
+---
+
 # Estratégia de Manutenção do Código do BioCultTermos
 
 **Decisão de origem:** [ADR-012](../architecture-decisions/ADR-012-manutencao-codigo-bioculttermos.md)

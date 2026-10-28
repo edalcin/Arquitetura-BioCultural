@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão depreciada sobre a abordagem de armazenamento de dados (MongoDB), mantida como histórico e substituída pela persistência SQLite com JSON."
+status: deprecated
+---
+
 # ADR-001: Abordagem de Armazenamento de Dados
 
 ## Status

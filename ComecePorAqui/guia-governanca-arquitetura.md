@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Guia para quem participa das reuniões que decidem o desenho da arquitetura, mostrando o que essas pessoas decidem e o que não decidem."
+---
+
 # Guia — governança da arquitetura
 
 ## Para quem é

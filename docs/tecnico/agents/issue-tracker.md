@@ -1,3 +1,8 @@
+---
+type: Procedimento
+description: "Convenção de uso das Issues do GitHub pelos agentes: comandos do gh, escrita, etiquetas, marcos, fechamento e operações do mapa de trabalho (wayfinder)."
+---
+
 # Issue tracker: GitHub
 
 Issues and PRDs for this repo live as GitHub issues. Use the `gh` CLI for all operations.

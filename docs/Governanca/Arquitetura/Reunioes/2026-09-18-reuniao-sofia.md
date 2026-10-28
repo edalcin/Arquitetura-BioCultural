@@ -1,3 +1,8 @@
+---
+type: Resumo de reunião
+description: "Resumo da segunda reunião de trabalho, em 18 de setembro de 2026, entre a Ponto-Focal do UseFlora e a gestão da arquitetura, com as decisões tomadas."
+---
+
 # Reunião UseFlora — Sofia Zank e Eduardo Dalcin
 
 - **Data:** 2026-09-18, 10:56 (61 min)

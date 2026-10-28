@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta do regime enunciativo e dos três níveis de rotulagem de acesso, definindo quem tem autoridade para classificar o acesso aos dados."
+status: draft
+---
+
 # ADR-015: Regime Enunciativo e os Três Níveis de Rotulagem de Acesso
 
 ## Status

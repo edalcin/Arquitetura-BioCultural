@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta de modelo de dados para a composição multi-espécie de usos, preparos e artefatos entre as unidades federadas."
+status: draft
+---
+
 # ADR-017: Composição Multi-Espécie de Usos, Preparos e Artefatos
 
 ## Status

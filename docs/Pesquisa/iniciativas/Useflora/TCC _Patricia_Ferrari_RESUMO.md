@@ -1,3 +1,8 @@
+---
+type: Resumo executivo
+description: "Resumo executivo do TCC que construiu o Useflor@, banco de dados etnobotânicos da UFSC para armazenar e proteger informações de sociobiodiversidade."
+---
+
 # Banco de Dados Etnobotânicos: Useflor@ - Resumo Executivo
 
 ## Informações Gerais

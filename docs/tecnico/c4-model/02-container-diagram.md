@@ -1,3 +1,8 @@
+---
+type: Diagrama C4
+description: "Diagrama C4 nível 2 (containers): as aplicações e serviços que compõem o sistema, com tecnologias, responsabilidades e endpoints."
+---
+
 # C4 Model - Level 2: Diagrama de Containers
 
 ## Visão Geral

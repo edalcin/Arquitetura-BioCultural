@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão sobre a manutenção do código do BioCultTermos: uma única cópia de trabalho por unidade e propagação obrigatória das mudanças."
+status: stable
+---
+
 # ADR-012: Manutenção do Código do BioCultTermos — Cópia de Trabalho Única por Unidade e Propagação Obrigatória
 
 ## Status

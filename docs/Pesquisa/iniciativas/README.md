@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Visão geral das iniciativas brasileiras e internacionais sobre conhecimento tradicional e sociobiodiversidade que servem de fonte de dados e de referência arquitetural."
+---
+
 # Iniciativas Relacionadas ao Conhecimento Tradicional e Sociobiodiversidade
 
 Este diretório contém resumos de iniciativas relacionadas à gestão de conhecimento tradicional, sociobiodiversidade e patrimônio genético. Quatro são brasileiras; a quinta — Guardian Connector — é internacional e entra porque tem duas parceiras no Brasil e porque já implementou em produção um mecanismo que aqui é pendência aberta. Estas iniciativas servem como fontes de dados, informações e referências arquiteturais para o projeto Arquitetura BioCultural.

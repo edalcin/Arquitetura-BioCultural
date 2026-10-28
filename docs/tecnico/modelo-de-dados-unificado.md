@@ -1,3 +1,9 @@
+---
+type: Especificação
+description: "Modelo de Dados Unificado (UDM): contrato lógico de dados da arquitetura e de suas ferramentas, com checklist de conformidade, objeto técnico do acordo JBRJ e USEFLORA."
+status: draft
+---
+
 # Modelo de Dados Unificado (UDM) da Arquitetura BioCultural
 
 *Unified Data Model — contrato lógico de dados de toda a arquitetura e suas ferramentas associadas*

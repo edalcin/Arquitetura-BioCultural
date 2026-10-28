@@ -1,3 +1,9 @@
+---
+type: Especificação
+description: "Contrato de coleta (Harvest) da federação, campo a campo: endpoint, envoltória, registro, nível efetivo de acesso, rótulos culturais, recursos relacionados e condição de aceitação."
+status: draft
+---
+
 # Contrato de Harvest — payload da federação
 
 ## Status

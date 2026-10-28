@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Proposta de custódia local dos dados em arquivo portátil e do envio ao pluriverso, mantendo cada provedor soberano."
+status: draft
+---
+
 # ADR-018: Custódia Local e Envio ao pluriverso
 
 ## Status

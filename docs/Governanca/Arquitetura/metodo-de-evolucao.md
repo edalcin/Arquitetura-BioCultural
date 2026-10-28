@@ -1,3 +1,8 @@
+---
+type: Procedimento
+description: "Explica como a arquitetura é construída e muda, quem decide cada coisa, onde tudo fica registrado e o histórico das mudanças na forma de trabalhar."
+---
+
 # Método de construção e evolução da Arquitetura BioCultural
 
 > **O que este documento é.** A porta de entrada do **método**: como a arquitetura é construída, como

@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão de deixar a nomenclatura científica fora do escopo do vocabulário controlado do BioCultTermos."
+status: stable
+---
+
 # ADR-014: Nomenclatura Científica Fora do Escopo do Vocabulário Controlado
 
 ## Status

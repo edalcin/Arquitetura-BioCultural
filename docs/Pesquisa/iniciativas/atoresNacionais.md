@@ -1,3 +1,8 @@
+---
+type: Pesquisa
+description: "Mapa dos atores nacionais, beneficiários e provedores de dados, envolvidos direta ou indiretamente na arquitetura, com a metodologia de levantamento."
+---
+
 # Atores Nacionais — Grafo de Beneficiários e Provedores de Dados
 
 Este documento mapeia os atores nacionais envolvidos, direta ou indiretamente, na Arquitetura BioCultural — como beneficiários (destinatários do valor gerado pela arquitetura, sobretudo da repartição de benefícios) ou como provedores de dados (fontes de conhecimento, referência arquitetural ou infraestrutura de interoperabilidade).

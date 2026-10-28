@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão sobre a topologia com várias instâncias do pluriverso, por exemplo para associações de comunidades."
+status: stable
+---
+
 # ADR-009: Topologia Multi-Instância do Pluriverso
 
 ## Status

@@ -1,3 +1,8 @@
+---
+type: Pauta
+description: "Documento objetivo para a Ponto-Focal, com o que precisa ser encaminhado com as comunidades tradicionais para a arquitetura poder seguir."
+---
+
 # Pauta com as comunidades tradicionais — o que a arquitetura precisa ver encaminhado
 
 **O que este documento é.** Não é mais um registro de sessão de trabalho — isso já vive em `docs/tecnico/proximosPassos.md`. Este é o documento objetivo do Ponto-Focal: o que a Arquitetura BioCultural precisa ver encaminhado com comunidades tradicionais para poder seguir. Foi feito para sair do computador. Quem o recebe precisa conseguir lê-lo inteiro e agir a partir dele, sem precisar abrir mais nada.

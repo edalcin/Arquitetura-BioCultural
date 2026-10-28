@@ -1,3 +1,8 @@
+---
+type: Resumo executivo
+description: "Resumo executivo da Nota Técnica 1/2025 do CNPT/ICMBio sobre o histórico e a evolução da Rede de Conhecimentos sobre a Sociobiodiversidade."
+---
+
 # Rede de Conhecimentos sobre a Sociobiodiversidade - Resumo Executivo
 
 ## Informações Gerais

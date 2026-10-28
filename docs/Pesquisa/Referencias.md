@@ -1,3 +1,8 @@
+---
+type: Bibliografia
+description: "Bibliografia do projeto de pesquisa: legislação brasileira, normas e literatura em formato ABNT, organizada por seções temáticas."
+---
+
 # Referências Bibliográficas
 
 ## 1. Legislação Brasileira Relevante

@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Explica como funcionam as reuniões que conduzem a arquitetura: quem participa, o ciclo do registro, a revisão das questões abertas e onde cada documento fica."
+---
+
 # Governança da arquitetura — reuniões, questões, pautas, resumos e impactos
 
 Esta pasta guarda o registro das **reuniões de governança da arquitetura**: a forma em que a camada

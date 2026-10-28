@@ -1,3 +1,8 @@
+---
+type: Porta de entrada
+description: "Apresenta os documentos de preparação e encaminhamento para a conversa com comunidades tradicionais e iniciativas parceiras."
+---
+
 # Pauta com as Comunidades — Diálogos, Preparação e Encaminhamentos
 
 Esta pasta reúne documentos de preparação, alinhamento e encaminhamentos estratégicos para o diálogo com comunidades tradicionais e iniciativas parceiras (como o USEFLORA) no âmbito da Arquitetura BioCultural.

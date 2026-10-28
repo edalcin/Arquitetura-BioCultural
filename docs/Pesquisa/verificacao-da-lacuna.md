@@ -1,3 +1,8 @@
+---
+type: Pesquisa
+description: "Varredura em fontes primárias que sustenta a lacuna de pesquisa do projeto: estruturas de dados publicadas para conhecimento tradicional, em cinco frentes."
+---
+
 # Verificação da lacuna de pesquisa — estruturas de dados para conhecimento tradicional (2026-09-11)
 
 > Varredura em fontes primárias que fundamenta o item 1 da §2 e o parágrafo "Científica" da §3 do

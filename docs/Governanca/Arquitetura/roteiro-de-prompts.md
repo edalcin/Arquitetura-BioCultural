@@ -1,3 +1,8 @@
+---
+type: Procedimento
+description: "Reúne os pedidos prontos que a gestão da arquitetura passa à inteligência artificial em cada etapa do ciclo de reuniões, dizendo o que fazer e onde parar."
+---
+
 # Roteiro de prompts — preparar e consolidar as reuniões de governança da arquitetura
 
 > **O que este documento é.** Os pedidos (*prompts*) que Eduardo cola no agente de IA em cada

@@ -1,0 +1,82 @@
+# Manifesto OKF deste repositório — lido pelo okflint (versão fixada em 0.5.1).
+# Decisão e motivos: architecture-decisions/ADR-020-adocao-do-okf.md
+# Regra de escrita para agentes: agents/okf.md
+#
+# Valor novo de `type` = mudança neste arquivo, no mesmo commit ou PR que o usa,
+# com uma linha de comentário que define o valor e o motivo no commit.
+
+okf_version: "0.2"
+
+base:
+  name: "Arquitetura BioCultural"
+  roots:
+    # O okflint resolve o caminho a partir da pasta deste manifesto: ../.. = raiz do repositório.
+    - path: "../.."
+      exclude_patterns: # fnmatch: `*` também casa `/`
+        - "CLAUDE.md"
+        - ".git/*"
+        - ".remember/*"
+        - "graphify-out/*"
+  reserved_files: # padrão da especificação; o repositório não usa nenhum dos dois
+    index: "index.md"
+    log: "log.md"
+  link_resolution:
+    scope: base
+    external_refs: []
+
+# Todos os tipos: `type` e `description` obrigatórios; `status` opcional, só com estes valores.
+x-campos: &campos
+  required: [type, description]
+  optional: [status]
+  status_values: [draft, stable, deprecated]
+
+profile:
+  date_fields: []
+  types:
+    # README de uma pasta: diz o que há nela e por onde começar.
+    "Porta de entrada": *campos
+    # Versões numeradas da arquitetura e o que mudou em cada uma.
+    "Histórico de versões": *campos
+    # ADR: uma decisão de arquitetura, com contexto, opções e consequências.
+    "Decisão de arquitetura": *campos
+    # Um nível do modelo C4 (contexto, contêineres, componentes).
+    "Diagrama C4": *campos
+    # Contrato ou desenho técnico que as ferramentas seguem.
+    "Especificação": *campos
+    # Termos e suas definições.
+    "Glossário": *campos
+    # Explica um assunto a quem lê.
+    "Guia": *campos
+    # Como trabalhar, passo a passo.
+    "Procedimento": *campos
+    # O que foi dito e decidido numa reunião.
+    "Resumo de reunião": *campos
+    # O que uma reunião muda na arquitetura.
+    "Impactos da reunião": *campos
+    # O que vai ser tratado numa reunião.
+    "Pauta": *campos
+    # Proposta posta em consulta.
+    "Proposta": *campos
+    # O que falta fazer, e como.
+    "Plano de trabalho": *campos
+    # Registro que só cresce (entradas novas no fim ou no topo, as antigas ficam).
+    "Registro": *campos
+    # Prompts feitos à IA num dia, literais.
+    "Prompts do dia": *campos
+    # O projeto de pesquisa.
+    "Projeto de pesquisa": *campos
+    # Investigação com fontes citadas.
+    "Pesquisa": *campos
+    # Síntese de um projeto ou documento externo.
+    "Resumo executivo": *campos
+    # Lista de referências bibliográficas.
+    "Bibliografia": *campos
+
+hygiene:
+  broken_links: warn # imagens contam como link quebrado no okflint 0.5.1
+  split_candidates: off
+  reserved_files: off
+  unknown_fields: error
+  okf_v02_shapes: warn
+  legacy_forms: off
+  stale_content: off

@@ -1,3 +1,8 @@
+---
+type: Diagrama C4
+description: "Diagrama C4 nível 3 (componentes): os componentes internos de cada container, organizados nos contextos Aquisição, Curadoria e Apresentação."
+---
+
 # C4 Model - Level 3: Diagrama de Componentes
 
 ## Visão Geral

@@ -1,3 +1,9 @@
+---
+type: Decisão de arquitetura
+description: "Decisão de compartilhar a identidade visual idêntica em todas as unidades federadas por meio de um preset Tailwind no módulo compartilhado."
+status: stable
+---
+
 # ADR-013: Identidade Visual Compartilhada via Preset Tailwind no Módulo Compartilhado
 
 ## Status

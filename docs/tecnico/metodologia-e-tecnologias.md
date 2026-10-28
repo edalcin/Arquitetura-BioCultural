@@ -1,3 +1,8 @@
+---
+type: Especificação
+description: "Metodologia de documentação arquitetural (C4 Model) e tecnologias avaliadas para persistência e integrações externas, complementar ao README."
+---
+
 # Metodologia e Tecnologias
 
 Documento técnico complementar ao [README.md](../../README.md), detalhando a metodologia de documentação arquitetural (C4 Model) e as tecnologias avaliadas para a camada de persistência e integrações externas do sistema.

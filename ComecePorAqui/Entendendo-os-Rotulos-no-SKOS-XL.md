@@ -1,3 +1,8 @@
+---
+type: Guia
+description: "Texto de apoio que explica, com mais detalhe, como os nomes e rótulos de um termo são guardados e ligados entre si, para quem quer entender como o projeto trata palavras de vários idiomas e povos."
+---
+
 # Arquitetura e Mecânica Operacional de Rótulos no Padrão SKOS-XL
 
 ## Contextualização e Paradigma de Reificação Lexical
