@@ -102,6 +102,8 @@ Pedido P-0027 (28/10/2026): toda a documentação conforme ao OKF v0.2, com ADR-
 e validação no CI. O mapa também faz a conversão. Mapa:
 [#47](https://github.com/edalcin/Arquitetura-BioCultural/issues/47). Continuar com
 `/wayfinder https://github.com/edalcin/Arquitetura-BioCultural/issues/47`; o §1.5 retoma depois.
+Feito em 28/10: limites do bundle ([#48](https://github.com/edalcin/Arquitetura-BioCultural/issues/48):
+raiz do bundle = raiz do repositório). Livres: #50, #51, #52.
 
 ### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
 
