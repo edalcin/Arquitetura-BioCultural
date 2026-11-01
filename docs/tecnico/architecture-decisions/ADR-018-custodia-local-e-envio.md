@@ -6,6 +6,8 @@ status: draft
 
 # ADR-018: Custódia Local e Envio ao pluriverso
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): a Custódia Local e o Envio são desenho de proposta. BioCultRelatos e BioCultNaturalistas (apps) não serão desenvolvidos pelo responsável pela arquitetura e não têm stack definida; o texto é orientação não vinculante para um futuro implementador.
+
 ## Status
 
 **Proposto** — Outubro 2026. Decisões tomadas com a gestão da arquitetura em 26/10/2026 (prompts

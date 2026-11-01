@@ -6,6 +6,8 @@ status: stable
 
 # ADR-009: Topologia Multi-Instância do Pluriverso
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): a topologia multi-instância do Pluriverso é proposta, sem implementação. O texto abaixo é orientação não vinculante para quem vier a implementá-lo.
+
 ## Status
 
 **Aceito** — Julho 2026

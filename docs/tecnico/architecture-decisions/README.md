@@ -339,6 +339,16 @@ agentes em `docs/tecnico/agents/okf.md`.
 
 ---
 
+### ADR-021: Escopo de implementação
+
+**Status:** Aceito (1º de novembro de 2026)
+
+BioCultDB integrado ao BioCultTermos é o único caso implementado (ligação com o projeto GEF, USEFLORA e JBRJ). BioCultRelatos, BioCultAcervos, BioCultNaturalistas e Pluriverso são propostas, sem implementação e sem stack. Restringe o escopo dos ADRs 005, 007, 008, 009, 012, 013 e 018.
+
+**[Leia o documento completo →](ADR-021-escopo-de-implementacao.md)**
+
+---
+
 
 ## Template para Novos ADRs
 
@@ -424,6 +434,7 @@ Ao criar um novo ADR, utilize o seguinte template:
 | 2026-08-13 | ADR-015 | Regime enunciativo (Conhecimento × Evidência) e os três níveis de rotulagem de acesso |
 | 2026-10-27 | ADR-018 | Custódia Local e Envio ao pluriverso (Proposto) |
 | 2026-10-28 | ADR-020 | Adoção do Open Knowledge Format (OKF) v0.2 na documentação |
+| 2026-11-01 | ADR-021 | Escopo de implementação: BioCultDB + BioCultTermos implementados; demais unidades como propostas |
 
 ---
 

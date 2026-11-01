@@ -19,14 +19,14 @@ Para quem instala, mantém ou quer entender as ferramentas da arquitetura: quem 
 
 | Ferramenta | Para quê | Repositório |
 |---|---|---|
-| BioCultDB | Artigos científicos (fonte secundária). Em produção | [BioCultDB](https://github.com/edalcin/BioCultDB) |
-| BioCultRelatos | Registro com a comunidade (fonte primária) | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
-| BioCultAcervos | Acervos históricos e de museus | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
-| BioCultNaturalistas | Obras de naturalistas | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
-| BioCultTermos | Vocabulário comum, usado dentro das outras | [BioCultTermos](https://github.com/edalcin/BioCultTermos) |
-| Pluriverso | Índice comum do que foi publicado | [pluriverso](https://github.com/edalcin/pluriverso) |
+| BioCultDB | Artigos científicos (fonte secundária). Em produção (caso implementado) | [BioCultDB](https://github.com/edalcin/BioCultDB) |
+| BioCultRelatos | Registro com a comunidade (fonte primária). Proposta, sem implementação | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) |
+| BioCultAcervos | Acervos históricos e de museus. Proposta, sem implementação | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) |
+| BioCultNaturalistas | Obras de naturalistas. Proposta, sem implementação | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) |
+| BioCultTermos | Vocabulário comum, usado dentro do BioCultDB. Em produção, integrado ao BioCultDB | [BioCultTermos](https://github.com/edalcin/BioCultTermos) |
+| Pluriverso | Índice comum do que foi publicado. Proposta, sem implementação | [pluriverso](https://github.com/edalcin/pluriverso) |
 
-Hoje só o BioCultDB está em produção.
+Hoje só o BioCultDB, integrado ao BioCultTermos, está em produção. É o caso implementado, ligado ao projeto GEF e às entregas da USEFLORA e do JBRJ. As demais são propostas, sem implementação ([ADR-021](../docs/tecnico/architecture-decisions/ADR-021-escopo-de-implementacao.md)).
 
 ## O que ler primeiro
 

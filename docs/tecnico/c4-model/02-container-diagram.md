@@ -11,6 +11,8 @@ O Diagrama de Containers detalha os componentes técnicos que compõem o Sistema
 
 **Versão 2.0** - Adicionado BioCultRelatos (aquisição primária) e BioCultTermos migrado para SKOS-XL com integração total ao BioCultDB
 
+> **Nota (2026-11-01, [ADR-021](../architecture-decisions/ADR-021-escopo-de-implementacao.md)):** só o BioCultDB integrado ao BioCultTermos está implementado. BioCultRelatos, BioCultAcervos, BioCultNaturalistas e o Pluriverso mostrados aqui são **propostas, sem implementação e sem stack definida**; o diagrama é a visão de como a arquitetura poderia ser realizada por quem as assumir.
+
 > **Nota (v3.10):** desde a v3.5, as evoluções da arquitetura foram no **contrato de dados**, não nos containers deste diagrama: Regime Enunciativo e três níveis de rotulagem de acesso ([ADR-015](../architecture-decisions/ADR-015-regime-enunciativo-e-rotulagem-de-acesso.md)); contrato de harvest com nível efetivo e supressão declarada — `visibility` deixou de existir no payload ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md)); composição multi-espécie ([ADR-017](../architecture-decisions/ADR-017-composicao-multiespecie.md)); consolidação no [Modelo de Dados Unificado (UDM)](../modelo-de-dados-unificado.md). Os exemplos de estrutura de dados neste documento são ilustrativos — o contrato vigente é o UDM.
 
 > **Nota (v4.1):** [ADR-018](../architecture-decisions/ADR-018-custodia-local-e-envio.md) (*Proposto*): BioCultRelatos e BioCultNaturalistas deixam de ser containers e passam a apps de **Custódia Local** (pen-drive Windows; desktop), que chegam ao pluriverso por **Envio**. Ver [Containers da Federação (Versão 4.1)](#containers-da-federação-versão-41).
@@ -539,7 +541,7 @@ graph TB
 
 Middleware de federação que recebe os registros públicos das unidades membro por **Harvest** (unidades web) e por **Envio** (apps de Custódia Local), mantém um índice central em SQLite+FTS5, calcula mapeamentos semânticos SKOS entre `ConceptScheme` de membros distintos, e serve uma API pública unificada de busca federada.
 
-**Stack Tecnológico:** Node.js 20 + Express + EJS + Tailwind CSS + Alpine.js/HTMX + better-sqlite3 (ver [`pluriverso/docs/decisions/ADR-001-stack-e-framework.md`](https://github.com/edalcin/pluriverso/blob/main/docs/decisions/ADR-001-stack-e-framework.md))
+**Stack Tecnológico:** não definida; o Pluriverso é proposta, sem implementação ([ADR-021](../architecture-decisions/ADR-021-escopo-de-implementacao.md)).
 
 **Responsabilidades:**
 - Harvest periódico REST paginado dos registros com nível efetivo `public` de cada unidade web ([ADR-016](../architecture-decisions/ADR-016-contrato-de-harvest.md))

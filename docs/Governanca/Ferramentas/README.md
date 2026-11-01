@@ -22,14 +22,16 @@ O mantenedor cuida da máquina e do programa. Ele não decide o que a comunidade
 
 Cada ferramenta tem seu próprio repositório e seu próprio ritmo. Não existe ainda uma instância comum de decisão entre os mantenedores.
 
-| Ferramenta | Repositório |
-|---|---|
-| BioCultDB (fontes secundárias) | <https://github.com/edalcin/BioCultDB> |
-| BioCultRelatos (fontes primárias) | <https://github.com/edalcin/BioCultRelatos> |
-| BioCultAcervos (acervos) | <https://github.com/edalcin/BioCultAcervos> |
-| BioCultNaturalistas (obras de naturalistas) | <https://github.com/edalcin/BioCultNaturalistas> |
-| BioCultTermos (vocabulário) | <https://github.com/edalcin/BioCultTermos> |
-| Pluriverso | <https://github.com/edalcin/pluriverso> |
+| Ferramenta | Repositório | Estado |
+|---|---|---|
+| BioCultDB (fontes secundárias) | <https://github.com/edalcin/BioCultDB> | Em produção (caso implementado) |
+| BioCultRelatos (fontes primárias) | <https://github.com/edalcin/BioCultRelatos> | Proposta, sem implementação |
+| BioCultAcervos (acervos) | <https://github.com/edalcin/BioCultAcervos> | Proposta, sem implementação |
+| BioCultNaturalistas (obras de naturalistas) | <https://github.com/edalcin/BioCultNaturalistas> | Proposta, sem implementação |
+| BioCultTermos (vocabulário) | <https://github.com/edalcin/BioCultTermos> | Em produção, integrado ao BioCultDB |
+| Pluriverso | <https://github.com/edalcin/pluriverso> | Proposta, sem implementação |
+
+Ver [ADR-021](../../tecnico/architecture-decisions/ADR-021-escopo-de-implementacao.md).
 
 ## Documentos relacionados
 

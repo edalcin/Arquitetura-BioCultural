@@ -6,6 +6,8 @@ status: stable
 
 # ADR-005: Persistência SQLite com JSON por Unidade Federada (v3.1)
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): a persistência SQLite por unidade vale como decisão apenas para o BioCultDB. Para BioCultRelatos, BioCultAcervos, BioCultNaturalistas e Pluriverso (propostas, sem implementação) é orientação não vinculante; nenhuma stack está definida.
+
 ## Status
 
 **Aceito** — Julho 2026

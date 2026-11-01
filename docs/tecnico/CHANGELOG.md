@@ -11,6 +11,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [4.3.0] - 2026-11-01
+
+**Escopo de implementação (Aceito).** Nova [ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md): BioCultDB integrado ao BioCultTermos é o único caso implementado; BioCultRelatos, BioCultAcervos, BioCultNaturalistas e Pluriverso são propostas, sem implementação e sem stack.
+
+### Alterado
+
+- Notas datadas nas ADRs 005, 007, 008, 009, 012, 013 e 018 restringindo o escopo.
+- Estados nos README, `ComecePorAqui/`, `Governanca/Ferramentas/`, `CONTEXT.md`, `proximosPassos.md`, C4 e `gestaoBioCultTermos/`; `bin/termos-status.ps1` reporta só o BioCultDB.
+
+---
+
 ## [4.2.1] - 2026-10-28
 
 **OKF v0.2 em vigor.** Todos os `.md` (menos `CLAUDE.md`) têm a ficha, e o CI valida a cada *push* ao `main` e a cada PR ([ADR-020](architecture-decisions/ADR-020-adocao-do-okf.md), O7). Prompt P-0034. *Issue* #56.

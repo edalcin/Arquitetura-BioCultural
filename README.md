@@ -82,12 +82,14 @@ consentimento sobre um registro concreto é sempre da comunidade detentora, regi
 
 | Tipo de fonte | Ferramenta | Estado |
 |---|---|---|
-| Registro feito diretamente com a comunidade | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) | Fase inicial |
-| Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) | Em produção |
-| Acervos históricos e museológicos | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) | Documentação |
-| Obras de naturalistas, séculos XVII–XIX | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) | Planejamento completo |
-| Vocabulário compartilhado (SKOS-XL) | [BioCultTermos](https://github.com/edalcin/BioCultTermos) | Em produção, dentro do BioCultDB |
-| Conexão entre as unidades | [Pluriverso](https://github.com/edalcin/pluriverso) | Planejamento completo |
+| Registro feito diretamente com a comunidade | [BioCultRelatos](https://github.com/edalcin/BioCultRelatos) | Proposta, sem implementação |
+| Artigos científicos publicados | [BioCultDB](https://github.com/edalcin/BioCultDB) | Em produção (caso implementado) |
+| Acervos históricos e museológicos | [BioCultAcervos](https://github.com/edalcin/BioCultAcervos) | Proposta, sem implementação |
+| Obras de naturalistas, séculos XVII–XIX | [BioCultNaturalistas](https://github.com/edalcin/BioCultNaturalistas) | Proposta, sem implementação |
+| Vocabulário compartilhado (SKOS-XL) | [BioCultTermos](https://github.com/edalcin/BioCultTermos) | Em produção, integrado ao BioCultDB |
+| Conexão entre as unidades | [Pluriverso](https://github.com/edalcin/pluriverso) | Proposta, sem implementação |
+
+Só o BioCultDB integrado ao BioCultTermos está implementado, por sua ligação com o projeto GEF MCTI Entre Ciências e com as entregas da USEFLORA e do Jardim Botânico do Rio de Janeiro (JBRJ). As demais unidades mostram como a arquitetura poderia ser realizada no futuro; não há stack definida. Ver [ADR-021](docs/tecnico/architecture-decisions/ADR-021-escopo-de-implementacao.md).
 
 ## Como participar
 

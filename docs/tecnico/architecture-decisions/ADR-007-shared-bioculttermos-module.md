@@ -6,6 +6,8 @@ status: stable
 
 # ADR-007: Distribuição do Módulo BioCultTermos via Git Submodule Compartilhado
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): o submódulo git compartilhado aplica-se apenas ao BioCultDB, único hospedeiro do BioCultTermos. Para as demais unidades (propostas, sem implementação) é orientação não vinculante.
+
 ## Status
 
 **Aceito** — Julho 2026

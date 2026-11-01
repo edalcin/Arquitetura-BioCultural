@@ -6,6 +6,8 @@ status: stable
 
 # ADR-013: Identidade Visual Compartilhada via Preset Tailwind no Módulo Compartilhado
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): o preset Tailwind compartilhado vale para BioCultDB e BioCultTermos. Para as demais unidades (propostas, sem stack definida) a identidade visual é orientação não vinculante.
+
 ## Status
 
 **Aceito** — Agosto 2026

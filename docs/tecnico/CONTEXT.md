@@ -18,15 +18,14 @@ Este arquivo é **apenas glossário**. Decisões e mecanismos ficam em
 
 **Unidade Federada**:
 Uma instalação soberana da Arquitetura BioCultural, com um arquivo SQLite próprio e as
-ferramentas que aquela unidade opera. Pode ser um container web, um pen-drive (BioCultRelatos) ou
+ferramentas que aquela unidade opera. Pode ser um container web (BioCultDB, o caso implementado) ou, nas propostas, um pen-drive (BioCultRelatos) ou
 um computador (BioCultNaturalistas). Cada pen-drive é uma unidade, da comunidade e não de uma
 pessoa. Soberana sobre seus dados; nunca sobre seu código.
 _Avoid_: Instância, Nó, Deployment, Aparelho (é onde a unidade roda, não a unidade)
 
 **Unidade Hospedeira**:
 A Unidade Federada considerada do ponto de vista de um Módulo Compartilhado que ela embarca.
-Só unidades web hospedam: BioCultDB e BioCultAcervos são as unidades hospedeiras do
-BioCultTermos. Os apps (BioCultRelatos, BioCultNaturalistas) não hospedam; recebem o Pacote de
+Hoje só o BioCultDB é unidade hospedeira do BioCultTermos ([ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md)). Nas propostas, só unidades web hospedariam; os apps (BioCultRelatos, BioCultNaturalistas) receberiam o Pacote de
 Vocabulário. O termo só se usa quando o assunto é o módulo que a unidade carrega.
 _Avoid_: Consumidor, Host, Container pai, Repositório pai
 
@@ -167,8 +166,8 @@ _Avoid_: Origem, Comunidade (só um dos tipos), Provenance, Fornecedor
 A procedência de um registro, que define o seu processo de aquisição: **fonte primária**
 (registro feito diretamente com a comunidade), **fonte secundária** (artigo científico
 publicado), **acervo** (coleção histórica ou museológica) e **obra de naturalista** (séculos XVII a
-XIX). Cada tipo tem uma Unidade Federada de referência — BioCultRelatos, BioCultDB,
-BioCultAcervos e BioCultNaturalistas — e é ortogonal ao Regime Enunciativo.
+XIX). Cada tipo tem uma Unidade Federada de referência — BioCultDB (implementada) e as propostas BioCultRelatos,
+BioCultAcervos e BioCultNaturalistas, sem implementação — e é ortogonal ao Regime Enunciativo.
 _Avoid_: Fonte do conhecimento (Evidência não é Conhecimento), Relatos (para obras de
 naturalistas: Relato é a unidade de Conhecimento)
 

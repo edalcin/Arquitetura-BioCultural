@@ -96,19 +96,19 @@ Fonte: [`impactos-na-arquitetura.md`](impactos-na-arquitetura.md) §3 (plano mí
 - **⑪ `und` como estado transitório** — fila de curadoria que liste os registros em `und` e cobre
   resolução.
 - **Generalizar o `AcquisitionService` do BioCultTermos** para lista de pares
-  `{tabela, campos[]}`. É o único bloqueio puramente técnico que trava três unidades ao mesmo tempo
-  (Relatos, Acervos, Naturalistas).
+  `{tabela, campos[]}`. É o único bloqueio puramente técnico para uma futura implementação de
+  Relatos, Acervos e Naturalistas (propostas, [ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md)); o responsável pela arquitetura não o fará.
 - **Marcar como Evidência os 29 registros do BioCultDB sem `regime`** —
   [#30](https://github.com/edalcin/Arquitetura-BioCultural/issues/30).
 
-### 1.5 Custódia Local e Envio ao pluriverso — documentação (em andamento)
+### 1.5 Custódia Local e Envio ao pluriverso — proposta, só documentação
 
-Visão decidida em 26/10/2026 (prompts P-0023 a P-0025) e ajustada em 27/10 (P-0026): **BioCultRelatos**
+As unidades abaixo são propostas, sem implementação nem stack ([ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md)). Visão desenhada em 26/10/2026 (prompts P-0023 a P-0025) e ajustada em 27/10 (P-0026): **BioCultRelatos**
 vira app Windows que roda de pen-drive, sem instalar; cada pen-drive é uma Unidade Federada soberana,
 guardada pela liderança da comunidade e repassada a quem registra relatos e faz curadoria. Sem app de
 celular por ora. **BioCultNaturalistas** vira app desktop; os dois guardam o dado no
 aparelho (Custódia Local) e fazem **Envio** de só `public` a um ou mais pluriversos registrados.
-BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem código.
+BioCultDB e BioCultAcervos continuam web, com Harvest. Só documentação, sem código, e sem previsão de desenvolvimento.
 
 - **Mapa:** [#36](https://github.com/edalcin/Arquitetura-BioCultural/issues/36). As 12 decisões estão
   no comentário de [#37](https://github.com/edalcin/Arquitetura-BioCultural/issues/37); a pesquisa
@@ -184,17 +184,16 @@ flowchart TD
 
 ## 4. Pendências das ferramentas (em outros repositórios)
 
-Cada ferramenta mantém o seu `docs/proximosPassos.md`, que é a fonte de verdade das pendências de
-implementação dela.
+Só o BioCultDB (com o BioCultTermos) está implementado. Das demais ferramentas, que são propostas sem implementação ([ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md)), as linhas abaixo listam o que um futuro implementador precisaria resolver; não há desenvolvimento em curso.
 
 | Ferramenta | Pendências principais | Documento |
 |---|---|---|
 | **BioCultDB** (fontes secundárias) | Campos de acesso do ADR-003 não materializados; 29 registros sem `regime` (#30); endpoint de harvest; qualidade da extração por IA não medida; auditoria dos prompts (⑰); generalizar o `AcquisitionService` | [`BioCultDB/docs/proximosPassos.md`](https://github.com/edalcin/BioCultDB/blob/main/docs/proximosPassos.md) |
-| **BioCultRelatos** (registro primário, CLPI) | Esquema do Relato (Passo 4); CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
-| **BioCultAcervos** (acervos) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources`; harvest; Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
-| **BioCultNaturalistas** (obras séc. XVII–XIX) | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
-| **Pluriverso** (middleware) | Fase 0 esqueleto + CI; Fase 1 membership e probe anti-SSRF; Fase 2 harvest + índice FTS5; Fases 3–6 | [`pluriverso/docs/proximosPassos.md`](https://github.com/edalcin/pluriverso/blob/main/docs/proximosPassos.md) |
-| **BioCultTermos** (módulo SKOS-XL) | Generalizar o `AcquisitionService`; hospedagem nas outras três unidades | `docs/proximosPassos.md` do BioCultDB |
+| **BioCultRelatos** (proposta; registro primário, CLPI) | Esquema do Relato (Passo 4); CLPI como ciclo revisável; mídia como registro primário (K8.1, K8.3); três contextos; harvest; devolutiva | [`BioCultRelatos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultRelatos/blob/main/docs/proximosPassos.md) |
+| **BioCultAcervos** (proposta; acervos) | `AcquisitionService` (bloqueante); persistência e modelo do acervo; contextos de Registro e Curadoria; `relatedResources`; harvest; Docker/CI | [`BioCultAcervos/docs/proximosPassos.md`](https://github.com/edalcin/BioCultAcervos/blob/main/docs/proximosPassos.md) |
+| **BioCultNaturalistas** (proposta; obras séc. XVII–XIX) | F1 `AcquisitionService` (bloqueante); F2 scaffold; F3 cinco tabelas + FTS5; F6 harvest; remover `bcn_taxons → $.nomeCientificoAtual` (ADR-014 N3) | [`BioCultNaturalistas/docs/proximosPassos.md`](https://github.com/edalcin/BioCultNaturalistas/blob/main/docs/proximosPassos.md) |
+| **Pluriverso** (proposta; middleware) | Fase 0 esqueleto + CI; Fase 1 membership e probe anti-SSRF; Fase 2 harvest + índice FTS5; Fases 3–6 | [`pluriverso/docs/proximosPassos.md`](https://github.com/edalcin/pluriverso/blob/main/docs/proximosPassos.md) |
+| **BioCultTermos** (módulo SKOS-XL) | Generalizar o `AcquisitionService`; hospedagem em outras unidades só se alguma proposta for implementada | `docs/proximosPassos.md` do BioCultDB |
 
 ---
 

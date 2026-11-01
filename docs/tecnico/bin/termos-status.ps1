@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 <#
 .SYNOPSIS
-    Reporta o Atraso de Modulo do BioCultTermos nas quatro Unidades Hospedeiras.
+    Reporta o Atraso de Modulo do BioCultTermos na Unidade Hospedeira (BioCultDB).
 
 .DESCRIPTION
     Leitor de estado SOMENTE LEITURA. Nao altera nenhum repositorio, nao commita,
@@ -38,7 +38,8 @@ if (-not $Root) {
     $Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 }
 
-$Hosts  = @('BioCultDB', 'BioCultRelatos', 'BioCultNaturalistas', 'BioCultAcervos')
+# ADR-021: so o BioCultDB hospeda o BioCultTermos.
+$Hosts  = @('BioCultDB')
 $Module = 'bioculttermos'
 
 function Invoke-Git {

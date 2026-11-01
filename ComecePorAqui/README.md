@@ -21,14 +21,14 @@ Esse conhecimento está espalhado: artigos, registros de campo, acervos de museu
 
 - **Federação soberana.** Cada comunidade ou iniciativa opera a sua *Unidade Federada*, com seus dados em um arquivo próprio. Um índice comum, o *Pluriverso*, só lê o que foi marcado como público. Quem quiser pode retirar o que publicou ou sair da federação.
 - **Conhecimento × Evidência.** *Conhecimento* é o que a comunidade diz, por si, sobre a sua relação com a biodiversidade. *Evidência* é o que um terceiro (um artigo, um museu, um naturalista) registrou sobre essa relação. Evidência não vale menos. Só tem outro dono. E só a comunidade decide sobre o seu Conhecimento.
-- **Quatro tipos de fonte, quatro ferramentas.**
+- **Quatro tipos de fonte, quatro ferramentas.** Só o BioCultDB (com o BioCultTermos) está implementado; as outras são propostas, sem implementação.
 
-| Tipo de fonte | Ferramenta |
-|---|---|
-| Registro feito com a comunidade | BioCultRelatos |
-| Artigos científicos | BioCultDB |
-| Acervos históricos e de museus | BioCultAcervos |
-| Obras de naturalistas (séculos XVII a XIX) | BioCultNaturalistas |
+| Tipo de fonte | Ferramenta | Estado |
+|---|---|---|
+| Registro feito com a comunidade | BioCultRelatos | Proposta, sem implementação |
+| Artigos científicos | BioCultDB | Em produção (caso implementado) |
+| Acervos históricos e de museus | BioCultAcervos | Proposta, sem implementação |
+| Obras de naturalistas (séculos XVII a XIX) | BioCultNaturalistas | Proposta, sem implementação |
 
 ```mermaid
 flowchart LR

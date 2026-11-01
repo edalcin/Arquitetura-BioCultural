@@ -6,6 +6,8 @@ status: stable
 
 # ADR-008: Engine de Banco de Dados do Pluriverso
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): o Pluriverso é uma proposta, sem implementação e sem stack definida. A escolha do motor e as menções a SvelteKit, Node, Docker, `ghcr.io/edalcin/pluriverso` e `better-sqlite3` abaixo são orientação não vinculante, não parâmetros de desenvolvimento; para quem vier a implementá-lo.
+
 ## Status
 
 **Aceito** — Julho 2026

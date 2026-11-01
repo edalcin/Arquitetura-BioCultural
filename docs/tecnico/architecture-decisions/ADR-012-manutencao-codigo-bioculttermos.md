@@ -6,6 +6,8 @@ status: stable
 
 # ADR-012: Manutenção do Código do BioCultTermos — Cópia de Trabalho Única por Unidade e Propagação Obrigatória
 
+> **Nota 2026-11-01:** escopo restrito pelo [ADR-021](ADR-021-escopo-de-implementacao.md): as regras de cópia de trabalho única e propagação obrigatória aplicam-se ao BioCultTermos dentro do BioCultDB, único hospedeiro. As menções a BioCultRelatos, BioCultAcervos e BioCultNaturalistas como hospedeiros são orientação não vinculante, pois são propostas sem implementação.
+
 ## Status
 
 **Aceito** — Agosto 2026

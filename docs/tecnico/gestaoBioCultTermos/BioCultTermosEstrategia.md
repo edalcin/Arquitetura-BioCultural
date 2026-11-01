@@ -13,9 +13,9 @@ description: "Estratégia para manter o código do BioCultTermos dentro da unida
 
 ## A resposta, em uma frase
 
-> Você mantém o código do BioCultTermos **dentro da Unidade Hospedeira que motivou a mudança** —
-> `BioCultDB/bioculttermos/`, `BioCultRelatos/bioculttermos/`, `BioCultNaturalistas/bioculttermos/` ou
-> `BioCultAcervos/bioculttermos/` — e **nunca** num clone isolado do BioCultTermos.
+> Você mantém o código do BioCultTermos **dentro da Unidade Hospedeira** — hoje só o
+> `BioCultDB/bioculttermos/` ([ADR-021](../architecture-decisions/ADR-021-escopo-de-implementacao.md)) —
+> e **nunca** num clone isolado do BioCultTermos. A regra vale também para qualquer futuro hospedeiro.
 
 A pergunta original oferecia duas opções: os "sub-repositórios" ou o repositório BioCultTermos. A
 resposta é a primeira, mas a pergunta continha uma premissa falsa que precisa ser desfeita antes que a
@@ -68,7 +68,7 @@ que estavam nele.
 
 ### 2. Edite na unidade que motivou a mudança
 
-O bug apareceu no BioCultNaturalistas? Edite em `BioCultNaturalistas/bioculttermos/`. A razão é
+O bug apareceu no hospedeiro? Edite em `BioCultDB/bioculttermos/`. A razão é
 operacional, não estética: **é o único lugar onde a mudança pode ser executada antes de publicada**.
 `docker/docker-compose.unidade.yml` sobe o container dual-app contra o SQLite real da unidade. Editar em
 qualquer outro lugar obriga a publicar para descobrir se funciona.
@@ -89,7 +89,7 @@ atrás.
 **Isto mudou.** O ADR-007 F3 e o ADR-010 diziam que o bump entre unidades era *opcional*. O ADR-012 G4
 supersede esse ponto: é **obrigatório**, mas cada unidade escolhe *quando*, não *se*.
 
-Não é lockstep — BioCultAcervos e BioCultNaturalistas ainda não têm código, e uma unidade em produção
+Não é lockstep — um futuro hospedeiro teria código próprio, e uma unidade em produção
 não deve receber automaticamente uma mudança que ela não testou. Mas também não é opcional, porque
 ninguém decide bifurcar: um hospedeiro que ficou dezoito commits atrás simplesmente nunca mais é bumpado
 de forma casual, e a dívida vira fork de fato.
@@ -117,11 +117,11 @@ O princípio fundador desta estratégia:
 
 | | Propaga entre unidades? | Onde vive |
 |---|---|---|
-| **Código** do Módulo Compartilhado | **Sempre.** Idêntico nas quatro unidades | `github.com/edalcin/BioCultTermos` |
+| **Código** do Módulo Compartilhado | **Sempre.** Idêntico em todo hospedeiro | `github.com/edalcin/BioCultTermos` |
 | **Conteúdo Soberano** — termos, rótulos, definições, relações curadas | **Nunca.** Não atravessa | SQLite da própria unidade |
 
 A soberania que a arquitetura protege (ADR-004 D2, princípios CARE) é sobre **dados**, jamais sobre
-código. Uma comunidade que roda BioCultRelatos não expõe seu vocabulário a ninguém por rodar o mesmo
+código. Uma comunidade que rodasse outra unidade com o módulo não expõe seu vocabulário a ninguém por rodar o mesmo
 código que o BioCultDB: o isolamento é por processo, container e arquivo — não por divergência de
 código-fonte.
 
@@ -163,7 +163,7 @@ campo colhido, é a **dimensão de atribuição** de cada termo.
 
 E a atribuição não se generaliza por descuido:
 
-| Unidade | Procedência de um termo | Peso |
+| Unidade (BioCultRelatos, BioCultNaturalistas e BioCultAcervos são propostas) | Procedência de um termo | Peso |
 |---|---|---|
 | BioCultDB, BioCultRelatos | **Comunidade Tradicional** (Decreto 8.750/2016) | CLPI, CARE, repartição de benefícios |
 | BioCultNaturalistas | Naturalista dos séculos XVII–XIX | Metadado histórico |
@@ -182,8 +182,7 @@ módulo.
 Ganho colateral: com o tipo explícito, o BioCultTermos pode exigir curadoria antes de publicar termo de
 procedência `comunidade_tradicional` e dispensá-la para `naturalista`. Hoje isso é inexprimível.
 
-**Status:** trabalho de código não feito. Pré-requisito para BioCultRelatos, BioCultNaturalistas e
-BioCultAcervos entrarem em produção com o BioCultTermos integrado.
+**Status:** trabalho de código não feito e não planejado pelo responsável pela arquitetura. Seria pré-requisito para uma futura implementação de BioCultRelatos, BioCultNaturalistas ou BioCultAcervos com o BioCultTermos integrado (propostas, sem implementação).
 
 ## Decisões adotadas por omissão
 

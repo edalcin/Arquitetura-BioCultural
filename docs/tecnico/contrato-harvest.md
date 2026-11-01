@@ -8,6 +8,8 @@ status: draft
 
 ## Status
 
+> **Nota 2026-11-01 ([ADR-021](architecture-decisions/ADR-021-escopo-de-implementacao.md)):** este contrato é a especificação que um futuro implementador do Pluriverso e das unidades-proposta deve respeitar; só o BioCultDB o implementa hoje.
+
 **Proposto** — Agosto 2026. Normativo em conjunto com a
 [ADR-016](architecture-decisions/ADR-016-contrato-de-harvest.md), e vigente quando ela for aceita.
 

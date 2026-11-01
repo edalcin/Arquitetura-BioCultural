@@ -56,12 +56,10 @@ alvo diferente.
 
 ## 1. Alterar o código do BioCultTermos
 
-Escolha o hospedeiro pela regra: **aquele em que o problema se reproduz ou a funcionalidade se
-exercita**. Se a mudança é transversal e não se prende a nenhuma unidade, use o BioCultDB — é a única
-em produção.
+O BioCultDB é o único hospedeiro do BioCultTermos ([ADR-021](../architecture-decisions/ADR-021-escopo-de-implementacao.md)); edite sempre nele.
 
 ```bash
-HOST=BioCultDB          # ou BioCultRelatos / BioCultNaturalistas / BioCultAcervos
+HOST=BioCultDB          # único hospedeiro (ADR-021)
 
 # 1. Sincronize a Cópia de Trabalho ANTES de editar
 git -C S:/git/$HOST/bioculttermos pull --ff-only
@@ -99,12 +97,12 @@ git push          # publica módulo e ponteiro juntos, graças a push.recurseSub
 
 ---
 
-## 2. Levar a mudança às demais unidades
+## 2. Levar a mudança a outro hospedeiro (só se existir)
 
-Obrigatório (ADR-012 G4), no seu tempo. Para cada hospedeiro que ainda não adotou:
+Hoje o BioCultDB é o único hospedeiro; esta seção vale se uma proposta vier a ser implementada com o módulo (ADR-012 G4, no seu tempo). Para cada hospedeiro que ainda não adotou:
 
 ```bash
-HOST=BioCultRelatos
+HOST=<hospedeiro>
 
 cd S:/git/$HOST
 git submodule update --remote --merge bioculttermos    # traz o topo de main
@@ -119,7 +117,7 @@ em que ela foi escrita.
 
 ---
 
-## 3. Ver o Atraso de Módulo das quatro unidades
+## 3. Ver o Atraso de Módulo do hospedeiro
 
 ```powershell
 pwsh S:/git/Arquitetura-BioCultural/bin/termos-status.ps1
@@ -132,7 +130,6 @@ rede de proteção do git está ligada na máquina.
 ```
 Unidade             Estado      Adotada Atraso Copia
 BioCultDB           operacional f44e72d 0      limpa
-BioCultRelatos      sem app     f44e72d 0      limpa
 ```
 
 A coluna **Estado** é derivada da presença de `docker/Dockerfile.unidade` no hospedeiro — não há flag
